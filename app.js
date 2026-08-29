@@ -1907,8 +1907,5 @@ if (topicReviewModal) {
 
 // Başlangıç Yüklemesi
 switchView('languages');
-<<<<<<< Updated upstream
+
 updateGlobalStats();
-=======
-updateGlobalStats();
->>>>>>> Stashed changes
