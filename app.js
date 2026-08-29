@@ -983,9 +983,6 @@ function renderCityVisual(completedCount) {
     statusText.textContent = `Şehirleşme: %${levelPercent} • ${phaseName}`;
   }
 
-    statusText.textContent = `Şehirleşme: %${levelPercent} • ${phaseName}`;
-  }
-
   // SVG Çizimi: Issız başlayıp zenginleşen şehir katmanları
   let svgHTML = `
     <defs>
@@ -1905,3 +1902,4 @@ if (topicReviewModal) {
 // Başlangıç Yüklemesi
 switchView('languages');
 updateGlobalStats();
+}
