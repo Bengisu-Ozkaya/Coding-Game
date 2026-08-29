@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeFarm • İnteraktif Kodlama Platformu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Minimalist Arka Plan Işık Efektleri -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <div class="app-container">
+    <!-- Üst Bar & Navigasyon -->
+    <header class="app-header">
+      <div class="brand-group" id="nav-brand" role="button" title="Anasayfaya Dön">
+        <div class="brand-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v8"></path>
+            <path d="m4.93 10.93 4.24 4.24"></path>
+            <path d="M2 18h8"></path>
+            <path d="M20 18h2"></path>
+            <path d="m19.07 10.93-1.41 1.41"></path>
+            <circle cx="12" cy="18" r="4"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">CodeFarm <span class="brand-badge" id="header-lang-badge">Dilleri Keşfet</span></div>
+          <p class="brand-subtitle" id="header-subtitle">İnteraktif kodlama macerana başla</p>
+        </div>
+      </div>
+
+      <!-- Navigasyon Sekmeleri -->
+      <nav class="nav-segmented">
+        <button id="nav-btn-home" class="segment-btn active">Diller</button>
+        <button id="nav-btn-roadmap" class="segment-btn">Yetenek Ağacı</button>
+        <button id="nav-btn-game" class="segment-btn">Tarla Modülü</button>
+      </nav>
+
+      <!-- İstatistikler -->
+      <div class="stats-group">
+        <div class="stat-pill">
+          <span class="stat-bullet xp-bullet"></span>
+          <span class="stat-num" id="stat-xp">0 XP</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-bullet rank-bullet"></span>
+          <span class="stat-num" id="stat-mastery">Çırak</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-bullet harvest-bullet"></span>
+          <span class="stat-num" id="stat-harvest">0 Görev</span>
+        </div>
+        <button id="btn-sound-toggle" class="btn-icon-minimal" title="Sesi Aç/Kapat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- EKRAN 1: PROGRAMLAMA DİLİ SEÇİM ANASAYFASI (Explore Languages)            -->
+    <!-- ========================================================================= -->
+    <section id="view-languages" class="view-screen active">
+      <div class="explore-container">
+        <!-- Başlık ve Açıklama -->
+        <div class="explore-header">
+          <h1 class="explore-title">Dilleri Keşfet</h1>
+          <p class="explore-subtitle">İnteraktif kodlama macerana başlamak için bir yol seç.</p>
+        </div>
+
+        <!-- Arama Çubuğu -->
+        <div class="search-bar-wrapper">
+          <svg class="search-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="language-search-input" class="search-input" placeholder="30+ dil ve ders ara..." autocomplete="off">
+        </div>
+
+        <!-- 2 Sütunlu Dil Kartları Izgarası -->
+        <div class="explore-languages-grid" id="languages-grid">
+          <!-- Dinamik olarak JS ile yüklenecektir -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- EKRAN 2: GELİŞEN ŞEHİR & DİKEY KONU YOL HARİTASI (Evolving City & Roadmap) -->
+    <!-- ========================================================================= -->
+    <section id="view-roadmap" class="view-screen">
+      <div class="roadmap-mobile-container">
+        <!-- 1. En Üstteki Gelişen Şehir Görseli (Evolving City Canvas) -->
+        <div class="city-banner-card">
+          <div class="city-illustration-viewport" id="city-viewport">
+            <svg id="city-dynamic-svg" viewBox="0 0 460 210" preserveAspectRatio="xMidYMid slice">
+              <!-- Dinamik şehir binaları, yollar, parklar, sinema, lunapark vb. JS ile çizilir -->
+            </svg>
+            <div class="city-level-badge" id="city-level-badge">
+              <span class="city-pulse-dot"></span>
+              <span id="city-status-text">Şehirleşme: %35 • Seviye 3</span>
+            </div>
+          </div>
+          <p class="city-motivation-text">Şehrin sana ihtiyacı var! Onu inşa etmek ve geliştirmek için konuları tamamla.</p>
+        </div>
+
+        <!-- 2. Geri Butonu & XP Göstergesi -->
+        <div class="roadmap-topbar">
+          <button id="btn-back-to-languages" class="roadmap-back-btn" title="Diller Menüsüne Dön">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <div class="roadmap-xp-pill">
+            <span class="xp-trophy">🏆</span>
+            <strong id="roadmap-xp-count">1,240 XP</strong>
+          </div>
+        </div>
+
+        <!-- 3. Seçili Dil Başlık ve İlerleme Kartı -->
+        <div class="course-header-card">
+          <div class="course-badge" id="course-lang-badge">
+            <span id="course-lang-icon">🐍</span>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title" id="course-lang-title">Python Temelleri</h2>
+            <div class="course-progress-bar-wrap">
+              <div class="course-progress-fill" id="course-progress-fill" style="width: 35%;"></div>
+            </div>
+            <span class="course-progress-text" id="course-progress-text">35% Tamamlandı</span>
+          </div>
+        </div>
+
+        <!-- 4. Dikey Konu Yol Haritası (Timeline Listesi) -->
+        <div class="roadmap-timeline-wrapper" id="roadmap-timeline-list">
+          <!-- JS ile dinamik render edilecek -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- EKRAN 3: KODLAMA VE KONTROL ALANI (Coding Workspace & Challenge Screen)    -->
+    <!-- ========================================================================= -->
+    <section id="view-game" class="view-screen">
+      <div class="coding-mobile-container">
+        <!-- 1. Üst Başlık & İlerleme Çubuğu -->
+        <div class="coding-header-nav">
+          <button id="btn-back-to-roadmap" class="coding-back-btn" title="Yol Haritasına Dön">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <div class="coding-title-group">
+            <h2 id="coding-topic-title">Variables & Data Types</h2>
+            <span class="coding-module-subtitle" id="coding-module-subtitle">MODÜL 1</span>
+          </div>
+          <div class="step-pill" id="step-pill">1/5</div>
+        </div>
+
+        <!-- İnce Mor İlerleme Çizgisi -->
+        <div class="coding-progress-line">
+          <div class="coding-progress-bar" id="coding-step-progress" style="width: 20%;"></div>
+        </div>
+
+        <!-- 2. İstenen Görev Kartı (Challenge Task Card) -->
+        <div class="challenge-task-card">
+          <div class="challenge-header">
+            <div class="challenge-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>ALIŞTIRMA GÖREVİ</span>
+            </div>
+            <button id="btn-hint" class="challenge-hint-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6"></path>
+                <path d="M10 22h4"></path>
+                <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+              </svg>
+              <span>İpucu</span>
+            </button>
+          </div>
+          <p class="challenge-prompt" id="challenge-prompt">
+            <code class="code-highlight">pulse</code> (nabız) değeri <code class="code-highlight">40</code>'ın altındaysa, <code class="code-highlight">label</code> değişkenine <code class="code-highlight">'acil'</code> (emergency) etiketini ata.
+          </p>
+        </div>
+
+        <!-- 3. Kod Yazma Alanı (Dark IDE Window - macOS Style) -->
+        <div class="ide-window-container">
+          <div class="ide-window-topbar">
+            <div class="ide-mac-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <span class="ide-filename" id="ide-filename">main.py</span>
+            <div class="ide-code-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <div class="ide-editor-body">
+            <div class="ide-line-numbers" id="ide-line-numbers">
+              1<br>2<br>3<br>4<br>5<br>6<br>7
+            </div>
+            <div class="ide-code-content">
+              <div class="ide-code-preset" id="ide-code-preset">
+<span class="code-var">pulse</span> = <span class="code-num">75</span>
+<span class="code-var">label</span> = <span class="code-str">""</span>
+
+<span class="code-comment"># Kodunuzu aşağıya yazın</span></div>
+              <textarea id="code-input" class="ide-interactive-textarea" spellcheck="false" placeholder="if pulse < 40:&#10;    label = &quot;acil&quot;"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Hızlı Kod Kısayol Tuşları (Code Snippet Bar) -->
+        <div class="quick-keys-bar" id="quick-keys-bar">
+          <button class="key-btn" data-key="if ">if</button>
+          <button class="key-btn" data-key="elif ">elif</button>
+          <button class="key-btn" data-key="else:">else</button>
+          <button class="key-btn" data-key=" < ">&lt;</button>
+          <button class="key-btn" data-key=" > ">&gt;</button>
+          <button class="key-btn" data-key=" = ">=</button>
+          <button class="key-btn" data-key=":">:</button>
+          <button class="key-btn" data-key="    ">Tab</button>
+        </div>
+
+        <!-- 5. Kontrol ve Çalıştırma Alanı (Control & Execution Area) -->
+        <div class="control-actions-group">
+          <button id="btn-run" class="btn-run-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Kodu Çalıştır</span>
+          </button>
+          <button id="btn-submit" class="btn-submit-secondary">
+            <span>Çözümü Onayla</span>
+          </button>
+        </div>
+
+        <!-- Çıktı ve Geribildirim Konsolu (Feedback Toast / Terminal) -->
+        <div class="feedback-panel" id="feedback-panel">
+          <div class="feedback-header">
+            <span id="feedback-status-title">Çıktı & Konsol</span>
+            <button id="btn-clear-console" class="feedback-clear">Temizle</button>
+          </div>
+          <div class="feedback-body" id="terminal-output">
+            <div class="log log-info">Hazır. Kodunuzu yazıp 'Kodu Çalıştır' butonuna basın.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Seviye Tamamlama / Modal -->
+  <div class="modal-overlay" id="victory-modal">
+    <div class="modal-card">
+      <div class="modal-check-icon">✓</div>
+      <h2 id="victory-title">Modül Başarıyla Tamamlandı</h2>
+      <p class="modal-subtitle" id="victory-subtitle">Tüm 3x3 hücreleri doğru kodlarla işlediniz.</p>
+      
+      <div class="modal-rewards">
+        <div class="reward-box">
+          <strong id="final-xp">+450 XP</strong>
+          <span>Kazanılan Puan</span>
+        </div>
+        <div class="reward-box">
+          <strong id="final-crops">9 Hücre</strong>
+          <span>Tamamlanan Görev</span>
+        </div>
+        <div class="reward-box">
+          <strong id="victory-badge-text">Java Seviye 1</strong>
+          <span>Yetkinlik Rozeti</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="btn-restart" class="btn btn-secondary-subtle">Tekrar Çöz</button>
+        <button id="btn-modal-roadmap" class="btn btn-primary-gradient">Yetenek Ağacına Dön</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
