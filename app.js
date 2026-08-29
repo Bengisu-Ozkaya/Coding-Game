@@ -1902,14 +1902,6 @@ if (topicReviewModal) {
   });
 }
 
-// Başlangıç Yüklemesi (DOMContentLoaded & Anında Başlatma)
-function initializeApp() {
-  switchView('languages');
-  updateGlobalStats();
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeApp);
-} else {
-  initializeApp();
-}
+// Başlangıç Yüklemesi
+switchView('languages');
+updateGlobalStats();
