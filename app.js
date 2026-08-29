@@ -519,7 +519,7 @@ const LANGUAGES_DB = [
   {
     id: 'python',
     name: 'Python',
-    lessonsText: '48 Ders',
+    lessonsText: '47 Ders',
     badgeClass: 'badge-python',
     iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>`,
     icon: '🐍',
@@ -819,84 +819,116 @@ function renderLanguages() {
 const COURSE_TOPICS_DB = {
   python: [
     {
-      id: 'p1',
-      title: '1. Değişkenler & Veri Türleri',
-      desc: 'Bellek tahsisi, dinamik tipleme, metin (string), ondalıklı sayı (float) ve temel tip dönüştürme kurallarını öğren.',
+      id: 'python_1',
+      title: '1. Değişkenler & Veri Tipleri (Ders #1 - #5)',
+      desc: 'print() komutu, yorum satırları, değişken isimlendirme kuralları, int, float, str, bool ve type() fonksiyonu.',
       reward: '🛣️ Asfalt Yollar & Sokak Lambaları',
       status: 'active',
       xp: 120
     },
     {
-      id: 'p2',
-      title: '2. Kontrol Akışı (If / Else)',
-      desc: 'if, elif, else ve mantıksal operatörlerle koşullu dallanma yapılarını yönet.',
+      id: 'python_2',
+      title: '2. Stringler & Metin İşlemleri (Ders #6 - #9)',
+      desc: 'İndeksleme, dilimleme [start:stop], len(), .upper(), .lower(), .replace(), .split() ve modern f-string formatlama.',
       reward: '💡 Şehir Elektrik Şebekesi',
       status: 'locked',
-      xp: 150
+      xp: 140
     },
     {
-      id: 'p3',
-      title: '3. Fonksiyonlar',
-      desc: 'Varsayılan parametreler, *args ve **kwargs ile yeniden kullanılabilir kod blokları inşa et.',
+      id: 'python_3',
+      title: '3. Operatörler & Matematik (Ders #10 - #12)',
+      desc: 'Aritmetik (+, -, *, /, //, %, **), karşılaştırma (==, !=, >, <) ve mantıksal (and, or, not) operatörler.',
+      reward: '🚰 Temiz Su Arıtma & Çeşmeler',
+      status: 'locked',
+      xp: 160
+    },
+    {
+      id: 'python_4',
+      title: '4. Koşullu Durumlar (If / Elif / Else) (Ders #13 - #15)',
+      desc: 'if, elif, else blokları, iki nokta (:) ve girintileme (indentation) kuralları, tek satır ternary if koşulları.',
       reward: '🌳 Şehir Parkı & Fıskiye',
       status: 'locked',
       xp: 180
     },
     {
-      id: 'p4',
-      title: '4. Nesne Yönelimli Programlama (OOP)',
-      desc: 'Sınıflar (class), kalıtım (inheritance), kurucu metotlar ve kapsülleme (encapsulation) mantığını kavra.',
+      id: 'python_5',
+      title: '5. Listeler & Demetler (Lists & Tuples) (Ders #16 - #19)',
+      desc: 'Listeler [], .append(), .pop(), .sort(), .insert() metotları ve değiştirilemez (immutable) demetler ().',
       reward: '🏢 Modern İş Kuleleri & Rezidanslar',
+      status: 'locked',
+      xp: 200
+    },
+    {
+      id: 'python_6',
+      title: '6. Sözlükler & Kümeler (Dict & Set) (Ders #20 - #22)',
+      desc: 'Anahtar-Değer (key: value) sözlükler {}, .keys(), .values(), .get() ve benzersiz eleman kümeleri set().',
+      reward: '🎬 Modern Sinema & Tiyatro Kompleksi',
       status: 'locked',
       xp: 220
     },
     {
-      id: 'p5',
-      title: '5. Veri Yapıları',
-      desc: 'Listeler, sözlükler (dict), demetler (tuple), kümeler (set) ve liste üreteçlerini derinlemesine öğren.',
-      reward: '🎬 Modern Sinema & Tiyatro Kompleksi',
+      id: 'python_7',
+      title: '7. Döngüler (For & While) (Ders #23 - #26)',
+      desc: 'for döngüsü, range(başla, bitir, artış), while döngüsü, break (kır), continue (atla), enumerate() ve zip().',
+      reward: '🎡 Lunapark & Dönme Dolap',
       status: 'locked',
       xp: 250
     },
     {
-      id: 'p6',
-      title: '6. Dosya İşlemleri',
-      desc: 'open, read, write, append işlemleri ve modern context manager (with) blokları ile dosya yönet.',
-      reward: '🎡 Lunapark & Dönme Dolap',
+      id: 'python_8',
+      title: '8. Fonksiyonlar & Kapsam (Ders #27 - #30)',
+      desc: 'def ile fonksiyon tanımlama, return ile değer döndürme, varsayılan parametreler, *args, **kwargs ve global kapsam.',
+      reward: '🏥 Şehir Hastanesi & Acil Servis',
       status: 'locked',
       xp: 280
     },
     {
-      id: 'p7',
-      title: '7. Hata ve İstisna Yönetimi',
-      desc: 'try, except, raise ve özel hata türleri ile çalışma zamanı hatalarını güvenle ele al.',
-      reward: '🏥 Şehir Hastanesi & Acil Servis',
+      id: 'python_9',
+      title: '9. Lambda, Map & Filter (Ders #31 - #33)',
+      desc: 'Tek satırlık anonim lambda fonksiyonları, map(), filter() ve modern List Comprehension [x for x in liste] yapıları.',
+      reward: '🛍️ Alışveriş & Ticaret Merkezi',
       status: 'locked',
       xp: 300
     },
     {
-      id: 'p8',
-      title: '8. Kütüphaneler ve Paketler',
-      desc: 'pip paket yöneticisi, standart kütüphane modülleri ve sanal ortamları (venv) keşfet.',
-      reward: '🛍️ Alışveriş & Ticaret Merkezi',
+      id: 'python_10',
+      title: '10. Modüller & Paketler (Ders #34 - #36)',
+      desc: 'Standart kütüphane modülleri (math, random, datetime), import, from ... import, as takma ad ve pip paket yönetimi.',
+      reward: '🚄 Hızlı Tren Garı & Metro Hattı',
       status: 'locked',
       xp: 320
     },
     {
-      id: 'p9',
-      title: '9. API & JSON Entegrasyonu',
-      desc: 'Requests modülü ile web\'den veri çek, JSON dizilerini ayrıştır ve başlıkları yönet.',
-      reward: '🚄 Hızlı Tren Garı & Metro Hattı',
+      id: 'python_11',
+      title: '11. Hata ve İstisna Yönetimi (Try / Except) (Ders #37 - #39)',
+      desc: 'try, except blokları ile çalışma zamanı hatalarını yakalama, finally ile temizlik ve raise ile özel hata fırlatma.',
+      reward: '📡 Uydu İletişim & Radyo Kulesi',
       status: 'locked',
       xp: 350
     },
     {
-      id: 'p10',
-      title: '10. Veritabanı Sistemleri',
-      desc: 'Python scriptlerini SQLite veritabanına bağla, sorgular oluştur ve şemaları haritalandır.',
+      id: 'python_12',
+      title: '12. Dosya İşlemleri (File I/O) (Ders #40 - #42)',
+      desc: 'open() fonksiyonu, okuma ("r"), yazma ("w"), ekleme ("a") modları ve with open(...) otomatik dosya yönetimi.',
+      reward: '🚢 Uluslararası Liman & Konteyner Terminali',
+      status: 'locked',
+      xp: 380
+    },
+    {
+      id: 'python_13',
+      title: '13. Nesne Yönelimli Programlama (OOP) (Ders #43 - #45)',
+      desc: 'class tanımlama, __init__ kurucu metodu, self nesne referansı, sınıf metotları ve Kalıtım (Inheritance).',
+      reward: '🏛️ Çiftlik & Şehir Yönetim Sarayı',
+      status: 'locked',
+      xp: 420
+    },
+    {
+      id: 'python_14',
+      title: '14. İleri Seviye & GUI / Proje (Ders #46 - #47)',
+      desc: 'Tkinter ile görsel arayüz pencereleri ve butonlar, JSON veri işleme ve modüler Python şehir mimarisi.',
       reward: '🚀 Teknoloji Vadisi & Gözlemevi',
       status: 'locked',
-      xp: 400
+      xp: 500
     }
   ]
 };
@@ -939,14 +971,17 @@ function renderCityVisual(completedCount) {
   if (!svg) return;
 
   const statusText = document.getElementById('city-status-text');
-  const levelPercent = Math.min(100, Math.round((completedCount / 10) * 100));
+  const levelPercent = Math.min(100, Math.round((completedCount / 14) * 100));
 
   if (statusText) {
     let phaseName = 'Issız Harabe Şehir';
-    if (completedCount >= 8) phaseName = 'Metropol Şehir';
-    else if (completedCount >= 6) phaseName = 'Lunaparklı Modern Şehir';
-    else if (completedCount >= 4) phaseName = 'Gelişen Şehir';
-    else if (completedCount >= 2) phaseName = 'İlk Yerleşim';
+    if (completedCount >= 12) phaseName = 'Metropol Şehir & Teknoloji Vadisi';
+    else if (completedCount >= 9) phaseName = 'Modern Liman ve Ticaret Şehri';
+    else if (completedCount >= 6) phaseName = 'Lunaparklı Gelişen Şehir';
+    else if (completedCount >= 3) phaseName = 'İlk Yerleşim & Altyapı';
+
+    statusText.textContent = `Şehirleşme: %${levelPercent} • ${phaseName}`;
+  }
 
     statusText.textContent = `Şehirleşme: %${levelPercent} • ${phaseName}`;
   }
@@ -1095,7 +1130,7 @@ function renderCityVisual(completedCount) {
   }
 
   svg.innerHTML = svgHTML;
-}
+
 
 // Konu Yol Haritasını (Timeline) Ekrana Basan Fonksiyon
 function renderSkillTree() {
@@ -1200,10 +1235,10 @@ function renderSkillTree() {
 // --- 7.1 KONU HIZLI ÖZET MODAL MOTORU (Topic Quick Review Modal Engine) ---
 
 const TOPIC_REVIEWS_DB = {
-  p1: {
-    title: 'Değişkenler & Veri Türleri',
+  python_1: {
+    title: 'Değişkenler & Veri Tipleri',
     readTime: '2 dk okuma',
-    rulesHeading: 'İSİMLENDİRME KURALLARI',
+    rulesHeading: 'İSİMLENDİRME VE TANIMLAMA KURALLARI',
     rules: [
       'Açıklayıcı isimler kullanın (örn: <code>kullanici_yasi</code>, <code>x</code> değil)',
       'Bir harf veya alt çizgi (<code>_</code>) ile başlayın, rakamla başlamayın',
@@ -1218,28 +1253,245 @@ const TOPIC_REVIEWS_DB = {
       { name: 'bool', label: 'TÜR', value: 'True' }
     ]
   },
-  p2: {
-    title: 'Kontrol Akışı (If / Else)',
+  python_2: {
+    title: 'Stringler & Metin İşlemleri',
     readTime: '2 dk okuma',
-    rulesHeading: 'KOŞUL KURALLARI',
+    rulesHeading: 'METİN VE DİLİMLEME KURALLARI',
+    rules: [
+      'İndeksler 0\'dan başlar: <code>metin[0]</code> ilk harfi verir',
+      'Negatif indeksler sondan sayar: <code>metin[-1]</code> son harftir',
+      'Dilimleme: <code>metin[0:4]</code> 0\'dan 4. indekse kadar (4 hariç) alır',
+      'Modern metin birleştirme için f-string kullanın: <code>f"Merhaba {isim}"</code>'
+    ],
+    typesHeading: 'TEMEL STRİNG METOTLARI',
+    types: [
+      { name: 'len()', label: 'METOT', value: 'len("kod") -> 3' },
+      { name: '.upper()', label: 'METOT', value: '"abc".upper() -> "ABC"' },
+      { name: '.replace()', label: 'METOT', value: '"a-b".replace("-"," ")' },
+      { name: 'f-string', label: 'SÖZDİZİMİ', value: 'f"{ad} {yas}"' }
+    ]
+  },
+  python_3: {
+    title: 'Operatörler & Matematik',
+    readTime: '2 dk okuma',
+    rulesHeading: 'MATEMATİKSEL VE MANTIKSAL KURALLAR',
+    rules: [
+      '<code>//</code> tam sayı bölmesi yapar (ondalık kısmı atar)',
+      '<code>%</code> modu yani bölme işleminden kalanı verir',
+      '<code>**</code> üs alma işlemidir (örn: <code>2 ** 3 = 8</code>)',
+      '<code>and</code> her iki koşul doğruysa, <code>or</code> en az biri doğruysa <code>True</code> döner'
+    ],
+    typesHeading: 'ÖNEMLİ OPERATÖRLER',
+    types: [
+      { name: '//', label: 'TAM BÖLME', value: '7 // 2 -> 3' },
+      { name: '%', label: 'MOD (KALAN)', value: '7 % 3 -> 1' },
+      { name: '**', label: 'ÜS ALMA', value: '2 ** 4 -> 16' },
+      { name: '!=', label: 'EŞİT DEĞİL', value: '5 != 3 -> True' }
+    ]
+  },
+  python_4: {
+    title: 'Koşullu Durumlar (If / Elif / Else)',
+    readTime: '2 dk okuma',
+    rulesHeading: 'KOŞUL VE BLOK KURALLARI',
     rules: [
       'Koşul satırlarının sonuna mutlaka iki nokta (<code>:</code>) koyun',
       'Koşulun altındaki kod bloğu için 4 boşluk girinti (indentation) bırakın',
-      'Eşitlik kontrolü için <code>==</code>, atama için <code>=</code> kullanın',
-      'Çoklu koşullarda <code>and</code>, <code>or</code>, <code>not</code> mantıksal bağlaçlarını kullanın'
+      'Eşitlik kıyaslaması için <code>==</code>, atama için <code>=</code> kullanın',
+      'Birden fazla basamaklı koşullar için <code>elif</code> kullanın'
     ],
-    typesHeading: 'KARŞILAŞTIRMA OPERATÖRLERİ',
+    typesHeading: 'KOŞUL YAPILARI',
     types: [
-      { name: '==', label: 'EŞİTTİR', value: 'a == b' },
-      { name: '!=', label: 'EŞİT DEĞİL', value: 'a != b' },
-      { name: '>=', label: 'BÜYÜK EŞİT', value: 'x >= 18' },
-      { name: '<=', label: 'KÜÇÜK EŞİT', value: 'y <= 100' }
+      { name: 'if', label: 'BAŞLANGIÇ', value: 'if puan >= 50:' },
+      { name: 'elif', label: 'EK KOŞUL', value: 'elif puan >= 40:' },
+      { name: 'else', label: 'VARSAYILAN', value: 'else: pass' },
+      { name: 'ternary', label: 'TEK SATIR', value: '"Geçti" if p>50 else "Kaldı"' }
+    ]
+  },
+  python_5: {
+    title: 'Listeler & Demetler (Lists & Tuples)',
+    readTime: '3 dk okuma',
+    rulesHeading: 'LİSTE VE DEMET KURALLARI',
+    rules: [
+      'Listeler köşeli parantez <code>[]</code> ile tanımlanır ve değiştirilebilir (mutable)',
+      'Demetler (Tuples) normal parantez <code>()</code> ile tanımlanır ve sabittir (immutable)',
+      '<code>.append()</code> listenin sonuna yeni bir eleman ekler',
+      '<code>.pop()</code> son elemanı siler ve döndürür'
+    ],
+    typesHeading: 'LİSTE İŞLEMLERİ',
+    types: [
+      { name: '[ ]', label: 'LİSTE', value: '[10, 20, 30]' },
+      { name: '( )', label: 'TUPLE', value: '("a", "b", "c")' },
+      { name: '.append()', label: 'EKLE', value: 'liste.append(40)' },
+      { name: '.sort()', label: 'SIRALA', value: 'liste.sort()' }
+    ]
+  },
+  python_6: {
+    title: 'Sözlükler & Kümeler (Dict & Set)',
+    readTime: '3 dk okuma',
+    rulesHeading: 'SÖZLÜK VE KÜME KURALLARI',
+    rules: [
+      'Sözlükler <code>{"anahtar": "değer"}</code> çiftleriyle çalışır',
+      'Olmayan bir anahtarda hata almamak için <code>sozluk.get("anahtar")</code> kullanın',
+      'Kümeler <code>set()</code> veya <code>{1, 2}</code> tekrarlayan elemanları otomatik eler',
+      'Sözlük anahtarları değiştirilemez (örneğin string veya int) olmalıdır'
+    ],
+    typesHeading: 'SÖZLÜK & KÜME YAPILARI',
+    types: [
+      { name: '{k: v}', label: 'SÖZLÜK', value: '{"ad": "Bengi", "yas": 25}' },
+      { name: '.keys()', label: 'ANAHTARLAR', value: 'sozluk.keys()' },
+      { name: '.values()', label: 'DEĞERLER', value: 'sozluk.values()' },
+      { name: 'set()', label: 'BENZERSİZ', value: '{1, 2, 2, 3} -> {1, 2, 3}' }
+    ]
+  },
+  python_7: {
+    title: 'Döngüler (For & While)',
+    readTime: '3 dk okuma',
+    rulesHeading: 'DÖNGÜ VE KONTROL KURALLARI',
+    rules: [
+      '<code>range(5)</code> 0\'dan 4\'e kadar (5 hariç) sayılar üretir',
+      '<code>range(1, 10, 2)</code> 1\'den başlar, 2\'şer artarak 10\'a kadar gider',
+      '<code>break</code> döngüyü anında sonlandırır',
+      '<code>continue</code> o anki adımı atlar ve bir sonraki tura geçer'
+    ],
+    typesHeading: 'DÖNGÜ YAPILARI',
+    types: [
+      { name: 'for in', label: 'FOR DÖNGÜSÜ', value: 'for x in liste:' },
+      { name: 'range()', label: 'ARALIK', value: 'range(1, 10)' },
+      { name: 'while', label: 'KOŞULLU', value: 'while sayac < 5:' },
+      { name: 'break', label: 'DURDUR', value: 'if x == 3: break' }
+    ]
+  },
+  python_8: {
+    title: 'Fonksiyonlar & Kapsam',
+    readTime: '3 dk okuma',
+    rulesHeading: 'FONKSİYON KURALLARI',
+    rules: [
+      'Fonksiyonlar <code>def fonksiyon_adi():</code> şeklinde tanımlanır',
+      'Sonucu çağıran yere aktarmak için <code>return</code> kullanılır',
+      '<code>*args</code> sınırsız sayıda isimsiz parametre almaya yarar',
+      'Fonksiyon içindeki değişkenler yereldir (local scope)'
+    ],
+    typesHeading: 'FONKSİYON ANATOMİSİ',
+    types: [
+      { name: 'def', label: 'TANIM', value: 'def topla(a, b):' },
+      { name: 'return', label: 'SONUÇ', value: 'return a + b' },
+      { name: 'varsayılan', label: 'PARAMETRE', value: 'def selam(ad="Misafir"):' },
+      { name: '*args', label: 'ESNEK', value: 'def topla(*sayilar):' }
+    ]
+  },
+  python_9: {
+    title: 'Lambda, Map & Filter',
+    readTime: '2 dk okuma',
+    rulesHeading: 'FONKSİYONEL PROGRAMLAMA KURALLARI',
+    rules: [
+      '<code>lambda x: x * 2</code> tek satırlık isimsiz hızlı fonksiyondur',
+      '<code>map(fn, liste)</code> listedeki tüm elemanlara fonksiyonu uygular',
+      '<code>filter(fn, liste)</code> koşula uyan elemanları süzer',
+      'List Comprehension: <code>[x**2 for x in sayilar if x > 2]</code>'
+    ],
+    typesHeading: 'FONKSİYONEL ARAÇLAR',
+    types: [
+      { name: 'lambda', label: 'TEK SATIR', value: 'kare = lambda x: x**2' },
+      { name: 'map()', label: 'DÖNÜŞTÜR', value: 'map(str, [1, 2, 3])' },
+      { name: 'filter()', label: 'FİLTRELE', value: 'filter(lambda x: x>0, l)' },
+      { name: '[comp]', label: 'LİSTE ÜRETİCİ', value: '[x*2 for x in l]' }
+    ]
+  },
+  python_10: {
+    title: 'Modüller & Paketler',
+    readTime: '2 dk okuma',
+    rulesHeading: 'MODÜL VE PAKET KURALLARI',
+    rules: [
+      '<code>import math</code> ile standart matematik kütüphanesi yüklenir',
+      '<code>from random import randint</code> ile sadece belirli fonksiyon alınır',
+      '<code>import numpy as np</code> ile modüle kısa takma ad (alias) verilir',
+      'Harici paketler terminalden <code>pip install paket_adi</code> ile kurulur'
+    ],
+    typesHeading: 'MODÜL KULLANIMI',
+    types: [
+      { name: 'import', label: 'DÂHİL ET', value: 'import math' },
+      { name: 'from..import', label: 'SEÇEREK AL', value: 'from random import choice' },
+      { name: 'as', label: 'TAKMA AD', value: 'import datetime as dt' },
+      { name: 'pip', label: 'YÖNETİCİ', value: 'pip install requests' }
+    ]
+  },
+  python_11: {
+    title: 'Hata ve İstisna Yönetimi (Try / Except)',
+    readTime: '3 dk okuma',
+    rulesHeading: 'HATA YAKALAMA KURALLARI',
+    rules: [
+      'Hata çıkarabilecek kodlar <code>try:</code> bloğuna yazılır',
+      '<code>except ValueError:</code> sadece belirtilen hatayı yakalar',
+      '<code>finally:</code> hata olsun ya da olmasın daima en son çalışan koddur',
+      '<code>raise Exception("Mesaj")</code> ile bilinçli hata fırlatılır'
+    ],
+    typesHeading: 'HATA BLOKLARI',
+    types: [
+      { name: 'try', label: 'DENE', value: 'try: x = int(sayi)' },
+      { name: 'except', label: 'YAKALA', value: 'except ValueError as e:' },
+      { name: 'finally', label: 'SON BLOK', value: 'finally: dosya.close()' },
+      { name: 'raise', label: 'FIRLAT', value: 'raise ValueError("Geçersiz")' }
+    ]
+  },
+  python_12: {
+    title: 'Dosya İşlemleri (File I/O)',
+    readTime: '3 dk okuma',
+    rulesHeading: 'DOSYA YÖNETİM KURALLARI',
+    rules: [
+      '<code>with open("dosya.txt", "r") as f:</code> dosyayı işlem bitince otomatik kapatır',
+      '<code>"r"</code> (read) sadece okuma, <code>"w"</code> (write) sıfırlayarak yazma modudur',
+      '<code>"a"</code> (append) dosyanın sonuna yeni satır ekler',
+      'Türkçe karakterler için <code>encoding="utf-8"</code> parametresi eklenmelidir'
+    ],
+    typesHeading: 'DOSYA MODLARI',
+    types: [
+      { name: 'with open', label: 'GÜVENLİ', value: 'with open("a.txt", "r") as f:' },
+      { name: '"w"', label: 'YAZMA', value: 'open("a.txt", "w", encoding="utf-8")' },
+      { name: '"a"', label: 'EKLEME', value: 'open("a.txt", "a")' },
+      { name: '.read()', label: 'OKUMA', value: 'icerik = f.read()' }
+    ]
+  },
+  python_13: {
+    title: 'Nesne Yönelimli Programlama (OOP)',
+    readTime: '4 dk okuma',
+    rulesHeading: 'NESNE VE SINIF KURALLARI',
+    rules: [
+      'Sınıflar <code>class SinifAdi:</code> şeklinde PascalCase ile adlandırılır',
+      '<code>__init__(self)</code> kurucu metottur ve nesne yaratılırken ilk çağrılır',
+      '<code>self</code> nesnenin kendi özelliklerine ve metotlarına erişimi sağlar',
+      'Kalıtım: <code>class Kopek(Hayvan):</code> üst sınıfın özelliklerini devralır'
+    ],
+    typesHeading: 'OOP YAPITAŞLARI',
+    types: [
+      { name: 'class', label: 'SINIF', value: 'class Araba:' },
+      { name: '__init__', label: 'KURUCU', value: 'def __init__(self, model):' },
+      { name: 'self', label: 'REFERANS', value: 'self.model = model' },
+      { name: 'super()', label: 'ÜST SINIF', value: 'super().__init__()' }
+    ]
+  },
+  python_14: {
+    title: 'İleri Seviye & GUI / Proje',
+    readTime: '4 dk okuma',
+    rulesHeading: 'PROJE VE ARAYÜZ KURALLARI',
+    rules: [
+      '<code>tkinter</code> Python\'ın dahili masaüstü grafik arayüz kütüphanesidir',
+      '<code>json.loads()</code> metin halindeki JSON verisini Python sözlüğüne çevirir',
+      '<code>json.dumps()</code> Python verisini JSON metnine dönüştürür',
+      'Tüm modülleri birleştiren ana dosya genellikle <code>main.py</code> olarak adlandırılır'
+    ],
+    typesHeading: 'İLERİ SEVİYE ARAÇLAR',
+    types: [
+      { name: 'tkinter', label: 'ARAYÜZ', value: 'import tkinter as tk' },
+      { name: 'json.loads', label: 'AYRIŞTIR', value: 'veri = json.loads(metin)' },
+      { name: 'json.dumps', label: 'PAKETLE', value: 'json.dumps(sozluk)' },
+      { name: 'mainloop()', label: 'UYGULAMA', value: 'pencere.mainloop()' }
     ]
   }
 };
 
-TOPIC_REVIEWS_DB.python_1 = TOPIC_REVIEWS_DB.p1;
-TOPIC_REVIEWS_DB.python_2 = TOPIC_REVIEWS_DB.p2;
+// Eski p1 ve p2 id eşleştirmeleri
+TOPIC_REVIEWS_DB.p1 = TOPIC_REVIEWS_DB.python_1;
+TOPIC_REVIEWS_DB.p2 = TOPIC_REVIEWS_DB.python_2;
 
 function openTopicReviewModal(topic) {
   const modal = document.getElementById('topic-review-modal');
