@@ -1211,15 +1211,9 @@ function renderSkillTree() {
       </div>
     `;
 
-    // Tıklama ile Hızlı Özet Modalını Açma
+    // Tıklama ile Hızlı Özet Modalını Açma (Kilitli olsa bile okunabilir)
     const cardEl = row.querySelector('.timeline-card');
     cardEl.addEventListener('click', () => {
-      if (isLocked) {
-        sfx.playError();
-        logToTerminal(`🔒 Bu konu henüz kilitli! Sıradaki aktif konuyu tamamlamalısın.`, 'hint');
-        return;
-      }
-
       state.selectedNodeId = topic.id;
       sfx.playPop();
       openTopicReviewModal(topic);
@@ -1532,6 +1526,18 @@ function openTopicReviewModal(topic) {
         <span class="type-value">${t.value}</span>
       </div>
     `).join('');
+  }
+
+  // Kilit Durumuna Göre Alıştırmaya Başla Butonu ve Kilit Uyarısı Kontrolü
+  const isLocked = topic.status === 'locked';
+  const btnStartPractice = document.getElementById('btn-start-practice');
+  const lockedNotice = document.getElementById('review-locked-notice');
+
+  if (btnStartPractice) {
+    btnStartPractice.style.display = isLocked ? 'none' : 'flex';
+  }
+  if (lockedNotice) {
+    lockedNotice.style.display = isLocked ? 'flex' : 'none';
   }
 
   modal.classList.add('open');
@@ -1901,4 +1907,8 @@ if (topicReviewModal) {
 
 // Başlangıç Yüklemesi
 switchView('languages');
+<<<<<<< Updated upstream
 updateGlobalStats();
+=======
+updateGlobalStats();
+>>>>>>> Stashed changes
