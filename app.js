@@ -741,27 +741,27 @@ function switchView(viewName) {
   dom.viewRoadmap.classList.remove('active');
   dom.viewGame.classList.remove('active');
 
-  dom.navBtnHome.classList.remove('active');
-  dom.navBtnRoadmap.classList.remove('active');
-  dom.navBtnGame.classList.remove('active');
+  if (dom.navBtnHome) dom.navBtnHome.classList.remove('active');
+  if (dom.navBtnRoadmap) dom.navBtnRoadmap.classList.remove('active');
+  if (dom.navBtnGame) dom.navBtnGame.classList.remove('active');
 
   const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
 
   if (viewName === 'languages') {
     dom.viewLanguages.classList.add('active');
-    dom.navBtnHome.classList.add('active');
+    if (dom.navBtnHome) dom.navBtnHome.classList.add('active');
     dom.headerLangBadge.textContent = 'Dilleri Keşfet';
     dom.headerSubtitle.textContent = 'İnteraktif kodlama macerana başlamak için bir yol seç.';
     renderLanguages();
   } else if (viewName === 'roadmap') {
     dom.viewRoadmap.classList.add('active');
-    dom.navBtnRoadmap.classList.add('active');
+    if (dom.navBtnRoadmap) dom.navBtnRoadmap.classList.add('active');
     dom.headerLangBadge.textContent = curLang.name;
     dom.headerSubtitle.textContent = `${curLang.name} Konu Haritası & Gelişen Şehir`;
     renderSkillTree();
   } else if (viewName === 'game') {
     dom.viewGame.classList.add('active');
-    dom.navBtnGame.classList.add('active');
+    if (dom.navBtnGame) dom.navBtnGame.classList.add('active');
     dom.headerLangBadge.textContent = `${curLang.name}`;
     dom.headerSubtitle.textContent = 'Kodunu yaz, testleri çalıştır ve çözümü onayla!';
     loadNodeFarmGame();
@@ -823,7 +823,7 @@ const COURSE_TOPICS_DB = {
       title: '1. Değişkenler & Veri Türleri',
       desc: 'Bellek tahsisi, dinamik tipleme, metin (string), ondalıklı sayı (float) ve temel tip dönüştürme kurallarını öğren.',
       reward: '🛣️ Asfalt Yollar & Sokak Lambaları',
-      status: 'done',
+      status: 'active',
       xp: 120
     },
     {
@@ -831,7 +831,7 @@ const COURSE_TOPICS_DB = {
       title: '2. Kontrol Akışı (If / Else)',
       desc: 'if, elif, else ve mantıksal operatörlerle koşullu dallanma yapılarını yönet.',
       reward: '💡 Şehir Elektrik Şebekesi',
-      status: 'done',
+      status: 'locked',
       xp: 150
     },
     {
@@ -839,7 +839,7 @@ const COURSE_TOPICS_DB = {
       title: '3. Fonksiyonlar',
       desc: 'Varsayılan parametreler, *args ve **kwargs ile yeniden kullanılabilir kod blokları inşa et.',
       reward: '🌳 Şehir Parkı & Fıskiye',
-      status: 'active',
+      status: 'locked',
       xp: 180
     },
     {
@@ -901,18 +901,36 @@ const COURSE_TOPICS_DB = {
   ]
 };
 
-// Diğer diller için varsayılan konu listesi adaptörü
+// Dil bazlı konu durumlarını saklayan nesne
+const userTopicsState = {};
+
+// Diller için konu listesi adaptörü (Her dil için Level 1'den başlar)
 function getLanguageTopics(langId) {
-  if (COURSE_TOPICS_DB[langId]) {
-    return COURSE_TOPICS_DB[langId];
+  if (!userTopicsState[langId]) {
+    const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
+    const baseTopics = COURSE_TOPICS_DB.python;
+    userTopicsState[langId] = baseTopics.map((t, idx) => ({
+      ...t,
+      id: `${langId}_${idx + 1}`,
+      title: t.title.replace('Python', curLang.name),
+      desc: t.desc.replace('Python', curLang.name),
+      status: idx === 0 ? 'active' : 'locked'
+    }));
   }
-  const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
-  return COURSE_TOPICS_DB.python.map((t, idx) => ({
-    ...t,
-    id: `${langId}_${idx + 1}`,
-    title: t.title.replace('Python', curLang.name),
-    desc: t.desc.replace('Python', curLang.name)
-  }));
+  return userTopicsState[langId];
+}
+
+function completeCurrentTopic(langId, topicId) {
+  const topics = getLanguageTopics(langId);
+  const currentIdx = topics.findIndex(t => t.id === topicId);
+  if (currentIdx !== -1) {
+    topics[currentIdx].status = 'done';
+    if (currentIdx + 1 < topics.length) {
+      if (topics[currentIdx + 1].status === 'locked') {
+        topics[currentIdx + 1].status = 'active';
+      }
+    }
+  }
 }
 
 // Şehir Görselini Çizen Fonksiyon (Tamamlanan Konu Sayısına Göre Şehir Gelişir)
@@ -1094,7 +1112,7 @@ function renderSkillTree() {
 
   if (courseLangIcon) courseLangIcon.textContent = curLang.icon;
   if (courseLangTitle) courseLangTitle.textContent = `${curLang.name} Temelleri`;
-  if (roadmapXpCount) roadmapXpCount.textContent = `${state.xp || 1240} XP`;
+  if (roadmapXpCount) roadmapXpCount.textContent = `${state.xp || 0} XP`;
 
   // Tamamlanan ve Aktif konu hesaplama
   const doneCount = topics.filter(t => t.status === 'done').length;
@@ -1161,7 +1179,7 @@ function renderSkillTree() {
       </div>
     `;
 
-    // Tıklama ile Kodlama Alanına Geçiş
+    // Tıklama ile Hızlı Özet Modalını Açma
     const cardEl = row.querySelector('.timeline-card');
     cardEl.addEventListener('click', () => {
       if (isLocked) {
@@ -1172,11 +1190,109 @@ function renderSkillTree() {
 
       state.selectedNodeId = topic.id;
       sfx.playPop();
-      switchView('game');
+      openTopicReviewModal(topic);
     });
 
     container.appendChild(row);
   });
+}
+
+// --- 7.1 KONU HIZLI ÖZET MODAL MOTORU (Topic Quick Review Modal Engine) ---
+
+const TOPIC_REVIEWS_DB = {
+  p1: {
+    title: 'Değişkenler & Veri Türleri',
+    readTime: '2 dk okuma',
+    rulesHeading: 'İSİMLENDİRME KURALLARI',
+    rules: [
+      'Açıklayıcı isimler kullanın (örn: <code>kullanici_yasi</code>, <code>x</code> değil)',
+      'Bir harf veya alt çizgi (<code>_</code>) ile başlayın, rakamla başlamayın',
+      'Çok kelimeli değişkenler için <code>snake_case</code> stilini kullanın',
+      'Python ayrılmış anahtar kelimelerinden kaçının (<code>global</code>, <code>pass</code>, <code>int</code>, <code>for</code> gibi)'
+    ],
+    typesHeading: 'TEMEL VERİ TÜRLERİ',
+    types: [
+      { name: 'int', label: 'TÜR', value: '42' },
+      { name: 'float', label: 'TÜR', value: '3.14' },
+      { name: 'str', label: 'TÜR', value: '"merhaba"' },
+      { name: 'bool', label: 'TÜR', value: 'True' }
+    ]
+  },
+  p2: {
+    title: 'Kontrol Akışı (If / Else)',
+    readTime: '2 dk okuma',
+    rulesHeading: 'KOŞUL KURALLARI',
+    rules: [
+      'Koşul satırlarının sonuna mutlaka iki nokta (<code>:</code>) koyun',
+      'Koşulun altındaki kod bloğu için 4 boşluk girinti (indentation) bırakın',
+      'Eşitlik kontrolü için <code>==</code>, atama için <code>=</code> kullanın',
+      'Çoklu koşullarda <code>and</code>, <code>or</code>, <code>not</code> mantıksal bağlaçlarını kullanın'
+    ],
+    typesHeading: 'KARŞILAŞTIRMA OPERATÖRLERİ',
+    types: [
+      { name: '==', label: 'EŞİTTİR', value: 'a == b' },
+      { name: '!=', label: 'EŞİT DEĞİL', value: 'a != b' },
+      { name: '>=', label: 'BÜYÜK EŞİT', value: 'x >= 18' },
+      { name: '<=', label: 'KÜÇÜK EŞİT', value: 'y <= 100' }
+    ]
+  }
+};
+
+TOPIC_REVIEWS_DB.python_1 = TOPIC_REVIEWS_DB.p1;
+TOPIC_REVIEWS_DB.python_2 = TOPIC_REVIEWS_DB.p2;
+
+function openTopicReviewModal(topic) {
+  const modal = document.getElementById('topic-review-modal');
+  if (!modal) {
+    switchView('game');
+    return;
+  }
+
+  const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
+  const reviewData = TOPIC_REVIEWS_DB[topic.id] || TOPIC_REVIEWS_DB.p1;
+
+  const titleEl = document.getElementById('review-title');
+  const readTextEl = document.getElementById('review-read-text');
+  const rulesHeadingEl = document.getElementById('review-rules-heading');
+  const rulesListEl = document.getElementById('review-rules-list');
+  const typesHeadingEl = document.getElementById('review-types-heading');
+  const typesGridEl = document.getElementById('review-types-grid');
+
+  if (titleEl) titleEl.textContent = topic.title.replace(/^\d+\.\s*/, '') || reviewData.title;
+  if (readTextEl) readTextEl.textContent = reviewData.readTime || '2 dk okuma';
+  if (rulesHeadingEl) rulesHeadingEl.textContent = reviewData.rulesHeading || 'İSİMLENDİRME KURALLARI';
+
+  if (rulesListEl) {
+    rulesListEl.innerHTML = reviewData.rules.map(rule => `
+      <div class="review-rule-item">
+        <span class="review-rule-bullet">›</span>
+        <span>${rule}</span>
+      </div>
+    `).join('');
+  }
+
+  if (typesHeadingEl) typesHeadingEl.textContent = reviewData.typesHeading || 'TEMEL VERİ TÜRLERİ';
+
+  if (typesGridEl) {
+    typesGridEl.innerHTML = reviewData.types.map(t => `
+      <div class="review-type-box">
+        <div class="type-box-header">
+          <span class="type-name">${t.name}</span>
+          <span class="type-tag">${t.label}</span>
+        </div>
+        <span class="type-value">${t.value}</span>
+      </div>
+    `).join('');
+  }
+
+  modal.classList.add('open');
+}
+
+function closeTopicReviewModal() {
+  const modal = document.getElementById('topic-review-modal');
+  if (modal) {
+    modal.classList.remove('open');
+  }
 }
 
 // --- 8. İNTERAKTİF KODLAMA VE KONTROL ALANI (Interactive Challenge & Code Engine) ---
@@ -1186,53 +1302,130 @@ const CHALLENGES_DATABASE = {
     {
       stepNum: 1,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: DEĞİŞKENLER',
-      title: 'Değişkenler & Veri Türleri',
-      prompt: "<code class=\"code-highlight\">pulse</code> (nabız) değeri <code class=\"code-highlight\">40</code>'ın altındaysa, <code class=\"code-highlight\">label</code> değişkenine <code class=\"code-highlight\">'acil'</code> (emergency) etiketini ata.",
-      presetCode: `pulse = 75\nlabel = ""\n\n# Kodunuzu aşağıya yazın`,
-      filename: 'main.py',
+      moduleSubtitle: 'MODÜL 1: DEĞİŞKEN ADLANDIRMA',
+      title: '1. Soru: Değişken Adlandırma Hatası',
+      prompt: "Aşağıdaki kodda değişken adlandırmasında bir hata var. Bu hatayı düzeltebilir misin?",
+      presetCode: `1sayi = 1\n# Kodunu aşağıya doğru şekilde yaz:`,
+      filename: 'degiskenler.py',
       lang: 'Python 3.11',
-      quickKeys: ['if ', 'elif ', 'else:', ' < ', ' > ', ' = ', ':', '    '],
-      hint: "if pulse < 40:\n    label = 'acil'",
-      solution: "if pulse < 40:\n    label = 'acil'",
+      quickKeys: ['sayi_1', 'sayi1', 'sayi', ' = ', '1'],
+      hint: "Değişken isimleri rakamla başlayamaz. Örnek: sayi_1 = 1 veya sayi1 = 1",
+      solution: "sayi_1 = 1",
       validator: (code) => {
         const clean = code.trim();
-        if (/if\s+pulse\s*<\s*40\s*:/.test(clean) && /label\s*=\s*['"](acil|emergency)['"]/.test(clean)) {
-          return { ok: true, msg: "Tebrikler! 'acil' etiketi başarıyla koşula bağlandı. Testler geçti! ✓" };
+        if (/^\s*1[a-zA-Z0-9_]*\s*=/m.test(clean)) {
+          return { ok: false, msg: "Hata: Değişken ismi rakamla (1...) başlayamaz! Rakamı sona veya ortaya koyun (örn: sayi_1 = 1)." };
         }
-        if (!clean.includes('if')) {
-          return { ok: false, msg: "Hata: 'if' koşulu tanımlanmadı." };
+        if (/[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*\d+/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! Değişken adı başarıyla düzeltildi. ✓" };
         }
-        if (!clean.includes('pulse < 40') && !clean.includes('pulse<40')) {
-          return { ok: false, msg: "Hata: pulse değerinin 40'tan küçük olup olmadığını kontrol edin (pulse < 40)." };
-        }
-        if (!clean.includes('acil') && !clean.includes('emergency')) {
-          return { ok: false, msg: "Hata: label değişkenine 'acil' atanmadı." };
-        }
-        return { ok: true, msg: "Kod başarıyla derlendi ve testler onaylandı! ✓" };
+        return { ok: false, msg: "Hata: Lütfen geçerli bir değişken tanımlayıp bir sayı atayın (örn: sayi_1 = 1)." };
       }
     },
     {
       stepNum: 2,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: SAYISAL TİPLER',
-      title: 'Sayısal Türler & Aritmetik İşlemler',
-      prompt: "<code class=\"code-highlight\">fiyat</code> ve <code class=\"code-highlight\">kdv</code> değerlerini toplayarak <code class=\"code-highlight\">toplam_tutar</code> değişkenine ata.",
-      presetCode: `fiyat = 120.5\nkdv = 24.1\ntoplam_tutar = 0\n\n# Kodunuzu aşağıya yazın`,
-      filename: 'main.py',
+      moduleSubtitle: 'MODÜL 1: AYRILMIŞ KELİMELER',
+      title: '2. Soru: Değişken Adı Hatası',
+      prompt: "Aşağıdaki kodda değişken adında bir hata var. Bu hatayı çözebilir misin?",
+      presetCode: `int = "a"\n# Kodunu aşağıya doğru şekilde yaz:`,
+      filename: 'degiskenler.py',
       lang: 'Python 3.11',
-      quickKeys: ['toplam_tutar', ' = ', 'fiyat', ' + ', 'kdv', 'print(', ')'],
-      hint: "toplam_tutar = fiyat + kdv",
-      solution: "toplam_tutar = fiyat + kdv",
+      quickKeys: ['metin', 'harf', 'karakter', ' = ', '"a"', "'a'"],
+      hint: "'int' yerleşik tür adıdır. Bunun yerine 'metin', 'harf' gibi bir değişken adı kullanabilirsin (örn: metin = \"a\").",
+      solution: 'metin = "a"',
       validator: (code) => {
-        if (/toplam_tutar\s*=\s*fiyat\s*\+\s*kdv/.test(code.trim())) {
-          return { ok: true, msg: "Mükemmel! Toplam tutar aritmetik olarak doğru hesaplandı. ✓" };
+        const clean = code.trim();
+        if (/^\s*(int|str|float|for|def|class|import|return)\s*=/m.test(clean)) {
+          return { ok: false, msg: "Hata: 'int' veya anahtar kelimeler değişken adı olarak kullanılmamalıdır. 'metin' veya 'harf' gibi bir isim seçin." };
         }
-        return { ok: false, msg: "Hata: toplam_tutar = fiyat + kdv ifadesini tamamlayın." };
+        if (/[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*['"]a['"]/.test(clean)) {
+          return { ok: true, msg: "Harika! Değişken adı çakışması başarıyla çözüldü. ✓" };
+        }
+        return { ok: false, msg: 'Hata: Lütfen uygun bir değişkene "a" metnini atayın (örn: metin = "a").' };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 1: TAM SAYI TANIMLAMA',
+      title: '3. Soru: Tam Sayı Değişkeni',
+      prompt: "<code class=\"code-highlight\">sayi</code> adında bir tam sayı değişkeni tanımlayabilir misin?",
+      presetCode: `# "sayi" adında bir tam sayı değişkeni tanımla:\n`,
+      filename: 'degiskenler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['sayi', ' = ', '5', '10', '42'],
+      hint: "sayi = 5",
+      solution: "sayi = 5",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/sayi\s*=\s*\d+/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! 'sayi' isimli tam sayı değişkeni başarıyla tanımlandı. ✓" };
+        }
+        if (!clean.includes('sayi')) {
+          return { ok: false, msg: "Hata: Değişken adı 'sayi' olmalıdır." };
+        }
+        return { ok: false, msg: "Hata: 'sayi' değişkenine bir tam sayı atamalısınız (örn: sayi = 5)." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 1: METİN TANIMLAMA',
+      title: '4. Soru: Metin Değişkeni',
+      prompt: "<code class=\"code-highlight\">isim</code> adında bir metin (string) değişkeni tanımlayabilir misin?",
+      presetCode: `# "isim" adında bir metin değişkeni tanımla:\n`,
+      filename: 'degiskenler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['isim', ' = ', '"Bengi"', "'Bengi'"],
+      hint: 'isim = "Bengi"',
+      solution: 'isim = "Bengi"',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/isim\s*=\s*['"][^'"]+['"]/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! 'isim' değişkeni doğru bir string olarak tanımlandı. ✓" };
+        }
+        if (!clean.includes('isim')) {
+          return { ok: false, msg: "Hata: Değişken adı 'isim' olmalıdır." };
+        }
+        return { ok: false, msg: 'Hata: String ifadeler tırnak içine yazılmalıdır (örn: isim = "Bengi").' };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 1: ÇOKLU DEĞİŞKENLER',
+      title: '5. Soru: Çoklu Değişken Tanımlama',
+      prompt: "<code class=\"code-highlight\">isim</code>, <code class=\"code-highlight\">yas</code> ve <code class=\"code-highlight\">meslek</code> isminde 3 değişken tanımlayabilir misin?",
+      presetCode: `# "isim", "yas" ve "meslek" adında 3 değişken tanımla:\n`,
+      filename: 'degiskenler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['isim = ', 'yas = ', 'meslek = ', '"Bengi"', '25', '"Mühendis"'],
+      hint: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"',
+      solution: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasIsim = /isim\s*=\s*['"][^'"]+['"]/.test(clean);
+        const hasYas = /yas\s*=\s*\d+/.test(clean);
+        const hasMeslek = /meslek\s*=\s*['"][^'"]+['"]/.test(clean);
+
+        if (hasIsim && hasYas && hasMeslek) {
+          return { ok: true, msg: "Harika iş çıkardın! 3 değişken de başarıyla tanımlandı. Seviye tamamlandı! 🎉" };
+        }
+
+        const missing = [];
+        if (!hasIsim) missing.push('isim (metin)');
+        if (!hasYas) missing.push('yas (sayı)');
+        if (!hasMeslek) missing.push('meslek (metin)');
+
+        return { ok: false, msg: `Eksik veya hatalı tanımlar: ${missing.join(', ')}. Lütfen 3 değişkeni de tanımlayın.` };
       }
     }
   ]
 };
+
+// python_1 veya diğer dillerin 1. modülleri için p1 veritabanını kullan
+CHALLENGES_DATABASE.python_1 = CHALLENGES_DATABASE.p1;
 
 let currentChallengeIndex = 0;
 let currentChallengesList = [];
@@ -1317,40 +1510,28 @@ function runCurrentCode() {
   if (result.ok) {
     sfx.playSuccess();
     logToTerminal(`✅ ${result.msg}`, 'success');
-  } else {
-    sfx.playError();
-    logToTerminal(`❌ ${result.msg}`, 'error');
-  }
-}
-
-function submitCurrentSolution() {
-  const challenge = currentChallengesList[currentChallengeIndex] || currentChallengesList[0];
-  const userCode = dom.codeInput.value;
-
-  const result = challenge.validator(userCode);
-
-  if (result.ok) {
-    sfx.playSuccess();
+    
     state.xp += challenge.stepNum * 40;
     state.harvestCount += 1;
     updateGlobalStats();
 
     if (currentChallengeIndex + 1 < currentChallengesList.length) {
       currentChallengeIndex += 1;
-      logToTerminal(`🎉 Harika! Sıradaki göreve geçiliyor...`, 'success');
+      logToTerminal(`🎉 Harika! Sıradaki soruya geçiliyor...`, 'success');
       setTimeout(() => {
         renderCurrentChallenge();
       }, 600);
     } else {
-      // Modül bitti, şehri ve ağacı aç
+      // Modül bitti, konuyu tamamla ve sıradaki konuyu aç
       state.completedNodes.add(state.selectedNodeId);
+      completeCurrentTopic(state.selectedLangId, state.selectedNodeId);
       setTimeout(() => {
         showVictoryModal();
       }, 700);
     }
   } else {
     sfx.playError();
-    logToTerminal(`❌ Çözüm onaylanamadı: ${result.msg}`, 'error');
+    logToTerminal(`❌ ${result.msg}`, 'error');
   }
 }
 
@@ -1363,8 +1544,8 @@ function logToTerminal(message, type = 'info') {
 }
 
 function updateGlobalStats() {
-  dom.statXp.textContent = `${state.xp || 1240} XP`;
-  dom.statHarvest.textContent = `${state.harvestCount || 3} Görev`;
+  dom.statXp.textContent = `${state.xp || 0} XP`;
+  dom.statHarvest.textContent = `${state.harvestCount || 0} Görev`;
 
   if (state.xp >= 1500) {
     dom.statMastery.textContent = 'Kıdemli';
@@ -1391,9 +1572,9 @@ function showVictoryModal() {
 // --- 9. EVENT LISTENERS ---
 
 dom.navBrand.addEventListener('click', () => switchView('languages'));
-dom.navBtnHome.addEventListener('click', () => switchView('languages'));
-dom.navBtnRoadmap.addEventListener('click', () => switchView('roadmap'));
-dom.navBtnGame.addEventListener('click', () => switchView('game'));
+if (dom.navBtnHome) dom.navBtnHome.addEventListener('click', () => switchView('languages'));
+if (dom.navBtnRoadmap) dom.navBtnRoadmap.addEventListener('click', () => switchView('roadmap'));
+if (dom.navBtnGame) dom.navBtnGame.addEventListener('click', () => switchView('game'));
 dom.btnBackToLanguages.addEventListener('click', () => switchView('languages'));
 dom.btnBackToRoadmap.addEventListener('click', () => switchView('roadmap'));
 
@@ -1405,11 +1586,6 @@ if (dom.languageSearchInput) {
 }
 
 dom.btnRun.addEventListener('click', runCurrentCode);
-
-const btnSubmit = document.getElementById('btn-submit');
-if (btnSubmit) {
-  btnSubmit.addEventListener('click', submitCurrentSolution);
-}
 
 dom.btnHint.addEventListener('click', () => {
   const challenge = currentChallengesList[currentChallengeIndex] || currentChallengesList[0];
@@ -1446,6 +1622,33 @@ dom.btnModalRoadmap.addEventListener('click', () => {
   dom.victoryModal.classList.remove('open');
   switchView('roadmap');
 });
+
+// Hızlı Özet Modal Butonları
+const btnStartPractice = document.getElementById('btn-start-practice');
+if (btnStartPractice) {
+  btnStartPractice.addEventListener('click', () => {
+    closeTopicReviewModal();
+    sfx.playPop();
+    switchView('game');
+  });
+}
+
+const btnDismissReview = document.getElementById('btn-dismiss-review');
+if (btnDismissReview) {
+  btnDismissReview.addEventListener('click', () => {
+    closeTopicReviewModal();
+    sfx.playPop();
+  });
+}
+
+const topicReviewModal = document.getElementById('topic-review-modal');
+if (topicReviewModal) {
+  topicReviewModal.addEventListener('click', (e) => {
+    if (e.target === topicReviewModal) {
+      closeTopicReviewModal();
+    }
+  });
+}
 
 // Başlangıç Yüklemesi
 switchView('languages');
