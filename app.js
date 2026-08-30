@@ -820,7 +820,7 @@ const COURSE_TOPICS_DB = {
   python: [
     {
       id: 'python_1',
-      title: '1. Değişkenler & Veri Tipleri (Ders #1 - #5)',
+      title: '1. Değişkenler & Veri Tipleri',
       desc: 'print() komutu, yorum satırları, değişken isimlendirme kuralları, int, float, str, bool ve type() fonksiyonu.',
       reward: '🛣️ Asfalt Yollar & Sokak Lambaları',
       status: 'active',
@@ -828,7 +828,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_2',
-      title: '2. Stringler & Metin İşlemleri (Ders #6 - #9)',
+      title: '2. Stringler & Metin İşlemleri',
       desc: 'İndeksleme, dilimleme [start:stop], len(), .upper(), .lower(), .replace(), .split() ve modern f-string formatlama.',
       reward: '💡 Şehir Elektrik Şebekesi',
       status: 'locked',
@@ -836,7 +836,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_3',
-      title: '3. Operatörler & Matematik (Ders #10 - #12)',
+      title: '3. Operatörler & Matematik',
       desc: 'Aritmetik (+, -, *, /, //, %, **), karşılaştırma (==, !=, >, <) ve mantıksal (and, or, not) operatörler.',
       reward: '🚰 Temiz Su Arıtma & Çeşmeler',
       status: 'locked',
@@ -844,7 +844,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_4',
-      title: '4. Koşullu Durumlar (If / Elif / Else) (Ders #13 - #15)',
+      title: '4. Koşullu Durumlar (If / Elif / Else)',
       desc: 'if, elif, else blokları, iki nokta (:) ve girintileme (indentation) kuralları, tek satır ternary if koşulları.',
       reward: '🌳 Şehir Parkı & Fıskiye',
       status: 'locked',
@@ -852,7 +852,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_5',
-      title: '5. Listeler & Demetler (Lists & Tuples) (Ders #16 - #19)',
+      title: '5. Listeler & Demetler (Lists & Tuples)',
       desc: 'Listeler [], .append(), .pop(), .sort(), .insert() metotları ve değiştirilemez (immutable) demetler ().',
       reward: '🏢 Modern İş Kuleleri & Rezidanslar',
       status: 'locked',
@@ -860,7 +860,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_6',
-      title: '6. Sözlükler & Kümeler (Dict & Set) (Ders #20 - #22)',
+      title: '6. Sözlükler & Kümeler (Dict & Set)',
       desc: 'Anahtar-Değer (key: value) sözlükler {}, .keys(), .values(), .get() ve benzersiz eleman kümeleri set().',
       reward: '🎬 Modern Sinema & Tiyatro Kompleksi',
       status: 'locked',
@@ -868,7 +868,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_7',
-      title: '7. Döngüler (For & While) (Ders #23 - #26)',
+      title: '7. Döngüler (For & While)',
       desc: 'for döngüsü, range(başla, bitir, artış), while döngüsü, break (kır), continue (atla), enumerate() ve zip().',
       reward: '🎡 Lunapark & Dönme Dolap',
       status: 'locked',
@@ -876,7 +876,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_8',
-      title: '8. Fonksiyonlar & Kapsam (Ders #27 - #30)',
+      title: '8. Fonksiyonlar & Kapsam',
       desc: 'def ile fonksiyon tanımlama, return ile değer döndürme, varsayılan parametreler, *args, **kwargs ve global kapsam.',
       reward: '🏥 Şehir Hastanesi & Acil Servis',
       status: 'locked',
@@ -884,7 +884,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_9',
-      title: '9. Lambda, Map & Filter (Ders #31 - #33)',
+      title: '9. Lambda, Map & Filter',
       desc: 'Tek satırlık anonim lambda fonksiyonları, map(), filter() ve modern List Comprehension [x for x in liste] yapıları.',
       reward: '🛍️ Alışveriş & Ticaret Merkezi',
       status: 'locked',
@@ -892,7 +892,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_10',
-      title: '10. Modüller & Paketler (Ders #34 - #36)',
+      title: '10. Modüller & Paketler',
       desc: 'Standart kütüphane modülleri (math, random, datetime), import, from ... import, as takma ad ve pip paket yönetimi.',
       reward: '🚄 Hızlı Tren Garı & Metro Hattı',
       status: 'locked',
@@ -900,7 +900,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_11',
-      title: '11. Hata ve İstisna Yönetimi (Try / Except) (Ders #37 - #39)',
+      title: '11. Hata ve İstisna Yönetimi (Try / Except)',
       desc: 'try, except blokları ile çalışma zamanı hatalarını yakalama, finally ile temizlik ve raise ile özel hata fırlatma.',
       reward: '📡 Uydu İletişim & Radyo Kulesi',
       status: 'locked',
@@ -908,7 +908,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_12',
-      title: '12. Dosya İşlemleri (File I/O) (Ders #40 - #42)',
+      title: '12. Dosya İşlemleri (File I/O)',
       desc: 'open() fonksiyonu, okuma ("r"), yazma ("w"), ekleme ("a") modları ve with open(...) otomatik dosya yönetimi.',
       reward: '🚢 Uluslararası Liman & Konteyner Terminali',
       status: 'locked',
@@ -916,7 +916,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_13',
-      title: '13. Nesne Yönelimli Programlama (OOP) (Ders #43 - #45)',
+      title: '13. Nesne Yönelimli Programlama (OOP)',
       desc: 'class tanımlama, __init__ kurucu metodu, self nesne referansı, sınıf metotları ve Kalıtım (Inheritance).',
       reward: '🏛️ Çiftlik & Şehir Yönetim Sarayı',
       status: 'locked',
@@ -924,13 +924,13 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_14',
-      title: '14. İleri Seviye & GUI / Proje (Ders #46 - #47)',
+      title: '14. İleri Seviye & GUI / Proje',
       desc: 'Tkinter ile görsel arayüz pencereleri ve butonlar, JSON veri işleme ve modüler Python şehir mimarisi.',
       reward: '🚀 Teknoloji Vadisi & Gözlemevi',
       status: 'locked',
-      xp: 500
+      xp: 450
     }
-  ]
+  ],
 };
 
 // Dil bazlı konu durumlarını saklayan nesne
@@ -1231,15 +1231,16 @@ const TOPIC_REVIEWS_DB = {
     readTime: '2 dk okuma',
     rulesHeading: 'İSİMLENDİRME VE TANIMLAMA KURALLARI',
     rules: [
+      '<code>print(...)</code> fonksiyonu değişkenleri veya metinleri ekrana/konsola yazdırmak için kullanılır (örn: <code>print(isim)</code>)',
       'Açıklayıcı isimler kullanın (örn: <code>kullanici_yasi</code>, <code>x</code> değil)',
       'Bir harf veya alt çizgi (<code>_</code>) ile başlayın, rakamla başlamayın',
       'Çok kelimeli değişkenler için <code>snake_case</code> stilini kullanın',
       'Python ayrılmış anahtar kelimelerinden kaçının (<code>global</code>, <code>pass</code>, <code>int</code>, <code>for</code> gibi)'
     ],
-    typesHeading: 'TEMEL VERİ TÜRLERİ',
+    typesHeading: 'TEMEL VERİ TÜRLERİ & ÇIKTI',
     types: [
-      { name: 'int', label: 'TÜR', value: '42' },
-      { name: 'float', label: 'TÜR', value: '3.14' },
+      { name: 'int', label: 'TÜR', value: '58' },
+      { name: 'float', label: "TÜR", value: '18.81'},
       { name: 'str', label: 'TÜR', value: '"merhaba"' },
       { name: 'bool', label: 'TÜR', value: 'True' }
     ]
@@ -1649,31 +1650,39 @@ const CHALLENGES_DATABASE = {
     {
       stepNum: 5,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: ÇOKLU DEĞİŞKENLER',
-      title: '5. Soru: Çoklu Değişken Tanımlama',
-      prompt: "<code class=\"code-highlight\">isim</code>, <code class=\"code-highlight\">yas</code> ve <code class=\"code-highlight\">meslek</code> isminde 3 değişken tanımlayabilir misin?",
-      presetCode: `# "isim", "yas" ve "meslek" adında 3 değişken tanımla:\n`,
+      moduleSubtitle: 'MODÜL 1: DEĞİŞKENLER VE EKRANA YAZDIRMA',
+      title: '5. Soru: Değişken Tanımlama & Ekrana Yazdırma',
+      prompt: "<code class=\"code-highlight\">isim</code>, <code class=\"code-highlight\">yas</code> ve <code class=\"code-highlight\">meslek</code> isminde 3 değişken tanımlayıp bunları <code class=\"code-highlight\">print()</code> ile ekrana yazdırabilir misin?",
+      presetCode: `# 1. "isim", "yas" ve "meslek" adında 3 değişken tanımla:\n# 2. Tanımladığın değişkenleri print() ile ekrana yazdır:\n`,
       filename: 'degiskenler.py',
       lang: 'Python 3.11',
-      quickKeys: ['isim = ', 'yas = ', 'meslek = ', '"Bengi"', '25', '"Mühendis"'],
-      hint: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"',
-      solution: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"',
+      quickKeys: ['isim = ', 'yas = ', 'meslek = ', 'print(', 'isim', 'yas', 'meslek', '"Bengi"', '25', '"Mühendis"'],
+      hint: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"\nprint(isim, yas, meslek)',
+      solution: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"\nprint(isim, yas, meslek)',
       validator: (code) => {
         const clean = code.trim();
         const hasIsim = /isim\s*=\s*['"][^'"]+['"]/.test(clean);
         const hasYas = /yas\s*=\s*\d+/.test(clean);
         const hasMeslek = /meslek\s*=\s*['"][^'"]+['"]/.test(clean);
 
-        if (hasIsim && hasYas && hasMeslek) {
-          return { ok: true, msg: "Harika iş çıkardın! 3 değişken de başarıyla tanımlandı. Seviye tamamlandı! 🎉" };
+        // print fonksiyonunun çağrılıp çağrılmadığını kontrol et
+        const hasPrint = /print\s*\(/.test(clean);
+        const printsVariables = hasPrint && (
+          /print\s*\(.*(isim|yas|meslek)/.test(clean) ||
+          /print\s*\(.*f['"]/.test(clean)
+        );
+
+        if (hasIsim && hasYas && hasMeslek && printsVariables) {
+          return { ok: true, msg: "Mükemmel iş! 3 değişken de başarıyla tanımlandı ve print() ile ekrana yazdırıldı. Seviye tamamlandı! 🎉" };
         }
 
         const missing = [];
         if (!hasIsim) missing.push('isim (metin)');
         if (!hasYas) missing.push('yas (sayı)');
         if (!hasMeslek) missing.push('meslek (metin)');
+        if (!printsVariables) missing.push('print() ile değişkenleri yazdırma');
 
-        return { ok: false, msg: `Eksik veya hatalı tanımlar: ${missing.join(', ')}. Lütfen 3 değişkeni de tanımlayın.` };
+        return { ok: false, msg: `Eksik veya hatalı adımlar: ${missing.join(', ')}. Lütfen 3 değişkeni tanımlayıp print() ile ekrana yazdırın.` };
       }
     }
   ]
