@@ -1554,7 +1554,7 @@ function closeTopicReviewModal() {
 // --- 8. İNTERAKTİF KODLAMA VE KONTROL ALANI (Interactive Challenge & Code Engine) ---
 
 const CHALLENGES_DATABASE = {
-  p1: [
+  python_1: [
     {
       stepNum: 1,
       totalSteps: 5,
@@ -1685,20 +1685,250 @@ const CHALLENGES_DATABASE = {
         return { ok: false, msg: `Eksik veya hatalı adımlar: ${missing.join(', ')}. Lütfen 3 değişkeni tanımlayıp print() ile ekrana yazdırın.` };
       }
     }
+  ],
+  python_2: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: İNDEKSLERE ERİŞİM',
+      title: '1. Soru: İlk Harfe Erişme',
+      prompt: "<code class=\"code-highlight\">kelime = \"Python\"</code> değişkeninin ilk karakterini (<code class=\"code-highlight\">0. indeks</code>) <code class=\"code-highlight\">print()</code> ile ekrana yazdırabilir misin?",
+      presetCode: `kelime = "Python"\n# İlk harfi ekrana yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'kelime[0]', 'kelime', '[0]', '0'],
+      hint: 'print(kelime[0])',
+      solution: 'print(kelime[0])',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*(kelime\[0\]|['"]Python['"]\[0\])\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! İlk indeks başarıyla seçildi ve ekrana yazdırıldı. ✓" };
+        }
+        if (!clean.includes('[0]')) {
+          return { ok: false, msg: "Hata: İlk karaktere erişmek için [0] indeksini kullanmalısınız (örn: kelime[0])." };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(kelime[0]) şeklinde sonucu ekrana yazdırın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: METİN UZUNLUĞU',
+      title: '2. Soru: Metin Uzunluğunu Bulma',
+      prompt: "<code class=\"code-highlight\">mesaj = \"Kodlama\"</code> değişkeninin karakter uzunluğunu <code class=\"code-highlight\">len()</code> fonksiyonu ile ekrana yazdırabilir misin?",
+      presetCode: `mesaj = "Kodlama"\n# Karakter uzunluğunu ekrana yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'len(', 'mesaj', ')', 'len(mesaj)'],
+      hint: 'print(len(mesaj))',
+      solution: 'print(len(mesaj))',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*len\s*\(\s*mesaj\s*\)\s*\)/.test(clean) || /uzunluk\s*=\s*len\(mesaj\)[\s\S]*print\(uzunluk\)/.test(clean)) {
+          return { ok: true, msg: "Harika! len() fonksiyonu ile metin uzunluğu doğru hesaplandı. ✓" };
+        }
+        if (!clean.includes('len')) {
+          return { ok: false, msg: "Hata: Metin uzunluğunu ölçmek için len() fonksiyonunu kullanmalısınız (örn: len(mesaj))." };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(len(mesaj)) şeklinde uzunluğu ekrana yazdırın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: BÜYÜK HARFE ÇEVİRME',
+      title: '3. Soru: Büyük Harf Metodu (.upper)',
+      prompt: "<code class=\"code-highlight\">sehir = \"istanbul\"</code> metnini <code class=\"code-highlight\">.upper()</code> metodu ile tamamen büyük harfe dönüştürüp ekrana yazdırabilir misin?",
+      presetCode: `sehir = "istanbul"\n# Büyük harfe dönüştürüp yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'sehir.upper()', '.upper()', 'sehir'],
+      hint: 'print(sehir.upper())',
+      solution: 'print(sehir.upper())',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*sehir\.upper\(\)\s*\)/.test(clean) || /sehir\.upper\(\)[\s\S]*print/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! .upper() metodu ile metin başarıyla büyütüldü. ✓" };
+        }
+        if (!clean.includes('.upper()')) {
+          return { ok: false, msg: "Hata: Büyük harfe dönüştürmek için .upper() metodunu kullanmalısınız (örn: sehir.upper())." };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(sehir.upper()) şeklinde çıktıyı ekrana yazdırın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: METİN DİLİMLEME (SLICING)',
+      title: '4. Soru: Metin Dilimleme',
+      prompt: "<code class=\"code-highlight\">kurs = \"Programlama\"</code> değişkeninden ilk 7 harfi (<code class=\"code-highlight\">\"Program\"</code>) dilimleyerek ekrana yazdırabilir misin?",
+      presetCode: `kurs = "Programlama"\n# İlk 7 harfi [0:7] dilimleyip yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'kurs[0:7]', 'kurs[:7]', '[0:7]', '[:7]'],
+      hint: 'print(kurs[0:7]) veya print(kurs[:7])',
+      solution: 'print(kurs[0:7])',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*kurs\[\s*(0\s*)?:\s*7\s*\]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! Dilimleme işlemi (slicing) başarıyla uygulandı. ✓" };
+        }
+        if (!clean.includes(':7')) {
+          return { ok: false, msg: "Hata: İlk 7 karakteri almak için [0:7] veya [:7] dilimleme aralığını kullanın." };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(kurs[0:7]) şeklinde dilimlenen metni yazdırın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: MODERN METİN BİRLEŞTİRME (F-STRING)',
+      title: '5. Soru: f-string ile Birleştirme',
+      prompt: "<code class=\"code-highlight\">ad = \"Bengi\"</code> ve <code class=\"code-highlight\">puan = 100</code> değişkenlerini <code class=\"code-highlight\">f-string</code> ile birleştirip <code class=\"code-highlight\">f\"{ad} sınavdan {puan} aldı\"</code> cümlesini ekrana yazdırabilir misin?",
+      presetCode: `ad = "Bengi"\npuan = 100\n# f-string kullanarak ekrana yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(f"', '{ad}', '{puan}', 'sınavdan', 'aldı")', 'f"{ad} sınavdan {puan} aldı"'],
+      hint: 'print(f"{ad} sınavdan {puan} aldı")',
+      solution: 'print(f"{ad} sınavdan {puan} aldı")',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*f['"].*\{ad\}.*\{puan\}.*['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! f-string ile dinamik metin başarıyla oluşturuldu. 2. Modül Tamamlandı! 🚀" };
+        }
+        if (!clean.includes('f"') && !clean.includes("f'")) {
+          return { ok: false, msg: "Hata: Modern formatlama için f-string kullanmalısınız (örn: f\"{ad} ... {puan}\")." };
+        }
+        return { ok: false, msg: 'Hata: Lütfen print(f"{ad} sınavdan {puan} aldı") şeklinde yazdırın.' };
+      }
+    }
+  ],
+  python_3: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: ARİTMETİK İŞLEMLER',
+      title: '1. Soru: Çarpma ve Bölme',
+      prompt: "<code class=\"code-highlight\">sayi = 18</code> değişkeninin 7 katını alıp 9'a bölerek çıkan sonucu ekrana yazdırabilir misin?",
+      presetCode: `sayi = 18\n# 7 katını alıp 9'a böl ve yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['sayi', ' * 7', ' / 9', 'print(', ')'],
+      hint: 'print(sayi * 7 / 9)',
+      solution: 'print(sayi * 7 / 9)',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*(sayi\s*\*\s*7\s*\/\s*9|18\s*\*\s*7\s*\/\s*9|sonuc)\s*\)/.test(clean) || /sonuc\s*=\s*sayi\s*\*\s*7\s*\/\s*9/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Aritmetik işlem başarıyla hesaplandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(sayi * 7 / 9) şeklinde 7 katını alıp 9'a bölün ve yazdırın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: TAM BÖLME VE MOD ALMA',
+      title: '2. Soru: Tam Bölme (//) ve Kalan (%)',
+      prompt: "<code class=\"code-highlight\">sayi = 15</code> değişkeninin 4 katının 3'e tam bölümünü (<code class=\"code-highlight\">// 3</code>) ve 3'e bölümünden kalanını (<code class=\"code-highlight\">% 3</code>) hesaplayıp ekrana yazdırabilir misin?",
+      presetCode: `sayi = 15\n# 4 katının 3'e tam bölümünü ve kalanını yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['(sayi * 4) // 3', '(sayi * 4) % 3', 'print(', '//', '%'],
+      hint: 'print((sayi * 4) // 3)\nprint((sayi * 4) % 3)',
+      solution: 'print((sayi * 4) // 3, (sayi * 4) % 3)',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasFloor = /\/\/\s*3/.test(clean);
+        const hasMod = /%\s*3/.test(clean);
+        const hasPrint = /print\s*\(/.test(clean);
+
+        if (hasFloor && hasMod && hasPrint) {
+          return { ok: true, msg: "Harika! Tam bölme (//) ve kalan (%) operatörleri başarıyla uygulandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen (sayi * 4) // 3 ve (sayi * 4) % 3 işlemlerini print() ile yazdırın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: ÜS ALMA OPERATÖRÜ',
+      title: '3. Soru: Üs Alma (**) ve Mod (%)',
+      prompt: "<code class=\"code-highlight\">12 ** 4</code> ($12^4$) ifadesini hesaplayıp bu sonucun 10 ile bölümünden kalanını (<code class=\"code-highlight\">% 10</code>) ekrana yazdırabilir misin?",
+      presetCode: `# 12^4 değerinin 10 ile bölümünden kalanını yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', '12 ** 4', ' % 10', '**', '%'],
+      hint: 'print((12 ** 4) % 10)',
+      solution: 'print((12 ** 4) % 10)',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*\(?\s*12\s*\*\*\s*4\s*\)?\s*%\s*10\s*\)/.test(clean) || /sonuc\s*=\s*\(?\s*12\s*\*\*\s*4\s*\)?\s*%\s*10/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! Üs alma (**) ve mod (%) operatörleri doğru kullanıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen print((12 ** 4) % 10) şeklinde hesaplayıp ekrana yazdırın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: MANTIKSAL OPERATÖRLER',
+      title: '4. Soru: Mantıksal Koşul (and)',
+      prompt: "<code class=\"code-highlight\">yas = 20</code> değişkeninin 18'den büyük eşit VE (<code class=\"code-highlight\">and</code>) 65'ten küçük olup olmadığını kontrol edip ekrana yazdırabilir misin?",
+      presetCode: `yas = 20\n# Koşul kontrolünü (and) ekrana yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'yas >= 18', ' and ', 'yas < 65', '>=', '<'],
+      hint: 'print(yas >= 18 and yas < 65)',
+      solution: 'print(yas >= 18 and yas < 65)',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*(yas\s*>=\s*18\s+and\s+yas\s*<\s*65|18\s*<=\s*yas\s*<\s*65)\s*\)/.test(clean) || /(yas\s*>=\s*18\s+and\s+yas\s*<\s*65)/.test(clean)) {
+          return { ok: true, msg: "Doğru! 'and' mantıksal operatörü ile çift yönlü aralık başarıyla kontrol edildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(yas >= 18 and yas < 65) şeklinde koşulu yazdırın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: AĞIRLIKLI ORTALAMA HESABI',
+      title: '5. Soru: Not Ortalaması Hesaplama',
+      prompt: "<code class=\"code-highlight\">vize = 70</code> ve <code class=\"code-highlight\">final = 90</code> değişkenlerini tanımlayıp vizenin %40'ı ile finalin %60'ını (<code class=\"code-highlight\">vize * 0.4 + final * 0.6</code>) hesaplayarak ekrana yazdırabilir misin?",
+      presetCode: `vize = 70\nfinal = 90\n# Ağırlıklı ortalamayı hesaplayıp ekrana yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['vize * 0.4', ' + ', 'final * 0.6', 'ortalama = ', 'print('],
+      hint: 'ortalama = vize * 0.4 + final * 0.6\nprint(ortalama)',
+      solution: 'print(vize * 0.4 + final * 0.6)',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasVize = /vize\s*=\s*70/.test(clean);
+        const hasFinal = /final\s*=\s*90/.test(clean);
+        const hasFormula = /(vize\s*\*\s*0?\.4\s*\+\s*final\s*\*\s*0?\.6|70\s*\*\s*0?\.4\s*\+\s*90\s*\*\s*0?\.6)/.test(clean);
+        const hasPrint = /print\s*\(/.test(clean);
+
+        if (hasFormula && hasPrint) {
+          return { ok: true, msg: "Mükemmel! Ağırlıklı ortalama doğru hesaplandı ve yazdırıldı. 3. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: Lütfen vize ve final değişkenleriyle print(vize * 0.4 + final * 0.6) işlemini yazdırın." };
+      }
+    }
   ]
 };
 
-// python_1 veya diğer dillerin 1. modülleri için p1 veritabanını kullan
-CHALLENGES_DATABASE.python_1 = CHALLENGES_DATABASE.p1;
+// Eski id eşleştirmeleri
+CHALLENGES_DATABASE.p1 = CHALLENGES_DATABASE.python_1;
+CHALLENGES_DATABASE.p2 = CHALLENGES_DATABASE.python_2;
+CHALLENGES_DATABASE.p3 = CHALLENGES_DATABASE.python_3;
 
 let currentChallengeIndex = 0;
 let currentChallengesList = [];
 
 function loadNodeFarmGame() {
   const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
-  const topicId = state.selectedNodeId || 'p1';
+  const topicId = state.selectedNodeId || `${curLang.id}_1` || 'python_1';
 
-  currentChallengesList = CHALLENGES_DATABASE[topicId] || CHALLENGES_DATABASE.p1;
+  currentChallengesList = CHALLENGES_DATABASE[topicId] || CHALLENGES_DATABASE.python_1;
   currentChallengeIndex = 0;
 
   renderCurrentChallenge();
