@@ -375,30 +375,70 @@ body {
 /* ========================================================================= */
 /* EKRAN 2: GELİŞEN ŞEHİR & DİKEY KONU YOL HARİTASI (Evolving City & Roadmap) */
 /* ========================================================================= */
-.roadmap-mobile-container {
-  max-width: 480px;
+.roadmap-layout-container {
+  width: 100%;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 0.2rem 0.4rem 3rem 0.4rem;
+  padding: 0.5rem 0.8rem 3rem 0.8rem;
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 2.4rem;
+  align-items: start;
 }
 
-/* 1. Gelişen Şehir Banner Kartı */
+.roadmap-left-column {
+  width: 100%;
+}
+
+.roadmap-right-column {
+  position: sticky;
+  top: 1.5rem;
+  width: 100%;
+}
+
+/* 1. Gelişen Şehir Banner Kartı (3D Isometric City) */
 .city-banner-card {
   background: #ffffff;
   border: 1.5px solid var(--border-card);
-  border-radius: 24px;
-  padding: 12px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  border-radius: 26px;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.city-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.city-badge-tag {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #4f46e5;
+  background: #eef2ff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.4px;
+}
+
+.city-trophy-text {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #d97706;
 }
 
 .city-illustration-viewport {
-  height: 200px;
+  height: 310px;
   width: 100%;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 30%, #e0f2fe 0%, #cbd5e1 100%);
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.06);
+  border: 1.5px solid #e2e8f0;
 }
 
 #city-dynamic-svg {
@@ -409,33 +449,35 @@ body {
 
 .city-level-badge {
   position: absolute;
-  bottom: 10px;
+  bottom: 12px;
   right: 12px;
-  background: rgba(15, 23, 42, 0.82);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #ffffff;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 14px;
+  font-size: 0.76rem;
+  font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  gap: 7px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .city-pulse-dot {
-  width: 7px;
-  height: 7px;
+  width: 7.5px;
+  height: 7.5px;
   border-radius: 50%;
   background: #10b981;
-  box-shadow: 0 0 8px #10b981;
+  box-shadow: 0 0 10px #10b981;
   animation: cityDotPulse 1.5s infinite alternate;
 }
 
 @keyframes cityDotPulse {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  100% { transform: scale(1.3); opacity: 1; }
+  0% { transform: scale(0.85); opacity: 0.7; }
+  100% { transform: scale(1.35); opacity: 1; }
 }
 
 .city-motivation-text {
@@ -443,9 +485,33 @@ body {
   color: #64748b;
   font-size: 0.88rem;
   font-weight: 700;
-  margin-top: 12px;
-  line-height: 1.4;
+  margin-top: 14px;
+  line-height: 1.45;
   padding: 0 10px 4px 10px;
+}
+
+/* Mobil Görünüm (Ekran Genişliği < 992px ise: Şehir Üstte, Harita Altta) */
+@media (max-width: 991px) {
+  .roadmap-layout-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    padding: 0.2rem 0.4rem 3rem 0.4rem;
+    gap: 1.4rem;
+  }
+
+  .roadmap-right-column {
+    order: 1;
+    position: static;
+  }
+
+  .roadmap-left-column {
+    order: 2;
+  }
+
+  .city-illustration-viewport {
+    height: 220px;
+  }
 }
 
 /* 2. Geri Butonu & XP Üst Çubuğu */
@@ -1119,7 +1185,6 @@ body {
   background: #eef2ff;
   border-color: #818cf8;
   transform: scale(1.03);
-}
   transition: all 0.2s ease;
 }
 

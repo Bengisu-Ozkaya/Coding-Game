@@ -966,162 +966,330 @@ function completeCurrentTopic(langId, topicId) {
 }
 
 // Şehir Görselini Çizen Fonksiyon (Tamamlanan Konu Sayısına Göre Şehir Gelişir)
+// 3D İzometrik Şehir Çizim Motoru (Isometric 3D City Engine)
 function renderCityVisual(completedCount) {
   const svg = document.getElementById('city-dynamic-svg');
   if (!svg) return;
 
   const statusText = document.getElementById('city-status-text');
+  const countText = document.getElementById('city-building-count');
   const levelPercent = Math.min(100, Math.round((completedCount / 14) * 100));
 
+  if (countText) {
+    countText.textContent = `${completedCount} / 14 Bina`;
+  }
+
   if (statusText) {
-    let phaseName = 'Issız Harabe Şehir';
-    if (completedCount >= 12) phaseName = 'Metropol Şehir & Teknoloji Vadisi';
-    else if (completedCount >= 9) phaseName = 'Modern Liman ve Ticaret Şehri';
-    else if (completedCount >= 6) phaseName = 'Lunaparklı Gelişen Şehir';
-    else if (completedCount >= 3) phaseName = 'İlk Yerleşim & Altyapı';
+    let phaseName = 'Issız Harabe Toprak';
+    if (completedCount >= 14) phaseName = 'Mega Siber Metropol & Teknokent';
+    else if (completedCount >= 12) phaseName = 'Uluslararası Liman & Metropol';
+    else if (completedCount >= 9) phaseName = 'Modern Ticaret ve Sanayi Şehri';
+    else if (completedCount >= 6) phaseName = 'Eğlence ve Kültür Merkezi';
+    else if (completedCount >= 3) phaseName = 'Gelişen Kasaba & Altyapı';
+    else if (completedCount >= 1) phaseName = 'İlk Yerleşim & Çiftlik';
 
     statusText.textContent = `Şehirleşme: %${levelPercent} • ${phaseName}`;
   }
 
-  // SVG Çizimi: Issız başlayıp zenginleşen şehir katmanları
+  // 3D Isometric Building Helper
+  const isoBox = (x, y, w, d, h, topCol, leftCol, rightCol, stroke = 'rgba(0,0,0,0.15)') => {
+    // x, y: base center top point
+    // w: half width X, d: depth Y slope
+    const pTop = `${x},${y - h} ${x + w},${y - h + d} ${x},${y - h + 2*d} ${x - w},${y - h + d}`;
+    const pLeft = `${x - w},${y - h + d} ${x},${y - h + 2*d} ${x},${y + 2*d} ${x - w},${y + d}`;
+    const pRight = `${x},${y - h + 2*d} ${x + w},${y - h + d} ${x + w},${y + d} ${x},${y + 2*d}`;
+
+    return `
+      <polygon points="${pLeft}" fill="${leftCol}" stroke="${stroke}" stroke-width="0.75" />
+      <polygon points="${pRight}" fill="${rightCol}" stroke="${stroke}" stroke-width="0.75" />
+      <polygon points="${pTop}" fill="${topCol}" stroke="${stroke}" stroke-width="0.75" />
+    `;
+  };
+
+  // 3D Tree Helper
+  const isoTree = (x, y, scale = 1) => {
+    return `
+      <g transform="translate(${x}, ${y}) scale(${scale})">
+        <!-- Gövde -->
+        ${isoBox(0, 0, 3, 2, 8, '#78350f', '#451a03', '#92400e')}
+        <!-- Yapraklar -->
+        ${isoBox(0, -6, 12, 7, 10, '#22c55e', '#15803d', '#16a34a')}
+        ${isoBox(0, -14, 8, 5, 8, '#4ade80', '#16a34a', '#22c55e')}
+      </g>
+    `;
+  };
+
   let svgHTML = `
     <defs>
-      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="${completedCount >= 3 ? '#bae6fd' : '#cbd5e1'}" />
-        <stop offset="100%" stop-color="${completedCount >= 3 ? '#f0f9ff' : '#94a3b8'}" />
+      <!-- Gökyüzü ve Ortam Gradyanları -->
+      <linearGradient id="isoSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${completedCount >= 4 ? '#bae6fd' : '#cbd5e1'}" />
+        <stop offset="100%" stop-color="${completedCount >= 4 ? '#f0f9ff' : '#94a3b8'}" />
       </linearGradient>
-      <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="${completedCount >= 3 ? '#86efac' : '#94a3b8'}" />
-        <stop offset="100%" stop-color="${completedCount >= 3 ? '#4ade80' : '#64748b'}" />
+      
+      <!-- 3D Güneş & Glow -->
+      <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fef08a" stop-opacity="1" />
+        <stop offset="100%" stop-color="#fef08a" stop-opacity="0" />
+      </radialGradient>
+
+      <!-- Cam Yansıma Gradyanı -->
+      <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#38bdf8" />
+        <stop offset="100%" stop-color="#0284c7" />
       </linearGradient>
     </defs>
 
-    <!-- Gökyüzü -->
-    <rect width="460" height="210" fill="url(#skyGrad)" />
-    <circle cx="390" cy="50" r="28" fill="${completedCount >= 2 ? '#fef08a' : '#f1f5f9'}" opacity="0.8" />
+    <!-- 1. Arka Plan Gökyüzü & Güneş -->
+    <rect width="540" height="320" fill="url(#isoSky)" />
+    <circle cx="460" cy="50" r="45" fill="url(#sunGlow)" />
+    <circle cx="460" cy="50" r="18" fill="#fde047" />
 
-    <!-- Arka Plan Dağlar / Tepeler -->
-    <path d="M 0 160 Q 110 110, 220 150 T 460 140 L 460 210 L 0 210 Z" fill="${completedCount >= 3 ? '#bbf7d0' : '#cbd5e1'}" opacity="0.6" />
+    <!-- Yüzen Bulutlar -->
+    <g opacity="0.85">
+      <ellipse cx="90" cy="45" rx="28" ry="12" fill="#ffffff" />
+      <ellipse cx="110" cy="40" rx="20" ry="14" fill="#ffffff" />
+      <ellipse cx="370" cy="65" rx="35" ry="14" fill="#ffffff" />
+      <ellipse cx="395" cy="60" rx="24" ry="16" fill="#ffffff" />
+    </g>
 
-    <!-- Zemin (Toprak / Çim) -->
-    <path d="M 0 160 C 120 155, 300 158, 460 160 L 460 210 L 0 210 Z" fill="url(#groundGrad)" />
+    <!-- 2. ANA 3D İZOMETRİK TABAN ADASI (Floating 3D Island Base) -->
+    <!-- Alt Toprak Katmanı (Left Side & Right Side Shadows) -->
+    <polygon points="40,160 270,290 270,312 40,182" fill="#475569" stroke="#334155" stroke-width="1" />
+    <polygon points="270,290 500,160 500,182 270,312" fill="#334155" stroke="#1e293b" stroke-width="1" />
+    
+    <!-- Üst Çimen Yüzeyi -->
+    <polygon points="270,30 500,160 270,290 40,160" fill="${completedCount >= 3 ? '#86efac' : '#94a3b8'}" stroke="${completedCount >= 3 ? '#4ade80' : '#64748b'}" stroke-width="2" />
+
+    <!-- 3D Izgara ve Çim Çizgileri -->
+    <g opacity="0.25" stroke="#ffffff" stroke-width="1">
+      <line x1="155" y1="95" x2="385" y2="225" />
+      <line x1="270" y1="30" x2="270" y2="290" />
+      <line x1="385" y1="95" x2="155" y2="225" />
+    </g>
   `;
 
-  // Seviye 0: Issız harabe iskelet binalar
+  // Seviye 0: Issız ve Harabe Ada İskeleti
   if (completedCount === 0) {
     svgHTML += `
-      <!-- Issız Harabe Binalar -->
-      <rect x="40" y="90" width="60" height="75" rx="8" fill="#94a3b8" stroke="#64748b" stroke-width="2" />
-      <rect x="120" y="70" width="75" height="95" rx="8" fill="#64748b" stroke="#475569" stroke-width="2" />
-      <rect x="220" y="100" width="65" height="65" rx="8" fill="#94a3b8" stroke="#64748b" stroke-width="2" />
-      <rect x="310" y="80" width="70" height="85" rx="8" fill="#64748b" stroke="#475569" stroke-width="2" />
+      <!-- Issız Harabe Taşlar ve Kuru Çatlaklar -->
+      ${isoBox(200, 160, 22, 12, 16, '#94a3b8', '#64748b', '#475569')}
+      ${isoBox(330, 150, 26, 14, 12, '#94a3b8', '#64748b', '#475569')}
+      ${isoBox(270, 190, 18, 10, 10, '#64748b', '#475569', '#334155')}
       
-      <!-- Kuru Çatlaklar -->
-      <path d="M 50 175 L 80 185 L 110 180 M 240 180 L 270 190" stroke="#475569" stroke-width="2" stroke-dasharray="3,3" />
-      <text x="230" y="195" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">Issız ve Terk Edilmiş Bölge</text>
+      <path d="M 230 180 L 250 195 L 290 185 M 310 140 L 340 155" stroke="#475569" stroke-width="2" stroke-dasharray="3,3" />
+      <text x="270" y="245" font-size="12" font-weight="900" fill="#334155" text-anchor="middle" letter-spacing="1">ISSIZ HARABE ADASI</text>
     `;
   }
 
-  // Seviye 1+: Asfalt Yollar ve Sokak Lambaları
+  // Seviye 1+: 3D Çiftlik Evi, Çitler ve Giriş Yolu (🏡)
   if (completedCount >= 1) {
     svgHTML += `
-      <!-- Asfalt Yol -->
-      <path d="M 0 185 Q 230 178, 460 185" stroke="#334155" stroke-width="20" fill="none" />
-      <path d="M 0 185 Q 230 178, 460 185" stroke="#f8fafc" stroke-width="2" stroke-dasharray="8,8" fill="none" />
+      <!-- Ana İzometrik Asfalt Cadde -->
+      <polygon points="120,205 160,230 420,80 380,55" fill="#334155" stroke="#475569" stroke-width="1" />
+      <line x1="140" y1="218" x2="400" y2="68" stroke="#f8fafc" stroke-width="2" stroke-dasharray="8,8" />
+
+      <!-- Çiftlik Evi (3D Ahşap Villa) -->
+      ${isoBox(110, 150, 24, 14, 28, '#fef08a', '#d97706', '#b45309')}
+      <!-- Çatı -->
+      <polygon points="110,105 138,122 110,138 82,122" fill="#ef4444" stroke="#b91c1c" stroke-width="1" />
       
-      <!-- Sokak Lambaları -->
-      <line x1="60" y1="175" x2="60" y2="155" stroke="#475569" stroke-width="2" />
-      <circle cx="60" cy="155" r="4" fill="#fef08a" />
-      <line x1="200" y1="175" x2="200" y2="155" stroke="#475569" stroke-width="2" />
-      <circle cx="200" cy="155" r="4" fill="#fef08a" />
-      <line x1="360" y1="175" x2="360" y2="155" stroke="#475569" stroke-width="2" />
-      <circle cx="360" cy="155" r="4" fill="#fef08a" />
+      <!-- Su Kuyusu & Çitler -->
+      ${isoBox(75, 170, 8, 5, 8, '#cbd5e1', '#64748b', '#475569')}
+      ${isoTree(60, 145, 0.9)}
+      ${isoTree(145, 125, 0.8)}
     `;
   }
 
-  // Seviye 2+: Işıkları Yanan Konutlar & Binalar
+  // Seviye 2+: Elektrik Şebekesi & 3D Sokak Lambaları (💡)
   if (completedCount >= 2) {
     svgHTML += `
-      <!-- Işıkları Yanan Modern Binalar -->
-      <rect x="30" y="90" width="55" height="75" rx="6" fill="#475569" stroke="#334155" stroke-width="2" />
-      <rect x="40" y="100" width="10" height="12" fill="#fef08a" rx="2" />
-      <rect x="60" y="100" width="10" height="12" fill="#fef08a" rx="2" />
-      <rect x="40" y="125" width="10" height="12" fill="#fef08a" rx="2" />
-      <rect x="60" y="125" width="10" height="12" fill="#fef08a" rx="2" />
-
-      <rect x="100" y="70" width="70" height="95" rx="6" fill="#334155" stroke="#1e293b" stroke-width="2" />
-      <rect x="112" y="80" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="140" y="80" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="112" y="105" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="140" y="105" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="112" y="130" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="140" y="130" width="12" height="12" fill="#fef08a" rx="2" />
-    `;
-  }
-
-  // Seviye 3+: Şehir Parkı, Ağaçlar & Fıskiye
-  if (completedCount >= 3) {
-    svgHTML += `
-      <!-- Park & Ağaçlar -->
-      <g transform="translate(190, 120)">
-        <!-- Fıskiye Havuzu -->
-        <ellipse cx="40" cy="40" rx="24" ry="10" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
-        <circle cx="40" cy="38" r="4" fill="#ffffff" />
-        <!-- Ağaç 1 -->
-        <polygon points="10,35 18,15 26,35" fill="#15803d" />
-        <rect x="16" y="35" width="4" height="8" fill="#78350f" />
-        <!-- Ağaç 2 -->
-        <polygon points="56,35 64,15 72,35" fill="#16a34a" />
-        <rect x="62" y="35" width="4" height="8" fill="#78350f" />
+      <!-- Trafo İstasyonu -->
+      ${isoBox(165, 185, 16, 10, 18, '#fbbf24', '#d97706', '#92400e')}
+      
+      <!-- 3D Işık Saçan Sokak Lambaları -->
+      <g>
+        <line x1="160" y1="205" x2="160" y2="185" stroke="#1e293b" stroke-width="2.5" />
+        <circle cx="160" cy="185" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
+        
+        <line x1="280" y1="135" x2="280" y2="115" stroke="#1e293b" stroke-width="2.5" />
+        <circle cx="280" cy="115" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
+        
+        <line x1="370" y1="85" x2="370" y2="65" stroke="#1e293b" stroke-width="2.5" />
+        <circle cx="370" cy="65" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
       </g>
     `;
   }
 
-  // Seviye 4+: Modern İş Kuleleri & Gökdelenler
+  // Seviye 3+: Su Arıtma & 3D Su Kulesi (🚰)
+  if (completedCount >= 3) {
+    svgHTML += `
+      <!-- 3D Mavi Su Kulesi -->
+      ${isoBox(215, 105, 16, 10, 36, '#38bdf8', '#0284c7', '#0369a1')}
+      <ellipse cx="215" cy="65" rx="14" ry="7" fill="#0284c7" />
+      ${isoTree(190, 85, 0.9)}
+    `;
+  }
+
+  // Seviye 4+: Şehir Parkı, Fıskiye ve Ağaçlık (🌳)
   if (completedCount >= 4) {
     svgHTML += `
-      <!-- Cam Gökdelen -->
-      <rect x="290" y="45" width="60" height="120" rx="6" fill="#0284c7" stroke="#0369a1" stroke-width="2" />
-      <line x1="300" y1="45" x2="300" y2="165" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
-      <line x1="320" y1="45" x2="320" y2="165" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
-      <line x1="340" y1="45" x2="340" y2="165" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
-      <!-- Çatı Anteni -->
-      <line x1="320" y1="45" x2="320" y2="25" stroke="#e11d48" stroke-width="3" />
-      <circle cx="320" cy="25" r="3" fill="#e11d48" />
+      <!-- 3D Park Alanı Tabanı -->
+      <polygon points="270,170 330,205 270,240 210,205" fill="#4ade80" stroke="#16a34a" stroke-width="1.5" />
+      
+      <!-- Fıskiye Havuzu -->
+      <ellipse cx="270" cy="205" rx="18" ry="9" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
+      <circle cx="270" cy="203" r="4" fill="#ffffff" />
+      
+      ${isoTree(230, 195, 1)}
+      ${isoTree(310, 195, 1)}
+      ${isoTree(270, 230, 0.85)}
     `;
   }
 
-  // Seviye 5+: Sinema Binası (🎬 SİNEMA)
+  // Seviye 5+: 3D Modern İş Kuleleri & Rezidanslar (🏢)
   if (completedCount >= 5) {
     svgHTML += `
-      <!-- Modern Sinema Kompleksi -->
-      <rect x="365" y="80" width="70" height="85" rx="6" fill="#be123c" stroke="#881337" stroke-width="2" />
-      <rect x="375" y="90" width="50" height="18" rx="4" fill="#fbbf24" />
-      <text x="400" y="103" font-size="9" font-weight="900" fill="#881337" text-anchor="middle">🎬 SİNEMA</text>
-      <!-- Sinema Işıkları -->
-      <circle cx="375" cy="120" r="3" fill="#fef08a" />
-      <circle cx="390" cy="120" r="3" fill="#fef08a" />
-      <circle cx="405" cy="120" r="3" fill="#fef08a" />
-      <circle cx="420" cy="120" r="3" fill="#fef08a" />
+      <!-- Gökdelen 1 (Cam Kule) -->
+      ${isoBox(335, 130, 28, 16, 85, '#60a5fa', '#2563eb', '#1d4ed8')}
+      <!-- Çatı Helikopter Pisti -->
+      <polygon points="335,40 355,51 335,62 315,51" fill="#f8fafc" stroke="#dc2626" stroke-width="2" />
+      <text x="335" y="55" font-size="10" font-weight="900" fill="#dc2626" text-anchor="middle">H</text>
+      
+      <!-- Gökdelen 2 (Yan Blok) -->
+      ${isoBox(385, 155, 22, 12, 55, '#93c5fd', '#3b82f6', '#1d4ed8')}
     `;
   }
 
-  // Seviye 6+: Lunapark & Dönen Dönme Dolap (🎡)
+  // Seviye 6+: 3D Sinema & Gösteri Merkezi (🎬)
   if (completedCount >= 6) {
     svgHTML += `
-      <!-- Lunapark & Dönme Dolap -->
-      <g transform="translate(235, 30)">
-        <circle cx="40" cy="55" r="32" stroke="#e11d48" stroke-width="3" fill="none" stroke-dasharray="6,4" />
-        <line x1="40" y1="23" x2="40" y2="87" stroke="#fbbf24" stroke-width="2" />
-        <line x1="8" y1="55" x2="72" y2="55" stroke="#fbbf24" stroke-width="2" />
-        <line x1="40" y1="55" x2="25" y2="105" stroke="#475569" stroke-width="4" />
-        <line x1="40" y1="55" x2="55" y2="105" stroke="#475569" stroke-width="4" />
+      <!-- Sinema Binası -->
+      ${isoBox(215, 235, 26, 14, 30, '#f43f5e', '#be123c', '#881337')}
+      <!-- Tabela -->
+      <polygon points="215,198 238,210 215,222 192,210" fill="#fde047" />
+      <text x="215" y="213" font-size="7" font-weight="900" fill="#881337" text-anchor="middle">🎬 SİNEMA</text>
+    `;
+  }
+
+  // Seviye 7+: 3D Lunapark & Dönme Dolap (🎡)
+  if (completedCount >= 7) {
+    svgHTML += `
+      <!-- 3D Dönme Dolap Grubu -->
+      <g transform="translate(435, 110)">
+        <circle cx="0" cy="-35" r="28" stroke="#e11d48" stroke-width="2.5" fill="none" stroke-dasharray="6,4" />
+        <line x1="0" y1="-63" x2="0" y2="-7" stroke="#fbbf24" stroke-width="1.5" />
+        <line x1="-28" y1="-35" x2="28" y2="-35" stroke="#fbbf24" stroke-width="1.5" />
+        <line x1="0" y1="-35" x2="-14" y2="10" stroke="#475569" stroke-width="3" />
+        <line x1="0" y1="-35" x2="14" y2="10" stroke="#475569" stroke-width="3" />
+        
         <!-- Kabinler -->
-        <circle cx="40" cy="23" r="5" fill="#38bdf8" />
-        <circle cx="40" cy="87" r="5" fill="#38bdf8" />
-        <circle cx="8" cy="55" r="5" fill="#38bdf8" />
-        <circle cx="72" cy="55" r="5" fill="#38bdf8" />
-        <text x="40" y="112" font-size="8" font-weight="900" fill="#e11d48" text-anchor="middle">🎡 LUNAPARK</text>
+        <circle cx="0" cy="-63" r="4" fill="#38bdf8" />
+        <circle cx="0" cy="-7" r="4" fill="#38bdf8" />
+        <circle cx="-28" cy="-35" r="4" fill="#38bdf8" />
+        <circle cx="28" cy="-35" r="4" fill="#38bdf8" />
+        <text x="0" y="20" font-size="7.5" font-weight="900" fill="#e11d48" text-anchor="middle">🎡 LUNAPARK</text>
+      </g>
+    `;
+  }
+
+  // Seviye 8+: 3D Şehir Hastanesi & Ambulans (🏥)
+  if (completedCount >= 8) {
+    svgHTML += `
+      <!-- Şehir Hastanesi -->
+      ${isoBox(160, 120, 30, 16, 42, '#ffffff', '#e2e8f0', '#cbd5e1')}
+      <!-- Kırmızı Çapraz (+) -->
+      <polygon points="160,70 178,80 160,90 142,80" fill="#ef4444" />
+      <text x="160" y="83" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">+</text>
+      
+      <!-- Mini Ambulans -->
+      ${isoBox(190, 150, 9, 5, 6, '#ffffff', '#ef4444', '#dc2626')}
+    `;
+  }
+
+  // Seviye 9+: 3D Alışveriş & Ticaret Merkezi (🛍️)
+  if (completedCount >= 9) {
+    svgHTML += `
+      <!-- AVM Blokları -->
+      ${isoBox(345, 205, 32, 18, 28, '#c084fc', '#9333ea', '#6b21a8')}
+      <!-- Cam Kubbe -->
+      <ellipse cx="345" cy="172" rx="14" ry="7" fill="#38bdf8" opacity="0.85" />
+      <text x="345" y="195" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">🛍️ AVM</text>
+    `;
+  }
+
+  // Seviye 10+: 3D Hızlı Tren Garı & Raylar (🚄)
+  if (completedCount >= 10) {
+    svgHTML += `
+      <!-- Tren Rayları -->
+      <polygon points="410,240 445,260 500,225 465,205" fill="#64748b" />
+      <line x1="420" y1="248" x2="480" y2="213" stroke="#f8fafc" stroke-width="2" stroke-dasharray="4,4" />
+      
+      <!-- Tren Garı -->
+      ${isoBox(460, 200, 24, 14, 22, '#38bdf8', '#0284c7', '#0369a1')}
+      <!-- Hızlı Tren Vagonu -->
+      ${isoBox(445, 235, 18, 7, 9, '#ffffff', '#0284c7', '#0369a1')}
+    `;
+  }
+
+  // Seviye 11+: 3D Uydu & Telekom Kulesi (📡)
+  if (completedCount >= 11) {
+    svgHTML += `
+      <!-- Telekom Çelik Kulesi -->
+      <g transform="translate(100, 75)">
+        <line x1="0" y1="25" x2="0" y2="-45" stroke="#e11d48" stroke-width="3" />
+        <line x1="-12" y1="25" x2="0" y2="-45" stroke="#cbd5e1" stroke-width="1.5" />
+        <line x1="12" y1="25" x2="0" y2="-45" stroke="#cbd5e1" stroke-width="1.5" />
+        <ellipse cx="0" cy="-20" rx="10" ry="5" fill="#f8fafc" stroke="#94a3b8" />
+        <circle cx="0" cy="-45" r="4.5" fill="#ef4444" filter="drop-shadow(0 0 6px #ef4444)" />
+        <text x="0" y="38" font-size="7" font-weight="900" fill="#e11d48" text-anchor="middle">📡 5G</text>
+      </g>
+    `;
+  }
+
+  // Seviye 12+: 3D Uluslararası Liman & Konteyner Terminali (🚢)
+  if (completedCount >= 12) {
+    svgHTML += `
+      <!-- Liman İskelesi & Su -->
+      <polygon points="50,170 10,195 70,230 110,205" fill="#0284c7" opacity="0.9" />
+      
+      <!-- Konteyner Blokları -->
+      ${isoBox(75, 200, 10, 5, 8, '#f97316', '#c2410c', '#9a3412')}
+      ${isoBox(90, 210, 10, 5, 8, '#22c55e', '#15803d', '#166534')}
+      ${isoBox(75, 192, 10, 5, 8, '#3b82f6', '#1d4ed8', '#1e40af')}
+      
+      <!-- 3D Vinç -->
+      <line x1="50" y1="185" x2="50" y2="155" stroke="#eab308" stroke-width="3" />
+      <line x1="40" y1="155" x2="70" y2="155" stroke="#eab308" stroke-width="2.5" />
+    `;
+  }
+
+  // Seviye 13+: 3D Yönetim Sarayı / Hükümet Konağı (🏛️)
+  if (completedCount >= 13) {
+    svgHTML += `
+      <!-- Görkemli Saray -->
+      ${isoBox(270, 75, 36, 18, 45, '#fef08a', '#eab308', '#ca8a04')}
+      <!-- Kubbe -->
+      <ellipse cx="270" cy="25" rx="16" ry="9" fill="#fde047" stroke="#b45309" stroke-width="1.5" />
+      <text x="270" y="52" font-size="8" font-weight="900" fill="#78350f" text-anchor="middle">🏛️ SARAY</text>
+    `;
+  }
+
+  // Seviye 14: 3D Teknoloji Vadisi & Roket Fırlatma Rampası (🚀)
+  if (completedCount >= 14) {
+    svgHTML += `
+      <!-- Roket Platformu -->
+      ${isoBox(450, 60, 22, 12, 16, '#0f172a', '#1e293b', '#334155')}
+      
+      <!-- 3D Uzay Roketi -->
+      <g transform="translate(450, 45)">
+        <polygon points="0,-42 7,-15 -7,-15" fill="#f8fafc" stroke="#dc2626" stroke-width="1" />
+        <rect x="-6" y="-15" width="12" height="26" fill="#f8fafc" stroke="#475569" />
+        <polygon points="-6,11 -12,20 -6,18" fill="#ef4444" />
+        <polygon points="6,11 12,20 6,18" fill="#ef4444" />
+        <!-- Alev Efekti -->
+        <polygon points="-4,18 0,30 4,18" fill="#f97316" filter="drop-shadow(0 0 6px #f97316)" />
+        <text x="0" y="-48" font-size="8.5" font-weight="900" fill="#dc2626" text-anchor="middle">🚀 HAZIR</text>
       </g>
     `;
   }
