@@ -957,28 +957,72 @@ body {
   margin-top: 4px;
 }
 
-.ide-interactive-textarea::placeholder {
-  color: #334155;
+/* 4. İpucu Paneli (Sadece Kod Parçacıkları) */
+.hint-panel {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.08);
+  animation: hintSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 4. Hızlı Kod Kısayol Tuşları (Code Snippet Bar) */
+@keyframes hintSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hint-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.hint-title-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #b45309;
+  letter-spacing: 0.4px;
+}
+
+.hint-close-btn {
+  background: transparent;
+  border: none;
+  color: #92400e;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 2px 7px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.hint-close-btn:hover {
+  background: #fef3c7;
+  color: #78350f;
+}
+
 .quick-keys-bar {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   overflow-x: auto;
-  padding-bottom: 6px;
-  margin-bottom: 1.2rem;
+  padding-bottom: 4px;
 }
 
 .key-btn {
   background: #ffffff;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #fde68a;
   border-radius: 10px;
-  padding: 7px 12px;
+  padding: 6px 12px;
   font-family: var(--font-code);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  color: #334155;
+  color: #78350f;
   cursor: pointer;
   transition: all 0.15s ease;
   flex-shrink: 0;
@@ -986,8 +1030,9 @@ body {
 }
 
 .key-btn:hover {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
+  background: #fef3c7;
+  border-color: #f59e0b;
+  transform: translateY(-1px);
 }
 
 .key-btn:active {
@@ -1435,33 +1480,71 @@ body {
   font-size: 0.82rem;
 }
 
-.review-types-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+.review-logic-card {
+  background: #eef2ff;
+  border: 1.5px solid #c7d2fe;
+  border-radius: 14px;
+  padding: 11px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #3730a3;
+  line-height: 1.5;
 }
 
-.review-type-box {
-  background: #f8fafc;
-  border: 1.5px solid #f1f5f9;
+.review-pitfalls-card {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
   border-radius: 14px;
-  padding: 9px 12px;
+  padding: 10px 14px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 8px;
 }
 
-.type-box-header {
+.review-pitfall-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: #78350f;
+  line-height: 1.45;
 }
 
-.type-name {
+.review-pitfall-bullet {
+  color: #d97706;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.review-example-box {
+  background: #0f172a;
+  border: 1.5px solid #1e293b;
+  border-radius: 14px;
+  padding: 12px 14px;
+  overflow-x: auto;
+}
+
+.review-code-pre {
+  margin: 0;
   font-family: var(--font-code);
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: #4f46e5;
+  font-size: 0.84rem;
+  color: #38bdf8;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.review-reward-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0fdf4;
+  border: 1.5px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #166534;
+  margin-top: 0.5rem;
 }
 
 .type-tag {

@@ -227,16 +227,18 @@
           </div>
         </div>
 
-        <!-- 4. Hızlı Kod Kısayol Tuşları (Code Snippet Bar) -->
-        <div class="quick-keys-bar" id="quick-keys-bar">
-          <button class="key-btn" data-key="if ">if</button>
-          <button class="key-btn" data-key="elif ">elif</button>
-          <button class="key-btn" data-key="else:">else</button>
-          <button class="key-btn" data-key=" < ">&lt;</button>
-          <button class="key-btn" data-key=" > ">&gt;</button>
-          <button class="key-btn" data-key=" = ">=</button>
-          <button class="key-btn" data-key=":">:</button>
-          <button class="key-btn" data-key="    ">Tab</button>
+        <!-- 4. İpucu Kod Parçacıkları Alanı (Quick Keys Hint Panel) -->
+        <div class="hint-panel" id="hint-panel" style="display: none;">
+          <div class="hint-panel-header">
+            <div class="hint-title-tag">
+              <span class="hint-bulb-icon">💡</span>
+              <span>KULLANABİLECEĞİN KOD PARÇACIKLARI</span>
+            </div>
+            <button id="btn-close-hint" class="hint-close-btn" title="Kapat">✕</button>
+          </div>
+          <div class="quick-keys-bar" id="quick-keys-bar">
+            <!-- JS ile dinamik butonlar yüklenir -->
+          </div>
         </div>
 
         <!-- 5. Kontrol ve Çalıştırma Alanı (Control & Execution Area) -->
@@ -291,20 +293,42 @@
       </div>
 
       <div class="review-content-scroll">
-        <!-- Bölüm 1: İsimlendirme Kuralları (Naming Conventions) -->
+        <!-- 1. Kazanım & Temel Mantık -->
         <div class="review-section">
-          <div class="review-section-title" id="review-rules-heading">İSİMLENDİRME KURALLARI</div>
-          <div class="review-rules-card" id="review-rules-list">
-            <!-- JS ile doldurulacak kurallar -->
+          <div class="review-section-title">🎯 KAZANIM & TEMEL MANTIK</div>
+          <div class="review-logic-card" id="review-logic-text">
+            <!-- JS ile doldurulacak -->
           </div>
         </div>
 
-        <!-- Bölüm 2: Temel Veri Türleri (Core Data Types) -->
+        <!-- 2. Kritik Metotlar & Sözdizimi -->
         <div class="review-section">
-          <div class="review-section-title" id="review-types-heading">TEMEL VERİ TÜRLERİ</div>
-          <div class="review-types-grid" id="review-types-grid">
-            <!-- JS ile doldurulacak tür kutuları -->
+          <div class="review-section-title" id="review-rules-heading">⚡ KRİTİK METOTLAR & SÖZDİZİMİ</div>
+          <div class="review-rules-card" id="review-rules-list">
+            <!-- JS ile doldurulacak -->
           </div>
+        </div>
+
+        <!-- 3. Dikkat Edilecek Tuzaklar (Sık Yapılan Hatalar) -->
+        <div class="review-section">
+          <div class="review-section-title">💡 DİKKAT EDİLECEK TUZAKLAR & İPUÇLARI</div>
+          <div class="review-pitfalls-card" id="review-pitfalls-list">
+            <!-- JS ile doldurulacak -->
+          </div>
+        </div>
+
+        <!-- 4. Mini Canlı Örnek Kod -->
+        <div class="review-section">
+          <div class="review-section-title">💻 MİNİ CANLI ÖRNEK</div>
+          <div class="review-example-box">
+            <pre class="review-code-pre" id="review-example-code"><code># python kodu</code></pre>
+          </div>
+        </div>
+
+        <!-- 5. Şehir Teması & Motivasyon Rozeti -->
+        <div class="review-reward-badge" id="review-reward-badge">
+          <span class="reward-icon">🏆</span>
+          <span id="review-reward-text">Ödül: Şehir Binası</span>
         </div>
       </div>
 
