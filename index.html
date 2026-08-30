@@ -106,7 +106,7 @@
           <p class="city-motivation-text">Şehrin sana ihtiyacı var! Onu inşa etmek ve geliştirmek için konuları tamamla.</p>
         </div>
 
-        <!-- 2. Geri Butonu & XP Göstergesi -->
+        <!-- 2. Geri Butonu & XP Göstergesi + Hızlı Test Araçları -->
         <div class="roadmap-topbar">
           <button id="btn-back-to-languages" class="roadmap-back-btn" title="Diller Menüsüne Dön">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -114,6 +114,13 @@
               <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
           </button>
+          
+          <div class="dev-quick-actions">
+            <button id="btn-unlock-all" class="dev-btn" title="Tüm konuların kilidini aç/kapat">
+              <span>🔓 Tüm Kilitleri Aç</span>
+            </button>
+          </div>
+
           <div class="roadmap-xp-pill">
             <span class="xp-trophy">🏆</span>
             <strong id="roadmap-xp-count">1,240 XP</strong>
@@ -239,6 +246,9 @@
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
             <span>Kodu Çalıştır (Ctrl + Enter)</span>
+          </button>
+          <button id="btn-skip-module" class="btn-skip-subtle" title="Bu konunun tüm alıştırmalarını başarıyla tamamlayıp geç (Ctrl + .)">
+            <span>⏩ Alıştırmayı Atla & Tamamla</span>
           </button>
         </div>
 

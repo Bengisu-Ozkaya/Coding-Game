@@ -1913,6 +1913,251 @@ const CHALLENGES_DATABASE = {
         return { ok: false, msg: "Hata: Lütfen vize ve final değişkenleriyle print(vize * 0.4 + final * 0.6) işlemini yazdırın." };
       }
     }
+  ],
+  python_4: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: IF KOŞULU',
+      title: '1. Soru: Basit If Koşulu',
+      prompt: "<code class=\"code-highlight\">yas = 15</code> değeri 18'den küçükse (<code class=\"code-highlight\">yas < 18</code>) ekrana <code class=\"code-highlight\">\"Giriş Yapamaz\"</code> yazdırabilir misin?",
+      presetCode: `yas = 15\n# yas 18'den küçükse "Giriş Yapamaz" yazdır:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['if ', 'yas < 18:', 'print("Giriş Yapamaz")', '    '],
+      hint: 'if yas < 18:\n    print("Giriş Yapamaz")',
+      solution: 'if yas < 18:\n    print("Giriş Yapamaz")',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/if\s+yas\s*<\s*18\s*:\s*[\s\S]*print\s*\(\s*['"]Giriş Yapamaz['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! If koşulu başarıyla kuruldu. ✓" };
+        }
+        if (!clean.includes('if')) {
+          return { ok: false, msg: "Hata: 'if yas < 18:' koşulunu kurmalısınız." };
+        }
+        return { ok: false, msg: 'Hata: Lütfen yas < 18 ise print("Giriş Yapamaz") yazdırın.' };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: IF - ELSE YAPISI',
+      title: '2. Soru: If - Else Yapısı',
+      prompt: "<code class=\"code-highlight\">yas = 20</code> için; 18'den küçükse <code class=\"code-highlight\">\"Giriş Yapamaz\"</code>, değilse (<code class=\"code-highlight\">else</code>) ekrana <code class=\"code-highlight\">\"Giriş Yapabilir\"</code> yazdırabilir misin?",
+      presetCode: `yas = 20\nif yas < 18:\n    print("Giriş Yapamaz")\n# else durumunu ekle:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['else:', 'print("Giriş Yapabilir")', '    '],
+      hint: 'if yas < 18:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      solution: 'if yas < 18:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasElse = /else\s*:/.test(clean);
+        const hasPrint = /print\s*\(\s*['"]Giriş Yapabilir['"]\s*\)/.test(clean);
+
+        if (hasElse && hasPrint) {
+          return { ok: true, msg: "Harika! If-Else yapısı doğru şekilde tamamlandı. ✓" };
+        }
+        return { ok: false, msg: 'Hata: Lütfen else: bloğunun altına print("Giriş Yapabilir") ekleyin.' };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: ELIF YAPISI',
+      title: '3. Soru: Çoklu Koşul (elif)',
+      prompt: "<code class=\"code-highlight\">yas = 70</code> için; 18'den küçükse veya 65'ten büyükse (<code class=\"code-highlight\">elif yas > 65:</code>) <code class=\"code-highlight\">\"Giriş Yapamaz\"</code>, diğer durumlarda (<code class=\"code-highlight\">else:</code>) <code class=\"code-highlight\">\"Giriş Yapabilir\"</code> yazdırabilir misin?",
+      presetCode: `yas = 70\nif yas < 18:\n    print("Giriş Yapamaz")\n# elif ve else durumlarını ekle:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['elif yas > 65:', 'elif yas >= 65:', 'else:', 'print("Giriş Yapamaz")', 'print("Giriş Yapabilir")'],
+      hint: 'if yas < 18:\n    print("Giriş Yapamaz")\nelif yas > 65:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      solution: 'elif yas > 65:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasElif = /elif\s+yas\s*(>|>=)\s*65\s*:/.test(clean);
+        const hasElse = /else\s*:/.test(clean);
+
+        if (hasElif && hasElse) {
+          return { ok: true, msg: "Mükemmel! elif ve else basamakları başarıyla kuruldu. ✓" };
+        }
+        return { ok: false, msg: 'Hata: Lütfen elif yas > 65: ve else: durumlarını ekleyin.' };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: MANTIKSAL KOŞULLAR (AND & IF-ELSE)',
+      title: '4. Soru: Not Hesabı & Geçti / Kaldı',
+      prompt: "<code class=\"code-highlight\">vize_notu = 60</code> ve <code class=\"code-highlight\">final_notu = 70</code> için; <code class=\"code-highlight\">ortalama = vize_notu * 0.4 + final_notu * 0.6</code> ile ortalamayı hesapla. Ardından <code class=\"code-highlight\">final_notu >= 50 and ortalama >= 50</code> ise <code class=\"code-highlight\">\"Geçti\"</code>, değilse (<code class=\"code-highlight\">else:</code>) <code class=\"code-highlight\">\"Kaldı\"</code> yazdırabilir misin?",
+      presetCode: `vize_notu = 60\nfinal_notu = 70\n# 1. Ortalamayı hesapla:\n# 2. if-else ile "Geçti" veya "Kaldı" yazdır:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['ortalama = vize_notu * 0.4 + final_notu * 0.6', 'if final_notu >= 50 and ortalama >= 50:', '    print("Geçti")', 'else:', '    print("Kaldı")'],
+      hint: 'ortalama = vize_notu * 0.4 + final_notu * 0.6\nif final_notu >= 50 and ortalama >= 50:\n    print("Geçti")\nelse:\n    print("Kaldı")',
+      solution: 'ortalama = vize_notu * 0.4 + final_notu * 0.6\nif final_notu >= 50 and ortalama >= 50:\n    print("Geçti")\nelse:\n    print("Kaldı")',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasFormula = /(vize_notu|vize)\s*\*\s*0?\.4\s*\+\s*(final_notu|final)\s*\*\s*0?\.6/.test(clean);
+        const hasIf = /if\s+.*(final_notu|final)\s*>=\s*50\s+and\s+ortalama\s*>=\s*50/.test(clean) || /if\s+.*ortalama\s*>=\s*50\s+and\s+(final_notu|final)\s*>=\s*50/.test(clean);
+        const hasGecti = /print\s*\(\s*['"]Geçti['"]\s*\)/.test(clean);
+        const hasElse = /else\s*:/.test(clean);
+        const hasKaldi = /print\s*\(\s*['"]Kaldı['"]\s*\)/.test(clean);
+
+        if (hasFormula && hasIf && hasGecti && hasElse && hasKaldi) {
+          return { ok: true, msg: "Mükemmel iş! Ağırlıklı ortalama hesaplandı ve if-else ile Geçti/Kaldı durumu başarıyla kontrol edildi. ✓" };
+        }
+
+        const missing = [];
+        if (!hasFormula) missing.push('ortalama hesabı (vize_notu * 0.4 + final_notu * 0.6)');
+        if (!hasIf) missing.push('if final_notu >= 50 and ortalama >= 50: koşulu');
+        if (!hasGecti) missing.push('print("Geçti")');
+        if (!hasElse || !hasKaldi) missing.push('else: print("Kaldı")');
+
+        return { ok: false, msg: `Eksik veya hatalı adımlar: ${missing.join(', ')}.` };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: SEÇİM YAPILARI (MATCH - CASE)',
+      title: '5. Soru: Match - Case ile Gün Seçimi',
+      prompt: "<code class=\"code-highlight\">gun = 1</code> değişkenini <code class=\"code-highlight\">match - case</code> ile kontrol edip <code class=\"code-highlight\">1</code> ise <code class=\"code-highlight\">\"Pazartesi\"</code>, <code class=\"code-highlight\">2</code> ise <code class=\"code-highlight\">\"Salı\"</code> yazdırabilir misin?",
+      presetCode: `gun = 1\n# match-case yapısı ile günü kontrol et:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['match gun:', 'case 1:', 'case 2:', 'print("Pazartesi")', 'print("Salı")'],
+      hint: 'match gun:\n    case 1:\n        print("Pazartesi")\n    case 2:\n        print("Salı")',
+      solution: 'match gun:\n    case 1:\n        print("Pazartesi")\n    case 2:\n        print("Salı")',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasMatch = /match\s+gun\s*:/.test(clean) && /case\s+1\s*:/.test(clean) && /print\s*\(\s*['"]Pazartesi['"]\s*\)/.test(clean);
+        const hasIfAlternative = /if\s+gun\s*==\s*1\s*:\s*[\s\S]*print\s*\(\s*['"]Pazartesi['"]\s*\)/.test(clean);
+
+        if (hasMatch || hasIfAlternative) {
+          return { ok: true, msg: "Harika iş! Koşul ve seçim yapısı başarıyla tamamlandı. 4. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: 'Hata: Lütfen match gun: case 1: print("Pazartesi") yapısını kurun.' };
+      }
+    }
+  ],
+  python_5: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 5: SÖZDİZİMİ DÜZELTME',
+      title: '1. Soru: Liste ve Demet Tanımlama',
+      prompt: "Aşağıdaki kodda liste ve demet (tuple) parantezleri ters kullanılmıştır. Listeyi köşeli parantez <code class=\"code-highlight\">[]</code>, demeti normal parantez <code class=\"code-highlight\">()</code> ile düzeltebilir misin?",
+      presetCode: `# Aşağıdaki parantez hatalarını düzelt:\nmy_list = (1, 2, 3)\nmy_tuple = [4, 5, 6]\n`,
+      filename: 'listeler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['my_list = [1, 2, 3]', 'my_tuple = (4, 5, 6)', '[1, 2, 3]', '(4, 5, 6)'],
+      hint: 'my_list = [1, 2, 3]\nmy_tuple = (4, 5, 6)',
+      solution: 'my_list = [1, 2, 3]\nmy_tuple = (4, 5, 6)',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasList = /my_list\s*=\s*\[\s*1\s*,\s*2\s*,\s*3\s*\]/.test(clean);
+        const hasTuple = /my_tuple\s*=\s*\(\s*4\s*,\s*5\s*,\s*6\s*\)/.test(clean);
+
+        if (hasList && hasTuple) {
+          return { ok: true, msg: "Tebrikler! Listelerin [] ve demetlerin () parantezleri başarıyla düzeltildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: my_list = [1, 2, 3] ve my_tuple = (4, 5, 6) şeklinde tanımlamalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 5: DEĞİŞTİRİLEMEZLİK (IMMUTABILITY)',
+      title: '2. Soru: Demet (Tuple) Hata Çözümü',
+      prompt: "Aşağıdaki kodda demete <code class=\"code-highlight\">.append()</code> yapılmaya çalışıldığı için hata vermektedir. <code class=\"code-highlight\">numbers</code>'ı bir liste yaparak hatayı çözebilir misin?",
+      presetCode: `# numbers değişkenini liste [] yaparak append hatasını çöz:\nnumbers = (10, 20, 30)\nnumbers.append(40)\nprint(numbers)\n`,
+      filename: 'listeler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['numbers = [10, 20, 30]', 'numbers.append(40)', 'print(numbers)'],
+      hint: 'numbers = [10, 20, 30]\nnumbers.append(40)\nprint(numbers)',
+      solution: 'numbers = [10, 20, 30]\nnumbers.append(40)\nprint(numbers)',
+      validator: (code) => {
+        const clean = code.trim();
+        const isList = /numbers\s*=\s*\[\s*10\s*,\s*20\s*,\s*30\s*\]/.test(clean);
+        const hasAppend = /numbers\.append\s*\(\s*40\s*\)/.test(clean);
+
+        if (isList && hasAppend) {
+          return { ok: true, msg: "Harika! Demetler değiştirilemez (immutable), listeler değiştirilebilir (mutable). Hata çözüldü! ✓" };
+        }
+        return { ok: false, msg: "Hata: numbers = [10, 20, 30] yaparak listeye çevirin ve .append(40) uygulayın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 5: LİSTE METOTLARI',
+      title: '3. Soru: Listeye Ekleme ve Sıralama',
+      prompt: "<code class=\"code-highlight\">sayilar = [45, 12, 89, 3]</code> listesine <code class=\"code-highlight\">.append()</code> ile <code class=\"code-highlight\">25</code> sayısını ekleyip ardından <code class=\"code-highlight\">.sort()</code> metoduyla listeyi sıralayıp ekrana yazdırabilir misin?",
+      presetCode: `sayilar = [45, 12, 89, 3]\n# 25 sayısını ekle, sırala ve yazdır:\n`,
+      filename: 'listeler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['sayilar.append(25)', 'sayilar.sort()', 'print(sayilar)'],
+      hint: 'sayilar.append(25)\nsayilar.sort()\nprint(sayilar)',
+      solution: 'sayilar.append(25)\nsayilar.sort()\nprint(sayilar)',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasAppend = /sayilar\.append\s*\(\s*25\s*\)/.test(clean);
+        const hasSort = /sayilar\.sort\s*\(\s*\)/.test(clean);
+        const hasPrint = /print\s*\(\s*sayilar\s*\)/.test(clean);
+
+        if (hasAppend && hasSort && hasPrint) {
+          return { ok: true, msg: "Mükemmel! .append() ve .sort() metotları başarıyla uygulandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen sayilar.append(25), sayilar.sort() ve print(sayilar) adımlarını uygulayın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 5: LİSTELERE DAĞITMA',
+      title: '4. Soru: Koşullu Liste Ekleme',
+      prompt: "<code class=\"code-highlight\">yas = 15</code> için; yaş 18'den küçükse <code class=\"code-highlight\">cocuklar</code> listesine, değilse <code class=\"code-highlight\">yetiskinler</code> listesine <code class=\"code-highlight\">.append()</code> ile ekleyebilir misin?",
+      presetCode: `yas = 15\ncocuklar = []\nyetiskinler = []\n# Yaş 18'den küçükse cocuklar'a, değilse yetiskinler'e ekle:\n`,
+      filename: 'listeler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['if yas < 18:', 'cocuklar.append(yas)', 'else:', 'yetiskinler.append(yas)'],
+      hint: 'if yas < 18:\n    cocuklar.append(yas)\nelse:\n    yetiskinler.append(yas)',
+      solution: 'if yas < 18:\n    cocuklar.append(yas)\nelse:\n    yetiskinler.append(yas)',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasIf = /if\s+yas\s*<\s*18\s*:\s*[\s\S]*cocuklar\.append\s*\(\s*yas\s*\)/.test(clean);
+        const hasElse = /else\s*:\s*[\s\S]*yetiskinler\.append\s*\(\s*yas\s*\)/.test(clean);
+
+        if (hasIf && hasElse) {
+          return { ok: true, msg: "Harika! Koşula göre eleman doğru listeye başarıyla eklendi. ✓" };
+        }
+        return { ok: false, msg: "Hata: if yas < 18 ise cocuklar.append(yas), else ise yetiskinler.append(yas) yapmalısınız." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 5: ELEMAN SİLME VE POP',
+      title: '5. Soru: Eleman Çıkarma (.pop)',
+      prompt: "<code class=\"code-highlight\">sehirler = [\"Ankara\", \"İstanbul\", \"İzmir\", \"Bursa\"]</code> listesinden son şehri <code class=\"code-highlight\">.pop()</code> ile çıkarıp güncel listeyi ekrana yazdırabilir misin?",
+      presetCode: `sehirler = ["Ankara", "İstanbul", "İzmir", "Bursa"]\n# Son elemanı .pop() ile çıkar ve güncel listeyi yazdır:\n`,
+      filename: 'listeler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['sehirler.pop()', 'print(sehirler)', 'silinen = sehirler.pop()'],
+      hint: 'sehirler.pop()\nprint(sehirler)',
+      solution: 'sehirler.pop()\nprint(sehirler)',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasPop = /sehirler\.pop\s*\(\s*\)/.test(clean);
+        const hasPrint = /print\s*\(\s*sehirler\s*\)/.test(clean);
+
+        if (hasPop && hasPrint) {
+          return { ok: true, msg: "Tebrikler! .pop() metodu ile eleman silindi ve liste yazdırıldı. 5. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: Lütfen sehirler.pop() ve ardından print(sehirler) komutlarını uygulayın." };
+      }
+    }
   ]
 };
 
@@ -1920,6 +2165,8 @@ const CHALLENGES_DATABASE = {
 CHALLENGES_DATABASE.p1 = CHALLENGES_DATABASE.python_1;
 CHALLENGES_DATABASE.p2 = CHALLENGES_DATABASE.python_2;
 CHALLENGES_DATABASE.p3 = CHALLENGES_DATABASE.python_3;
+CHALLENGES_DATABASE.p4 = CHALLENGES_DATABASE.python_4;
+CHALLENGES_DATABASE.p5 = CHALLENGES_DATABASE.python_5;
 
 let currentChallengeIndex = 0;
 let currentChallengesList = [];
@@ -2091,14 +2338,51 @@ dom.btnClearConsole.addEventListener('click', () => {
   dom.terminalOutput.innerHTML = '';
 });
 
-dom.codeInput.addEventListener('input', updateLineNumbers);
+// Hızlı Modül Atlama Fonksiyonu (Alıştırmayı Tamamla ve Sonraki Konuya Geç)
+function skipEntireModule() {
+  state.completedNodes.add(state.selectedNodeId);
+  completeCurrentTopic(state.selectedLangId, state.selectedNodeId);
+  state.xp += 150;
+  state.harvestCount += 5;
+  updateGlobalStats();
+  sfx.playVictory();
+  logToTerminal('⚡ <strong>Alıştırma Atlandı & Modül Başarıyla Tamamlandı!</strong>', 'success');
+  showVictoryModal();
+}
+
+const btnSkipModule = document.getElementById('btn-skip-module') || document.getElementById('btn-skip-step');
+if (btnSkipModule) {
+  btnSkipModule.addEventListener('click', skipEntireModule);
+}
+
+const btnUnlockAll = document.getElementById('btn-unlock-all');
+let allUnlocked = false;
+if (btnUnlockAll) {
+  btnUnlockAll.addEventListener('click', () => {
+    const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
+    const topics = getLanguageTopics(curLang.id);
+    allUnlocked = !allUnlocked;
+    topics.forEach((t, i) => {
+      t.status = allUnlocked ? 'active' : (i === 0 ? 'active' : 'locked');
+    });
+    btnUnlockAll.innerHTML = allUnlocked ? '<span>🔒 Kilitleri Aç/Kapat</span>' : '<span>🔓 Tüm Kilitleri Aç</span>';
+    sfx.playSuccess();
+    renderSkillTree();
+  });
+}
 
 dom.codeInput.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
     e.preventDefault();
     runCurrentCode();
   }
+  if ((e.ctrlKey || e.metaKey) && (e.key === '.' || e.key === '>')) {
+    e.preventDefault();
+    skipEntireModule();
+  }
 });
+
+dom.codeInput.addEventListener('input', updateLineNumbers);
 
 dom.btnSoundToggle.addEventListener('click', () => {
   sfx.enabled = !sfx.enabled;
