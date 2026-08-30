@@ -10,106 +10,86 @@ class SoundEffects {
   }
 
   init() {
-    try {
-      if (!this.ctx && typeof window !== 'undefined') {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (AudioCtx) this.ctx = new AudioCtx();
-      }
-      if (this.ctx && this.ctx.state === 'suspended') {
-        this.ctx.resume().catch(() => {});
-      }
-    } catch (e) {
-      // Mobil autoplay / audio kısıtlamalarını sessizce yut
+    if (!this.ctx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) this.ctx = new AudioCtx();
     }
   }
 
   playPop() {
     if (!this.enabled) return;
-    try {
-      this.init();
-      if (!this.ctx) return;
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(440, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.12);
-      gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.12);
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.12);
-    } catch (e) {}
+    this.init();
+    if (!this.ctx) return;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(440, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.12);
+    gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.12);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.12);
   }
 
   playSuccess() {
     if (!this.enabled) return;
-    try {
-      this.init();
-      if (!this.ctx) return;
-      const now = this.ctx.currentTime;
-      [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0, now + i * 0.08);
-        gain.gain.linearRampToValueAtTime(0.2, now + i * 0.08 + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.25);
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-        osc.start(now + i * 0.08);
-        osc.stop(now + i * 0.08 + 0.25);
-      });
-    } catch (e) {}
+    this.init();
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime;
+    [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, now + i * 0.08);
+      gain.gain.linearRampToValueAtTime(0.2, now + i * 0.08 + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.25);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(now + i * 0.08);
+      osc.stop(now + i * 0.08 + 0.25);
+    });
   }
 
   playError() {
     if (!this.enabled) return;
-    try {
-      this.init();
-      if (!this.ctx) return;
-      const now = this.ctx.currentTime;
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(180, now);
-      osc.frequency.linearRampToValueAtTime(110, now + 0.2);
-      gain.gain.setValueAtTime(0.25, now);
-      gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.2);
-    } catch (e) {}
+    this.init();
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(180, now);
+    osc.frequency.linearRampToValueAtTime(110, now + 0.2);
+    gain.gain.setValueAtTime(0.25, now);
+    gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.2);
   }
 
   playVictory() {
     if (!this.enabled) return;
-    try {
-      this.init();
-      if (!this.ctx) return;
-      const notes = [
-        { f: 523.25, d: 0.15 },
-        { f: 659.25, d: 0.15 },
-        { f: 783.99, d: 0.15 },
-        { f: 1046.50, d: 0.4 }
-      ];
-      let t = this.ctx.currentTime;
-      notes.forEach(n => {
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(n.f, t);
-        gain.gain.setValueAtTime(0.3, t);
-        gain.gain.exponentialRampToValueAtTime(0.01, t + n.d);
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-        osc.start(t);
-        osc.stop(t + n.d);
-        t += n.d * 0.9;
-      });
-    } catch (e) {}
+    this.init();
+    if (!this.ctx) return;
+    const notes = [440, 554.37, 659.25, 880, 880, 880, 1108.73];
+    const times = [0, 0.15, 0.3, 0.45, 0.65, 0.85, 1.05];
+    const now = this.ctx.currentTime;
+    notes.forEach((freq, i) => {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.25, now + times[i]);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + times[i] + 0.35);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(now + times[i]);
+      osc.stop(now + times[i] + 0.35);
+    });
   }
 }
 
@@ -753,9 +733,9 @@ const dom = {
 };
 
 // --- 5. EKRAN GEÇİŞLERİ ---
-function switchView(viewName, playSound = false) {
+function switchView(viewName) {
   state.currentView = viewName;
-  if (playSound) sfx.playPop();
+  sfx.playPop();
 
   dom.viewLanguages.classList.remove('active');
   dom.viewRoadmap.classList.remove('active');
@@ -840,7 +820,7 @@ const COURSE_TOPICS_DB = {
   python: [
     {
       id: 'python_1',
-      title: '1. Değişkenler & Veri Tipleri (Ders #1 - #5)',
+      title: '1. Değişkenler & Veri Tipleri',
       desc: 'print() komutu, yorum satırları, değişken isimlendirme kuralları, int, float, str, bool ve type() fonksiyonu.',
       reward: '🛣️ Asfalt Yollar & Sokak Lambaları',
       status: 'active',
@@ -848,7 +828,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_2',
-      title: '2. Stringler & Metin İşlemleri (Ders #6 - #9)',
+      title: '2. Stringler & Metin İşlemleri',
       desc: 'İndeksleme, dilimleme [start:stop], len(), .upper(), .lower(), .replace(), .split() ve modern f-string formatlama.',
       reward: '💡 Şehir Elektrik Şebekesi',
       status: 'locked',
@@ -856,7 +836,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_3',
-      title: '3. Operatörler & Matematik (Ders #10 - #12)',
+      title: '3. Operatörler & Matematik',
       desc: 'Aritmetik (+, -, *, /, //, %, **), karşılaştırma (==, !=, >, <) ve mantıksal (and, or, not) operatörler.',
       reward: '🚰 Temiz Su Arıtma & Çeşmeler',
       status: 'locked',
@@ -864,7 +844,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_4',
-      title: '4. Koşullu Durumlar (If / Elif / Else) (Ders #13 - #15)',
+      title: '4. Koşullu Durumlar (If / Elif / Else)',
       desc: 'if, elif, else blokları, iki nokta (:) ve girintileme (indentation) kuralları, tek satır ternary if koşulları.',
       reward: '🌳 Şehir Parkı & Fıskiye',
       status: 'locked',
@@ -872,7 +852,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_5',
-      title: '5. Listeler & Demetler (Lists & Tuples) (Ders #16 - #19)',
+      title: '5. Listeler & Demetler (Lists & Tuples)',
       desc: 'Listeler [], .append(), .pop(), .sort(), .insert() metotları ve değiştirilemez (immutable) demetler ().',
       reward: '🏢 Modern İş Kuleleri & Rezidanslar',
       status: 'locked',
@@ -880,7 +860,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_6',
-      title: '6. Sözlükler & Kümeler (Dict & Set) (Ders #20 - #22)',
+      title: '6. Sözlükler & Kümeler (Dict & Set)',
       desc: 'Anahtar-Değer (key: value) sözlükler {}, .keys(), .values(), .get() ve benzersiz eleman kümeleri set().',
       reward: '🎬 Modern Sinema & Tiyatro Kompleksi',
       status: 'locked',
@@ -888,7 +868,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_7',
-      title: '7. Döngüler (For & While) (Ders #23 - #26)',
+      title: '7. Döngüler (For & While)',
       desc: 'for döngüsü, range(başla, bitir, artış), while döngüsü, break (kır), continue (atla), enumerate() ve zip().',
       reward: '🎡 Lunapark & Dönme Dolap',
       status: 'locked',
@@ -896,7 +876,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_8',
-      title: '8. Fonksiyonlar & Kapsam (Ders #27 - #30)',
+      title: '8. Fonksiyonlar & Kapsam',
       desc: 'def ile fonksiyon tanımlama, return ile değer döndürme, varsayılan parametreler, *args, **kwargs ve global kapsam.',
       reward: '🏥 Şehir Hastanesi & Acil Servis',
       status: 'locked',
@@ -904,7 +884,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_9',
-      title: '9. Lambda, Map & Filter (Ders #31 - #33)',
+      title: '9. Lambda, Map & Filter',
       desc: 'Tek satırlık anonim lambda fonksiyonları, map(), filter() ve modern List Comprehension [x for x in liste] yapıları.',
       reward: '🛍️ Alışveriş & Ticaret Merkezi',
       status: 'locked',
@@ -912,7 +892,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_10',
-      title: '10. Modüller & Paketler (Ders #34 - #36)',
+      title: '10. Modüller & Paketler',
       desc: 'Standart kütüphane modülleri (math, random, datetime), import, from ... import, as takma ad ve pip paket yönetimi.',
       reward: '🚄 Hızlı Tren Garı & Metro Hattı',
       status: 'locked',
@@ -920,7 +900,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_11',
-      title: '11. Hata ve İstisna Yönetimi (Try / Except) (Ders #37 - #39)',
+      title: '11. Hata ve İstisna Yönetimi (Try / Except)',
       desc: 'try, except blokları ile çalışma zamanı hatalarını yakalama, finally ile temizlik ve raise ile özel hata fırlatma.',
       reward: '📡 Uydu İletişim & Radyo Kulesi',
       status: 'locked',
@@ -928,7 +908,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_12',
-      title: '12. Dosya İşlemleri (File I/O) (Ders #40 - #42)',
+      title: '12. Dosya İşlemleri (File I/O)',
       desc: 'open() fonksiyonu, okuma ("r"), yazma ("w"), ekleme ("a") modları ve with open(...) otomatik dosya yönetimi.',
       reward: '🚢 Uluslararası Liman & Konteyner Terminali',
       status: 'locked',
@@ -936,7 +916,7 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_13',
-      title: '13. Nesne Yönelimli Programlama (OOP) (Ders #43 - #45)',
+      title: '13. Nesne Yönelimli Programlama (OOP)',
       desc: 'class tanımlama, __init__ kurucu metodu, self nesne referansı, sınıf metotları ve Kalıtım (Inheritance).',
       reward: '🏛️ Çiftlik & Şehir Yönetim Sarayı',
       status: 'locked',
@@ -944,13 +924,13 @@ const COURSE_TOPICS_DB = {
     },
     {
       id: 'python_14',
-      title: '14. İleri Seviye & GUI / Proje (Ders #46 - #47)',
+      title: '14. İleri Seviye & GUI / Proje',
       desc: 'Tkinter ile görsel arayüz pencereleri ve butonlar, JSON veri işleme ve modüler Python şehir mimarisi.',
       reward: '🚀 Teknoloji Vadisi & Gözlemevi',
       status: 'locked',
-      xp: 500
+      xp: 450
     }
-  ]
+  ],
 };
 
 // Dil bazlı konu durumlarını saklayan nesne
@@ -986,168 +966,336 @@ function completeCurrentTopic(langId, topicId) {
 }
 
 // Şehir Görselini Çizen Fonksiyon (Tamamlanan Konu Sayısına Göre Şehir Gelişir)
+// 3D İzometrik Şehir Çizim Motoru (Isometric 3D City Engine)
 function renderCityVisual(completedCount) {
   const svg = document.getElementById('city-dynamic-svg');
   if (!svg) return;
 
   const statusText = document.getElementById('city-status-text');
+  const countText = document.getElementById('city-building-count');
   const levelPercent = Math.min(100, Math.round((completedCount / 14) * 100));
 
+  if (countText) {
+    countText.textContent = `${completedCount} / 14 Bina`;
+  }
+
   if (statusText) {
-    let phaseName = 'Issız Harabe Şehir';
-    if (completedCount >= 12) phaseName = 'Metropol Şehir & Teknoloji Vadisi';
-    else if (completedCount >= 9) phaseName = 'Modern Liman ve Ticaret Şehri';
-    else if (completedCount >= 6) phaseName = 'Lunaparklı Gelişen Şehir';
-    else if (completedCount >= 3) phaseName = 'İlk Yerleşim & Altyapı';
+    let phaseName = 'Issız Harabe Toprak';
+    if (completedCount >= 14) phaseName = 'Mega Siber Metropol & Teknokent';
+    else if (completedCount >= 12) phaseName = 'Uluslararası Liman & Metropol';
+    else if (completedCount >= 9) phaseName = 'Modern Ticaret ve Sanayi Şehri';
+    else if (completedCount >= 6) phaseName = 'Eğlence ve Kültür Merkezi';
+    else if (completedCount >= 3) phaseName = 'Gelişen Kasaba & Altyapı';
+    else if (completedCount >= 1) phaseName = 'İlk Yerleşim & Çiftlik';
 
     statusText.textContent = `Şehirleşme: %${levelPercent} • ${phaseName}`;
   }
 
-  // SVG Çizimi: Issız başlayıp zenginleşen şehir katmanları
+  // 3D Isometric Building Helper
+  const isoBox = (x, y, w, d, h, topCol, leftCol, rightCol, stroke = 'rgba(0,0,0,0.15)') => {
+    // x, y: base center top point
+    // w: half width X, d: depth Y slope
+    const pTop = `${x},${y - h} ${x + w},${y - h + d} ${x},${y - h + 2*d} ${x - w},${y - h + d}`;
+    const pLeft = `${x - w},${y - h + d} ${x},${y - h + 2*d} ${x},${y + 2*d} ${x - w},${y + d}`;
+    const pRight = `${x},${y - h + 2*d} ${x + w},${y - h + d} ${x + w},${y + d} ${x},${y + 2*d}`;
+
+    return `
+      <polygon points="${pLeft}" fill="${leftCol}" stroke="${stroke}" stroke-width="0.75" />
+      <polygon points="${pRight}" fill="${rightCol}" stroke="${stroke}" stroke-width="0.75" />
+      <polygon points="${pTop}" fill="${topCol}" stroke="${stroke}" stroke-width="0.75" />
+    `;
+  };
+
+  // 3D Tree Helper
+  const isoTree = (x, y, scale = 1) => {
+    return `
+      <g transform="translate(${x}, ${y}) scale(${scale})">
+        <!-- Gövde -->
+        ${isoBox(0, 0, 3, 2, 8, '#78350f', '#451a03', '#92400e')}
+        <!-- Yapraklar -->
+        ${isoBox(0, -6, 12, 7, 10, '#22c55e', '#15803d', '#16a34a')}
+        ${isoBox(0, -14, 8, 5, 8, '#4ade80', '#16a34a', '#22c55e')}
+      </g>
+    `;
+  };
+
   let svgHTML = `
     <defs>
-      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="${completedCount >= 3 ? '#bae6fd' : '#cbd5e1'}" />
-        <stop offset="100%" stop-color="${completedCount >= 3 ? '#f0f9ff' : '#94a3b8'}" />
+      <!-- Gökyüzü ve Ortam Gradyanları -->
+      <linearGradient id="isoSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${completedCount >= 4 ? '#bae6fd' : '#cbd5e1'}" />
+        <stop offset="100%" stop-color="${completedCount >= 4 ? '#f0f9ff' : '#94a3b8'}" />
       </linearGradient>
-      <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="${completedCount >= 3 ? '#86efac' : '#94a3b8'}" />
-        <stop offset="100%" stop-color="${completedCount >= 3 ? '#4ade80' : '#64748b'}" />
+      
+      <!-- 3D Güneş & Glow -->
+      <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fef08a" stop-opacity="1" />
+        <stop offset="100%" stop-color="#fef08a" stop-opacity="0" />
+      </radialGradient>
+
+      <!-- Cam Yansıma Gradyanı -->
+      <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#38bdf8" />
+        <stop offset="100%" stop-color="#0284c7" />
       </linearGradient>
     </defs>
 
-    <!-- Gökyüzü -->
-    <rect width="460" height="210" fill="url(#skyGrad)" />
-    <circle cx="390" cy="50" r="28" fill="${completedCount >= 2 ? '#fef08a' : '#f1f5f9'}" opacity="0.8" />
+    <!-- 1. Arka Plan Gökyüzü & Güneş -->
+    <rect width="540" height="320" fill="url(#isoSky)" />
+    <circle cx="460" cy="50" r="45" fill="url(#sunGlow)" />
+    <circle cx="460" cy="50" r="18" fill="#fde047" />
 
-    <!-- Arka Plan Dağlar / Tepeler -->
-    <path d="M 0 160 Q 110 110, 220 150 T 460 140 L 460 210 L 0 210 Z" fill="${completedCount >= 3 ? '#bbf7d0' : '#cbd5e1'}" opacity="0.6" />
+    <!-- Yüzen Bulutlar -->
+    <g opacity="0.85">
+      <ellipse cx="90" cy="45" rx="28" ry="12" fill="#ffffff" />
+      <ellipse cx="110" cy="40" rx="20" ry="14" fill="#ffffff" />
+      <ellipse cx="370" cy="65" rx="35" ry="14" fill="#ffffff" />
+      <ellipse cx="395" cy="60" rx="24" ry="16" fill="#ffffff" />
+    </g>
 
-    <!-- Zemin (Toprak / Çim) -->
-    <path d="M 0 160 C 120 155, 300 158, 460 160 L 460 210 L 0 210 Z" fill="url(#groundGrad)" />
+    <!-- 2. ANA 3D İZOMETRİK TABAN ADASI (Floating 3D Island Base) -->
+    <!-- Alt Toprak Katmanı (Left Side & Right Side Shadows) -->
+    <polygon points="40,160 270,290 270,312 40,182" fill="#475569" stroke="#334155" stroke-width="1" />
+    <polygon points="270,290 500,160 500,182 270,312" fill="#334155" stroke="#1e293b" stroke-width="1" />
+    
+    <!-- Üst Çimen Yüzeyi -->
+    <polygon points="270,30 500,160 270,290 40,160" fill="${completedCount >= 3 ? '#86efac' : '#94a3b8'}" stroke="${completedCount >= 3 ? '#4ade80' : '#64748b'}" stroke-width="2" />
+
+    <!-- 3D Izgara ve Çim Çizgileri -->
+    <g opacity="0.25" stroke="#ffffff" stroke-width="1">
+      <line x1="155" y1="95" x2="385" y2="225" />
+      <line x1="270" y1="30" x2="270" y2="290" />
+      <line x1="385" y1="95" x2="155" y2="225" />
+    </g>
   `;
 
-  // Seviye 0: Issız harabe iskelet binalar
+  // Seviye 0: Issız ve Harabe Ada İskeleti
   if (completedCount === 0) {
     svgHTML += `
-      <!-- Issız Harabe Binalar -->
-      <rect x="40" y="90" width="60" height="75" rx="8" fill="#94a3b8" stroke="#64748b" stroke-width="2" />
-      <rect x="120" y="70" width="75" height="95" rx="8" fill="#64748b" stroke="#475569" stroke-width="2" />
-      <rect x="220" y="100" width="65" height="65" rx="8" fill="#94a3b8" stroke="#64748b" stroke-width="2" />
-      <rect x="310" y="80" width="70" height="85" rx="8" fill="#64748b" stroke="#475569" stroke-width="2" />
+      <!-- Issız Harabe Taşlar ve Kuru Çatlaklar -->
+      ${isoBox(200, 160, 22, 12, 16, '#94a3b8', '#64748b', '#475569')}
+      ${isoBox(330, 150, 26, 14, 12, '#94a3b8', '#64748b', '#475569')}
+      ${isoBox(270, 190, 18, 10, 10, '#64748b', '#475569', '#334155')}
       
-      <!-- Kuru Çatlaklar -->
-      <path d="M 50 175 L 80 185 L 110 180 M 240 180 L 270 190" stroke="#475569" stroke-width="2" stroke-dasharray="3,3" />
-      <text x="230" y="195" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">Issız ve Terk Edilmiş Bölge</text>
+      <path d="M 230 180 L 250 195 L 290 185 M 310 140 L 340 155" stroke="#475569" stroke-width="2" stroke-dasharray="3,3" />
+      <text x="270" y="245" font-size="12" font-weight="900" fill="#334155" text-anchor="middle" letter-spacing="1">ISSIZ HARABE ADASI</text>
     `;
   }
 
-  // Seviye 1+: Asfalt Yollar ve Sokak Lambaları
+  // Seviye 1+: 3D Çiftlik Evi, Çitler ve Giriş Yolu (🏡)
   if (completedCount >= 1) {
     svgHTML += `
-      <!-- Asfalt Yol -->
-      <path d="M 0 185 Q 230 178, 460 185" stroke="#334155" stroke-width="20" fill="none" />
-      <path d="M 0 185 Q 230 178, 460 185" stroke="#f8fafc" stroke-width="2" stroke-dasharray="8,8" fill="none" />
+      <!-- Ana İzometrik Asfalt Cadde -->
+      <polygon points="120,205 160,230 420,80 380,55" fill="#334155" stroke="#475569" stroke-width="1" />
+      <line x1="140" y1="218" x2="400" y2="68" stroke="#f8fafc" stroke-width="2" stroke-dasharray="8,8" />
+
+      <!-- Çiftlik Evi (3D Ahşap Villa) -->
+      ${isoBox(110, 150, 24, 14, 28, '#fef08a', '#d97706', '#b45309')}
+      <!-- Çatı -->
+      <polygon points="110,105 138,122 110,138 82,122" fill="#ef4444" stroke="#b91c1c" stroke-width="1" />
       
-      <!-- Sokak Lambaları -->
-      <line x1="60" y1="175" x2="60" y2="155" stroke="#475569" stroke-width="2" />
-      <circle cx="60" cy="155" r="4" fill="#fef08a" />
-      <line x1="200" y1="175" x2="200" y2="155" stroke="#475569" stroke-width="2" />
-      <circle cx="200" cy="155" r="4" fill="#fef08a" />
-      <line x1="360" y1="175" x2="360" y2="155" stroke="#475569" stroke-width="2" />
-      <circle cx="360" cy="155" r="4" fill="#fef08a" />
+      <!-- Su Kuyusu & Çitler -->
+      ${isoBox(75, 170, 8, 5, 8, '#cbd5e1', '#64748b', '#475569')}
+      ${isoTree(60, 145, 0.9)}
+      ${isoTree(145, 125, 0.8)}
     `;
   }
 
-  // Seviye 2+: Işıkları Yanan Konutlar & Binalar
+  // Seviye 2+: Elektrik Şebekesi & 3D Sokak Lambaları (💡)
   if (completedCount >= 2) {
     svgHTML += `
-      <!-- Işıkları Yanan Modern Binalar -->
-      <rect x="30" y="90" width="55" height="75" rx="6" fill="#475569" stroke="#334155" stroke-width="2" />
-      <rect x="40" y="100" width="10" height="12" fill="#fef08a" rx="2" />
-      <rect x="60" y="100" width="10" height="12" fill="#fef08a" rx="2" />
-      <rect x="40" y="125" width="10" height="12" fill="#fef08a" rx="2" />
-      <rect x="60" y="125" width="10" height="12" fill="#fef08a" rx="2" />
-
-      <rect x="100" y="70" width="70" height="95" rx="6" fill="#334155" stroke="#1e293b" stroke-width="2" />
-      <rect x="112" y="80" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="140" y="80" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="112" y="105" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="140" y="105" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="112" y="130" width="12" height="12" fill="#fef08a" rx="2" />
-      <rect x="140" y="130" width="12" height="12" fill="#fef08a" rx="2" />
-    `;
-  }
-
-  // Seviye 3+: Şehir Parkı, Ağaçlar & Fıskiye
-  if (completedCount >= 3) {
-    svgHTML += `
-      <!-- Park & Ağaçlar -->
-      <g transform="translate(190, 120)">
-        <!-- Fıskiye Havuzu -->
-        <ellipse cx="40" cy="40" rx="24" ry="10" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
-        <circle cx="40" cy="38" r="4" fill="#ffffff" />
-        <!-- Ağaç 1 -->
-        <polygon points="10,35 18,15 26,35" fill="#15803d" />
-        <rect x="16" y="35" width="4" height="8" fill="#78350f" />
-        <!-- Ağaç 2 -->
-        <polygon points="56,35 64,15 72,35" fill="#16a34a" />
-        <rect x="62" y="35" width="4" height="8" fill="#78350f" />
+      <!-- Trafo İstasyonu -->
+      ${isoBox(165, 185, 16, 10, 18, '#fbbf24', '#d97706', '#92400e')}
+      
+      <!-- 3D Işık Saçan Sokak Lambaları -->
+      <g>
+        <line x1="160" y1="205" x2="160" y2="185" stroke="#1e293b" stroke-width="2.5" />
+        <circle cx="160" cy="185" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
+        
+        <line x1="280" y1="135" x2="280" y2="115" stroke="#1e293b" stroke-width="2.5" />
+        <circle cx="280" cy="115" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
+        
+        <line x1="370" y1="85" x2="370" y2="65" stroke="#1e293b" stroke-width="2.5" />
+        <circle cx="370" cy="65" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
       </g>
     `;
   }
 
-  // Seviye 4+: Modern İş Kuleleri & Gökdelenler
+  // Seviye 3+: Su Arıtma & 3D Su Kulesi (🚰)
+  if (completedCount >= 3) {
+    svgHTML += `
+      <!-- 3D Mavi Su Kulesi -->
+      ${isoBox(215, 105, 16, 10, 36, '#38bdf8', '#0284c7', '#0369a1')}
+      <ellipse cx="215" cy="65" rx="14" ry="7" fill="#0284c7" />
+      ${isoTree(190, 85, 0.9)}
+    `;
+  }
+
+  // Seviye 4+: Şehir Parkı, Fıskiye ve Ağaçlık (🌳)
   if (completedCount >= 4) {
     svgHTML += `
-      <!-- Cam Gökdelen -->
-      <rect x="290" y="45" width="60" height="120" rx="6" fill="#0284c7" stroke="#0369a1" stroke-width="2" />
-      <line x1="300" y1="45" x2="300" y2="165" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
-      <line x1="320" y1="45" x2="320" y2="165" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
-      <line x1="340" y1="45" x2="340" y2="165" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
-      <!-- Çatı Anteni -->
-      <line x1="320" y1="45" x2="320" y2="25" stroke="#e11d48" stroke-width="3" />
-      <circle cx="320" cy="25" r="3" fill="#e11d48" />
+      <!-- 3D Park Alanı Tabanı -->
+      <polygon points="270,170 330,205 270,240 210,205" fill="#4ade80" stroke="#16a34a" stroke-width="1.5" />
+      
+      <!-- Fıskiye Havuzu -->
+      <ellipse cx="270" cy="205" rx="18" ry="9" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
+      <circle cx="270" cy="203" r="4" fill="#ffffff" />
+      
+      ${isoTree(230, 195, 1)}
+      ${isoTree(310, 195, 1)}
+      ${isoTree(270, 230, 0.85)}
     `;
   }
 
-  // Seviye 5+: Sinema Binası (🎬 SİNEMA)
+  // Seviye 5+: 3D Modern İş Kuleleri & Rezidanslar (🏢)
   if (completedCount >= 5) {
     svgHTML += `
-      <!-- Modern Sinema Kompleksi -->
-      <rect x="365" y="80" width="70" height="85" rx="6" fill="#be123c" stroke="#881337" stroke-width="2" />
-      <rect x="375" y="90" width="50" height="18" rx="4" fill="#fbbf24" />
-      <text x="400" y="103" font-size="9" font-weight="900" fill="#881337" text-anchor="middle">🎬 SİNEMA</text>
-      <!-- Sinema Işıkları -->
-      <circle cx="375" cy="120" r="3" fill="#fef08a" />
-      <circle cx="390" cy="120" r="3" fill="#fef08a" />
-      <circle cx="405" cy="120" r="3" fill="#fef08a" />
-      <circle cx="420" cy="120" r="3" fill="#fef08a" />
+      <!-- Gökdelen 1 (Cam Kule) -->
+      ${isoBox(335, 130, 28, 16, 85, '#60a5fa', '#2563eb', '#1d4ed8')}
+      <!-- Çatı Helikopter Pisti -->
+      <polygon points="335,40 355,51 335,62 315,51" fill="#f8fafc" stroke="#dc2626" stroke-width="2" />
+      <text x="335" y="55" font-size="10" font-weight="900" fill="#dc2626" text-anchor="middle">H</text>
+      
+      <!-- Gökdelen 2 (Yan Blok) -->
+      ${isoBox(385, 155, 22, 12, 55, '#93c5fd', '#3b82f6', '#1d4ed8')}
     `;
   }
 
-  // Seviye 6+: Lunapark & Dönen Dönme Dolap (🎡)
+  // Seviye 6+: 3D Sinema & Gösteri Merkezi (🎬)
   if (completedCount >= 6) {
     svgHTML += `
-      <!-- Lunapark & Dönme Dolap -->
-      <g transform="translate(235, 30)">
-        <circle cx="40" cy="55" r="32" stroke="#e11d48" stroke-width="3" fill="none" stroke-dasharray="6,4" />
-        <line x1="40" y1="23" x2="40" y2="87" stroke="#fbbf24" stroke-width="2" />
-        <line x1="8" y1="55" x2="72" y2="55" stroke="#fbbf24" stroke-width="2" />
-        <line x1="40" y1="55" x2="25" y2="105" stroke="#475569" stroke-width="4" />
-        <line x1="40" y1="55" x2="55" y2="105" stroke="#475569" stroke-width="4" />
+      <!-- Sinema Binası -->
+      ${isoBox(215, 235, 26, 14, 30, '#f43f5e', '#be123c', '#881337')}
+      <!-- Tabela -->
+      <polygon points="215,198 238,210 215,222 192,210" fill="#fde047" />
+      <text x="215" y="213" font-size="7" font-weight="900" fill="#881337" text-anchor="middle">🎬 SİNEMA</text>
+    `;
+  }
+
+  // Seviye 7+: 3D Lunapark & Dönme Dolap (🎡)
+  if (completedCount >= 7) {
+    svgHTML += `
+      <!-- 3D Dönme Dolap Grubu -->
+      <g transform="translate(435, 110)">
+        <circle cx="0" cy="-35" r="28" stroke="#e11d48" stroke-width="2.5" fill="none" stroke-dasharray="6,4" />
+        <line x1="0" y1="-63" x2="0" y2="-7" stroke="#fbbf24" stroke-width="1.5" />
+        <line x1="-28" y1="-35" x2="28" y2="-35" stroke="#fbbf24" stroke-width="1.5" />
+        <line x1="0" y1="-35" x2="-14" y2="10" stroke="#475569" stroke-width="3" />
+        <line x1="0" y1="-35" x2="14" y2="10" stroke="#475569" stroke-width="3" />
+        
         <!-- Kabinler -->
-        <circle cx="40" cy="23" r="5" fill="#38bdf8" />
-        <circle cx="40" cy="87" r="5" fill="#38bdf8" />
-        <circle cx="8" cy="55" r="5" fill="#38bdf8" />
-        <circle cx="72" cy="55" r="5" fill="#38bdf8" />
-        <text x="40" y="112" font-size="8" font-weight="900" fill="#e11d48" text-anchor="middle">🎡 LUNAPARK</text>
+        <circle cx="0" cy="-63" r="4" fill="#38bdf8" />
+        <circle cx="0" cy="-7" r="4" fill="#38bdf8" />
+        <circle cx="-28" cy="-35" r="4" fill="#38bdf8" />
+        <circle cx="28" cy="-35" r="4" fill="#38bdf8" />
+        <text x="0" y="20" font-size="7.5" font-weight="900" fill="#e11d48" text-anchor="middle">🎡 LUNAPARK</text>
+      </g>
+    `;
+  }
+
+  // Seviye 8+: 3D Şehir Hastanesi & Ambulans (🏥)
+  if (completedCount >= 8) {
+    svgHTML += `
+      <!-- Şehir Hastanesi -->
+      ${isoBox(160, 120, 30, 16, 42, '#ffffff', '#e2e8f0', '#cbd5e1')}
+      <!-- Kırmızı Çapraz (+) -->
+      <polygon points="160,70 178,80 160,90 142,80" fill="#ef4444" />
+      <text x="160" y="83" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">+</text>
+      
+      <!-- Mini Ambulans -->
+      ${isoBox(190, 150, 9, 5, 6, '#ffffff', '#ef4444', '#dc2626')}
+    `;
+  }
+
+  // Seviye 9+: 3D Alışveriş & Ticaret Merkezi (🛍️)
+  if (completedCount >= 9) {
+    svgHTML += `
+      <!-- AVM Blokları -->
+      ${isoBox(345, 205, 32, 18, 28, '#c084fc', '#9333ea', '#6b21a8')}
+      <!-- Cam Kubbe -->
+      <ellipse cx="345" cy="172" rx="14" ry="7" fill="#38bdf8" opacity="0.85" />
+      <text x="345" y="195" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">🛍️ AVM</text>
+    `;
+  }
+
+  // Seviye 10+: 3D Hızlı Tren Garı & Raylar (🚄)
+  if (completedCount >= 10) {
+    svgHTML += `
+      <!-- Tren Rayları -->
+      <polygon points="410,240 445,260 500,225 465,205" fill="#64748b" />
+      <line x1="420" y1="248" x2="480" y2="213" stroke="#f8fafc" stroke-width="2" stroke-dasharray="4,4" />
+      
+      <!-- Tren Garı -->
+      ${isoBox(460, 200, 24, 14, 22, '#38bdf8', '#0284c7', '#0369a1')}
+      <!-- Hızlı Tren Vagonu -->
+      ${isoBox(445, 235, 18, 7, 9, '#ffffff', '#0284c7', '#0369a1')}
+    `;
+  }
+
+  // Seviye 11+: 3D Uydu & Telekom Kulesi (📡)
+  if (completedCount >= 11) {
+    svgHTML += `
+      <!-- Telekom Çelik Kulesi -->
+      <g transform="translate(100, 75)">
+        <line x1="0" y1="25" x2="0" y2="-45" stroke="#e11d48" stroke-width="3" />
+        <line x1="-12" y1="25" x2="0" y2="-45" stroke="#cbd5e1" stroke-width="1.5" />
+        <line x1="12" y1="25" x2="0" y2="-45" stroke="#cbd5e1" stroke-width="1.5" />
+        <ellipse cx="0" cy="-20" rx="10" ry="5" fill="#f8fafc" stroke="#94a3b8" />
+        <circle cx="0" cy="-45" r="4.5" fill="#ef4444" filter="drop-shadow(0 0 6px #ef4444)" />
+        <text x="0" y="38" font-size="7" font-weight="900" fill="#e11d48" text-anchor="middle">📡 5G</text>
+      </g>
+    `;
+  }
+
+  // Seviye 12+: 3D Uluslararası Liman & Konteyner Terminali (🚢)
+  if (completedCount >= 12) {
+    svgHTML += `
+      <!-- Liman İskelesi & Su -->
+      <polygon points="50,170 10,195 70,230 110,205" fill="#0284c7" opacity="0.9" />
+      
+      <!-- Konteyner Blokları -->
+      ${isoBox(75, 200, 10, 5, 8, '#f97316', '#c2410c', '#9a3412')}
+      ${isoBox(90, 210, 10, 5, 8, '#22c55e', '#15803d', '#166534')}
+      ${isoBox(75, 192, 10, 5, 8, '#3b82f6', '#1d4ed8', '#1e40af')}
+      
+      <!-- 3D Vinç -->
+      <line x1="50" y1="185" x2="50" y2="155" stroke="#eab308" stroke-width="3" />
+      <line x1="40" y1="155" x2="70" y2="155" stroke="#eab308" stroke-width="2.5" />
+    `;
+  }
+
+  // Seviye 13+: 3D Yönetim Sarayı / Hükümet Konağı (🏛️)
+  if (completedCount >= 13) {
+    svgHTML += `
+      <!-- Görkemli Saray -->
+      ${isoBox(270, 75, 36, 18, 45, '#fef08a', '#eab308', '#ca8a04')}
+      <!-- Kubbe -->
+      <ellipse cx="270" cy="25" rx="16" ry="9" fill="#fde047" stroke="#b45309" stroke-width="1.5" />
+      <text x="270" y="52" font-size="8" font-weight="900" fill="#78350f" text-anchor="middle">🏛️ SARAY</text>
+    `;
+  }
+
+  // Seviye 14: 3D Teknoloji Vadisi & Roket Fırlatma Rampası (🚀)
+  if (completedCount >= 14) {
+    svgHTML += `
+      <!-- Roket Platformu -->
+      ${isoBox(450, 60, 22, 12, 16, '#0f172a', '#1e293b', '#334155')}
+      
+      <!-- 3D Uzay Roketi -->
+      <g transform="translate(450, 45)">
+        <polygon points="0,-42 7,-15 -7,-15" fill="#f8fafc" stroke="#dc2626" stroke-width="1" />
+        <rect x="-6" y="-15" width="12" height="26" fill="#f8fafc" stroke="#475569" />
+        <polygon points="-6,11 -12,20 -6,18" fill="#ef4444" />
+        <polygon points="6,11 12,20 6,18" fill="#ef4444" />
+        <!-- Alev Efekti -->
+        <polygon points="-4,18 0,30 4,18" fill="#f97316" filter="drop-shadow(0 0 6px #f97316)" />
+        <text x="0" y="-48" font-size="8.5" font-weight="900" fill="#dc2626" text-anchor="middle">🚀 HAZIR</text>
       </g>
     `;
   }
 
   svg.innerHTML = svgHTML;
-
+}
 
 // Konu Yol Haritasını (Timeline) Ekrana Basan Fonksiyon
 function renderSkillTree() {
@@ -1231,15 +1379,9 @@ function renderSkillTree() {
       </div>
     `;
 
-    // Tıklama ile Hızlı Özet Modalını Açma
+    // Tıklama ile Hızlı Özet Modalını Açma (Kilitli olsa bile okunabilir)
     const cardEl = row.querySelector('.timeline-card');
     cardEl.addEventListener('click', () => {
-      if (isLocked) {
-        sfx.playError();
-        logToTerminal(`🔒 Bu konu henüz kilitli! Sıradaki aktif konuyu tamamlamalısın.`, 'hint');
-        return;
-      }
-
       state.selectedNodeId = topic.id;
       sfx.playPop();
       openTopicReviewModal(topic);
@@ -1252,261 +1394,277 @@ function renderSkillTree() {
 // --- 7.1 KONU HIZLI ÖZET MODAL MOTORU (Topic Quick Review Modal Engine) ---
 
 const TOPIC_REVIEWS_DB = {
-  python_1: {
-    title: 'Değişkenler & Veri Tipleri',
-    readTime: '2 dk okuma',
-    rulesHeading: 'İSİMLENDİRME VE TANIMLAMA KURALLARI',
-    rules: [
-      'Açıklayıcı isimler kullanın (örn: <code>kullanici_yasi</code>, <code>x</code> değil)',
-      'Bir harf veya alt çizgi (<code>_</code>) ile başlayın, rakamla başlamayın',
-      'Çok kelimeli değişkenler için <code>snake_case</code> stilini kullanın',
-      'Python ayrılmış anahtar kelimelerinden kaçının (<code>global</code>, <code>pass</code>, <code>int</code>, <code>for</code> gibi)'
+  "python_1": {
+    "title": "Değişkenler & Veri Tipleri",
+    "readTime": "2 dk okuma",
+    "rewardText": "🌱 Giriş Çiftliği & Kuyu Basıncı",
+    "logic": "Python'da değişkenler verileri saklayan etiketlerdir. Tür belirtmeksizin doğrudan değer ataması yapılır.",
+    "syntaxRules": [
+      "<code>sayi = 10</code> : Tam sayı (integer) değişkeni tanımlar.",
+      "<code>metin = \"Python\"</code> : Metin (string) değişkeni oluşturur.",
+      "<code>ondalik = 3.14</code> : Küsurlu sayı (float) oluşturur.",
+      "<code>print(degisken)</code> : Değişkenin değerini terminale basar."
     ],
-    typesHeading: 'TEMEL VERİ TÜRLERİ',
-    types: [
-      { name: 'int', label: 'TÜR', value: '42' },
-      { name: 'float', label: 'TÜR', value: '3.14' },
-      { name: 'str', label: 'TÜR', value: '"merhaba"' },
-      { name: 'bool', label: 'TÜR', value: 'True' }
-    ]
+    "pitfalls": [
+      "⚠️ Değişken isimleri rakamla başlayamaz (Örn: <code>1sayi = 5</code> hatalıdır, <code>sayi_1 = 5</code> olmalıdır).",
+      "⚠️ Python büyük/küçük harfe duyarlıdır (<code>Yas</code> ile <code>yas</code> iki farklı değişkendir).",
+      "⚠️ Metin tanımlarken tırnak işaretlerini kapatmayı unutmayın."
+    ],
+    "exampleCode": "isim = \"Bengi\"\nyas = 22\nprint(f\"Merhaba {isim}, Yaş: {yas}\")"
   },
-  python_2: {
-    title: 'Stringler & Metin İşlemleri',
-    readTime: '2 dk okuma',
-    rulesHeading: 'METİN VE DİLİMLEME KURALLARI',
-    rules: [
-      'İndeksler 0\'dan başlar: <code>metin[0]</code> ilk harfi verir',
-      'Negatif indeksler sondan sayar: <code>metin[-1]</code> son harftir',
-      'Dilimleme: <code>metin[0:4]</code> 0\'dan 4. indekse kadar (4 hariç) alır',
-      'Modern metin birleştirme için f-string kullanın: <code>f"Merhaba {isim}"</code>'
+  "python_2": {
+    "title": "Stringler & Metin İşlemleri",
+    "readTime": "2 dk okuma",
+    "rewardText": "💡 Şehir Elektrik Şebekesi",
+    "logic": "Metinler karakter dizileridir. Sıfırdan başlayan indekslerle harflere erişilebilir ve dilimleme yapılabilir.",
+    "syntaxRules": [
+      "<code>metin[0]</code> : Metnin ilk karakterini seçer.",
+      "<code>metin[start:stop]</code> : Belirtilen aralıktaki alt metni dilimler.",
+      "<code>len(metin)</code> : Toplam karakter sayısını döner.",
+      "<code>metin.upper() / .lower()</code> : Tüm harfleri büyütür veya küçültür."
     ],
-    typesHeading: 'TEMEL STRİNG METOTLARI',
-    types: [
-      { name: 'len()', label: 'METOT', value: 'len("kod") -> 3' },
-      { name: '.upper()', label: 'METOT', value: '"abc".upper() -> "ABC"' },
-      { name: '.replace()', label: 'METOT', value: '"a-b".replace("-"," ")' },
-      { name: 'f-string', label: 'SÖZDİZİMİ', value: 'f"{ad} {yas}"' }
-    ]
+    "pitfalls": [
+      "⚠️ Dilimlemede bitiş indeksi dahil edilmez (<code>[0:3]</code> 0, 1 ve 2. indeksleri alır).",
+      "⚠️ Stringler doğrudan indeksle değiştirilemez (<code>metin[0] = \"A\"</code> hata verir).",
+      "⚠️ Olmayan bir indekse tekil erişim <code>IndexError</code> fırlatır."
+    ],
+    "exampleCode": "dil = \"Python\"\nilk = dil[0]      # 'P'\nparca = dil[0:2]  # 'Py'\nprint(dil.upper()) # 'PYTHON'"
   },
-  python_3: {
-    title: 'Operatörler & Matematik',
-    readTime: '2 dk okuma',
-    rulesHeading: 'MATEMATİKSEL VE MANTIKSAL KURALLAR',
-    rules: [
-      '<code>//</code> tam sayı bölmesi yapar (ondalık kısmı atar)',
-      '<code>%</code> modu yani bölme işleminden kalanı verir',
-      '<code>**</code> üs alma işlemidir (örn: <code>2 ** 3 = 8</code>)',
-      '<code>and</code> her iki koşul doğruysa, <code>or</code> en az biri doğruysa <code>True</code> döner'
+  "python_3": {
+    "title": "Operatörler & Matematik",
+    "readTime": "2 dk okuma",
+    "rewardText": "🚰 Temiz Su Arıtma & Çeşmeler",
+    "logic": "Sayısal hesaplamalar ve mantıksal karşılaştırmalar için aritmetik ve mantık operatörleri kullanılır.",
+    "syntaxRules": [
+      "<code>+ , - , * , /</code> : Temel dört işlem operatörleri.",
+      "<code>//</code> (Tam Bölme) : Bölümün sadece tam sayı kısmını alır.",
+      "<code>%</code> (Mod / Kalan) : Bölme işleminden kalanı bulur.",
+      "<code>**</code> (Üs Alma) : Sayının kuvvetini hesaplar (örn: <code>2 ** 3 = 8</code>)."
     ],
-    typesHeading: 'ÖNEMLİ OPERATÖRLER',
-    types: [
-      { name: '//', label: 'TAM BÖLME', value: '7 // 2 -> 3' },
-      { name: '%', label: 'MOD (KALAN)', value: '7 % 3 -> 1' },
-      { name: '**', label: 'ÜS ALMA', value: '2 ** 4 -> 16' },
-      { name: '!=', label: 'EŞİT DEĞİL', value: '5 != 3 -> True' }
-    ]
+    "pitfalls": [
+      "⚠️ Standart bölme <code>/</code> daima <code>float</code> döner (örn: <code>4 / 2 = 2.0</code>).",
+      "⚠️ Eşitlik kontrolünde tek eşittir <code>=</code> (atama) değil, çift eşittir <code>==</code> kullanılır.",
+      "⚠️ İşlem önceliğine dikkat edin; parantez <code>()</code> her zaman önceliklidir."
+    ],
+    "exampleCode": "x = 10\ny = 3\ntam_bolum = x // y  # 3\nkalan = x % y       # 1\nus = 2 ** 4         # 16"
   },
-  python_4: {
-    title: 'Koşullu Durumlar (If / Elif / Else)',
-    readTime: '2 dk okuma',
-    rulesHeading: 'KOŞUL VE BLOK KURALLARI',
-    rules: [
-      'Koşul satırlarının sonuna mutlaka iki nokta (<code>:</code>) koyun',
-      'Koşulun altındaki kod bloğu için 4 boşluk girinti (indentation) bırakın',
-      'Eşitlik kıyaslaması için <code>==</code>, atama için <code>=</code> kullanın',
-      'Birden fazla basamaklı koşullar için <code>elif</code> kullanın'
+  "python_4": {
+    "title": "Koşullu Durumlar (If / Elif / Else)",
+    "readTime": "2 dk okuma",
+    "rewardText": "🌳 Şehir Parkı & Fıskiye",
+    "logic": "Programın belirli şartlara göre farklı kod bloklarını çalıştırmasını sağlar.",
+    "syntaxRules": [
+      "<code>if kosul:</code> : Koşul True ise içindeki bloğu çalıştırır.",
+      "<code>elif baska_kosul:</code> : Önceki koşul sağlanmazsa yeni bir şart dener.",
+      "<code>else:</code> : Hiçbir koşul sağlanmadığında devreye giren varsayılan blok.",
+      "<code>and / or / not</code> : Birden fazla koşulu birleştiren mantıksal bağlaçlar."
     ],
-    typesHeading: 'KOŞUL YAPILARI',
-    types: [
-      { name: 'if', label: 'BAŞLANGIÇ', value: 'if puan >= 50:' },
-      { name: 'elif', label: 'EK KOŞUL', value: 'elif puan >= 40:' },
-      { name: 'else', label: 'VARSAYILAN', value: 'else: pass' },
-      { name: 'ternary', label: 'TEK SATIR', value: '"Geçti" if p>50 else "Kaldı"' }
-    ]
+    "pitfalls": [
+      "⚠️ Koşul satırlarının sonundaki iki nokta <code>:</code> işaretini unutmayın.",
+      "⚠️ Python girintilere (indentation - 4 boşluk) göre blokları anlar, girintileme hatası yapmayın.",
+      "⚠️ <code>elif</code> yerine sürekli <code>if</code> yazmak her şartı birbirinden bağımsız test eder."
+    ],
+    "exampleCode": "yas = 20\nif yas < 18:\n    print(\"Giriş Yapamaz\")\nelse:\n    print(\"Giriş Yapabilir\")"
   },
-  python_5: {
-    title: 'Listeler & Demetler (Lists & Tuples)',
-    readTime: '3 dk okuma',
-    rulesHeading: 'LİSTE VE DEMET KURALLARI',
-    rules: [
-      'Listeler köşeli parantez <code>[]</code> ile tanımlanır ve değiştirilebilir (mutable)',
-      'Demetler (Tuples) normal parantez <code>()</code> ile tanımlanır ve sabittir (immutable)',
-      '<code>.append()</code> listenin sonuna yeni bir eleman ekler',
-      '<code>.pop()</code> son elemanı siler ve döndürür'
+  "python_5": {
+    "title": "Listeler & Demetler (Lists & Tuples)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🏢 Modern İş Kuleleri & Rezidanslar",
+    "logic": "Birden fazla veriyi tek yapıda tutar. Listeler `[]` değiştirilebilir (mutable), Demetler `()` ise değiştirilemez (immutable) sabit koleksiyonlardır.",
+    "syntaxRules": [
+      "<code>liste.append(eleman)</code> : Listenin sonuna yeni eleman ekler (yerinde günceller).",
+      "<code>liste.pop(indeks)</code> : Belirtilen indisteki elemanı çıkarır (varsayılan: son eleman).",
+      "<code>liste.sort()</code> : Listeyi küçükten büyüğe / alfabetik sıralar.",
+      "<code>demet = (1, 2, 3)</code> : Değiştirilemeyen güvenli demet yapısı."
     ],
-    typesHeading: 'LİSTE İŞLEMLERİ',
-    types: [
-      { name: '[ ]', label: 'LİSTE', value: '[10, 20, 30]' },
-      { name: '( )', label: 'TUPLE', value: '("a", "b", "c")' },
-      { name: '.append()', label: 'EKLE', value: 'liste.append(40)' },
-      { name: '.sort()', label: 'SIRALA', value: 'liste.sort()' }
-    ]
+    "pitfalls": [
+      "⚠️ <code>liste = liste.append(x)</code> yazmayın! `.append()` `None` döner ve listeyi sıfırlar.",
+      "⚠️ Demetlerin elemanlarına atama yapılamaz (<code>demet[0] = \"yeni\"</code> hata verir).",
+      "⚠️ Olmayan indekse erişim <code>IndexError</code> üretir."
+    ],
+    "exampleCode": "urunler = [\"Elma\", \"Muz\"]\nurunler.append(\"Çilek\")\nson = urunler.pop() # 'Çilek'\nprint(urunler)      # ['Elma', 'Muz']"
   },
-  python_6: {
-    title: 'Sözlükler & Kümeler (Dict & Set)',
-    readTime: '3 dk okuma',
-    rulesHeading: 'SÖZLÜK VE KÜME KURALLARI',
-    rules: [
-      'Sözlükler <code>{"anahtar": "değer"}</code> çiftleriyle çalışır',
-      'Olmayan bir anahtarda hata almamak için <code>sozluk.get("anahtar")</code> kullanın',
-      'Kümeler <code>set()</code> veya <code>{1, 2}</code> tekrarlayan elemanları otomatik eler',
-      'Sözlük anahtarları değiştirilemez (örneğin string veya int) olmalıdır'
+  "python_6": {
+    "title": "Sözlükler & Kümeler (Dict & Set)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🎬 Modern Sinema & Tiyatro Kompleksi",
+    "logic": "Sözlükler anahtar-değer (key-value) eşleşmesiyle çalışır. Kümeler (set) ise sırasız ve yalnızca benzersiz elemanlar barındırır.",
+    "syntaxRules": [
+      "<code>sozluk[\"anahtar\"] = deger</code> : Yeni veri ekler veya mevcudu günceller.",
+      "<code>sozluk.get(\"anahtar\", varsayilan)</code> : Anahtar yoksa hata vermeden varsayılanı döner.",
+      "<code>kume = set(liste)</code> : Tekrar eden elemanları eleyerek benzersiz küme üretir.",
+      "<code>kume.add(eleman)</code> : Kümeye yeni tekil eleman ekler."
     ],
-    typesHeading: 'SÖZLÜK & KÜME YAPILARI',
-    types: [
-      { name: '{k: v}', label: 'SÖZLÜK', value: '{"ad": "Bengi", "yas": 25}' },
-      { name: '.keys()', label: 'ANAHTARLAR', value: 'sozluk.keys()' },
-      { name: '.values()', label: 'DEĞERLER', value: 'sozluk.values()' },
-      { name: 'set()', label: 'BENZERSİZ', value: '{1, 2, 2, 3} -> {1, 2, 3}' }
-    ]
+    "pitfalls": [
+      "⚠️ Sözlükte olmayan anahtara <code>sozluk[\"x\"]</code> ile erişmek <code>KeyError</code> fırlatır; güvenli erişim için <code>.get()</code> kullanın.",
+      "⚠️ Kümeler indekslenemez (<code>kume[0]</code> yazamazsınız).",
+      "⚠️ Sözlük anahtarları değiştirilemez (immutable) veri tiplerinden oluşmalıdır (string, int vb.)."
+    ],
+    "exampleCode": "kullanici = {\"ad\": \"Can\", \"rol\": \"Admin\"}\nyas = kullanici.get(\"yas\", 18)\ntekil = set([1, 2, 2, 3]) # {1, 2, 3}"
   },
-  python_7: {
-    title: 'Döngüler (For & While)',
-    readTime: '3 dk okuma',
-    rulesHeading: 'DÖNGÜ VE KONTROL KURALLARI',
-    rules: [
-      '<code>range(5)</code> 0\'dan 4\'e kadar (5 hariç) sayılar üretir',
-      '<code>range(1, 10, 2)</code> 1\'den başlar, 2\'şer artarak 10\'a kadar gider',
-      '<code>break</code> döngüyü anında sonlandırır',
-      '<code>continue</code> o anki adımı atlar ve bir sonraki tura geçer'
+  "python_7": {
+    "title": "Döngüler (For & While)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🎡 Lunapark & Dönme Dolap",
+    "logic": "Belirli bir kod bloğunu bir dizi elemanı üzerinde veya bir koşul sağlandığı sürece tekrarlamak için kullanılır.",
+    "syntaxRules": [
+      "<code>for i in range(basla, bitir):</code> : Belirli sayı aralığında döner.",
+      "<code>while kosul:</code> : Koşul True olduğu sürece dönmeye devam eder.",
+      "<code>break</code> : Döngüyü anında tamamen sonlandırır.",
+      "<code>enumerate(liste) / zip(l1, l2)</code> : İndeks takibi ve paralel döngü sağlar."
     ],
-    typesHeading: 'DÖNGÜ YAPILARI',
-    types: [
-      { name: 'for in', label: 'FOR DÖNGÜSÜ', value: 'for x in liste:' },
-      { name: 'range()', label: 'ARALIK', value: 'range(1, 10)' },
-      { name: 'while', label: 'KOŞULLU', value: 'while sayac < 5:' },
-      { name: 'break', label: 'DURDUR', value: 'if x == 3: break' }
-    ]
+    "pitfalls": [
+      "⚠️ <code>while</code> döngüsünde sayacı artırmayı unutursanız sonsuz döngü oluşur.",
+      "⚠️ <code>range(1, 5)</code> 5'i dahil etmez (1, 2, 3, 4 üretir).",
+      "⚠️ <code>continue</code> döngüyü bitirmez, sadece o anki adımı atlar."
+    ],
+    "exampleCode": "for i, meyve in enumerate([\"Elma\", \"Muz\"]):\n    print(i, meyve)\n# 0 Elma\n# 1 Muz"
   },
-  python_8: {
-    title: 'Fonksiyonlar & Kapsam',
-    readTime: '3 dk okuma',
-    rulesHeading: 'FONKSİYON KURALLARI',
-    rules: [
-      'Fonksiyonlar <code>def fonksiyon_adi():</code> şeklinde tanımlanır',
-      'Sonucu çağıran yere aktarmak için <code>return</code> kullanılır',
-      '<code>*args</code> sınırsız sayıda isimsiz parametre almaya yarar',
-      'Fonksiyon içindeki değişkenler yereldir (local scope)'
+  "python_8": {
+    "title": "Fonksiyonlar & Kapsam (Functions & Scope)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🏥 Şehir Hastanesi & Acil Servis",
+    "logic": "Tekrar eden kod bloklarını yeniden kullanılabilir modüler parçalara dönüştürür.",
+    "syntaxRules": [
+      "<code>def fonk(a, b=10):</code> : Varsayılan parametreli fonksiyon tanımlar.",
+      "<code>return deger</code> : Üretilen sonucu fonksiyon dışına aktarır.",
+      "<code>*args</code> : Değişken sayıda konumsal argümanı demet olarak yakalar.",
+      "<code>**kwargs</code> : İsimlendirilmiş parametreleri sözlük olarak yakalar."
     ],
-    typesHeading: 'FONKSİYON ANATOMİSİ',
-    types: [
-      { name: 'def', label: 'TANIM', value: 'def topla(a, b):' },
-      { name: 'return', label: 'SONUÇ', value: 'return a + b' },
-      { name: 'varsayılan', label: 'PARAMETRE', value: 'def selam(ad="Misafir"):' },
-      { name: '*args', label: 'ESNEK', value: 'def topla(*sayilar):' }
-    ]
+    "pitfalls": [
+      "⚠️ <code>return</code> yazılmayan fonksiyonlar varsayılan olarak <code>None</code> döner.",
+      "⚠️ Fonksiyon içinde tanımlanan değişkenler yereldir (local), dışarıdan erişilemez.",
+      "⚠️ Global bir değişkeni içeride değiştirmek için <code>global degisken</code> bildirimi gerekir."
+    ],
+    "exampleCode": "def topla(*sayilar):\n    return sum(sayilar)\n\nsonuc = topla(5, 10, 15) # 30"
   },
-  python_9: {
-    title: 'Lambda, Map & Filter',
-    readTime: '2 dk okuma',
-    rulesHeading: 'FONKSİYONEL PROGRAMLAMA KURALLARI',
-    rules: [
-      '<code>lambda x: x * 2</code> tek satırlık isimsiz hızlı fonksiyondur',
-      '<code>map(fn, liste)</code> listedeki tüm elemanlara fonksiyonu uygular',
-      '<code>filter(fn, liste)</code> koşula uyan elemanları süzer',
-      'List Comprehension: <code>[x**2 for x in sayilar if x > 2]</code>'
+  "python_9": {
+    "title": "Lambda, Map & Filter (List Comprehension)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🛍️ Alışveriş & Ticaret Merkezi",
+    "logic": "Koleksiyonlar üzerinde tek satırda dönüştürme, filtreleme ve anonim fonksiyon işlemleri sağlar.",
+    "syntaxRules": [
+      "<code>lambda x: x * 2</code> : Tek satırlık isimsiz anonim fonksiyon.",
+      "<code>[x**2 for x in liste]</code> : Hızlı ve temiz liste üreteci (List Comprehension).",
+      "<code>[x for x in liste if x > 0]</code> : Şarta bağlı filtreleme yapan liste üreteci.",
+      "<code>list(map(fonk, liste))</code> : Tüm elemanlara fonksiyon uygular."
     ],
-    typesHeading: 'FONKSİYONEL ARAÇLAR',
-    types: [
-      { name: 'lambda', label: 'TEK SATIR', value: 'kare = lambda x: x**2' },
-      { name: 'map()', label: 'DÖNÜŞTÜR', value: 'map(str, [1, 2, 3])' },
-      { name: 'filter()', label: 'FİLTRELE', value: 'filter(lambda x: x>0, l)' },
-      { name: '[comp]', label: 'LİSTE ÜRETİCİ', value: '[x*2 for x in l]' }
-    ]
+    "pitfalls": [
+      "⚠️ <code>lambda</code> içinde <code>return</code> kullanılmaz.",
+      "⚠️ <code>map()</code> ve <code>filter()</code> iterator döner; sonucu görmek için <code>list()</code> ile sarılmalıdır.",
+      "⚠️ Çok karmaşık iç içe comprehension yapıları kodun okunabilirliğini düşürür."
+    ],
+    "exampleCode": "sayilar = [1, 2, 3, 4, 5]\ncift_kareler = [x**2 for x in sayilar if x % 2 == 0]\n# [4, 16]"
   },
-  python_10: {
-    title: 'Modüller & Paketler',
-    readTime: '2 dk okuma',
-    rulesHeading: 'MODÜL VE PAKET KURALLARI',
-    rules: [
-      '<code>import math</code> ile standart matematik kütüphanesi yüklenir',
-      '<code>from random import randint</code> ile sadece belirli fonksiyon alınır',
-      '<code>import numpy as np</code> ile modüle kısa takma ad (alias) verilir',
-      'Harici paketler terminalden <code>pip install paket_adi</code> ile kurulur'
+  "python_10": {
+    "title": "Modüller & Paketler (Modules & Packages)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🚄 Hızlı Tren Garı & Metro Hattı",
+    "logic": "Python'ın zengin standart kütüphanelerini veya üçüncü parti paketleri projenize dahil etmenizi sağlar.",
+    "syntaxRules": [
+      "<code>import math</code> : Tüm modülü içe aktarır (<code>math.sqrt(16)</code>).",
+      "<code>from random import randint</code> : Sadece ilgili fonksiyonu doğrudan çağrılabilir aktarır.",
+      "<code>import datetime as dt</code> : Modüle kısa bir takma ad (alias) verir.",
+      "<code>pip install paket_adi</code> : Terminalden harici paket yükler."
     ],
-    typesHeading: 'MODÜL KULLANIMI',
-    types: [
-      { name: 'import', label: 'DÂHİL ET', value: 'import math' },
-      { name: 'from..import', label: 'SEÇEREK AL', value: 'from random import choice' },
-      { name: 'as', label: 'TAKMA AD', value: 'import datetime as dt' },
-      { name: 'pip', label: 'YÖNETİCİ', value: 'pip install requests' }
-    ]
+    "pitfalls": [
+      "⚠️ <code>from math import pi</code> yapıldığında <code>math.pi</code> değil doğrudan <code>pi</code> yazılır.",
+      "⚠️ Kendi dosya isminizi standart modül adıyla aynı yapmayın (örn: <code>random.py</code> açmayın).",
+      "⚠️ <code>from modul import *</code> kullanımı isim çakışmalarına yol açabilir, önerilmez."
+    ],
+    "exampleCode": "import math\nfrom random import choice\n\nkok = math.sqrt(25)     # 5.0\nrenk = choice([\"Kırmızı\", \"Mavi\"])"
   },
-  python_11: {
-    title: 'Hata ve İstisna Yönetimi (Try / Except)',
-    readTime: '3 dk okuma',
-    rulesHeading: 'HATA YAKALAMA KURALLARI',
-    rules: [
-      'Hata çıkarabilecek kodlar <code>try:</code> bloğuna yazılır',
-      '<code>except ValueError:</code> sadece belirtilen hatayı yakalar',
-      '<code>finally:</code> hata olsun ya da olmasın daima en son çalışan koddur',
-      '<code>raise Exception("Mesaj")</code> ile bilinçli hata fırlatılır'
+  "python_11": {
+    "title": "Hata ve İstisna Yönetimi (Try / Except)",
+    "readTime": "3 dk okuma",
+    "rewardText": "📡 Uydu İletişim & Radyo Kulesi",
+    "logic": "Çalışma zamanında beklenmeyen aksaklıklar çıktığında programın çökmesini önler ve hatayı zarifçe yönetir.",
+    "syntaxRules": [
+      "<code>try: ... except Hata:</code> : Olası hatayı yakalar ve alternatif blok çalıştırır.",
+      "<code>except ValueError as e:</code> : Hatanın detaylı açıklama mesajına erişir.",
+      "<code>finally:</code> : Hata olsun ya da olmasın mutlaka çalışan temizlik bloğu.",
+      "<code>raise ValueError(\"Mesaj\")</code> : İstenen koşulda manuel hata fırlatır."
     ],
-    typesHeading: 'HATA BLOKLARI',
-    types: [
-      { name: 'try', label: 'DENE', value: 'try: x = int(sayi)' },
-      { name: 'except', label: 'YAKALA', value: 'except ValueError as e:' },
-      { name: 'finally', label: 'SON BLOK', value: 'finally: dosya.close()' },
-      { name: 'raise', label: 'FIRLAT', value: 'raise ValueError("Geçersiz")' }
-    ]
+    "pitfalls": [
+      "⚠️ Çıplak <code>except:</code> kullanmayın; hatanın türünü (örn: <code>ZeroDivisionError</code>) belirtin.",
+      "⚠️ Hata fırlatırken <code>throw</code> değil <code>raise</code> kullanılır.",
+      "⚠️ <code>try</code> bloğu içine yalnızca riskli kodları koyun; tüm programı sarmalamayın."
+    ],
+    "exampleCode": "try:\n    sayi = int(\"abc\")\nexcept ValueError as e:\n    print(\"Geçersiz sayı girdisi!\")\nfinally:\n    print(\"İşlem tamamlandı.\")"
   },
-  python_12: {
-    title: 'Dosya İşlemleri (File I/O)',
-    readTime: '3 dk okuma',
-    rulesHeading: 'DOSYA YÖNETİM KURALLARI',
-    rules: [
-      '<code>with open("dosya.txt", "r") as f:</code> dosyayı işlem bitince otomatik kapatır',
-      '<code>"r"</code> (read) sadece okuma, <code>"w"</code> (write) sıfırlayarak yazma modudur',
-      '<code>"a"</code> (append) dosyanın sonuna yeni satır ekler',
-      'Türkçe karakterler için <code>encoding="utf-8"</code> parametresi eklenmelidir'
+  "python_12": {
+    "title": "Dosya İşlemleri (File I/O)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🚢 Uluslararası Liman & Konteyner Terminali",
+    "logic": "Kalıcı veri saklamak için diske dosya yazma, dosya okuma ve veri ekleme işlemlerini gerçekleştirir.",
+    "syntaxRules": [
+      "<code>with open(\"dosya.txt\", \"w\") as f:</code> : Yazma modunda açar ve otomatik kapatır.",
+      "<code>\"r\"</code> (Read) : Sadece okuma modu (dosya yoksa hata verir).",
+      "<code>\"a\"</code> (Append) : Eski veriyi silmeden dosyanın sonuna ekler.",
+      "<code>f.read() / f.readlines()</code> : Tüm metni veya satırları liste olarak okur."
     ],
-    typesHeading: 'DOSYA MODLARI',
-    types: [
-      { name: 'with open', label: 'GÜVENLİ', value: 'with open("a.txt", "r") as f:' },
-      { name: '"w"', label: 'YAZMA', value: 'open("a.txt", "w", encoding="utf-8")' },
-      { name: '"a"', label: 'EKLEME', value: 'open("a.txt", "a")' },
-      { name: '.read()', label: 'OKUMA', value: 'icerik = f.read()' }
-    ]
+    "pitfalls": [
+      "⚠️ <code>\"w\"</code> modu dosyanın içini tamamen sıfırlar; üzerine eklemek için <code>\"a\"</code> kullanın.",
+      "⚠️ Manuel <code>open()</code> açtıktan sonra <code>f.close()</code> unutulabilir; daima <code>with open()</code> kullanın.",
+      "⚠️ Türkçe karakter sorunları yaşamamak için <code>encoding=\"utf-8\"</code> parametresini ekleyin."
+    ],
+    "exampleCode": "with open(\"gunluk.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Python Harika!\\n\")\n\nwith open(\"gunluk.txt\", \"r\", encoding=\"utf-8\") as f:\n    print(f.read())"
   },
-  python_13: {
-    title: 'Nesne Yönelimli Programlama (OOP)',
-    readTime: '4 dk okuma',
-    rulesHeading: 'NESNE VE SINIF KURALLARI',
-    rules: [
-      'Sınıflar <code>class SinifAdi:</code> şeklinde PascalCase ile adlandırılır',
-      '<code>__init__(self)</code> kurucu metottur ve nesne yaratılırken ilk çağrılır',
-      '<code>self</code> nesnenin kendi özelliklerine ve metotlarına erişimi sağlar',
-      'Kalıtım: <code>class Kopek(Hayvan):</code> üst sınıfın özelliklerini devralır'
+  "python_13": {
+    "title": "Nesne Yönelimli Programlama (OOP)",
+    "readTime": "4 dk okuma",
+    "rewardText": "🏛️ Çiftlik & Şehir Yönetim Sarayı",
+    "logic": "Gerçek dünya varlıklarını ve davranışlarını Sınıf (Class) ve Nesne (Object) mimarisiyle modeller.",
+    "syntaxRules": [
+      "<code>class Araba:</code> : Yeni bir sınıf şablonu tanımlar.",
+      "<code>def __init__(self, ...):</code> : Nesne oluşturulduğunda ilk çalışan kurucu metot.",
+      "<code>self.ozellik = deger</code> : Nesnenin kendi alanlarına ve metotlarına erişim sağlar.",
+      "<code>class Kopek(Hayvan):</code> : Kalıtım (Inheritance) ile üst sınıfın özelliklerini devralır.",
+      "<code>super().__init__()</code> : Üst sınıfın kurucusunu çalıştırır."
     ],
-    typesHeading: 'OOP YAPITAŞLARI',
-    types: [
-      { name: 'class', label: 'SINIF', value: 'class Araba:' },
-      { name: '__init__', label: 'KURUCU', value: 'def __init__(self, model):' },
-      { name: 'self', label: 'REFERANS', value: 'self.model = model' },
-      { name: 'super()', label: 'ÜST SINIF', value: 'super().__init__()' }
-    ]
+    "pitfalls": [
+      "⚠️ Sınıf metotlarının ilk parametresine <code>self</code> yazmayı unutmayın.",
+      "⚠️ Kurucu metot <code>init</code> değil, çift alt tire ile <code>__init__</code> yazılır.",
+      "⚠️ Nesneyi doğrudan print ederken anlamlı metin için <code>__str__(self)</code> metodunu tanımlayın."
+    ],
+    "exampleCode": "class Oyuncu:\n    def __init__(self, isim):\n        self.isim = isim\n    def selamla(self):\n        return f\"Ben {self.isim}\"\n\no1 = Oyuncu(\"Bengi\")\nprint(o1.selamla())"
   },
-  python_14: {
-    title: 'İleri Seviye & GUI / Proje',
-    readTime: '4 dk okuma',
-    rulesHeading: 'PROJE VE ARAYÜZ KURALLARI',
-    rules: [
-      '<code>tkinter</code> Python\'ın dahili masaüstü grafik arayüz kütüphanesidir',
-      '<code>json.loads()</code> metin halindeki JSON verisini Python sözlüğüne çevirir',
-      '<code>json.dumps()</code> Python verisini JSON metnine dönüştürür',
-      'Tüm modülleri birleştiren ana dosya genellikle <code>main.py</code> olarak adlandırılır'
+  "python_14": {
+    "title": "İleri Seviye & GUI / Proje",
+    "readTime": "4 dk okuma",
+    "rewardText": "🚀 Teknoloji Vadisi & Gözlemevi",
+    "logic": "Grafik arayüz (Tkinter), JSON veri haberleşmesi, dekoratörler ve üreteçler ile profesyonel projeler üretir.",
+    "syntaxRules": [
+      "<code>json.dumps(veri) / json.loads(metin)</code> : Python sözlüğü ile JSON stringi arasında dönüşüm yapar.",
+      "<code>@dekorator</code> : Fonksiyonların davranışını değiştirmeden yetenek katar.",
+      "<code>yield deger</code> : Belleği şişirmeden adım adım değer üreten Generator oluşturur.",
+      "<code>pencere.mainloop()</code> : Tkinter masaüstü penceresini açık ve canlı tutar."
     ],
-    typesHeading: 'İLERİ SEVİYE ARAÇLAR',
-    types: [
-      { name: 'tkinter', label: 'ARAYÜZ', value: 'import tkinter as tk' },
-      { name: 'json.loads', label: 'AYRIŞTIR', value: 'veri = json.loads(metin)' },
-      { name: 'json.dumps', label: 'PAKETLE', value: 'json.dumps(sozluk)' },
-      { name: 'mainloop()', label: 'UYGULAMA', value: 'pencere.mainloop()' }
-    ]
+    "pitfalls": [
+      "⚠️ <code>json.load()</code> dosya nesnesi alır, <code>json.loads()</code> metin (string) alır (s takısına dikkat).",
+      "⚠️ Generator fonksiyonlarında <code>return</code> yerine <code>yield</code> kullanılır.",
+      "⚠️ Tkinter'da <code>mainloop()</code> çağrılmazsa pencere açıldığı an kapanır."
+    ],
+    "exampleCode": "import json\n\nveri = {\"proje\": \"Kod Şehri\", \"seviye\": 14}\njson_str = json.dumps(veri)\nprint(json.loads(json_str)[\"proje\"])"
   }
 };
 
-// Eski p1 ve p2 id eşleştirmeleri
+// Eski id eşleştirmeleri
+TOPIC_REVIEWS_DB.p1 = TOPIC_REVIEWS_DB.python_1;
+TOPIC_REVIEWS_DB.p2 = TOPIC_REVIEWS_DB.python_2;
+TOPIC_REVIEWS_DB.p3 = TOPIC_REVIEWS_DB.python_3;
+TOPIC_REVIEWS_DB.p4 = TOPIC_REVIEWS_DB.python_4;
+TOPIC_REVIEWS_DB.p5 = TOPIC_REVIEWS_DB.python_5;
+TOPIC_REVIEWS_DB.p6 = TOPIC_REVIEWS_DB.python_6;
+TOPIC_REVIEWS_DB.p7 = TOPIC_REVIEWS_DB.python_7;
+TOPIC_REVIEWS_DB.p8 = TOPIC_REVIEWS_DB.python_8;
+TOPIC_REVIEWS_DB.p9 = TOPIC_REVIEWS_DB.python_9;
+TOPIC_REVIEWS_DB.p10 = TOPIC_REVIEWS_DB.python_10;
+TOPIC_REVIEWS_DB.p11 = TOPIC_REVIEWS_DB.python_11;
+TOPIC_REVIEWS_DB.p12 = TOPIC_REVIEWS_DB.python_12;
+TOPIC_REVIEWS_DB.p13 = TOPIC_REVIEWS_DB.python_13;
+TOPIC_REVIEWS_DB.p14 = TOPIC_REVIEWS_DB.python_14;
+
 TOPIC_REVIEWS_DB.p1 = TOPIC_REVIEWS_DB.python_1;
 TOPIC_REVIEWS_DB.p2 = TOPIC_REVIEWS_DB.python_2;
 
@@ -1518,21 +1676,23 @@ function openTopicReviewModal(topic) {
   }
 
   const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
-  const reviewData = TOPIC_REVIEWS_DB[topic.id] || TOPIC_REVIEWS_DB.p1;
+  const reviewData = TOPIC_REVIEWS_DB[topic.id] || TOPIC_REVIEWS_DB.python_1 || TOPIC_REVIEWS_DB.p1;
 
   const titleEl = document.getElementById('review-title');
   const readTextEl = document.getElementById('review-read-text');
-  const rulesHeadingEl = document.getElementById('review-rules-heading');
+  const logicEl = document.getElementById('review-logic-text');
   const rulesListEl = document.getElementById('review-rules-list');
-  const typesHeadingEl = document.getElementById('review-types-heading');
-  const typesGridEl = document.getElementById('review-types-grid');
+  const pitfallsListEl = document.getElementById('review-pitfalls-list');
+  const exampleCodeEl = document.getElementById('review-example-code');
+  const rewardTextEl = document.getElementById('review-reward-text');
 
   if (titleEl) titleEl.textContent = topic.title.replace(/^\d+\.\s*/, '') || reviewData.title;
   if (readTextEl) readTextEl.textContent = reviewData.readTime || '2 dk okuma';
-  if (rulesHeadingEl) rulesHeadingEl.textContent = reviewData.rulesHeading || 'İSİMLENDİRME KURALLARI';
+  if (logicEl) logicEl.textContent = reviewData.logic || '';
+  if (rewardTextEl) rewardTextEl.textContent = `Ödül: ${reviewData.rewardText || topic.reward || 'Gelişen Şehir Binası'}`;
 
-  if (rulesListEl) {
-    rulesListEl.innerHTML = reviewData.rules.map(rule => `
+  if (rulesListEl && reviewData.syntaxRules) {
+    rulesListEl.innerHTML = reviewData.syntaxRules.map(rule => `
       <div class="review-rule-item">
         <span class="review-rule-bullet">›</span>
         <span>${rule}</span>
@@ -1540,18 +1700,29 @@ function openTopicReviewModal(topic) {
     `).join('');
   }
 
-  if (typesHeadingEl) typesHeadingEl.textContent = reviewData.typesHeading || 'TEMEL VERİ TÜRLERİ';
-
-  if (typesGridEl) {
-    typesGridEl.innerHTML = reviewData.types.map(t => `
-      <div class="review-type-box">
-        <div class="type-box-header">
-          <span class="type-name">${t.name}</span>
-          <span class="type-tag">${t.label}</span>
-        </div>
-        <span class="type-value">${t.value}</span>
+  if (pitfallsListEl && reviewData.pitfalls) {
+    pitfallsListEl.innerHTML = reviewData.pitfalls.map(p => `
+      <div class="review-pitfall-item">
+        <span class="review-pitfall-bullet">•</span>
+        <span>${p}</span>
       </div>
     `).join('');
+  }
+
+  if (exampleCodeEl) {
+    exampleCodeEl.textContent = reviewData.exampleCode || '# Kod örneği';
+  }
+
+  // Kilit Durumuna Göre Alıştırmaya Başla Butonu ve Kilit Uyarısı Kontrolü
+  const isLocked = topic.status === 'locked';
+  const btnStartPractice = document.getElementById('btn-start-practice');
+  const lockedNotice = document.getElementById('review-locked-notice');
+
+  if (btnStartPractice) {
+    btnStartPractice.style.display = isLocked ? 'none' : 'flex';
+  }
+  if (lockedNotice) {
+    lockedNotice.style.display = isLocked ? 'flex' : 'none';
   }
 
   modal.classList.add('open');
@@ -1567,7 +1738,7 @@ function closeTopicReviewModal() {
 // --- 8. İNTERAKTİF KODLAMA VE KONTROL ALANI (Interactive Challenge & Code Engine) ---
 
 const CHALLENGES_DATABASE = {
-  p1: [
+  python_1: [
     {
       stepNum: 1,
       totalSteps: 5,
@@ -1663,47 +1834,1445 @@ const CHALLENGES_DATABASE = {
     {
       stepNum: 5,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: ÇOKLU DEĞİŞKENLER',
-      title: '5. Soru: Çoklu Değişken Tanımlama',
-      prompt: "<code class=\"code-highlight\">isim</code>, <code class=\"code-highlight\">yas</code> ve <code class=\"code-highlight\">meslek</code> isminde 3 değişken tanımlayabilir misin?",
-      presetCode: `# "isim", "yas" ve "meslek" adında 3 değişken tanımla:\n`,
+      moduleSubtitle: 'MODÜL 1: DEĞİŞKENLER VE EKRANA YAZDIRMA',
+      title: '5. Soru: Değişken Tanımlama & Ekrana Yazdırma',
+      prompt: "<code class=\"code-highlight\">isim</code>, <code class=\"code-highlight\">yas</code> ve <code class=\"code-highlight\">meslek</code> isminde 3 değişken tanımlayıp bunları <code class=\"code-highlight\">print()</code> ile ekrana yazdırabilir misin?",
+      presetCode: `# 1. "isim", "yas" ve "meslek" adında 3 değişken tanımla:\n# 2. Tanımladığın değişkenleri print() ile ekrana yazdır:\n`,
       filename: 'degiskenler.py',
       lang: 'Python 3.11',
-      quickKeys: ['isim = ', 'yas = ', 'meslek = ', '"Bengi"', '25', '"Mühendis"'],
-      hint: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"',
-      solution: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"',
+      quickKeys: ['isim = ', 'yas = ', 'meslek = ', 'print(', 'isim', 'yas', 'meslek', '"Bengi"', '25', '"Mühendis"'],
+      hint: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"\nprint(isim, yas, meslek)',
+      solution: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"\nprint(isim, yas, meslek)',
       validator: (code) => {
         const clean = code.trim();
         const hasIsim = /isim\s*=\s*['"][^'"]+['"]/.test(clean);
         const hasYas = /yas\s*=\s*\d+/.test(clean);
         const hasMeslek = /meslek\s*=\s*['"][^'"]+['"]/.test(clean);
 
-        if (hasIsim && hasYas && hasMeslek) {
-          return { ok: true, msg: "Harika iş çıkardın! 3 değişken de başarıyla tanımlandı. Seviye tamamlandı! 🎉" };
+        // print fonksiyonunun çağrılıp çağrılmadığını kontrol et
+        const hasPrint = /print\s*\(/.test(clean);
+        const printsVariables = hasPrint && (
+          /print\s*\(.*(isim|yas|meslek)/.test(clean) ||
+          /print\s*\(.*f['"]/.test(clean)
+        );
+
+        if (hasIsim && hasYas && hasMeslek && printsVariables) {
+          return { ok: true, msg: "Mükemmel iş! 3 değişken de başarıyla tanımlandı ve print() ile ekrana yazdırıldı. Seviye tamamlandı! 🎉" };
         }
 
         const missing = [];
         if (!hasIsim) missing.push('isim (metin)');
         if (!hasYas) missing.push('yas (sayı)');
         if (!hasMeslek) missing.push('meslek (metin)');
+        if (!printsVariables) missing.push('print() ile değişkenleri yazdırma');
 
-        return { ok: false, msg: `Eksik veya hatalı tanımlar: ${missing.join(', ')}. Lütfen 3 değişkeni de tanımlayın.` };
+        return { ok: false, msg: `Eksik veya hatalı adımlar: ${missing.join(', ')}. Lütfen 3 değişkeni tanımlayıp print() ile ekrana yazdırın.` };
+      }
+    }
+  ],
+  python_2: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: İNDEKSLERE ERİŞİM',
+      title: '1. Soru: İlk Harfe Erişme',
+      prompt: "<code class=\"code-highlight\">kelime = \"Python\"</code> değişkeninin ilk karakterini (<code class=\"code-highlight\">0. indeks</code>) <code class=\"code-highlight\">print()</code> ile ekrana yazdırabilir misin?",
+      presetCode: `kelime = "Python"\n# İlk harfi ekrana yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'kelime[0]', 'kelime', '[0]', '0'],
+      hint: 'print(kelime[0])',
+      solution: 'print(kelime[0])',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*(kelime\[0\]|['"]Python['"]\[0\])\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! İlk indeks başarıyla seçildi ve ekrana yazdırıldı. ✓" };
+        }
+        if (!clean.includes('[0]')) {
+          return { ok: false, msg: "Hata: İlk karaktere erişmek için [0] indeksini kullanmalısınız (örn: kelime[0])." };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(kelime[0]) şeklinde sonucu ekrana yazdırın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: METİN UZUNLUĞU',
+      title: '2. Soru: Metin Uzunluğunu Bulma',
+      prompt: "<code class=\"code-highlight\">mesaj = \"Kodlama\"</code> değişkeninin karakter uzunluğunu <code class=\"code-highlight\">len()</code> fonksiyonu ile ekrana yazdırabilir misin?",
+      presetCode: `mesaj = "Kodlama"\n# Karakter uzunluğunu ekrana yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'len(', 'mesaj', ')', 'len(mesaj)'],
+      hint: 'print(len(mesaj))',
+      solution: 'print(len(mesaj))',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*len\s*\(\s*mesaj\s*\)\s*\)/.test(clean) || /uzunluk\s*=\s*len\(mesaj\)[\s\S]*print\(uzunluk\)/.test(clean)) {
+          return { ok: true, msg: "Harika! len() fonksiyonu ile metin uzunluğu doğru hesaplandı. ✓" };
+        }
+        if (!clean.includes('len')) {
+          return { ok: false, msg: "Hata: Metin uzunluğunu ölçmek için len() fonksiyonunu kullanmalısınız (örn: len(mesaj))." };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(len(mesaj)) şeklinde uzunluğu ekrana yazdırın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: BÜYÜK HARFE ÇEVİRME',
+      title: '3. Soru: Büyük Harf Metodu (.upper)',
+      prompt: "<code class=\"code-highlight\">sehir = \"istanbul\"</code> metnini <code class=\"code-highlight\">.upper()</code> metodu ile tamamen büyük harfe dönüştürüp ekrana yazdırabilir misin?",
+      presetCode: `sehir = "istanbul"\n# Büyük harfe dönüştürüp yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'sehir.upper()', '.upper()', 'sehir'],
+      hint: 'print(sehir.upper())',
+      solution: 'print(sehir.upper())',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*sehir\.upper\(\)\s*\)/.test(clean) || /sehir\.upper\(\)[\s\S]*print/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! .upper() metodu ile metin başarıyla büyütüldü. ✓" };
+        }
+        if (!clean.includes('.upper()')) {
+          return { ok: false, msg: "Hata: Büyük harfe dönüştürmek için .upper() metodunu kullanmalısınız (örn: sehir.upper())." };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(sehir.upper()) şeklinde çıktıyı ekrana yazdırın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: METİN DİLİMLEME (SLICING)',
+      title: '4. Soru: Metin Dilimleme',
+      prompt: "<code class=\"code-highlight\">kurs = \"Programlama\"</code> değişkeninden ilk 7 harfi (<code class=\"code-highlight\">\"Program\"</code>) dilimleyerek ekrana yazdırabilir misin?",
+      presetCode: `kurs = "Programlama"\n# İlk 7 harfi [0:7] dilimleyip yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'kurs[0:7]', 'kurs[:7]', '[0:7]', '[:7]'],
+      hint: 'print(kurs[0:7]) veya print(kurs[:7])',
+      solution: 'print(kurs[0:7])',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*kurs\[\s*(0\s*)?:\s*7\s*\]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! Dilimleme işlemi (slicing) başarıyla uygulandı. ✓" };
+        }
+        if (!clean.includes(':7')) {
+          return { ok: false, msg: "Hata: İlk 7 karakteri almak için [0:7] veya [:7] dilimleme aralığını kullanın." };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(kurs[0:7]) şeklinde dilimlenen metni yazdırın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 2: MODERN METİN BİRLEŞTİRME (F-STRING)',
+      title: '5. Soru: f-string ile Birleştirme',
+      prompt: "<code class=\"code-highlight\">ad = \"Bengi\"</code> ve <code class=\"code-highlight\">puan = 100</code> değişkenlerini <code class=\"code-highlight\">f-string</code> ile birleştirip <code class=\"code-highlight\">f\"{ad} sınavdan {puan} aldı\"</code> cümlesini ekrana yazdırabilir misin?",
+      presetCode: `ad = "Bengi"\npuan = 100\n# f-string kullanarak ekrana yazdır:\n`,
+      filename: 'stringler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(f"', '{ad}', '{puan}', 'sınavdan', 'aldı")', 'f"{ad} sınavdan {puan} aldı"'],
+      hint: 'print(f"{ad} sınavdan {puan} aldı")',
+      solution: 'print(f"{ad} sınavdan {puan} aldı")',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*f['"].*\{ad\}.*\{puan\}.*['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! f-string ile dinamik metin başarıyla oluşturuldu. 2. Modül Tamamlandı! 🚀" };
+        }
+        if (!clean.includes('f"') && !clean.includes("f'")) {
+          return { ok: false, msg: "Hata: Modern formatlama için f-string kullanmalısınız (örn: f\"{ad} ... {puan}\")." };
+        }
+        return { ok: false, msg: 'Hata: Lütfen print(f"{ad} sınavdan {puan} aldı") şeklinde yazdırın.' };
+      }
+    }
+  ],
+  python_3: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: ARİTMETİK İŞLEMLER',
+      title: '1. Soru: Çarpma ve Bölme',
+      prompt: "<code class=\"code-highlight\">sayi = 18</code> değişkeninin 7 katını alıp 9'a bölerek çıkan sonucu ekrana yazdırabilir misin?",
+      presetCode: `sayi = 18\n# 7 katını alıp 9'a böl ve yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['sayi', ' * 7', ' / 9', 'print(', ')'],
+      hint: 'print(sayi * 7 / 9)',
+      solution: 'print(sayi * 7 / 9)',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*(sayi\s*\*\s*7\s*\/\s*9|18\s*\*\s*7\s*\/\s*9|sonuc)\s*\)/.test(clean) || /sonuc\s*=\s*sayi\s*\*\s*7\s*\/\s*9/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Aritmetik işlem başarıyla hesaplandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(sayi * 7 / 9) şeklinde 7 katını alıp 9'a bölün ve yazdırın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: TAM BÖLME VE MOD ALMA',
+      title: '2. Soru: Tam Bölme (//) ve Kalan (%)',
+      prompt: "<code class=\"code-highlight\">sayi = 15</code> değişkeninin 4 katının 3'e tam bölümünü (<code class=\"code-highlight\">// 3</code>) ve 3'e bölümünden kalanını (<code class=\"code-highlight\">% 3</code>) hesaplayıp ekrana yazdırabilir misin?",
+      presetCode: `sayi = 15\n# 4 katının 3'e tam bölümünü ve kalanını yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['(sayi * 4) // 3', '(sayi * 4) % 3', 'print(', '//', '%'],
+      hint: 'print((sayi * 4) // 3)\nprint((sayi * 4) % 3)',
+      solution: 'print((sayi * 4) // 3, (sayi * 4) % 3)',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasFloor = /\/\/\s*3/.test(clean);
+        const hasMod = /%\s*3/.test(clean);
+        const hasPrint = /print\s*\(/.test(clean);
+
+        if (hasFloor && hasMod && hasPrint) {
+          return { ok: true, msg: "Harika! Tam bölme (//) ve kalan (%) operatörleri başarıyla uygulandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen (sayi * 4) // 3 ve (sayi * 4) % 3 işlemlerini print() ile yazdırın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: ÜS ALMA OPERATÖRÜ',
+      title: '3. Soru: Üs Alma (**) ve Mod (%)',
+      prompt: "<code class=\"code-highlight\">12 ** 4</code> ($12^4$) ifadesini hesaplayıp bu sonucun 10 ile bölümünden kalanını (<code class=\"code-highlight\">% 10</code>) ekrana yazdırabilir misin?",
+      presetCode: `# 12^4 değerinin 10 ile bölümünden kalanını yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', '12 ** 4', ' % 10', '**', '%'],
+      hint: 'print((12 ** 4) % 10)',
+      solution: 'print((12 ** 4) % 10)',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*\(?\s*12\s*\*\*\s*4\s*\)?\s*%\s*10\s*\)/.test(clean) || /sonuc\s*=\s*\(?\s*12\s*\*\*\s*4\s*\)?\s*%\s*10/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! Üs alma (**) ve mod (%) operatörleri doğru kullanıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen print((12 ** 4) % 10) şeklinde hesaplayıp ekrana yazdırın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: MANTIKSAL OPERATÖRLER',
+      title: '4. Soru: Mantıksal Koşul (and)',
+      prompt: "<code class=\"code-highlight\">yas = 20</code> değişkeninin 18'den büyük eşit VE (<code class=\"code-highlight\">and</code>) 65'ten küçük olup olmadığını kontrol edip ekrana yazdırabilir misin?",
+      presetCode: `yas = 20\n# Koşul kontrolünü (and) ekrana yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['print(', 'yas >= 18', ' and ', 'yas < 65', '>=', '<'],
+      hint: 'print(yas >= 18 and yas < 65)',
+      solution: 'print(yas >= 18 and yas < 65)',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/print\s*\(\s*(yas\s*>=\s*18\s+and\s+yas\s*<\s*65|18\s*<=\s*yas\s*<\s*65)\s*\)/.test(clean) || /(yas\s*>=\s*18\s+and\s+yas\s*<\s*65)/.test(clean)) {
+          return { ok: true, msg: "Doğru! 'and' mantıksal operatörü ile çift yönlü aralık başarıyla kontrol edildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen print(yas >= 18 and yas < 65) şeklinde koşulu yazdırın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 3: AĞIRLIKLI ORTALAMA HESABI',
+      title: '5. Soru: Not Ortalaması Hesaplama',
+      prompt: "<code class=\"code-highlight\">vize = 70</code> ve <code class=\"code-highlight\">final = 90</code> değişkenlerini tanımlayıp vizenin %40'ı ile finalin %60'ını (<code class=\"code-highlight\">vize * 0.4 + final * 0.6</code>) hesaplayarak ekrana yazdırabilir misin?",
+      presetCode: `vize = 70\nfinal = 90\n# Ağırlıklı ortalamayı hesaplayıp ekrana yazdır:\n`,
+      filename: 'operatorler.py',
+      lang: 'Python 3.11',
+      quickKeys: ['vize * 0.4', ' + ', 'final * 0.6', 'ortalama = ', 'print('],
+      hint: 'ortalama = vize * 0.4 + final * 0.6\nprint(ortalama)',
+      solution: 'print(vize * 0.4 + final * 0.6)',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasVize = /vize\s*=\s*70/.test(clean);
+        const hasFinal = /final\s*=\s*90/.test(clean);
+        const hasFormula = /(vize\s*\*\s*0?\.4\s*\+\s*final\s*\*\s*0?\.6|70\s*\*\s*0?\.4\s*\+\s*90\s*\*\s*0?\.6)/.test(clean);
+        const hasPrint = /print\s*\(/.test(clean);
+
+        if (hasFormula && hasPrint) {
+          return { ok: true, msg: "Mükemmel! Ağırlıklı ortalama doğru hesaplandı ve yazdırıldı. 3. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: Lütfen vize ve final değişkenleriyle print(vize * 0.4 + final * 0.6) işlemini yazdırın." };
+      }
+    }
+  ],
+  python_4: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: IF KOŞULU',
+      title: '1. Soru: Basit If Koşulu',
+      prompt: "<code class=\"code-highlight\">yas = 15</code> değeri 18'den küçükse (<code class=\"code-highlight\">yas < 18</code>) ekrana <code class=\"code-highlight\">\"Giriş Yapamaz\"</code> yazdırabilir misin?",
+      presetCode: `yas = 15\n# yas 18'den küçükse "Giriş Yapamaz" yazdır:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['if ', 'yas < 18:', 'print("Giriş Yapamaz")', '    '],
+      hint: 'if yas < 18:\n    print("Giriş Yapamaz")',
+      solution: 'if yas < 18:\n    print("Giriş Yapamaz")',
+      validator: (code) => {
+        const clean = code.trim();
+        if (/if\s+yas\s*<\s*18\s*:\s*[\s\S]*print\s*\(\s*['"]Giriş Yapamaz['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! If koşulu başarıyla kuruldu. ✓" };
+        }
+        if (!clean.includes('if')) {
+          return { ok: false, msg: "Hata: 'if yas < 18:' koşulunu kurmalısınız." };
+        }
+        return { ok: false, msg: 'Hata: Lütfen yas < 18 ise print("Giriş Yapamaz") yazdırın.' };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: IF - ELSE YAPISI',
+      title: '2. Soru: If - Else Yapısı',
+      prompt: "<code class=\"code-highlight\">yas = 20</code> için; 18'den küçükse <code class=\"code-highlight\">\"Giriş Yapamaz\"</code>, değilse (<code class=\"code-highlight\">else</code>) ekrana <code class=\"code-highlight\">\"Giriş Yapabilir\"</code> yazdırabilir misin?",
+      presetCode: `yas = 20\nif yas < 18:\n    print("Giriş Yapamaz")\n# else durumunu ekle:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['else:', 'print("Giriş Yapabilir")', '    '],
+      hint: 'if yas < 18:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      solution: 'if yas < 18:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasElse = /else\s*:/.test(clean);
+        const hasPrint = /print\s*\(\s*['"]Giriş Yapabilir['"]\s*\)/.test(clean);
+
+        if (hasElse && hasPrint) {
+          return { ok: true, msg: "Harika! If-Else yapısı doğru şekilde tamamlandı. ✓" };
+        }
+        return { ok: false, msg: 'Hata: Lütfen else: bloğunun altına print("Giriş Yapabilir") ekleyin.' };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: ELIF YAPISI',
+      title: '3. Soru: Çoklu Koşul (elif)',
+      prompt: "<code class=\"code-highlight\">yas = 70</code> için; 18'den küçükse veya 65'ten büyükse (<code class=\"code-highlight\">elif yas > 65:</code>) <code class=\"code-highlight\">\"Giriş Yapamaz\"</code>, diğer durumlarda (<code class=\"code-highlight\">else:</code>) <code class=\"code-highlight\">\"Giriş Yapabilir\"</code> yazdırabilir misin?",
+      presetCode: `yas = 70\nif yas < 18:\n    print("Giriş Yapamaz")\n# elif ve else durumlarını ekle:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['elif yas > 65:', 'elif yas >= 65:', 'else:', 'print("Giriş Yapamaz")', 'print("Giriş Yapabilir")'],
+      hint: 'if yas < 18:\n    print("Giriş Yapamaz")\nelif yas > 65:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      solution: 'elif yas > 65:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasElif = /elif\s+yas\s*(>|>=)\s*65\s*:/.test(clean);
+        const hasElse = /else\s*:/.test(clean);
+
+        if (hasElif && hasElse) {
+          return { ok: true, msg: "Mükemmel! elif ve else basamakları başarıyla kuruldu. ✓" };
+        }
+        return { ok: false, msg: 'Hata: Lütfen elif yas > 65: ve else: durumlarını ekleyin.' };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: MANTIKSAL KOŞULLAR (AND & IF-ELSE)',
+      title: '4. Soru: Not Hesabı & Geçti / Kaldı',
+      prompt: "<code class=\"code-highlight\">vize_notu = 60</code> ve <code class=\"code-highlight\">final_notu = 70</code> için; <code class=\"code-highlight\">ortalama = vize_notu * 0.4 + final_notu * 0.6</code> ile ortalamayı hesapla. Ardından <code class=\"code-highlight\">final_notu >= 50 and ortalama >= 50</code> ise <code class=\"code-highlight\">\"Geçti\"</code>, değilse (<code class=\"code-highlight\">else:</code>) <code class=\"code-highlight\">\"Kaldı\"</code> yazdırabilir misin?",
+      presetCode: `vize_notu = 60\nfinal_notu = 70\n# 1. Ortalamayı hesapla:\n# 2. if-else ile "Geçti" veya "Kaldı" yazdır:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['ortalama = vize_notu * 0.4 + final_notu * 0.6', 'if final_notu >= 50 and ortalama >= 50:', '    print("Geçti")', 'else:', '    print("Kaldı")'],
+      hint: 'ortalama = vize_notu * 0.4 + final_notu * 0.6\nif final_notu >= 50 and ortalama >= 50:\n    print("Geçti")\nelse:\n    print("Kaldı")',
+      solution: 'ortalama = vize_notu * 0.4 + final_notu * 0.6\nif final_notu >= 50 and ortalama >= 50:\n    print("Geçti")\nelse:\n    print("Kaldı")',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasFormula = /(vize_notu|vize)\s*\*\s*0?\.4\s*\+\s*(final_notu|final)\s*\*\s*0?\.6/.test(clean);
+        const hasIf = /if\s+.*(final_notu|final)\s*>=\s*50\s+and\s+ortalama\s*>=\s*50/.test(clean) || /if\s+.*ortalama\s*>=\s*50\s+and\s+(final_notu|final)\s*>=\s*50/.test(clean);
+        const hasGecti = /print\s*\(\s*['"]Geçti['"]\s*\)/.test(clean);
+        const hasElse = /else\s*:/.test(clean);
+        const hasKaldi = /print\s*\(\s*['"]Kaldı['"]\s*\)/.test(clean);
+
+        if (hasFormula && hasIf && hasGecti && hasElse && hasKaldi) {
+          return { ok: true, msg: "Mükemmel iş! Ağırlıklı ortalama hesaplandı ve if-else ile Geçti/Kaldı durumu başarıyla kontrol edildi. ✓" };
+        }
+
+        const missing = [];
+        if (!hasFormula) missing.push('ortalama hesabı (vize_notu * 0.4 + final_notu * 0.6)');
+        if (!hasIf) missing.push('if final_notu >= 50 and ortalama >= 50: koşulu');
+        if (!hasGecti) missing.push('print("Geçti")');
+        if (!hasElse || !hasKaldi) missing.push('else: print("Kaldı")');
+
+        return { ok: false, msg: `Eksik veya hatalı adımlar: ${missing.join(', ')}.` };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: 'MODÜL 4: SEÇİM YAPILARI (MATCH - CASE)',
+      title: '5. Soru: Match - Case ile Gün Seçimi',
+      prompt: "<code class=\"code-highlight\">gun = 1</code> değişkenini <code class=\"code-highlight\">match - case</code> ile kontrol edip <code class=\"code-highlight\">1</code> ise <code class=\"code-highlight\">\"Pazartesi\"</code>, <code class=\"code-highlight\">2</code> ise <code class=\"code-highlight\">\"Salı\"</code> yazdırabilir misin?",
+      presetCode: `gun = 1\n# match-case yapısı ile günü kontrol et:\n`,
+      filename: 'kosullar.py',
+      lang: 'Python 3.11',
+      quickKeys: ['match gun:', 'case 1:', 'case 2:', 'print("Pazartesi")', 'print("Salı")'],
+      hint: 'match gun:\n    case 1:\n        print("Pazartesi")\n    case 2:\n        print("Salı")',
+      solution: 'match gun:\n    case 1:\n        print("Pazartesi")\n    case 2:\n        print("Salı")',
+      validator: (code) => {
+        const clean = code.trim();
+        const hasMatch = /match\s+gun\s*:/.test(clean) && /case\s+1\s*:/.test(clean) && /print\s*\(\s*['"]Pazartesi['"]\s*\)/.test(clean);
+        const hasIfAlternative = /if\s+gun\s*==\s*1\s*:\s*[\s\S]*print\s*\(\s*['"]Pazartesi['"]\s*\)/.test(clean);
+
+        if (hasMatch || hasIfAlternative) {
+          return { ok: true, msg: "Harika iş! Koşul ve seçim yapısı başarıyla tamamlandı. 4. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: 'Hata: Lütfen match gun: case 1: print("Pazartesi") yapısını kurun.' };
+      }
+    }
+  ],
+  python_5: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: LİSTE METOTLARI (APPEND)",
+      title: "1. Soru: Listeye Eleman Ekleme",
+      prompt: "Geliştirici mevcut alışveriş listesine yeni bir ürün ekleyip güncel listeyi ekranda görmek istiyor ancak çıktıda liste yerine boş bir sonuç (<code class=\"code-highlight\">None</code>) alıyor. Bu aksaklığı gidererek kodu doğru şekilde yeniden yazar mısın?",
+      presetCode: "urunler = [\"Elma\", \"Muz\"]\nurunler = urunler.append(\"Çilek\")\nprint(urunler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "listeler.py",
+      lang: "Python 3.11",
+      quickKeys: ["urunler.append(\"Çilek\")","print(urunler)","urunler = [\"Elma\", \"Muz\"]"],
+      hint: "urunler = [\"Elma\", \"Muz\"]\nurunler.append(\"Çilek\")\nprint(urunler)",
+      solution: "urunler = [\"Elma\", \"Muz\"]\nurunler.append(\"Çilek\")\nprint(urunler)",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasNoReassign = !/urunler\s*=\s*urunler\.append/.test(clean);
+        const hasAppend = /urunler\.append\s*\(\s*['"]Çilek['"]\s*\)/.test(clean);
+        const hasPrint = /print\s*\(\s*urunler\s*\)/.test(clean);
+        if (hasNoReassign && hasAppend && hasPrint) return { ok: true, msg: "Harika! .append() listeyi yerinde günceller. ✓" };
+        return { ok: false, msg: "Hata: urunler.append('Çilek') yaptıktan sonra print(urunler) yazdırın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: DEĞİŞTİRİLEMEZLİK & DEMETLER",
+      title: "2. Soru: Demet ve Liste Dönüşümü",
+      prompt: "Geliştirici demetteki (tuple) ilk şehir ismini güncelleyerek listeyi ekrana yazdırmak istiyor ancak program değiştirme aşamasında hata veriyor. Veri yapısını amaca uygun hale getirerek güncellenmiş şehri ekrana yazdırabilir misin?",
+      presetCode: "sehirler = (\"İzmir\", \"Ankara\", \"İstanbul\")\nsehirler[0] = \"Bursa\"\nprint(sehirler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "listeler.py",
+      lang: "Python 3.11",
+      quickKeys: ["sehirler = [\"İzmir\", \"Ankara\", \"İstanbul\"]","sehirler[0] = \"Bursa\"","print(sehirler)"],
+      hint: "sehirler = [\"İzmir\", \"Ankara\", \"İstanbul\"]\nsehirler[0] = \"Bursa\"\nprint(sehirler)",
+      solution: "sehirler = [\"İzmir\", \"Ankara\", \"İstanbul\"]\nsehirler[0] = \"Bursa\"\nprint(sehirler)",
+      validator: (code) => {
+        const clean = code.trim();
+        const isList = /sehirler\s*=\s*\[\s*['"]İzmir['"]\s*,\s*['"]Ankara['"]\s*,\s*['"]İstanbul['"]\s*\]/.test(clean);
+        const hasAssign = /sehirler\s*\[\s*0\s*\]\s*=\s*['"]Bursa['"]/.test(clean);
+        const hasPrint = /print\s*\(\s*sehirler\s*\)/.test(clean);
+        if (isList && hasAssign && hasPrint) return { ok: true, msg: "Tebrikler! Listeler değiştirilebilir olduğundan hata çözüldü. ✓" };
+        return { ok: false, msg: "Hata: sehirler'i liste [] yapıp sehirler[0] = 'Bursa' ataması yapın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: ELEMAN ÇIKARMA (POP)",
+      title: "3. Soru: Son Elemanı Ayırma",
+      prompt: "Geliştirici sayı listesindeki en son eklenen sayıyı listeden ayırıp ekrana yazdırmak istiyor fakat kod yanlışlıkla listenin ilk elemanını siliyor. Son elemanı çıkaracak şekilde kodu düzenleyebilir misin?",
+      presetCode: "puanlar = [10, 20, 30, 40]\nson_puan = puanlar.pop(0)\nprint(son_puan)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "listeler.py",
+      lang: "Python 3.11",
+      quickKeys: ["son_puan = puanlar.pop()","puanlar.pop()","print(son_puan)"],
+      hint: "puanlar = [10, 20, 30, 40]\nson_puan = puanlar.pop()\nprint(son_puan)",
+      solution: "puanlar = [10, 20, 30, 40]\nson_puan = puanlar.pop()\nprint(son_puan)",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasCorrectPop = /puanlar\.pop\s*\(\s*(\s*|-1\s*)\)/.test(clean);
+        const hasPrint = /print\s*\(\s*son_puan\s*\)/.test(clean) || /print\s*\(\s*puanlar\.pop\s*\(\s*\)\s*\)/.test(clean);
+        if (hasCorrectPop && hasPrint) return { ok: true, msg: "Mükemmel! .pop() argümansız çağrıldığında son elemanı alır. ✓" };
+        return { ok: false, msg: "Hata: son_puan = puanlar.pop() kullanarak son elemanı çekin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: LİSTE SIRALAMA (SORT)",
+      title: "4. Soru: Listeyi Sıralama",
+      prompt: "Geliştirici karışık verilen sayı listesini küçükten büyüğe sıralı şekilde ekrana yazdırmak istiyor ancak kod sıralama işlemini gerçekleştirmeden hata üretiyor. Sıralama metodunu doğru uygulayarak sonucu yazdırabilir misin?",
+      presetCode: "sayilar = [85, 12, 44, 3]\nsayilar.sort\nprint(sayilar)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "listeler.py",
+      lang: "Python 3.11",
+      quickKeys: ["sayilar.sort()","print(sayilar)","sayilar = [85, 12, 44, 3]"],
+      hint: "sayilar = [85, 12, 44, 3]\nsayilar.sort()\nprint(sayilar)",
+      solution: "sayilar = [85, 12, 44, 3]\nsayilar.sort()\nprint(sayilar)",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasSortCall = /sayilar\.sort\s*\(\s*\)/.test(clean);
+        const hasPrint = /print\s*\(\s*sayilar\s*\)/.test(clean);
+        if (hasSortCall && hasPrint) return { ok: true, msg: "Harika! sort() metodunu parantez ile çağırmak listeyi sıraladı. ✓" };
+        return { ok: false, msg: "Hata: sayilar.sort() fonksiyon çağrısını parantezle tamamlayın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: LİSTE DİLİMLEME (SLICING)",
+      title: "5. Soru: Liste Dilimleme Aralığı",
+      prompt: "Geliştirici öğrenci listesinde 1. ve 2. sıradaki öğrencileri dilimleyerek alt bir grup oluşturmak istiyor ancak eksik eleman alıyor. İstenen 2 öğrenciyi de kapsayacak doğru dilimleme aralığını yazar mısın?",
+      presetCode: "ogrenciler = [\"Ali\", \"Ayşe\", \"Mehmet\", \"Zeynep\"]\ngrup = ogrenciler[1:2]\nprint(grup)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "listeler.py",
+      lang: "Python 3.11",
+      quickKeys: ["grup = ogrenciler[1:3]","print(grup)","ogrenciler[1:3]"],
+      hint: "ogrenciler = [\"Ali\", \"Ayşe\", \"Mehmet\", \"Zeynep\"]\ngrup = ogrenciler[1:3]\nprint(grup)",
+      solution: "ogrenciler = [\"Ali\", \"Ayşe\", \"Mehmet\", \"Zeynep\"]\ngrup = ogrenciler[1:3]\nprint(grup)",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasSlice = /ogrenciler\s*\[\s*1\s*:\s*3\s*\]/.test(clean);
+        const hasPrint = /print\s*\(\s*grup\s*\)/.test(clean) || /print\s*\(\s*ogrenciler\s*\[\s*1\s*:\s*3\s*\]\s*\)/.test(clean);
+        if (hasSlice && hasPrint) return { ok: true, msg: "Tebrikler! [1:3] aralığı 1. ve 2. indeksleri başarıyla kapsadı. 5. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: grup = ogrenciler[1:3] ile 1 ve 2. elemanları dilimleyin." };
+      }
+    }
+  ],
+  python_6: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: GÜVENLİ SÖZLÜK ERİŞİMİ (.GET)",
+      title: "1. Soru: Güvenli Anahtar Erişimi",
+      prompt: "Geliştirici bir kullanıcının yaş bilgisini sözlükten okumak istiyor ancak olmayan bir anahtar yüzünden program aniden duruyor. Anahtar bulunamadığında varsayılan olarak <code class=\"code-highlight\">\"Belirtilmedi\"</code> döndüren güvenli yöntemi yazar mısın?",
+      presetCode: "kullanici = {\"ad\": \"Can\", \"sehir\": \"İzmir\"}\nyas = kullanici[\"yas\"]\nprint(yas)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "sozlukler.py",
+      lang: "Python 3.11",
+      quickKeys: ["kullanici.get(\"yas\", \"Belirtilmedi\")","print(yas)",".get("],
+      hint: "kullanici = {\"ad\": \"Can\", \"sehir\": \"İzmir\"}\nyas = kullanici.get(\"yas\", \"Belirtilmedi\")\nprint(yas)",
+      solution: "kullanici = {\"ad\": \"Can\", \"sehir\": \"İzmir\"}\nyas = kullanici.get(\"yas\", \"Belirtilmedi\")\nprint(yas)",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasGet = /kullanici\.get\s*\(\s*['"]yas['"]\s*,\s*['"]Belirtilmedi['"]\s*\)/.test(clean);
+        const hasPrint = /print\s*\(/.test(clean);
+        if (hasGet && hasPrint) return { ok: true, msg: "Harika! .get() metodu anahtar yoksa varsayılan değeri güvenle döner. ✓" };
+        return { ok: false, msg: 'Hata: yas = kullanici.get("yas", "Belirtilmedi") kullanmalısınız.' };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: SÖZLÜK GÜNCELLEME",
+      title: "2. Soru: Sözlük Değeri Güncelleme",
+      prompt: "Geliştirici bir ürünün fiyat bilgisini güncellemek istiyor fakat hatalı sözdizimi nedeniyle kod çalışmıyor. Sözlüğü doğru şekilde güncelleyebilir misin?",
+      presetCode: "urun = {\"isim\": \"Laptop\", \"fiyat\": 15000}\nurun(\"fiyat\") = 18000\nprint(urun)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "sozlukler.py",
+      lang: "Python 3.11",
+      quickKeys: ["urun[\"fiyat\"] = 18000","print(urun)","urun[\"fiyat\"]"],
+      hint: "urun = {\"isim\": \"Laptop\", \"fiyat\": 15000}\nurun[\"fiyat\"] = 18000\nprint(urun)",
+      solution: "urun = {\"isim\": \"Laptop\", \"fiyat\": 15000}\nurun[\"fiyat\"] = 18000\nprint(urun)",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasAssign = /urun\s*\[\s*['"]fiyat['"]\s*\]\s*=\s*18000/.test(clean);
+        const hasPrint = /print\s*\(\s*urun\s*\)/.test(clean);
+        if (hasAssign && hasPrint) return { ok: true, msg: "Tebrikler! Sözlük anahtarlarına köşeli parantez [] ile değer atanır. ✓" };
+        return { ok: false, msg: 'Hata: urun["fiyat"] = 18000 ataması yapıp print(urun) yazdırın.' };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: KÜMELER & BENZERSİZ ELEMANLAR",
+      title: "3. Soru: Benzersiz Eleman Kümesi",
+      prompt: "Geliştirici tekrar eden rakamlardan oluşan bir listeden yalnızca benzersiz (tekil) sayıları ayıklamak istiyor ancak kullandığı yapı tekrarları engellemiyor. Benzersiz elemanları elde etmek için doğru veri yapısını kullanır mısın?",
+      presetCode: "sayilar = [1, 2, 2, 3, 4, 4, 5]\ntekil_sayilar = [set(sayilar)]\nprint(tekil_sayilar)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "kumeler.py",
+      lang: "Python 3.11",
+      quickKeys: ["tekil_sayilar = set(sayilar)","print(tekil_sayilar)","set(sayilar)"],
+      hint: "sayilar = [1, 2, 2, 3, 4, 4, 5]\ntekil_sayilar = set(sayilar)\nprint(tekil_sayilar)",
+      solution: "sayilar = [1, 2, 2, 3, 4, 4, 5]\ntekil_sayilar = set(sayilar)\nprint(tekil_sayilar)",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasSet = /tekil_sayilar\s*=\s*set\s*\(\s*sayilar\s*\)/.test(clean);
+        const hasPrint = /print\s*\(\s*tekil_sayilar\s*\)/.test(clean);
+        if (hasSet && hasPrint) return { ok: true, msg: "Mükemmel! set() fonksiyonu tekrarlanan tüm elemanları eler. ✓" };
+        return { ok: false, msg: "Hata: tekil_sayilar = set(sayilar) kullanarak kümeyi elde edin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: KÜMEYE ELEMAN EKLEME (.ADD)",
+      title: "4. Soru: Kümeye Eleman Ekleme",
+      prompt: "Geliştirici bir kümeye yeni bir etiket eklemek istiyor ancak liste metodu kullandığı için hata alıyor. Kümeye eleman ekleyen doğru metodu uygulayabilir misin?",
+      presetCode: "etiketler = {\"python\", \"kodlama\", \"yazilim\"}\netiketler.append(\"yapayzeka\")\nprint(etiketler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "kumeler.py",
+      lang: "Python 3.11",
+      quickKeys: ["etiketler.add(\"yapayzeka\")","print(etiketler)",".add("],
+      hint: "etiketler = {\"python\", \"kodlama\", \"yazilim\"}\netiketler.add(\"yapayzeka\")\nprint(etiketler)",
+      solution: "etiketler = {\"python\", \"kodlama\", \"yazilim\"}\netiketler.add(\"yapayzeka\")\nprint(etiketler)",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasAdd = /etiketler\.add\s*\(\s*['"]yapayzeka['"]\s*\)/.test(clean);
+        const hasPrint = /print\s*\(\s*etiketler\s*\)/.test(clean);
+        if (hasAdd && hasPrint) return { ok: true, msg: "Harika! Kümeler için .add() metodu kullanılır. ✓" };
+        return { ok: false, msg: 'Hata: etiketler.add("yapayzeka") ile elemanı ekleyin.' };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: SÖZLÜK ANAHTARLARINI LİSTELEME",
+      title: "5. Soru: Sözlük Anahtarlarını Alma",
+      prompt: "Geliştirici sözlükteki tüm anahtarları (key) bir liste halinde ekranda görmek istiyor ancak anahtarlar yerine değerleri alıyor. Anahtarları ekrana yazdıracak şekilde kodu düzeltebilir misin?",
+      presetCode: "puanlar = {\"matematik\": 90, \"fizik\": 85, \"kimya\": 78}\nprint(list(puanlar.values()))\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "sozlukler.py",
+      lang: "Python 3.11",
+      quickKeys: ["list(puanlar.keys())","print(list(puanlar.keys()))",".keys()"],
+      hint: "puanlar = {\"matematik\": 90, \"fizik\": 85, \"kimya\": 78}\nprint(list(puanlar.keys()))",
+      solution: "puanlar = {\"matematik\": 90, \"fizik\": 85, \"kimya\": 78}\nprint(list(puanlar.keys()))",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasKeys = /puanlar\.keys\s*\(\s*\)/.test(clean);
+        const hasPrint = /print\s*\(.*puanlar\.keys/.test(clean);
+        if (hasKeys && hasPrint) return { ok: true, msg: "Tebrikler! .keys() sözlüğün tüm anahtarlarını döner. 6. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: print(list(puanlar.keys())) komutuyla anahtarları yazdırın." };
+      }
+    }
+  ],
+  python_7: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: RANGE DÖNGÜ ARALIĞI",
+      title: "1. Soru: Range Sınır Değeri",
+      prompt: "Geliştirici 1'den 5'e kadar olan sayıları (5 dahil) ekrana yazdırmak istiyor ancak döngü 4'te duruyor. 5'in de yazdırılmasını sağlayacak şekilde aralığı düzenleyebilir misin?",
+      presetCode: "for i in range(1, 5):\n    print(i)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "donguler.py",
+      lang: "Python 3.11",
+      quickKeys: ["for i in range(1, 6):","    print(i)","range(1, 6)"],
+      hint: "for i in range(1, 6):\n    print(i)",
+      solution: "for i in range(1, 6):\n    print(i)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/range\s*\(\s*1\s*,\s*6\s*\)/.test(clean) && /print\s*\(\s*i\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! range(1, 6) bitiş değeri 6 olduğu için 5'e kadar yazdırır. ✓" };
+        }
+        return { ok: false, msg: "Hata: for i in range(1, 6): ile 5 dahil saydırmalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: WHILE DÖNGÜSÜ SAYAÇ YÖNETİMİ",
+      title: "2. Soru: Sonsuz Döngüyü Önleme",
+      prompt: "Geliştirici sayaç 5 olana kadar çalışan bir döngü kurmak istiyor ancak döngü sonsuz döngüye girip sistemi kilitliyor. Döngünün güvenle sonlanması için eksik adımı tamamlayabilir misin?",
+      presetCode: "sayac = 1\nwhile sayac <= 5:\n    print(sayac)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "donguler.py",
+      lang: "Python 3.11",
+      quickKeys: ["sayac += 1","while sayac <= 5:","    print(sayac)"],
+      hint: "sayac = 1\nwhile sayac <= 5:\n    print(sayac)\n    sayac += 1",
+      solution: "sayac = 1\nwhile sayac <= 5:\n    print(sayac)\n    sayac += 1",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasIncrement = /sayac\s*(\+=|\=)\s*(sayac\s*\+\s*1|1)/.test(clean);
+        const hasWhile = /while\s+sayac\s*<=\s*5\s*:/.test(clean);
+        if (hasIncrement && hasWhile) return { ok: true, msg: "Tebrikler! sayac += 1 eklenerek sonsuz döngü engellendi. ✓" };
+        return { ok: false, msg: "Hata: while bloğunun içine sayac += 1 eklemelisiniz." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: DÖNGÜYÜ KIRMA (BREAK)",
+      title: "3. Soru: Döngüyü Koşulda Sonlandırma",
+      prompt: "Geliştirici listede 0 sayısını gördüğü anda döngüyü tamamen durdurmak istiyor ancak kod döngüyü sonlandırmadan devam ediyor. İstenen koşulda döngüyü anında sonlandıracak komutu ekleyebilir misin?",
+      presetCode: "sayilar = [10, 20, 0, 40, 50]\nfor s in sayilar:\n    if s == 0:\n        continue\n    print(s)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "donguler.py",
+      lang: "Python 3.11",
+      quickKeys: ["break","if s == 0:\n        break","for s in sayilar:"],
+      hint: "sayilar = [10, 20, 0, 40, 50]\nfor s in sayilar:\n    if s == 0:\n        break\n    print(s)",
+      solution: "sayilar = [10, 20, 0, 40, 50]\nfor s in sayilar:\n    if s == 0:\n        break\n    print(s)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/if\s+s\s*==\s*0\s*:\s*[\s\S]*break/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! break komutu döngüyü 0'ı gördüğü anda bitirir. ✓" };
+        }
+        return { ok: false, msg: "Hata: if s == 0 durumunda break komutunu kullanmalısınız." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: ENUMERATE İLE İNDEKS TAKİBİ",
+      title: "4. Soru: İndeks ve Eleman Eşleşmesi",
+      prompt: "Geliştirici listedeki meyveleri ve onların sıra numaralarını (0'dan başlayarak) eşzamanlı yazdırmak istiyor ancak indeks takibi yapamıyor. Hem indeksi hem elemanı birlikte sunan yapıyı ekleyebilir misin?",
+      presetCode: "meyveler = [\"Elma\", \"Armut\", \"Muz\"]\nfor meyve in meyveler:\n    print(meyve)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "donguler.py",
+      lang: "Python 3.11",
+      quickKeys: ["for i, meyve in enumerate(meyveler):","    print(i, meyve)","enumerate(meyveler)"],
+      hint: "meyveler = [\"Elma\", \"Armut\", \"Muz\"]\nfor i, meyve in enumerate(meyveler):\n    print(i, meyve)",
+      solution: "meyveler = [\"Elma\", \"Armut\", \"Muz\"]\nfor i, meyve in enumerate(meyveler):\n    print(i, meyve)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/enumerate\s*\(\s*meyveler\s*\)/.test(clean) && /print\s*\(.*i.*meyve/.test(clean)) {
+          return { ok: true, msg: "Harika! enumerate() hem indeksi hem de elemanı döndürür. ✓" };
+        }
+        return { ok: false, msg: "Hata: for i, meyve in enumerate(meyveler): yapısını kurun." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: ZIP İLE PARALEL DÖNGÜ",
+      title: "5. Soru: İki Listeyi Eşleştirme",
+      prompt: "Geliştirici iki farklı listedeki isimleri ve notları sırasıyla eşleştirip ekrana yazdırmak istiyor ancak iç içe döngü yüzünden tüm kombinasyonları basıyor. İki listeyi paralel eşleştirecek yapıyı kurabilir misin?",
+      presetCode: "isimler = [\"Ali\", \"Ayşe\"]\nnotlar = [90, 100]\nfor i in isimler:\n    for n in notlar:\n        print(i, n)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "donguler.py",
+      lang: "Python 3.11",
+      quickKeys: ["for i, n in zip(isimler, notlar):","    print(i, n)","zip(isimler, notlar)"],
+      hint: "isimler = [\"Ali\", \"Ayşe\"]\nnotlar = [90, 100]\nfor i, n in zip(isimler, notlar):\n    print(i, n)",
+      solution: "isimler = [\"Ali\", \"Ayşe\"]\nnotlar = [90, 100]\nfor i, n in zip(isimler, notlar):\n    print(i, n)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/zip\s*\(\s*isimler\s*,\s*notlar\s*\)/.test(clean) && /print\s*\(.*i.*n/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! zip() listeleri birebir eleman eşleşmesiyle dolaşır. 7. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: for i, n in zip(isimler, notlar): ile paralel döngü kurun." };
+      }
+    }
+  ],
+  python_8: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: DEĞER DÖNDÜRME (RETURN)",
+      title: "1. Soru: Fonksiyondan Değer Döndürme",
+      prompt: "Geliştirici bir sayının karesini hesaplayan fonksiyonun sonucunu değişkene kaydedip yazdırmak istiyor ancak ekranda <code class=\"code-highlight\">None</code> çıktısı görüyor. Fonksiyonun sonucu dışarı aktarmasını sağlar mısın?",
+      presetCode: "def kare_al(sayi):\n    sonuc = sayi ** 2\n\ndeger = kare_al(4)\nprint(deger)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "fonksiyonlar.py",
+      lang: "Python 3.11",
+      quickKeys: ["return sayi ** 2","return sonuc","def kare_al(sayi):"],
+      hint: "def kare_al(sayi):\n    return sayi ** 2\n\ndeger = kare_al(4)\nprint(deger)",
+      solution: "def kare_al(sayi):\n    return sayi ** 2\n\ndeger = kare_al(4)\nprint(deger)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/def\s+kare_al/.test(clean) && /return\s+/.test(clean)) {
+          return { ok: true, msg: "Harika! return ifadesi fonksiyon sonucunu dışarıya aktarır. ✓" };
+        }
+        return { ok: false, msg: "Hata: Fonksiyon içinde return sayi ** 2 döndürmelisiniz." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: VARSAYILAN PARAMETRELER",
+      title: "2. Soru: Varsayılan Parametre Değeri",
+      prompt: "Geliştirici kullanıcı isim belirtmediğinde varsayılan olarak <code class=\"code-highlight\">\"Misafir\"</code> ismiyle karşılama yapmak istiyor ancak isim verilmediğinde program parametre eksikliği hatası veriyor. Varsayılan parametreyi tanımlayabilir misin?",
+      presetCode: "def karsila(isim):\n    return f\"Hoş geldin {isim}\"\n\nprint(karsila())\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "fonksiyonlar.py",
+      lang: "Python 3.11",
+      quickKeys: ["def karsila(isim=\"Misafir\"):","isim=\"Misafir\"","return f\"Hoş geldin {isim}\""],
+      hint: "def karsila(isim=\"Misafir\"):\n    return f\"Hoş geldin {isim}\"\n\nprint(karsila())",
+      solution: "def karsila(isim=\"Misafir\"):\n    return f\"Hoş geldin {isim}\"\n\nprint(karsila())",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/def\s+karsila\s*\(\s*isim\s*=\s*['"]Misafir['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! Varsayılan parametre sayesinde fonksiyona argüman verilmediğinde hata oluşmaz. ✓" };
+        }
+        return { ok: false, msg: 'Hata: def karsila(isim="Misafir"): şeklinde varsayılan değer verin.' };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: ESNEK KONUMSAL PARAMETRELER (*ARGS)",
+      title: "3. Soru: Esnek Sayıda Argüman (*args)",
+      prompt: "Geliştirici fonksiyona kaç adet sayı gönderilirse gönderilsin hepsini toplayabilen esnek bir yapı kurmak istiyor fakat kod sadece 2 sayı kabul ediyor. İstenen sayıda argüman alabilecek parametre yapısını ekler misin?",
+      presetCode: "def topla(a, b):\n    return a + b\n\nprint(topla(5, 10, 15, 20))\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "fonksiyonlar.py",
+      lang: "Python 3.11",
+      quickKeys: ["def topla(*sayilar):","return sum(sayilar)","*args"],
+      hint: "def topla(*sayilar):\n    return sum(sayilar)\n\nprint(topla(5, 10, 15, 20))",
+      solution: "def topla(*sayilar):\n    return sum(sayilar)\n\nprint(topla(5, 10, 15, 20))",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/def\s+topla\s*\(\s*\*\w+\s*\)/.test(clean) && (/sum\s*\(/.test(clean) || /for\s+/.test(clean))) {
+          return { ok: true, msg: "Mükemmel! *sayilar (*args) değişken sayıda argümanları demet olarak toplar. ✓" };
+        }
+        return { ok: false, msg: "Hata: def topla(*sayilar): tanımlayıp return sum(sayilar) döndürün." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: GLOBAL DEĞİŞKEN KAPSAMI",
+      title: "4. Soru: Global Kapsama Müdahale",
+      prompt: "Geliştirici fonksiyon içinden global tanımlanmış puan değişkenini artırmak istiyor ancak lokal değişken hatası alıyor. Global değişkene fonksiyon içerisinden müdahale edebilmesini sağlayabilir misin?",
+      presetCode: "skor = 100\ndef skor_arttir():\n    skor += 10\n\nskor_arttir()\nprint(skor)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "fonksiyonlar.py",
+      lang: "Python 3.11",
+      quickKeys: ["global skor","skor += 10","def skor_arttir():"],
+      hint: "skor = 100\ndef skor_arttir():\n    global skor\n    skor += 10\n\nskor_arttir()\nprint(skor)",
+      solution: "skor = 100\ndef skor_arttir():\n    global skor\n    skor += 10\n\nskor_arttir()\nprint(skor)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/global\s+skor/.test(clean) && /skor\s*\+=\s*10/.test(clean)) {
+          return { ok: true, msg: "Harika! global anahtar kelimesi fonksiyonun dışındaki değişkene erişim sağlar. ✓" };
+        }
+        return { ok: false, msg: "Hata: Fonksiyon içinde 'global skor' tanımlamalısınız." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: İSİMLENDİRİLMİŞ PARAMETRELER (**KWARGS)",
+      title: "5. Soru: Anahtar-Değer Argümanları (**kwargs)",
+      prompt: "Geliştirici anahtar-değer çifti şeklinde gönderilen kullanıcı bilgilerini sözlük olarak toplayıp yazdırmak istiyor. İsimlendirilmiş argümanları kabul eden fonksiyon tanımını yapar mısın?",
+      presetCode: "def profil_yaz(*bilgiler):\n    return bilgiler\n\nprint(profil_yaz(ad=\"Can\", rol=\"Admin\"))\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "fonksiyonlar.py",
+      lang: "Python 3.11",
+      quickKeys: ["def profil_yaz(**bilgiler):","return bilgiler","**kwargs"],
+      hint: "def profil_yaz(**bilgiler):\n    return bilgiler\n\nprint(profil_yaz(ad=\"Can\", rol=\"Admin\"))",
+      solution: "def profil_yaz(**bilgiler):\n    return bilgiler\n\nprint(profil_yaz(ad=\"Can\", rol=\"Admin\"))",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/def\s+profil_yaz\s*\(\s*\*\*\w+\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! **kwargs isimlendirilmiş parametreleri sözlük olarak yakalar. 8. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: def profil_yaz(**bilgiler): şeklinde çift yıldız (**) kullanın." };
+      }
+    }
+  ],
+  python_9: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: LAMBDA ANONİM FONKSİYONLAR",
+      title: "1. Soru: Lambda Sözdizimi",
+      prompt: "Geliştirici verilen bir sayının iki katını alan tek satırlık anonim (lambda) fonksiyon oluşturmak istiyor ancak sözdizimindeki gereksiz anahtar kelimeler hata veriyor. Lambda tanımını doğru şekilde yazar mısın?",
+      presetCode: "iki_kat = lambda x: return x * 2\nprint(iki_kat(5))\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "lambda.py",
+      lang: "Python 3.11",
+      quickKeys: ["iki_kat = lambda x: x * 2","lambda x: x * 2","print(iki_kat(5))"],
+      hint: "iki_kat = lambda x: x * 2\nprint(iki_kat(5))",
+      solution: "iki_kat = lambda x: x * 2\nprint(iki_kat(5))",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/lambda\s+x\s*:\s*x\s*\*\s*2/.test(clean) && !/return/.test(clean)) {
+          return { ok: true, msg: "Harika! Lambda ifadelerinde 'return' yazılmaz, ifade otomatik döndürülür. ✓" };
+        }
+        return { ok: false, msg: "Hata: iki_kat = lambda x: x * 2 tanımını kurun." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: LİSTE ÜRETECİ (LIST COMPREHENSION)",
+      title: "2. Soru: List Comprehension Sözdizimi",
+      prompt: "Geliştirici 1'den 5'e kadar olan sayıların karelerinden oluşan bir listeyi tek satırda (List Comprehension) üretmek istiyor ancak sözdizim hatası alıyor. Listeyi doğru formatta oluşturabilir misin?",
+      presetCode: "kareler = [for x in range(1, 6): x**2]\nprint(kareler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "comprehension.py",
+      lang: "Python 3.11",
+      quickKeys: ["kareler = [x**2 for x in range(1, 6)]","x**2 for x in range(1, 6)","print(kareler)"],
+      hint: "kareler = [x**2 for x in range(1, 6)]\nprint(kareler)",
+      solution: "kareler = [x**2 for x in range(1, 6)]\nprint(kareler)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/\[\s*x\s*\*\*\s*2\s+for\s+x\s+in\s+range\s*\(\s*1\s*,\s*6\s*\)\s*\]/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! List comprehension'da üretilecek ifade döngüden önce gelir. ✓" };
+        }
+        return { ok: false, msg: "Hata: kareler = [x**2 for x in range(1, 6)] yapısını kurun." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: KOŞULLU LİSTE ÜRETECİ",
+      title: "3. Soru: Koşullu List Comprehension",
+      prompt: "Geliştirici bir sayı listesindeki çift sayıları List Comprehension ile filtreleyip almak istiyor ancak koşul yerleşimi hatalı olduğu için kod çalışmıyor. Doğru filtreleme sözdizimini yazar mısın?",
+      presetCode: "sayilar = [1, 2, 3, 4, 5, 6]\nciftler = [if x % 2 == 0: x for x in sayilar]\nprint(ciftler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "comprehension.py",
+      lang: "Python 3.11",
+      quickKeys: ["ciftler = [x for x in sayilar if x % 2 == 0]","if x % 2 == 0","print(ciftler)"],
+      hint: "sayilar = [1, 2, 3, 4, 5, 6]\nciftler = [x for x in sayilar if x % 2 == 0]\nprint(ciftler)",
+      solution: "sayilar = [1, 2, 3, 4, 5, 6]\nciftler = [x for x in sayilar if x % 2 == 0]\nprint(ciftler)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/\[\s*x\s+for\s+x\s+in\s+sayilar\s+if\s+x\s*%\s*2\s*==\s*0\s*\]/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Filtreleme if koşulu döngünün sonuna yerleştirilir. ✓" };
+        }
+        return { ok: false, msg: "Hata: ciftler = [x for x in sayilar if x % 2 == 0] şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: DÖNÜŞTÜRÜCÜ (MAP FONKSİYONU)",
+      title: "4. Soru: Map Sonucunu Listeye Çevirme",
+      prompt: "Geliştirici listedeki tüm metinlerin harflerini büyütmek için <code class=\"code-highlight\">map()</code> fonksiyonunu kullanıyor ancak çıktı olarak bir liste yerine nesne referansı görüyor. Sonucu okunabilir bir listeye dönüştürebilir misin?",
+      presetCode: "isimler = [\"ali\", \"veli\", \"can\"]\nbuyukler = map(str.upper, isimler)\nprint(buyukler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "map_filter.py",
+      lang: "Python 3.11",
+      quickKeys: ["buyukler = list(map(str.upper, isimler))","list(buyukler)","print(buyukler)"],
+      hint: "isimler = [\"ali\", \"veli\", \"can\"]\nbuyukler = list(map(str.upper, isimler))\nprint(buyukler)",
+      solution: "isimler = [\"ali\", \"veli\", \"can\"]\nbuyukler = list(map(str.upper, isimler))\nprint(buyukler)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/list\s*\(\s*map\s*\(\s*str\.upper\s*,\s*isimler\s*\)\s*\)/.test(clean) || /print\s*\(\s*list\s*\(\s*buyukler\s*\)\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! map() sonucunu görmek için list() dönüşümü yapılır. ✓" };
+        }
+        return { ok: false, msg: "Hata: buyukler = list(map(str.upper, isimler)) şeklinde listeye çevirin." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: FİLTRELEYİCİ (FILTER FONKSİYONU)",
+      title: "5. Soru: Filter ile Pozitif Sayıları Seçme",
+      prompt: "Geliştirici listedeki pozitif sayıları <code class=\"code-highlight\">filter()</code> ile ayıklamak istiyor ancak çıktıyı liste olarak alamıyor. <code class=\"code-highlight\">filter()</code> sonucunu doğru şekilde listeye çevirip yazdırabilir misin?",
+      presetCode: "sayilar = [-5, 10, -2, 8, -1]\npozitifler = filter(lambda x: x > 0, sayilar)\nprint(pozitifler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "map_filter.py",
+      lang: "Python 3.11",
+      quickKeys: ["pozitifler = list(filter(lambda x: x > 0, sayilar))","list(pozitifler)","print(pozitifler)"],
+      hint: "sayilar = [-5, 10, -2, 8, -1]\npozitifler = list(filter(lambda x: x > 0, sayilar))\nprint(pozitifler)",
+      solution: "sayilar = [-5, 10, -2, 8, -1]\npozitifler = list(filter(lambda x: x > 0, sayilar))\nprint(pozitifler)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/list\s*\(\s*filter\s*\(/.test(clean) || /print\s*\(\s*list\s*\(\s*pozitifler\s*\)\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! filter() sonucu list() ile listeye dönüştürüldü. 9. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: pozitifler = list(filter(lambda x: x > 0, sayilar)) şeklinde yazın." };
+      }
+    }
+  ],
+  python_10: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: STANDART KÜTÜPHANE İÇE AKTARMA",
+      title: "1. Soru: Modül İçe Aktarma (Import)",
+      prompt: "Geliştirici Python'ın yerleşik matematik modülünü kullanarak 16 sayısının karekökünü hesaplamak istiyor ancak modülü çağırmadığı için hata alıyor. Gerekli modülü içeri aktarıp karekökü yazdırabilir misin?",
+      presetCode: "sonuc = math.sqrt(16)\nprint(sonuc)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "moduller.py",
+      lang: "Python 3.11",
+      quickKeys: ["import math","sonuc = math.sqrt(16)","print(sonuc)"],
+      hint: "import math\nsonuc = math.sqrt(16)\nprint(sonuc)",
+      solution: "import math\nsonuc = math.sqrt(16)\nprint(sonuc)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/import\s+math/.test(clean) && /math\.sqrt\s*\(\s*16\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! import math ile matematik fonksiyonları kullanıma açıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Dosya başına 'import math' eklemelisiniz." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: FROM ... IMPORT SÖZDİZİMİ",
+      title: "2. Soru: Belirli Fonksiyonu İçe Aktarma",
+      prompt: "Geliştirici <code class=\"code-highlight\">random</code> modülünden yalnızca <code class=\"code-highlight\">randint</code> fonksiyonunu doğrudan kullanmak istiyor ancak çağırma biçimindeki hata yüzünden fonksiyon bulunamıyor. Fonksiyonu doğrudan kullanılabilir şekilde içe aktarır mısın?",
+      presetCode: "import randint from random\nsayi = randint(1, 10)\nprint(sayi)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "moduller.py",
+      lang: "Python 3.11",
+      quickKeys: ["from random import randint","sayi = randint(1, 10)","print(sayi)"],
+      hint: "from random import randint\nsayi = randint(1, 10)\nprint(sayi)",
+      solution: "from random import randint\nsayi = randint(1, 10)\nprint(sayi)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/from\s+random\s+import\s+randint/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! from modul import fonksiyon sözdizimi başarıyla uygulandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: 'from random import randint' şeklinde yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: MODÜLE TAKMA AD VERME (AS)",
+      title: "3. Soru: Modül Takma Adı (Alias)",
+      prompt: "Geliştirici uzun bir modül ismine kısa bir takma ad (alias) vererek kullanmak istiyor ancak anahtar kelimeyi yanlış kullandığı için sözdizim hatası alıyor. Doğru takma adlandırmayı uygulayabilir misin?",
+      presetCode: "import datetime with dt\nsimdi = dt.datetime.now()\nprint(simdi)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "moduller.py",
+      lang: "Python 3.11",
+      quickKeys: ["import datetime as dt","simdi = dt.datetime.now()","as dt"],
+      hint: "import datetime as dt\nsimdi = dt.datetime.now()\nprint(simdi)",
+      solution: "import datetime as dt\nsimdi = dt.datetime.now()\nprint(simdi)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/import\s+datetime\s+as\s+dt/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Takma ad tanımlamak için 'as' anahtar kelimesi kullanılır. ✓" };
+        }
+        return { ok: false, msg: "Hata: 'import datetime as dt' şeklinde düzeltmelisiniz." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: DOĞRUDAN SABİT KULLANIMI",
+      title: "4. Soru: Pi Sayısı ile Alan Hesabı",
+      prompt: "Geliştirici <code class=\"code-highlight\">math</code> modülündeki pi sayısını kullanarak yarıçapı 5 olan dairenin alanını (<code class=\"code-highlight\">pi * r**2</code>) hesaplamak istiyor ancak modül adı yazımında aksaklık var. Pi sabitini doğru şekilde içe aktarıp alanı hesaplar mısın?",
+      presetCode: "from math import pi\nr = 5\nalan = math.pi * (r ** 2)\nprint(alan)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "moduller.py",
+      lang: "Python 3.11",
+      quickKeys: ["alan = pi * (r ** 2)","from math import pi","print(alan)"],
+      hint: "from math import pi\nr = 5\nalan = pi * (r ** 2)\nprint(alan)",
+      solution: "from math import pi\nr = 5\nalan = pi * (r ** 2)\nprint(alan)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/from\s+math\s+import\s+pi/.test(clean) && !/math\.pi/.test(clean) && /pi\s*\*\s*(\(?r\s*\*\*\s*2\)?|25)/.test(clean)) {
+          return { ok: true, msg: "Harika! from ile içe aktarılan pi doğrudan adıyla kullanılır. ✓" };
+        }
+        return { ok: false, msg: "Hata: alan = pi * (r ** 2) şeklinde math. önekini kaldırın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: RASTGELE SEÇİM (RANDOM.CHOICE)",
+      title: "5. Soru: Listeden Rastgele Seçim",
+      prompt: "Geliştirici bir listeden rastgele bir eleman seçmek istiyor ancak yanlış fonksiyon çağırdığı için hata alıyor. Listeden rastgele eleman seçen doğru <code class=\"code-highlight\">random</code> fonksiyonunu kullanabilir misin?",
+      presetCode: "import random\nrenkler = [\"Kırmızı\", \"Mavi\", \"Yeşil\"]\nsecim = random.rand(renkler)\nprint(secim)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "moduller.py",
+      lang: "Python 3.11",
+      quickKeys: ["secim = random.choice(renkler)","random.choice(","print(secim)"],
+      hint: "import random\nrenkler = [\"Kırmızı\", \"Mavi\", \"Yeşil\"]\nsecim = random.choice(renkler)\nprint(secim)",
+      solution: "import random\nrenkler = [\"Kırmızı\", \"Mavi\", \"Yeşil\"]\nsecim = random.choice(renkler)\nprint(secim)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/random\.choice\s*\(\s*renkler\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! random.choice() listeden rastgele eleman seçer. 10. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: secim = random.choice(renkler) fonksiyonunu kullanmalısınız." };
+      }
+    }
+  ],
+  python_11: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: SIFIRA BÖLME HATASI (ZERODIVISIONERROR)",
+      title: "1. Soru: Sıfıra Bölme Hatasını Yakalama",
+      prompt: "Geliştirici bir sayıyı 0'a bölmeye çalışırken programın çökmesini engellemek ve ekrana <code class=\"code-highlight\">\"Sıfıra bölünemez\"</code> uyarısı basmak istiyor. Olası hatayı yakalayan koruma bloğunu kurabilir misin?",
+      presetCode: "sayi = 10 / 0\nprint(sayi)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "hatalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["try:","except ZeroDivisionError:","    print(\"Sıfıra bölünemez\")"],
+      hint: "try:\n    sayi = 10 / 0\n    print(sayi)\nexcept ZeroDivisionError:\n    print(\"Sıfıra bölünemez\")",
+      solution: "try:\n    sayi = 10 / 0\n    print(sayi)\nexcept ZeroDivisionError:\n    print(\"Sıfıra bölünemez\")",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/try\s*:[\s\S]*except\s+(ZeroDivisionError|Exception)\s*:[\s\S]*print\s*\(\s*['"]Sıfıra bölünemez['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! ZeroDivisionError try-except ile güvenle yakalandı. ✓" };
+        }
+        return { ok: false, msg: 'Hata: try-except ZeroDivisionError bloğu ile "Sıfıra bölünemez" yazdırın.' };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: DEĞER DÖNÜŞÜM HATASI (VALUEERROR)",
+      title: "2. Soru: Tip Dönüşüm Hatası",
+      prompt: "Geliştirici metin halindeki geçersiz bir girdiyi sayıya dönüştürürken oluşan hatayı yakalayıp <code class=\"code-highlight\">\"Geçersiz Sayı\"</code> yazdırmak istiyor. İlgili veri dönüşüm hatasını yakalayan bloğu yazar mısın?",
+      presetCode: "try:\n    deger = int(\"abc\")\nexcept KeyError:\n    print(\"Geçersiz Sayı\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "hatalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["except ValueError:","print(\"Geçersiz Sayı\")","try:\n    deger = int(\"abc\")"],
+      hint: "try:\n    deger = int(\"abc\")\nexcept ValueError:\n    print(\"Geçersiz Sayı\")",
+      solution: "try:\n    deger = int(\"abc\")\nexcept ValueError:\n    print(\"Geçersiz Sayı\")",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/except\s+ValueError\s*:/.test(clean) && /print\s*\(\s*['"]Geçersiz Sayı['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! int('abc') dönüşümü ValueError üretir ve doğru yakalandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: except KeyError yerine except ValueError kullanın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: GARANTİ ÇALIŞAN BLOK (FINALLY)",
+      title: "3. Soru: Her Durumda Çalışan Finally",
+      prompt: "Geliştirici hata olsun ya da olmasın her durumda <code class=\"code-highlight\">\"İşlem Bitti\"</code> mesajının mutlaka çalışmasını istiyor. Her senaryoda çalışan garanti bloğunu ekleyebilir misin?",
+      presetCode: "try:\n    x = 5 + 5\nexcept Exception:\n    print(\"Hata\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "hatalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["finally:","    print(\"İşlem Bitti\")","try:    x = 5 + 5"],
+      hint: "try:\n    x = 5 + 5\nexcept Exception:\n    print(\"Hata\")\nfinally:\n    print(\"İşlem Bitti\")",
+      solution: "try:\n    x = 5 + 5\nexcept Exception:\n    print(\"Hata\")\nfinally:\n    print(\"İşlem Bitti\")",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/finally\s*:[\s\S]*print\s*\(\s*['"]İşlem Bitti['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! finally bloğu her ihtimalde mutlaka çalıştırılır. ✓" };
+        }
+        return { ok: false, msg: 'Hata: finally: bloğunun altına print("İşlem Bitti") ekleyin.' };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: ÖZEL HATA FIRLATMA (RAISE)",
+      title: "4. Soru: Manuel Hata Fırlatma",
+      prompt: "Geliştirici yaş değeri 0'dan küçük girildiğinde manuel olarak bir hata tetiklemek istiyor ancak hatalı komut kullandığı için hata fırlatılamıyor. Doğru hata fırlatma komutunu uygular mısın?",
+      presetCode: "yas = -5\nif yas < 0:\n    throw ValueError(\"Yaş negatif olamaz\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "hatalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["raise ValueError(\"Yaş negatif olamaz\")","raise","if yas < 0:"],
+      hint: "yas = -5\nif yas < 0:\n    raise ValueError(\"Yaş negatif olamaz\")",
+      solution: "yas = -5\nif yas < 0:\n    raise ValueError(\"Yaş negatif olamaz\")",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/raise\s+ValueError\s*\(\s*['"]Yaş negatif olamaz['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! Python'da hata fırlatmak için 'raise' anahtar kelimesi kullanılır. ✓" };
+        }
+        return { ok: false, msg: 'Hata: throw yerine raise ValueError("Yaş negatif olamaz") yazmalısınız.' };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: HATA DETAYINI ALMA (EXCEPT ... AS E)",
+      title: "5. Soru: Hata Mesajına Erişme",
+      prompt: "Geliştirici yakalanan hatanın sistem tarafından üretilen detaylı mesajını ekrana yazdırmak istiyor ancak hata değişkenini yakalayamıyor. Hata nesnesini değişkene atayarak yazdırabilir misin?",
+      presetCode: "try:\n    sonuc = 10 / 0\nexcept ZeroDivisionError:\n    print(e)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "hatalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["except ZeroDivisionError as e:","print(e)","as e"],
+      hint: "try:\n    sonuc = 10 / 0\nexcept ZeroDivisionError as e:\n    print(e)",
+      solution: "try:\n    sonuc = 10 / 0\nexcept ZeroDivisionError as e:\n    print(e)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/except\s+ZeroDivisionError\s+as\s+e\s*:/.test(clean) && /print\s*\(\s*e\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! 'as e' ile hata nesnesi değişkene bağlanır. 11. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: except ZeroDivisionError as e: tanımlaması yapın." };
+      }
+    }
+  ],
+  python_12: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: DOSYAYA YAZMA MODU (\"W\")",
+      title: "1. Soru: Dosyaya Yazma Modu",
+      prompt: "Geliştirici <code class=\"code-highlight\">notlar.txt</code> dosyasına yeni bir not yazmak istiyor ancak okuma modunda açtığı için yazma hatası alıyor. Dosyayı yazma modunda açıp <code class=\"code-highlight\">\"Python 100\"</code> metnini yazdırabilir misin?",
+      presetCode: "with open(\"notlar.txt\", \"r\") as dosya:\n    dosya.write(\"Python 100\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "dosyalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["with open(\"notlar.txt\", \"w\") as dosya:","    dosya.write(\"Python 100\")","\"w\""],
+      hint: "with open(\"notlar.txt\", \"w\") as dosya:\n    dosya.write(\"Python 100\")",
+      solution: "with open(\"notlar.txt\", \"w\") as dosya:\n    dosya.write(\"Python 100\")",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/with\s+open\s*\(\s*['"]notlar\.txt['"]\s*,\s*['"]w['"]\s*\)\s*as\s+dosya\s*:[\s\S]*dosya\.write\s*\(\s*['"]Python 100['"]\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! Dosyaya yazmak için 'w' (write) modu kullanılır. ✓" };
+        }
+        return { ok: false, msg: 'Hata: with open("notlar.txt", "w") as dosya: modunu kullanın.' };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: DOSYAYA EKLEME MODU (\"A\")",
+      title: "2. Soru: Dosya Sonuna Veri Ekleme",
+      prompt: "Geliştirici dosyadaki mevcut içeriği silmeden dosyanın sonuna yeni bir satır eklemek istiyor ancak \"w\" modu kullandığı için eski veriler kayboluyor. Dosyanın sonuna ekleme yapan doğru modu yazar mısın?",
+      presetCode: "with open(\"log.txt\", \"w\") as dosya:\n    dosya.write(\"Yeni Satır\\n\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "dosyalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["with open(\"log.txt\", \"a\") as dosya:","    dosya.write(\"Yeni Satır\\n\")","\"a\""],
+      hint: "with open(\"log.txt\", \"a\") as dosya:\n    dosya.write(\"Yeni Satır\\n\")",
+      solution: "with open(\"log.txt\", \"a\") as dosya:\n    dosya.write(\"Yeni Satır\\n\")",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/with\s+open\s*\(\s*['"]log\.txt['"]\s*,\s*['"]a['"]\s*\)\s*as\s+dosya\s*:/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! 'a' (append) modu eski içeriği koruyarak sonuna ekler. ✓" };
+        }
+        return { ok: false, msg: 'Hata: with open("log.txt", "a") as dosya: şeklinde "a" modunu kullanın.' };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: DOSYA METNİNİ OKUMA (.READ)",
+      title: "3. Soru: Dosya İçeriğini Okuma",
+      prompt: "Geliştirici bir dosyadaki tüm metni okuyup ekrana basmak istiyor ancak dosya içeriğini okuma metodunu çağırmayı unutuyor. Dosya içeriğini okuyup ekrana yazdırabilir misin?",
+      presetCode: "with open(\"metin.txt\", \"r\") as dosya:\n    icerik = dosya\n    print(icerik)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "dosyalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["icerik = dosya.read()","dosya.read()","print(icerik)"],
+      hint: "with open(\"metin.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
+      solution: "with open(\"metin.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/dosya\.read\s*\(\s*\)/.test(clean) && /print\s*\(/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! dosya.read() dosyanın tüm metnini string olarak çeker. ✓" };
+        }
+        return { ok: false, msg: "Hata: icerik = dosya.read() ile metni okumalısınız." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: SATIRLARI LİSTE HALİNDE OKUMA",
+      title: "4. Soru: Satırları Liste Olarak Alma",
+      prompt: "Geliştirici dosyadaki satırları tek tek bir liste halinde almak istiyor ancak tüm dosyayı tek bir metin olarak alıyor. Satırları liste olarak döndüren metodu kullanabilir misin?",
+      presetCode: "with open(\"liste.txt\", \"r\") as dosya:\n    satirlar = dosya.readline()\n    print(satirlar)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "dosyalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["satirlar = dosya.readlines()","dosya.readlines()","print(satirlar)"],
+      hint: "with open(\"liste.txt\", \"r\") as dosya:\n    satirlar = dosya.readlines()\n    print(satirlar)",
+      solution: "with open(\"liste.txt\", \"r\") as dosya:\n    satirlar = dosya.readlines()\n    print(satirlar)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/dosya\.readlines\s*\(\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! .readlines() dosyadaki tüm satırları bir liste içinde döner. ✓" };
+        }
+        return { ok: false, msg: "Hata: satirlar = dosya.readlines() metodunu kullanın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: WITH OPEN İLE GÜVENLİ YÖNETİM",
+      title: "5. Soru: With Open Kalıbı",
+      prompt: "Geliştirici manuel açtığı dosyayı işlem bitince açık unutmamak için modern ve güvenli otomatik kapatma bloğunu kullanmak istiyor. <code class=\"code-highlight\">with open(...)</code> kalıbını kurabilir misin?",
+      presetCode: "dosya = open(\"veri.txt\", \"r\")\nicerik = dosya.read()\n# Kodunu aşağıya with open kullanarak doğru şekilde yaz:\n",
+      filename: "dosyalar.py",
+      lang: "Python 3.11",
+      quickKeys: ["with open(\"veri.txt\", \"r\") as dosya:","    icerik = dosya.read()","    print(icerik)"],
+      hint: "with open(\"veri.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
+      solution: "with open(\"veri.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/with\s+open\s*\(\s*['"]veri\.txt['"]/.test(clean) && /as\s+dosya\s*:/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! with open context manager dosyayı otomatik kapatır. 12. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: 'Hata: with open("veri.txt", "r") as dosya: yapısını kurun.' };
+      }
+    }
+  ],
+  python_13: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: KURUCU METOT (__INIT__)",
+      title: "1. Soru: Yapıcı Metot Tanımlama",
+      prompt: "Geliştirici bir Araba sınıfı oluşturup nesne üretirken marka bilgisini başlatmak istiyor ancak kurucu metodun ismini hatalı tanımladığı için çalışmıyor. Doğru yapıcı (constructor) metodunu tanımlar mısın?",
+      presetCode: "class Araba:\n    def init(self, marka):\n        self.marka = marka\n\na1 = Araba(\"Toyota\")\nprint(a1.marka)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "oop.py",
+      lang: "Python 3.11",
+      quickKeys: ["def __init__(self, marka):","__init__","self.marka = marka"],
+      hint: "class Araba:\n    def __init__(self, marka):\n        self.marka = marka\n\na1 = Araba(\"Toyota\")\nprint(a1.marka)",
+      solution: "class Araba:\n    def __init__(self, marka):\n        self.marka = marka\n\na1 = Araba(\"Toyota\")\nprint(a1.marka)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/def\s+__init__\s*\(\s*self\s*,\s*marka\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! Kurucu metot __init__ çift alt tire ile tanımlanır. ✓" };
+        }
+        return { ok: false, msg: "Hata: def __init__(self, marka): şeklinde yapıcı metodu düzeltin." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: NESNE REFERANSI (SELF)",
+      title: "2. Soru: Metotta Self Parametresi",
+      prompt: "Geliştirici sınıftaki bir metot içerisinde nesnenin kendi özelliğine (<code class=\"code-highlight\">self.ad</code>) erişmek istiyor ancak parametreye referansı eklemediği için hata alıyor. Nesne referansını metoda dahil edebilir misin?",
+      presetCode: "class Oyuncu:\n    def __init__(self, ad):\n        self.ad = ad\n    def selamla():\n        return f\"Merhaba {self.ad}\"\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "oop.py",
+      lang: "Python 3.11",
+      quickKeys: ["def selamla(self):","self.ad","return f\"Merhaba {self.ad}\""],
+      hint: "class Oyuncu:\n    def __init__(self, ad):\n        self.ad = ad\n    def selamla(self):\n        return f\"Merhaba {self.ad}\"",
+      solution: "class Oyuncu:\n    def __init__(self, ad):\n        self.ad = ad\n    def selamla(self):\n        return f\"Merhaba {self.ad}\"",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/def\s+selamla\s*\(\s*self\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! Sınıf metotları ilk parametre olarak 'self' alır. ✓" };
+        }
+        return { ok: false, msg: "Hata: def selamla(self): şeklinde self parametresini ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: KALITIM & MİRAS (INHERITANCE)",
+      title: "3. Soru: Sınıf Kalıtımı",
+      prompt: "Geliştirici <code class=\"code-highlight\">Kopek</code> sınıfının <code class=\"code-highlight\">Hayvan</code> sınıfındaki özellikleri miras (inheritance) almasını istiyor ancak kalıtım parantezini unuttuğu için metotlara erişemiyor. Kalıtım bağlantısını kurabilir misin?",
+      presetCode: "class Hayvan:\n    def ses_cikar(self):\n        return \"Ses\"\n\nclass Kopek:\n    pass\n\nk = Kopek()\nprint(k.ses_cikar())\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "oop.py",
+      lang: "Python 3.11",
+      quickKeys: ["class Kopek(Hayvan):","class Kopek(Hayvan):\n    pass","k = Kopek()"],
+      hint: "class Hayvan:\n    def ses_cikar(self):\n        return \"Ses\"\n\nclass Kopek(Hayvan):\n    pass\n\nk = Kopek()\nprint(k.ses_cikar())",
+      solution: "class Hayvan:\n    def ses_cikar(self):\n        return \"Ses\"\n\nclass Kopek(Hayvan):\n    pass\n\nk = Kopek()\nprint(k.ses_cikar())",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/class\s+Kopek\s*\(\s*Hayvan\s*\)/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! class Kopek(Hayvan): ile miras alındı. ✓" };
+        }
+        return { ok: false, msg: "Hata: class Kopek(Hayvan): şeklinde parantez içine üst sınıfı yazın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: ÜST SINIF METODU (SUPER())",
+      title: "4. Soru: Super() ile Üst Sınıf Kurucusu",
+      prompt: "Geliştirici alt sınıfta üst sınıfın kurucu metodunu çalıştırmak istiyor ancak hatalı anahtar kelime kullandığı için özellikler aktarılmıyor. <code class=\"code-highlight\">super()</code> fonksiyonunu doğru uygulayabilir misin?",
+      presetCode: "class Calisan:\n    def __init__(self, isim):\n        self.isim = isim\n\nclass Mudur(Calisan):\n    def __init__(self, isim, departman):\n        parent.__init__(isim)\n        self.departman = departman\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "oop.py",
+      lang: "Python 3.11",
+      quickKeys: ["super().__init__(isim)","super()","self.departman = departman"],
+      hint: "class Calisan:\n    def __init__(self, isim):\n        self.isim = isim\n\nclass Mudur(Calisan):\n    def __init__(self, isim, departman):\n        super().__init__(isim)\n        self.departman = departman",
+      solution: "class Calisan:\n    def __init__(self, isim):\n        self.isim = isim\n\nclass Mudur(Calisan):\n    def __init__(self, isim, departman):\n        super().__init__(isim)\n        self.departman = departman",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/super\s*\(\s*\)\.__init__\s*\(\s*isim\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! super().__init__(isim) üst sınıfın kurucusunu çağırır. ✓" };
+        }
+        return { ok: false, msg: "Hata: parent yerine super().__init__(isim) kullanın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: METİN TEMSİLİ (__STR__)",
+      title: "5. Soru: Nesne Metin Temsili (__str__)",
+      prompt: "Geliştirici nesneyi doğrudan <code class=\"code-highlight\">print(kitap)</code> ile yazdırdığında anlaşılır bir metin görmek istiyor ancak ekranda karmaşık bellek adresi çıkıyor. Nesnenin metin temsilini belirleyen özel metodu ekler misin?",
+      presetCode: "class Kitap:\n    def __init__(self, baslik):\n        self.baslik = baslik\n    def to_string(self):\n        return self.baslik\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "oop.py",
+      lang: "Python 3.11",
+      quickKeys: ["def __str__(self):","__str__","return self.baslik"],
+      hint: "class Kitap:\n    def __init__(self, baslik):\n        self.baslik = baslik\n    def __str__(self):\n        return self.baslik",
+      solution: "class Kitap:\n    def __init__(self, baslik):\n        self.baslik = baslik\n    def __str__(self):\n        return self.baslik",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/def\s+__str__\s*\(\s*self\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! __str__ metodu nesne print edildiğinde dönecek metni ayarlar. 13. Modül Tamamlandı! 🏆" };
+        }
+        return { ok: false, msg: "Hata: to_string yerine def __str__(self): tanımlayın." };
+      }
+    }
+  ],
+  python_14: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: JSON METNİ OLUŞTURMA (DUMPS)",
+      title: "1. Soru: Sözlüğü JSON Formatına Çevirme",
+      prompt: "Geliştirici bir Python sözlüğünü JSON metin formatına dönüştürmek istiyor ancak <code class=\"code-highlight\">json</code> modülünün metodunu yanlış çağırdığı için hata alıyor. Sözlüğü JSON stringine çeviren doğru metodu yazar mısın?",
+      presetCode: "import json\nveri = {\"proje\": \"Sehir\", \"seviye\": 14}\njson_metin = json.to_json(veri)\nprint(json_metin)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "proje.py",
+      lang: "Python 3.11",
+      quickKeys: ["json_metin = json.dumps(veri)","json.dumps(veri)","import json"],
+      hint: "import json\nveri = {\"proje\": \"Sehir\", \"seviye\": 14}\njson_metin = json.dumps(veri)\nprint(json_metin)",
+      solution: "import json\nveri = {\"proje\": \"Sehir\", \"seviye\": 14}\njson_metin = json.dumps(veri)\nprint(json_metin)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/json\.dumps\s*\(\s*veri\s*\)/.test(clean)) {
+          return { ok: true, msg: "Harika! json.dumps() Python nesnesini JSON formatında stringe çevirir. ✓" };
+        }
+        return { ok: false, msg: "Hata: json_metin = json.dumps(veri) metodunu kullanmalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: JSON METNİNİ ÇÖZÜMLEME (LOADS)",
+      title: "2. Soru: JSON Metnini Sözlüğe Çevirme",
+      prompt: "Geliştirici JSON formatındaki bir metni tekrar Python sözlüğüne çevirmek istiyor ancak dosya okuma metoduyla karıştırdığı için hata alıyor. Metinden JSON yükleyen doğru metodu kullanır mısın?",
+      presetCode: "import json\nmetin = '{\"durum\": \"aktif\", \"skor\": 100}'\nsozluk = json.load(metin)\nprint(sozluk[\"durum\"])\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "proje.py",
+      lang: "Python 3.11",
+      quickKeys: ["sozluk = json.loads(metin)","json.loads(metin)","print(sozluk[\"durum\"])"],
+      hint: "import json\nmetin = '{\"durum\": \"aktif\", \"skor\": 100}'\nsozluk = json.loads(metin)\nprint(sozluk[\"durum\"])",
+      solution: "import json\nmetin = '{\"durum\": \"aktif\", \"skor\": 100}'\nsozluk = json.loads(metin)\nprint(sozluk[\"durum\"])",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/json\.loads\s*\(\s*metin\s*\)/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! json.loads() JSON stringini sözlüğe dönüştürür. ✓" };
+        }
+        return { ok: false, msg: "Hata: sozluk = json.loads(metin) metodunu kullanın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: TKINTER PENCERE DÖNGÜSÜ",
+      title: "3. Soru: GUI Ana Olay Döngüsü",
+      prompt: "Geliştirici Tkinter kütüphanesiyle temel bir grafik arayüz penceresi oluşturup ekranda açık tutmak istiyor ancak ana olay döngüsünü başlatmadığı için pencere anında kapanıyor. Döngüyü başlatan komutu ekleyebilir misin?",
+      presetCode: "import tkinter as tk\npencere = tk.Tk()\npencere.title(\"Kod Çiftliği\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "arayuz.py",
+      lang: "Python 3.11",
+      quickKeys: ["pencere.mainloop()","pencere.title(\"Kod Çiftliği\")","import tkinter as tk"],
+      hint: "import tkinter as tk\npencere = tk.Tk()\npencere.title(\"Kod Çiftliği\")\npencere.mainloop()",
+      solution: "import tkinter as tk\npencere = tk.Tk()\npencere.title(\"Kod Çiftliği\")\npencere.mainloop()",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/pencere\.mainloop\s*\(\s*\)/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! pencere.mainloop() grafik arayüz penceresini açık ve etkileşimde tutar. ✓" };
+        }
+        return { ok: false, msg: "Hata: pencere.mainloop() komutunu çağırmalısınız." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: FONKSİYON DEKORATÖRLERİ (@)",
+      title: "4. Soru: Dekoratör (@) Uygulama",
+      prompt: "Geliştirici bir fonksiyona ek özellik katan bir dekoratör (decorator) kullanmak istiyor ancak dekoratörün fonksiyon üzerindeki işaretleme sözdizimini yanlış yazıyor. Doğru dekoratör çağrısını ekler misin?",
+      presetCode: "def buyuk_harf_yap(fonk):\n    def sarmal():\n        return fonk().upper()\n    return sarmal\n\n# dekorator fonksiyonunu merhaba fonksiyonuna uygula:\ndef merhaba():\n    return \"gunaydin\"\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "dekorator.py",
+      lang: "Python 3.11",
+      quickKeys: ["@buyuk_harf_yap\ndef merhaba():","@buyuk_harf_yap","print(merhaba())"],
+      hint: "def buyuk_harf_yap(fonk):\n    def sarmal():\n        return fonk().upper()\n    return sarmal\n\n@buyuk_harf_yap\ndef merhaba():\n    return \"gunaydin\"\n\nprint(merhaba())",
+      solution: "def buyuk_harf_yap(fonk):\n    def sarmal():\n        return fonk().upper()\n    return sarmal\n\n@buyuk_harf_yap\ndef merhaba():\n    return \"gunaydin\"\n\nprint(merhaba())",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/@buyuk_harf_yap\s+def\s+merhaba/.test(clean)) {
+          return { ok: true, msg: "Harika! Dekoratörler fonksiyon tanımının üstüne @dekorator ile eklenir. ✓" };
+        }
+        return { ok: false, msg: "Hata: def merhaba() tanımının hemen üstüne @buyuk_harf_yap ekleyin." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: ÜRETEÇLER (GENERATORS & YIELD)",
+      title: "5. Soru: Üreteç Fonksiyonu (yield)",
+      prompt: "Geliştirici büyük bir veri kümesini belleği şişirmeden adım adım üreten bir üreteç (generator) fonksiyonu tasarlamak istiyor ancak <code class=\"code-highlight\">return</code> kullandığı için tek bir değer alıp sonlanıyor. Üreteç mekanizmasını devreye sokan anahtar kelimeyi yazar mısın?",
+      presetCode: "def sayac():\n    for i in range(1, 4):\n        return i\n\nfor sayi in sayac():\n    print(sayi)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "generator.py",
+      lang: "Python 3.11",
+      quickKeys: ["yield i","def sayac():","for sayi in sayac():"],
+      hint: "def sayac():\n    for i in range(1, 4):\n        yield i\n\nfor sayi in sayac():\n    print(sayi)",
+      solution: "def sayac():\n    for i in range(1, 4):\n        yield i\n\nfor sayi in sayac():\n    print(sayi)",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/def\s+sayac\s*\(\s*\):[\s\S]*yield\s+i/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! yield anahtar kelimesi ile generator başarıyla tamamlandı. Python Müfredatı Tamamlandı! 🚀🏆" };
+        }
+        return { ok: false, msg: "Hata: return yerine 'yield i' kullanmalısınız." };
       }
     }
   ]
 };
 
-// python_1 veya diğer dillerin 1. modülleri için p1 veritabanını kullan
-CHALLENGES_DATABASE.python_1 = CHALLENGES_DATABASE.p1;
+// Eski id eşleştirmeleri
+CHALLENGES_DATABASE.p1 = CHALLENGES_DATABASE.python_1;
+CHALLENGES_DATABASE.p2 = CHALLENGES_DATABASE.python_2;
+CHALLENGES_DATABASE.p3 = CHALLENGES_DATABASE.python_3;
+CHALLENGES_DATABASE.p4 = CHALLENGES_DATABASE.python_4;
+CHALLENGES_DATABASE.p5 = CHALLENGES_DATABASE.python_5;
+CHALLENGES_DATABASE.p6 = CHALLENGES_DATABASE.python_6;
+CHALLENGES_DATABASE.p7 = CHALLENGES_DATABASE.python_7;
+CHALLENGES_DATABASE.p8 = CHALLENGES_DATABASE.python_8;
+CHALLENGES_DATABASE.p9 = CHALLENGES_DATABASE.python_9;
+CHALLENGES_DATABASE.p10 = CHALLENGES_DATABASE.python_10;
+CHALLENGES_DATABASE.p11 = CHALLENGES_DATABASE.python_11;
+CHALLENGES_DATABASE.p12 = CHALLENGES_DATABASE.python_12;
+CHALLENGES_DATABASE.p13 = CHALLENGES_DATABASE.python_13;
+CHALLENGES_DATABASE.p14 = CHALLENGES_DATABASE.python_14;
 
 let currentChallengeIndex = 0;
 let currentChallengesList = [];
 
 function loadNodeFarmGame() {
   const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
-  const topicId = state.selectedNodeId || 'p1';
+  const topicId = state.selectedNodeId || `${curLang.id}_1` || 'python_1';
 
-  currentChallengesList = CHALLENGES_DATABASE[topicId] || CHALLENGES_DATABASE.p1;
+  currentChallengesList = CHALLENGES_DATABASE[topicId] || CHALLENGES_DATABASE.python_1;
   currentChallengeIndex = 0;
 
   renderCurrentChallenge();
@@ -1729,7 +3298,10 @@ function renderCurrentChallenge() {
   if (presetEl) presetEl.innerHTML = challenge.presetCode;
   if (filenameEl) filenameEl.textContent = challenge.filename;
 
-  // Hızlı Kısayol Tuşları
+  // İpucu Paneli ve Kod Parçacıklarını Güncelle
+  const hintPanel = document.getElementById('hint-panel');
+  if (hintPanel) hintPanel.style.display = 'none'; // Yeni soruya geçildiğinde kapalı başlasın
+
   if (keysBar) {
     keysBar.innerHTML = '';
     challenge.quickKeys.forEach(k => {
@@ -1760,7 +3332,7 @@ function insertTextAtCursor(input, text) {
 
 function updateLineNumbers() {
   const presetLines = 4; // preset code satırları
-  const userLines = dom.codeInput.value.split('\n').length;
+  const userLines = dom.codeInput.value ? dom.codeInput.value.split('\n').length : 1;
   const total = presetLines + Math.max(userLines, 3);
   const lineNumEl = document.getElementById('ide-line-numbers');
   if (lineNumEl) {
@@ -1856,24 +3428,147 @@ if (dom.languageSearchInput) {
 
 dom.btnRun.addEventListener('click', runCurrentCode);
 
+const btnCloseHint = document.getElementById('btn-close-hint');
+
 dom.btnHint.addEventListener('click', () => {
+  const hintPanel = document.getElementById('hint-panel');
   const challenge = currentChallengesList[currentChallengeIndex] || currentChallengesList[0];
-  logToTerminal(`💡 <strong>İpucu:</strong> <pre style="margin-top:4px;color:#fcd34d;">${challenge.hint}</pre>`, 'hint');
+
+  if (hintPanel) {
+    const isHidden = hintPanel.style.display === 'none' || !hintPanel.style.display;
+    hintPanel.style.display = isHidden ? 'block' : 'none';
+    if (isHidden) {
+      hintPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  logToTerminal('💡 <strong>İpucu:</strong> Kod parçacıkları paneli açıldı. İhtiyacın olan parçaları tıklayarak editöre ekleyebilirsin.', 'hint');
   sfx.playPop();
 });
+
+if (btnCloseHint) {
+  btnCloseHint.addEventListener('click', () => {
+    const hintPanel = document.getElementById('hint-panel');
+    if (hintPanel) hintPanel.style.display = 'none';
+    sfx.playPop();
+  });
+}
 
 dom.btnClearConsole.addEventListener('click', () => {
   dom.terminalOutput.innerHTML = '';
 });
 
-dom.codeInput.addEventListener('input', updateLineNumbers);
+// Hızlı Modül Atlama Fonksiyonu (Alıştırmayı Tamamla ve Sonraki Konuya Geç)
+function skipEntireModule() {
+  state.completedNodes.add(state.selectedNodeId);
+  completeCurrentTopic(state.selectedLangId, state.selectedNodeId);
+  state.xp += 150;
+  state.harvestCount += 5;
+  updateGlobalStats();
+  sfx.playVictory();
+  logToTerminal('⚡ <strong>Alıştırma Atlandı & Modül Başarıyla Tamamlandı!</strong>', 'success');
+  showVictoryModal();
+}
+
+const btnSkipModule = document.getElementById('btn-skip-module') || document.getElementById('btn-skip-step');
+if (btnSkipModule) {
+  btnSkipModule.addEventListener('click', skipEntireModule);
+}
+
+const btnUnlockAll = document.getElementById('btn-unlock-all');
+let allUnlocked = false;
+if (btnUnlockAll) {
+  btnUnlockAll.addEventListener('click', () => {
+    const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
+    const topics = getLanguageTopics(curLang.id);
+    allUnlocked = !allUnlocked;
+    topics.forEach((t, i) => {
+      t.status = allUnlocked ? 'active' : (i === 0 ? 'active' : 'locked');
+    });
+    btnUnlockAll.innerHTML = allUnlocked ? '<span>🔒 Kilitleri Aç/Kapat</span>' : '<span>🔓 Tüm Kilitleri Aç</span>';
+    sfx.playSuccess();
+    renderSkillTree();
+  });
+}
+
+// Editör Otomatik Karakter Kapatma (Auto-Closing Pairs) & Akıllı Tuş Yönetimi
+const AUTO_PAIRS = {
+  '(': ')',
+  '[': ']',
+  '{': '}',
+  '"': '"',
+  "'": "'"
+};
+
+const CLOSING_CHARS = new Set([')', ']', '}', '"', "'"]);
 
 dom.codeInput.addEventListener('keydown', (e) => {
+  const input = dom.codeInput;
+  const start = input.selectionStart;
+  const end = input.selectionEnd;
+  const val = input.value;
+
+  // 1. Kodu Çalıştır (Ctrl + Enter)
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
     e.preventDefault();
     runCurrentCode();
+    return;
+  }
+
+  // 2. Modülü Atla (Ctrl + .)
+  if ((e.ctrlKey || e.metaKey) && (e.key === '.' || e.key === '>')) {
+    e.preventDefault();
+    skipEntireModule();
+    return;
+  }
+
+  // 3. Tab Tuşu (4 Boşluk Girinti)
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    const tabSpaces = '    ';
+    input.value = val.substring(0, start) + tabSpaces + val.substring(end);
+    input.selectionStart = input.selectionEnd = start + tabSpaces.length;
+    updateLineNumbers();
+    return;
+  }
+
+  // 4. Kapanış Karakterinin Üzerinden Atlama (Skip Over Closing Character)
+  if (CLOSING_CHARS.has(e.key) && start === end && val[start] === e.key) {
+    e.preventDefault();
+    input.selectionStart = input.selectionEnd = start + 1;
+    return;
+  }
+
+  // 5. Otomatik Çift Kapatma (Auto-Closing: (, [, {, ", ')
+  if (AUTO_PAIRS[e.key]) {
+    e.preventDefault();
+    const openChar = e.key;
+    const closeChar = AUTO_PAIRS[openChar];
+    const selectedText = val.substring(start, end);
+
+    // Eğer bir metin seçiliyse onu parantez/tırnak içine al
+    input.value = val.substring(0, start) + openChar + selectedText + closeChar + val.substring(end);
+    input.selectionStart = start + 1;
+    input.selectionEnd = end + 1;
+    updateLineNumbers();
+    return;
+  }
+
+  // 6. Akıllı Silme (Backspace ile boş çifti silme: () -> silince ikisi de gitsin)
+  if (e.key === 'Backspace' && start === end && start > 0) {
+    const prevChar = val[start - 1];
+    const nextChar = val[start];
+    if (AUTO_PAIRS[prevChar] === nextChar) {
+      e.preventDefault();
+      input.value = val.substring(0, start - 1) + val.substring(start + 1);
+      input.selectionStart = input.selectionEnd = start - 1;
+      updateLineNumbers();
+      return;
+    }
   }
 });
+
+dom.codeInput.addEventListener('input', updateLineNumbers);
 
 dom.btnSoundToggle.addEventListener('click', () => {
   sfx.enabled = !sfx.enabled;
@@ -1921,5 +3616,5 @@ if (topicReviewModal) {
 
 // Başlangıç Yüklemesi
 switchView('languages');
+
 updateGlobalStats();
-}
