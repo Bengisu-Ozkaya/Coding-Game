@@ -2,95 +2,16 @@
  * 🌾 Kod Çiftliği (Code & Farm) - Radyal Yetenek Ağacı (Skill Tree) & Oyun Motoru
  */
 
-// --- 1. SES SENTEZLEYİCİSİ (Web Audio API) ---
+/// --- 1. SES SENTEZLEYİCİSİ (Devre Dışı / Sessiz Mod) ---
 class SoundEffects {
   constructor() {
-    this.ctx = null;
-    this.enabled = true;
+    this.enabled = false;
   }
-
-  init() {
-    if (!this.ctx) {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (AudioCtx) this.ctx = new AudioCtx();
-    }
-  }
-
-  playPop() {
-    if (!this.enabled) return;
-    this.init();
-    if (!this.ctx) return;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(440, this.ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.12);
-    gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.12);
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-    osc.start();
-    osc.stop(this.ctx.currentTime + 0.12);
-  }
-
-  playSuccess() {
-    if (!this.enabled) return;
-    this.init();
-    if (!this.ctx) return;
-    const now = this.ctx.currentTime;
-    [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.value = freq;
-      gain.gain.setValueAtTime(0, now + i * 0.08);
-      gain.gain.linearRampToValueAtTime(0.2, now + i * 0.08 + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.25);
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start(now + i * 0.08);
-      osc.stop(now + i * 0.08 + 0.25);
-    });
-  }
-
-  playError() {
-    if (!this.enabled) return;
-    this.init();
-    if (!this.ctx) return;
-    const now = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(180, now);
-    osc.frequency.linearRampToValueAtTime(110, now + 0.2);
-    gain.gain.setValueAtTime(0.25, now);
-    gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-    osc.start(now);
-    osc.stop(now + 0.2);
-  }
-
-  playVictory() {
-    if (!this.enabled) return;
-    this.init();
-    if (!this.ctx) return;
-    const notes = [440, 554.37, 659.25, 880, 880, 880, 1108.73];
-    const times = [0, 0.15, 0.3, 0.45, 0.65, 0.85, 1.05];
-    const now = this.ctx.currentTime;
-    notes.forEach((freq, i) => {
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-      gain.gain.setValueAtTime(0.25, now + times[i]);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + times[i] + 0.35);
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start(now + times[i]);
-      osc.stop(now + times[i] + 0.35);
-    });
-  }
+  init() {}
+  playPop() {}
+  playSuccess() {}
+  playError() {}
+  playVictory() {}
 }
 
 const sfx = new SoundEffects();
@@ -5261,15 +5182,18 @@ const authManager = {
     const userProfileCard = document.getElementById('user-profile-card');
     const headerUsername = document.getElementById('header-username');
     const headerAvatar = document.getElementById('header-user-avatar');
+    const headerStatsBar = document.getElementById('header-stats-bar');
 
     if (this.isLoggedIn()) {
       if (btnOpenAuth) btnOpenAuth.style.display = 'none';
       if (userProfileCard) userProfileCard.style.display = 'flex';
+      if (headerStatsBar) headerStatsBar.style.display = 'flex';
       if (headerUsername) headerUsername.textContent = this.user.username || 'Kullanıcı';
       if (headerAvatar) headerAvatar.textContent = this.user.avatar || '🧑‍🌾';
     } else {
       if (btnOpenAuth) btnOpenAuth.style.display = 'flex';
       if (userProfileCard) userProfileCard.style.display = 'none';
+      if (headerStatsBar) headerStatsBar.style.display = 'none';
     }
   }
 };
@@ -5434,11 +5358,13 @@ dom.codeInput.addEventListener('keydown', (e) => {
 
 dom.codeInput.addEventListener('input', updateLineNumbers);
 
-dom.btnSoundToggle.addEventListener('click', () => {
-  sfx.enabled = !sfx.enabled;
-  dom.btnSoundToggle.textContent = sfx.enabled ? '🔊' : '🔇';
-  dom.btnSoundToggle.title = sfx.enabled ? 'Sesi Kapat' : 'Sesi Aç';
-});
+if (dom.btnSoundToggle) {
+  dom.btnSoundToggle.addEventListener('click', () => {
+    sfx.enabled = !sfx.enabled;
+    dom.btnSoundToggle.textContent = sfx.enabled ? '🔊' : '🔇';
+    dom.btnSoundToggle.title = sfx.enabled ? 'Sesi Kapat' : 'Sesi Aç';
+  });
+}
 
 dom.btnRestart.addEventListener('click', () => {
   dom.victoryModal.classList.remove('open');
