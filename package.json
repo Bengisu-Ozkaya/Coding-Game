@@ -1,0 +1,29 @@
+{
+  "name": "coding-game",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000C\u0000o\u0000d\u0000i\u0000n\u0000g\u0000-\u0000G\u0000a\u0000m\u0000e\u0000\r\u0000 \u0000",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bengisu-Ozkaya/Coding-Game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Bengisu-Ozkaya/Coding-Game/issues"
+  },
+  "homepage": "https://github.com/Bengisu-Ozkaya/Coding-Game#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.4"
+  }
+}

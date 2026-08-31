@@ -1067,6 +1067,7 @@ function getLanguageTopics(langId) {
 }
 
 function completeCurrentTopic(langId, topicId) {
+  setTimeout(() => { if (typeof authManager !== 'undefined') authManager.syncCurrentLocalProgress(langId); }, 200);
   const topics = getLanguageTopics(langId);
   const currentIdx = topics.findIndex(t => t.id === topicId);
   if (currentIdx !== -1) {
@@ -5028,6 +5029,207 @@ function showVictoryModal() {
   dom.victoryModal.classList.add('open');
 }
 
+
+// =========================================================================
+// 🔐 MONGODB BULUT KİMLİK DOĞRULAMA & SENKRONİZASYON MOTORU (Cloud Auth & Sync)
+// =========================================================================
+
+const API_BASE_URL = (typeof window !== 'undefined' && window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+  ? 'http://localhost:3000/api'
+  : 'https://coding-game-backend.onrender.com/api'; // Vercel/Render veya sunucu URL'si
+
+const authManager = {
+  token: null,
+  user: null,
+
+  init() {
+    try {
+      this.token = localStorage.getItem('codegame_token') || null;
+      const savedUser = localStorage.getItem('codegame_user');
+      if (savedUser) this.user = JSON.parse(savedUser);
+    } catch (e) {}
+
+    this.updateHeaderUI();
+    if (this.token) {
+      this.verifyAndFetchProfile();
+      this.loadCloudProgress();
+    }
+  },
+
+  isLoggedIn() {
+    return !!this.token && !!this.user;
+  },
+
+  async register(username, email, password) {
+    try {
+      const res = await fetch(`${API_BASE_URL}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password })
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.msg || 'Kayıt başarısız.');
+
+      this.setSession(data.token, data.user);
+      await this.syncCurrentLocalProgress();
+      return { ok: true, msg: data.msg, user: data.user };
+    } catch (err) {
+      return { ok: false, msg: err.message };
+    }
+  },
+
+  async login(email, password) {
+    try {
+      const res = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.msg || 'Giriş başarısız.');
+
+      this.setSession(data.token, data.user);
+      await this.loadCloudProgress();
+      return { ok: true, msg: data.msg, user: data.user };
+    } catch (err) {
+      return { ok: false, msg: err.message };
+    }
+  },
+
+  setSession(token, user) {
+    this.token = token;
+    this.user = user;
+    try {
+      localStorage.setItem('codegame_token', token);
+      localStorage.setItem('codegame_user', JSON.stringify(user));
+    } catch (e) {}
+    this.updateHeaderUI();
+  },
+
+  logout() {
+    this.token = null;
+    this.user = null;
+    try {
+      localStorage.removeItem('codegame_token');
+      localStorage.removeItem('codegame_user');
+    } catch (e) {}
+    this.updateHeaderUI();
+    if (typeof logToTerminal === 'function') {
+      logToTerminal('🚪 Oturum kapatıldı. Misafir moduna geçildi.', 'info');
+    }
+  },
+
+  async verifyAndFetchProfile() {
+    if (!this.token) return;
+    try {
+      const res = await fetch(`${API_BASE_URL}/auth/me`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      const data = await res.json();
+      if (data.ok && data.user) {
+        this.user = data.user;
+        localStorage.setItem('codegame_user', JSON.stringify(data.user));
+        this.updateHeaderUI();
+      } else {
+        this.logout();
+      }
+    } catch (e) {}
+  },
+
+  async syncCurrentLocalProgress(langId = state.selectedLangId) {
+    if (!this.token) return;
+    const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
+    const topics = getLanguageTopics(curLang.id);
+    const completedTopics = topics.filter(t => t.status === 'done').map(t => t.id);
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/progress/sync`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.token}`
+        },
+        body: JSON.stringify({
+          langId: curLang.id,
+          completedTopics,
+          completedCount: completedTopics.length,
+          xp: state.xp
+        })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        const cloudStatusEl = document.getElementById('header-cloud-status');
+        if (cloudStatusEl) {
+          cloudStatusEl.textContent = '☁️ Bulut Senkronize';
+          cloudStatusEl.style.color = '#10b981';
+        }
+      }
+    } catch (e) {
+      console.warn('Bulut senkronizasyonu başarısız (çevrimdışı):', e);
+    }
+  },
+
+  async loadCloudProgress() {
+    if (!this.token) return;
+    try {
+      const res = await fetch(`${API_BASE_URL}/progress`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      const data = await res.json();
+      if (data.ok && data.languages) {
+        let totalCloudXp = 0;
+
+        for (const [langKey, langProgress] of Object.entries(data.languages)) {
+          totalCloudXp += (langProgress.xp || 0);
+          if (!userTopicsState[langKey]) {
+            getLanguageTopics(langKey);
+          }
+          const topics = userTopicsState[langKey];
+          if (topics && Array.isArray(langProgress.completedTopics)) {
+            langProgress.completedTopics.forEach(doneId => {
+              const t = topics.find(item => item.id === doneId);
+              if (t) t.status = 'done';
+            });
+            // Tamamlananlardan sonraki ilk kilitli olanı aktif yap
+            const nextLockedIdx = topics.findIndex(t => t.status === 'locked');
+            if (nextLockedIdx !== -1) {
+              topics[nextLockedIdx].status = 'active';
+            }
+          }
+        }
+
+        if (totalCloudXp > 0) {
+          state.xp = Math.max(state.xp, totalCloudXp);
+          updateGlobalStats();
+        }
+
+        const completedCount = getLanguageTopics(state.selectedLangId).filter(t => t.status === 'done').length;
+        renderCityVisual(completedCount);
+        renderSkillTree();
+      }
+    } catch (e) {
+      console.warn('Bulut ilerlemesi çekilemedi:', e);
+    }
+  },
+
+  updateHeaderUI() {
+    const btnOpenAuth = document.getElementById('btn-open-auth');
+    const userProfileCard = document.getElementById('user-profile-card');
+    const headerUsername = document.getElementById('header-username');
+    const headerAvatar = document.getElementById('header-user-avatar');
+
+    if (this.isLoggedIn()) {
+      if (btnOpenAuth) btnOpenAuth.style.display = 'none';
+      if (userProfileCard) userProfileCard.style.display = 'flex';
+      if (headerUsername) headerUsername.textContent = this.user.username || 'Kullanıcı';
+      if (headerAvatar) headerAvatar.textContent = this.user.avatar || '🧑‍🌾';
+    } else {
+      if (btnOpenAuth) btnOpenAuth.style.display = 'flex';
+      if (userProfileCard) userProfileCard.style.display = 'none';
+    }
+  }
+};
+
 // --- 9. EVENT LISTENERS ---
 
 dom.navBrand.addEventListener('click', () => switchView('languages'));
@@ -5236,3 +5438,159 @@ if (topicReviewModal) {
 switchView('languages');
 
 updateGlobalStats();
+
+
+// --- AUTH MODAL ETKİLEŞİMLERİ ---
+let currentAuthMode = 'login'; // 'login' | 'register'
+
+function openAuthModal(mode = 'login') {
+  const modal = document.getElementById('auth-modal');
+  if (!modal) return;
+  setAuthMode(mode);
+  modal.classList.add('open');
+  sfx.playPop();
+}
+
+function closeAuthModal() {
+  const modal = document.getElementById('auth-modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  clearAuthAlert();
+}
+
+function setAuthMode(mode) {
+  currentAuthMode = mode;
+  const tabLogin = document.getElementById('tab-btn-login');
+  const tabRegister = document.getElementById('tab-btn-register');
+  const groupUsername = document.getElementById('group-username');
+  const authTitle = document.getElementById('auth-title');
+  const authBtnText = document.getElementById('auth-btn-text');
+  const switchText = document.getElementById('auth-footer-switch-text');
+  const switchBtn = document.getElementById('btn-toggle-auth-mode');
+  const inputUsername = document.getElementById('auth-input-username');
+
+  clearAuthAlert();
+
+  if (mode === 'register') {
+    if (tabLogin) tabLogin.classList.remove('active');
+    if (tabRegister) tabRegister.classList.add('active');
+    if (groupUsername) groupUsername.style.display = 'flex';
+    if (inputUsername) inputUsername.required = true;
+    if (authTitle) authTitle.textContent = 'Yeni CodeFarm Hesabı Aç';
+    if (authBtnText) authBtnText.textContent = 'Kayıt Ol ve Başla 🎉';
+    if (switchText) switchText.textContent = 'Zaten bir hesabın var mı?';
+    if (switchBtn) switchBtn.textContent = 'Giriş Yap';
+  } else {
+    if (tabLogin) tabLogin.classList.add('active');
+    if (tabRegister) tabRegister.classList.remove('active');
+    if (groupUsername) groupUsername.style.display = 'none';
+    if (inputUsername) inputUsername.required = false;
+    if (authTitle) authTitle.textContent = 'CodeFarm Hesabına Giriş Yap';
+    if (authBtnText) authBtnText.textContent = 'Giriş Yap 🚀';
+    if (switchText) switchText.textContent = 'Hesabın yok mu?';
+    if (switchBtn) switchBtn.textContent = 'Kayıt Ol';
+  }
+}
+
+function showAuthAlert(msg, type = 'error') {
+  const alertBox = document.getElementById('auth-alert-box');
+  if (!alertBox) return;
+  alertBox.className = `auth-alert-box ${type}`;
+  alertBox.textContent = msg;
+  alertBox.style.display = 'block';
+}
+
+function clearAuthAlert() {
+  const alertBox = document.getElementById('auth-alert-box');
+  if (alertBox) alertBox.style.display = 'none';
+}
+
+const btnOpenAuth = document.getElementById('btn-open-auth');
+if (btnOpenAuth) {
+  btnOpenAuth.addEventListener('click', () => openAuthModal('login'));
+}
+
+const btnCloseAuth = document.getElementById('btn-close-auth-modal');
+if (btnCloseAuth) {
+  btnCloseAuth.addEventListener('click', closeAuthModal);
+}
+
+const authModalOverlay = document.getElementById('auth-modal');
+if (authModalOverlay) {
+  authModalOverlay.addEventListener('click', (e) => {
+    if (e.target === authModalOverlay) closeAuthModal();
+  });
+}
+
+const tabLogin = document.getElementById('tab-btn-login');
+if (tabLogin) {
+  tabLogin.addEventListener('click', () => setAuthMode('login'));
+}
+
+const tabRegister = document.getElementById('tab-btn-register');
+if (tabRegister) {
+  tabRegister.addEventListener('click', () => setAuthMode('register'));
+}
+
+const btnToggleAuth = document.getElementById('btn-toggle-auth-mode');
+if (btnToggleAuth) {
+  btnToggleAuth.addEventListener('click', () => {
+    setAuthMode(currentAuthMode === 'login' ? 'register' : 'login');
+  });
+}
+
+const btnHeaderLogout = document.getElementById('btn-header-logout');
+if (btnHeaderLogout) {
+  btnHeaderLogout.addEventListener('click', () => {
+    authManager.logout();
+    sfx.playPop();
+  });
+}
+
+const authForm = document.getElementById('auth-form');
+if (authForm) {
+  authForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('auth-input-email').value;
+    const password = document.getElementById('auth-input-password').value;
+    const username = document.getElementById('auth-input-username')?.value;
+    const submitBtn = document.getElementById('btn-auth-submit');
+    const spinner = document.getElementById('auth-spinner');
+    const btnText = document.getElementById('auth-btn-text');
+
+    clearAuthAlert();
+    if (submitBtn) submitBtn.disabled = true;
+    if (spinner) spinner.style.display = 'block';
+    if (btnText) btnText.style.display = 'none';
+
+    let result;
+    if (currentAuthMode === 'register') {
+      result = await authManager.register(username, email, password);
+    } else {
+      result = await authManager.login(email, password);
+    }
+
+    if (submitBtn) submitBtn.disabled = false;
+    if (spinner) spinner.style.display = 'none';
+    if (btnText) btnText.style.display = 'inline';
+
+    if (result.ok) {
+      showAuthAlert(result.msg || 'İşlem başarılı!', 'success');
+      sfx.playSuccess();
+      setTimeout(() => {
+        closeAuthModal();
+        if (typeof logToTerminal === 'function') {
+          logToTerminal(`🌟 <strong>Hoş geldin ${result.user.username}!</strong> İlerlemelerin MongoDB bulutuna kaydediliyor.`, 'success');
+        }
+      }, 1000);
+    } else {
+      showAuthAlert(result.msg || 'Bir hata oluştu.', 'error');
+    }
+  });
+}
+
+// Başlangıçta Auth Durumunu Başlat
+if (typeof authManager !== 'undefined') {
+  authManager.init();
+}
+
