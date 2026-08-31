@@ -519,25 +519,25 @@ const LANGUAGES_DB = [
   {
     id: 'python',
     name: 'Python',
-    lessonsText: '47 Ders',
+    lessonsText: '70 Alıştırma • 14 Modül',
     badgeClass: 'badge-python',
     iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>`,
     icon: '🐍',
     category: 'backend',
-    fileExt: 'tarla.py',
-    langTag: 'Python 3.11',
+    fileExt: 'main.py',
+    langTag: 'Python 3.12',
     skillTreeNodes: SKILL_TREE_JAVA_NODES
   },
   {
     id: 'java',
     name: 'Java',
-    lessonsText: '36 Ders',
+    lessonsText: '70 Alıştırma • 14 Modül',
     badgeClass: 'badge-java',
     iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>`,
     icon: '☕',
     category: 'backend',
-    fileExt: 'TarlaKod.java',
-    langTag: 'Java 17',
+    fileExt: 'Main.java',
+    langTag: 'Java 21',
     skillTreeNodes: SKILL_TREE_JAVA_NODES
   },
   {
