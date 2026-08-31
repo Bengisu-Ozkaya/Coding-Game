@@ -5072,9 +5072,38 @@ const authManager = {
 
       this.setSession(data.token, data.user);
       await this.syncCurrentLocalProgress();
-      return { ok: true, msg: data.msg, user: data.user };
+      return { ok: true, msg: data.msg, user: data.user, isCloud: true };
     } catch (err) {
-      return { ok: false, msg: err.message };
+      console.warn('Backend API erişilemedi, yerel hesap açılıyor:', err.message);
+      // Yerel Güvenli Fallback Hesabı
+      if (!username || !email || !password) {
+        return { ok: false, msg: 'Tüm alanları doldurunuz.' };
+      }
+      if (password.length < 6) {
+        return { ok: false, msg: 'Şifre en az 6 karakter olmalıdır.' };
+      }
+
+      const localUser = {
+        id: 'local_' + Date.now(),
+        username: username.trim(),
+        email: email.trim().toLowerCase(),
+        avatar: '🧑‍🌾',
+        totalXp: state.xp || 0
+      };
+      const localToken = 'local_jwt_' + btoa(email);
+      
+      // Yerel hesap listesine kaydet
+      const localAccounts = JSON.parse(localStorage.getItem('codegame_local_users') || '{}');
+      localAccounts[email.toLowerCase()] = { ...localUser, password };
+      localStorage.setItem('codegame_local_users', JSON.stringify(localAccounts));
+
+      this.setSession(localToken, localUser);
+      return {
+        ok: true,
+        msg: 'Hesap oluşturuldu! (Lokalde node server.js çalıştırdığında MongoDB\'ye otomatik aktarılacak)',
+        user: localUser,
+        isCloud: false
+      };
     }
   },
 
@@ -5090,9 +5119,24 @@ const authManager = {
 
       this.setSession(data.token, data.user);
       await this.loadCloudProgress();
-      return { ok: true, msg: data.msg, user: data.user };
+      return { ok: true, msg: data.msg, user: data.user, isCloud: true };
     } catch (err) {
-      return { ok: false, msg: err.message };
+      console.warn('Backend API erişilemedi, yerel giriş deneniyor:', err.message);
+      // Yerel Hesap Kontrolü
+      const localAccounts = JSON.parse(localStorage.getItem('codegame_local_users') || '{}');
+      const cleanEmail = (email || '').trim().toLowerCase();
+      const existing = localAccounts[cleanEmail];
+
+      if (existing && existing.password === password) {
+        const localToken = 'local_jwt_' + btoa(cleanEmail);
+        this.setSession(localToken, existing);
+        return { ok: true, msg: `Giriş başarılı! Hoş geldin, ${existing.username} (Yerel Mod)`, user: existing, isCloud: false };
+      }
+
+      return {
+        ok: false,
+        msg: 'Sunucuya bağlanılamadı. Lokalde `node server.js` komutunu çalıştırdığınızdan emin olun.'
+      };
     }
   },
 
