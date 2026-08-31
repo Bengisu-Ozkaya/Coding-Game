@@ -5412,6 +5412,7 @@ function openAuthModal(mode = 'login') {
   if (!modal) return;
   setAuthMode(mode);
   modal.classList.add('open');
+  document.body.classList.add('modal-open');
   sfx.playPop();
 }
 
@@ -5419,6 +5420,7 @@ function closeAuthModal() {
   const modal = document.getElementById('auth-modal');
   if (!modal) return;
   modal.classList.remove('open');
+  document.body.classList.remove('modal-open');
   clearAuthAlert();
 }
 
@@ -5443,6 +5445,13 @@ function setAuthMode(mode) {
     if (authTitle) authTitle.textContent = 'Yeni CodeFarm Hesabı Aç';
     if (authBtnText) authBtnText.textContent = 'Kayıt Ol ve Başla 🎉';
     if (switchText) switchText.textContent = 'Zaten bir hesabın var mı?';
+    if (switchBtn) switchBtn.textContent = 'Giriş Yap';
+  } else {
+    if (tabLogin) tabLogin.classList.add('active');
+    if (tabRegister) tabRegister.classList.remove('active');
+    if (groupUsername) groupUsername.style.display = 'none';
+    if (inputUsername) inputUsername.required = false;
+    if (authTitle) authTitle.textContent = 'CodeFarm Hesabına Giriş Yap';
     if (authBtnText) authBtnText.textContent = 'Giriş Yap 🚀';
     if (switchText) switchText.textContent = 'Hesabın yok mu?';
     if (switchBtn) switchBtn.textContent = 'Kayıt Ol';
