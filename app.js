@@ -2,7 +2,7 @@
  * 🌾 Kod Çiftliği (Code & Farm) - Radyal Yetenek Ağacı (Skill Tree) & Oyun Motoru
  */
 
-/// --- 1. SES SENTEZLEYİCİSİ (Devre Dışı / Sessiz Mod) ---
+// --- 1. SES SENTEZLEYİCİSİ (Devre Dışı / Sessiz Mod) ---
 class SoundEffects {
   constructor() {
     this.enabled = false;
@@ -93,11 +93,6 @@ const SKILL_TREE_JAVA_NODES = [
     branch: 'Aritmetik',
     title: 'Bölme & Mod Alma (/, %)',
     desc: 'Tarlayı parsellere paylaştırma ve kalan tohum hesabı.',
-    levelNum: 5,
-    xp: 60,
-    parents: ['se1']
-  },
-  {
     id: 'se3',
     x: 700,
     y: 460,
@@ -4925,15 +4920,17 @@ function logToTerminal(message, type = 'info') {
 }
 
 function updateGlobalStats() {
-  dom.statXp.textContent = `${state.xp || 0} XP`;
-  dom.statHarvest.textContent = `${state.harvestCount || 0} Görev`;
+  if (dom.statXp) dom.statXp.textContent = `${state.xp || 0} XP`;
+  if (dom.statHarvest) dom.statHarvest.textContent = `${state.harvestCount || 0} Görev`;
 
-  if (state.xp >= 1500) {
-    dom.statMastery.textContent = 'Kıdemli';
-  } else if (state.xp >= 600) {
-    dom.statMastery.textContent = 'Yazılımcı';
-  } else {
-    dom.statMastery.textContent = 'Çırak';
+  if (dom.statMastery) {
+    if (state.xp >= 1500) {
+      dom.statMastery.textContent = 'Kıdemli';
+    } else if (state.xp >= 600) {
+      dom.statMastery.textContent = 'Yazılımcı';
+    } else {
+      dom.statMastery.textContent = 'Çırak';
+    }
   }
 }
 
@@ -5268,18 +5265,15 @@ let allUnlocked = false;
 if (btnUnlockAll) {
   btnUnlockAll.addEventListener('click', () => {
     const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
-    const topics = getLanguageTopics(curLang.id);
     allUnlocked = !allUnlocked;
     topics.forEach((t, i) => {
       t.status = allUnlocked ? 'active' : (i === 0 ? 'active' : 'locked');
     });
-    btnUnlockAll.innerHTML = allUnlocked ? '<span>🔒 Kilitleri Aç/Kapat</span>' : '<span>🔓 Tüm Kilitleri Aç</span>';
     sfx.playSuccess();
     renderSkillTree();
   });
 }
 
-// Editör Otomatik Karakter Kapatma (Auto-Closing Pairs) & Akıllı Tuş Yönetimi
 const AUTO_PAIRS = {
   '(': ')',
   '[': ']',
@@ -5449,13 +5443,6 @@ function setAuthMode(mode) {
     if (authTitle) authTitle.textContent = 'Yeni CodeFarm Hesabı Aç';
     if (authBtnText) authBtnText.textContent = 'Kayıt Ol ve Başla 🎉';
     if (switchText) switchText.textContent = 'Zaten bir hesabın var mı?';
-    if (switchBtn) switchBtn.textContent = 'Giriş Yap';
-  } else {
-    if (tabLogin) tabLogin.classList.add('active');
-    if (tabRegister) tabRegister.classList.remove('active');
-    if (groupUsername) groupUsername.style.display = 'none';
-    if (inputUsername) inputUsername.required = false;
-    if (authTitle) authTitle.textContent = 'CodeFarm Hesabına Giriş Yap';
     if (authBtnText) authBtnText.textContent = 'Giriş Yap 🚀';
     if (switchText) switchText.textContent = 'Hesabın yok mu?';
     if (switchBtn) switchBtn.textContent = 'Kayıt Ol';
@@ -5560,10 +5547,19 @@ if (authForm) {
 }
 
 // Başlangıçta Auth Durumunu Başlat ve Dilleri Render Et
-if (typeof authManager !== 'undefined') {
-  authManager.init();
+function initApp() {
+  if (typeof authManager !== 'undefined') {
+    authManager.init();
+  }
+  renderLanguages();
+  updateGlobalStats();
 }
 
-renderLanguages();
-updateGlobalStats();
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+}
 
