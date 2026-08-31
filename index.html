@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4.0">
+  <link rel="stylesheet" href="style.css?v=4.1">
 </head>
 <body>
   <!-- Minimalist Arka Plan Işık Efektleri -->
@@ -17,6 +17,7 @@
   <div class="app-container">
     <!-- Üst Bar & Navigasyon -->
     <header class="app-header">
+      <!-- Sol: Marka & Aktif Dil -->
       <div class="brand-group" id="nav-brand" role="button" title="Anasayfaya Dön">
         <div class="brand-logo">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -28,30 +29,32 @@
             <circle cx="12" cy="18" r="4"></circle>
           </svg>
         </div>
-        <div>
+        <div class="brand-text-col">
           <div class="brand-title">CodeFarm <span class="brand-badge" id="header-lang-badge">Dilleri Keşfet</span></div>
-          <p class="brand-subtitle" id="header-subtitle">İnteraktif kodlama macerana başla</p>
         </div>
       </div>
 
+      <!-- Sağ: İstatistikler, Ses & Kullanıcı Profili -->
+      <div class="header-right-group">
+        <!-- Oyun İstatistikleri Hapı -->
+        <div class="stats-pills-bar">
+          <div class="stat-pill stat-xp-pill" title="Kazanılan Toplam Deneyim Puanı">
+            <span class="stat-bullet xp-bullet"></span>
+            <span class="stat-num" id="stat-xp">0 XP</span>
+          </div>
+          <div class="stat-pill stat-rank-pill" title="Yetenek Derecesi">
+            <span class="stat-bullet rank-bullet"></span>
+            <span class="stat-num" id="stat-mastery">Çırak</span>
+          </div>
+          <div class="stat-pill stat-harvest-pill" title="Tamamlanan Alıştırma">
+            <span class="stat-bullet harvest-bullet"></span>
+            <span class="stat-num" id="stat-harvest">0 Görev</span>
+          </div>
+        </div>
 
-
-      <!-- İstatistikler -->
-      <div class="stats-group">
-        <div class="stat-pill">
-          <span class="stat-bullet xp-bullet"></span>
-          <span class="stat-num" id="stat-xp">0 XP</span>
-        </div>
-        <div class="stat-pill">
-          <span class="stat-bullet rank-bullet"></span>
-          <span class="stat-num" id="stat-mastery">Çırak</span>
-        </div>
-        <div class="stat-pill">
-          <span class="stat-bullet harvest-bullet"></span>
-          <span class="stat-num" id="stat-harvest">0 Görev</span>
-        </div>
-        <button id="btn-sound-toggle" class="btn-icon-minimal" title="Sesi Aç/Kapat">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Ses Butonu -->
+        <button id="btn-sound-toggle" class="btn-sound-round" title="Sesi Aç/Kapat">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
             <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
             <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
@@ -68,10 +71,13 @@
             <div class="user-avatar-circle" id="header-user-avatar">🧑‍🌾</div>
             <div class="user-meta-col">
               <span class="user-display-name" id="header-username">Kullanıcı</span>
-              <span class="user-cloud-status" id="header-cloud-status">☁️ Bulut Aktif</span>
+              <span class="user-cloud-status" id="header-cloud-status">
+                <span class="status-pulse-dot"></span>
+                <span>Bulut Aktif</span>
+              </span>
             </div>
             <button id="btn-header-logout" class="btn-header-logout" title="Oturumu Kapat">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                 <polyline points="16 17 21 12 16 7"></polyline>
                 <line x1="21" y1="12" x2="9" y2="12"></line>

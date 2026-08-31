@@ -79,144 +79,154 @@ body {
 /* HEADER & MODERN AÇIK TEMA NAVİGASYON                                      */
 /* ========================================================================= */
 .app-header {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 0.85rem 1.4rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 0.75rem 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 1.8rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05);
 }
 
 .brand-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
   user-select: none;
+  text-decoration: none;
 }
 
 .brand-logo {
-  background: #10b981;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #ffffff;
   width: 38px;
   height: 38px;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+  flex-shrink: 0;
+}
+
+.brand-text-col {
+  display: flex;
+  align-items: center;
 }
 
 .brand-title {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--text-primary);
+  color: #0f172a;
   display: flex;
   align-items: center;
   gap: 8px;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.02em;
 }
 
 .brand-badge {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   background: #ecfdf5;
-  color: #065f46;
+  color: #047857;
   padding: 2px 8px;
-  border-radius: 12px;
+  border-radius: 999px;
   border: 1px solid #a7f3d0;
+  white-space: nowrap;
 }
 
-.brand-subtitle {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-}
-
-/* Segmented Nav Pills */
-.nav-segmented {
-  display: flex;
-  background: #f1f5f9;
-  padding: 4px;
-  border-radius: 12px;
-  border: 1px solid var(--border-subtle);
-  gap: 4px;
-}
-
-.segment-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-secondary);
-  font-family: var(--font-main);
-  font-size: 0.84rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.segment-btn:hover {
-  color: var(--text-primary);
-}
-
-.segment-btn.active {
-  background: #ffffff;
-  color: #059669;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
-
-/* İstatistik Kutucukları */
-.stats-group {
+/* Sağ Taraf: Stats, Ses ve Profil Grubu */
+.header-right-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+/* İstatistik Çubuğu (Stats Pills Bar) */
+.stats-pills-bar {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 3px 6px;
+  gap: 2px;
 }
 
 .stat-pill {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #f8fafc;
-  border: 1px solid var(--border-subtle);
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 5px 10px;
+  border-radius: 999px;
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #334155;
+  transition: all 0.2s ease;
+}
+
+.stat-pill:hover {
+  background: #ffffff;
 }
 
 .stat-bullet {
   width: 7px;
   height: 7px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.xp-bullet { background: #f59e0b; }
-.rank-bullet { background: #10b981; }
-.harvest-bullet { background: #6366f1; }
+.xp-bullet {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+}
 
-.btn-icon-minimal {
+.rank-bullet {
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
+
+.harvest-bullet {
+  background: #6366f1;
+  box-shadow: 0 0 6px rgba(99, 102, 241, 0.6);
+}
+
+.stat-num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Yuvarlak Ses Butonu */
+.btn-sound-round {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   background: #f8fafc;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  border-radius: 8px;
-  padding: 7px 10px;
-  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
 }
 
-.btn-icon-minimal:hover {
-  color: var(--text-primary);
-  background: #f1f5f9;
+.btn-sound-round:hover {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+  transform: scale(1.05);
+}
+
+.btn-sound-round:active {
+  transform: scale(0.95);
 }
 
 /* ========================================================================= */
@@ -1750,25 +1760,25 @@ body.modal-open {
 .btn-auth-pill {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  gap: 7px;
+  background: linear-gradient(135deg, #5c5cf6 0%, #4f46e5 100%);
+  border: none;
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 8px 16px;
   font-family: var(--font-main);
   font-size: 0.85rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #ffffff;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 12px rgba(92, 92, 246, 0.35);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
 }
 
 .btn-auth-pill:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
   transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 16px rgba(92, 92, 246, 0.45);
 }
 
 .btn-auth-pill:active {
@@ -1783,59 +1793,146 @@ body.modal-open {
 .user-profile-card {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 999px;
-  padding: 4px 8px 4px 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  padding: 4px 10px 4px 6px;
+  box-shadow: 0 2px 10px -2px rgba(15, 23, 42, 0.08);
+  transition: all 0.2s ease;
+}
+
+.user-profile-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.12);
 }
 
 .user-avatar-circle {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: #eff6ff;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
 }
 
 .user-meta-col {
   display: flex;
   flex-direction: column;
   line-height: 1.15;
+  text-align: left;
 }
 
 .user-display-name {
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   font-weight: 800;
   color: #0f172a;
+  letter-spacing: -0.01em;
 }
 
 .user-cloud-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   font-size: 0.68rem;
-  font-weight: 600;
-  color: #10b981;
+  font-weight: 700;
+  color: #059669;
+}
+
+.status-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+  animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
 }
 
 .btn-header-logout {
-  background: transparent;
-  border: none;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   color: #94a3b8;
   cursor: pointer;
-  padding: 4px;
-  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  margin-left: 2px;
+  flex-shrink: 0;
 }
 
 .btn-header-logout:hover {
   color: #ef4444;
   background: #fee2e2;
+  border-color: #fca5a5;
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   RESPONSIVE DÜZENLEME (Mobile & Tablet)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem 0.85rem 2rem 0.85rem;
+  }
+
+  .app-header {
+    padding: 0.6rem 0.85rem;
+    border-radius: 16px;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Mobilde alan kazanmak için Rank ve Görev sayısını gizle, sadece XP kalsın */
+  .stat-rank-pill,
+  .stat-harvest-pill {
+    display: none;
+  }
+
+  .user-cloud-status {
+    display: none;
+  }
+
+  .user-profile-card {
+    padding: 3px 6px 3px 4px;
+    gap: 6px;
+  }
+
+  .user-display-name {
+    font-size: 0.8rem;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .btn-auth-pill {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-badge {
+    display: none;
+  }
+
+  .btn-sound-round {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 /* --- AUTH MODAL KARTI --- */
