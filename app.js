@@ -817,6 +817,120 @@ function renderLanguages() {
 // --- 7. GELİŞEN ŞEHİR & DİKEY KONU YOL HARİTASI (Evolving City & Roadmap Engine) ---
 
 const COURSE_TOPICS_DB = {
+  java: [
+    {
+        "id": "java_1",
+        "title": "1. Değişkenler & Temel Veri Tipleri",
+        "desc": "Syntax, System.out.println, int, double, char, String ve tür dönüşümü (type casting).",
+        "reward": "🏡 Giriş Çiftliği & Su Kuyusu",
+        "status": "active",
+        "xp": 120
+    },
+    {
+        "id": "java_2",
+        "title": "2. Operatörler & Matematiksel İşlemler",
+        "desc": "Aritmetik, mod (%), artırma (++), mantıksal (&&, ||) ve Math sınıfı (Math.max, Math.sqrt).",
+        "reward": "💡 Elektrik Şebekesi & Trafo",
+        "status": "locked",
+        "xp": 140
+    },
+    {
+        "id": "java_3",
+        "title": "3. Stringler & Metin İşlemleri",
+        "desc": "String metotları (.length(), .toUpperCase(), .charAt(), .equals()) ve metin birleştirme.",
+        "reward": "🚰 Su Arıtma & Fıskiye Havuzu",
+        "status": "locked",
+        "xp": 160
+    },
+    {
+        "id": "java_4",
+        "title": "4. Koşullu Durumlar (If / Else / Switch)",
+        "desc": "if, else if, else blokları, ternary (? :) operatörü ve switch-case-break yapısı.",
+        "reward": "🌳 Şehir Parkı & Botanik Bahçe",
+        "status": "locked",
+        "xp": 180
+    },
+    {
+        "id": "java_5",
+        "title": "5. Döngüler (While & For Loops)",
+        "desc": "for döngüsü, while döngüsü, do-while, break ve continue akış kontrolü.",
+        "reward": "🎡 Lunapark & Dönme Dolap",
+        "status": "locked",
+        "xp": 200
+    },
+    {
+        "id": "java_6",
+        "title": "6. Diziler & Çok Boyutlu Diziler (Arrays)",
+        "desc": "Tek boyutlu diziler int[], dizi.length özelliği, For-Each döngüsü ve matrisler int[][].",
+        "reward": "🏢 Modern Rezidanslar & İş Kuleleri",
+        "status": "locked",
+        "xp": 220
+    },
+    {
+        "id": "java_7",
+        "title": "7. Metotlar & Parametreler (Methods)",
+        "desc": "Statik ve void metotlar, parametre aktarımı, return değeri ve Method Overloading.",
+        "reward": "🎬 Sinema & Kültür Merkezi",
+        "status": "locked",
+        "xp": 250
+    },
+    {
+        "id": "java_8",
+        "title": "8. OOP: Sınıflar ve Nesneler",
+        "desc": "class şablonları, new ile nesne üretme, nesne alanları, metotları ve this anahtar kelimesi.",
+        "reward": "🏛️ Yönetim Sarayı & Belediye",
+        "status": "locked",
+        "xp": 280
+    },
+    {
+        "id": "java_9",
+        "title": "9. Kurucular & Erişim Belirteçleri",
+        "desc": "Constructors (yapıcı metotlar), public, private, static ve kurucu aşırı yükleme.",
+        "reward": "🏥 Şehir Hastanesi & Acil Servis",
+        "status": "locked",
+        "xp": 300
+    },
+    {
+        "id": "java_10",
+        "title": "10. Kapsülleme & Paketler (Encapsulation)",
+        "desc": "private veri alanları, Getter & Setter metotları, veri doğrulama ve import paket yönetimi.",
+        "reward": "🛍️ Alışveriş & Ticaret Merkezi",
+        "status": "locked",
+        "xp": 320
+    },
+    {
+        "id": "java_11",
+        "title": "11. Kalıtım & Çok Biçimlilik (Inheritance)",
+        "desc": "extends ile miras alma, super() kurucu çağrısı, @Override metot ezme ve Polymorphism.",
+        "reward": "🚄 Hızlı Tren Garı & Raylar",
+        "status": "locked",
+        "xp": 350
+    },
+    {
+        "id": "java_12",
+        "title": "12. Soyutlama & Arayüzler (Interfaces)",
+        "desc": "abstract sınıflar, interface tanımlama, implements anahtar kelimesi ve Enum sabitleri.",
+        "reward": "📡 5G Telekom & Uydu Kulesi",
+        "status": "locked",
+        "xp": 380
+    },
+    {
+        "id": "java_13",
+        "title": "13. Koleksiyonlar & Veri Yapıları",
+        "desc": "Dinamik ArrayList, Wrapper sınıfları (Integer), HashMap (put/get) ve HashSet kümeleri.",
+        "reward": "🚢 Uluslararası Liman & Konteynerler",
+        "status": "locked",
+        "xp": 420
+    },
+    {
+        "id": "java_14",
+        "title": "14. Hata Yönetimi & Dosya İşlemleri",
+        "desc": "try-catch-finally blokları, throw ile hata fırlatma, FileWriter ile dosyaya yazma.",
+        "reward": "🚀 Teknoloji Vadisi & Roket Üssü",
+        "status": "locked",
+        "xp": 450
+    }
+],
   python: [
     {
       id: 'python_1',
@@ -940,7 +1054,7 @@ const userTopicsState = {};
 function getLanguageTopics(langId) {
   if (!userTopicsState[langId]) {
     const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
-    const baseTopics = COURSE_TOPICS_DB.python;
+    const baseTopics = COURSE_TOPICS_DB[langId] || COURSE_TOPICS_DB.python;
     userTopicsState[langId] = baseTopics.map((t, idx) => ({
       ...t,
       id: `${langId}_${idx + 1}`,
@@ -1646,7 +1760,259 @@ const TOPIC_REVIEWS_DB = {
       "⚠️ Tkinter'da <code>mainloop()</code> çağrılmazsa pencere açıldığı an kapanır."
     ],
     "exampleCode": "import json\n\nveri = {\"proje\": \"Kod Şehri\", \"seviye\": 14}\njson_str = json.dumps(veri)\nprint(json.loads(json_str)[\"proje\"])"
-  }
+  },
+  java_1: {
+    "title": "Değişkenler & Temel Veri Tipleri",
+    "readTime": "2 dk okuma",
+    "rewardText": "🏡 Giriş Çiftliği & Su Kuyusu",
+    "logic": "Java güçlü tipli (strongly-typed) bir dildir; her değişken tanımlanırken mutlaka veri tipi belirtilmeli ve her komut ; ile sonlanmalıdır.",
+    "syntaxRules": [
+        "<code>System.out.println(veri);</code> : Ekrana çıktı basar ve alt satıra geçer.",
+        "<code>int sayi = 25;</code> : Tam sayı türünde değişken tanımlar (4 byte).",
+        "<code>double ondalik = 3.14;</code> : Küsurlu / ondalıklı sayı türü.",
+        "<code>char harf = 'A';</code> : Tek tırnak ile tek bir karakter saklar."
+    ],
+    "pitfalls": [
+        "⚠️ Satır sonuna noktalı virgül <code>;</code> koymayı unutmak derleme hatası verir.",
+        "⚠️ <code>char</code> için tek tırnak (<code>'A'</code>), <code>String</code> için çift tırnak (<code>\"Metin\"</code>) kullanılır.",
+        "⚠️ Değişken adı tanımlarken <code>int 1sayi = 10;</code> gibi rakamla başlanamaz."
+    ],
+    "exampleCode": "int yas = 20;\nString isim = \"Bengi\";\nSystem.out.println(\"Kullanıcı: \" + isim + \" (\" + yas + \")\");"
+},
+  java_2: {
+    "title": "Operatörler & Matematiksel İşlemler",
+    "readTime": "2 dk okuma",
+    "rewardText": "💡 Elektrik Şebekesi & Trafo",
+    "logic": "Sayısal işlemler, artırma/azaltma ve Math sınıfı ile matematiksel hesaplamalar gerçekleştirilir.",
+    "syntaxRules": [
+        "<code>a % b</code> : Bölme işleminden kalanı (mod) bulur.",
+        "<code>sayac++;</code> : Sayacın değerini 1 artırır.",
+        "<code>Math.max(a, b)</code> : İki sayıdan büyük olanı döner.",
+        "<code>Math.sqrt(sayi)</code> : Sayının karekökünü double olarak hesaplar."
+    ],
+    "pitfalls": [
+        "⚠️ İki tamsayı bölündüğünde sonuç tamsayı çıkar (Örn: <code>5 / 2</code> sonucu 2 olur; <code>5.0 / 2</code> yazılmalıdır).",
+        "⚠️ <code>Math.pow(2, 3)</code> geriye <code>double</code> döner.",
+        "⚠️ Eşitlik kontrolünde tek <code>=</code> değil, çift <code>==</code> kullanılır."
+    ],
+    "exampleCode": "int a = 17, b = 5;\nint kalan = a % b; // 2\ndouble kok = Math.sqrt(64); // 8.0\nSystem.out.println(\"Kalan: \" + kalan);"
+},
+  java_3: {
+    "title": "Stringler & Metin İşlemleri",
+    "readTime": "2 dk okuma",
+    "rewardText": "🚰 Su Arıtma & Fıskiye Havuzu",
+    "logic": "Java'da metinler String nesneleridir. İndeksler 0'dan başlar ve metin manipülasyonu için yerleşik zengin metotlar sunulur.",
+    "syntaxRules": [
+        "<code>metin.length()</code> : Metindeki toplam karakter sayısını döner.",
+        "<code>metin.toUpperCase()</code> : Tüm harfleri büyük harfe dönüştürür.",
+        "<code>metin.charAt(0)</code> : Belirtilen indisteki karakteri (char) döner.",
+        "<code>str1.equals(str2)</code> : İki metnin içerik eşitliğini kontrol eder."
+    ],
+    "pitfalls": [
+        "⚠️ String eşitliklerinde asla <code>==</code> kullanılmaz; <code>str1.equals(str2)</code> kullanılmalıdır.",
+        "⚠️ <code>length</code> dizilerde bir özelliktir (<code>dizi.length</code>), String'lerde ise metottur (<code>metin.length()</code>).",
+        "⚠️ String'ler değiştirilemez (immutable); <code>.toUpperCase()</code> yeni bir String üretir."
+    ],
+    "exampleCode": "String ad = \"Java\";\nSystem.out.println(\"Uzunluk: \" + ad.length());\nSystem.out.println(\"Büyük: \" + ad.toUpperCase());"
+},
+  java_4: {
+    "title": "Koşullu Durumlar (If, Else & Switch-Case)",
+    "readTime": "2 dk okuma",
+    "rewardText": "🌳 Şehir Parkı & Botanik Bahçe",
+    "logic": "Belirli mantıksal şartlara göre program akışını farklı bloklara yönlendirmemizi sağlar.",
+    "syntaxRules": [
+        "<code>if (kosul) { ... } else { ... }</code> : Temel karar bloğu.",
+        "<code>kosul ? deger1 : deger2</code> : Tek satırlık kısa if-else (Ternary).",
+        "<code>switch (degisken) { case 1: ... break; }</code> : Çoklu sabit değer eşleştirme.",
+        "<code>default:</code> : Switch-case içinde hiçbir şart uymadığında çalışan blok."
+    ],
+    "pitfalls": [
+        "⚠️ <code>if</code> satırının sonuna noktalı virgül <code>;</code> konulmaz.",
+        "⚠️ <code>switch</code> bloklarında <code>case</code> sonuna <code>break;</code> konulmazsa alttaki durumlar da çalışır.",
+        "⚠️ Koşul mutlaka normal parantez <code>(x > 5)</code> içine alınmalıdır."
+    ],
+    "exampleCode": "int not = 75;\nif (not >= 50) {\n    System.out.println(\"Geçti\");\n} else {\n    System.out.println(\"Kaldı\");\n}"
+},
+  java_5: {
+    "title": "Döngüler (While & For Loops)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🎡 Lunapark & Dönme Dolap",
+    "logic": "Bir işlemi belirli sayıda veya bir koşul sağlandığı sürece tekrarlayarak otomatize etmemizi sağlar.",
+    "syntaxRules": [
+        "<code>for (int i = 0; i < n; i++) { ... }</code> : Sayaç kontrollü klasik for döngüsü.",
+        "<code>while (kosul) { ... }</code> : Koşul true olduğu sürece çalışan döngü.",
+        "<code>do { ... } while (kosul);</code> : En az 1 kez çalışan döngü.",
+        "<code>break; / continue;</code> : Döngüyü kırma veya turu atlama."
+    ],
+    "pitfalls": [
+        "⚠️ <code>while</code> döngüsünde sayaç artırımı unutulursa sonsuz döngü oluşur.",
+        "⚠️ <code>for</code> döngüsündeki 3 ifade noktalı virgül <code>;</code> ile ayrılır.",
+        "⚠️ <code>for (int i = 0; i < 5; i++)</code> 0, 1, 2, 3, 4 değerlerini alır (5 kez döner)."
+    ],
+    "exampleCode": "for (int i = 1; i <= 3; i++) {\n    System.out.println(\"Tur: \" + i);\n}"
+},
+  java_6: {
+    "title": "Diziler & Çok Boyutlu Diziler (Arrays)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🏢 Modern Rezidanslar & İş Kuleleri",
+    "logic": "Aynı veri tipindeki birden fazla değeri sabit boyutlu sıralı bir listede tutmamızı sağlar.",
+    "syntaxRules": [
+        "<code>int[] sayilar = new int[5];</code> : 5 elemanlı tamsayı dizisi.",
+        "<code>String[] isimler = {\"Ali\", \"Ayşe\"};</code> : Değerleri tanımlı dizi.",
+        "<code>dizi.length</code> : Dizinin toplam kapasitesini döner.",
+        "<code>for (String i : isimler) { ... }</code> : Gelişmiş For-Each döngüsü."
+    ],
+    "pitfalls": [
+        "⚠️ Dizinin boyutu sabittir, sonradan değiştirilemez.",
+        "⚠️ 3 elemanlı dizide <code>dizi[3]</code> erişimi <code>ArrayIndexOutOfBoundsException</code> verir.",
+        "⚠️ Dizi uzunluğunda parantez olmaz (<code>dizi.length</code>)."
+    ],
+    "exampleCode": "int[] puanlar = {90, 85, 100};\nfor (int p : puanlar) {\n    System.out.println(\"Puan: \" + p);\n}"
+},
+  java_7: {
+    "title": "Metotlar & Parametreler (Methods)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🎬 Sinema & Kültür Merkezi",
+    "logic": "Tekrar eden kodları tek bir fonksiyon altında toplayarak modüler ve yeniden kullanılabilir bloklar oluşturur.",
+    "syntaxRules": [
+        "<code>public static void yazdir() { ... }</code> : Değer döndürmeyen metot.",
+        "<code>public static int topla(int a, int b) { return a + b; }</code> : Tamsayı döndüren metot.",
+        "<code>return sonuc;</code> : Üretilen değeri çağıran yere aktarır.",
+        "<code>Method Overloading</code> : Aynı isimde farklı parametreli metotlar."
+    ],
+    "pitfalls": [
+        "⚠️ Dönüş tipi belirtilen metotta <code>return</code> unutulursa derleme hatası oluşur.",
+        "⚠️ <code>void</code> metotlardan değer döndürülemez.",
+        "⚠️ <code>main</code> içerisinden çağrılacak yardımcı metotlar <code>static</code> tanımlanmalıdır."
+    ],
+    "exampleCode": "public static int kareAl(int sayi) {\n    return sayi * sayi;\n}\n// Çağrı: int sonuc = kareAl(5); // 25"
+},
+  java_8: {
+    "title": "OOP: Sınıflar ve Nesneler (Classes & Objects)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🏛️ Yönetim Sarayı & Belediye",
+    "logic": "Gerçek dünya varlıklarını şablonlar (Class) ve somut varlıklar (Object) olarak modeller.",
+    "syntaxRules": [
+        "<code>class Araba { String marka; }</code> : Sınıf şablonu.",
+        "<code>Araba a = new Araba();</code> : new ile yeni nesne üretir.",
+        "<code>a.marka = \"Toyota\";</code> : Nesne alanına nokta ile erişir.",
+        "<code>this.marka</code> : Nesnenin kendi alanını işaret eder."
+    ],
+    "pitfalls": [
+        "⚠️ Nesne oluştururken <code>new</code> kelimesi unutulursa <code>NullPointerException</code> oluşur.",
+        "⚠️ Java dosya adı ile <code>public class</code> adı birebir aynı olmalıdır.",
+        "⚠️ Nesne özelliklerine ok <code>-></code> ile değil, nokta <code>.</code> ile erişilir."
+    ],
+    "exampleCode": "class Kisi {\n    String ad;\n}\nKisi k = new Kisi();\nk.ad = \"Can\";\nSystem.out.println(\"Kişi: \" + k.ad);"
+},
+  java_9: {
+    "title": "Kurucular & Erişim Belirteçleri",
+    "readTime": "3 dk okuma",
+    "rewardText": "🏥 Şehir Hastanesi & Acil Servis",
+    "logic": "Kurucu (Constructor) metotlar nesne oluşturulurken otomatik çalışıp başlangıç değerlerini atar. Erişim belirteçleri ise verilere erişimi sınırlar.",
+    "syntaxRules": [
+        "<code>public Araba(String m) { this.marka = m; }</code> : Kurucu metot.",
+        "<code>public</code> : Her yerden erişilebilir.",
+        "<code>private</code> : Yalnızca sınıf içinden erişilebilir.",
+        "<code>static</code> : Sınıfa ait ortak alan/metot."
+    ],
+    "pitfalls": [
+        "⚠️ Kurucu metotların dönüş tipi (<code>void</code> dahil) OLMAZ.",
+        "⚠️ Kurucu metot adı sınıf adıyla birebir aynı olmalıdır.",
+        "⚠️ <code>private</code> alanlara sınıf dışından doğrudan erişilemez."
+    ],
+    "exampleCode": "class Telefon {\n    String model;\n    public Telefon(String m) {\n        this.model = m;\n    }\n}\nTelefon t = new Telefon(\"iPhone 15\");"
+},
+  java_10: {
+    "title": "Kapsülleme & Paketler (Encapsulation & Packages)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🛍️ Alışveriş & Ticaret Merkezi",
+    "logic": "Hassas verileri private yaparak gizler ve bunlara kontrollü erişim için Getter (okuma) ve Setter (yazma) metotları sunar.",
+    "syntaxRules": [
+        "<code>private int bakiye;</code> : Gizli veri alanı.",
+        "<code>public int getBakiye() { return bakiye; }</code> : Getter metodu.",
+        "<code>public void setBakiye(int b) { this.bakiye = b; }</code> : Setter metodu.",
+        "<code>import java.util.Scanner;</code> : Paket içe aktarma."
+    ],
+    "pitfalls": [
+        "⚠️ Getter metotları parametre almaz ve veri döner; Setter metotları <code>void</code> olup parametre alır.",
+        "⚠️ <code>boolean</code> alanların getter metotları <code>isAktif()</code> şeklinde başlar.",
+        "⚠️ Kapsüllenmiş değişkene doğrudan <code>nesne.bakiye</code> ile erişilemez."
+    ],
+    "exampleCode": "class Hesap {\n    private int bakiye;\n    public int getBakiye() { return bakiye; }\n    public void setBakiye(int b) { if (b > 0) this.bakiye = b; }\n}"
+},
+  java_11: {
+    "title": "Kalıtım & Çok Biçimlilik (Inheritance & Polymorphism)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🚄 Hızlı Tren Garı & Raylar",
+    "logic": "Alt sınıfın üst sınıftaki özellik ve metotları devralmasını (extends) ve bunları özelleştirmesini (@Override) sağlar.",
+    "syntaxRules": [
+        "<code>class Kopek extends Hayvan { ... }</code> : Kalıtım bildirimi.",
+        "<code>super();</code> : Üst sınıfın kurucusunu çağırır.",
+        "<code>@Override</code> : Üst sınıftan gelen metodu ezer.",
+        "<code>Hayvan h = new Kopek();</code> : Çok biçimlilik (Polymorphism)."
+    ],
+    "pitfalls": [
+        "⚠️ Java'da bir sınıf yalnızca TEK bir sınıftan miras alabilir.",
+        "⚠️ <code>super()</code> çağrısı alt sınıf kurucusunun mutlaka İLK satırında yer almalıdır.",
+        "⚠️ <code>final</code> olarak tanımlanmış metotlar alt sınıfta ezilemez."
+    ],
+    "exampleCode": "class Hayvan {\n    void ses() { System.out.println(\"Ses\"); }\n}\nclass Kedi extends Hayvan {\n    @Override\n    void ses() { System.out.println(\"Miyav\"); }\n}"
+},
+  java_12: {
+    "title": "Soyutlama & Arayüzler (Abstraction & Interfaces)",
+    "readTime": "3 dk okuma",
+    "rewardText": "📡 5G Telekom & Uydu Kulesi",
+    "logic": "Uygulamanın ne yapacağını belirleyen şablonlar (gövdesiz metotlar) kurarak alt sınıfları bu kuralları doldurmaya zorunlu kılar.",
+    "syntaxRules": [
+        "<code>abstract class Sekil { abstract void ciz(); }</code> : Soyut sınıf.",
+        "<code>interface Oynatilabilir { void oynat(); }</code> : Arayüz tanımı.",
+        "<code>class Muzik implements Oynatilabilir</code> : Arayüz uygulama.",
+        "<code>enum Seviye { DUSUK, ORTA, YUKSEK }</code> : Sabitler kümesi."
+    ],
+    "pitfalls": [
+        "⚠️ <code>abstract</code> sınıflardan doğrudan nesne üretilemez (<code>new Sekil()</code> hata verir).",
+        "⚠️ Bir sınıf birden fazla interface uygulayabilir (<code>implements A, B</code>).",
+        "⚠️ Arayüz metotları sınıfta ezilirken görünürlüğü düşürülemez; mutlaka <code>public</code> olmalıdır."
+    ],
+    "exampleCode": "interface Calisabilir {\n    void calis();\n}\nclass Robot implements Calisabilir {\n    public void calis() { System.out.println(\"Robot çalışıyor\"); }\n}"
+},
+  java_13: {
+    "title": "Koleksiyonlar & Veri Yapıları (ArrayList & HashMap)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🚢 Uluslararası Liman & Konteynerler",
+    "logic": "Boyutu dinamik olarak büyüyüp küçülebilen listeler (ArrayList) ve anahtar-değer haritaları (HashMap) ile esnek veri yönetimi sağlar.",
+    "syntaxRules": [
+        "<code>ArrayList<String> liste = new ArrayList<>();</code> : Dinamik liste.",
+        "<code>liste.add(\"X\"); / liste.get(0); / liste.remove(0);</code> : Liste metotları.",
+        "<code>HashMap<String, Integer> map = new HashMap<>();</code> : Anahtar-değer haritası.",
+        "<code>map.put(\"Ali\", 90); / map.get(\"Ali\");</code> : Harita metotları."
+    ],
+    "pitfalls": [
+        "⚠️ Koleksiyonlarda ilkel tipler kullanılamaz; Wrapper sınıfları (<code>Integer</code>, <code>Double</code>) yazılmalıdır.",
+        "⚠️ Listelerde eleman okumak için <code>liste[0]</code> değil, <code>liste.get(0)</code> kullanılır.",
+        "⚠️ <code>HashSet</code> elemanları sırasız saklar ve tekrarları eler."
+    ],
+    "exampleCode": "import java.util.ArrayList;\nArrayList<String> sehirler = new ArrayList<>();\nsehirler.add(\"İzmir\");\nSystem.out.println(sehirler.get(0)); // İzmir"
+},
+  java_14: {
+    "title": "Hata Yönetimi & Dosya İşlemleri (Try-Catch & File I/O)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🚀 Teknoloji Vadisi & Roket Üssü",
+    "logic": "Çalışma zamanında oluşabilecek beklenmedik çökmeleri (Exception) zarifçe yakalar ve diskte kalıcı dosya okuma/yazma işlemleri yapar.",
+    "syntaxRules": [
+        "<code>try { ... } catch (Exception e) { ... }</code> : Hatayı yakalayan koruma bloğu.",
+        "<code>finally { ... }</code> : Her durumda çalışan temizlik bloğu.",
+        "<code>throw new IllegalArgumentException(\"Hata\");</code> : Manuel hata fırlatır.",
+        "<code>FileWriter writer = new FileWriter(\"not.txt\");</code> : Dosyaya metin yazma."
+    ],
+    "pitfalls": [
+        "⚠️ Dosya işlemlerinde (FileWriter) <code>yazar.close()</code> çağrılmazsa veriler diske yazılmayabilir.",
+        "⚠️ Sıfıra bölme hatası <code>ArithmeticException</code>, tip dönüşüm hatası <code>NumberFormatException</code> üretir.",
+        "⚠️ Java'da hata fırlatırken <code>raise</code> değil <code>throw</code> kullanılır."
+    ],
+    "exampleCode": "try {\n    int sonuc = 10 / 0;\n} catch (ArithmeticException e) {\n    System.out.println(\"Sıfıra bölünemez!\");\n} finally {\n    System.out.println(\"İşlem bitti.\");\n}"
+}
 };
 
 // Eski id eşleştirmeleri
@@ -1664,6 +2030,23 @@ TOPIC_REVIEWS_DB.p11 = TOPIC_REVIEWS_DB.python_11;
 TOPIC_REVIEWS_DB.p12 = TOPIC_REVIEWS_DB.python_12;
 TOPIC_REVIEWS_DB.p13 = TOPIC_REVIEWS_DB.python_13;
 TOPIC_REVIEWS_DB.p14 = TOPIC_REVIEWS_DB.python_14;
+
+// Java Topic Review Aliasları
+TOPIC_REVIEWS_DB.j1 = TOPIC_REVIEWS_DB.java_1;
+TOPIC_REVIEWS_DB.j2 = TOPIC_REVIEWS_DB.java_2;
+TOPIC_REVIEWS_DB.j3 = TOPIC_REVIEWS_DB.java_3;
+TOPIC_REVIEWS_DB.j4 = TOPIC_REVIEWS_DB.java_4;
+TOPIC_REVIEWS_DB.j5 = TOPIC_REVIEWS_DB.java_5;
+TOPIC_REVIEWS_DB.j6 = TOPIC_REVIEWS_DB.java_6;
+TOPIC_REVIEWS_DB.j7 = TOPIC_REVIEWS_DB.java_7;
+TOPIC_REVIEWS_DB.j8 = TOPIC_REVIEWS_DB.java_8;
+TOPIC_REVIEWS_DB.j9 = TOPIC_REVIEWS_DB.java_9;
+TOPIC_REVIEWS_DB.j10 = TOPIC_REVIEWS_DB.java_10;
+TOPIC_REVIEWS_DB.j11 = TOPIC_REVIEWS_DB.java_11;
+TOPIC_REVIEWS_DB.j12 = TOPIC_REVIEWS_DB.java_12;
+TOPIC_REVIEWS_DB.j13 = TOPIC_REVIEWS_DB.java_13;
+TOPIC_REVIEWS_DB.j14 = TOPIC_REVIEWS_DB.java_14;
+
 
 TOPIC_REVIEWS_DB.p1 = TOPIC_REVIEWS_DB.python_1;
 TOPIC_REVIEWS_DB.p2 = TOPIC_REVIEWS_DB.python_2;
@@ -3246,6 +3629,1224 @@ const CHALLENGES_DATABASE = {
         return { ok: false, msg: "Hata: return yerine 'yield i' kullanmalısınız." };
       }
     }
+  ],
+  java_1: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: KONSOL ÇIKTISI (PRINTLN)",
+      title: "1. Soru: Ekrana Çıktı Verme Sözdizimi",
+      prompt: "Geliştirici ekrana bir karşılama mesajı yazdırmak istiyor ancak konsol komutunu hatalı yazdığı için program derlenmiyor. Koddaki aksaklığı gidererek mesajın ekranda görünmesini sağlayabilir misin?",
+      presetCode: "Print(\"Merhaba Java\")\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["System.out.println(\"Merhaba Java\");","System.out.println(","System.out.print("],
+      solution: "System.out.println(\"Merhaba Java\");",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/System\.out\.println\s*\(\s*["']Merhaba Java["']\s*\)\s*;/.test(clean)) return { ok: true, msg: "Harika! System.out.println() başarıyla çalıştı. ✓" };
+        return { ok: false, msg: 'Hata: System.out.println("Merhaba Java"); şeklinde yazmalısınız.' };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: TAMSAYI DEĞİŞKENİ (INT)",
+      title: "2. Soru: Değişken Tipi Tanımlama",
+      prompt: "Geliştirici tam sayı tutan bir değişken oluşturmak istiyor fakat değişken tipini belirtmeyi unuttuğu için derleyici hata veriyor. Gerekli tür bildirimini ekleyebilir misin?",
+      presetCode: "puan = 100;\nSystem.out.println(puan);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["int puan = 100;","System.out.println(puan);","int "],
+      solution: "int puan = 100;\nSystem.out.println(puan);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/int\s+puan\s*=\s*100\s*;/.test(clean) && /System\.out\.println\s*\(\s*puan\s*\)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! int türü tanımlandı. ✓" };
+        return { ok: false, msg: "Hata: int puan = 100; şeklinde değişken türünü belirtin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: METİN DEĞİŞKENİ (STRING)",
+      title: "3. Soru: Metin ve Tırnak Kuralı",
+      prompt: "Geliştirici bir şehir ismini değişkende saklamak istiyor ancak metin için yanlış tırnak işareti kullandığı için program derlenmiyor. Doğru tırnak formatını uygular mısın?",
+      presetCode: "String sehir = 'Ankara';\nSystem.out.println(sehir);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["String sehir = \"Ankara\";","System.out.println(sehir);","\"Ankara\""],
+      solution: "String sehir = \"Ankara\";\nSystem.out.println(sehir);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/String\s+sehir\s*=\s*"Ankara"\s*;/.test(clean) && /System\.out\.println\s*\(\s*sehir\s*\)\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! String için çift tırnak kullanılır. ✓" };
+        return { ok: false, msg: 'Hata: String sehir = "Ankara"; şeklinde çift tırnak kullanın.' };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: ONDALIKLI SAYILAR (DOUBLE)",
+      title: "4. Soru: Ondalıklı Sayı Türü",
+      prompt: "Geliştirici küsurlu bir sıcaklık değerini değişkende tutmak istiyor ancak tam sayı tipi seçtiği için küsurat bilgisi kayboluyor. Ondalıklı sayıları saklayan doğru veri tipini seçebilir misin?",
+      presetCode: "int sicaklik = 36.6;\nSystem.out.println(sicaklik);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["double sicaklik = 36.6;","System.out.println(sicaklik);","double "],
+      solution: "double sicaklik = 36.6;\nSystem.out.println(sicaklik);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/double\s+sicaklik\s*=\s*36\.6\s*;/.test(clean)) return { ok: true, msg: "Harika! double türü küsuratı başarıyla korur. ✓" };
+        return { ok: false, msg: "Hata: double sicaklik = 36.6; şeklinde tipi double yapın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: TÜR DÖNÜŞÜMÜ (CASTING)",
+      title: "5. Soru: Tip Dönüşümü (Type Casting)",
+      prompt: "Geliştirici ondalıklı bir sayının tam sayı kısmını alıp bir tamsayı değişkenine aktarmak istiyor ancak doğrudan atama yapamadığı için hata alıyor. Açık tür dönüşümünü (explicit casting) uygular mısın?",
+      presetCode: "double oran = 9.85;\nint tamSayi = oran;\nSystem.out.println(tamSayi);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["int tamSayi = (int) oran;","(int) oran","System.out.println(tamSayi);"],
+      solution: "double oran = 9.85;\nint tamSayi = (int) oran;\nSystem.out.println(tamSayi);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/int\s+tamSayi\s*=\s*\(\s*int\s*\)\s*oran\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! (int) cast işlemi başarıyla yapıldı. 1. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: int tamSayi = (int) oran; şeklinde cast uygulayın." };
+      }
+    }
+  ],
+  java_2: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: KALAN / MOD HESABI (%)",
+      title: "1. Soru: Mod (Kalan) Alma",
+      prompt: "Geliştirici 29 sayısının 4 ile bölümünden kalanı bulmak istiyor ancak yanlış operatör kullandığı için bölümün sonucunu alıyor. Kalanı bulan operatörü yazar mısın?",
+      presetCode: "int kalan = 29 / 4;\nSystem.out.println(kalan);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["int kalan = 29 % 4;","29 % 4","System.out.println(kalan);"],
+      solution: "int kalan = 29 % 4;\nSystem.out.println(kalan);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/29\s*%\s*4\s*;/.test(clean)) return { ok: true, msg: "Harika! % operatörü kalanı bulur. ✓" };
+        return { ok: false, msg: "Hata: int kalan = 29 % 4; komutunu kullanın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: HASSAS ONDALIKLI BÖLME",
+      title: "2. Soru: Hassas Ondalıklı Bölme",
+      prompt: "Geliştirici 7'yi 2'ye böldüğünde ekranda tam olarak 3.5 sonucunu görmek istiyor ancak tamsayı bölmesi yüzünden 3.0 alıyor. Bölme işlemini küsurat kaybetmeyecek şekilde düzeltir misin?",
+      presetCode: "double sonuc = 7 / 2;\nSystem.out.println(sonuc);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["double sonuc = 7.0 / 2;","7.0 / 2","7 / 2.0"],
+      solution: "double sonuc = 7.0 / 2;\nSystem.out.println(sonuc);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/double\s+sonuc\s*=\s*(7\.0\s*\/\s*2|7\s*\/\s*2\.0|\(double\)\s*7\s*\/\s*2)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! 3.5 küsuratı korundu. ✓" };
+        return { ok: false, msg: "Hata: double sonuc = 7.0 / 2; şeklinde ondalıklı bölme yapın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: MATH.MAX METODU",
+      title: "3. Soru: Matematik Sınıfı ile En Büyük Sayıyı Bulma",
+      prompt: "Geliştirici iki sayı arasındaki en büyük olanı Math kütüphanesi ile bulmak istiyor ancak sınıf adını yanlış çağırdığı için hata alıyor. Doğru Math metodunu uygular mısın?",
+      presetCode: "int buyuk = max(45, 80);\nSystem.out.println(buyuk);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["int buyuk = Math.max(45, 80);","Math.max(45, 80)","System.out.println(buyuk);"],
+      solution: "int buyuk = Math.max(45, 80);\nSystem.out.println(buyuk);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/Math\.max\s*\(\s*45\s*,\s*80\s*\)/.test(clean)) return { ok: true, msg: "Mükemmel! Math.max() başarıyla uygulandı. ✓" };
+        return { ok: false, msg: "Hata: int buyuk = Math.max(45, 80); şeklinde çağırın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: KAREKÖK (MATH.SQRT)",
+      title: "4. Soru: Karekök Hesabı",
+      prompt: "Geliştirici 81 sayısının karekökünü hesaplayıp yazdırmak istiyor ancak sözdizim hatası nedeniyle program çalışmıyor. Karekök fonksiyonunu doğru şekilde çağırabilir misin?",
+      presetCode: "double kok = Math.square(81);\nSystem.out.println(kok);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["double kok = Math.sqrt(81);","Math.sqrt(81)","System.out.println(kok);"],
+      solution: "double kok = Math.sqrt(81);\nSystem.out.println(kok);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/Math\.sqrt\s*\(\s*81\s*\)/.test(clean)) return { ok: true, msg: "Harika! Math.sqrt() karekök hesaplar. ✓" };
+        return { ok: false, msg: "Hata: double kok = Math.sqrt(81); şeklinde sqrt metodunu kullanın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: ARTIRMA OPERATÖRÜ (++)",
+      title: "5. Soru: Değeri 1 Artırma Operatörü",
+      prompt: "Geliştirici sayaç değişkenini kısa yoldan 1 artırmak istiyor ancak sözdizimindeki aksaklığı gidererek güncel sayacı yazdırabilir misin?",
+      presetCode: "int sayac = 10;\nsayac+;\nSystem.out.println(sayac);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["sayac++;","int sayac = 10;\nsayac++;","System.out.println(sayac);"],
+      solution: "int sayac = 10;\nsayac++;\nSystem.out.println(sayac);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/sayac\s*\+\+\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! sayac++ ile değer 11 yapıldı. 2. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: sayac++; şeklinde çift artı operatörünü kullanın." };
+      }
+    }
+  ],
+  java_3: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: METİN KARŞILAŞTIRMA (.EQUALS)",
+      title: "1. Soru: String Eşitlik Kontrolü",
+      prompt: "Geliştirici kullanıcının girdiği şifrenin \"gizli\" olup olmadığını doğrulamak istiyor ancak yanlış karşılaştırma yöntemi kullandığı için beklenmedik sonuç alıyor. Metin içeriklerini güvenle karşılaştıran metodu yazar mısın?",
+      presetCode: "String parola = \"gizli\";\nboolean esitMi = (parola == \"gizli\");\nSystem.out.println(esitMi);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["boolean esitMi = parola.equals(\"gizli\");","parola.equals(\"gizli\")","System.out.println(esitMi);"],
+      solution: "String parola = \"gizli\";\nboolean esitMi = parola.equals(\"gizli\");\nSystem.out.println(esitMi);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/parola\.equals\s*\(\s*"gizli"\s*\)/.test(clean)) return { ok: true, msg: "Harika! String karşılaştırması için .equals() kullanılır. ✓" };
+        return { ok: false, msg: 'Hata: boolean esitMi = parola.equals("gizli"); şeklinde yazın.' };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: METİN UZUNLUĞU (.LENGTH())",
+      title: "2. Soru: Metin Uzunluğunu Bulma",
+      prompt: "Geliştirici bir metnin karakter uzunluğunu bulup ekrana basmak istiyor ancak metodu özellik gibi çağırdığı için derleme hatası alıyor. Hatayı düzeltebilir misin?",
+      presetCode: "String mesaj = \"Kodlama\";\nint uzunluk = mesaj.length;\nSystem.out.println(uzunluk);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["int uzunluk = mesaj.length();","mesaj.length()","System.out.println(uzunluk);"],
+      solution: "String mesaj = \"Kodlama\";\nint uzunluk = mesaj.length();\nSystem.out.println(uzunluk);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/mesaj\.length\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! String uzunluğu .length() metodudur. ✓" };
+        return { ok: false, msg: "Hata: int uzunluk = mesaj.length(); şeklinde parantez ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: KARAKTERE ERİŞİM (.CHARAT)",
+      title: "3. Soru: Belirli İndeksteki Karakteri Alma",
+      prompt: "Geliştirici metnin ilk harfini almak istiyor ancak köşeli parantez kullandığı için derleyici hata veriyor. İndeksteki karakteri döndüren doğru String metodunu uygular mısın?",
+      presetCode: "String dil = \"Java\";\nchar ilk = dil[0];\nSystem.out.println(ilk);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["char ilk = dil.charAt(0);","dil.charAt(0)","System.out.println(ilk);"],
+      solution: "String dil = \"Java\";\nchar ilk = dil.charAt(0);\nSystem.out.println(ilk);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/dil\.charAt\s*\(\s*0\s*\)/.test(clean)) return { ok: true, msg: "Mükemmel! .charAt(0) ilk karakteri alır. ✓" };
+        return { ok: false, msg: "Hata: char ilk = dil.charAt(0); metodunu kullanın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: BÜYÜK HARFE ÇEVİRME (.TOUPPERCASE)",
+      title: "4. Soru: Büyük Harfe Çevirme",
+      prompt: "Geliştirici metni büyük harflere dönüştürüp ekrana basmak istiyor ancak metodun sonucunu yakalamadığı için ekranda küçük harfli orijinal metin kalıyor. Doğru atamayı yapar mısın?",
+      presetCode: "String sehir = \"izmir\";\nsehir.toUpperCase();\nSystem.out.println(sehir);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["sehir = sehir.toUpperCase();","System.out.println(sehir.toUpperCase());","sehir.toUpperCase()"],
+      solution: "String sehir = \"izmir\";\nsehir = sehir.toUpperCase();\nSystem.out.println(sehir);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/sehir\s*=\s*sehir\.toUpperCase\s*\(\s*\)/.test(clean) || /System\.out\.println\s*\(\s*sehir\.toUpperCase\s*\(\s*\)\s*\)/.test(clean)) return { ok: true, msg: "Harika! String dönüşümü başarıyla atandı. ✓" };
+        return { ok: false, msg: "Hata: sehir = sehir.toUpperCase(); şeklinde sonucu değişkene atayın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: METİN BİRLEŞTİRME (+)",
+      title: "5. Soru: Metin Birleştirme",
+      prompt: "Geliştirici isim ve soyisim metinlerini aralarında bir boşluk bırakarak birleştirmek istiyor. Birleştirme işlemini doğru tamamlayabilir misin?",
+      presetCode: "String ad = \"Ali\", soyad = \"Yılmaz\";\nString tamAd = ad soyad;\nSystem.out.println(tamAd);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["String tamAd = ad + \" \" + soyad;","ad + \" \" + soyad","System.out.println(tamAd);"],
+      solution: "String ad = \"Ali\", soyad = \"Yılmaz\";\nString tamAd = ad + \" \" + soyad;\nSystem.out.println(tamAd);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/ad\s*\+\s*" "\s*\+\s*soyad/.test(clean)) return { ok: true, msg: "Tebrikler! Metinler başarıyla birleştirildi. 3. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: 'Hata: String tamAd = ad + " " + soyad; şeklinde araya boşluk koyarak bağlayın.' };
+      }
+    }
+  ],
+  java_4: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: IF KOŞULU",
+      title: "1. Soru: If Koşul Parantezi",
+      prompt: "Geliştirici yaş kontrolü yapmak istiyor ancak sözdizim hatası yüzünden kod derlenmiyor. Koşul ifadesini Java standartlarına uygun yazabilir misin?",
+      presetCode: "int yas = 20;\nif yas >= 18 {\n    System.out.println(\"Reşit\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["if (yas >= 18) {","System.out.println(\"Reşit\");","int yas = 20;"],
+      solution: "int yas = 20;\nif (yas >= 18) {\n    System.out.println(\"Reşit\");\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/if\s*\(\s*yas\s*>=\s*18\s*\)/.test(clean)) return { ok: true, msg: "Harika! if koşulu parantez içine alındı. ✓" };
+        return { ok: false, msg: "Hata: if (yas >= 18) şeklinde parantez kullanın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: IF-ELSE YAPISI",
+      title: "2. Soru: If-Else Bloğu",
+      prompt: "Geliştirici sayının pozitif ya da negatif olduğunu belirlemek istiyor ancak hatalı anahtar kelime kullandığı için kod çalışmıyor. else bloğunu doğru tanımlar mısın?",
+      presetCode: "int sayi = -5;\nif (sayi >= 0) {\n    System.out.println(\"Pozitif\");\n} otherwise {\n    System.out.println(\"Negatif\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["} else {","System.out.println(\"Negatif\");","if (sayi >= 0) {"],
+      solution: "int sayi = -5;\nif (sayi >= 0) {\n    System.out.println(\"Pozitif\");\n} else {\n    System.out.println(\"Negatif\");\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/\}\s*else\s*\{[\s\S]*Negatif/.test(clean)) return { ok: true, msg: "Tebrikler! else bloğu doğru kuruldu. ✓" };
+        return { ok: false, msg: "Hata: otherwise yerine else { ... } kullanın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: TERNARY OPERATÖRÜ",
+      title: "3. Soru: Ternary (Tek Satır If-Else)",
+      prompt: "Geliştirici vize notuna göre tek satırda ternary operatörü ile durumu belirlemek istiyor ancak sözdizimdeki eksikliği tamamlayabilir misin?",
+      presetCode: "int puan = 65;\nString sonuc = (puan >= 50) : \"Geçti\" ? \"Kaldı\";\nSystem.out.println(sonuc);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["String sonuc = (puan >= 50) ? \"Geçti\" : \"Kaldı\";","? \"Geçti\" : \"Kaldı\"","System.out.println(sonuc);"],
+      solution: "int puan = 65;\nString sonuc = (puan >= 50) ? \"Geçti\" : \"Kaldı\";\nSystem.out.println(sonuc);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/\(\s*puan\s*>=\s*50\s*\)\s*\?\s*"Geçti"\s*:\s*"Kaldı"/.test(clean)) return { ok: true, msg: "Mükemmel! Ternary (? :) sözdizimi başarıyla uygulandı. ✓" };
+        return { ok: false, msg: 'Hata: String sonuc = (puan >= 50) ? "Geçti" : "Kaldı"; şeklinde yazın.' };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: SWITCH-CASE & BREAK",
+      title: "4. Soru: Switch-Case Break Eksikliği",
+      prompt: "Geliştirici haftanın gününe göre sadece ilgili günü basmak istiyor ancak 1 girdiğinde sonraki günleri de peş peşe yazdırıyor. Durumu ilgili günde sonlandıran komutu ekler misin?",
+      presetCode: "int gun = 1;\nswitch (gun) {\n    case 1:\n        System.out.println(\"Pazartesi\");\n    case 2:\n        System.out.println(\"Salı\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["break;","case 1:\n        System.out.println(\"Pazartesi\");\n        break;","switch (gun) {"],
+      solution: "int gun = 1;\nswitch (gun) {\n    case 1:\n        System.out.println(\"Pazartesi\");\n        break;\n    case 2:\n        System.out.println(\"Salı\");\n        break;\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/case\s+1\s*:[\s\S]*break\s*;/.test(clean)) return { ok: true, msg: "Harika! break; komutu fall-through sorununu çözdü. ✓" };
+        return { ok: false, msg: "Hata: case 1 bloğunun sonuna break; ekleyin." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: MANTIKSAL VE (&&)",
+      title: "5. Soru: Mantıksal VE (&&) Bağlacı",
+      prompt: "Geliştirici hem yaşın 18'den büyük hem de ehliyetin var olduğunu tek bir koşulda denetlemek istiyor. İki şartı birleştiren mantıksal operatörü yazar mısın?",
+      presetCode: "int yas = 22;\nboolean ehliyet = true;\nif (yas >= 18 and ehliyet == true) {\n    System.out.println(\"Araç Kullanabilir\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["if (yas >= 18 && ehliyet) {","yas >= 18 && ehliyet","System.out.println(\"Araç Kullanabilir\");"],
+      solution: "int yas = 22;\nboolean ehliyet = true;\nif (yas >= 18 && ehliyet) {\n    System.out.println(\"Araç Kullanabilir\");\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/yas\s*>=\s*18\s*&&\s*ehliyet/.test(clean)) return { ok: true, msg: "Tebrikler! && mantıksal bağlacı uygulandı. 4. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: and yerine && operatörünü kullanın." };
+      }
+    }
+  ],
+  java_5: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: FOR DÖNGÜSÜ",
+      title: "1. Soru: Klasik For Döngüsü Sözdizimi",
+      prompt: "Geliştirici 1'den 3'e kadar sayıları yazdırmak istiyor ancak döngü başlığında virgül kullandığı için derleme hatası alıyor. Doğru for döngüsü formatını yazar mısın?",
+      presetCode: "for (int i = 1, i <= 3, i++) {\n    System.out.println(i);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["for (int i = 1; i <= 3; i++) {","System.out.println(i);","i <= 3;"],
+      solution: "for (int i = 1; i <= 3; i++) {\n    System.out.println(i);\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/for\s*\(\s*int\s+i\s*=\s*1\s*;\s*i\s*<=\s*3\s*;\s*i\+\+\s*\)/.test(clean)) return { ok: true, msg: "Harika! for döngüsü noktalı virgüllerle ayrıldı. ✓" };
+        return { ok: false, msg: "Hata: for (int i = 1; i <= 3; i++) şeklinde noktalı virgül kullanın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: WHILE SAYAÇ YÖNETİMİ",
+      title: "2. Soru: Sonsuz While Döngüsünü Önleme",
+      prompt: "Geliştirici sayaç 3 olana kadar ekrana yazdırmak istiyor ancak döngü sonsuz döngüye giriyor. Döngünün güvenle bitmesini sağlayacak satırı ekler misin?",
+      presetCode: "int sayac = 1;\nwhile (sayac <= 3) {\n    System.out.println(sayac);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["sayac++;","while (sayac <= 3) {","System.out.println(sayac);"],
+      solution: "int sayac = 1;\nwhile (sayac <= 3) {\n    System.out.println(sayac);\n    sayac++;\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/sayac\s*\+\+\s*;/.test(clean) && /while\s*\(\s*sayac\s*<=\s*3\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! sayac++ ile sonsuz döngü engellendi. ✓" };
+        return { ok: false, msg: "Hata: while bloğunun içine sayac++; ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: DÖNGÜYÜ KIRMA (BREAK)",
+      title: "3. Soru: Döngüyü Erken Kırma (Break)",
+      prompt: "Geliştirici döngüde 3 sayısına ulaşıldığı anda döngüyü tamamen bitirmek istiyor. İstenen koşulda döngüyü sonlandıran komutu yazar mısın?",
+      presetCode: "for (int i = 1; i <= 5; i++) {\n    if (i == 3) {\n        stop;\n    }\n    System.out.println(i);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["break;","if (i == 3) {\n        break;\n    }","for (int i = 1; i <= 5; i++) {"],
+      solution: "for (int i = 1; i <= 5; i++) {\n    if (i == 3) {\n        break;\n    }\n    System.out.println(i);\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/if\s*\(\s*i\s*==\s*3\s*\)\s*\{[\s\S]*break\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! break komutu uygulandı. ✓" };
+        return { ok: false, msg: "Hata: if (i == 3) durumunda break; komutunu kullanın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: TURU ATLAMA (CONTINUE)",
+      title: "4. Soru: Belirli Adımı Atlama (Continue)",
+      prompt: "Geliştirici 2 sayısını ekrana basmadan atlayıp sonraki sayılara devam etmek istiyor. O anki turu atlayan anahtar kelimeyi yazar mısın?",
+      presetCode: "for (int i = 1; i <= 3; i++) {\n    if (i == 2) {\n        pass;\n    }\n    System.out.println(i);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["continue;","if (i == 2) {\n        continue;\n    }","for (int i = 1; i <= 3; i++) {"],
+      solution: "for (int i = 1; i <= 3; i++) {\n    if (i == 2) {\n        continue;\n    }\n    System.out.println(i);\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/if\s*\(\s*i\s*==\s*2\s*\)\s*\{[\s\S]*continue\s*;/.test(clean)) return { ok: true, msg: "Harika! continue ile 2 atlandı. ✓" };
+        return { ok: false, msg: "Hata: if (i == 2) durumunda continue; kullanın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: DO-WHILE DÖNGÜSÜ",
+      title: "5. Soru: Do-While Döngüsü Sözdizimi",
+      prompt: "Geliştirici en az bir kez çalışan do-while döngüsü kurmak istiyor ancak sözdizimdeki eksikliği tamamlayabilir misin?",
+      presetCode: "int x = 5;\ndo {\n    System.out.println(x);\n} while (x < 3)\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["} while (x < 3);","do {","int x = 5;"],
+      solution: "int x = 5;\ndo {\n    System.out.println(x);\n} while (x < 3);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/do\s*\{[\s\S]*\}\s*while\s*\(\s*x\s*<\s*3\s*\)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! do-while sonuna noktalı virgül eklendi. 5. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: while (x < 3) satırının sonuna noktalı virgül (;) koyun." };
+      }
+    }
+  ],
+  java_6: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: DİZİ TANIMLAMA",
+      title: "1. Soru: Dizi Tanımlama",
+      prompt: "Geliştirici 3 elemanlı bir tamsayı dizisi oluşturmak istiyor ancak dizi tanımlama sözdiziminde hata yaptığı için derlenmiyor. Dizi tanımlamasını doğru şekilde yazar mısın?",
+      presetCode: "int sayilar = [10, 20, 30];\nSystem.out.println(sayilar[0]);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["int[] sayilar = {10, 20, 30};","System.out.println(sayilar[0]);","int[] "],
+      solution: "int[] sayilar = {10, 20, 30};\nSystem.out.println(sayilar[0]);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/int\s*\[\s*\]\s*sayilar\s*=\s*\{\s*10\s*,\s*20\s*,\s*30\s*\}\s*;/.test(clean)) return { ok: true, msg: "Harika! int[] sayilar = {...} dizisi kuruldu. ✓" };
+        return { ok: false, msg: "Hata: int[] sayilar = {10, 20, 30}; şeklinde tanımlayın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: DİZİ UZUNLUĞU (.LENGTH)",
+      title: "2. Soru: Dizi Eleman Sayısını Alma",
+      prompt: "Geliştirici dizide kaç eleman olduğunu öğrenmek istiyor ancak String metoduyla karıştırdığı için derleme hatası alıyor. Dizi uzunluk özelliğini doğru çağırır mısın?",
+      presetCode: "String[] arabalar = {\"Volvo\", \"BMW\", \"Ford\"};\nint adet = arabalar.length();\nSystem.out.println(adet);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["int adet = arabalar.length;","arabalar.length","System.out.println(adet);"],
+      solution: "String[] arabalar = {\"Volvo\", \"BMW\", \"Ford\"};\nint adet = arabalar.length;\nSystem.out.println(adet);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/arabalar\.length\s*;/.test(clean) && !/arabalar\.length\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! Dizilerde .length parantezsizdir. ✓" };
+        return { ok: false, msg: "Hata: arabalar.length özelliğini parantezsiz çağırın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: FOR-EACH DÖNGÜSÜ",
+      title: "3. Soru: For-Each Döngüsü",
+      prompt: "Geliştirici dizideki tüm elemanları For-Each döngüsüyle yazdırmak istiyor ancak döngü sözdizimini yanlış yazdığı için kod çalışmıyor. Doğru For-Each yapısını kurabilir misin?",
+      presetCode: "int[] numaralar = {1, 2, 3};\nfor (int n in numaralar) {\n    System.out.println(n);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["for (int n : numaralar) {","System.out.println(n);","int[] numaralar = {1, 2, 3};"],
+      solution: "int[] numaralar = {1, 2, 3};\nfor (int n : numaralar) {\n    System.out.println(n);\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/for\s*\(\s*int\s+n\s*:\s*numaralar\s*\)/.test(clean)) return { ok: true, msg: "Mükemmel! for (int n : dizi) yapısı doğru kuruldu. ✓" };
+        return { ok: false, msg: "Hata: in yerine iki nokta (:) kullanın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: DİZİ ELEMANI GÜNCELLEME",
+      title: "4. Soru: Dizi Elemanını Güncelleme",
+      prompt: "Geliştirici dizinin ilk elemanını \"Elma\" olarak güncellemek istiyor ancak hatalı metot çağırdığı için hata alıyor. İndeks atamasıyla güncellemeyi yapar mısın?",
+      presetCode: "String[] meyveler = {\"Muz\", \"Çilek\"};\nmeyveler.set(0, \"Elma\");\nSystem.out.println(meyveler[0]);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["meyveler[0] = \"Elma\";","meyveler[0]","System.out.println(meyveler[0]);"],
+      solution: "String[] meyveler = {\"Muz\", \"Çilek\"};\nmeyveler[0] = \"Elma\";\nSystem.out.println(meyveler[0]);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/meyveler\s*\[\s*0\s*\]\s*=\s*"Elma"\s*;/.test(clean)) return { ok: true, msg: "Harika! meyveler[0] = 'Elma' ataması tamamlandı. ✓" };
+        return { ok: false, msg: 'Hata: meyveler[0] = "Elma"; atamasını yapın.' };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: ÇOK BOYUTLU DİZİLER",
+      title: "5. Soru: Çok Boyutlu Dizi Erişimi",
+      prompt: "Geliştirici 2 boyutlu bir matrisin 0. satır 1. sütunundaki elemanı almak istiyor. Çok boyutlu dizi indeksleme sözdizimini düzeltebilir misin?",
+      presetCode: "int[][] matris = {{1, 2}, {3, 4}};\nint deger = matris[0, 1];\nSystem.out.println(deger);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["int deger = matris[0][1];","matris[0][1]","System.out.println(deger);"],
+      solution: "int[][] matris = {{1, 2}, {3, 4}};\nint deger = matris[0][1];\nSystem.out.println(deger);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/matris\s*\[\s*0\s*\]\s*\[\s*1\s*\]/.test(clean)) return { ok: true, msg: "Tebrikler! matris[0][1] erişimi sağlandı. 6. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: matris[0][1] şeklinde iki ayrı köşeli parantez kullanın." };
+      }
+    }
+  ],
+  java_7: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: RETURN İFADESİ",
+      title: "1. Soru: Değer Döndüren Metot (Return)",
+      prompt: "Geliştirici iki sayıyı toplayıp sonucunu dönen bir metot yazmak istiyor ancak dönüş değerini dışarı aktarmayı unuttuğu için hata alıyor. Eksik return ifadesini ekler misin?",
+      presetCode: "public static int topla(int a, int b) {\n    int sonuc = a + b;\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["return sonuc;","return a + b;","public static int topla(int a, int b) {"],
+      solution: "public static int topla(int a, int b) {\n    int sonuc = a + b;\n    return sonuc;\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/return\s+(sonuc|a\s*\+\s*b)\s*;/.test(clean)) return { ok: true, msg: "Harika! return ifadesi eklendi. ✓" };
+        return { ok: false, msg: "Hata: Metot içine 'return sonuc;' ekleyin." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: VOID METOTLAR",
+      title: "2. Soru: Void Dönüş Tipi",
+      prompt: "Geliştirici sadece ekrana mesaj yazdıran ve geriye bir değer üretmeyen bir metot tasarlamak istiyor. Değer döndürmeyen doğru anahtar kelimeyi yazar mısın?",
+      presetCode: "public static empty yazdir(String mesaj) {\n    System.out.println(mesaj);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public static void yazdir(String mesaj) {","System.out.println(mesaj);","void "],
+      solution: "public static void yazdir(String mesaj) {\n    System.out.println(mesaj);\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+static\s+void\s+yazdir/.test(clean)) return { ok: true, msg: "Tebrikler! void dönüş tipi doğru uygulandı. ✓" };
+        return { ok: false, msg: "Hata: empty yerine void anahtar kelimesini kullanın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: METOT PARAMETRELERİ",
+      title: "3. Soru: Parametre Tanımlama",
+      prompt: "Geliştirici kullanıcı ismini alıp selamlayan bir metot yazmak istiyor ancak parametre tipini belirtmediği için derleme hatası alıyor. Parametreyi doğru tanımlayabilir misin?",
+      presetCode: "public static void selamla(isim) {\n    System.out.println(\"Merhaba \" + isim);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public static void selamla(String isim) {","String isim","System.out.println(\"Merhaba \" + isim);"],
+      solution: "public static void selamla(String isim) {\n    System.out.println(\"Merhaba \" + isim);\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/void\s+selamla\s*\(\s*String\s+isim\s*\)/.test(clean)) return { ok: true, msg: "Mükemmel! String isim parametresi tanımlandı. ✓" };
+        return { ok: false, msg: "Hata: parametreyi (String isim) olarak belirtin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: METOT AŞIRI YÜKLEME (OVERLOADING)",
+      title: "4. Soru: Metot Aşırı Yükleme (Method Overloading)",
+      prompt: "Geliştirici hem int hem double toplayabilen iki farklı sürüm oluşturmak istiyor ancak ikinci metodun dönüş tipini ve parametresini uyumlu hale getirebilir misin?",
+      presetCode: "public static int topla(int a, int b) { return a + b; }\npublic static int topla(double a, double b) { return a + b; }\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public static double topla(double a, double b) { return a + b; }","double topla","return a + b;"],
+      solution: "public static int topla(int a, int b) { return a + b; }\npublic static double topla(double a, double b) { return a + b; }",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+static\s+double\s+topla\s*\(\s*double\s+a\s*,\s*double\s+b\s*\)/.test(clean)) return { ok: true, msg: "Harika! Overloading metot dönüş tipi double yapıldı. ✓" };
+        return { ok: false, msg: "Hata: double toplayan metodun dönüş tipini double yapın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: STATIC METOTLAR",
+      title: "5. Soru: Statik Metot Çağrısı",
+      prompt: "Geliştirici main içerisinden nesne üretmeden bir hesaplama metodunu doğrudan çağırmak istiyor. Metodu nesnesiz çağrılabilir kılan anahtar kelimeyi ekler misin?",
+      presetCode: "public int kupAl(int x) {\n    return x * x * x;\n}\n// Kodunu main içinden doğrudan çağrılabilir şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public static int kupAl(int x) {","static ","return x * x * x;"],
+      solution: "public static int kupAl(int x) {\n    return x * x * x;\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+static\s+int\s+kupAl/.test(clean)) return { ok: true, msg: "Tebrikler! static anahtar kelimesi eklendi. 7. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: 'public static int kupAl(int x)' şeklinde static ekleyin." };
+      }
+    }
+  ],
+  java_8: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: NESNE OLUŞTURMA (NEW)",
+      title: "1. Soru: Nesne Örneği Oluşturma (new)",
+      prompt: "Geliştirici Ogrenci sınıfından yeni bir nesne üretmek istiyor ancak nesne oluşturma anahtar kelimesini unuttuğu için kod derlenmiyor. Doğru nesne başlatma kodunu yazar mısın?",
+      presetCode: "class Ogrenci { String ad; }\nOgrenci ogr = Ogrenci();\nogr.ad = \"Ali\";\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["Ogrenci ogr = new Ogrenci();","new Ogrenci()","ogr.ad = \"Ali\";"],
+      solution: "class Ogrenci { String ad; }\nOgrenci ogr = new Ogrenci();\nogr.ad = \"Ali\";",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/Ogrenci\s+ogr\s*=\s*new\s+Ogrenci\s*\(\s*\)\s*;/.test(clean)) return { ok: true, msg: "Harika! new anahtar kelimesi ile nesne üretildi. ✓" };
+        return { ok: false, msg: "Hata: Ogrenci ogr = new Ogrenci(); şeklinde new kullanın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: ALAN ERİŞİMİ (.)",
+      title: "2. Soru: Sınıf Alanına (Field) Değer Atama",
+      prompt: "Geliştirici oluşturduğu araba nesnesinin model yılına değer atamak istiyor ancak hatalı sözdizimini düzelterek değeri 2024 yapabilir misin?",
+      presetCode: "class Araba { int yil; }\nAraba a = new Araba();\na->yil = 2024;\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["a.yil = 2024;","a.yil","Araba a = new Araba();"],
+      solution: "class Araba { int yil; }\nAraba a = new Araba();\na.yil = 2024;",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/a\.yil\s*=\s*2024\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! a.yil = 2024 nokta operatörüyle atandı. ✓" };
+        return { ok: false, msg: "Hata: a.yil = 2024; şeklinde nokta (.) kullanın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: NESNE METOTLARI",
+      title: "3. Soru: Nesne Metodu Çağırma",
+      prompt: "Geliştirici Kopek nesnesinin havla metodunu çalıştırmak istiyor. Nesne üzerinden metot çağırma satırını doğru şekilde tamamlar mısın?",
+      presetCode: "class Kopek {\n    void havla() { System.out.println(\"Hav!\"); }\n}\nKopek k = new Kopek();\nhavla(k);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["k.havla();","Kopek k = new Kopek();","k.havla()"],
+      solution: "class Kopek {\n    void havla() { System.out.println(\"Hav!\"); }\n}\nKopek k = new Kopek();\nk.havla();",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/k\.havla\s*\(\s*\)\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! k.havla() metodu çağrıldı. ✓" };
+        return { ok: false, msg: "Hata: k.havla(); şeklinde nesne üzerinden çağırın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: THIS ANAHTAR KELİMESİ",
+      title: "4. Soru: This Anahtar Kelimesi",
+      prompt: "Geliştirici metot parametresi ile sınıf alanının ismi aynı olduğunda sınıf alanına atama yapmak istiyor. Nesnenin kendi alanını işaret eden anahtar kelimeyi ekler misin?",
+      presetCode: "class Urun {\n    int fiyat;\n    void setFiyat(int fiyat) {\n        fiyat = fiyat;\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["this.fiyat = fiyat;","this.fiyat","void setFiyat(int fiyat) {"],
+      solution: "class Urun {\n    int fiyat;\n    void setFiyat(int fiyat) {\n        this.fiyat = fiyat;\n    }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/this\.fiyat\s*=\s*fiyat\s*;/.test(clean)) return { ok: true, msg: "Harika! this.fiyat ile nesne alanı hedeflendi. ✓" };
+        return { ok: false, msg: "Hata: this.fiyat = fiyat; ataması yapın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: ÇOKLU NESNE YÖNETİMİ",
+      title: "5. Soru: Çoklu Nesne Üretimi",
+      prompt: "Geliştirici aynı sınıftan iki bağımsız nesne oluşturup isimlerini atamak istiyor. İkinci nesneyi doğru şekilde oluşturup adını \"Ayşe\" yapar mısın?",
+      presetCode: "class Calisan { String isim; }\nCalisan c1 = new Calisan();\nc1.isim = \"Ahmet\";\nCalisan c2 = c1;\nc2.isim = \"Ayşe\";\n// c2'yi bağımsız yeni bir nesne olarak oluştur:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["Calisan c2 = new Calisan();","c2.isim = \"Ayşe\";","new Calisan()"],
+      solution: "class Calisan { String isim; }\nCalisan c1 = new Calisan();\nc1.isim = \"Ahmet\";\nCalisan c2 = new Calisan();\nc2.isim = \"Ayşe\";",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/Calisan\s+c2\s*=\s*new\s+Calisan\s*\(\s*\)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! Bağımsız c2 nesnesi üretildi. 8. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: Calisan c2 = new Calisan(); ile yeni nesne açın." };
+      }
+    }
+  ],
+  java_9: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: KURUCU METOTLAR",
+      title: "1. Soru: Kurucu Metot Tanımlama",
+      prompt: "Geliştirici Kitap sınıfına kurucu metot yazmak istiyor ancak dönüş tipi eklediği için kurucu çalışmıyor. Doğru kurucu tanımını yapar mısın?",
+      presetCode: "class Kitap {\n    String baslik;\n    public void Kitap(String b) {\n        this.baslik = b;\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public Kitap(String b) {","this.baslik = b;","class Kitap {"],
+      solution: "class Kitap {\n    String baslik;\n    public Kitap(String b) {\n        this.baslik = b;\n    }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+Kitap\s*\(\s*String\s+b\s*\)/.test(clean) && !/void/.test(clean)) return { ok: true, msg: "Harika! Kurucu metottan void kaldırıldı. ✓" };
+        return { ok: false, msg: "Hata: public Kitap(String b) şeklinde void olmadan tanımlayın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: KURUCU İSİMLENDİRME",
+      title: "2. Soru: Kurucu İsim Kuralı",
+      prompt: "Geliştirici yapıcı metot tanımlamak istiyor ancak metot adını sınıf adıyla aynı yapmadığı için derleyici hata veriyor. Kurucu ismini sınıf ismiyle eşleştirir misin?",
+      presetCode: "class Banka {\n    int bakiye;\n    public init(int b) {\n        this.bakiye = b;\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public Banka(int b) {","this.bakiye = b;","class Banka {"],
+      solution: "class Banka {\n    int bakiye;\n    public Banka(int b) {\n        this.bakiye = b;\n    }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+Banka\s*\(\s*int\s+b\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! Kurucu adı sınıf adı Banka ile eşleşti. ✓" };
+        return { ok: false, msg: "Hata: init yerine public Banka(int b) yazın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: PRIVATE BELİRTECİ",
+      title: "3. Soru: Private Erişimi Kısıtlama",
+      prompt: "Geliştirici sifre değişkeninin sınıf dışından doğrudan değiştirilmesini engellemek istiyor. En kısıtlayıcı erişim belirtecini ekler misin?",
+      presetCode: "class Hesap {\n    public String sifre;\n}\n// sifre alanını sadece bu sınıfa özel (gizli) yap:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["private String sifre;","private ","class Hesap {"],
+      solution: "class Hesap {\n    private String sifre;\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/private\s+String\s+sifre\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! private String sifre ile veri gizlendi. ✓" };
+        return { ok: false, msg: "Hata: public yerine private String sifre; yazın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: STATIC ALANLAR",
+      title: "4. Soru: Static Değişken Paylaşımı",
+      prompt: "Geliştirici üretilen tüm nesneler tarafından ortak paylaşılan tek bir sayaç değişkeni tanımlamak istiyor. Sınıfa ait ortak değişken anahtar kelimesini ekler misin?",
+      presetCode: "class Oyuncu {\n    public int toplamOyuncu = 0;\n}\n// toplamOyuncu değişkenini tüm nesneler için tek ve ortak (sınıfa ait) yap:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public static int toplamOyuncu = 0;","static ","public static int "],
+      solution: "class Oyuncu {\n    public static int toplamOyuncu = 0;\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+static\s+int\s+toplamOyuncu/.test(clean)) return { ok: true, msg: "Harika! static belirteci sınıf geneline yayıldı. ✓" };
+        return { ok: false, msg: "Hata: public static int toplamOyuncu = 0; şeklinde tanımlayın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: ÇOKLU KURUCU (OVERLOADING)",
+      title: "5. Soru: Çoklu Kurucu (Constructor Overloading)",
+      prompt: "Geliştirici hem boş hem de isim alan iki kurucu tanımlamak istiyor. Parametresiz kurucuyu doğru şekilde ekler misin?",
+      presetCode: "class Kisi {\n    String isim;\n    public Kisi(String isim) { this.isim = isim; }\n}\n// Parametresiz varsayılan kurucuyu da ekle:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public Kisi() { this.isim = \"Bilinmiyor\"; }","public Kisi() {}","class Kisi {"],
+      solution: "class Kisi {\n    String isim;\n    public Kisi() { this.isim = \"Bilinmiyor\"; }\n    public Kisi(String isim) { this.isim = isim; }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+Kisi\s*\(\s*\)/.test(clean) && /public\s+Kisi\s*\(\s*String/.test(clean)) return { ok: true, msg: "Tebrikler! Constructor overloading tamamlandı. 9. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: public Kisi() { ... } kurucusunu ekleyin." };
+      }
+    }
+  ],
+  java_10: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: GETTER METOTLARI",
+      title: "1. Soru: Getter Metodu Yazma",
+      prompt: "Geliştirici private olarak saklanan isim bilgisini dışarıya okutmak istiyor. Standart Getter metodunu tamamlayabilir misin?",
+      presetCode: "class Kullanici {\n    private String isim = \"Can\";\n    public void getIsim() {\n        return isim;\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public String getIsim() {\n        return isim;\n    }","public String getIsim()","return isim;"],
+      solution: "class Kullanici {\n    private String isim = \"Can\";\n    public String getIsim() {\n        return isim;\n    }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+String\s+getIsim\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Harika! public String getIsim() tanımlandı. ✓" };
+        return { ok: false, msg: "Hata: Getter dönüş tipini String yapın: public String getIsim()" };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: SETTER METOTLARI",
+      title: "2. Soru: Setter ile Değer Doğrulama",
+      prompt: "Geliştirici yaş bilgisini güncellerken negatif değer girilmesini engellemek istiyor. Setter metodunu kurallı şekilde yazar mısın?",
+      presetCode: "class Uye {\n    private int yas;\n    public void setYas(int y) {\n        this.yas = y;\n    }\n}\n// y > 0 ise atama yapacak şekilde düzenle:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["if (y > 0) { this.yas = y; }","public void setYas(int y) {","this.yas = y;"],
+      solution: "class Uye {\n    private int yas;\n    public void setYas(int y) {\n        if (y > 0) {\n            this.yas = y;\n        }\n    }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/if\s*\(\s*y\s*>\s*0\s*\)\s*\{[\s\S]*this\.yas\s*=\s*y\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! Setter içine kontrol eklendi. ✓" };
+        return { ok: false, msg: "Hata: if (y > 0) { this.yas = y; } şartını ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: PAKET İÇE AKTARMA (IMPORT)",
+      title: "3. Soru: Paket İçe Aktarma (Import)",
+      prompt: "Geliştirici kullanıcıdan girdi almak için Scanner sınıfını kullanmak istiyor ancak paketi dahil etmediği için sınıf bulunamıyor. Gerekli import ifadesini ekler misin?",
+      presetCode: "// Scanner paketini içe aktar:\npublic class AnaProgram {\n    Scanner input = new Scanner(System.in);\n}\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["import java.util.Scanner;","Scanner input","public class AnaProgram {"],
+      solution: "import java.util.Scanner;\n\npublic class AnaProgram {\n    Scanner input = new Scanner(System.in);\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/import\s+java\.util\.Scanner\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! import java.util.Scanner; eklendi. ✓" };
+        return { ok: false, msg: "Hata: En üste 'import java.util.Scanner;' ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: KAPSÜLLENMİŞ VERİ OKUMA",
+      title: "4. Soru: Kapsüllenmiş Alana Erişim",
+      prompt: "Geliştirici private hiz alanına dışarıdan erişmek istiyor ancak doğrudan alan adını yazdığı için hata alıyor. Doğru Getter metodunu çağırır mısın?",
+      presetCode: "class Motor {\n    private int hiz = 80;\n    public int getHiz() { return hiz; }\n}\nMotor m = new Motor();\nSystem.out.println(m.hiz);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["System.out.println(m.getHiz());","m.getHiz()","Motor m = new Motor();"],
+      solution: "class Motor {\n    private int hiz = 80;\n    public int getHiz() { return hiz; }\n}\nMotor m = new Motor();\nSystem.out.println(m.getHiz());",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/m\.getHiz\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Harika! m.getHiz() ile güvenli erişildi. ✓" };
+        return { ok: false, msg: "Hata: System.out.println(m.getHiz()); şeklinde çağırın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: BOOLEAN GETTER (IS)",
+      title: "5. Soru: Boolean Getter İsimlendirme Standardı",
+      prompt: "Geliştirici boolean türündeki aktif alanı için Java standartlarına uygun Getter metodu tanımlamak istiyor. Boolean getter kuralını uygular mısın?",
+      presetCode: "class Hesap {\n    private boolean aktif = true;\n    public boolean getAktif() { return aktif; }\n}\n// Java standardı olan 'is' önekini kullan:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public boolean isAktif() { return aktif; }","isAktif()","private boolean aktif = true;"],
+      solution: "class Hesap {\n    private boolean aktif = true;\n    public boolean isAktif() { return aktif; }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+boolean\s+isAktif\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! isAktif() standardı uygulandı. 10. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: public boolean isAktif() { return aktif; } yazın." };
+      }
+    }
+  ],
+  java_11: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: MİRAS ALMA (EXTENDS)",
+      title: "1. Soru: Miras Alma Sözdizimi (Extends)",
+      prompt: "Geliştirici Kamyon sınıfının Arac sınıfından miras almasını istiyor ancak hatalı anahtar kelime kullandığı için derlenmiyor. Doğru kalıtım anahtar kelimesini yazar mısın?",
+      presetCode: "class Arac { int tekerlek = 4; }\nclass Kamyon inherits Arac { }\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["class Kamyon extends Arac { }","extends Arac","class Arac { int tekerlek = 4; }"],
+      solution: "class Arac { int tekerlek = 4; }\nclass Kamyon extends Arac { }",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/class\s+Kamyon\s+extends\s+Arac/.test(clean)) return { ok: true, msg: "Harika! extends anahtar kelimesi uygulandı. ✓" };
+        return { ok: false, msg: "Hata: class Kamyon extends Arac { } yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: ÜST SINIF KURUCUSU (SUPER)",
+      title: "2. Soru: Üst Sınıf Kurucusunu Çağırma (Super)",
+      prompt: "Geliştirici alt sınıfta üst sınıfın kurucusunu çalıştırmak istiyor ancak hatalı kelime kullandığı için hata alıyor. Üst sınıf kurucu çağrısını düzeltir misin?",
+      presetCode: "class Kisi {\n    Kisi(String ad) { System.out.println(ad); }\n}\nclass Ogrenci extends Kisi {\n    Ogrenci(String ad) {\n        parent(ad);\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["super(ad);","Ogrenci(String ad) {","class Ogrenci extends Kisi {"],
+      solution: "class Kisi {\n    Kisi(String ad) { System.out.println(ad); }\n}\nclass Ogrenci extends Kisi {\n    Ogrenci(String ad) {\n        super(ad);\n    }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/super\s*\(\s*ad\s*\)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! super(ad) çağrısı doğru yapıldı. ✓" };
+        return { ok: false, msg: "Hata: parent(ad) yerine super(ad); yazın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: METOT EZME (@OVERRIDE)",
+      title: "3. Soru: Metot Ezme (@Override)",
+      prompt: "Geliştirici üst sınıftan gelen sesCikar metodunu alt sınıfta özelleştirmek istiyor. Standart metot ezme anotasyonunu ekler misin?",
+      presetCode: "class Kus {\n    void sesCikar() { System.out.println(\"Cik\"); }\n}\nclass Karga extends Kus {\n    void sesCikar() { System.out.println(\"Gak\"); }\n}\n// @Override anotasyonunu ekle:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["@Override\n    void sesCikar() {","@Override","void sesCikar() {"],
+      solution: "class Kus {\n    void sesCikar() { System.out.println(\"Cik\"); }\n}\nclass Karga extends Kus {\n    @Override\n    void sesCikar() { System.out.println(\"Gak\"); }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/@Override\s+void\s+sesCikar/.test(clean)) return { ok: true, msg: "Mükemmel! @Override anotasyonu eklendi. ✓" };
+        return { ok: false, msg: "Hata: void sesCikar() üstüne @Override ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: ÇOK BİÇİMLİLİK (POLYMORPHISM)",
+      title: "4. Soru: Çok Biçimlilik (Polymorphism) Referansı",
+      prompt: "Geliştirici üst sınıf türünde bir referansla alt sınıf nesnesini tutmak istiyor. Polimorfik nesne tanımlamasını yapar mısın?",
+      presetCode: "class Sekil { }\nclass Daire extends Sekil { }\nDaire d = new Sekil();\n// Üst sınıf referansıyla alt sınıf nesnesi oluştur:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["Sekil s = new Daire();","new Daire()","class Daire extends Sekil { }"],
+      solution: "class Sekil { }\nclass Daire extends Sekil { }\nSekil s = new Daire();",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/Sekil\s+\w+\s*=\s*new\s+Daire\s*\(\s*\)\s*;/.test(clean)) return { ok: true, msg: "Harika! Sekil s = new Daire(); polimorfizmi kuruldu. ✓" };
+        return { ok: false, msg: "Hata: Sekil s = new Daire(); şeklinde tanımlayın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: FINAL METOTLAR",
+      title: "5. Soru: Final Metot Kuralı",
+      prompt: "Geliştirici bir metodun alt sınıflar tarafından ezilmesini (override) kesin olarak yasaklamak istiyor. Metodu kitleyen anahtar kelimeyi ekler misin?",
+      presetCode: "class Guvenlik {\n    public void sifrele() { System.out.println(\"AES\"); }\n}\n// sifrele metodunun ezilmesini engelle:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public final void sifrele() {","final ","public final void "],
+      solution: "class Guvenlik {\n    public final void sifrele() { System.out.println(\"AES\"); }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+final\s+void\s+sifrele/.test(clean)) return { ok: true, msg: "Tebrikler! final ile metot kilitlendi. 11. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: public final void sifrele() şeklinde final ekleyin." };
+      }
+    }
+  ],
+  java_12: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: SOYUT SINIFLAR (ABSTRACT)",
+      title: "1. Soru: Soyut Sınıf Tanımlama",
+      prompt: "Geliştirici gövdesiz bir metot barındıran soyut bir sınıf oluşturmak istiyor ancak sınıf bildirimindeki eksikliği tamamlayabilir misin?",
+      presetCode: "class Hayvan {\n    abstract void sesCikar();\n}\n// Sınıfı soyut (abstract) yap:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["abstract class Hayvan {","abstract void sesCikar();","abstract class "],
+      solution: "abstract class Hayvan {\n    abstract void sesCikar();\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/abstract\s+class\s+Hayvan/.test(clean)) return { ok: true, msg: "Harika! abstract class Hayvan tanımlandı. ✓" };
+        return { ok: false, msg: "Hata: 'abstract class Hayvan' şeklinde sınıfı soyut yapın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: ARAYÜZLER (IMPLEMENTS)",
+      title: "2. Soru: Arayüz Uygulama (Implements)",
+      prompt: "Geliştirici Ucak sınıfının Ucabilir arayüzünü uygulamasını istiyor ancak yanlış anahtar kelime kullandığı için kod derlenmiyor. Doğru sözdizimini yazar mısın?",
+      presetCode: "interface Ucabilir { void uc(); }\nclass Ucak extends Ucabilir {\n    public void uc() { System.out.println(\"Uçuyor\"); }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["class Ucak implements Ucabilir {","implements Ucabilir","interface Ucabilir { void uc(); }"],
+      solution: "interface Ucabilir { void uc(); }\nclass Ucak implements Ucabilir {\n    public void uc() { System.out.println(\"Uçuyor\"); }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/class\s+Ucak\s+implements\s+Ucabilir/.test(clean)) return { ok: true, msg: "Tebrikler! implements anahtar kelimesi uygulandı. ✓" };
+        return { ok: false, msg: "Hata: extends yerine 'implements Ucabilir' kullanın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: ARAYÜZ METOT ERİŞİMİ",
+      title: "3. Soru: Arayüz Metodu Erişim Seviyesi",
+      prompt: "Geliştirici arayüzden gelen metodu sınıfta doldururken erişim belirtecini unuttuğu için derleme hatası alıyor. Arayüz metotlarının varsayılan erişim belirtecini ekler misin?",
+      presetCode: "interface Cizilebilir { void ciz(); }\nclass Kare implements Cizilebilir {\n    void ciz() { System.out.println(\"Kare\"); }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["public void ciz() { System.out.println(\"Kare\"); }","public void ciz()","public "],
+      solution: "interface Cizilebilir { void ciz(); }\nclass Kare implements Cizilebilir {\n    public void ciz() { System.out.println(\"Kare\"); }\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/public\s+void\s+ciz\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Mükemmel! public void ciz() görünürlüğü korundu. ✓" };
+        return { ok: false, msg: "Hata: metot başına 'public void ciz()' ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: ÇOKLU ARAYÜZ (INTERFACE)",
+      title: "4. Soru: Çoklu Arayüz Uygulama",
+      prompt: "Geliştirici bir sınıfın hem Yazici hem de Tarayici arayüzlerini uygulamasını istiyor. Çoklu interface uygulama sözdizimini yazar mısın?",
+      presetCode: "interface Yazici { void yaz(); }\ninterface Tarayici { void tara(); }\nclass CokFonksiyonlu implements Yazici and Tarayici { }\n// İki arayüzü virgülle bağla:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["class CokFonksiyonlu implements Yazici, Tarayici {","implements Yazici, Tarayici","public void yaz() {}"],
+      solution: "interface Yazici { void yaz(); }\ninterface Tarayici { void tara(); }\nclass CokFonksiyonlu implements Yazici, Tarayici {\n    public void yaz() {}\n    public void tara() {}\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/class\s+CokFonksiyonlu\s+implements\s+Yazici\s*,\s*Tarayici/.test(clean)) return { ok: true, msg: "Harika! implements Yazici, Tarayici virgülle bağlandı. ✓" };
+        return { ok: false, msg: "Hata: 'implements Yazici, Tarayici' şeklinde virgül kullanın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: ENUMLAR",
+      title: "5. Soru: Sabitler Kümesi (Enum)",
+      prompt: "Geliştirici sipariş durumlarını temsil eden bir Enum oluşturmak istiyor. Doğru enum tanımını yapar mısın?",
+      presetCode: "enum class Durum {\n    BEKLEMEDE, ONAYLANDI, IPTAL\n}\n// Doğru enum sözdizimini yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["enum Durum {","BEKLEMEDE, ONAYLANDI, IPTAL","enum Durum {\n    BEKLEMEDE, ONAYLANDI, IPTAL\n}"],
+      solution: "enum Durum {\n    BEKLEMEDE, ONAYLANDI, IPTAL\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/enum\s+Durum\s*\{/.test(clean)) return { ok: true, msg: "Tebrikler! enum Durum başarıyla tanımlandı. 12. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: 'enum Durum { ... }' şeklinde class kelimesini kaldırın." };
+      }
+    }
+  ],
+  java_13: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: ARRAYLIST & WRAPPER",
+      title: "1. Soru: ArrayList Tanımlama & Wrapper Sınıfı",
+      prompt: "Geliştirici tamsayılardan oluşan dinamik bir liste kurmak istiyor ancak ilkel tip yazdığı için derleme hatası alıyor. Doğru Wrapper sınıfını yazar mısın?",
+      presetCode: "import java.util.ArrayList;\nArrayList<int> sayilar = new ArrayList<>();\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["ArrayList<Integer> sayilar = new ArrayList<>();","ArrayList<Integer>","new ArrayList<>()"],
+      solution: "import java.util.ArrayList;\nArrayList<Integer> sayilar = new ArrayList<>();",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/ArrayList\s*<\s*Integer\s*>\s*sayilar\s*=\s*new\s+ArrayList\s*<\s*>\s*\(\s*\)\s*;/.test(clean)) return { ok: true, msg: "Harika! ArrayList<Integer> Wrapper tipi uygulandı. ✓" };
+        return { ok: false, msg: "Hata: ArrayList<Integer> sayilar = new ArrayList<>(); şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: LİSTEDEN OKUMA (.GET)",
+      title: "2. Soru: Listeden Eleman Okuma",
+      prompt: "Geliştirici listenin ilk elemanını ekrana basmak istiyor ancak dizi köşeli parantezi kullandığı için hata alıyor. Liste okuma metodunu uygular mısın?",
+      presetCode: "import java.util.ArrayList;\nArrayList<String> isimler = new ArrayList<>();\nisimler.add(\"Bengi\");\nSystem.out.println(isimler[0]);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["System.out.println(isimler.get(0));","isimler.get(0)","isimler.add(\"Bengi\");"],
+      solution: "import java.util.ArrayList;\nArrayList<String> isimler = new ArrayList<>();\nisimler.add(\"Bengi\");\nSystem.out.println(isimler.get(0));",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/isimler\.get\s*\(\s*0\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! isimler.get(0) ile eleman okundu. ✓" };
+        return { ok: false, msg: "Hata: System.out.println(isimler.get(0)); şeklinde çağırın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: HASHMAP DEĞER EKLEME (.PUT)",
+      title: "3. Soru: HashMap Değer Ekleme (Put)",
+      prompt: "Geliştirici öğrenci notunu haritaya kaydetmek istiyor ancak liste metoduyla karıştırdığı için hata alıyor. HashMap veri ekleme metodunu yazar mısın?",
+      presetCode: "import java.util.HashMap;\nHashMap<String, Integer> notlar = new HashMap<>();\nnotlar.add(\"Matematik\", 95);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["notlar.put(\"Matematik\", 95);","notlar.put(","new HashMap<>()"],
+      solution: "import java.util.HashMap;\nHashMap<String, Integer> notlar = new HashMap<>();\nnotlar.put(\"Matematik\", 95);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/notlar\.put\s*\(\s*"Matematik"\s*,\s*95\s*\)\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! notlar.put('Matematik', 95) haritaya eklendi. ✓" };
+        return { ok: false, msg: 'Hata: notlar.put("Matematik", 95); şeklinde put kullanın.' };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: LİSTEDEN SİLME (.REMOVE)",
+      title: "4. Soru: Listeden Eleman Silme",
+      prompt: "Geliştirici listenin 0. indeksindeki elemanı listeden kaldırmak istiyor. Doğru silme metodunu çağırır mısın?",
+      presetCode: "import java.util.ArrayList;\nArrayList<String> diller = new ArrayList<>();\ndiller.add(\"Java\");\ndiller.delete(0);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["diller.remove(0);","diller.remove","diller.add(\"Java\");"],
+      solution: "import java.util.ArrayList;\nArrayList<String> diller = new ArrayList<>();\ndiller.add(\"Java\");\ndiller.remove(0);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/diller\.remove\s*\(\s*0\s*\)\s*;/.test(clean)) return { ok: true, msg: "Harika! diller.remove(0) metodu çalıştırıldı. ✓" };
+        return { ok: false, msg: "Hata: diller.remove(0); şeklinde remove kullanın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: TEKİL KÜMELER (HASHSET)",
+      title: "5. Soru: Benzersiz Eleman Kümesi (HashSet)",
+      prompt: "Geliştirici tekrar eden sayıları otomatik eleyen bir küme oluşturmak istiyor. Benzersiz küme koleksiyonuna eleman ekleme metodunu yazar mısın?",
+      presetCode: "import java.util.HashSet;\nHashSet<Integer> tekiller = new HashSet<>();\ntekiller.put(5);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["tekiller.add(5);","tekiller.add","HashSet<Integer>"],
+      solution: "import java.util.HashSet;\nHashSet<Integer> tekiller = new HashSet<>();\ntekiller.add(5);",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/tekiller\.add\s*\(\s*5\s*\)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! HashSet tekiller.add(5) eklendi. 13. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: tekiller.add(5); şeklinde add metodunu kullanın." };
+      }
+    }
+  ],
+  java_14: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: TRY-CATCH BLOKLARI",
+      title: "1. Soru: Sıfıra Bölme Hatasını Yakalama",
+      prompt: "Geliştirici sıfıra bölme işleminde programın çökmesini önleyip ekrana \"Hata Oluştu\" yazdırmak istiyor. try-catch bloğunu tamamlayabilir misin?",
+      presetCode: "int a = 10, b = 0;\nint bolum = a / b;\nSystem.out.println(bolum);\n// try-catch ile sarmala:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["try {","} catch (ArithmeticException e) {","System.out.println(\"Hata Oluştu\");"],
+      solution: "try {\n    int a = 10, b = 0;\n    int bolum = a / b;\n    System.out.println(bolum);\n} catch (ArithmeticException e) {\n    System.out.println(\"Hata Oluştu\");\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/try\s*\{[\s\S]*\}\s*catch\s*\(\s*(ArithmeticException|Exception)\s+\w+\s*\)\s*\{[\s\S]*Hata Oluştu/.test(clean)) return { ok: true, msg: "Harika! try-catch ile ArithmeticException yakalandı. ✓" };
+        return { ok: false, msg: 'Hata: try { ... } catch (ArithmeticException e) { System.out.println("Hata Oluştu"); } kurun.' };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: NUMBERFORMATEXCEPTION",
+      title: "2. Soru: Sayı Dönüşüm Hatası (NumberFormatException)",
+      prompt: "Geliştirici metin halindeki geçersiz bir girdiyi tamsayıya çevirirken oluşan hatayı yakalamak istiyor. İlgili hata türünü catch parametresine yazar mısın?",
+      presetCode: "try {\n    int sayi = Integer.parseInt(\"abc\");\n} catch (NullPointerException e) {\n    System.out.println(\"Geçersiz Sayı\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["catch (NumberFormatException e) {","System.out.println(\"Geçersiz Sayı\");","Integer.parseInt(\"abc\")"],
+      solution: "try {\n    int sayi = Integer.parseInt(\"abc\");\n} catch (NumberFormatException e) {\n    System.out.println(\"Geçersiz Sayı\");\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/catch\s*\(\s*NumberFormatException\s+e\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! NumberFormatException doğru yakalandı. ✓" };
+        return { ok: false, msg: "Hata: catch (NumberFormatException e) şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: FINALLY BLOĞU",
+      title: "3. Soru: Garanti Çalışan Blok (Finally)",
+      prompt: "Geliştirici hata olsun ya da olmasın her durumda bağlantının kapandığını ekrana basmak istiyor. Her senaryoda çalışan garanti bloğunu ekler misin?",
+      presetCode: "try {\n    int x = 5;\n} catch (Exception e) {\n    System.out.println(\"Hata\");\n}\nlast {\n    System.out.println(\"Tamamlandı\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["finally {\n    System.out.println(\"Tamamlandı\");\n}","finally {","System.out.println(\"Tamamlandı\");"],
+      solution: "try {\n    int x = 5;\n} catch (Exception e) {\n    System.out.println(\"Hata\");\n} finally {\n    System.out.println(\"Tamamlandı\");\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/finally\s*\{[\s\S]*Tamamlandı/.test(clean)) return { ok: true, msg: "Mükemmel! finally bloğu garantilendi. ✓" };
+        return { ok: false, msg: 'Hata: last yerine finally { System.out.println("Tamamlandı"); } yazın.' };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: MANUEL HATA FIRLATMA (THROW)",
+      title: "4. Soru: Manuel Hata Fırlatma (Throw)",
+      prompt: "Geliştirici yaş değeri 0'dan küçük girildiğinde manuel olarak IllegalArgumentException fırlatmak istiyor. Hata fırlatma anahtar kelimesini ekler misin?",
+      presetCode: "int yas = -1;\nif (yas < 0) {\n    raise new IllegalArgumentException(\"Yaş negatif olamaz\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["throw new IllegalArgumentException(\"Yaş negatif olamaz\");","throw new ","if (yas < 0) {"],
+      solution: "int yas = -1;\nif (yas < 0) {\n    throw new IllegalArgumentException(\"Yaş negatif olamaz\");\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/throw\s+new\s+IllegalArgumentException\s*\(\s*"Yaş negatif olamaz"\s*\)\s*;/.test(clean)) return { ok: true, msg: "Harika! throw new IllegalArgumentException(...) fırlatıldı. ✓" };
+        return { ok: false, msg: 'Hata: raise yerine throw new IllegalArgumentException("Yaş negatif olamaz"); yazın.' };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: DOSYA YAZMA & KAPATMA (FILEWRITER)",
+      title: "5. Soru: Dosyaya Yazma ve Kapatma (FileWriter)",
+      prompt: "Geliştirici dosyaya \"Java 100\" yazıp dosyayı güvenle kapatmak istiyor ancak yazma işlemini kapatmayı unuttuğu için veriler diske kaydedilmiyor. Dosyayı kapatma komutunu ekler misin?",
+      presetCode: "import java.io.FileWriter;\nimport java.io.IOException;\n\ntry {\n    FileWriter yazar = new FileWriter(\"not.txt\");\n    yazar.write(\"Java 100\");\n} catch (IOException e) {\n    System.out.println(\"Dosya Hatası\");\n}\n// yazar.close() çağrısını ekle:\n",
+      filename: "Main.java",
+      lang: "Java 21",
+      quickKeys: ["yazar.close();","yazar.write(\"Java 100\");\n    yazar.close();","FileWriter yazar = new FileWriter(\"not.txt\");"],
+      solution: "import java.io.FileWriter;\nimport java.io.IOException;\n\ntry {\n    FileWriter yazar = new FileWriter(\"not.txt\");\n    yazar.write(\"Java 100\");\n    yazar.close();\n} catch (IOException e) {\n    System.out.println(\"Dosya Hatası\");\n}",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/yazar\.close\s*\(\s*\)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! yazar.close() eklendi. Java Master Müfredatı Tamamlandı! 🚀🏆" };
+        return { ok: false, msg: "Hata: try bloğunun içine yazar.close(); ekleyin." };
+      }
+    }
   ]
 };
 
@@ -3264,6 +4865,23 @@ CHALLENGES_DATABASE.p11 = CHALLENGES_DATABASE.python_11;
 CHALLENGES_DATABASE.p12 = CHALLENGES_DATABASE.python_12;
 CHALLENGES_DATABASE.p13 = CHALLENGES_DATABASE.python_13;
 CHALLENGES_DATABASE.p14 = CHALLENGES_DATABASE.python_14;
+
+// Java Challenge Aliasları
+CHALLENGES_DATABASE.j1 = CHALLENGES_DATABASE.java_1;
+CHALLENGES_DATABASE.j2 = CHALLENGES_DATABASE.java_2;
+CHALLENGES_DATABASE.j3 = CHALLENGES_DATABASE.java_3;
+CHALLENGES_DATABASE.j4 = CHALLENGES_DATABASE.java_4;
+CHALLENGES_DATABASE.j5 = CHALLENGES_DATABASE.java_5;
+CHALLENGES_DATABASE.j6 = CHALLENGES_DATABASE.java_6;
+CHALLENGES_DATABASE.j7 = CHALLENGES_DATABASE.java_7;
+CHALLENGES_DATABASE.j8 = CHALLENGES_DATABASE.java_8;
+CHALLENGES_DATABASE.j9 = CHALLENGES_DATABASE.java_9;
+CHALLENGES_DATABASE.j10 = CHALLENGES_DATABASE.java_10;
+CHALLENGES_DATABASE.j11 = CHALLENGES_DATABASE.java_11;
+CHALLENGES_DATABASE.j12 = CHALLENGES_DATABASE.java_12;
+CHALLENGES_DATABASE.j13 = CHALLENGES_DATABASE.java_13;
+CHALLENGES_DATABASE.j14 = CHALLENGES_DATABASE.java_14;
+
 
 let currentChallengeIndex = 0;
 let currentChallengesList = [];
