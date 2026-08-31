@@ -7,7 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4.3">
+<<<<<<< Updated upstream
+  <link rel="stylesheet" href="style.css?v=2.2">
+=======
+  <link rel="stylesheet" href="style.css?v=4.4">
+>>>>>>> Stashed changes
 </head>
 <body>
   <!-- Minimalist Arka Plan Işık Efektleri -->
@@ -17,7 +21,6 @@
   <div class="app-container">
     <!-- Üst Bar & Navigasyon -->
     <header class="app-header">
-      <!-- Sol: Marka & Aktif Dil -->
       <div class="brand-group" id="nav-brand" role="button" title="Anasayfaya Dön">
         <div class="brand-logo">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -29,62 +32,35 @@
             <circle cx="12" cy="18" r="4"></circle>
           </svg>
         </div>
-        <div class="brand-text-col">
+        <div>
           <div class="brand-title">CodeFarm <span class="brand-badge" id="header-lang-badge">Dilleri Keşfet</span></div>
+          <p class="brand-subtitle" id="header-subtitle">İnteraktif kodlama macerana başla</p>
         </div>
       </div>
 
-      <!-- Sağ: İstatistikler, Ses & Kullanıcı Profili -->
-      <div class="header-right-group">
-        <!-- Oyun İstatistikleri Hapı -->
-        <div class="stats-pills-bar">
-          <div class="stat-pill stat-xp-pill" title="Kazanılan Toplam Deneyim Puanı">
-            <span class="stat-bullet xp-bullet"></span>
-            <span class="stat-num" id="stat-xp">0 XP</span>
-          </div>
-          <div class="stat-pill stat-rank-pill" title="Yetenek Derecesi">
-            <span class="stat-bullet rank-bullet"></span>
-            <span class="stat-num" id="stat-mastery">Çırak</span>
-          </div>
-          <div class="stat-pill stat-harvest-pill" title="Tamamlanan Alıştırma">
-            <span class="stat-bullet harvest-bullet"></span>
-            <span class="stat-num" id="stat-harvest">0 Görev</span>
-          </div>
-        </div>
 
-        <!-- Ses Butonu -->
-        <button id="btn-sound-toggle" class="btn-sound-round" title="Sesi Aç/Kapat">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+      <!-- İstatistikler -->
+      <div class="stats-group">
+        <div class="stat-pill">
+          <span class="stat-bullet xp-bullet"></span>
+          <span class="stat-num" id="stat-xp">0 XP</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-bullet rank-bullet"></span>
+          <span class="stat-num" id="stat-mastery">Çırak</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-bullet harvest-bullet"></span>
+          <span class="stat-num" id="stat-harvest">0 Görev</span>
+        </div>
+        <button id="btn-sound-toggle" class="btn-icon-minimal" title="Sesi Aç/Kapat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
             <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
             <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
           </svg>
         </button>
-
-        <!-- Kullanıcı Giriş & Profil Widget'ı -->
-        <div class="auth-widget-wrapper">
-          <button id="btn-open-auth" class="btn-auth-pill" title="Hesabına Giriş Yap veya Kayıt Ol">
-            <span class="auth-pill-icon">👤</span>
-            <span class="auth-pill-text">Giriş Yap</span>
-          </button>
-          <div id="user-profile-card" class="user-profile-card" style="display: none;">
-            <div class="user-avatar-circle" id="header-user-avatar">🧑‍🌾</div>
-            <div class="user-meta-col">
-              <span class="user-display-name" id="header-username">Kullanıcı</span>
-              <span class="user-cloud-status" id="header-cloud-status">
-                <span class="status-pulse-dot"></span>
-                <span>Bulut Aktif</span>
-              </span>
-            </div>
-            <button id="btn-header-logout" class="btn-header-logout" title="Oturumu Kapat">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                <polyline points="16 17 21 12 16 7"></polyline>
-                <line x1="21" y1="12" x2="9" y2="12"></line>
-              </svg>
-            </button>
-          </div>
-        </div>
       </div>
     </header>
 
@@ -119,71 +95,53 @@
     <!-- EKRAN 2: GELİŞEN ŞEHİR & DİKEY KONU YOL HARİTASI (Evolving City & Roadmap) -->
     <!-- ========================================================================= -->
     <section id="view-roadmap" class="view-screen">
-      <div class="roadmap-layout-container">
-        
-        <!-- SOL SÜTUN: Konu Yol Haritası & İlerleme (Masaüstünde Solda, Mobilde Altta) -->
-        <div class="roadmap-left-column">
-          <!-- 1. Geri Butonu & XP Göstergesi + Hızlı Test Araçları -->
-          <div class="roadmap-topbar">
-            <button id="btn-back-to-languages" class="roadmap-back-btn" title="Diller Menüsüne Dön">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-            </button>
-            
-            <div class="dev-quick-actions">
-              <button id="btn-unlock-all" class="dev-btn" title="Tüm konuların kilidini aç/kapat">
-                <span>🔓 Tüm Kilitleri Aç</span>
-              </button>
-            </div>
-
-            <div class="roadmap-xp-pill">
-              <span class="xp-trophy">🏆</span>
-              <strong id="roadmap-xp-count">1,240 XP</strong>
+      <div class="roadmap-mobile-container">
+        <!-- 1. En Üstteki Gelişen Şehir Görseli (Evolving City Canvas) -->
+        <div class="city-banner-card">
+          <div class="city-illustration-viewport" id="city-viewport">
+            <svg id="city-dynamic-svg" viewBox="0 0 460 210" preserveAspectRatio="xMidYMid slice">
+              <!-- Dinamik şehir binaları, yollar, parklar, sinema, lunapark vb. JS ile çizilir -->
+            </svg>
+            <div class="city-level-badge" id="city-level-badge">
+              <span class="city-pulse-dot"></span>
+              <span id="city-status-text">Şehirleşme: %0 • Issız Harabe Şehir</span>
             </div>
           </div>
+          <p class="city-motivation-text">Şehrin sana ihtiyacı var! Onu inşa etmek ve geliştirmek için konuları tamamla.</p>
+        </div>
 
-          <!-- 2. Seçili Dil Başlık ve İlerleme Kartı -->
-          <div class="course-header-card">
-            <div class="course-badge" id="course-lang-badge">
-              <span id="course-lang-icon">🐍</span>
-            </div>
-            <div class="course-info">
-              <h2 class="course-title" id="course-lang-title">Python Temelleri</h2>
-              <div class="course-progress-bar-wrap">
-                <div class="course-progress-fill" id="course-progress-fill" style="width: 35%;"></div>
-              </div>
-              <span class="course-progress-text" id="course-progress-text">35% Tamamlandı</span>
-            </div>
-          </div>
-
-          <!-- 3. Dikey Konu Yol Haritası (Timeline Listesi) -->
-          <div class="roadmap-timeline-wrapper" id="roadmap-timeline-list">
-            <!-- JS ile dinamik render edilecek -->
+        <!-- 2. Geri Butonu & XP Göstergesi -->
+        <div class="roadmap-topbar">
+          <button id="btn-back-to-languages" class="roadmap-back-btn" title="Diller Menüsüne Dön">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <div class="roadmap-xp-pill">
+            <span class="xp-trophy">🏆</span>
+            <strong id="roadmap-xp-count">1,240 XP</strong>
           </div>
         </div>
 
-        <!-- SAĞ SÜTUN: 3D Gelişen Şehir Görseli (Masaüstünde Sağda Sticky, Mobilde Üstte) -->
-        <div class="roadmap-right-column">
-          <div class="city-banner-card">
-            <div class="city-header-meta">
-              <span class="city-badge-tag">🏙️ İZOMETRİK 3D ŞEHİR</span>
-              <span class="city-trophy-text" id="city-building-count">0 / 14 Bina</span>
+        <!-- 3. Seçili Dil Başlık ve İlerleme Kartı -->
+        <div class="course-header-card">
+          <div class="course-badge" id="course-lang-badge">
+            <span id="course-lang-icon">🐍</span>
+          </div>
+          <div class="course-info">
+            <h2 class="course-title" id="course-lang-title">Python Temelleri</h2>
+            <div class="course-progress-bar-wrap">
+              <div class="course-progress-fill" id="course-progress-fill" style="width: 35%;"></div>
             </div>
-            <div class="city-illustration-viewport" id="city-viewport">
-              <svg id="city-dynamic-svg" viewBox="0 0 540 320" preserveAspectRatio="xMidYMid meet">
-                <!-- 3D İzometrik binalar, yollar, parklar, sinema, lunapark vb. JS ile çizilir -->
-              </svg>
-              <div class="city-level-badge" id="city-level-badge">
-                <span class="city-pulse-dot"></span>
-                <span id="city-status-text">Şehirleşme: %0 • Issız Harabe Şehir</span>
-              </div>
-            </div>
-            <p class="city-motivation-text">Şehrin sana ihtiyacı var! Onu inşa etmek ve 3D dünyayı genişletmek için konuları tamamla.</p>
+            <span class="course-progress-text" id="course-progress-text">35% Tamamlandı</span>
           </div>
         </div>
 
+        <!-- 4. Dikey Konu Yol Haritası (Timeline Listesi) -->
+        <div class="roadmap-timeline-wrapper" id="roadmap-timeline-list">
+          <!-- JS ile dinamik render edilecek -->
+        </div>
       </div>
     </section>
 
@@ -231,19 +189,19 @@
             </button>
           </div>
           <p class="challenge-prompt" id="challenge-prompt">
-            Aşağıdaki kodda değişken adlandırmasında bir hata var. Bu hatayı düzeltebilir misin?
+            <code class="code-highlight">pulse</code> (nabız) değeri <code class="code-highlight">40</code>'ın altındaysa, <code class="code-highlight">label</code> değişkenine <code class="code-highlight">'acil'</code> (emergency) etiketini ata.
           </p>
         </div>
 
         <!-- 3. Kod Yazma Alanı (Dark IDE Window - macOS Style) -->
-        <div class="ide-window-container"></div>
+        <div class="ide-window-container">
           <div class="ide-window-topbar">
             <div class="ide-mac-dots">
               <span class="dot-red"></span>
               <span class="dot-yellow"></span>
               <span class="dot-green"></span>
             </div>
-            <span class="ide-filename" id="ide-filename">degiskenler.py</span>
+            <span class="ide-filename" id="ide-filename">main.py</span>
             <div class="ide-code-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="16 18 22 12 16 6"></polyline>
@@ -254,30 +212,29 @@
 
           <div class="ide-editor-body">
             <div class="ide-line-numbers" id="ide-line-numbers">
-              1<br>2<br>3<br>4
+              1<br>2<br>3<br>4<br>5<br>6<br>7
             </div>
             <div class="ide-code-content">
               <div class="ide-code-preset" id="ide-code-preset">
-<span class="code-var">1sayi</span> = <span class="code-num">1</span>
+<span class="code-var">pulse</span> = <span class="code-num">75</span>
+<span class="code-var">label</span> = <span class="code-str">""</span>
 
-<span class="code-comment"># Kodunu aşağıya doğru şekilde yaz:</span></div>
-              <textarea id="code-input" class="ide-interactive-textarea" spellcheck="false" placeholder=""></textarea>
+<span class="code-comment"># Kodunuzu aşağıya yazın</span></div>
+              <textarea id="code-input" class="ide-interactive-textarea" spellcheck="false" placeholder="if pulse < 40:&#10;    label = &quot;acil&quot;"></textarea>
             </div>
           </div>
         </div>
 
-        <!-- 4. İpucu Kod Parçacıkları Alanı (Quick Keys Hint Panel) -->
-        <div class="hint-panel" id="hint-panel" style="display: none;">
-          <div class="hint-panel-header">
-            <div class="hint-title-tag">
-              <span class="hint-bulb-icon">💡</span>
-              <span>KULLANABİLECEĞİN KOD PARÇACIKLARI</span>
-            </div>
-            <button id="btn-close-hint" class="hint-close-btn" title="Kapat">✕</button>
-          </div>
-          <div class="quick-keys-bar" id="quick-keys-bar">
-            <!-- JS ile dinamik butonlar yüklenir -->
-          </div>
+        <!-- 4. Hızlı Kod Kısayol Tuşları (Code Snippet Bar) -->
+        <div class="quick-keys-bar" id="quick-keys-bar">
+          <button class="key-btn" data-key="if ">if</button>
+          <button class="key-btn" data-key="elif ">elif</button>
+          <button class="key-btn" data-key="else:">else</button>
+          <button class="key-btn" data-key=" < ">&lt;</button>
+          <button class="key-btn" data-key=" > ">&gt;</button>
+          <button class="key-btn" data-key=" = ">=</button>
+          <button class="key-btn" data-key=":">:</button>
+          <button class="key-btn" data-key="    ">Tab</button>
         </div>
 
         <!-- 5. Kontrol ve Çalıştırma Alanı (Control & Execution Area) -->
@@ -287,9 +244,6 @@
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
             <span>Kodu Çalıştır (Ctrl + Enter)</span>
-          </button>
-          <button id="btn-skip-module" class="btn-skip-subtle" title="Bu konunun tüm alıştırmalarını başarıyla tamamlayıp geç (Ctrl + .)">
-            <span>⏩ Alıştırmayı Atla & Tamamla</span>
           </button>
         </div>
 
@@ -332,42 +286,20 @@
       </div>
 
       <div class="review-content-scroll">
-        <!-- 1. Kazanım & Temel Mantık -->
+        <!-- Bölüm 1: İsimlendirme Kuralları (Naming Conventions) -->
         <div class="review-section">
-          <div class="review-section-title">🎯 KAZANIM & TEMEL MANTIK</div>
-          <div class="review-logic-card" id="review-logic-text">
-            <!-- JS ile doldurulacak -->
-          </div>
-        </div>
-
-        <!-- 2. Kritik Metotlar & Sözdizimi -->
-        <div class="review-section">
-          <div class="review-section-title" id="review-rules-heading">⚡ KRİTİK METOTLAR & SÖZDİZİMİ</div>
+          <div class="review-section-title" id="review-rules-heading">İSİMLENDİRME KURALLARI</div>
           <div class="review-rules-card" id="review-rules-list">
-            <!-- JS ile doldurulacak -->
+            <!-- JS ile doldurulacak kurallar -->
           </div>
         </div>
 
-        <!-- 3. Dikkat Edilecek Tuzaklar (Sık Yapılan Hatalar) -->
+        <!-- Bölüm 2: Temel Veri Türleri (Core Data Types) -->
         <div class="review-section">
-          <div class="review-section-title">💡 DİKKAT EDİLECEK TUZAKLAR & İPUÇLARI</div>
-          <div class="review-pitfalls-card" id="review-pitfalls-list">
-            <!-- JS ile doldurulacak -->
+          <div class="review-section-title" id="review-types-heading">TEMEL VERİ TÜRLERİ</div>
+          <div class="review-types-grid" id="review-types-grid">
+            <!-- JS ile doldurulacak tür kutuları -->
           </div>
-        </div>
-
-        <!-- 4. Mini Canlı Örnek Kod -->
-        <div class="review-section">
-          <div class="review-section-title">💻 MİNİ CANLI ÖRNEK</div>
-          <div class="review-example-box">
-            <pre class="review-code-pre" id="review-example-code"><code># python kodu</code></pre>
-          </div>
-        </div>
-
-        <!-- 5. Şehir Teması & Motivasyon Rozeti -->
-        <div class="review-reward-badge" id="review-reward-badge">
-          <span class="reward-icon">🏆</span>
-          <span id="review-reward-text">Ödül: Şehir Binası</span>
         </div>
       </div>
 
@@ -376,78 +308,9 @@
         <button id="btn-start-practice" class="btn-start-practice">
           <span>Alıştırmaya Başla</span>
         </button>
-        <div id="review-locked-notice" class="review-locked-notice" style="display: none;">
-          <span>🔒 Bu seviyenin alıştırması kilitlidir. Açmak için önceki konuları tamamlayın.</span>
-        </div>
         <button id="btn-dismiss-review" class="btn-dismiss-review">
           <span>Kapat ve Keşfetmeye Devam Et</span>
         </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- KULLANICI GİRİŞ & KAYIT OL MODALI (Cloud Auth Modal)                      -->
-  <!-- ========================================================================= -->
-  <div class="modal-overlay" id="auth-modal">
-    <div class="auth-modal-card">
-      <button class="auth-close-btn" id="btn-close-auth-modal" title="Pencereyi Kapat">✕</button>
-
-      <div class="auth-header-section">
-        <div class="auth-brand-badge">☁️ MongoDB Bulut Senkronizasyonu</div>
-        <h2 class="auth-main-title" id="auth-title">CodeFarm Hesabına Giriş Yap</h2>
-        <p class="auth-desc-text">İlerlemeni, kazandığın XP'leri ve 3D şehrini tüm cihazlarında kaybetmeden oyna.</p>
-      </div>
-
-      <!-- Sekmeler (Tabs: Giriş Yap / Kayıt Ol) -->
-      <div class="auth-tabs-row">
-        <button class="auth-tab-btn active" id="tab-btn-login">Giriş Yap</button>
-        <button class="auth-tab-btn" id="tab-btn-register">Yeni Hesap Oluştur</button>
-      </div>
-
-      <!-- Bildirim Mesaj Kutuları -->
-      <div id="auth-alert-box" class="auth-alert-box" style="display: none;"></div>
-
-      <!-- Giriş & Kayıt Formu -->
-      <form id="auth-form" class="auth-form">
-        <!-- Kullanıcı Adı (Yalnızca Kayıt Olurken Görünür) -->
-        <div class="auth-field-group" id="group-username" style="display: none;">
-          <label class="auth-field-label" for="auth-input-username">Kullanıcı Adı</label>
-          <div class="auth-input-wrapper">
-            <span class="auth-input-icon">👤</span>
-            <input type="text" id="auth-input-username" class="auth-text-input" placeholder="Örn: Bengi" autocomplete="username">
-          </div>
-        </div>
-
-        <!-- E-Posta -->
-        <div class="auth-field-group">
-          <label class="auth-field-label" for="auth-input-email">E-Posta Adresi</label>
-          <div class="auth-input-wrapper">
-            <span class="auth-input-icon">✉️</span>
-            <input type="email" id="auth-input-email" class="auth-text-input" placeholder="ornek@mail.com" required autocomplete="email">
-          </div>
-        </div>
-
-        <!-- Şifre -->
-        <div class="auth-field-group">
-          <label class="auth-field-label" for="auth-input-password">Şifre</label>
-          <div class="auth-input-wrapper">
-            <span class="auth-input-icon">🔒</span>
-            <input type="password" id="auth-input-password" class="auth-text-input" placeholder="En az 6 karakter" required autocomplete="current-password">
-          </div>
-        </div>
-
-        <!-- Gönder Butonu -->
-        <button type="submit" id="btn-auth-submit" class="btn-auth-submit">
-          <span id="auth-btn-text">Giriş Yap 🚀</span>
-          <div class="auth-spinner" id="auth-spinner" style="display: none;"></div>
-        </button>
-      </form>
-
-      <!-- Alt Bilgi / Geçiş -->
-      <div class="auth-footer-note">
-        <span id="auth-footer-switch-text">Hesabın yok mu?</span>
-        <button type="button" class="auth-footer-switch-btn" id="btn-toggle-auth-mode">Kayıt Ol</button>
       </div>
     </div>
   </div>
@@ -481,6 +344,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=4.2"></script>
+  <script src="app.js?v=2.2"></script>
 </body>
 </html>
