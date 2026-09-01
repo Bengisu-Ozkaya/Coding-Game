@@ -86,13 +86,73 @@ body {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 0.85rem 1.4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
   flex-wrap: nowrap !important;
   gap: 1rem;
   margin-bottom: 1.8rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  width: 100%;
+}
+
+.brand-group {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0 !important;
+}
+
+.brand-logo {
+  background: #10b981;
+  color: #ffffff;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  flex-shrink: 0;
+}
+
+.brand-text-col {
+  display: flex;
+  align-items: center;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+
+.brand-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: #ecfdf5;
+  color: #065f46;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #a7f3d0;
+}
+
+.header-right-group {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px;
+  margin-left: auto !important;
+  flex-shrink: 0 !important;
 }
 
 .auth-widget-wrapper {
@@ -126,8 +186,9 @@ body {
 }
 
 .user-profile-card {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
   gap: 8px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -210,20 +271,17 @@ body {
     padding: 0.6rem 0.6rem 2rem 0.6rem;
   }
   .app-header {
-    padding: 0.55rem 0.75rem;
+    padding: 0.55rem 0.8rem;
     margin-bottom: 1.2rem;
-    gap: 0.5rem;
-    flex-wrap: nowrap !important;
+    gap: 0.4rem;
   }
   .brand-group {
     gap: 8px;
-    min-width: 0;
   }
   .brand-logo {
     width: 32px;
     height: 32px;
     border-radius: 8px;
-    flex-shrink: 0;
   }
   .brand-logo svg {
     width: 18px;
@@ -231,8 +289,6 @@ body {
   }
   .brand-title {
     font-size: 0.95rem;
-    gap: 4px;
-    white-space: nowrap;
   }
   .btn-auth-pill {
     padding: 6px 12px;
@@ -253,7 +309,7 @@ body {
     font-size: 0.76rem;
   }
   .user-cloud-status {
-    display: none;
+    font-size: 0.58rem;
   }
   .user-profile-dropdown {
     position: fixed;
@@ -264,14 +320,6 @@ body {
     max-width: calc(100vw - 28px);
     z-index: 99999;
   }
-}
-
-.brand-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  user-select: none;
 }
 
 .brand-logo {
@@ -2177,10 +2225,8 @@ body.modal-open {
 }
 
 /* ==========================================================================
-   AUTH MODAL ARAYÜZÜ (Glassmorphic Giriş & Kayıt Penceresi)
-/* =========================================================================
    KONU HIZLI ÖZET KARTI MODALI (Topic Cheat-Sheet / Review Modal)
-   ========================================================================= */
+   ========================================================================== */
 
 #review-modal {
   display: none;
