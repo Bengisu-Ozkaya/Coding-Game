@@ -2228,3 +2228,436 @@ body.modal-open {
   color: #3730a3;
 }
 
+/* =========================================================================
+   EKRAN 3: İNTERAKTİF KODLAMA ARENASI (Code Arena & Exercise View)
+   ========================================================================= */
+
+#view-game {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0.5rem 0 3rem 0;
+}
+
+.game-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 1.2rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 10px 18px;
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+}
+
+.game-breadcrumb {
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-skip-module {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-skip-module:hover {
+  background: #fde68a;
+  color: #92400e;
+  transform: translateY(-1px);
+}
+
+/* 2 Sütunlu Oyun Arenası Izgarası */
+.game-arena-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .game-arena-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SOL PANEL: Teori & Görev Paneli */
+.task-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 85px;
+}
+
+.task-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge-tech {
+  background: #eef2ff;
+  color: #4f46e5;
+  border: 1px solid #c7d2fe;
+  font-weight: 800;
+  font-size: 0.74rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.difficulty-tag {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+  font-weight: 700;
+  font-size: 0.74rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.task-main-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.task-description-text {
+  font-size: 0.94rem;
+  color: #334155;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Hızlı Snippet / İpucu Paneli */
+.hint-panel {
+  background: #fffbeb;
+  border: 1px solid #fef08a;
+  border-radius: 14px;
+  padding: 14px;
+  animation: fadeInModern 0.2s ease;
+}
+
+.hint-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #854d0e;
+  margin-bottom: 10px;
+}
+
+.hint-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #a16207;
+  padding: 0 4px;
+}
+
+.quick-snippets-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.snippet-chip {
+  background: #ffffff;
+  border: 1px solid #fde047;
+  color: #713f12;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-family: var(--font-code);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.snippet-chip:hover {
+  background: #fef08a;
+  border-color: #eab308;
+  transform: translateY(-1px);
+}
+
+.snippet-chip:active {
+  transform: scale(0.96);
+}
+
+/* Teori & Kurallar Kutusu */
+.theory-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.theory-title {
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #475569;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+
+.theory-bullet-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.86rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.theory-bullet-list li {
+  margin-bottom: 6px;
+}
+
+.theory-bullet-list code {
+  background: #e2e8f0;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: var(--font-code);
+  font-size: 0.82rem;
+  color: #0f172a;
+}
+
+/* SAĞ PANEL: Kod Editörü & Terminal */
+.editor-panel {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-top-bar {
+  background: #1e293b;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #334155;
+}
+
+.file-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f172a;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-family: var(--font-code);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+}
+
+.editor-lang-tag {
+  font-family: var(--font-code);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* Kod Editörü Alanı */
+.code-editor-wrapper {
+  display: flex;
+  background: #0f172a;
+  min-height: 220px;
+  position: relative;
+}
+
+.line-numbers {
+  width: 44px;
+  padding: 16px 8px 16px 0;
+  text-align: right;
+  font-family: var(--font-code);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #475569;
+  user-select: none;
+  border-right: 1px solid #1e293b;
+  background: #090d16;
+}
+
+.code-textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 16px;
+  font-family: var(--font-code);
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #38bdf8;
+  caret-color: #38bdf8;
+  min-height: 220px;
+  tab-size: 4;
+}
+
+.code-textarea::placeholder {
+  color: #475569;
+}
+
+/* Editör Aksiyonları */
+.editor-actions-row {
+  background: #1e293b;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #334155;
+  border-bottom: 1px solid #1e293b;
+}
+
+.editor-left-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-action-tool {
+  background: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-action-tool:hover {
+  background: #475569;
+  color: #ffffff;
+}
+
+.btn-run-code {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 18px;
+  font-family: var(--font-main);
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-run-code:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+}
+
+.btn-run-code:active {
+  transform: translateY(1px);
+}
+
+/* Terminal / Konsol Çıktı Alanı */
+.terminal-container {
+  background: #090d16;
+  border-top: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  background: #0f172a;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-code);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #94a3b8;
+  border-bottom: 1px solid #1e293b;
+}
+
+.btn-clear-term {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #64748b;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-clear-term:hover {
+  color: #cbd5e1;
+  border-color: #475569;
+}
+
+.terminal-body {
+  padding: 14px 16px;
+  min-height: 120px;
+  max-height: 220px;
+  overflow-y: auto;
+  font-family: var(--font-code);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.term-line {
+  margin-bottom: 4px;
+}
+
+.term-success {
+  color: #34d399;
+}
+
+.term-error {
+  color: #f87171;
+}
+
+.term-info {
+  color: #38bdf8;
+}
+
+.term-hint {
+  color: #fbbf24;
+}
+
+
