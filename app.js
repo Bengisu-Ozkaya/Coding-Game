@@ -5204,12 +5204,9 @@ const authManager = {
   }
 };
 
-// --- 9. EVENT LISTENERS ---
-
 dom.navBrand.addEventListener('click', () => switchView('languages'));
 if (dom.navBtnHome) dom.navBtnHome.addEventListener('click', () => switchView('languages'));
 if (dom.navBtnRoadmap) dom.navBtnRoadmap.addEventListener('click', () => switchView('roadmap'));
-if (dom.navBtnGame) dom.navBtnGame.addEventListener('click', () => switchView('game'));
 dom.btnBackToLanguages.addEventListener('click', () => switchView('languages'));
 dom.btnBackToRoadmap.addEventListener('click', () => switchView('roadmap'));
 
@@ -5560,14 +5557,6 @@ const btnDropdownLogout = document.getElementById('btn-dropdown-logout');
 if (btnDropdownLogout) {
   btnDropdownLogout.addEventListener('click', () => {
     if (userProfileDropdownEl) userProfileDropdownEl.style.display = 'none';
-    authManager.logout();
-    sfx.playPop();
-  });
-}
-
-const btnHeaderLogout = document.getElementById('btn-header-logout');
-if (btnHeaderLogout) {
-  btnHeaderLogout.addEventListener('click', () => {
     authManager.logout();
     sfx.playPop();
   });
