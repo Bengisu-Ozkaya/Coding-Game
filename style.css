@@ -1686,14 +1686,29 @@ body {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 999px;
-  padding: 4px 10px 4px 6px;
+  padding: 4px 12px 4px 6px;
   box-shadow: 0 2px 10px -2px rgba(15, 23, 42, 0.08);
   transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
 }
 
 .user-profile-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.12);
+  border-color: #4f46e5;
+  box-shadow: 0 4px 14px -2px rgba(79, 70, 229, 0.15);
+  transform: translateY(-1px);
+}
+
+.profile-dropdown-arrow {
+  display: flex;
+  align-items: center;
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+}
+
+.user-profile-card.dropdown-open .profile-dropdown-arrow {
+  transform: rotate(180deg);
+  color: #4f46e5;
 }
 
 .user-avatar-circle {
@@ -1746,28 +1761,180 @@ body {
   50% { opacity: 0.5; transform: scale(0.85); }
 }
 
-.btn-header-logout {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  color: #94a3b8;
-  cursor: pointer;
-  width: 26px;
-  height: 26px;
+/* ==========================================================================
+   AÇILIR KULLANICI PROFİL & İSTATİSTİK MENÜSÜ (User Profile Dropdown)
+   ========================================================================== */
+
+.user-profile-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 310px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.9);
+  z-index: 1000;
+  padding: 18px 16px;
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFadeIn {
+  0% { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dropdown-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.dropdown-avatar {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
-  margin-left: 2px;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  border: 1px solid #bfdbfe;
   flex-shrink: 0;
 }
 
-.btn-header-logout:hover {
-  color: #ef4444;
-  background: #fee2e2;
-  border-color: #fca5a5;
-  transform: scale(1.05);
+.dropdown-user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow: hidden;
 }
+
+.dropdown-username {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.dropdown-email {
+  font-size: 0.76rem;
+  color: #64748b;
+  margin: 1px 0 4px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.dropdown-badge-cloud {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #059669;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 14px 0;
+}
+
+.dropdown-section-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.dropdown-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.dropdown-stat-card {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 10px 8px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.dropdown-stat-card:hover {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+.dropdown-stat-icon {
+  font-size: 1.15rem;
+}
+
+.dropdown-stat-val {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 2px;
+}
+
+.dropdown-stat-lbl {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.dropdown-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dropdown-action-btn {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-sync {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-sync:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.btn-logout {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+}
+
+.btn-logout:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
 
 /* ==========================================================================
    MODAL SCROLL KİLİTLEME (Body Scroll Lock)

@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5.5">
+  <link rel="stylesheet" href="style.css?v=5.6">
 </head>
 <body>
   <!-- Minimalist Arka Plan Işık Efektleri -->
@@ -36,29 +36,15 @@
 
       <!-- Sağ: İstatistikler, Ses & Kullanıcı Profili -->
       <div class="header-right-group">
-        <!-- Oyun İstatistikleri Hapı (Sadece Giriş Yapıldığında Görünür) -->
-        <div class="stats-pills-bar" id="header-stats-bar" style="display: none;">
-          <div class="stat-pill stat-xp-pill" title="Kazanılan Toplam Deneyim Puanı">
-            <span class="stat-bullet xp-bullet"></span>
-            <span class="stat-num" id="stat-xp">0 XP</span>
-          </div>
-          <div class="stat-pill stat-rank-pill" title="Yetenek Derecesi">
-            <span class="stat-bullet rank-bullet"></span>
-            <span class="stat-num" id="stat-mastery">Çırak</span>
-          </div>
-          <div class="stat-pill stat-harvest-pill" title="Tamamlanan Alıştırma">
-            <span class="stat-bullet harvest-bullet"></span>
-            <span class="stat-num" id="stat-harvest">0 Görev</span>
-          </div>
-        </div>
-
         <!-- Kullanıcı Giriş & Profil Widget'ı -->
-        <div class="auth-widget-wrapper">
+        <div class="auth-widget-wrapper" style="position: relative;">
           <button id="btn-open-auth" class="btn-auth-pill" title="Hesabına Giriş Yap veya Kayıt Ol">
             <span class="auth-pill-icon">👤</span>
             <span class="auth-pill-text">Giriş Yap</span>
           </button>
-          <div id="user-profile-card" class="user-profile-card" style="display: none;">
+
+          <!-- Giriş Yapılmış Kullanıcı Kartı (Tıklanabilir) -->
+          <div id="user-profile-card" class="user-profile-card" style="display: none;" role="button" title="Profilini ve İstatistiklerini Gör">
             <div class="user-avatar-circle" id="header-user-avatar">🧑‍🌾</div>
             <div class="user-meta-col">
               <span class="user-display-name" id="header-username">Kullanıcı</span>
@@ -67,13 +53,62 @@
                 <span>Bulut Aktif</span>
               </span>
             </div>
-            <button id="btn-header-logout" class="btn-header-logout" title="Oturumu Kapat">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                <polyline points="16 17 21 12 16 7"></polyline>
-                <line x1="21" y1="12" x2="9" y2="12"></line>
+            <div class="profile-dropdown-arrow">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
-            </button>
+            </div>
+          </div>
+
+          <!-- Açılır Kullanıcı Profil & İstatistik Menüsü (Dropdown) -->
+          <div id="user-profile-dropdown" class="user-profile-dropdown" style="display: none;">
+            <div class="dropdown-header">
+              <div class="dropdown-avatar" id="dropdown-user-avatar">🧑‍🌾</div>
+              <div class="dropdown-user-info">
+                <h4 class="dropdown-username" id="dropdown-username">Kullanıcı</h4>
+                <span class="dropdown-email" id="dropdown-email">kullanici@codefarm.com</span>
+                <span class="dropdown-badge-cloud">☁️ MongoDB Bulut Senkron</span>
+              </div>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <!-- İstatistiklerim Bölümü -->
+            <div class="dropdown-section-title">📊 İSTATİSTİKLERİM</div>
+            <div class="dropdown-stats-grid">
+              <div class="dropdown-stat-card">
+                <span class="dropdown-stat-icon">⚡</span>
+                <div class="dropdown-stat-val" id="dropdown-stat-xp">0 XP</div>
+                <div class="dropdown-stat-lbl">Deneyim Puanı</div>
+              </div>
+              <div class="dropdown-stat-card">
+                <span class="dropdown-stat-icon">🏅</span>
+                <div class="dropdown-stat-val" id="dropdown-stat-mastery">Çırak</div>
+                <div class="dropdown-stat-lbl">Yetenek Derecesi</div>
+              </div>
+              <div class="dropdown-stat-card">
+                <span class="dropdown-stat-icon">🎯</span>
+                <div class="dropdown-stat-val" id="dropdown-stat-tasks">0 Görev</div>
+                <div class="dropdown-stat-lbl">Çözülen Alıştırma</div>
+              </div>
+              <div class="dropdown-stat-card">
+                <span class="dropdown-stat-icon">🏙️</span>
+                <div class="dropdown-stat-val" id="dropdown-stat-city">1. Seviye</div>
+                <div class="dropdown-stat-lbl">Gelişen Şehir</div>
+              </div>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <!-- Aksiyon Butonları -->
+            <div class="dropdown-actions">
+              <button id="btn-dropdown-sync" class="dropdown-action-btn btn-sync">
+                <span>🔄 Buluta Senkronize Et</span>
+              </button>
+              <button id="btn-dropdown-logout" class="dropdown-action-btn btn-logout">
+                <span>🚪 Çıkış Yap</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -467,6 +502,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=5.5"></script>
+  <script src="app.js?v=5.6"></script>
 </body>
 </html>

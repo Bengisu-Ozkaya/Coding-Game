@@ -1000,11 +1000,9 @@ function completeCurrentTopic(langId, topicId) {
 // 3D İzometrik Şehir Çizim Motoru (Isometric 3D City Engine)
 function renderCityVisual(completedCount) {
   const svg = document.getElementById('city-svg') || document.getElementById('city-dynamic-svg');
-  if (!svg) return;
 
   const statusText = document.getElementById('city-stage-badge') || document.getElementById('city-status-text');
   const countText = document.getElementById('city-building-count');
-  const levelPercent = Math.min(100, Math.round((completedCount / 14) * 100));
 
   if (countText) {
     countText.textContent = `${completedCount} / 14 Bina`;
@@ -1020,16 +1018,8 @@ function renderCityVisual(completedCount) {
     else if (completedCount >= 1) phaseName = '2. Seviye: İlk Yerleşim';
 
     statusText.textContent = phaseName;
-  }
-
-  // 3D Isometric Building Helper
-  const isoBox = (x, y, w, d, h, topCol, leftCol, rightCol, stroke = 'rgba(0,0,0,0.15)') => {
-    // x, y: base center top point
-    // w: half width X, d: depth Y slope
-    const pTop = `${x},${y - h} ${x + w},${y - h + d} ${x},${y - h + 2*d} ${x - w},${y - h + d}`;
     const pLeft = `${x - w},${y - h + d} ${x},${y - h + 2*d} ${x},${y + 2*d} ${x - w},${y + d}`;
     const pRight = `${x},${y - h + 2*d} ${x + w},${y - h + d} ${x + w},${y + d} ${x},${y + 2*d}`;
-
     return `
       <polygon points="${pLeft}" fill="${leftCol}" stroke="${stroke}" stroke-width="0.75" />
       <polygon points="${pRight}" fill="${rightCol}" stroke="${stroke}" stroke-width="0.75" />
@@ -1349,18 +1339,10 @@ function renderSkillTree() {
   // Tamamlanan ve Aktif konu hesaplama
   const doneCount = topics.filter(t => t.status === 'done').length;
   const progressPercent = Math.round((doneCount / topics.length) * 100);
-
-  if (treeProgressFill) treeProgressFill.style.width = `${progressPercent}%`;
-  if (treeProgressText) treeProgressText.textContent = `${doneCount} / ${topics.length} Konu Tamamlandı (%${progressPercent})`;
-
-  // Şehir Görselini Çiz
   renderCityVisual(doneCount);
 
   // Dikey Konu Yol Haritasını Oluştur
   const container = document.getElementById('topics-list-container') || document.getElementById('roadmap-timeline-list');
-  if (!container) return;
-  container.innerHTML = '';
-
   topics.forEach((topic, idx) => {
     const isDone = topic.status === 'done';
     const isActive = topic.status === 'active';
@@ -1369,15 +1351,12 @@ function renderSkillTree() {
     const row = document.createElement('div');
     row.className = 'timeline-row';
 
-    // Düğüm İkonu
-    let nodeIcon = '🔒';
     let nodeClass = 'node-locked';
     if (isDone) {
       nodeIcon = '✓';
       nodeClass = 'node-done';
     } else if (isActive) {
       nodeIcon = '▶';
-      nodeClass = 'node-active';
     }
 
     // Çizgi
@@ -4924,14 +4903,38 @@ function updateGlobalStats() {
   if (dom.statXp) dom.statXp.textContent = `${state.xp || 0} XP`;
   if (dom.statHarvest) dom.statHarvest.textContent = `${state.harvestCount || 0} Görev`;
 
+  let rankName = 'Çırak';
+  if (state.xp >= 1500) {
+    rankName = 'Kıdemli';
+  } else if (state.xp >= 600) {
+    rankName = 'Yazılımcı';
+  }
+
   if (dom.statMastery) {
-    if (state.xp >= 1500) {
-      dom.statMastery.textContent = 'Kıdemli';
-    } else if (state.xp >= 600) {
-      dom.statMastery.textContent = 'Yazılımcı';
-    } else {
-      dom.statMastery.textContent = 'Çırak';
-    }
+    dom.statMastery.textContent = rankName;
+  }
+
+  // Profil Dropdown İçindeki İstatistikleri Güncelle
+  const dropXp = document.getElementById('dropdown-stat-xp');
+  const dropMastery = document.getElementById('dropdown-stat-mastery');
+  const dropTasks = document.getElementById('dropdown-stat-tasks');
+  const dropCity = document.getElementById('dropdown-stat-city');
+
+  if (dropXp) dropXp.textContent = `${state.xp || 0} XP`;
+  if (dropMastery) dropMastery.textContent = rankName;
+  if (dropTasks) dropTasks.textContent = `${state.harvestCount || 0} Görev`;
+
+  if (dropCity) {
+    const curTopics = getLanguageTopics(state.selectedLangId);
+    const doneCount = curTopics.filter(t => t.status === 'done').length;
+    let phaseName = '1. Seviye';
+    if (doneCount >= 14) phaseName = '7. Seviye (Mega)';
+    else if (doneCount >= 12) phaseName = '6. Seviye (Liman)';
+    else if (doneCount >= 9) phaseName = '5. Seviye (Ticaret)';
+    else if (doneCount >= 6) phaseName = '4. Seviye (Kültür)';
+    else if (doneCount >= 3) phaseName = '3. Seviye (Kasaba)';
+    else if (doneCount >= 1) phaseName = '2. Seviye (Yerleşim)';
+    dropCity.textContent = phaseName;
   }
 }
 
@@ -5180,18 +5183,23 @@ const authManager = {
     const userProfileCard = document.getElementById('user-profile-card');
     const headerUsername = document.getElementById('header-username');
     const headerAvatar = document.getElementById('header-user-avatar');
-    const headerStatsBar = document.getElementById('header-stats-bar');
+    const dropdownUsername = document.getElementById('dropdown-username');
+    const dropdownEmail = document.getElementById('dropdown-email');
+    const dropdownAvatar = document.getElementById('dropdown-user-avatar');
+    const profileDropdown = document.getElementById('user-profile-dropdown');
 
     if (this.isLoggedIn()) {
       if (btnOpenAuth) btnOpenAuth.style.display = 'none';
       if (userProfileCard) userProfileCard.style.display = 'flex';
-      if (headerStatsBar) headerStatsBar.style.display = 'flex';
       if (headerUsername) headerUsername.textContent = this.user.username || 'Kullanıcı';
       if (headerAvatar) headerAvatar.textContent = this.user.avatar || '🧑‍🌾';
+      if (dropdownUsername) dropdownUsername.textContent = this.user.username || 'Kullanıcı';
+      if (dropdownEmail) dropdownEmail.textContent = this.user.email || 'kullanici@codefarm.com';
+      if (dropdownAvatar) dropdownAvatar.textContent = this.user.avatar || '🧑‍🌾';
     } else {
       if (btnOpenAuth) btnOpenAuth.style.display = 'flex';
       if (userProfileCard) userProfileCard.style.display = 'none';
-      if (headerStatsBar) headerStatsBar.style.display = 'none';
+      if (profileDropdown) profileDropdown.style.display = 'none';
     }
   }
 };
@@ -5503,6 +5511,57 @@ const btnToggleAuth = document.getElementById('btn-toggle-auth-mode');
 if (btnToggleAuth) {
   btnToggleAuth.addEventListener('click', () => {
     setAuthMode(currentAuthMode === 'login' ? 'register' : 'login');
+  });
+}
+
+// Profil Dropdown Aç/Kapat
+const userProfileCardEl = document.getElementById('user-profile-card');
+const userProfileDropdownEl = document.getElementById('user-profile-dropdown');
+
+if (userProfileCardEl && userProfileDropdownEl) {
+  userProfileCardEl.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isHidden = userProfileDropdownEl.style.display === 'none' || !userProfileDropdownEl.style.display;
+    userProfileDropdownEl.style.display = isHidden ? 'block' : 'none';
+    userProfileCardEl.classList.toggle('dropdown-open', isHidden);
+    if (isHidden) {
+      updateGlobalStats();
+      sfx.playPop();
+    }
+  });
+
+  if (typeof document !== 'undefined' && document.addEventListener) {
+    document.addEventListener('click', (e) => {
+      if (!userProfileDropdownEl.contains(e.target) && !userProfileCardEl.contains(e.target)) {
+        userProfileDropdownEl.style.display = 'none';
+        userProfileCardEl.classList.remove('dropdown-open');
+      }
+    });
+  }
+}
+
+const btnDropdownSync = document.getElementById('btn-dropdown-sync');
+if (btnDropdownSync) {
+  btnDropdownSync.addEventListener('click', async () => {
+    btnDropdownSync.disabled = true;
+    btnDropdownSync.innerHTML = '<span>⏳ Senkronize Ediliyor...</span>';
+    await authManager.syncCurrentLocalProgress();
+    setTimeout(() => {
+      btnDropdownSync.disabled = false;
+      btnDropdownSync.innerHTML = '<span>✓ Bulut Güncellendi!</span>';
+      setTimeout(() => {
+        btnDropdownSync.innerHTML = '<span>🔄 Buluta Senkronize Et</span>';
+      }, 2000);
+    }, 600);
+  });
+}
+
+const btnDropdownLogout = document.getElementById('btn-dropdown-logout');
+if (btnDropdownLogout) {
+  btnDropdownLogout.addEventListener('click', () => {
+    if (userProfileDropdownEl) userProfileDropdownEl.style.display = 'none';
+    authManager.logout();
+    sfx.playPop();
   });
 }
 
