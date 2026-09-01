@@ -5182,27 +5182,26 @@ const authManager = {
 
   async verifyAndFetchProfile() {
     if (!this.token) return;
+    if (this.token.startsWith('local_jwt_')) return;
     try {
       const res = await fetch(`${API_BASE_URL}/auth/me`, {
         headers: { 'Authorization': `Bearer ${this.token}` }
       });
-      if (res.status === 401) {
-        this.logout();
-        return;
+      if (res.status === 200) {
+        const data = await res.json();
+        if (data.ok && data.user) {
+          this.user = data.user;
+          localStorage.setItem('codegame_user', JSON.stringify(data.user));
+          this.updateHeaderUI();
+        }
       }
-      const data = await res.json();
-      if (data.ok && data.user) {
-        this.user = data.user;
-        localStorage.setItem('codegame_user', JSON.stringify(data.user));
-        this.updateHeaderUI();
-      } else {
-        this.logout();
-      }
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Sunucuya ulaşılamadı, yerel oturum korunuyor.');
+    }
   },
 
   async syncCurrentLocalProgress(langId = state.selectedLangId) {
-    if (!this.token) return;
+    if (!this.token || this.token.startsWith('local_jwt_')) return;
     const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
     const topics = getLanguageTopics(curLang.id);
     const completedTopics = topics.filter(t => t.status === 'done').map(t => t.id);
@@ -5235,15 +5234,12 @@ const authManager = {
   },
 
   async loadCloudProgress() {
-    if (!this.token) return;
+    if (!this.token || this.token.startsWith('local_jwt_')) return;
     try {
       const res = await fetch(`${API_BASE_URL}/progress`, {
         headers: { 'Authorization': `Bearer ${this.token}` }
       });
-      if (res.status === 401) {
-        this.logout();
-        return;
-      }
+      if (!res.ok) return;
       const data = await res.json();
       if (data.ok && data.languages) {
         let totalCloudXp = 0;
