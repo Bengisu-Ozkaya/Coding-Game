@@ -433,6 +433,18 @@ const SKILL_TREE_JAVA_NODES = [
 // Diller Veritabanı (Screenshot ile birebir eşleşen dil listesi ve ders sayıları)
 const LANGUAGES_DB = [
   {
+    id: 'html',
+    name: 'HTML',
+    lessonsText: '70 Alıştırma • 14 Modül',
+    badgeClass: 'badge-html',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 3 1.5 15L12 21l6.5-3 1.5-15H4z"></path><path d="M16 8.5H8.5l.3 3.5h7.2l-.5 4.5-3.5 1-3.5-1-.2-2.5"></path></svg>`,
+    icon: '🌐',
+    category: 'frontend',
+    fileExt: 'index.html',
+    langTag: 'HTML5',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
     id: 'python',
     name: 'Python',
     lessonsText: '70 Alıştırma • 14 Modül',
@@ -759,6 +771,120 @@ function renderLanguages() {
 // --- 7. GELİŞEN ŞEHİR & DİKEY KONU YOL HARİTASI (Evolving City & Roadmap Engine) ---
 
 const COURSE_TOPICS_DB = {
+  html: [
+    {
+      id: "html_1",
+      title: "1. HTML Temelleri & Sayfa İskeleti",
+      desc: "<!DOCTYPE html>, <html>, <head>, <body> ve <title> ile standart web sayfası iskeleti oluşturma.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "html_2",
+      title: "2. Başlıklar & Metin Biçimlendirme",
+      desc: "Başlık hiyerarşisi (h1-h6), paragraflar (p), satır sonu (br), tematik çizgi (hr) ve vurgulama (strong, em, mark).",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "html_3",
+      title: "3. Bağlantılar & Köprüler (Links)",
+      desc: "<a> etiketi, href ile harici sayfalara geçiş, target='_blank' ve sayfa içi çapa (#id) linkleri.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "html_4",
+      title: "4. Görseller & Medya (Images)",
+      desc: "<img> etiketi, src kaynak yolu, alt açıklama metni, width/height boyutları ve figure/figcaption.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "html_5",
+      title: "5. Listeler (Sıralı, Sırasız & Tanım)",
+      desc: "<ul> sırasız, <ol> sıralı listeler, <li> elemanları, <dl>/<dt>/<dd> tanım listeleri ve iç içe listeler.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "html_6",
+      title: "6. Tablo Temelleri (Tables)",
+      desc: "<table>, <tr> satırları, <th> başlık hücreleri, <td> veri hücreleri ve <caption> tablo başlığı.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "html_7",
+      title: "7. İleri Tablolar (Colspan & Rowspan)",
+      desc: "<thead>, <tbody>, <tfoot> bölümleri, colspan (sütun birleştirme) ve rowspan (satır birleştirme).",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "html_8",
+      title: "8. Blok & Satır İçi, Div & Span",
+      desc: "Block vs Inline eleman ayrımı, <div> ve <span> kapsayıcıları, id ve class öznitelikleri.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "html_9",
+      title: "9. Temel Form Elemanları (Form & Input)",
+      desc: "<form action method>, text, password, email, number, checkbox, radio inputları ve <label for>.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "html_10",
+      title: "10. Gelişmiş Form Kontrolleri & Doğrulama",
+      desc: "<textarea>, <select>, <option>, <datalist>, <fieldset>, required, placeholder ve regex pattern.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "html_11",
+      title: "11. Semantik HTML5 Mimarisi",
+      desc: "<header>, <nav>, <main>, <section>, <article>, <aside>, <footer> ve <details>/<summary>.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "html_12",
+      title: "12. Multimedya & Gömülü İçerikler",
+      desc: "<audio>, <video controls>, <source> formatları ve YouTube için <iframe> gömme.",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "html_13",
+      title: "13. Head, Meta Etiketleri & Varlıklar",
+      desc: "meta charset, viewport, SEO description, favicon ve HTML Entities (&nbsp;, &lt;, &gt;, &copy;).",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "html_14",
+      title: "14. Kapsamlı Web Sayfası İskelet Projesi",
+      desc: "Tüm HTML5 standartlarını, formları, tabloları ve semantik düzeni birleştiren ana web sayfası projesi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
   java: [
     {
         "id": "java_1",
@@ -1528,6 +1654,270 @@ function closeTopicReviewModal() {
 // --- 7.1 KONU HIZLI ÖZET MODAL MOTORU (Topic Quick Review Modal Engine) ---
 
 const TOPIC_REVIEWS_DB = {
+  "html_1": {
+    "title": "HTML Temelleri & Sayfa İskeleti",
+    "readTime": "2 dk okuma",
+    "rewardText": "🏡 Giriş Çiftliği & Su Kuyusu",
+    "logic": "HTML (HyperText Markup Language), web sayfalarının iskeletini ve içeriğini yapılandıran standart işaretleme dilidir. Tarayıcılar HTML etiketlerini okuyarak görsel sayfaya dönüştürür.",
+    "syntaxRules": [
+      "<code>&lt;!DOCTYPE html&gt;</code> : Belgenin modern HTML5 standardında olduğunu tarayıcıya bildirir.",
+      "<code>&lt;html lang=\"tr\"&gt; ... &lt;/html&gt;</code> : Tüm web sayfasını sarmalayan kök elemandır.",
+      "<code>&lt;head&gt; ... &lt;/head&gt;</code> : Sayfa başlığı, meta etiketleri ve stil bağlantıları gibi teknik verileri tutar.",
+      "<code>&lt;body&gt; ... &lt;/body&gt;</code> : Ekranda kullanıcıya görünen tüm görsel içerikleri barındırır.",
+      "<code>&lt;title&gt;Başlık&lt;/title&gt;</code> : Tarayıcı sekmesinde görünen sayfa başlığını belirler."
+    ],
+    "pitfalls": [
+      "⚠️ HTML bir programlama dili değil, bir içerik ve etiketleme (markup) dilidir.",
+      "⚠️ Açılan etiketlerin neredeyse tamamı (örn: <code>&lt;body&gt;</code>) bir kapanış etiketiyle (<code>&lt;/body&gt;</code>) kapatılmalıdır.",
+      "⚠️ <code>&lt;!DOCTYPE html&gt;</code> dokümanın en başında ve tek başına yer almalıdır."
+    ],
+    "exampleCode": "<!DOCTYPE html>\n<html lang=\"tr\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Kod Çiftliği</title>\n</head>\n<body>\n  <h1>Merhaba Dünya!</h1>\n</body>\n</html>"
+  },
+  "html_2": {
+    "title": "Başlıklar & Metin Biçimlendirme",
+    "readTime": "2 dk okuma",
+    "rewardText": "💡 Şehir Elektrik Şebekesi",
+    "logic": "İçeriği hiyerarşik başlıklara ayırmak ve metin parçalarını anlamsal olarak vurgulamak için kullanılır.",
+    "syntaxRules": [
+      "<code>&lt;h1&gt; ... &lt;/h6&gt;</code> : En büyük (h1) seviyeden en küçük (h6) seviyeye başlık hiyerarşisi.",
+      "<code>&lt;p&gt; ... &lt;/p&gt;</code> : Paragraf bloğu oluşturur ve alt satıra boşluk bırakır.",
+      "<code>&lt;strong&gt; / &lt;em&gt;</code> : Anlamsal olarak önemli ve vurgulu (italik) metin.",
+      "<code>&lt;br&gt; / &lt;hr&gt;</code> : Alt satıra geçiş ve yatay tematik ayırıcı çizgi (kapanış etiketi gerektirmez).",
+      "<code>&lt;mark&gt; / &lt;del&gt;</code> : Fosforlu sarı vurgu ve üzeri çizili metin."
+    ],
+    "pitfalls": [
+      "⚠️ SEO açısından her sayfada yalnızca bir adet <code>&lt;h1&gt;</code> ana başlığı bulunmalıdır.",
+      "⚠️ Sadece görsel kalınlık için <code>&lt;b&gt;</code>, anlamsal önem taşımıyorsa <code>&lt;strong&gt;</code> yerine CSS tercih edilmelidir.",
+      "⚠️ <code>&lt;br&gt;</code> etiketi paragraflar arası boşluk vermek için değil, şiir/adres gibi aynı paragraf içi satır kırmalarda kullanılmalıdır."
+    ],
+    "exampleCode": "<h1>Web Geliştirme</h1>\n<p>HTML ile <strong>güçlü</strong> ve <em>hızlı</em> web sayfaları hazırlayabilirsiniz.<br>Hemen öğrenmeye başlayın.</p>\n<hr>"
+  },
+  "html_3": {
+    "title": "Bağlantılar & Köprüler (Links)",
+    "readTime": "2 dk okuma",
+    "rewardText": "🚰 Su Arıtma & Çeşmeler",
+    "logic": "Köprü metinleri (Hyperlinks) ile sayfalar arası geçiş, harici sitelere yönlendirme ve sayfa içi çapa gezintisi sağlanır.",
+    "syntaxRules": [
+      "<code>&lt;a href=\"url\"&gt;Metin&lt;/a&gt;</code> : Tıklanabilir bağlantı oluşturur.",
+      "<code>target=\"_blank\"</code> : Bağlantıyı yeni sekmede açar.",
+      "<code>rel=\"noopener noreferrer\"</code> : Yeni sekmede açılan linklerde güvenlik ve performans sağlar.",
+      "<code>href=\"#bolum1\"</code> : Sayfa içindeki <code>id=\"bolum1\"</code> elemanına kaydırır.",
+      "<code>href=\"mailto:eposta@site.com\"</code> : E-posta istemcisini tetikler."
+    ],
+    "pitfalls": [
+      "⚠️ <code>href</code> özniteliği yazılmazsa <code>&lt;a&gt;</code> etiketi link özelliği göstermez.",
+      "⚠️ Dış linklere <code>target=\"_blank\"</code> verirken güvenlik için <code>rel=\"noopener\"</code> eklenmelidir.",
+      "⚠️ Sayfa içi çapa bağlantılarında <code>href</code> içine mutlaka <code>#</code> işareti konulmalıdır (örn: <code>href=\"#iletisim\"</code>)."
+    ],
+    "exampleCode": "<a href=\"https://www.w3schools.com\" target=\"_blank\" rel=\"noopener\">\n  W3Schools'u Ziyaret Et\n</a>\n<a href=\"#alt-kisim\">Sayfa Sonuna Git</a>"
+  },
+  "html_4": {
+    "title": "Görseller & Medya Yönetimi (Images)",
+    "readTime": "2 dk okuma",
+    "rewardText": "🌳 Şehir Parkı & Botanik Bahçe",
+    "logic": "Web sayfasına resim, grafik ve ikonlar yerleştirir. Resimler sayfaya gömülmez, URL üzerinden bağlanarak çağrılır.",
+    "syntaxRules": [
+      "<code>&lt;img src=\"resim.jpg\" alt=\"Açıklama\"&gt;</code> : Kapanış etiketi olmayan tekil görsel etiketi.",
+      "<code>src=\"...\"</code> : Görsel dosyasının dosya yolu veya web adresi.",
+      "<code>alt=\"...\"</code> : Resim yüklenemediğinde veya ekran okuyucularda okunan alternatif metin.",
+      "<code>width=\"300\" height=\"200\"</code> : Piksel cinsinden genişlik ve yükseklik.",
+      "<code>&lt;figure&gt; &lt;figcaption&gt;</code> : Görsel ve alt başlığını semantik olarak gruplar."
+    ],
+    "pitfalls": [
+      "⚠️ <code>alt</code> özniteliği erişilebilirlik ve SEO için zorunludur; asla boş bırakılmamalıdır.",
+      "⚠️ <code>&lt;img&gt;</code> etiketi self-closing (tekil) bir etikettir; <code>&lt;/img&gt;</code> yazılmaz.",
+      "⚠️ Resim dosya yolunda büyük-küçük harf ve Türkçe karakter hatalarına dikkat edilmelidir."
+    ],
+    "exampleCode": "<figure>\n  <img src=\"tarla.jpg\" alt=\"Yeşil Buğday Tarlası\" width=\"400\">\n  <figcaption>Hasat öncesi buğday tarlası</figcaption>\n</figure>"
+  },
+  "html_5": {
+    "title": "Listeler (Sıralı, Sırasız & Tanım)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🏢 Modern Rezidanslar & İş Kuleleri",
+    "logic": "Maddeli ve sıralı içerikleri listelemek, navigasyon menüleri kurmak ve sözlük/terim açıklamaları hazırlamak için kullanılır.",
+    "syntaxRules": [
+      "<code>&lt;ul&gt; &lt;li&gt;Madde&lt;/li&gt; &lt;/ul&gt;</code> : Madde işaretli sırasız liste (Unordered List).",
+      "<code>&lt;ol&gt; &lt;li&gt;Adım&lt;/li&gt; &lt;/ol&gt;</code> : Numaralandırılmış sıralı liste (Ordered List).",
+      "<code>&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</code> : Tanım listesi, terim başlığı ve terim açıklaması.",
+      "<code>type=\"A\" / start=\"5\"</code> : Sıralı listelerde başlangıç ve numara biçimi ayarı."
+    ],
+    "pitfalls": [
+      "⚠️ <code>&lt;ul&gt;</code> ve <code>&lt;ol&gt;</code> etiketlerinin doğrudan alt çocuğu yalnızca <code>&lt;li&gt;</code> olmalıdır; araya doğrudan metin veya div konulmamalıdır.",
+      "⚠️ İç içe (nested) listelerde alt liste (<code>&lt;ul&gt;</code>), bir önceki <code>&lt;li&gt;</code> etiketinin içine yazılmalıdır.",
+      "⚠️ Kapanış <code>&lt;/li&gt;</code> etiketlerini unutmak liste hiyerarşisini bozar."
+    ],
+    "exampleCode": "<ul>\n  <li>Meyveler\n    <ul>\n      <li>Elma</li>\n      <li>Portakal</li>\n    </ul>\n  </li>\n  <li>Sebzeler</li>\n</ul>"
+  },
+  "html_6": {
+    "title": "Tablo Temelleri (Tables)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🎬 Sinema & Kültür Merkezi",
+    "logic": "Verileri satır ve sütunlardan oluşan ızgara yapısında düzenli olarak sunmak için kullanılır.",
+    "syntaxRules": [
+      "<code>&lt;table&gt; ... &lt;/table&gt;</code> : Tablo ana kapsayıcısı.",
+      "<code>&lt;tr&gt; ... &lt;/tr&gt;</code> : Tablo satırı (Table Row).",
+      "<code>&lt;th&gt; ... &lt;/th&gt;</code> : Tablo başlık hücresi (Varsayılan olarak kalın ve ortalı).",
+      "<code>&lt;td&gt; ... &lt;/td&gt;</code> : Standart veri hücresi (Table Data).",
+      "<code>&lt;caption&gt;Başlık&lt;/caption&gt;</code> : Tablonun üst açıklaması."
+    ],
+    "pitfalls": [
+      "⚠️ Tablolar sayfa düzeni (layout) yapmak için değil, yalnızca veri listelemek için kullanılmalıdır.",
+      "⚠️ Hücreler (<code>&lt;th&gt;</code> veya <code>&lt;td&gt;</code>) daima bir <code>&lt;tr&gt;</code> satırı içinde olmalıdır.",
+      "⚠️ Her satırdaki toplam sütun sayısı birbiriyle uyumlu olmalıdır."
+    ],
+    "exampleCode": "<table>\n  <caption>Ürün Fiyat Listesi</caption>\n  <tr>\n    <th>Ürün</th>\n    <th>Fiyat</th>\n  </tr>\n  <tr>\n    <td>Domates</td>\n    <td>30 TL</td>\n  </tr>\n</table>"
+  },
+  "html_7": {
+    "title": "Gelişmiş Tablolar (Colspan & Rowspan)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🎡 Lunapark & Dönme Dolap",
+    "logic": "Tabloları anlamsal bölümlere ayırmak ve birden fazla hücreyi yatay veya dikeyde birleştirmek için kullanılır.",
+    "syntaxRules": [
+      "<code>&lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</code> : Tablonun başlık, gövde ve dip toplam bölümleri.",
+      "<code>colspan=\"2\"</code> : Hücreyi yatayda 2 sütun genişliğinde birleştirir.",
+      "<code>rowspan=\"3\"</code> : Hücreyi dikeyde 3 satır yüksekliğinde birleştirir.",
+      "<code>scope=\"col / row\"</code> : Başlık hücresinin etki yönünü erişilebilirlik için belirtir."
+    ],
+    "pitfalls": [
+      "⚠️ <code>colspan</code> kullanıldığında aynı satırdaki fazla <code>&lt;td&gt;</code> hücreleri silinmelidir.",
+      "⚠️ <code>rowspan</code> kullanıldığında alt satırlardaki çakışan hücreler kaldırılmalıdır; aksi halde tablo sağa doğru taşar.",
+      "⚠️ <code>&lt;thead&gt;</code> ve <code>&lt;tbody&gt;</code> içinde mutlaka <code>&lt;tr&gt;</code> satırları bulunmalıdır."
+    ],
+    "exampleCode": "<table>\n  <thead>\n    <tr>\n      <th>İsim</th>\n      <th colspan=\"2\">İletişim</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Ahmet</td>\n      <td>555-1234</td>\n      <td>ahmet@mail.com</td>\n    </tr>\n  </tbody>\n</table>"
+  },
+  "html_8": {
+    "title": "Blok & Satır İçi, Div & Span",
+    "readTime": "2 dk okuma",
+    "rewardText": "🏛️ Yönetim Sarayı & Belediye",
+    "logic": "Elemanların ekranda kapladığı alan türünü belirler. Blok elemanlar tüm satırı kaplar; satır içi elemanlar yalnızca içeriği kadar yer tutar.",
+    "syntaxRules": [
+      "<code>&lt;div&gt; ... &lt;/div&gt;</code> : Blok (Block) seviyesinde genel amaçlı kapsayıcı.",
+      "<code>&lt;span&gt; ... &lt;/span&gt;</code> : Satır içi (Inline) metin içi kapsayıcı.",
+      "<code>class=\"kart-kutusu\"</code> : Birden fazla elemana verilebilen ortak stil sınıfı.",
+      "<code>id=\"ana-baslik\"</code> : Sayfada yalnızca bir elemana özgü benzersiz kimlik."
+    ],
+    "pitfalls": [
+      "⚠️ Bir sayfada aynı <code>id</code> değerine sahip birden fazla eleman bulunamaz.",
+      "⚠️ Satır içi (inline) bir elemanın içine blok seviyesinde bir eleman (örn: span içine div) konulmamalıdır.",
+      "⚠️ Anlamsız aşırı div kullanımından (div soup) kaçınılmalı, semantik etiketler tercih edilmelidir."
+    ],
+    "exampleCode": "<div class=\"kart\" id=\"kart-1\">\n  <h3>Ürün Kartı</h3>\n  <p>Fiyat: <span class=\"fiyat\">150 TL</span></p>\n</div>"
+  },
+  "html_9": {
+    "title": "Temel Form Elemanları (Form & Input)",
+    "readTime": "3 dk okuma",
+    "rewardText": "🏥 Şehir Hastanesi & Acil Servis",
+    "logic": "Kullanıcıdan veri almak ve bu verileri sunucuya göndermek için form kontrolleri oluşturur.",
+    "syntaxRules": [
+      "<code>&lt;form action=\"/kaydet\" method=\"POST\"&gt;</code> : Form kapsayıcısı ve veri gönderim metodu.",
+      "<code>&lt;label for=\"ad\"&gt;Adınız:&lt;/label&gt;</code> : Erişilebilir alan etiketi.",
+      "<code>&lt;input type=\"text\" id=\"ad\" name=\"kullanici_adi\"&gt;</code> : Tek satırlı metin girişi.",
+      "<code>&lt;input type=\"password\"&gt; / &lt;input type=\"email\"&gt;</code> : Şifre ve e-posta girişleri.",
+      "<code>&lt;input type=\"radio\" name=\"cinsiyet\"&gt;</code> : Ortak name grubunda tekli seçim.",
+      "<code>&lt;input type=\"checkbox\"&gt;</code> : Bağımsız çoklu onay kutusu.",
+      "<code>&lt;button type=\"submit\"&gt;Gönder&lt;/button&gt;</code> : Formu sunucuya gönderen buton."
+    ],
+    "pitfalls": [
+      "⚠️ <code>name</code> özniteliği yazılmayan inputların değerleri sunucuya iletilmez.",
+      "⚠️ <code>label</code> etiketindeki <code>for</code> ile inputun <code>id</code> değeri birebir eşleşmelidir.",
+      "⚠️ Radyo butonlarında tekli seçim çalışması için tüm seçeneklerin <code>name</code> değeri aynı olmalıdır."
+    ],
+    "exampleCode": "<form action=\"/giris\" method=\"POST\">\n  <label for=\"eposta\">E-posta:</label>\n  <input type=\"email\" id=\"eposta\" name=\"email\" required>\n  <button type=\"submit\">Giriş Yap</button>\n</form>"
+  },
+  "html_10": {
+    "title": "Gelişmiş Form Kontrolleri & Doğrulama",
+    "readTime": "3 dk okuma",
+    "rewardText": "🛍️ Alışveriş & Ticaret Merkezi",
+    "logic": "Çok satırlı metinler, açılır menüler, veri gruplama ve HTML5 yerleşik istemci doğrulama mekanizmaları sunar.",
+    "syntaxRules": [
+      "<code>&lt;textarea rows=\"4\" cols=\"50\"&gt;&lt;/textarea&gt;</code> : Çok satırlı metin alanı.",
+      "<code>&lt;select&gt; &lt;option value=\"1\"&gt;Seçenek&lt;/option&gt; &lt;/select&gt;</code> : Açılır menü (Dropdown).",
+      "<code>&lt;datalist id=\"sehirler\"&gt;</code> : Input için otomatik tamamlama öneri listesi.",
+      "<code>&lt;fieldset&gt; &lt;legend&gt;Grup Başlığı&lt;/legend&gt; &lt;/fieldset&gt;</code> : Form alanlarını çerçeve içine alıp gruplar.",
+      "<code>required / placeholder / min / max / pattern</code> : Form doğrulama ve ipucu öznitelikleri."
+    ],
+    "pitfalls": [
+      "⚠️ <code>&lt;textarea&gt;</code> etiketinin varsayılan değeri <code>value=\"\"</code> ile değil, etiketlerin arasına yazılır.",
+      "⚠️ <code>&lt;option&gt;</code> içine <code>value</code> yazılmazsa görünen metin gönderilir; mutlaka standart değer atanmalıdır.",
+      "⚠️ <code>disabled</code> yapılan inputlar sunucuya POST edilmezken, <code>readonly</code> olanlar gönderilir."
+    ],
+    "exampleCode": "<fieldset>\n  <legend>İletişim Mesajı</legend>\n  <label for=\"konu\">Konu:</label>\n  <select id=\"konu\" name=\"konu\">\n    <option value=\"destek\">Destek Talebi</option>\n    <option value=\"oneri\">Öneri / İstek</option>\n  </select>\n  <textarea name=\"mesaj\" placeholder=\"Mesajınız...\" required></textarea>\n</fieldset>"
+  },
+  "html_11": {
+    "title": "Semantik HTML5 Mimarisi",
+    "readTime": "3 dk okuma",
+    "rewardText": "🚄 Hızlı Tren Garı & Raylar",
+    "logic": "Sayfa bölümlerini div yerine anlamsal etiketlerle kurarak arama motorlarına (SEO) ve ekran okuyuculara net bir harita sunar.",
+    "syntaxRules": [
+      "<code>&lt;header&gt; ... &lt;/header&gt;</code> : Sayfanın veya bölümün üst bilgi ve logo alanı.",
+      "<code>&lt;nav&gt; ... &lt;/nav&gt;</code> : Ana menü ve gezinti linkleri bölümü.",
+      "<code>&lt;main&gt; ... &lt;/main&gt;</code> : Sayfanın tekil ana içerik gövdesi (sayfada 1 adet olmalıdır).",
+      "<code>&lt;section&gt; ... &lt;/section&gt;</code> : Tematik olarak ilişkili bağımsız konu bölümü.",
+      "<code>&lt;article&gt; ... &lt;/article&gt;</code> : Kendi başına anlam ifade eden bağımsız yazı/haber kartı.",
+      "<code>&lt;aside&gt; ... &lt;/aside&gt;</code> : Yan çubuk (Sidebar) veya ikincil içerik.",
+      "<code>&lt;footer&gt; ... &lt;/footer&gt;</code> : Telif hakkı, alt menü ve iletişim bilgilerini içeren alt bilgi."
+    ],
+    "pitfalls": [
+      "⚠️ Sayfada birden fazla <code>&lt;main&gt;</code> etiketi bulunmamalıdır.",
+      "⚠️ Her stil ihtiyacı için semantik etiket zorlanmamalıdır; anlamsız kapsayıcılar için <code>div</code> kullanılmalıdır.",
+      "⚠️ <code>&lt;section&gt;</code> içinde genellikle kendine ait bir başlık (h2, h3) bulunmalıdır."
+    ],
+    "exampleCode": "<header>\n  <h1>Blog Sitem</h1>\n  <nav><a href=\"#\">Anasayfa</a></nav>\n</header>\n<main>\n  <article>\n    <h2>HTML5 Semantik Yapı</h2>\n    <p>Semantik etiketler erişilebilirliği artırır.</p>\n  </article>\n</main>\n<footer>&copy; 2026 Kod Çiftliği</footer>"
+  },
+  "html_12": {
+    "title": "Multimedya & Gömülü İçerikler",
+    "readTime": "3 dk okuma",
+    "rewardText": "📡 5G Telekom & Uydu Kulesi",
+    "logic": "Flash gibi eklentilere gerek duymadan yerel ses, video ve harici web kaynaklarını (YouTube, harita) sayfaya entegre eder.",
+    "syntaxRules": [
+      "<code>&lt;audio controls&gt; &lt;source src=\"ses.mp3\" type=\"audio/mpeg\"&gt; &lt;/audio&gt;</code> : Ses oynatıcı.",
+      "<code>&lt;video width=\"640\" controls poster=\"kapak.jpg\"&gt; ... &lt;/video&gt;</code> : Video oynatıcı.",
+      "<code>autoplay muted loop</code> : Otomatik oynatma (sessiz mod zorunlu), döngüye alma.",
+      "<code>&lt;iframe src=\"url\" title=\"Açıklama\"&gt;&lt;/iframe&gt;</code> : Başka bir web sayfasını veya YouTube videosunu çerçeve içine gömer."
+    ],
+    "pitfalls": [
+      "⚠️ Tarayıcı güvenlik politikaları gereği <code>autoplay</code> özniteliğinin çalışması için <code>muted</code> (sessiz) zorunludur.",
+      "⚠️ <code>&lt;iframe&gt;</code> kullanırken erişilebilirlik için mutlaka anlamlı bir <code>title</code> özniteliği verilmelidir.",
+      "⚠️ Birden fazla <code>&lt;source&gt;</code> formatı (.mp4, .webm) sunmak tarayıcı uyumluluğunu garanti eder."
+    ],
+    "exampleCode": "<video width=\"480\" height=\"270\" controls poster=\"kapak.jpg\">\n  <source src=\"tanitim.mp4\" type=\"video/mp4\">\n  <source src=\"tanitim.webm\" type=\"video/webm\">\n  Tarayıcınız video etiketini desteklemiyor.\n</video>"
+  },
+  "html_13": {
+    "title": "Head, Meta Etiketleri & Varlıklar",
+    "readTime": "3 dk okuma",
+    "rewardText": "🚢 Uluslararası Liman & Konteynerler",
+    "logic": "Arama motoru optimizasyonu (SEO), mobil ekran uyumu (responsive), karakter seti ve özel karakterlerin hatasız gösterimini sağlar.",
+    "syntaxRules": [
+      "<code>&lt;meta charset=\"UTF-8\"&gt;</code> : Türkçe ve evrensel tüm karakterleri destekler.",
+      "<code>&lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</code> : Mobil cihazlarda tam uyumlu ölçekleme.",
+      "<code>&lt;meta name=\"description\" content=\"Açıklama\"&gt;</code> : Google arama sonuçlarında görünen snippet açıklaması.",
+      "<code>&amp;nbsp; / &amp;lt; / &amp;gt; / &amp;amp; / &amp;copy;</code> : Bölünemez boşluk, <, >, & ve telif hakkı özel karakterleri."
+    ],
+    "pitfalls": [
+      "⚠️ <code>&lt;meta charset=\"UTF-8\"&gt;</code> tanımlanmazsa Türkçe karakterlerde (ş, ğ, ı) bozulmalar yaşanır.",
+      "⚠️ HTML içinde <code><</code> veya <code>></code> işareti doğrudan yazılırsa etiket sanılabilir; <code>&amp;lt;</code> ve <code>&amp;gt;</code> kullanılmalıdır.",
+      "⚠️ <code>viewport</code> meta etiketi olmayan sayfalar mobilde küçülerek okunaksız masaüstü modunda açılır."
+    ],
+    "exampleCode": "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"description\" content=\"En iyi web geliştirme rehberi.\">\n  <title>SEO Uyumlu Sayfa</title>\n</head>\n<!-- Özel Karakterler: &copy; 2026 | 5 &lt; 10 -->"
+  },
+  "html_14": {
+    "title": "Kapsamlı Web Sayfası İskelet Projesi",
+    "readTime": "4 dk okuma",
+    "rewardText": "🚀 Teknoloji Vadisi & Roket Üssü",
+    "logic": "Tüm semantik HTML5 yapısını, meta etiketlerini, formları, tabloları, görselleri ve linkleri birleştiren üretim seviyesinde ana proje.",
+    "syntaxRules": [
+      "<code>Semantic Layout</code> : header + nav + main (article, section, aside) + footer.",
+      "<code>Accessibility (a11y)</code> : Anlamlı alt metinleri, form label bağlantıları ve hiyerarşik başlıklar.",
+      "<code>Clean Code & Validation</code> : W3C standartlarına uygun hatasız etiket kapanışları ve girintileme.",
+      "<code>Meta & SEO Architecture</code> : Eksiksiz head yapılandırması."
+    ],
+    "pitfalls": [
+      "⚠️ Tüm etiketlerin düzgün açılıp hiyerarşik sırada kapatıldığından emin olun.",
+      "⚠️ Görsellerde ve formlarda erişilebilirlik özniteliklerini (<code>alt</code>, <code>label for</code>, <code>required</code>) eksiksiz bırakın.",
+      "⚠️ CSS ve JS dosyalarını doğru link ve script etiketleriyle bağlayın."
+    ],
+    "exampleCode": "<!DOCTYPE html>\n<html lang=\"tr\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Mega Siber Metropol</title>\n</head>\n<body>\n  <header>\n    <h1>CodeFarm Portalı</h1>\n  </header>\n  <main>\n    <p>14 Modül Başarıyla Tamamlandı!</p>\n  </main>\n  <footer>&copy; 2026 CodeFarm</footer>\n</body>\n</html>"
+  },
   "python_1": {
     "title": "Değişkenler & Veri Tipleri",
     "readTime": "2 dk okuma",
@@ -2051,6 +2441,22 @@ TOPIC_REVIEWS_DB.p12 = TOPIC_REVIEWS_DB.python_12;
 TOPIC_REVIEWS_DB.p13 = TOPIC_REVIEWS_DB.python_13;
 TOPIC_REVIEWS_DB.p14 = TOPIC_REVIEWS_DB.python_14;
 
+// HTML Topic Review Aliasları
+TOPIC_REVIEWS_DB.h1 = TOPIC_REVIEWS_DB.html_1;
+TOPIC_REVIEWS_DB.h2 = TOPIC_REVIEWS_DB.html_2;
+TOPIC_REVIEWS_DB.h3 = TOPIC_REVIEWS_DB.html_3;
+TOPIC_REVIEWS_DB.h4 = TOPIC_REVIEWS_DB.html_4;
+TOPIC_REVIEWS_DB.h5 = TOPIC_REVIEWS_DB.html_5;
+TOPIC_REVIEWS_DB.h6 = TOPIC_REVIEWS_DB.html_6;
+TOPIC_REVIEWS_DB.h7 = TOPIC_REVIEWS_DB.html_7;
+TOPIC_REVIEWS_DB.h8 = TOPIC_REVIEWS_DB.html_8;
+TOPIC_REVIEWS_DB.h9 = TOPIC_REVIEWS_DB.html_9;
+TOPIC_REVIEWS_DB.h10 = TOPIC_REVIEWS_DB.html_10;
+TOPIC_REVIEWS_DB.h11 = TOPIC_REVIEWS_DB.html_11;
+TOPIC_REVIEWS_DB.h12 = TOPIC_REVIEWS_DB.html_12;
+TOPIC_REVIEWS_DB.h13 = TOPIC_REVIEWS_DB.html_13;
+TOPIC_REVIEWS_DB.h14 = TOPIC_REVIEWS_DB.html_14;
+
 // Java Topic Review Aliasları
 TOPIC_REVIEWS_DB.j1 = TOPIC_REVIEWS_DB.java_1;
 TOPIC_REVIEWS_DB.j2 = TOPIC_REVIEWS_DB.java_2;
@@ -2074,41 +2480,1533 @@ TOPIC_REVIEWS_DB.p2 = TOPIC_REVIEWS_DB.python_2;
 // --- 8. İNTERAKTİF KODLAMA VE KONTROL ALANI (Interactive Challenge & Code Engine) ---
 
 const CHALLENGES_DATABASE = {
-  python_1: [
+  html_1: [
     {
       stepNum: 1,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: DEĞİŞKEN ADLANDIRMA',
-      title: '1. Soru: Değişken Adlandırma Hatası',
-      prompt: "Aşağıdaki kodda değişken adlandırmasında bir hata var. Bu hatayı düzeltebilir misin?",
-      presetCode: `1sayi = 1\n# Kodunu aşağıya doğru şekilde yaz:`,
-      filename: 'degiskenler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['sayi_1', 'sayi1', 'sayi', ' = ', '1'],
-      hint: "Değişken isimleri rakamla başlayamaz. Örnek: sayi_1 = 1 veya sayi1 = 1",
-      solution: "sayi_1 = 1",
+      moduleSubtitle: "MODÜL 1: DOCTYPE TANIMI",
+      title: "1. Soru: HTML5 Doctype Bildirimi",
+      prompt: "Web tarayıcısına bu belgenin modern bir HTML5 belgesi olduğunu bildiren DOCTYPE bildirimini yazabilir misin?",
+      presetCode: "<!-- HTML5 Doctype Bildirimini Buraya Yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<!DOCTYPE html>", "<!DOCTYPE", "html>", "<", ">"],
+      hint: "<!DOCTYPE html>",
+      solution: "<!DOCTYPE html>",
       validator: (code) => {
         const clean = code.trim();
-        if (/^\s*1[a-zA-Z0-9_]*\s*=/m.test(clean)) {
-          return { ok: false, msg: "Hata: Değişken ismi rakamla (1...) başlayamaz! Rakamı sona veya ortaya koyun (örn: sayi_1 = 1)." };
+        if (/<!DOCTYPE\s+html>/i.test(clean)) {
+          return { ok: true, msg: "Harika! HTML5 Doctype bildirimi başarıyla tanımlandı. ✓" };
         }
-        if (/[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*\d+/.test(clean)) {
-          return { ok: true, msg: "Tebrikler! Değişken adı başarıyla düzeltildi. ✓" };
-        }
-        return { ok: false, msg: "Hata: Lütfen geçerli bir değişken tanımlayıp bir sayı atayın (örn: sayi_1 = 1)." };
+        return { ok: false, msg: "Hata: Lütfen geçerli bir HTML5 bildirimi yazın: <!DOCTYPE html>" };
       }
     },
     {
       stepNum: 2,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: AYRILMIŞ KELİMELER',
-      title: '2. Soru: Değişken Adı Hatası',
-      prompt: "Aşağıdaki kodda değişken adında bir hata var. Bu hatayı çözebilir misin?",
-      presetCode: `int = "a"\n# Kodunu aşağıya doğru şekilde yaz:`,
-      filename: 'degiskenler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['metin', 'harf', 'karakter', ' = ', '"a"', "'a'"],
-      hint: "'int' yerleşik tür adıdır. Bunun yerine 'metin', 'harf' gibi bir değişken adı kullanabilirsin (örn: metin = \"a\").",
+      moduleSubtitle: "MODÜL 1: KÖK ETİKETİ (HTML)",
+      title: "2. Soru: Kök Eleman ve Dil Tanımı",
+      prompt: "Tüm web sayfasını sarmalayan ve dili Türkçe ('tr') olarak belirten kök <html> etiketini ve kapanışını yazabilir misin?",
+      presetCode: "<!-- lang='tr' özniteliğine sahip html etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<html lang=\"tr\">", "</html>", "lang=\"tr\"", "<html", ">"],
+      hint: "<html lang=\"tr\">\n</html>",
+      solution: "<html lang=\"tr\">\n</html>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<html\s+lang\s*=\s*["']tr["']\s*>[\s\S]*<\/html>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Türkçe dil öznitelikli kök html etiketi oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <html lang=\"tr\">...</html> şeklinde açılış ve kapanış etiketlerini yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: HEAD VE BODY AYRIMI",
+      title: "3. Soru: Head ve Body Blokları",
+      prompt: "Teknik verileri tutan <head> ve görsel içerikleri tutan <body> bölümlerini oluşturabilir misin?",
+      presetCode: "<head>\n</head>\n<!-- Body etiketini ekleyin -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<body>", "</body>", "<head>", "</head>"],
+      hint: "<head>\n</head>\n<body>\n</body>",
+      solution: "<head>\n</head>\n<body>\n</body>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<head\s*>[\s\S]*<\/head\s*>\s*<body\s*>[\s\S]*<\/body\s*>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! <head> ve <body> bölümleri doğru sırada tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <head></head> ve ardından <body></body> bloklarını eksiksiz yazın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: SAYFA BAŞLIĞI (TITLE)",
+      title: "4. Soru: Tarayıcı Sekme Başlığı",
+      prompt: "Head bölümü içine tarayıcı sekmesinde 'Kod Çiftliği' yazmasını sağlayan <title> etiketini ekleyebilir misin?",
+      presetCode: "<head>\n  <!-- Title etiketini buraya ekleyin -->\n</head>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<title>Kod Çiftliği</title>", "<title>", "</title>", "Kod Çiftliği"],
+      hint: "<head>\n  <title>Kod Çiftliği</title>\n</head>",
+      solution: "<head>\n  <title>Kod Çiftliği</title>\n</head>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<title\s*>\s*Kod Çiftliği\s*<\/title\s*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <title> etiketi ile sayfa sekme başlığı ayarlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <title>Kod Çiftliği</title> etiketini eklemelisiniz." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: TAM SAYFA İSKELETİ",
+      title: "5. Soru: Eksiksiz HTML5 İskeleti",
+      prompt: "Aşağıdaki iskelette eksik olan <body> açılış ve </html> kapanış etiketlerini tamamlayabilir misin?",
+      presetCode: "<!DOCTYPE html>\n<html lang=\"tr\">\n<head>\n  <title>İlk Sayfam</title>\n</head>\n  <h1>Merhaba Dünya!</h1>\n</body>\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<body>", "</body>", "</html>", "<!DOCTYPE html>"],
+      hint: "<body> etiketini <h1>'den önce açın ve dosyanın en sonuna </html> ekleyin.",
+      solution: "<!DOCTYPE html>\n<html lang=\"tr\">\n<head>\n  <title>İlk Sayfam</title>\n</head>\n<body>\n  <h1>Merhaba Dünya!</h1>\n</body>\n</html>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasDoc = /<!DOCTYPE\s+html>/i.test(clean);
+        const hasHtml = /<html[^>]*>[\s\S]*<\/html>/i.test(clean);
+        const hasHead = /<head>[\s\S]*<\/head>/i.test(clean);
+        const hasBody = /<body>[\s\S]*<h1>[\s\S]*<\/h1>[\s\S]*<\/body>/i.test(clean);
+        if (hasDoc && hasHtml && hasHead && hasBody) {
+          return { ok: true, msg: "Tebrikler! Standart HTML5 iskeletini eksiksiz kurdunuz. 1. Modül Tamamlandı! 🏡" };
+        }
+        return { ok: false, msg: "Hata: Lütfen <body> açılışını ve en sondaki </html> kapanışını eksiksiz yazın." };
+      }
+    }
+  ],
+  html_2: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: ANA BAŞLIK (H1)",
+      title: "1. Soru: Sayfa Ana Başlığı",
+      prompt: "Web sayfasının en önemli başlığı olan 'Web Geliştirme' metnini <h1> etiketi içine yazabilir misin?",
+      presetCode: "<!-- h1 etiketini oluşturun -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<h1>Web Geliştirme</h1>", "<h1>", "</h1>", "Web Geliştirme"],
+      hint: "<h1>Web Geliştirme</h1>",
+      solution: "<h1>Web Geliştirme</h1>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<h1\s*>\s*Web Geliştirme\s*<\/h1\s*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! <h1> ana başlığı başarıyla oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <h1>Web Geliştirme</h1> şeklinde yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: BAŞLIK HİYERARŞİSİ",
+      title: "2. Soru: Alt Başlıklar (h2 ve h3)",
+      prompt: "H1'in altına 'HTML Dersleri' başlıklı bir <h2> ve onun da altına 'Giriş' başlıklı bir <h3> etiketi ekleyebilir misin?",
+      presetCode: "<h1>Programlama</h1>\n<!-- h2 ve h3 etiketlerini ekleyin -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<h2>HTML Dersleri</h2>", "<h3>Giriş</h3>", "<h2>", "<h3>"],
+      hint: "<h2>HTML Dersleri</h2>\n<h3>Giriş</h3>",
+      solution: "<h1>Programlama</h1>\n<h2>HTML Dersleri</h2>\n<h3>Giriş</h3>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasH2 = /<h2\s*>\s*HTML Dersleri\s*<\/h2\s*>/i.test(clean);
+        const hasH3 = /<h3\s*>\s*Giriş\s*<\/h3\s*>/i.test(clean);
+        if (hasH2 && hasH3) {
+          return { ok: true, msg: "Harika! Başlık hiyerarşisi (h2 ve h3) doğru uygulandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <h2>HTML Dersleri</h2> ve <h3>Giriş</h3> etiketlerini yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: PARAGRAF VE SATIR ATLATMA",
+      title: "3. Soru: Paragraf ve <br> Kullanımı",
+      prompt: "Bir <p> paragrafı oluşturup içine 'Birinci Satır' yazın, ardından <br> ile alt satıra geçip 'İkinci Satır' yazabilir misin?",
+      presetCode: "<!-- Paragraf ve br etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<p>Birinci Satır<br>İkinci Satır</p>", "<p>", "</p>", "<br>"],
+      hint: "<p>Birinci Satır<br>İkinci Satır</p>",
+      solution: "<p>Birinci Satır<br>İkinci Satır</p>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<p\s*>\s*Birinci Satır\s*<br\s*\/?>\s*İkinci Satır\s*<\/p\s*>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! <p> ve <br> ile satır kırma başarıyla yapıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <p>Birinci Satır<br>İkinci Satır</p> formatında yazın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: METİN VURGULARI (STRONG & EM)",
+      title: "4. Soru: Önemli ve Vurgulu Metin",
+      prompt: "Aşağıdaki paragrafta 'önemli' kelimesini <strong>, 'hızlı' kelimesini <em> etiketiyle sarmalayabilir misin?",
+      presetCode: "<p>HTML önemli ve hızlı bir dildir.</p>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<strong>önemli</strong>", "<em>hızlı</em>", "<strong>", "<em>"],
+      hint: "<p>HTML <strong>önemli</strong> ve <em>hızlı</em> bir dildir.</p>",
+      solution: "<p>HTML <strong>önemli</strong> ve <em>hızlı</em> bir dildir.</p>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<strong>\s*önemli\s*<\/strong>/i.test(clean) && /<em>\s*hızlı\s*<\/em>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! <strong> ve <em> etiketleri doğru yerleştirildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: 'önemli' kelimesini <strong>, 'hızlı' kelimesini <em> içine alın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 2: MARK VE YATAY ÇİZGİ (HR)",
+      title: "5. Soru: Fosforlu Metin ve Ayırıcı Çizgi",
+      prompt: "Aşağıdaki cümlenin sonuna <hr> yatay çizgi ekleyin ve 'fırsat' kelimesini <mark> etiketi içine alabilir misin?",
+      presetCode: "<p>Bu harika bir fırsat!</p>\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<mark>fırsat</mark>", "<hr>", "<mark>", "<hr/>"],
+      hint: "<p>Bu harika bir <mark>fırsat</mark>!</p>\n<hr>",
+      solution: "<p>Bu harika bir <mark>fırsat</mark>!</p>\n<hr>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasMark = /<mark\s*>\s*fırsat\s*<\/mark\s*>/i.test(clean);
+        const hasHr = /<hr\s*\/?>/i.test(clean);
+        if (hasMark && hasHr) {
+          return { ok: true, msg: "Tebrikler! <mark> ve <hr> etiketleri başarıyla uygulandı. 2. Modül Tamamlandı! 💡" };
+        }
+        return { ok: false, msg: "Hata: 'fırsat' kelimesini <mark> içine alın ve altına <hr> ekleyin." };
+      }
+    }
+  ],
+  html_3: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: KÖPRÜ METNİ (A HREF)",
+      title: "1. Soru: Temel Bağlantı Oluşturma",
+      prompt: "Kullanıcıyı 'https://www.w3schools.com' adresine yönlendiren ve üzerinde 'W3Schools' yazan bir <a> linki oluşturabilir misin?",
+      presetCode: "<!-- a etiketini oluşturun -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<a href=\"https://www.w3schools.com\">W3Schools</a>", "<a href=\"", "</a>", "target=\"_blank\""],
+      hint: "<a href=\"https://www.w3schools.com\">W3Schools</a>",
+      solution: "<a href=\"https://www.w3schools.com\">W3Schools</a>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<a\s+[^>]*href\s*=\s*["']https:\/\/www\.w3schools\.com\/?["'][^>]*>\s*W3Schools\s*<\/a>/i.test(clean)) {
+          return { ok: true, msg: "Harika! W3Schools bağlantısı doğru kuruldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <a href=\"https://www.w3schools.com\">W3Schools</a> şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: YENİ SEKMEDE AÇMA (TARGET)",
+      title: "2. Soru: target='_blank' ve Güvenlik",
+      prompt: "Aşağıdaki linkin yeni sekmede açılması için target=\"_blank\" ve güvenlik için rel=\"noopener\" özniteliklerini ekleyebilir misin?",
+      presetCode: "<a href=\"https://google.com\">Google</a>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["target=\"_blank\"", "rel=\"noopener\"", "target=\"_blank\" rel=\"noopener\""],
+      hint: "<a href=\"https://google.com\" target=\"_blank\" rel=\"noopener\">Google</a>",
+      solution: "<a href=\"https://google.com\" target=\"_blank\" rel=\"noopener\">Google</a>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasTarget = /target\s*=\s*["']_blank["']/i.test(clean);
+        const hasRel = /rel\s*=\s*["'][^"']*noopener[^"']*["']/i.test(clean);
+        if (hasTarget && hasRel) {
+          return { ok: true, msg: "Mükemmel! target='_blank' ve rel='noopener' güvenle tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: target=\"_blank\" ve rel=\"noopener\" özniteliklerini linke ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: SAYFA İÇİ ÇAPA LİNK (BOOKMARK)",
+      title: "3. Soru: Sayfa İçi #id Gezintisi",
+      prompt: "Kullanıcı tıkladığında sayfa içindeki id=\"iletisim\" olan bölüme kaydırması için href=\"#iletisim\" olan 'İletişime Git' linki yazabilir misin?",
+      presetCode: "<!-- Çapa linkini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<a href=\"#iletisim\">İletişime Git</a>", "href=\"#iletisim\"", "<a href=\"#", "</a>"],
+      hint: "<a href=\"#iletisim\">İletişime Git</a>",
+      solution: "<a href=\"#iletisim\">İletişime Git</a>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<a\s+[^>]*href\s*=\s*["']#iletisim["'][^>]*>\s*İletişime Git\s*<\/a>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! Sayfa içi çapa bağlantısı (#id) başarıyla kuruldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <a href=\"#iletisim\">İletişime Git</a> şeklinde yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: E-POSTA BAĞLANTISI (MAILTO)",
+      title: "4. Soru: mailto: Protokolü",
+      prompt: "Tıklandığında 'destek@codefarm.com' adresine e-posta gönderme penceresini açan 'Bize Yazın' linki oluşturabilir misin?",
+      presetCode: "<!-- mailto linkini oluşturun -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<a href=\"mailto:destek@codefarm.com\">Bize Yazın</a>", "href=\"mailto:", "mailto:destek@codefarm.com"],
+      hint: "<a href=\"mailto:destek@codefarm.com\">Bize Yazın</a>",
+      solution: "<a href=\"mailto:destek@codefarm.com\">Bize Yazın</a>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<a\s+[^>]*href\s*=\s*["']mailto:destek@codefarm\.com["'][^>]*>\s*Bize Yazın\s*<\/a>/i.test(clean)) {
+          return { ok: true, msg: "Harika! mailto e-posta bağlantısı doğru yazıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <a href=\"mailto:destek@codefarm.com\">Bize Yazın</a> yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 3: BAĞLANTILI GÖRSEL",
+      title: "5. Soru: Tıklanabilir Resim Linki",
+      prompt: "Aşağıdaki 'logo.png' görselini 'anasayfa.html' adresine yönlendiren bir <a> etiketi içine alabilir misin?",
+      presetCode: "<img src=\"logo.png\" alt=\"Logo\">",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<a href=\"anasayfa.html\">", "</a>", "<a href=\"", "</a>"],
+      hint: "<a href=\"anasayfa.html\">\n  <img src=\"logo.png\" alt=\"Logo\">\n</a>",
+      solution: "<a href=\"anasayfa.html\">\n  <img src=\"logo.png\" alt=\"Logo\">\n</a>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<a\s+[^>]*href\s*=\s*["']anasayfa\.html["'][^>]*>\s*<img\s+[^>]*src\s*=\s*["']logo\.png["'][^>]*>\s*<\/a>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Tıklanabilir görsel bağlantısı tamamlandı. 3. Modül Tamamlandı! 🚰" };
+        }
+        return { ok: false, msg: "Hata: <img> etiketini <a href=\"anasayfa.html\">...</a> içine almalısınız." };
+      }
+    }
+  ],
+  html_4: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: GÖRSEL EKLEME (IMG SRC)",
+      title: "1. Soru: Resim Kaynağı (src)",
+      prompt: "Web sayfasına 'ciftlik.jpg' dosyasını yükleyen <img> etiketini yazabilir misin?",
+      presetCode: "<!-- img etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<img src=\"ciftlik.jpg\" alt=\"Çiftlik\">", "<img src=\"", "alt=\"", "ciftlik.jpg"],
+      hint: "<img src=\"ciftlik.jpg\" alt=\"Çiftlik\">",
+      solution: "<img src=\"ciftlik.jpg\" alt=\"Çiftlik\">",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<img\s+[^>]*src\s*=\s*["']ciftlik\.jpg["'][^>]*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <img> etiketi ve src kaynak yolu doğru tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <img src=\"ciftlik.jpg\" alt=\"...\"> şeklinde yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: ERİŞİLEBİLİRLİK (ALT ÖZNİTELİĞİ)",
+      title: "2. Soru: Zorunlu Alternatif Metin",
+      prompt: "Aşağıdaki resme ekran okuyucular ve SEO için alt=\"Yeşil Buğday Tarlası\" özniteliğini ekleyebilir misin?",
+      presetCode: "<img src=\"tarla.png\">",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["alt=\"Yeşil Buğday Tarlası\"", "alt=\"", "width=\"300\""],
+      hint: "<img src=\"tarla.png\" alt=\"Yeşil Buğday Tarlası\">",
+      solution: "<img src=\"tarla.png\" alt=\"Yeşil Buğday Tarlası\">",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<img\s+[^>]*alt\s*=\s*["']Yeşil Buğday Tarlası["'][^>]*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! alt açıklama metni başarıyla eklendi. ✓" };
+        }
+        return { ok: false, msg: "Hata: alt=\"Yeşil Buğday Tarlası\" özniteliğini ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: GÖRSEL BOYUTLANDIRMA",
+      title: "3. Soru: width ve height Nitelikleri",
+      prompt: "Aşağıdaki görsele genişlik width=\"400\" ve yükseklik height=\"250\" özniteliklerini ekleyebilir misin?",
+      presetCode: "<img src=\"manzara.jpg\" alt=\"Manzara\">",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["width=\"400\"", "height=\"250\"", "width=\"400\" height=\"250\""],
+      hint: "<img src=\"manzara.jpg\" alt=\"Manzara\" width=\"400\" height=\"250\">",
+      solution: "<img src=\"manzara.jpg\" alt=\"Manzara\" width=\"400\" height=\"250\">",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasWidth = /width\s*=\s*["']?400["']?/i.test(clean);
+        const hasHeight = /height\s*=\s*["']?250["']?/i.test(clean);
+        if (hasWidth && hasHeight) {
+          return { ok: true, msg: "Tebrikler! width ve height boyutları doğru ayarlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: width=\"400\" ve height=\"250\" özniteliklerini ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: KLASÖR VE DOSYA YOLU (RELATIVE PATH)",
+      title: "4. Soru: Alt Klasörden Resim Çağırma",
+      prompt: "'images' klasörü içindeki 'traktor.png' resmini çağıracak src dosya yolunu ve alt=\"Traktör\" açıklamasını yazabilir misin?",
+      presetCode: "<!-- img etiketini images klasöründen çağırın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<img src=\"images/traktor.png\" alt=\"Traktör\">", "src=\"images/traktor.png\"", "alt=\"Traktör\""],
+      hint: "<img src=\"images/traktor.png\" alt=\"Traktör\">",
+      solution: "<img src=\"images/traktor.png\" alt=\"Traktör\">",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<img\s+[^>]*src\s*=\s*["']images\/traktor\.png["'][^>]*alt\s*=\s*["']Traktör["'][^>]*>/i.test(clean) ||
+            /<img\s+[^>]*alt\s*=\s*["']Traktör["'][^>]*src\s*=\s*["']images\/traktor\.png["'][^>]*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! Göreli dosya yolu (images/traktor.png) doğru bağlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <img src=\"images/traktor.png\" alt=\"Traktör\"> şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 4: SEMANTİK GÖRSEL (FIGURE & FIGCAPTION)",
+      title: "5. Soru: Görsel ve Açıklama Başlığı",
+      prompt: "Bir <figure> etiketi açıp içine resim ve altına <figcaption>Organik Domatesler</figcaption> ekleyebilir misin?",
+      presetCode: "<figure>\n  <img src=\"domates.jpg\" alt=\"Domates\">\n  <!-- figcaption ekleyin -->\n</figure>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<figcaption>Organik Domatesler</figcaption>", "<figcaption>", "</figcaption>", "</figure>"],
+      hint: "<figure>\n  <img src=\"domates.jpg\" alt=\"Domates\">\n  <figcaption>Organik Domatesler</figcaption>\n</figure>",
+      solution: "<figure>\n  <img src=\"domates.jpg\" alt=\"Domates\">\n  <figcaption>Organik Domatesler</figcaption>\n</figure>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<figure>[\s\S]*<img[^>]*>[\s\S]*<figcaption\s*>\s*Organik Domatesler\s*<\/figcaption\s*>[\s\S]*<\/figure>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! <figure> ve <figcaption> ile semantik görsel alanı kuruldu. 4. Modül Tamamlandı! 🌳" };
+        }
+        return { ok: false, msg: "Hata: <figcaption>Organik Domatesler</figcaption> eklemelisiniz." };
+      }
+    }
+  ],
+  html_5: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: SIRASIZ LİSTE (UL & LI)",
+      title: "1. Soru: Madde İşaretli Liste",
+      prompt: "<ul> etiketi içinde 'Elma' ve 'Armut' maddelerini barındıran iki adet <li> elemanı oluşturabilir misin?",
+      presetCode: "<!-- ul ve li etiketlerini oluşturun -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<ul>", "<li>Elma</li>", "<li>Armut</li>", "</ul>"],
+      hint: "<ul>\n  <li>Elma</li>\n  <li>Armut</li>\n</ul>",
+      solution: "<ul>\n  <li>Elma</li>\n  <li>Armut</li>\n</ul>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<ul\s*>\s*<li\s*>\s*Elma\s*<\/li\s*>\s*<li\s*>\s*Armut\s*<\/li\s*>\s*<\/ul\s*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! <ul> ve <li> ile sırasız liste başarıyla oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <ul> içine <li>Elma</li> ve <li>Armut</li> yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: SIRALI LİSTE (OL & LI)",
+      title: "2. Soru: Numaralandırılmış Liste",
+      prompt: "<ol> etiketi içinde sırasıyla '1. Tohum Ek' ve '2. Sula' adımlarını <li> olarak tanımlayabilir misin?",
+      presetCode: "<!-- ol ve li etiketlerini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<ol>", "<li>Tohum Ek</li>", "<li>Sula</li>", "</ol>"],
+      hint: "<ol>\n  <li>Tohum Ek</li>\n  <li>Sula</li>\n</ol>",
+      solution: "<ol>\n  <li>Tohum Ek</li>\n  <li>Sula</li>\n</ol>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<ol\s*>\s*<li\s*>\s*Tohum Ek\s*<\/li\s*>\s*<li\s*>\s*Sula\s*<\/li\s*>\s*<\/ol\s*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <ol> ile sıralı liste doğru oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <ol> içine <li>Tohum Ek</li> ve <li>Sula</li> yazın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: LİSTE BAŞLANGIÇ DEĞERİ (START)",
+      title: "3. Soru: Numarayı 5'ten Başlatma",
+      prompt: "Aşağıdaki sıralı listeyi start=\"5\" özniteliği ile 5. numaradan başlayacak şekilde güncelleyebilir misin?",
+      presetCode: "<ol>\n  <li>Adım Beş</li>\n  <li>Adım Altı</li>\n</ol>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<ol start=\"5\">", "start=\"5\"", "type=\"A\"", "reversed"],
+      hint: "<ol start=\"5\">\n  <li>Adım Beş</li>\n  <li>Adım Altı</li>\n</ol>",
+      solution: "<ol start=\"5\">\n  <li>Adım Beş</li>\n  <li>Adım Altı</li>\n</ol>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<ol\s+[^>]*start\s*=\s*["']?5["']?[^>]*>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! start='5' ile liste başlangıcı ayarlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <ol start=\"5\"> özniteliğini ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: TANIM LİSTESİ (DL, DT, DD)",
+      title: "4. Soru: Terim ve Açıklama Listesi",
+      prompt: "<dl> etiketi içinde terim başlığı olarak <dt>HTML</dt> ve açıklama olarak <dd>İşaretleme dili</dd> ekleyebilir misin?",
+      presetCode: "<dl>\n  <!-- dt ve dd ekleyin -->\n</dl>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<dt>HTML</dt>", "<dd>İşaretleme dili</dd>", "<dt>", "<dd>"],
+      hint: "<dl>\n  <dt>HTML</dt>\n  <dd>İşaretleme dili</dd>\n</dl>",
+      solution: "<dl>\n  <dt>HTML</dt>\n  <dd>İşaretleme dili</dd>\n</dl>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<dl>[\s\S]*<dt\s*>\s*HTML\s*<\/dt\s*>[\s\S]*<dd\s*>\s*İşaretleme dili\s*<\/dd\s*>[\s\S]*<\/dl>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! <dl>, <dt> ve <dd> tanım listesi doğru kuruldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <dt>HTML</dt> ve <dd>İşaretleme dili</dd> eklemelisiniz." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 5: İÇ İÇE LİSTELER (NESTED LISTS)",
+      title: "5. Soru: Alt Liste Oluşturma",
+      prompt: "Aşağıdaki 'İçecekler' maddesinin içine yeni bir <ul> açarak 'Çay' ve 'Kahve' alt maddelerini ekleyebilir misin?",
+      presetCode: "<ul>\n  <li>İçecekler\n    <!-- Alt ul listesini buraya ekleyin -->\n  </li>\n</ul>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<ul><li>Çay</li><li>Kahve</li></ul>", "<li>Çay</li>", "<li>Kahve</li>", "</ul>"],
+      hint: "<ul>\n  <li>İçecekler\n    <ul>\n      <li>Çay</li>\n      <li>Kahve</li>\n    </ul>\n  </li>\n</ul>",
+      solution: "<ul>\n  <li>İçecekler\n    <ul>\n      <li>Çay</li>\n      <li>Kahve</li>\n    </ul>\n  </li>\n</ul>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<li>\s*İçecekler[\s\S]*<ul>[\s\S]*<li>\s*Çay\s*<\/li>[\s\S]*<li>\s*Kahve\s*<\/li>[\s\S]*<\/ul>[\s\S]*<\/li>/i.test(clean)) {
+          return { ok: true, msg: "Harika! İç içe (nested) liste hiyerarşisi başarıyla kuruldu. 5. Modül Tamamlandı! 🏢" };
+        }
+        return { ok: false, msg: "Hata: <li>İçecekler</li> içine <ul><li>Çay</li><li>Kahve</li></ul> ekleyin." };
+      }
+    }
+  ],
+  html_6: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: TABLO İSKELETİ (TABLE & TR)",
+      title: "1. Soru: Tablo ve İlk Satır",
+      prompt: "<table> etiketi içinde tek bir satır <tr> açıp içine 'Veri 1' yazan bir <td> hücresi ekleyebilir misin?",
+      presetCode: "<!-- table, tr ve td etiketlerini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<table>", "<tr><td>Veri 1</td></tr>", "</table>", "<td>", "<tr>"],
+      hint: "<table>\n  <tr>\n    <td>Veri 1</td>\n  </tr>\n</table>",
+      solution: "<table>\n  <tr>\n    <td>Veri 1</td>\n  </tr>\n</table>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<table\s*>[\s\S]*<tr\s*>[\s\S]*<td\s*>\s*Veri 1\s*<\/td\s*>[\s\S]*<\/tr\s*>[\s\S]*<\/table\s*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Tablo ve ilk veri hücresi oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <table><tr><td>Veri 1</td></tr></table> şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: TABLO BAŞLIĞI (TH)",
+      title: "2. Soru: Başlık Hücreleri (th)",
+      prompt: "Aşağıdaki tablonun ilk satırına başlık olarak <th>Ürün</th> ve <th>Fiyat</th> hücrelerini ekleyebilir misin?",
+      presetCode: "<table>\n  <tr>\n    <!-- th başlıklarını ekleyin -->\n  </tr>\n</table>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<th>Ürün</th>", "<th>Fiyat</th>", "<th>", "</th>"],
+      hint: "<table>\n  <tr>\n    <th>Ürün</th>\n    <th>Fiyat</th>\n  </tr>\n</table>",
+      solution: "<table>\n  <tr>\n    <th>Ürün</th>\n    <th>Fiyat</th>\n  </tr>\n</table>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<tr\s*>[\s\S]*<th\s*>\s*Ürün\s*<\/th\s*>[\s\S]*<th\s*>\s*Fiyat\s*<\/th\s*>[\s\S]*<\/tr\s*>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! <th> başlık hücreleri başarıyla tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <tr> içine <th>Ürün</th> ve <th>Fiyat</th> ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: ÇOKLU SATIR VE VERİ (TD)",
+      title: "3. Soru: İkinci Veri Satırı",
+      prompt: "Aşağıdaki tabloya yeni bir <tr> satırı açıp içine <td>Buğday</td> ve <td>40 TL</td> hücrelerini ekleyebilir misin?",
+      presetCode: "<table>\n  <tr>\n    <th>Mahsul</th>\n    <th>Tutar</th>\n  </tr>\n  <!-- İkinci satırı buraya ekleyin -->\n</table>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<tr><td>Buğday</td><td>40 TL</td></tr>", "<tr>", "<td>Buğday</td>", "<td>40 TL</td>", "</tr>"],
+      hint: "<tr>\n  <td>Buğday</td>\n  <td>40 TL</td>\n</tr>",
+      solution: "<table>\n  <tr>\n    <th>Mahsul</th>\n    <th>Tutar</th>\n  </tr>\n  <tr>\n    <td>Buğday</td>\n    <td>40 TL</td>\n  </tr>\n</table>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<tr\s*>[\s\S]*<td\s*>\s*Buğday\s*<\/td\s*>[\s\S]*<td\s*>\s*40 TL\s*<\/td\s*>[\s\S]*<\/tr\s*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! İkinci veri satırı tabloya eklendi. ✓" };
+        }
+        return { ok: false, msg: "Hata: <tr><td>Buğday</td><td>40 TL</td></tr> satırını ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: TABLO AÇIKLAMASI (CAPTION)",
+      title: "4. Soru: Tablo Başlık Açıklaması",
+      prompt: "Tablonun en üstüne <caption>Haftalık Hasat Raporu</caption> etiketini ekleyebilir misin?",
+      presetCode: "<table>\n  <!-- caption etiketini ekleyin -->\n  <tr>\n    <th>Gün</th>\n    <th>Miktar</th>\n  </tr>\n</table>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<caption>Haftalık Hasat Raporu</caption>", "<caption>", "</caption>"],
+      hint: "<caption>Haftalık Hasat Raporu</caption>",
+      solution: "<table>\n  <caption>Haftalık Hasat Raporu</caption>\n  <tr>\n    <th>Gün</th>\n    <th>Miktar</th>\n  </tr>\n</table>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<caption\s*>\s*Haftalık Hasat Raporu\s*<\/caption\s*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! <caption> tablo açıklaması doğru tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <caption>Haftalık Hasat Raporu</caption> etiketini ekleyin." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 6: TABLO KENARLIĞI (BORDER)",
+      title: "5. Soru: border Özniteliği",
+      prompt: "Aşağıdaki tablo etiketine kenarlık görünmesi için border=\"1\" özniteliğini ekleyebilir misin?",
+      presetCode: "<table>\n  <tr>\n    <td>Hücre 1</td>\n    <td>Hücre 2</td>\n  </tr>\n</table>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<table border=\"1\">", "border=\"1\"", "cellpadding=\"5\""],
+      hint: "<table border=\"1\">\n  <tr>\n    <td>Hücre 1</td>\n    <td>Hücre 2</td>\n  </tr>\n</table>",
+      solution: "<table border=\"1\">\n  <tr>\n    <td>Hücre 1</td>\n    <td>Hücre 2</td>\n  </tr>\n</table>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<table\s+[^>]*border\s*=\s*["']?1["']?[^>]*>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! border='1' ile tablo kenarlığı oluşturuldu. 6. Modül Tamamlandı! 🎬" };
+        }
+        return { ok: false, msg: "Hata: <table border=\"1\"> şeklinde güncelleyin." };
+      }
+    }
+  ],
+  html_7: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: TABLO BÖLÜMLERİ (THEAD & TBODY)",
+      title: "1. Soru: thead ve tbody Yapısı",
+      prompt: "Aşağıdaki tabloda başlık satırını <thead>, veri satırını <tbody> etiketi içine alabilir misin?",
+      presetCode: "<table>\n  <tr>\n    <th>Ürün</th>\n  </tr>\n  <tr>\n    <td>Mısır</td>\n  </tr>\n</table>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<thead>", "</thead>", "<tbody>", "</tbody>"],
+      hint: "<table>\n  <thead>\n    <tr><th>Ürün</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Mısır</td></tr>\n  </tbody>\n</table>",
+      solution: "<table>\n  <thead>\n    <tr>\n      <th>Ürün</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Mısır</td>\n    </tr>\n  </tbody>\n</table>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasThead = /<thead>[\s\S]*<th>[\s\S]*<\/thead>/i.test(clean);
+        const hasTbody = /<tbody>[\s\S]*<td>[\s\S]*<\/tbody>/i.test(clean);
+        if (hasThead && hasTbody) {
+          return { ok: true, msg: "Harika! <thead> ve <tbody> bölümleri başarıyla ayrıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Başlığı <thead>, veriyi <tbody> içine alın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: SÜTUN BİRLEŞTİRME (COLSPAN)",
+      title: "2. Soru: colspan Kullanımı",
+      prompt: "Aşağıdaki 'İletişim' başlık hücresinin 2 sütunu kaplaması için colspan=\"2\" özniteliğini ekleyebilir misin?",
+      presetCode: "<tr>\n  <th>İsim</th>\n  <th>İletişim</th>\n</tr>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<th colspan=\"2\">İletişim</th>", "colspan=\"2\"", "rowspan=\"2\""],
+      hint: "<tr>\n  <th>İsim</th>\n  <th colspan=\"2\">İletişim</th>\n</tr>",
+      solution: "<tr>\n  <th>İsim</th>\n  <th colspan=\"2\">İletişim</th>\n</tr>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<th\s+[^>]*colspan\s*=\s*["']?2["']?[^>]*>\s*İletişim\s*<\/th\s*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! colspan='2' ile sütunlar başarıyla birleştirildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: <th colspan=\"2\">İletişim</th> şeklinde yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: SATIR BİRLEŞTİRME (ROWSPAN)",
+      title: "3. Soru: rowspan Kullanımı",
+      prompt: "Aşağıdaki 'Telefon' hücresinin dikeyde 2 satırı kaplaması için rowspan=\"2\" özniteliğini ekleyebilir misin?",
+      presetCode: "<tr>\n  <th>Telefon</th>\n  <td>555-1111</td>\n</tr>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<th rowspan=\"2\">Telefon</th>", "rowspan=\"2\"", "colspan=\"2\""],
+      hint: "<tr>\n  <th rowspan=\"2\">Telefon</th>\n  <td>555-1111</td>\n</tr>",
+      solution: "<tr>\n  <th rowspan=\"2\">Telefon</th>\n  <td>555-1111</td>\n</tr>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<th\s+[^>]*rowspan\s*=\s*["']?2["']?[^>]*>\s*Telefon\s*<\/th\s*>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! rowspan='2' ile dikey hücre birleştirildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: <th rowspan=\"2\">Telefon</th> şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: DİP TOPLAM BÖLÜMÜ (TFOOT)",
+      title: "4. Soru: tfoot ve Colspan Toplamı",
+      prompt: "Tablonun altına <tfoot> ekleyip içinde 2 sütunu birleştiren <td colspan=\"2\">Toplam: 100 TL</td> hücresi yazabilir misin?",
+      presetCode: "<table>\n  <tbody>\n    <tr><td>Ürün</td><td>50 TL</td></tr>\n  </tbody>\n  <!-- tfoot bölümünü buraya ekleyin -->\n</table>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<tfoot><tr><td colspan=\"2\">Toplam: 100 TL</td></tr></tfoot>", "<tfoot>", "</tfoot>", "<td colspan=\"2\">"],
+      hint: "<tfoot>\n  <tr>\n    <td colspan=\"2\">Toplam: 100 TL</td>\n  </tr>\n</tfoot>",
+      solution: "<table>\n  <tbody>\n    <tr><td>Ürün</td><td>50 TL</td></tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td colspan=\"2\">Toplam: 100 TL</td>\n    </tr>\n  </tfoot>\n</table>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<tfoot>[\s\S]*<td\s+[^>]*colspan\s*=\s*["']?2["']?[^>]*>\s*Toplam:\s*100\s*TL\s*<\/td>[\s\S]*<\/tfoot>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <tfoot> ve colspan toplam satırı doğru oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <tfoot><tr><td colspan=\"2\">Toplam: 100 TL</td></tr></tfoot> ekleyin." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 7: GELİŞMİŞ BİRLEŞİK TABLO",
+      title: "5. Soru: Colspan ve Rowspan Entegrasyonu",
+      prompt: "Aşağıdaki tabloda ilk hücreye <th rowspan=\"2\">Bölge</th> ve başlık hücresine <th colspan=\"2\">Satışlar</th> yazarak birleştirebilir misin?",
+      presetCode: "<tr>\n  <th>Bölge</th>\n  <th>Satışlar</th>\n</tr>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<th rowspan=\"2\">Bölge</th>", "<th colspan=\"2\">Satışlar</th>", "rowspan=\"2\"", "colspan=\"2\""],
+      hint: "<tr>\n  <th rowspan=\"2\">Bölge</th>\n  <th colspan=\"2\">Satışlar</th>\n</tr>",
+      solution: "<tr>\n  <th rowspan=\"2\">Bölge</th>\n  <th colspan=\"2\">Satışlar</th>\n</tr>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasRow = /<th\s+[^>]*rowspan\s*=\s*["']?2["']?[^>]*>\s*Bölge\s*<\/th\s*>/i.test(clean);
+        const hasCol = /<th\s+[^>]*colspan\s*=\s*["']?2["']?[^>]*>\s*Satışlar\s*<\/th\s*>/i.test(clean);
+        if (hasRow && hasCol) {
+          return { ok: true, msg: "Mükemmel! Gelişmiş tablo birleştirme kuralları tamamlandı. 7. Modül Tamamlandı! 🎡" };
+        }
+        return { ok: false, msg: "Hata: <th rowspan=\"2\">Bölge</th> ve <th colspan=\"2\">Satışlar</th> şeklinde yazın." };
+      }
+    }
+  ],
+  html_8: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: BLOK SEVİYESİ (DIV)",
+      title: "1. Soru: div Kapsayıcısı",
+      prompt: "Bir <div> etiketi açıp içine <h2>Kart Başlığı</h2> ve <p>İçerik</p> elemanlarını yerleştirebilir misin?",
+      presetCode: "<!-- div kapsayıcısını oluşturun -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<div>", "<h2>Kart Başlığı</h2>", "<p>İçerik</p>", "</div>"],
+      hint: "<div>\n  <h2>Kart Başlığı</h2>\n  <p>İçerik</p>\n</div>",
+      solution: "<div>\n  <h2>Kart Başlığı</h2>\n  <p>İçerik</p>\n</div>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<div\s*>[\s\S]*<h2\s*>\s*Kart Başlığı\s*<\/h2\s*>[\s\S]*<p\s*>\s*İçerik\s*<\/p\s*>[\s\S]*<\/div\s*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <div> blok kapsayıcısı başarıyla oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <div> içine <h2>Kart Başlığı</h2> ve <p>İçerik</p> koyun." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: SATIR İÇİ (SPAN)",
+      title: "2. Soru: span ile Metin İçi Vurgulama",
+      prompt: "Aşağıdaki cümlede '50 TL' metnini <span> etiketi içine alabilir misin?",
+      presetCode: "<p>Toplam Tutar: 50 TL</p>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<span>50 TL</span>", "<span>", "</span>"],
+      hint: "<p>Toplam Tutar: <span>50 TL</span></p>",
+      solution: "<p>Toplam Tutar: <span>50 TL</span></p>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<p\s*>[\s\S]*<span>\s*50 TL\s*<\/span>[\s\S]*<\/p>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! <span> ile satır içi parça sarmalandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: '50 TL' kısmını <span>50 TL</span> şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: BENZERSİZ KİMLİK (ID)",
+      title: "3. Soru: id Özniteliği Tanımlama",
+      prompt: "Aşağıdaki div kapsayıcısına benzersiz bir kimlik olan id=\"ana-kart\" özniteliğini ekleyebilir misin?",
+      presetCode: "<div>\n  <p>Özel Kutu</p>\n</div>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<div id=\"ana-kart\">", "id=\"ana-kart\"", "class=\"kart\""],
+      hint: "<div id=\"ana-kart\">\n  <p>Özel Kutu</p>\n</div>",
+      solution: "<div id=\"ana-kart\">\n  <p>Özel Kutu</p>\n</div>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<div\s+[^>]*id\s*=\s*["']ana-kart["'][^>]*>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! id='ana-kart' kimliği başarıyla atandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <div id=\"ana-kart\"> şeklinde yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: STİL SINIFI (CLASS)",
+      title: "4. Soru: class Sınıfı Ekleme",
+      prompt: "Aşağıdaki div kapsayıcısına class=\"urun-karti aktif\" özniteliğini ekleyebilir misin?",
+      presetCode: "<div>\n  <h3>Domates Fidesi</h3>\n</div>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["class=\"urun-karti aktif\"", "class=\"urun-karti\"", "id=\"kart\""],
+      hint: "<div class=\"urun-karti aktif\">\n  <h3>Domates Fidesi</h3>\n</div>",
+      solution: "<div class=\"urun-karti aktif\">\n  <h3>Domates Fidesi</h3>\n</div>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<div\s+[^>]*class\s*=\s*["'][^"']*urun-karti\s+aktif[^"']*["'][^>]*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! class='urun-karti aktif' sınıfları doğru tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <div class=\"urun-karti aktif\"> şeklinde yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 8: BLOK / INLINE KURAL HATASI",
+      title: "5. Soru: Hatalı Span İçi Div Düzenlemesi",
+      prompt: "Satır içi (inline) olan <span> içine blok (div) konulamaz. Aşağıdaki yapıyı dışta <div>, içte <span> olacak şekilde düzeltebilir misin?",
+      presetCode: "<span>\n  <div>Metin Parçası</div>\n</span>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<div><span>Metin Parçası</span></div>", "<div>", "<span>", "</div>"],
+      hint: "<div>\n  <span>Metin Parçası</span>\n</div>",
+      solution: "<div>\n  <span>Metin Parçası</span>\n</div>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<div\s*>[\s\S]*<span\s*>\s*Metin Parçası\s*<\/span\s*>[\s\S]*<\/div\s*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Blok ve satır içi hiyerarşi kuralı düzeltildi. 8. Modül Tamamlandı! 🏛️" };
+        }
+        return { ok: false, msg: "Hata: Dış kapsayıcı <div>, içteki eleman <span> olmalıdır." };
+      }
+    }
+  ],
+  html_9: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: FORM KAPSAYICISI (FORM ACTION)",
+      title: "1. Soru: Form ve Gönderim Metodu",
+      prompt: "Sunucudaki '/kaydet' adresine POST metoduyla veri gönderen <form action=\"/kaydet\" method=\"POST\"> kapsayıcısını ve kapanışını yazabilir misin?",
+      presetCode: "<!-- form etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<form action=\"/kaydet\" method=\"POST\">", "</form>", "action=\"/kaydet\"", "method=\"POST\""],
+      hint: "<form action=\"/kaydet\" method=\"POST\">\n</form>",
+      solution: "<form action=\"/kaydet\" method=\"POST\">\n</form>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasAction = /action\s*=\s*["']\/kaydet["']/i.test(clean);
+        const hasMethod = /method\s*=\s*["']POST["']/i.test(clean);
+        const hasTags = /<form[^>]*>[\s\S]*<\/form>/i.test(clean);
+        if (hasAction && hasMethod && hasTags) {
+          return { ok: true, msg: "Harika! <form> action ve method öznitelikleri doğru kuruldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <form action=\"/kaydet\" method=\"POST\"></form> yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: LABEL VE INPUT BAĞLANTISI",
+      title: "2. Soru: label for ve input id Eşleşmesi",
+      prompt: "<label for=\"ad\">Adınız:</label> ve buna bağlı <input type=\"text\" id=\"ad\" name=\"ad\"> girişini yazabilir misin?",
+      presetCode: "<!-- label ve input yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<label for=\"ad\">Adınız:</label>", "<input type=\"text\" id=\"ad\" name=\"ad\">", "for=\"ad\"", "id=\"ad\""],
+      hint: "<label for=\"ad\">Adınız:</label>\n<input type=\"text\" id=\"ad\" name=\"ad\">",
+      solution: "<label for=\"ad\">Adınız:</label>\n<input type=\"text\" id=\"ad\" name=\"ad\">",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasLabel = /<label\s+[^>]*for\s*=\s*["']ad["'][^>]*>\s*Adınız:\s*<\/label>/i.test(clean);
+        const hasInput = /<input\s+[^>]*id\s*=\s*["']ad["'][^>]*>/i.test(clean);
+        if (hasLabel && hasInput) {
+          return { ok: true, msg: "Mükemmel! label 'for' ile input 'id' doğru eşleştirildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: <label for=\"ad\">Adınız:</label> ve <input id=\"ad\" name=\"ad\"> yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: ŞİFRE VE E-POSTA GİRİŞLERİ",
+      title: "3. Soru: type='password' ve type='email'",
+      prompt: "Bir adet <input type=\"email\" name=\"eposta\"> ve altına bir adet <input type=\"password\" name=\"sifre\"> ekleyebilir misin?",
+      presetCode: "<!-- email ve password inputlarını yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<input type=\"email\" name=\"eposta\">", "<input type=\"password\" name=\"sifre\">", "type=\"email\"", "type=\"password\""],
+      hint: "<input type=\"email\" name=\"eposta\">\n<input type=\"password\" name=\"sifre\">",
+      solution: "<input type=\"email\" name=\"eposta\">\n<input type=\"password\" name=\"sifre\">",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasEmail = /<input\s+[^>]*type\s*=\s*["']email["'][^>]*>/i.test(clean);
+        const hasPass = /<input\s+[^>]*type\s*=\s*["']password["'][^>]*>/i.test(clean);
+        if (hasEmail && hasPass) {
+          return { ok: true, msg: "Tebrikler! Email ve Password input tipleri başarıyla eklendi. ✓" };
+        }
+        return { ok: false, msg: "Hata: type=\"email\" ve type=\"password\" inputlarını ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: RADYO BUTONLARI (RADIO)",
+      title: "4. Soru: Ortak name Gruplu Radio Butonları",
+      prompt: "Tekli seçim yapabilmek için name=\"cinsiyet\" ortak grubuna sahip 'Erkek' (value=\"e\") ve 'Kadın' (value=\"k\") radio inputları yazabilir misin?",
+      presetCode: "<!-- radio inputlarını ekleyin -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<input type=\"radio\" name=\"cinsiyet\" value=\"e\">", "<input type=\"radio\" name=\"cinsiyet\" value=\"k\">", "type=\"radio\"", "name=\"cinsiyet\""],
+      hint: "<input type=\"radio\" name=\"cinsiyet\" value=\"e\"> Erkek\n<input type=\"radio\" name=\"cinsiyet\" value=\"k\"> Kadın",
+      solution: "<input type=\"radio\" name=\"cinsiyet\" value=\"e\"> Erkek\n<input type=\"radio\" name=\"cinsiyet\" value=\"k\"> Kadın",
+      validator: (code) => {
+        const clean = code.trim();
+        const radioMatches = clean.match(/<input\s+[^>]*type\s*=\s*["']radio["'][^>]*name\s*=\s*["']cinsiyet["'][^>]*>/gi);
+        if (radioMatches && radioMatches.length >= 2) {
+          return { ok: true, msg: "Harika! Ortak name gruplu radyo butonları doğru tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: İki radyo butonunda da name=\"cinsiyet\" ortak olmalıdır." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 9: ONAY KUTUSU VE SUBMIT BUTONU",
+      title: "5. Soru: Checkbox ve Form Gönder Butonu",
+      prompt: "Aşağıdaki forma <input type=\"checkbox\" name=\"sozlesme\"> ve altına <button type=\"submit\">Kayıt Ol</button> ekleyebilir misin?",
+      presetCode: "<form action=\"/kayit\" method=\"POST\">\n  <!-- checkbox ve submit butonu ekleyin -->\n</form>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<input type=\"checkbox\" name=\"sozlesme\">", "<button type=\"submit\">Kayıt Ol</button>", "type=\"checkbox\"", "type=\"submit\""],
+      hint: "<input type=\"checkbox\" name=\"sozlesme\"> Şartları kabul ediyorum\n<button type=\"submit\">Kayıt Ol</button>",
+      solution: "<form action=\"/kayit\" method=\"POST\">\n  <input type=\"checkbox\" name=\"sozlesme\"> Şartları kabul ediyorum\n  <button type=\"submit\">Kayıt Ol</button>\n</form>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasCheckbox = /<input\s+[^>]*type\s*=\s*["']checkbox["'][^>]*>/i.test(clean);
+        const hasSubmit = /<button\s+[^>]*type\s*=\s*["']submit["'][^>]*>\s*Kayıt Ol\s*<\/button>/i.test(clean) ||
+                          /<input\s+[^>]*type\s*=\s*["']submit["'][^>]*value\s*=\s*["']Kayıt Ol["'][^>]*>/i.test(clean);
+        if (hasCheckbox && hasSubmit) {
+          return { ok: true, msg: "Mükemmel! Form bileşenleri ve gönderim butonu tamamlandı. 9. Modül Tamamlandı! 🏥" };
+        }
+        return { ok: false, msg: "Hata: type=\"checkbox\" onay kutusu ve type=\"submit\" butonunu ekleyin." };
+      }
+    }
+  ],
+  html_10: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: ÇOK SATIRLI METİN (TEXTAREA)",
+      title: "1. Soru: textarea Alanı",
+      prompt: "Adı name=\"mesaj\", satır sayısı rows=\"4\" ve cols=\"50\" olan bir <textarea> etiketi yazabilir misin?",
+      presetCode: "<!-- textarea etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<textarea name=\"mesaj\" rows=\"4\" cols=\"50\"></textarea>", "rows=\"4\"", "cols=\"50\"", "</textarea>"],
+      hint: "<textarea name=\"mesaj\" rows=\"4\" cols=\"50\"></textarea>",
+      solution: "<textarea name=\"mesaj\" rows=\"4\" cols=\"50\"></textarea>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<textarea\s+[^>]*name\s*=\s*["']mesaj["'][^>]*>[\s\S]*<\/textarea>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <textarea> çok satırlı metin kutusu doğru oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <textarea name=\"mesaj\" rows=\"4\" cols=\"50\"></textarea> yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: AÇILIR MENÜ (SELECT & OPTION)",
+      title: "2. Soru: Dropdown Menü",
+      prompt: "<select name=\"sehir\"> etiketi içinde value=\"ist\" olan 'İstanbul' ve value=\"ank\" olan 'Ankara' seçeneklerini (<option>) ekleyebilir misin?",
+      presetCode: "<!-- select ve option etiketlerini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<select name=\"sehir\">", "<option value=\"ist\">İstanbul</option>", "<option value=\"ank\">Ankara</option>", "</select>"],
+      hint: "<select name=\"sehir\">\n  <option value=\"ist\">İstanbul</option>\n  <option value=\"ank\">Ankara</option>\n</select>",
+      solution: "<select name=\"sehir\">\n  <option value=\"ist\">İstanbul</option>\n  <option value=\"ank\">Ankara</option>\n</select>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasSelect = /<select\s+[^>]*name\s*=\s*["']sehir["'][^>]*>[\s\S]*<\/select>/i.test(clean);
+        const hasOptions = /<option\s+[^>]*value\s*=\s*["']ist["'][^>]*>\s*İstanbul\s*<\/option>/i.test(clean) &&
+                           /<option\s+[^>]*value\s*=\s*["']ank["'][^>]*>\s*Ankara\s*<\/option>/i.test(clean);
+        if (hasSelect && hasOptions) {
+          return { ok: true, msg: "Mükemmel! <select> ve <option> açılır menüsü doğru kuruldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <select name=\"sehir\"> içine İstanbul ve Ankara option'larını ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: OTOMATİK TAMAMLAMA (DATALIST)",
+      title: "3. Soru: datalist Öneri Listesi",
+      prompt: "Aşağıdaki inputa list=\"meyveler\" bağlayın ve altına id=\"meyveler\" olan <datalist> içinde <option value=\"Elma\"> seçeneğini ekleyebilir misin?",
+      presetCode: "<input type=\"text\" name=\"meyve\">\n<!-- datalist ekleyin -->",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["list=\"meyveler\"", "<datalist id=\"meyveler\">", "<option value=\"Elma\">", "</datalist>"],
+      hint: "<input type=\"text\" name=\"meyve\" list=\"meyveler\">\n<datalist id=\"meyveler\">\n  <option value=\"Elma\">\n</datalist>",
+      solution: "<input type=\"text\" name=\"meyve\" list=\"meyveler\">\n<datalist id=\"meyveler\">\n  <option value=\"Elma\">\n</datalist>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasListAttr = /<input[^>]*list\s*=\s*["']meyveler["'][^>]*>/i.test(clean);
+        const hasDatalist = /<datalist\s+[^>]*id\s*=\s*["']meyveler["'][^>]*>[\s\S]*<option\s+[^>]*value\s*=\s*["']Elma["'][^>]*>[\s\S]*<\/datalist>/i.test(clean);
+        if (hasListAttr && hasDatalist) {
+          return { ok: true, msg: "Tebrikler! <datalist> otomatik tamamlama listesi başarıyla bağlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: Input'a list=\"meyveler\" ve altına <datalist id=\"meyveler\"> ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: FORM GRUPLAMA (FIELDSET & LEGEND)",
+      title: "4. Soru: Çerçeveli Form Alanı",
+      prompt: "Bir <fieldset> açıp en üstüne <legend>Kişisel Bilgiler</legend> başlığı ekleyebilir misin?",
+      presetCode: "<!-- fieldset ve legend etiketlerini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<fieldset>", "<legend>Kişisel Bilgiler</legend>", "</fieldset>", "<legend>"],
+      hint: "<fieldset>\n  <legend>Kişisel Bilgiler</legend>\n</fieldset>",
+      solution: "<fieldset>\n  <legend>Kişisel Bilgiler</legend>\n</fieldset>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<fieldset\s*>[\s\S]*<legend\s*>\s*Kişisel Bilgiler\s*<\/legend\s*>[\s\S]*<\/fieldset\s*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <fieldset> ve <legend> gruplama yapısı tamamlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <fieldset><legend>Kişisel Bilgiler</legend></fieldset> şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 10: DOĞRULAMA (REQUIRED & PLACEHOLDER)",
+      title: "5. Soru: Zorunlu Alan ve İpucu Metni",
+      prompt: "Aşağıdaki metin kutusuna zorunlu olması için required ve ipucu için placeholder=\"Kullanıcı adınızı girin\" özniteliklerini ekleyebilir misin?",
+      presetCode: "<input type=\"text\" name=\"kullanici\">",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["required", "placeholder=\"Kullanıcı adınızı girin\"", "required placeholder=\"Kullanıcı adınızı girin\""],
+      hint: "<input type=\"text\" name=\"kullanici\" placeholder=\"Kullanıcı adınızı girin\" required>",
+      solution: "<input type=\"text\" name=\"kullanici\" placeholder=\"Kullanıcı adınızı girin\" required>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasReq = /required/i.test(clean);
+        const hasPlace = /placeholder\s*=\s*["']Kullanıcı adınızı girin["']/i.test(clean);
+        if (hasReq && hasPlace) {
+          return { ok: true, msg: "Mükemmel! required ve placeholder doğrulama kuralları eklendi. 10. Modül Tamamlandı! 🛍️" };
+        }
+        return { ok: false, msg: "Hata: placeholder=\"Kullanıcı adınızı girin\" ve required özniteliklerini ekleyin." };
+      }
+    }
+  ],
+  html_11: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: HEADER VE NAV",
+      title: "1. Soru: Üst Bilgi ve Navigasyon Menüsü",
+      prompt: "<header> etiketi açıp içine <h1>Site Başlığı</h1> ve altına <nav><a href=\"#\">Anasayfa</a></nav> ekleyebilir misin?",
+      presetCode: "<!-- header ve nav etiketlerini oluşturun -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<header>", "<h1>Site Başlığı</h1>", "<nav><a href=\"#\">Anasayfa</a></nav>", "</header>"],
+      hint: "<header>\n  <h1>Site Başlığı</h1>\n  <nav>\n    <a href=\"#\">Anasayfa</a>\n  </nav>\n</header>",
+      solution: "<header>\n  <h1>Site Başlığı</h1>\n  <nav>\n    <a href=\"#\">Anasayfa</a>\n  </nav>\n</header>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasHeader = /<header\s*>[\s\S]*<\/header\s*>/i.test(clean);
+        const hasH1 = /<h1\s*>\s*Site Başlığı\s*<\/h1\s*>/i.test(clean);
+        const hasNav = /<nav\s*>[\s\S]*<a[^>]*>\s*Anasayfa\s*<\/a>[\s\S]*<\/nav\s*>/i.test(clean);
+        if (hasHeader && hasH1 && hasNav) {
+          return { ok: true, msg: "Harika! <header> ve <nav> semantik alanı oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <header> içine <h1>Site Başlığı</h1> ve <nav><a href=\"#\">Anasayfa</a></nav> ekleyin." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: TEKİL ANA İÇERİK (MAIN)",
+      title: "2. Soru: Sayfanın Ana Gövdesi (<main>)",
+      prompt: "Sayfanın ana içeriklerini sarmalayan <main> etiketini ve içine <p>Ana içerik buradadır.</p> paragrafını yazabilir misin?",
+      presetCode: "<!-- main etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<main>", "<p>Ana içerik buradadır.</p>", "</main>", "<section>"],
+      hint: "<main>\n  <p>Ana içerik buradadır.</p>\n</main>",
+      solution: "<main>\n  <p>Ana içerik buradadır.</p>\n</main>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<main\s*>[\s\S]*<p\s*>\s*Ana içerik buradadır\.\s*<\/p\s*>[\s\S]*<\/main\s*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Sayfanın tekil <main> ana gövdesi tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <main><p>Ana içerik buradadır.</p></main> şeklinde yazın." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: MAKALE VE BÖLÜM (ARTICLE & SECTION)",
+      title: "3. Soru: Bağımsız Makale Kartı (<article>)",
+      prompt: "<article> etiketi açıp içine <h2>HTML5 Yenilikleri</h2> ve <p>Semantik etiketler tanıtıldı.</p> ekleyebilir misin?",
+      presetCode: "<!-- article etiketini oluşturun -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<article>", "<h2>HTML5 Yenilikleri</h2>", "<p>Semantik etiketler tanıtıldı.</p>", "</article>"],
+      hint: "<article>\n  <h2>HTML5 Yenilikleri</h2>\n  <p>Semantik etiketler tanıtıldı.</p>\n</article>",
+      solution: "<article>\n  <h2>HTML5 Yenilikleri</h2>\n  <p>Semantik etiketler tanıtıldı.</p>\n</article>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<article\s*>[\s\S]*<h2\s*>\s*HTML5 Yenilikleri\s*<\/h2\s*>[\s\S]*<p\s*>\s*Semantik etiketler tanıtıldı\.\s*<\/p\s*>[\s\S]*<\/article\s*>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! <article> bağımsız içerik bloğu doğru oluşturuldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <article> içine <h2>HTML5 Yenilikleri</h2> ve paragrafını ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: YAN ÇUBUK (ASIDE)",
+      title: "4. Soru: İkincil İçerik Alanı (<aside>)",
+      prompt: "Yan çubuk (sidebar) oluşturmak için <aside> açıp içine <h3>Son Yazılar</h3> başlığını ekleyebilir misin?",
+      presetCode: "<!-- aside etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<aside>", "<h3>Son Yazılar</h3>", "</aside>", "<aside><h3>Son Yazılar</h3></aside>"],
+      hint: "<aside>\n  <h3>Son Yazılar</h3>\n</aside>",
+      solution: "<aside>\n  <h3>Son Yazılar</h3>\n</aside>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<aside\s*>[\s\S]*<h3\s*>\s*Son Yazılar\s*<\/h3\s*>[\s\S]*<\/aside\s*>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <aside> yan çubuk alanı doğru kuruldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <aside><h3>Son Yazılar</h3></aside> yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 11: ALT BİLGİ (FOOTER)",
+      title: "5. Soru: Sayfa Alt Bilgisi (<footer>)",
+      prompt: "Sayfanın en altına <footer> açıp içine <p>&copy; 2026 Kod Çiftliği</p> telif yazısını ekleyebilir misin?",
+      presetCode: "<!-- footer etiketini ekleyin -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<footer>", "<p>&copy; 2026 Kod Çiftliği</p>", "</footer>", "&copy;"],
+      hint: "<footer>\n  <p>&copy; 2026 Kod Çiftliği</p>\n</footer>",
+      solution: "<footer>\n  <p>&copy; 2026 Kod Çiftliği</p>\n</footer>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<footer\s*>[\s\S]*<p\s*>[\s\S]*(&copy;|©)\s*2026\s*Kod Çiftliği[\s\S]*<\/p\s*>[\s\S]*<\/footer\s*>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! <footer> semantik alt bilgi alanı oluşturuldu. 11. Modül Tamamlandı! 🚄" };
+        }
+        return { ok: false, msg: "Hata: <footer><p>&copy; 2026 Kod Çiftliği</p></footer> eklemelisiniz." };
+      }
+    }
+  ],
+  html_12: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: SES OYNATICI (AUDIO)",
+      title: "1. Soru: Ses Etiketi ve Kontrolleri",
+      prompt: "Kontrol paneli görünen <audio controls> açıp içine <source src=\"muzik.mp3\" type=\"audio/mpeg\"> ekleyebilir misin?",
+      presetCode: "<!-- audio etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<audio controls>", "<source src=\"muzik.mp3\" type=\"audio/mpeg\">", "</audio>", "controls"],
+      hint: "<audio controls>\n  <source src=\"muzik.mp3\" type=\"audio/mpeg\">\n</audio>",
+      solution: "<audio controls>\n  <source src=\"muzik.mp3\" type=\"audio/mpeg\">\n</audio>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasAudio = /<audio\s+[^>]*controls[^>]*>[\s\S]*<\/audio>/i.test(clean);
+        const hasSource = /<source\s+[^>]*src\s*=\s*["']muzik\.mp3["'][^>]*type\s*=\s*["']audio\/mpeg["'][^>]*>/i.test(clean);
+        if (hasAudio && hasSource) {
+          return { ok: true, msg: "Harika! <audio controls> ses oynatıcısı başarıyla kuruldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <audio controls><source src=\"muzik.mp3\" type=\"audio/mpeg\"></audio> yazın." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: VİDEO OYNATICI (VIDEO CONTROLS)",
+      title: "2. Soru: Video ve Kapak Resmi (poster)",
+      prompt: "Genişliği width=\"640\", kontrolleri aktif (controls) ve kapak resmi poster=\"kapak.jpg\" olan <video> etiketini yazabilir misin?",
+      presetCode: "<!-- video etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<video width=\"640\" controls poster=\"kapak.jpg\">", "</video>", "poster=\"kapak.jpg\"", "controls"],
+      hint: "<video width=\"640\" controls poster=\"kapak.jpg\">\n  <source src=\"tanitim.mp4\" type=\"video/mp4\">\n</video>",
+      solution: "<video width=\"640\" controls poster=\"kapak.jpg\">\n  <source src=\"tanitim.mp4\" type=\"video/mp4\">\n</video>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasControls = /controls/i.test(clean);
+        const hasPoster = /poster\s*=\s*["']kapak\.jpg["']/i.test(clean);
+        const hasVideo = /<video[^>]*>[\s\S]*<\/video>/i.test(clean);
+        if (hasControls && hasPoster && hasVideo) {
+          return { ok: true, msg: "Mükemmel! <video> kontrolleri ve poster kapak resmi doğru bağlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <video width=\"640\" controls poster=\"kapak.jpg\">...</video> yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: OTOMATİK OYNATMA (AUTOPLAY MUTED)",
+      title: "3. Soru: Sessiz Otomatik Video",
+      prompt: "Aşağıdaki videoya sayfa açılınca sessizce otomatik başlaması ve döngüye girmesi için autoplay muted loop özniteliklerini ekleyebilir misin?",
+      presetCode: "<video width=\"400\">\n  <source src=\"arka-plan.mp4\" type=\"video/mp4\">\n</video>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["autoplay muted loop", "autoplay", "muted", "loop"],
+      hint: "<video width=\"400\" autoplay muted loop>\n  <source src=\"arka-plan.mp4\" type=\"video/mp4\">\n</video>",
+      solution: "<video width=\"400\" autoplay muted loop>\n  <source src=\"arka-plan.mp4\" type=\"video/mp4\">\n</video>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasAuto = /autoplay/i.test(clean);
+        const hasMuted = /muted/i.test(clean);
+        const hasLoop = /loop/i.test(clean);
+        if (hasAuto && hasMuted && hasLoop) {
+          return { ok: true, msg: "Tebrikler! autoplay, muted ve loop öznitelikleri doğru eklendi. ✓" };
+        }
+        return { ok: false, msg: "Hata: <video> etiketine autoplay, muted ve loop özniteliklerini ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: GÖMÜLÜ İÇERİK (IFRAME)",
+      title: "4. Soru: YouTube Videosu Gömme",
+      prompt: "Genişliği width=\"560\", yüksekliği height=\"315\", kaynağı src=\"https://www.youtube.com/embed/kod\" ve title=\"Video\" olan <iframe> etiketini yazabilir misin?",
+      presetCode: "<!-- iframe etiketini yazın -->\n",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<iframe src=\"https://www.youtube.com/embed/kod\" title=\"Video\" width=\"560\" height=\"315\"></iframe>", "<iframe>", "</iframe>", "title=\"Video\""],
+      hint: "<iframe src=\"https://www.youtube.com/embed/kod\" title=\"Video\" width=\"560\" height=\"315\"></iframe>",
+      solution: "<iframe src=\"https://www.youtube.com/embed/kod\" title=\"Video\" width=\"560\" height=\"315\"></iframe>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasSrc = /src\s*=\s*["']https:\/\/www\.youtube\.com\/embed\/kod["']/i.test(clean);
+        const hasTitle = /title\s*=\s*["']Video["']/i.test(clean);
+        const hasIframe = /<iframe[^>]*>[\s\S]*<\/iframe>/i.test(clean);
+        if (hasSrc && hasTitle && hasIframe) {
+          return { ok: true, msg: "Harika! <iframe> gömülü medya alanı doğru yapılandırıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <iframe src=\"https://www.youtube.com/embed/kod\" title=\"Video\" width=\"560\" height=\"315\"></iframe> yazın." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 12: ÇOKLU FORMAT (SOURCE FALLBACK)",
+      title: "5. Soru: Alternatif Video Formatları",
+      prompt: "Aşağıdaki videoya hem MP4 (<source src=\"video.mp4\" type=\"video/mp4\">) hem de WebM (<source src=\"video.webm\" type=\"video/webm\">) formatlarını ekleyebilir misin?",
+      presetCode: "<video controls>\n  <!-- MP4 ve WebM source etiketlerini ekleyin -->\n</video>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<source src=\"video.mp4\" type=\"video/mp4\">", "<source src=\"video.webm\" type=\"video/webm\">", "<source src=\"", "type=\"video/webm\""],
+      hint: "<video controls>\n  <source src=\"video.mp4\" type=\"video/mp4\">\n  <source src=\"video.webm\" type=\"video/webm\">\n</video>",
+      solution: "<video controls>\n  <source src=\"video.mp4\" type=\"video/mp4\">\n  <source src=\"video.webm\" type=\"video/webm\">\n</video>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasMp4 = /<source\s+[^>]*src\s*=\s*["']video\.mp4["'][^>]*type\s*=\s*["']video\/mp4["'][^>]*>/i.test(clean);
+        const hasWebm = /<source\s+[^>]*src\s*=\s*["']video\.webm["'][^>]*type\s*=\s*["']video\/webm["'][^>]*>/i.test(clean);
+        if (hasMp4 && hasWebm) {
+          return { ok: true, msg: "Mükemmel! Çift format desteği ile tam tarayıcı uyumluluğu sağlandı. 12. Modül Tamamlandı! 📡" };
+        }
+        return { ok: false, msg: "Hata: Hem video.mp4 hem de video.webm source etiketlerini ekleyin." };
+      }
+    }
+  ],
+  html_13: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: KARAKTER SETİ (CHARSET)",
+      title: "1. Soru: UTF-8 Karakter Kodlaması",
+      prompt: "<head> bölümünün en başına Türkçe karakterlerin doğru görünmesi için <meta charset=\"UTF-8\"> etiketini ekleyebilir misin?",
+      presetCode: "<head>\n  <!-- meta charset etiketini ekleyin -->\n  <title>Sayfam</title>\n</head>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<meta charset=\"UTF-8\">", "<meta charset=\"", "UTF-8", "<meta"],
+      hint: "<head>\n  <meta charset=\"UTF-8\">\n  <title>Sayfam</title>\n</head>",
+      solution: "<head>\n  <meta charset=\"UTF-8\">\n  <title>Sayfam</title>\n</head>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<meta\s+charset\s*=\s*["']UTF-8["']\s*\/?>/i.test(clean)) {
+          return { ok: true, msg: "Harika! <meta charset=\"UTF-8\"> karakter seti başarıyla tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <meta charset=\"UTF-8\"> etiketini <head> içine ekleyin." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: MOBİL UYUMLULUK (VIEWPORT)",
+      title: "2. Soru: Responsive Viewport Meta Etiketi",
+      prompt: "Mobil cihazlarda tam uyumlu ölçekleme için <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> etiketini yazabilir misin?",
+      presetCode: "<head>\n  <meta charset=\"UTF-8\">\n  <!-- viewport etiketini ekleyin -->\n</head>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">", "name=\"viewport\"", "content=\"width=device-width, initial-scale=1.0\""],
+      hint: "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      solution: "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n</head>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<meta\s+[^>]*name\s*=\s*["']viewport["'][^>]*content\s*=\s*["']width=device-width,\s*initial-scale=1\.0["'][^>]*\/?>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Viewport meta etiketi mobil uyumu sağladı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: SEO AÇIKLAMASI (DESCRIPTION)",
+      title: "3. Soru: Google Arama Açıklaması",
+      prompt: "Google arama sonuçlarında görünmesi için <meta name=\"description\" content=\"Kodlama öğrenmenin en eğlenceli yolu.\"> etiketini ekleyebilir misin?",
+      presetCode: "<head>\n  <!-- description meta etiketini ekleyin -->\n</head>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<meta name=\"description\" content=\"Kodlama öğrenmenin en eğlenceli yolu.\">", "name=\"description\"", "content=\"Kodlama öğrenmenin en eğlenceli yolu.\""],
+      hint: "<meta name=\"description\" content=\"Kodlama öğrenmenin en eğlenceli yolu.\">",
+      solution: "<head>\n  <meta name=\"description\" content=\"Kodlama öğrenmenin en eğlenceli yolu.\">\n</head>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<meta\s+[^>]*name\s*=\s*["']description["'][^>]*content\s*=\s*["']Kodlama öğrenmenin en eğlenceli yolu\.["'][^>]*\/?>/i.test(clean)) {
+          return { ok: true, msg: "Tebrikler! SEO description meta etiketi başarıyla tanımlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <meta name=\"description\" content=\"Kodlama öğrenmenin en eğlenceli yolu.\"> yazın." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: ÖZEL KARAKTERLER (ENTITIES)",
+      title: "4. Soru: &lt; ve &gt; Sembolleri",
+      prompt: "Aşağıdaki paragrafta etiketi bozmadan ekranda '5 < 10 & 20 > 15' görünmesi için &lt; , &amp; ve &gt; entity kodlarını yazabilir misin?",
+      presetCode: "<p>5 &lt; 10 &amp; 20 &gt; 15</p>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["&lt;", "&gt;", "&amp;", "&nbsp;", "&copy;"],
+      hint: "<p>5 &lt; 10 &amp; 20 &gt; 15</p>",
+      solution: "<p>5 &lt; 10 &amp; 20 &gt; 15</p>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<p>[\s\S]*5\s*&lt;\s*10\s*&amp;\s*20\s*&gt;\s*15[\s\S]*<\/p>/i.test(clean)) {
+          return { ok: true, msg: "Harika! HTML Entity kodları (&lt;, &amp;, &gt;) doğru kullanıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <p>5 &lt; 10 &amp; 20 &gt; 15</p> şeklinde yazmalısınız." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 13: SEKME İKONU (FAVICON)",
+      title: "5. Soru: link rel='icon' Favicon Bağlama",
+      prompt: "Head içine tarayıcı sekme ikonu ekleyen <link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\"> etiketini ekleyebilir misin?",
+      presetCode: "<head>\n  <!-- favicon link etiketini ekleyin -->\n</head>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\">", "rel=\"icon\"", "href=\"favicon.ico\"", "<link"],
+      hint: "<link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\">",
+      solution: "<head>\n  <link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\">\n</head>",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/<link\s+[^>]*rel\s*=\s*["']icon["'][^>]*href\s*=\s*["']favicon\.ico["'][^>]*\/?>/i.test(clean) ||
+            /<link\s+[^>]*href\s*=\s*["']favicon\.ico["'][^>]*rel\s*=\s*["']icon["'][^>]*\/?>/i.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Favicon sekme ikonu doğru bağlandı. 13. Modül Tamamlandı! 🚢" };
+        }
+        return { ok: false, msg: "Hata: <link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\"> yazın." };
+      }
+    }
+  ],
+  html_14: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: PROJE ADIM 1: HEAD YAPILANDIRMASI",
+      title: "1. Soru: Standart Head & SEO Kurulumu",
+      prompt: "HTML5 Doctype ile başlayan, içinde UTF-8 charset, viewport ve <title>Mega Siber Metropol</title> barındıran <head> bölümünü oluşturabilir misin?",
+      presetCode: "<!DOCTYPE html>\n<html lang=\"tr\">\n<!-- head bölümünü tamamlayın -->\n</html>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<meta charset=\"UTF-8\">", "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">", "<title>Mega Siber Metropol</title>", "<head>", "</head>"],
+      hint: "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Mega Siber Metropol</title>\n</head>",
+      solution: "<!DOCTYPE html>\n<html lang=\"tr\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Mega Siber Metropol</title>\n</head>\n</html>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasChar = /<meta\s+charset\s*=\s*["']UTF-8["']/i.test(clean);
+        const hasView = /<meta\s+[^>]*name\s*=\s*["']viewport["']/i.test(clean);
+        const hasTitle = /<title\s*>\s*Mega Siber Metropol\s*<\/title\s*>/i.test(clean);
+        if (hasChar && hasView && hasTitle) {
+          return { ok: true, msg: "Harika! Projenin profesyonel Head ve SEO temeli atıldı. ✓" };
+        }
+        return { ok: false, msg: "Hata: charset='UTF-8', viewport ve <title>Mega Siber Metropol</title> ekleyin." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: PROJE ADIM 2: SEMANTİK HEADER & MENÜ",
+      title: "2. Soru: Header ve Gezinti Menüsü",
+      prompt: "<body> içine <header> açıp içinde <h1>CodeFarm Metropol</h1> ve <nav> içinde 'Hakkımızda' ile 'İletişim' linklerini ekleyebilir misin?",
+      presetCode: "<body>\n  <!-- header ve nav menüsünü ekleyin -->\n</body>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<header>", "<h1>CodeFarm Metropol</h1>", "<nav><a href=\"#\">Hakkımızda</a><a href=\"#\">İletişim</a></nav>", "</header>"],
+      hint: "<header>\n  <h1>CodeFarm Metropol</h1>\n  <nav>\n    <a href=\"#hakkimizda\">Hakkımızda</a>\n    <a href=\"#iletisim\">İletişim</a>\n  </nav>\n</header>",
+      solution: "<header>\n  <h1>CodeFarm Metropol</h1>\n  <nav>\n    <a href=\"#hakkimizda\">Hakkımızda</a>\n    <a href=\"#iletisim\">İletişim</a>\n  </nav>\n</header>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasH1 = /<h1\s*>\s*CodeFarm Metropol\s*<\/h1\s*>/i.test(clean);
+        const hasNav = /<nav>[\s\S]*Hakkımızda[\s\S]*İletişim[\s\S]*<\/nav>/i.test(clean);
+        if (hasH1 && hasNav) {
+          return { ok: true, msg: "Mükemmel! Semantik header ve navigasyon menüsü başarıyla kuruldu. ✓" };
+        }
+        return { ok: false, msg: "Hata: <header> içine <h1>CodeFarm Metropol</h1> ve <nav> linklerini ekleyin." };
+      }
+    },
+    {
+      stepNum: 3,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: PROJE ADIM 3: MAIN & ARTICLE BÖLÜMÜ",
+      title: "3. Soru: Ana İçerik ve Görsel Kartı",
+      prompt: "<main> içine bir <article> açıp içine <h2>Şehir Gelişimi</h2>, bir paragraf ve <img src=\"sehir.png\" alt=\"Şehir Manzarası\"> ekleyebilir misin?",
+      presetCode: "<main>\n  <!-- article ve resim ekleyin -->\n</main>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<article>", "<h2>Şehir Gelişimi</h2>", "<p>Metropol hızla büyüyor.</p>", "<img src=\"sehir.png\" alt=\"Şehir Manzarası\">", "</article>"],
+      hint: "<main>\n  <article>\n    <h2>Şehir Gelişimi</h2>\n    <p>Metropol hızla büyüyor.</p>\n    <img src=\"sehir.png\" alt=\"Şehir Manzarası\">\n  </article>\n</main>",
+      solution: "<main>\n  <article>\n    <h2>Şehir Gelişimi</h2>\n    <p>Metropol hızla büyüyor.</p>\n    <img src=\"sehir.png\" alt=\"Şehir Manzarası\">\n  </article>\n</main>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasArticle = /<article>[\s\S]*<h2>\s*Şehir Gelişimi\s*<\/h2>[\s\S]*<img[^>]*src\s*=\s*["']sehir\.png["'][^>]*alt\s*=\s*["']Şehir Manzarası["'][^>]*>[\s\S]*<\/article>/i.test(clean);
+        if (hasArticle) {
+          return { ok: true, msg: "Tebrikler! Ana içerik article bloğu ve görsel başarıyla entegre edildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: <article> içine <h2>Şehir Gelişimi</h2> ve <img src=\"sehir.png\" alt=\"Şehir Manzarası\"> ekleyin." };
+      }
+    },
+    {
+      stepNum: 4,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: PROJE ADIM 4: İLETİŞİM FORMU ENTEGRASYONU",
+      title: "4. Soru: Doğrulamalı İletişim Formu",
+      prompt: "<section id=\"iletisim\"> içine <form action=\"/mesaj\" method=\"POST\"> açıp e-posta inputu, zorunlu <textarea name=\"mesaj\" required></textarea> ve submit butonu ekleyebilir misin?",
+      presetCode: "<section id=\"iletisim\">\n  <!-- İletişim formunu buraya ekleyin -->\n</section>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<form action=\"/mesaj\" method=\"POST\">", "<input type=\"email\" name=\"eposta\" required>", "<textarea name=\"mesaj\" required></textarea>", "<button type=\"submit\">Gönder</button>", "</form>"],
+      hint: "<section id=\"iletisim\">\n  <form action=\"/mesaj\" method=\"POST\">\n    <input type=\"email\" name=\"eposta\" required>\n    <textarea name=\"mesaj\" required></textarea>\n    <button type=\"submit\">Gönder</button>\n  </form>\n</section>",
+      solution: "<section id=\"iletisim\">\n  <form action=\"/mesaj\" method=\"POST\">\n    <input type=\"email\" name=\"eposta\" required>\n    <textarea name=\"mesaj\" required></textarea>\n    <button type=\"submit\">Gönder</button>\n  </form>\n</section>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasForm = /<form\s+[^>]*action\s*=\s*["']\/mesaj["'][^>]*method\s*=\s*["']POST["'][^>]*>/i.test(clean);
+        const hasTextarea = /<textarea[^>]*name\s*=\s*["']mesaj["'][^>]*required/i.test(clean);
+        const hasSubmit = /<button[^>]*type\s*=\s*["']submit["'][^>]*>/i.test(clean) || /<input[^>]*type\s*=\s*["']submit["'][^>]*>/i.test(clean);
+        if (hasForm && hasTextarea && hasSubmit) {
+          return { ok: true, msg: "Harika! İletişim formu ve doğrulama kuralları doğru bağlandı. ✓" };
+        }
+        return { ok: false, msg: "Hata: <form action=\"/mesaj\" method=\"POST\"> içine required textarea ve submit butonu ekleyin." };
+      }
+    },
+    {
+      stepNum: 5,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 14: PROJE ADIM 5: BÜYÜK FİNAL DOĞRULAMASI",
+      title: "5. Soru: Footer & HTML5 Ustalık Mührü",
+      prompt: "En alta <footer><p>&copy; 2026 CodeFarm - Tüm Hakları Saklıdır.</p></footer> ekleyip </body> ve </html> ile projeyi tamamlayabilir misin?",
+      presetCode: "  <!-- footer ekleyin -->\n  <footer><p>&copy; 2026 CodeFarm - Tüm Hakları Saklıdır.</p></footer>\n</body>\n</html>",
+      filename: "index.html",
+      lang: "HTML5",
+      quickKeys: ["<footer><p>&copy; 2026 CodeFarm - Tüm Hakları Saklıdır.</p></footer>", "</body>", "</html>", "&copy;"],
+      hint: "<footer>\n  <p>&copy; 2026 CodeFarm - Tüm Hakları Saklıdır.</p>\n</footer>\n</body>\n</html>",
+      solution: "<footer>\n  <p>&copy; 2026 CodeFarm - Tüm Hakları Saklıdır.</p>\n</footer>\n</body>\n</html>",
+      validator: (code) => {
+        const clean = code.trim();
+        const hasFooter = /<footer\s*>[\s\S]*(&copy;|©)\s*2026\s*CodeFarm[\s\S]*<\/footer\s*>/i.test(clean);
+        const hasBodyEnd = /<\/body>/i.test(clean);
+        const hasHtmlEnd = /<\/html>/i.test(clean);
+        if (hasFooter && hasBodyEnd && hasHtmlEnd) {
+          return { ok: true, msg: "TEBRİKLER! 🏆 Tüm HTML5 modüllerini ve 70 alıştırmayı başarıyla tamamlayarak Mega Siber Metropol seviyesine ulaştınız! 🚀" };
+        }
+        return { ok: false, msg: "Hata: <footer><p>&copy; 2026 CodeFarm - Tüm Hakları Saklıdır.</p></footer> ve </body></html> ile projeyi tamamlayın." };
+      }
+    }
+  ],
+  python_1: [
+    {
+      stepNum: 1,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: DEĞİŞKEN ADLANDIRMA",
+      title: "1. Soru: Değişken Adlandırma Hatası",
+      prompt: "Yandaki kod parçasında değişken adlandırmasında (rakamla başlama kuralı) bir hata var gibi, bu hatayı düzeltebilir misin?",
+      presetCode: "1sayi = 12\n# Doğru Kod Parçası:\n",
+      filename: "degiskenler.py",
+      lang: "Python 3.11",
+      quickKeys: ["sayi_1 = 12", "sayi1 = 12", "sayi_1", " = ", "12"],
+      hint: "Değişken isimleri rakamla başlayamaz (örn: sayi_1 = 12).",
+      solution: "sayi_1 = 12",
+      validator: (code) => {
+        const clean = code.trim();
+        if (/^\s*1[a-zA-Z0-9_]*\s*=/m.test(clean)) {
+          return { ok: false, msg: "Hata: Değişken ismi rakamla (1...) başlayamaz! Rakamı sona veya ortaya koyun (örn: sayi_1 = 12)." };
+        }
+        if (/[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*\d+/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! Değişken adı başarıyla düzeltildi. ✓" };
+        }
+        return { ok: false, msg: "Hata: Lütfen geçerli bir değişken tanımlayıp bir sayı atayın (örn: sayi_1 = 12)." };
+      }
+    },
+    {
+      stepNum: 2,
+      totalSteps: 5,
+      moduleSubtitle: "MODÜL 1: AYRILMIŞ KELİMELER",
+      title: "2. Soru: Değişken Adında Anahtar Kelime",
+      prompt: "Yandaki kod parçasında Python anahtar kelimesi (int) değişken adı olarak kullanılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "int = \"a\"\n# Doğru Kod Parçası:\n",
+      filename: "degiskenler.py",
+      lang: "Python 3.11",
+      quickKeys: ["metin = \"a\"", "harf = \"a\"", "metin", "harf"],
+      hint: "'int' yerleşik tür adıdır. Bunun yerine 'metin = \"a\"' kullanabilirsiniz.",
       solution: 'metin = "a"',
       validator: (code) => {
         const clean = code.trim();
@@ -2124,36 +4022,33 @@ const CHALLENGES_DATABASE = {
     {
       stepNum: 3,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: TAM SAYI TANIMLAMA',
-      title: '3. Soru: Tam Sayı Değişkeni',
-      prompt: "<code class=\"code-highlight\">sayi</code> adında bir tam sayı değişkeni tanımlayabilir misin?",
-      presetCode: `# "sayi" adında bir tam sayı değişkeni tanımla:\n`,
-      filename: 'degiskenler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['sayi', ' = ', '5', '10', '42'],
+      moduleSubtitle: "MODÜL 1: TAM SAYI TANIMLAMA",
+      title: "3. Soru: Tam Sayı Değişkeni",
+      prompt: "Yandaki kod parçasında tam sayı değişkeni tanımlanırken tırnak işareti hatası yapılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "sayi = \"5\"\n# Doğru Kod Parçası:\n",
+      filename: "degiskenler.py",
+      lang: "Python 3.11",
+      quickKeys: ["sayi = 5", "sayi = 10", "sayi = "],
       hint: "sayi = 5",
       solution: "sayi = 5",
       validator: (code) => {
         const clean = code.trim();
-        if (/sayi\s*=\s*\d+/.test(clean)) {
-          return { ok: true, msg: "Mükemmel! 'sayi' isimli tam sayı değişkeni başarıyla tanımlandı. ✓" };
+        if (/sayi\s*=\s*\d+/.test(clean) && !/sayi\s*=\s*['"]\d+['"]/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! 'sayi' isimli tam sayı değişkeni tırnaksız tanımlandı. ✓" };
         }
-        if (!clean.includes('sayi')) {
-          return { ok: false, msg: "Hata: Değişken adı 'sayi' olmalıdır." };
-        }
-        return { ok: false, msg: "Hata: 'sayi' değişkenine bir tam sayı atamalısınız (örn: sayi = 5)." };
+        return { ok: false, msg: "Hata: Tam sayılar tırnaksız yazılır (örn: sayi = 5)." };
       }
     },
     {
       stepNum: 4,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: METİN TANIMLAMA',
-      title: '4. Soru: Metin Değişkeni',
-      prompt: "<code class=\"code-highlight\">isim</code> adında bir metin (string) değişkeni tanımlayabilir misin?",
-      presetCode: `# "isim" adında bir metin değişkeni tanımla:\n`,
-      filename: 'degiskenler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['isim', ' = ', '"Bengi"', "'Bengi'"],
+      moduleSubtitle: "MODÜL 1: METİN TANIMLAMA",
+      title: "4. Soru: Metin (String) Değişkeni",
+      prompt: "Yandaki kod parçasında metin (string) değişkenine değer atanırken tırnak işareti unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "isim = Bengi\n# Doğru Kod Parçası:\n",
+      filename: "degiskenler.py",
+      lang: "Python 3.11",
+      quickKeys: ["isim = \"Bengi\"", "isim = 'Bengi'", "isim = "],
       hint: 'isim = "Bengi"',
       solution: 'isim = "Bengi"',
       validator: (code) => {
@@ -2161,48 +4056,27 @@ const CHALLENGES_DATABASE = {
         if (/isim\s*=\s*['"][^'"]+['"]/.test(clean)) {
           return { ok: true, msg: "Tebrikler! 'isim' değişkeni doğru bir string olarak tanımlandı. ✓" };
         }
-        if (!clean.includes('isim')) {
-          return { ok: false, msg: "Hata: Değişken adı 'isim' olmalıdır." };
-        }
-        return { ok: false, msg: 'Hata: String ifadeler tırnak içine yazılmalıdır (örn: isim = "Bengi").' };
+        return { ok: false, msg: 'Hata: Metin ifadeler tırnak içine yazılmalıdır (örn: isim = "Bengi").' };
       }
     },
     {
       stepNum: 5,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 1: DEĞİŞKENLER VE EKRANA YAZDIRMA',
-      title: '5. Soru: Değişken Tanımlama & Ekrana Yazdırma',
-      prompt: "<code class=\"code-highlight\">isim</code>, <code class=\"code-highlight\">yas</code> ve <code class=\"code-highlight\">meslek</code> isminde 3 değişken tanımlayıp bunları <code class=\"code-highlight\">print()</code> ile ekrana yazdırabilir misin?",
-      presetCode: `# 1. "isim", "yas" ve "meslek" adında 3 değişken tanımla:\n# 2. Tanımladığın değişkenleri print() ile ekrana yazdır:\n`,
-      filename: 'degiskenler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['isim = ', 'yas = ', 'meslek = ', 'print(', 'isim', 'yas', 'meslek', '"Bengi"', '25', '"Mühendis"'],
-      hint: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"\nprint(isim, yas, meslek)',
-      solution: 'isim = "Bengi"\nyas = 25\nmeslek = "Mühendis"\nprint(isim, yas, meslek)',
+      moduleSubtitle: "MODÜL 1: EKRANA YAZDIRMA (PRINT)",
+      title: "5. Soru: Ekrana Yazdırma Parantezi",
+      prompt: "Yandaki kod parçasında ekrana yazdırma fonksiyonunun (print) parantezinde bir sözdizim hatası var gibi, bunu düzeltebilir misin?",
+      presetCode: "print \"Merhaba Dünya\"\n# Doğru Kod Parçası:\n",
+      filename: "degiskenler.py",
+      lang: "Python 3.11",
+      quickKeys: ["print(\"Merhaba Dünya\")", "print(", ")"],
+      hint: 'print("Merhaba Dünya")',
+      solution: 'print("Merhaba Dünya")',
       validator: (code) => {
         const clean = code.trim();
-        const hasIsim = /isim\s*=\s*['"][^'"]+['"]/.test(clean);
-        const hasYas = /yas\s*=\s*\d+/.test(clean);
-        const hasMeslek = /meslek\s*=\s*['"][^'"]+['"]/.test(clean);
-
-        // print fonksiyonunun çağrılıp çağrılmadığını kontrol et
-        const hasPrint = /print\s*\(/.test(clean);
-        const printsVariables = hasPrint && (
-          /print\s*\(.*(isim|yas|meslek)/.test(clean) ||
-          /print\s*\(.*f['"]/.test(clean)
-        );
-
-        if (hasIsim && hasYas && hasMeslek && printsVariables) {
-          return { ok: true, msg: "Mükemmel iş! 3 değişken de başarıyla tanımlandı ve print() ile ekrana yazdırıldı. Seviye tamamlandı! 🎉" };
+        if (/print\s*\(\s*["']Merhaba Dünya["']\s*\)/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! print() parantezleri başarıyla tamamlandı. 1. Modül Tamamlandı! 🏆" };
         }
-
-        const missing = [];
-        if (!hasIsim) missing.push('isim (metin)');
-        if (!hasYas) missing.push('yas (sayı)');
-        if (!hasMeslek) missing.push('meslek (metin)');
-        if (!printsVariables) missing.push('print() ile değişkenleri yazdırma');
-
-        return { ok: false, msg: `Eksik veya hatalı adımlar: ${missing.join(', ')}. Lütfen 3 değişkeni tanımlayıp print() ile ekrana yazdırın.` };
+        return { ok: false, msg: 'Hata: print("Merhaba Dünya") şeklinde parantez içine almalısınız.' };
       }
     }
   ],
@@ -2210,116 +4084,101 @@ const CHALLENGES_DATABASE = {
     {
       stepNum: 1,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 2: İNDEKSLERE ERİŞİM',
-      title: '1. Soru: İlk Harfe Erişme',
-      prompt: "<code class=\"code-highlight\">kelime = \"Python\"</code> değişkeninin ilk karakterini (<code class=\"code-highlight\">0. indeks</code>) <code class=\"code-highlight\">print()</code> ile ekrana yazdırabilir misin?",
-      presetCode: `kelime = "Python"\n# İlk harfi ekrana yazdır:\n`,
-      filename: 'stringler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['print(', 'kelime[0]', 'kelime', '[0]', '0'],
-      hint: 'print(kelime[0])',
-      solution: 'print(kelime[0])',
+      moduleSubtitle: "MODÜL 2: İNDEKSLERE ERİŞİM",
+      title: "1. Soru: İlk Harfe Erişme",
+      prompt: "Yandaki kod parçasında metnin ilk harfine erişirken indeks numarasında (1 yerine 0) bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "kelime = \"Python\"\nprint(kelime[1])\n# Doğru Kod Parçası:\n",
+      filename: "stringler.py",
+      lang: "Python 3.11",
+      quickKeys: ["print(kelime[0])", "kelime[0]", "print("],
+      hint: "print(kelime[0])",
+      solution: "kelime = \"Python\"\nprint(kelime[0])",
       validator: (code) => {
         const clean = code.trim();
-        if (/print\s*\(\s*(kelime\[0\]|['"]Python['"]\[0\])\s*\)/.test(clean)) {
-          return { ok: true, msg: "Tebrikler! İlk indeks başarıyla seçildi ve ekrana yazdırıldı. ✓" };
+        if (/kelime\[\s*0\s*\]/.test(clean) || /['"]Python['"]\[\s*0\s*\]/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! İlk indeks [0] başarıyla seçildi. ✓" };
         }
-        if (!clean.includes('[0]')) {
-          return { ok: false, msg: "Hata: İlk karaktere erişmek için [0] indeksini kullanmalısınız (örn: kelime[0])." };
-        }
-        return { ok: false, msg: "Hata: Lütfen print(kelime[0]) şeklinde sonucu ekrana yazdırın." };
+        return { ok: false, msg: "Hata: İlk karaktere erişmek için [0] indeksini kullanmalısınız: print(kelime[0])." };
       }
     },
     {
       stepNum: 2,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 2: METİN UZUNLUĞU',
-      title: '2. Soru: Metin Uzunluğunu Bulma',
-      prompt: "<code class=\"code-highlight\">mesaj = \"Kodlama\"</code> değişkeninin karakter uzunluğunu <code class=\"code-highlight\">len()</code> fonksiyonu ile ekrana yazdırabilir misin?",
-      presetCode: `mesaj = "Kodlama"\n# Karakter uzunluğunu ekrana yazdır:\n`,
-      filename: 'stringler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['print(', 'len(', 'mesaj', ')', 'len(mesaj)'],
-      hint: 'print(len(mesaj))',
-      solution: 'print(len(mesaj))',
+      moduleSubtitle: "MODÜL 2: METİN UZUNLUĞU",
+      title: "2. Soru: Metin Uzunluğunu Bulma",
+      prompt: "Yandaki kod parçasında metin uzunluğunu bulurken metot yerine len() fonksiyonu kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "mesaj = \"Kodlama\"\nprint(mesaj.length())\n# Doğru Kod Parçası:\n",
+      filename: "stringler.py",
+      lang: "Python 3.11",
+      quickKeys: ["print(len(mesaj))", "len(mesaj)", "len("],
+      hint: "print(len(mesaj))",
+      solution: "mesaj = \"Kodlama\"\nprint(len(mesaj))",
       validator: (code) => {
         const clean = code.trim();
-        if (/print\s*\(\s*len\s*\(\s*mesaj\s*\)\s*\)/.test(clean) || /uzunluk\s*=\s*len\(mesaj\)[\s\S]*print\(uzunluk\)/.test(clean)) {
+        if (/len\s*\(\s*mesaj\s*\)/.test(clean)) {
           return { ok: true, msg: "Harika! len() fonksiyonu ile metin uzunluğu doğru hesaplandı. ✓" };
         }
-        if (!clean.includes('len')) {
-          return { ok: false, msg: "Hata: Metin uzunluğunu ölçmek için len() fonksiyonunu kullanmalısınız (örn: len(mesaj))." };
-        }
-        return { ok: false, msg: "Hata: Lütfen print(len(mesaj)) şeklinde uzunluğu ekrana yazdırın." };
+        return { ok: false, msg: "Hata: Metin uzunluğunu ölçmek için print(len(mesaj)) kullanın." };
       }
     },
     {
       stepNum: 3,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 2: BÜYÜK HARFE ÇEVİRME',
-      title: '3. Soru: Büyük Harf Metodu (.upper)',
-      prompt: "<code class=\"code-highlight\">sehir = \"istanbul\"</code> metnini <code class=\"code-highlight\">.upper()</code> metodu ile tamamen büyük harfe dönüştürüp ekrana yazdırabilir misin?",
-      presetCode: `sehir = "istanbul"\n# Büyük harfe dönüştürüp yazdır:\n`,
-      filename: 'stringler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['print(', 'sehir.upper()', '.upper()', 'sehir'],
-      hint: 'print(sehir.upper())',
-      solution: 'print(sehir.upper())',
+      moduleSubtitle: "MODÜL 2: BÜYÜK HARFE ÇEVİRME",
+      title: "3. Soru: Büyük Harf Metodu (.upper)",
+      prompt: "Yandaki kod parçasında metni büyük harfe dönüştürürken .upper fonksiyonunun parantezi unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "sehir = \"istanbul\"\nprint(sehir.upper)\n# Doğru Kod Parçası:\n",
+      filename: "stringler.py",
+      lang: "Python 3.11",
+      quickKeys: ["print(sehir.upper())", "sehir.upper()", ".upper()"],
+      hint: "print(sehir.upper())",
+      solution: "sehir = \"istanbul\"\nprint(sehir.upper())",
       validator: (code) => {
         const clean = code.trim();
-        if (/print\s*\(\s*sehir\.upper\(\)\s*\)/.test(clean) || /sehir\.upper\(\)[\s\S]*print/.test(clean)) {
-          return { ok: true, msg: "Mükemmel! .upper() metodu ile metin başarıyla büyütüldü. ✓" };
+        if (/sehir\.upper\s*\(\s*\)/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! .upper() fonksiyon çağrısı doğru yapıldı. ✓" };
         }
-        if (!clean.includes('.upper()')) {
-          return { ok: false, msg: "Hata: Büyük harfe dönüştürmek için .upper() metodunu kullanmalısınız (örn: sehir.upper())." };
-        }
-        return { ok: false, msg: "Hata: Lütfen print(sehir.upper()) şeklinde çıktıyı ekrana yazdırın." };
+        return { ok: false, msg: "Hata: print(sehir.upper()) şeklinde parantez ekleyin." };
       }
     },
     {
       stepNum: 4,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 2: METİN DİLİMLEME (SLICING)',
-      title: '4. Soru: Metin Dilimleme',
-      prompt: "<code class=\"code-highlight\">kurs = \"Programlama\"</code> değişkeninden ilk 7 harfi (<code class=\"code-highlight\">\"Program\"</code>) dilimleyerek ekrana yazdırabilir misin?",
-      presetCode: `kurs = "Programlama"\n# İlk 7 harfi [0:7] dilimleyip yazdır:\n`,
-      filename: 'stringler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['print(', 'kurs[0:7]', 'kurs[:7]', '[0:7]', '[:7]'],
-      hint: 'print(kurs[0:7]) veya print(kurs[:7])',
-      solution: 'print(kurs[0:7])',
+      moduleSubtitle: "MODÜL 2: METİN DİLİMLEME (SLICING)",
+      title: "4. Soru: Metin Dilimleme",
+      prompt: "Yandaki kod parçasında metnin ilk 7 harfini dilimlerken (slicing) indeks aralığında bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "kurs = \"Programlama\"\nprint(kurs[0:5])\n# Doğru Kod Parçası:\n",
+      filename: "stringler.py",
+      lang: "Python 3.11",
+      quickKeys: ["print(kurs[0:7])", "print(kurs[:7])", "kurs[0:7]"],
+      hint: "print(kurs[0:7])",
+      solution: "kurs = \"Programlama\"\nprint(kurs[0:7])",
       validator: (code) => {
         const clean = code.trim();
-        if (/print\s*\(\s*kurs\[\s*(0\s*)?:\s*7\s*\]\s*\)/.test(clean)) {
-          return { ok: true, msg: "Harika! Dilimleme işlemi (slicing) başarıyla uygulandı. ✓" };
+        if (/kurs\[\s*(0\s*)?:\s*7\s*\]/.test(clean)) {
+          return { ok: true, msg: "Harika! [0:7] dilimleme aralığı doğru uygulandı. ✓" };
         }
-        if (!clean.includes(':7')) {
-          return { ok: false, msg: "Hata: İlk 7 karakteri almak için [0:7] veya [:7] dilimleme aralığını kullanın." };
-        }
-        return { ok: false, msg: "Hata: Lütfen print(kurs[0:7]) şeklinde dilimlenen metni yazdırın." };
+        return { ok: false, msg: "Hata: İlk 7 harf için print(kurs[0:7]) veya print(kurs[:7]) kullanın." };
       }
     },
     {
       stepNum: 5,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 2: MODERN METİN BİRLEŞTİRME (F-STRING)',
-      title: '5. Soru: f-string ile Birleştirme',
-      prompt: "<code class=\"code-highlight\">ad = \"Bengi\"</code> ve <code class=\"code-highlight\">puan = 100</code> değişkenlerini <code class=\"code-highlight\">f-string</code> ile birleştirip <code class=\"code-highlight\">f\"{ad} sınavdan {puan} aldı\"</code> cümlesini ekrana yazdırabilir misin?",
-      presetCode: `ad = "Bengi"\npuan = 100\n# f-string kullanarak ekrana yazdır:\n`,
-      filename: 'stringler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['print(f"', '{ad}', '{puan}', 'sınavdan', 'aldı")', 'f"{ad} sınavdan {puan} aldı"'],
+      moduleSubtitle: "MODÜL 2: MODERN METİN BİRLEŞTİRME (F-STRING)",
+      title: "5. Soru: f-string ile Birleştirme",
+      prompt: "Yandaki kod parçasında dinamik metin oluşturulurken f-string öneki (f\"...\") unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "ad = \"Bengi\"\npuan = 100\nprint(\"{ad} sınavdan {puan} aldı\")\n# Doğru Kod Parçası:\n",
+      filename: "stringler.py",
+      lang: "Python 3.11",
+      quickKeys: ["print(f\"{ad} sınavdan {puan} aldı\")", "f\"{ad} sınavdan {puan} aldı\"", "f\""],
       hint: 'print(f"{ad} sınavdan {puan} aldı")',
-      solution: 'print(f"{ad} sınavdan {puan} aldı")',
+      solution: 'ad = "Bengi"\npuan = 100\nprint(f"{ad} sınavdan {puan} aldı")',
       validator: (code) => {
         const clean = code.trim();
-        if (/print\s*\(\s*f['"].*\{ad\}.*\{puan\}.*['"]\s*\)/.test(clean)) {
-          return { ok: true, msg: "Tebrikler! f-string ile dinamik metin başarıyla oluşturuldu. 2. Modül Tamamlandı! 🚀" };
+        if (/f['"].*\{ad\}.*\{puan\}.*['"]/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! f-string ile dinamik metin oluşturuldu. 2. Modül Tamamlandı! 🚀" };
         }
-        if (!clean.includes('f"') && !clean.includes("f'")) {
-          return { ok: false, msg: "Hata: Modern formatlama için f-string kullanmalısınız (örn: f\"{ad} ... {puan}\")." };
-        }
-        return { ok: false, msg: 'Hata: Lütfen print(f"{ad} sınavdan {puan} aldı") şeklinde yazdırın.' };
+        return { ok: false, msg: 'Hata: print(f"{ad} sınavdan {puan} aldı") şeklinde başına f ekleyin.' };
       }
     }
   ],
@@ -2327,110 +4186,101 @@ const CHALLENGES_DATABASE = {
     {
       stepNum: 1,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 3: ARİTMETİK İŞLEMLER',
-      title: '1. Soru: Çarpma ve Bölme',
-      prompt: "<code class=\"code-highlight\">sayi = 18</code> değişkeninin 7 katını alıp 9'a bölerek çıkan sonucu ekrana yazdırabilir misin?",
-      presetCode: `sayi = 18\n# 7 katını alıp 9'a böl ve yazdır:\n`,
-      filename: 'operatorler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['sayi', ' * 7', ' / 9', 'print(', ')'],
-      hint: 'print(sayi * 7 / 9)',
-      solution: 'print(sayi * 7 / 9)',
+      moduleSubtitle: "MODÜL 3: ARİTMETİK İŞLEMLER",
+      title: "1. Soru: Çarpma ve Bölme Operatörü",
+      prompt: "Yandaki kod parçasında 18 sayısının 7 katını alıp 9'a bölerken çarpma operatöründe bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "sayi = 18\nsonuc = sayi x 7 / 9\n# Doğru Kod Parçası:\n",
+      filename: "operatorler.py",
+      lang: "Python 3.11",
+      quickKeys: ["sonuc = sayi * 7 / 9", "sayi * 7 / 9", "print(sayi * 7 / 9)"],
+      hint: "sonuc = sayi * 7 / 9",
+      solution: "sayi = 18\nsonuc = sayi * 7 / 9",
       validator: (code) => {
         const clean = code.trim();
-        if (/print\s*\(\s*(sayi\s*\*\s*7\s*\/\s*9|18\s*\*\s*7\s*\/\s*9|sonuc)\s*\)/.test(clean) || /sonuc\s*=\s*sayi\s*\*\s*7\s*\/\s*9/.test(clean)) {
-          return { ok: true, msg: "Mükemmel! Aritmetik işlem başarıyla hesaplandı. ✓" };
+        if (/sayi\s*\*\s*7\s*\/\s*9/.test(clean) || /18\s*\*\s*7\s*\/\s*9/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! Aritmetik * operatörü başarıyla uygulandı. ✓" };
         }
-        return { ok: false, msg: "Hata: Lütfen print(sayi * 7 / 9) şeklinde 7 katını alıp 9'a bölün ve yazdırın." };
+        return { ok: false, msg: "Hata: Çarpma için * kullanın: sonuc = sayi * 7 / 9" };
       }
     },
     {
       stepNum: 2,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 3: TAM BÖLME VE MOD ALMA',
-      title: '2. Soru: Tam Bölme (//) ve Kalan (%)',
-      prompt: "<code class=\"code-highlight\">sayi = 15</code> değişkeninin 4 katının 3'e tam bölümünü (<code class=\"code-highlight\">// 3</code>) ve 3'e bölümünden kalanını (<code class=\"code-highlight\">% 3</code>) hesaplayıp ekrana yazdırabilir misin?",
-      presetCode: `sayi = 15\n# 4 katının 3'e tam bölümünü ve kalanını yazdır:\n`,
-      filename: 'operatorler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['(sayi * 4) // 3', '(sayi * 4) % 3', 'print(', '//', '%'],
-      hint: 'print((sayi * 4) // 3)\nprint((sayi * 4) % 3)',
-      solution: 'print((sayi * 4) // 3, (sayi * 4) % 3)',
+      moduleSubtitle: "MODÜL 3: TAM BÖLME (//)",
+      title: "2. Soru: Tam Bölme Operatörü",
+      prompt: "Yandaki kod parçasında ondalıksız tam bölme yaparken tek eğik çizgi yerine // kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "tam_bolum = 15 / 4\n# Doğru Kod Parçası:\n",
+      filename: "operatorler.py",
+      lang: "Python 3.11",
+      quickKeys: ["tam_bolum = 15 // 4", "15 // 4", "//"],
+      hint: "tam_bolum = 15 // 4",
+      solution: "tam_bolum = 15 // 4",
       validator: (code) => {
         const clean = code.trim();
-        const hasFloor = /\/\/\s*3/.test(clean);
-        const hasMod = /%\s*3/.test(clean);
-        const hasPrint = /print\s*\(/.test(clean);
-
-        if (hasFloor && hasMod && hasPrint) {
-          return { ok: true, msg: "Harika! Tam bölme (//) ve kalan (%) operatörleri başarıyla uygulandı. ✓" };
+        if (/15\s*\/\/\s*4/.test(clean)) {
+          return { ok: true, msg: "Harika! // tam bölme operatörü kullanıldı. ✓" };
         }
-        return { ok: false, msg: "Hata: Lütfen (sayi * 4) // 3 ve (sayi * 4) % 3 işlemlerini print() ile yazdırın." };
+        return { ok: false, msg: "Hata: tam_bolum = 15 // 4 şeklinde çift eğik çizgi kullanın." };
       }
     },
     {
       stepNum: 3,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 3: ÜS ALMA OPERATÖRÜ',
-      title: '3. Soru: Üs Alma (**) ve Mod (%)',
-      prompt: "<code class=\"code-highlight\">12 ** 4</code> ($12^4$) ifadesini hesaplayıp bu sonucun 10 ile bölümünden kalanını (<code class=\"code-highlight\">% 10</code>) ekrana yazdırabilir misin?",
-      presetCode: `# 12^4 değerinin 10 ile bölümünden kalanını yazdır:\n`,
-      filename: 'operatorler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['print(', '12 ** 4', ' % 10', '**', '%'],
-      hint: 'print((12 ** 4) % 10)',
-      solution: 'print((12 ** 4) % 10)',
+      moduleSubtitle: "MODÜL 3: ÜS ALMA OPERATÖRÜ (**)",
+      title: "3. Soru: Üs Alma Operatörü",
+      prompt: "Yandaki kod parçasında üs alma işlemi için ^ yerine ** operatörü kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "kup = 5 ^ 3\n# Doğru Kod Parçası:\n",
+      filename: "operatorler.py",
+      lang: "Python 3.11",
+      quickKeys: ["kup = 5 ** 3", "5 ** 3", "**"],
+      hint: "kup = 5 ** 3",
+      solution: "kup = 5 ** 3",
       validator: (code) => {
         const clean = code.trim();
-        if (/print\s*\(\s*\(?\s*12\s*\*\*\s*4\s*\)?\s*%\s*10\s*\)/.test(clean) || /sonuc\s*=\s*\(?\s*12\s*\*\*\s*4\s*\)?\s*%\s*10/.test(clean)) {
-          return { ok: true, msg: "Tebrikler! Üs alma (**) ve mod (%) operatörleri doğru kullanıldı. ✓" };
+        if (/5\s*\*\*\s*3/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! ** üs alma operatörü uygulandı. ✓" };
         }
-        return { ok: false, msg: "Hata: Lütfen print((12 ** 4) % 10) şeklinde hesaplayıp ekrana yazdırın." };
+        return { ok: false, msg: "Hata: kup = 5 ** 3 şeklinde ** kullanın." };
       }
     },
     {
       stepNum: 4,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 3: MANTIKSAL OPERATÖRLER',
-      title: '4. Soru: Mantıksal Koşul (and)',
-      prompt: "<code class=\"code-highlight\">yas = 20</code> değişkeninin 18'den büyük eşit VE (<code class=\"code-highlight\">and</code>) 65'ten küçük olup olmadığını kontrol edip ekrana yazdırabilir misin?",
-      presetCode: `yas = 20\n# Koşul kontrolünü (and) ekrana yazdır:\n`,
-      filename: 'operatorler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['print(', 'yas >= 18', ' and ', 'yas < 65', '>=', '<'],
-      hint: 'print(yas >= 18 and yas < 65)',
-      solution: 'print(yas >= 18 and yas < 65)',
+      moduleSubtitle: "MODÜL 3: MANTIKSAL AND",
+      title: "4. Soru: Mantıksal VE (and)",
+      prompt: "Yandaki kod parçasında iki koşulu birbirine bağlarken && yerine 'and' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "yas = 20\nsonuc = (yas >= 18 && yas < 65)\n# Doğru Kod Parçası:\n",
+      filename: "operatorler.py",
+      lang: "Python 3.11",
+      quickKeys: ["sonuc = (yas >= 18 and yas < 65)", "yas >= 18 and yas < 65", "and"],
+      hint: "sonuc = (yas >= 18 and yas < 65)",
+      solution: "yas = 20\nsonuc = (yas >= 18 and yas < 65)",
       validator: (code) => {
         const clean = code.trim();
-        if (/print\s*\(\s*(yas\s*>=\s*18\s+and\s+yas\s*<\s*65|18\s*<=\s*yas\s*<\s*65)\s*\)/.test(clean) || /(yas\s*>=\s*18\s+and\s+yas\s*<\s*65)/.test(clean)) {
-          return { ok: true, msg: "Doğru! 'and' mantıksal operatörü ile çift yönlü aralık başarıyla kontrol edildi. ✓" };
+        if (/yas\s*>=\s*18\s+and\s+yas\s*<\s*65/.test(clean) || /18\s*<=\s*yas\s*<\s*65/.test(clean)) {
+          return { ok: true, msg: "Doğru! 'and' mantıksal operatörü uygulandı. ✓" };
         }
-        return { ok: false, msg: "Hata: Lütfen print(yas >= 18 and yas < 65) şeklinde koşulu yazdırın." };
+        return { ok: false, msg: "Hata: && yerine 'and' kullanın: sonuc = (yas >= 18 and yas < 65)" };
       }
     },
     {
       stepNum: 5,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 3: AĞIRLIKLI ORTALAMA HESABI',
-      title: '5. Soru: Not Ortalaması Hesaplama',
-      prompt: "<code class=\"code-highlight\">vize = 70</code> ve <code class=\"code-highlight\">final = 90</code> değişkenlerini tanımlayıp vizenin %40'ı ile finalin %60'ını (<code class=\"code-highlight\">vize * 0.4 + final * 0.6</code>) hesaplayarak ekrana yazdırabilir misin?",
-      presetCode: `vize = 70\nfinal = 90\n# Ağırlıklı ortalamayı hesaplayıp ekrana yazdır:\n`,
-      filename: 'operatorler.py',
-      lang: 'Python 3.11',
-      quickKeys: ['vize * 0.4', ' + ', 'final * 0.6', 'ortalama = ', 'print('],
-      hint: 'ortalama = vize * 0.4 + final * 0.6\nprint(ortalama)',
-      solution: 'print(vize * 0.4 + final * 0.6)',
+      moduleSubtitle: "MODÜL 3: MOD ALMA (%)",
+      title: "5. Soru: Kalan / Mod Operatörü (%)",
+      prompt: "Yandaki kod parçasında 29 sayısının 4'e bölümünden kalanı (mod) bulurken mod kelimesi yerine % operatörü gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "kalan = 29 mod 4\n# Doğru Kod Parçası:\n",
+      filename: "operatorler.py",
+      lang: "Python 3.11",
+      quickKeys: ["kalan = 29 % 4", "29 % 4", "%"],
+      hint: "kalan = 29 % 4",
+      solution: "kalan = 29 % 4",
       validator: (code) => {
         const clean = code.trim();
-        const hasVize = /vize\s*=\s*70/.test(clean);
-        const hasFinal = /final\s*=\s*90/.test(clean);
-        const hasFormula = /(vize\s*\*\s*0?\.4\s*\+\s*final\s*\*\s*0?\.6|70\s*\*\s*0?\.4\s*\+\s*90\s*\*\s*0?\.6)/.test(clean);
-        const hasPrint = /print\s*\(/.test(clean);
-
-        if (hasFormula && hasPrint) {
-          return { ok: true, msg: "Mükemmel! Ağırlıklı ortalama doğru hesaplandı ve yazdırıldı. 3. Modül Tamamlandı! 🏆" };
+        if (/29\s*%\s*4/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! % operatörü başarıyla uygulandı. 3. Modül Tamamlandı! 🏆" };
         }
-        return { ok: false, msg: "Hata: Lütfen vize ve final değişkenleriyle print(vize * 0.4 + final * 0.6) işlemini yazdırın." };
+        return { ok: false, msg: "Hata: kalan = 29 % 4 şeklinde % kullanın." };
       }
     }
   ],
@@ -2438,126 +4288,101 @@ const CHALLENGES_DATABASE = {
     {
       stepNum: 1,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 4: IF KOŞULU',
-      title: '1. Soru: Basit If Koşulu',
-      prompt: "<code class=\"code-highlight\">yas = 15</code> değeri 18'den küçükse (<code class=\"code-highlight\">yas < 18</code>) ekrana <code class=\"code-highlight\">\"Giriş Yapamaz\"</code> yazdırabilir misin?",
-      presetCode: `yas = 15\n# yas 18'den küçükse "Giriş Yapamaz" yazdır:\n`,
-      filename: 'kosullar.py',
-      lang: 'Python 3.11',
-      quickKeys: ['if ', 'yas < 18:', 'print("Giriş Yapamaz")', '    '],
+      moduleSubtitle: "MODÜL 4: IF KOŞULU",
+      title: "1. Soru: If Koşulunda İki Nokta (:)",
+      prompt: "Yandaki kod parçasında if koşulunun sonundaki iki nokta (:) işareti unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "yas = 15\nif yas < 18\n    print(\"Giriş Yapamaz\")\n# Doğru Kod Parçası:\n",
+      filename: "kosullar.py",
+      lang: "Python 3.11",
+      quickKeys: ["if yas < 18:", "    print(\"Giriş Yapamaz\")", ":"],
       hint: 'if yas < 18:\n    print("Giriş Yapamaz")',
-      solution: 'if yas < 18:\n    print("Giriş Yapamaz")',
+      solution: 'yas = 15\nif yas < 18:\n    print("Giriş Yapamaz")',
       validator: (code) => {
         const clean = code.trim();
-        if (/if\s+yas\s*<\s*18\s*:\s*[\s\S]*print\s*\(\s*['"]Giriş Yapamaz['"]\s*\)/.test(clean)) {
-          return { ok: true, msg: "Tebrikler! If koşulu başarıyla kuruldu. ✓" };
+        if (/if\s+yas\s*<\s*18\s*:/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! if koşulunun sonuna : eklendi. ✓" };
         }
-        if (!clean.includes('if')) {
-          return { ok: false, msg: "Hata: 'if yas < 18:' koşulunu kurmalısınız." };
-        }
-        return { ok: false, msg: 'Hata: Lütfen yas < 18 ise print("Giriş Yapamaz") yazdırın.' };
+        return { ok: false, msg: "Hata: 'if yas < 18:' şeklinde iki nokta ekleyin." };
       }
     },
     {
       stepNum: 2,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 4: IF - ELSE YAPISI',
-      title: '2. Soru: If - Else Yapısı',
-      prompt: "<code class=\"code-highlight\">yas = 20</code> için; 18'den küçükse <code class=\"code-highlight\">\"Giriş Yapamaz\"</code>, değilse (<code class=\"code-highlight\">else</code>) ekrana <code class=\"code-highlight\">\"Giriş Yapabilir\"</code> yazdırabilir misin?",
-      presetCode: `yas = 20\nif yas < 18:\n    print("Giriş Yapamaz")\n# else durumunu ekle:\n`,
-      filename: 'kosullar.py',
-      lang: 'Python 3.11',
-      quickKeys: ['else:', 'print("Giriş Yapabilir")', '    '],
-      hint: 'if yas < 18:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
-      solution: 'if yas < 18:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      moduleSubtitle: "MODÜL 4: ELSE BLOĞU",
+      title: "2. Soru: Else Anahtar Kelimesi",
+      prompt: "Yandaki kod parçasında koşulun değilse (else) bloğunda hatalı kelime kullanılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "yas = 20\nif yas < 18:\n    print(\"Giriş Yapamaz\")\notherwise:\n    print(\"Giriş Yapabilir\")\n# Doğru Kod Parçası:\n",
+      filename: "kosullar.py",
+      lang: "Python 3.11",
+      quickKeys: ["else:", "    print(\"Giriş Yapabilir\")", "else"],
+      hint: 'else:\n    print("Giriş Yapabilir")',
+      solution: 'else:\n    print("Giriş Yapabilir")',
       validator: (code) => {
         const clean = code.trim();
-        const hasElse = /else\s*:/.test(clean);
-        const hasPrint = /print\s*\(\s*['"]Giriş Yapabilir['"]\s*\)/.test(clean);
-
-        if (hasElse && hasPrint) {
-          return { ok: true, msg: "Harika! If-Else yapısı doğru şekilde tamamlandı. ✓" };
+        if (/else\s*:/.test(clean)) {
+          return { ok: true, msg: "Harika! else: bloğu doğru kuruldu. ✓" };
         }
-        return { ok: false, msg: 'Hata: Lütfen else: bloğunun altına print("Giriş Yapabilir") ekleyin.' };
+        return { ok: false, msg: "Hata: otherwise yerine else: kullanmalısınız." };
       }
     },
     {
       stepNum: 3,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 4: ELIF YAPISI',
-      title: '3. Soru: Çoklu Koşul (elif)',
-      prompt: "<code class=\"code-highlight\">yas = 70</code> için; 18'den küçükse veya 65'ten büyükse (<code class=\"code-highlight\">elif yas > 65:</code>) <code class=\"code-highlight\">\"Giriş Yapamaz\"</code>, diğer durumlarda (<code class=\"code-highlight\">else:</code>) <code class=\"code-highlight\">\"Giriş Yapabilir\"</code> yazdırabilir misin?",
-      presetCode: `yas = 70\nif yas < 18:\n    print("Giriş Yapamaz")\n# elif ve else durumlarını ekle:\n`,
-      filename: 'kosullar.py',
-      lang: 'Python 3.11',
-      quickKeys: ['elif yas > 65:', 'elif yas >= 65:', 'else:', 'print("Giriş Yapamaz")', 'print("Giriş Yapabilir")'],
-      hint: 'if yas < 18:\n    print("Giriş Yapamaz")\nelif yas > 65:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
-      solution: 'elif yas > 65:\n    print("Giriş Yapamaz")\nelse:\n    print("Giriş Yapabilir")',
+      moduleSubtitle: "MODÜL 4: ELIF YAPISI",
+      title: "3. Soru: Çoklu Koşul (elif)",
+      prompt: "Yandaki kod parçasında ara koşul için else if yerine 'elif' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "puan = 75\nif puan >= 90:\n    print(\"A\")\nelse if puan >= 70:\n    print(\"B\")\n# Doğru Kod Parçası:\n",
+      filename: "kosullar.py",
+      lang: "Python 3.11",
+      quickKeys: ["elif puan >= 70:", "elif ", "    print(\"B\")"],
+      hint: 'elif puan >= 70:\n    print("B")',
+      solution: 'elif puan >= 70:\n    print("B")',
       validator: (code) => {
         const clean = code.trim();
-        const hasElif = /elif\s+yas\s*(>|>=)\s*65\s*:/.test(clean);
-        const hasElse = /else\s*:/.test(clean);
-
-        if (hasElif && hasElse) {
-          return { ok: true, msg: "Mükemmel! elif ve else basamakları başarıyla kuruldu. ✓" };
+        if (/elif\s+puan\s*>=\s*70\s*:/.test(clean)) {
+          return { ok: true, msg: "Mükemmel! 'elif' anahtar kelimesi başarıyla uygulandı. ✓" };
         }
-        return { ok: false, msg: 'Hata: Lütfen elif yas > 65: ve else: durumlarını ekleyin.' };
+        return { ok: false, msg: "Hata: else if yerine elif puan >= 70: yazın." };
       }
     },
     {
       stepNum: 4,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 4: MANTIKSAL KOŞULLAR (AND & IF-ELSE)',
-      title: '4. Soru: Not Hesabı & Geçti / Kaldı',
-      prompt: "<code class=\"code-highlight\">vize_notu = 60</code> ve <code class=\"code-highlight\">final_notu = 70</code> için; <code class=\"code-highlight\">ortalama = vize_notu * 0.4 + final_notu * 0.6</code> ile ortalamayı hesapla. Ardından <code class=\"code-highlight\">final_notu >= 50 and ortalama >= 50</code> ise <code class=\"code-highlight\">\"Geçti\"</code>, değilse (<code class=\"code-highlight\">else:</code>) <code class=\"code-highlight\">\"Kaldı\"</code> yazdırabilir misin?",
-      presetCode: `vize_notu = 60\nfinal_notu = 70\n# 1. Ortalamayı hesapla:\n# 2. if-else ile "Geçti" veya "Kaldı" yazdır:\n`,
-      filename: 'kosullar.py',
-      lang: 'Python 3.11',
-      quickKeys: ['ortalama = vize_notu * 0.4 + final_notu * 0.6', 'if final_notu >= 50 and ortalama >= 50:', '    print("Geçti")', 'else:', '    print("Kaldı")'],
-      hint: 'ortalama = vize_notu * 0.4 + final_notu * 0.6\nif final_notu >= 50 and ortalama >= 50:\n    print("Geçti")\nelse:\n    print("Kaldı")',
-      solution: 'ortalama = vize_notu * 0.4 + final_notu * 0.6\nif final_notu >= 50 and ortalama >= 50:\n    print("Geçti")\nelse:\n    print("Kaldı")',
+      moduleSubtitle: "MODÜL 4: TEK SATIR IF-ELSE",
+      title: "4. Soru: Ternary (Tek Satır Koşul)",
+      prompt: "Yandaki kod parçasında tek satırlık ternary ifadesinde sözdizim hatası var gibi, bunu düzeltebilir misin?",
+      presetCode: "durum = (yas >= 18) ? \"Reşit\" : \"Çocuk\"\n# Doğru Kod Parçası:\n",
+      filename: "kosullar.py",
+      lang: "Python 3.11",
+      quickKeys: ["durum = \"Reşit\" if yas >= 18 else \"Çocuk\"", "\"Reşit\" if yas >= 18 else \"Çocuk\""],
+      hint: 'durum = "Reşit" if yas >= 18 else "Çocuk"',
+      solution: 'durum = "Reşit" if yas >= 18 else "Çocuk"',
       validator: (code) => {
         const clean = code.trim();
-        const hasFormula = /(vize_notu|vize)\s*\*\s*0?\.4\s*\+\s*(final_notu|final)\s*\*\s*0?\.6/.test(clean);
-        const hasIf = /if\s+.*(final_notu|final)\s*>=\s*50\s+and\s+ortalama\s*>=\s*50/.test(clean) || /if\s+.*ortalama\s*>=\s*50\s+and\s+(final_notu|final)\s*>=\s*50/.test(clean);
-        const hasGecti = /print\s*\(\s*['"]Geçti['"]\s*\)/.test(clean);
-        const hasElse = /else\s*:/.test(clean);
-        const hasKaldi = /print\s*\(\s*['"]Kaldı['"]\s*\)/.test(clean);
-
-        if (hasFormula && hasIf && hasGecti && hasElse && hasKaldi) {
-          return { ok: true, msg: "Mükemmel iş! Ağırlıklı ortalama hesaplandı ve if-else ile Geçti/Kaldı durumu başarıyla kontrol edildi. ✓" };
+        if (/['"]Reşit['"]\s+if\s+yas\s*>=\s*18\s+else\s+['"]Çocuk['"]/.test(clean)) {
+          return { ok: true, msg: "Harika! Python ternary (A if kosul else B) uygulandı. ✓" };
         }
-
-        const missing = [];
-        if (!hasFormula) missing.push('ortalama hesabı (vize_notu * 0.4 + final_notu * 0.6)');
-        if (!hasIf) missing.push('if final_notu >= 50 and ortalama >= 50: koşulu');
-        if (!hasGecti) missing.push('print("Geçti")');
-        if (!hasElse || !hasKaldi) missing.push('else: print("Kaldı")');
-
-        return { ok: false, msg: `Eksik veya hatalı adımlar: ${missing.join(', ')}.` };
+        return { ok: false, msg: 'Hata: durum = "Reşit" if yas >= 18 else "Çocuk" şeklinde yazın.' };
       }
     },
     {
       stepNum: 5,
       totalSteps: 5,
-      moduleSubtitle: 'MODÜL 4: SEÇİM YAPILARI (MATCH - CASE)',
-      title: '5. Soru: Match - Case ile Gün Seçimi',
-      prompt: "<code class=\"code-highlight\">gun = 1</code> değişkenini <code class=\"code-highlight\">match - case</code> ile kontrol edip <code class=\"code-highlight\">1</code> ise <code class=\"code-highlight\">\"Pazartesi\"</code>, <code class=\"code-highlight\">2</code> ise <code class=\"code-highlight\">\"Salı\"</code> yazdırabilir misin?",
-      presetCode: `gun = 1\n# match-case yapısı ile günü kontrol et:\n`,
-      filename: 'kosullar.py',
-      lang: 'Python 3.11',
-      quickKeys: ['match gun:', 'case 1:', 'case 2:', 'print("Pazartesi")', 'print("Salı")'],
-      hint: 'match gun:\n    case 1:\n        print("Pazartesi")\n    case 2:\n        print("Salı")',
-      solution: 'match gun:\n    case 1:\n        print("Pazartesi")\n    case 2:\n        print("Salı")',
+      moduleSubtitle: "MODÜL 4: SEÇİM YAPILARI (MATCH - CASE)",
+      title: "5. Soru: Match-Case Sözdizimi",
+      prompt: "Yandaki kod parçasında match-case bloğunda case satırının sonundaki iki nokta (:) unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "gun = 1\nmatch gun:\n    case 1\n        print(\"Pazartesi\")\n# Doğru Kod Parçası:\n",
+      filename: "kosullar.py",
+      lang: "Python 3.11",
+      quickKeys: ["case 1:", "match gun:\n    case 1:\n        print(\"Pazartesi\")", "print(\"Pazartesi\")"],
+      hint: 'match gun:\n    case 1:\n        print("Pazartesi")',
+      solution: 'match gun:\n    case 1:\n        print("Pazartesi")',
       validator: (code) => {
         const clean = code.trim();
-        const hasMatch = /match\s+gun\s*:/.test(clean) && /case\s+1\s*:/.test(clean) && /print\s*\(\s*['"]Pazartesi['"]\s*\)/.test(clean);
-        const hasIfAlternative = /if\s+gun\s*==\s*1\s*:\s*[\s\S]*print\s*\(\s*['"]Pazartesi['"]\s*\)/.test(clean);
-
-        if (hasMatch || hasIfAlternative) {
-          return { ok: true, msg: "Harika iş! Koşul ve seçim yapısı başarıyla tamamlandı. 4. Modül Tamamlandı! 🏆" };
+        if (/case\s+1\s*:/.test(clean)) {
+          return { ok: true, msg: "Tebrikler! case 1: iki nokta eklendi. 4. Modül Tamamlandı! 🏆" };
         }
-        return { ok: false, msg: 'Hata: Lütfen match gun: case 1: print("Pazartesi") yapısını kurun.' };
+        return { ok: false, msg: "Hata: 'case 1:' şeklinde iki nokta ekleyin." };
       }
     }
   ],
@@ -2567,20 +4392,19 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: LİSTE METOTLARI (APPEND)",
       title: "1. Soru: Listeye Eleman Ekleme",
-      prompt: "Geliştirici mevcut alışveriş listesine yeni bir ürün ekleyip güncel listeyi ekranda görmek istiyor ancak çıktıda liste yerine boş bir sonuç (<code class=\"code-highlight\">None</code>) alıyor. Bu aksaklığı gidererek kodu doğru şekilde yeniden yazar mısın?",
-      presetCode: "urunler = [\"Elma\", \"Muz\"]\nurunler = urunler.append(\"Çilek\")\nprint(urunler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında .append() metodunun sonucu tekrar listeye atanarak liste None yapılmış gibi, bu hatayı düzeltebilir misin?",
+      presetCode: "urunler = [\"Elma\", \"Muz\"]\nurunler = urunler.append(\"Çilek\")\n# Doğru Kod Parçası:\n",
       filename: "listeler.py",
       lang: "Python 3.11",
-      quickKeys: ["urunler.append(\"Çilek\")","print(urunler)","urunler = [\"Elma\", \"Muz\"]"],
-      hint: "urunler = [\"Elma\", \"Muz\"]\nurunler.append(\"Çilek\")\nprint(urunler)",
-      solution: "urunler = [\"Elma\", \"Muz\"]\nurunler.append(\"Çilek\")\nprint(urunler)",
+      quickKeys: ["urunler.append(\"Çilek\")", "urunler = [\"Elma\", \"Muz\"]\nurunler.append(\"Çilek\")"],
+      hint: 'urunler.append("Çilek")',
+      solution: 'urunler = ["Elma", "Muz"]\nurunler.append("Çilek")',
       validator: (code) => {
         const clean = code.trim();
         const hasNoReassign = !/urunler\s*=\s*urunler\.append/.test(clean);
         const hasAppend = /urunler\.append\s*\(\s*['"]Çilek['"]\s*\)/.test(clean);
-        const hasPrint = /print\s*\(\s*urunler\s*\)/.test(clean);
-        if (hasNoReassign && hasAppend && hasPrint) return { ok: true, msg: "Harika! .append() listeyi yerinde günceller. ✓" };
-        return { ok: false, msg: "Hata: urunler.append('Çilek') yaptıktan sonra print(urunler) yazdırın." };
+        if (hasNoReassign && hasAppend) return { ok: true, msg: "Harika! .append() listeyi yerinde günceller. ✓" };
+        return { ok: false, msg: "Hata: urunler = urunler.append() yerine doğrudan urunler.append('Çilek') yazın." };
       }
     },
     {
@@ -2588,19 +4412,17 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: DEĞİŞTİRİLEMEZLİK & DEMETLER",
       title: "2. Soru: Demet ve Liste Dönüşümü",
-      prompt: "Geliştirici demetteki (tuple) ilk şehir ismini güncelleyerek listeyi ekrana yazdırmak istiyor ancak program değiştirme aşamasında hata veriyor. Veri yapısını amaca uygun hale getirerek güncellenmiş şehri ekrana yazdırabilir misin?",
-      presetCode: "sehirler = (\"İzmir\", \"Ankara\", \"İstanbul\")\nsehirler[0] = \"Bursa\"\nprint(sehirler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında elemanı değiştirilemeyen bir demet (tuple) kullanılmış gibi, bunu köşeli parantezli [] listeye çevirebilir misin?",
+      presetCode: "sehirler = (\"İzmir\", \"Ankara\", \"İstanbul\")\nsehirler[0] = \"Bursa\"\n# Doğru Kod Parçası:\n",
       filename: "listeler.py",
       lang: "Python 3.11",
-      quickKeys: ["sehirler = [\"İzmir\", \"Ankara\", \"İstanbul\"]","sehirler[0] = \"Bursa\"","print(sehirler)"],
-      hint: "sehirler = [\"İzmir\", \"Ankara\", \"İstanbul\"]\nsehirler[0] = \"Bursa\"\nprint(sehirler)",
-      solution: "sehirler = [\"İzmir\", \"Ankara\", \"İstanbul\"]\nsehirler[0] = \"Bursa\"\nprint(sehirler)",
+      quickKeys: ["sehirler = [\"İzmir\", \"Ankara\", \"İstanbul\"]", "sehirler[0] = \"Bursa\""],
+      hint: 'sehirler = ["İzmir", "Ankara", "İstanbul"]\nsehirler[0] = "Bursa"',
+      solution: 'sehirler = ["İzmir", "Ankara", "İstanbul"]\nsehirler[0] = "Bursa"',
       validator: (code) => {
         const clean = code.trim();
-        const isList = /sehirler\s*=\s*\[\s*['"]İzmir['"]\s*,\s*['"]Ankara['"]\s*,\s*['"]İstanbul['"]\s*\]/.test(clean);
-        const hasAssign = /sehirler\s*\[\s*0\s*\]\s*=\s*['"]Bursa['"]/.test(clean);
-        const hasPrint = /print\s*\(\s*sehirler\s*\)/.test(clean);
-        if (isList && hasAssign && hasPrint) return { ok: true, msg: "Tebrikler! Listeler değiştirilebilir olduğundan hata çözüldü. ✓" };
+        const isList = /sehirler\s*=\s*\[\s*['"]İzmir['"]/.test(clean);
+        if (isList) return { ok: true, msg: "Tebrikler! Listeler değiştirilebilir olduğundan hata çözüldü. ✓" };
         return { ok: false, msg: "Hata: sehirler'i liste [] yapıp sehirler[0] = 'Bursa' ataması yapın." };
       }
     },
@@ -2609,18 +4431,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: ELEMAN ÇIKARMA (POP)",
       title: "3. Soru: Son Elemanı Ayırma",
-      prompt: "Geliştirici sayı listesindeki en son eklenen sayıyı listeden ayırıp ekrana yazdırmak istiyor fakat kod yanlışlıkla listenin ilk elemanını siliyor. Son elemanı çıkaracak şekilde kodu düzenleyebilir misin?",
-      presetCode: "puanlar = [10, 20, 30, 40]\nson_puan = puanlar.pop(0)\nprint(son_puan)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında listenin son elemanını çıkarmak için pop(0) yerine argümansız pop() kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "puanlar = [10, 20, 30, 40]\nson_puan = puanlar.pop(0)\n# Doğru Kod Parçası:\n",
       filename: "listeler.py",
       lang: "Python 3.11",
-      quickKeys: ["son_puan = puanlar.pop()","puanlar.pop()","print(son_puan)"],
-      hint: "puanlar = [10, 20, 30, 40]\nson_puan = puanlar.pop()\nprint(son_puan)",
-      solution: "puanlar = [10, 20, 30, 40]\nson_puan = puanlar.pop()\nprint(son_puan)",
+      quickKeys: ["son_puan = puanlar.pop()", "puanlar.pop()"],
+      hint: "son_puan = puanlar.pop()",
+      solution: "puanlar = [10, 20, 30, 40]\nson_puan = puanlar.pop()",
       validator: (code) => {
         const clean = code.trim();
-        const hasCorrectPop = /puanlar\.pop\s*\(\s*(\s*|-1\s*)\)/.test(clean);
-        const hasPrint = /print\s*\(\s*son_puan\s*\)/.test(clean) || /print\s*\(\s*puanlar\.pop\s*\(\s*\)\s*\)/.test(clean);
-        if (hasCorrectPop && hasPrint) return { ok: true, msg: "Mükemmel! .pop() argümansız çağrıldığında son elemanı alır. ✓" };
+        if (/puanlar\.pop\s*\(\s*(\s*|-1\s*)\)/.test(clean)) return { ok: true, msg: "Mükemmel! .pop() argümansız çağrıldığında son elemanı alır. ✓" };
         return { ok: false, msg: "Hata: son_puan = puanlar.pop() kullanarak son elemanı çekin." };
       }
     },
@@ -2629,18 +4449,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: LİSTE SIRALAMA (SORT)",
       title: "4. Soru: Listeyi Sıralama",
-      prompt: "Geliştirici karışık verilen sayı listesini küçükten büyüğe sıralı şekilde ekrana yazdırmak istiyor ancak kod sıralama işlemini gerçekleştirmeden hata üretiyor. Sıralama metodunu doğru uygulayarak sonucu yazdırabilir misin?",
-      presetCode: "sayilar = [85, 12, 44, 3]\nsayilar.sort\nprint(sayilar)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında listeyi sıralayan .sort metodunun parantezi unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "sayilar = [85, 12, 44, 3]\nsayilar.sort\n# Doğru Kod Parçası:\n",
       filename: "listeler.py",
       lang: "Python 3.11",
-      quickKeys: ["sayilar.sort()","print(sayilar)","sayilar = [85, 12, 44, 3]"],
-      hint: "sayilar = [85, 12, 44, 3]\nsayilar.sort()\nprint(sayilar)",
-      solution: "sayilar = [85, 12, 44, 3]\nsayilar.sort()\nprint(sayilar)",
+      quickKeys: ["sayilar.sort()", "sayilar = [85, 12, 44, 3]\nsayilar.sort()"],
+      hint: "sayilar.sort()",
+      solution: "sayilar = [85, 12, 44, 3]\nsayilar.sort()",
       validator: (code) => {
         const clean = code.trim();
-        const hasSortCall = /sayilar\.sort\s*\(\s*\)/.test(clean);
-        const hasPrint = /print\s*\(\s*sayilar\s*\)/.test(clean);
-        if (hasSortCall && hasPrint) return { ok: true, msg: "Harika! sort() metodunu parantez ile çağırmak listeyi sıraladı. ✓" };
+        if (/sayilar\.sort\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Harika! sort() metodunu parantez ile çağırmak listeyi sıraladı. ✓" };
         return { ok: false, msg: "Hata: sayilar.sort() fonksiyon çağrısını parantezle tamamlayın." };
       }
     },
@@ -2649,18 +4467,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: LİSTE DİLİMLEME (SLICING)",
       title: "5. Soru: Liste Dilimleme Aralığı",
-      prompt: "Geliştirici öğrenci listesinde 1. ve 2. sıradaki öğrencileri dilimleyerek alt bir grup oluşturmak istiyor ancak eksik eleman alıyor. İstenen 2 öğrenciyi de kapsayacak doğru dilimleme aralığını yazar mısın?",
-      presetCode: "ogrenciler = [\"Ali\", \"Ayşe\", \"Mehmet\", \"Zeynep\"]\ngrup = ogrenciler[1:2]\nprint(grup)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında 1. ve 2. indeksteki elemanları almak için dilimleme bitiş indeksinde bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "ogrenciler = [\"Ali\", \"Ayşe\", \"Mehmet\", \"Zeynep\"]\ngrup = ogrenciler[1:2]\n# Doğru Kod Parçası:\n",
       filename: "listeler.py",
       lang: "Python 3.11",
-      quickKeys: ["grup = ogrenciler[1:3]","print(grup)","ogrenciler[1:3]"],
-      hint: "ogrenciler = [\"Ali\", \"Ayşe\", \"Mehmet\", \"Zeynep\"]\ngrup = ogrenciler[1:3]\nprint(grup)",
-      solution: "ogrenciler = [\"Ali\", \"Ayşe\", \"Mehmet\", \"Zeynep\"]\ngrup = ogrenciler[1:3]\nprint(grup)",
+      quickKeys: ["grup = ogrenciler[1:3]", "ogrenciler[1:3]"],
+      hint: "grup = ogrenciler[1:3]",
+      solution: "ogrenciler = [\"Ali\", \"Ayşe\", \"Mehmet\", \"Zeynep\"]\ngrup = ogrenciler[1:3]",
       validator: (code) => {
         const clean = code.trim();
-        const hasSlice = /ogrenciler\s*\[\s*1\s*:\s*3\s*\]/.test(clean);
-        const hasPrint = /print\s*\(\s*grup\s*\)/.test(clean) || /print\s*\(\s*ogrenciler\s*\[\s*1\s*:\s*3\s*\]\s*\)/.test(clean);
-        if (hasSlice && hasPrint) return { ok: true, msg: "Tebrikler! [1:3] aralığı 1. ve 2. indeksleri başarıyla kapsadı. 5. Modül Tamamlandı! 🏆" };
+        if (/ogrenciler\s*\[\s*1\s*:\s*3\s*\]/.test(clean)) return { ok: true, msg: "Tebrikler! [1:3] aralığı 1. ve 2. indeksleri başarıyla kapsadı. 5. Modül Tamamlandı! 🏆" };
         return { ok: false, msg: "Hata: grup = ogrenciler[1:3] ile 1 ve 2. elemanları dilimleyin." };
       }
     }
@@ -2671,18 +4487,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: GÜVENLİ SÖZLÜK ERİŞİMİ (.GET)",
       title: "1. Soru: Güvenli Anahtar Erişimi",
-      prompt: "Geliştirici bir kullanıcının yaş bilgisini sözlükten okumak istiyor ancak olmayan bir anahtar yüzünden program aniden duruyor. Anahtar bulunamadığında varsayılan olarak <code class=\"code-highlight\">\"Belirtilmedi\"</code> döndüren güvenli yöntemi yazar mısın?",
-      presetCode: "kullanici = {\"ad\": \"Can\", \"sehir\": \"İzmir\"}\nyas = kullanici[\"yas\"]\nprint(yas)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında sözlükte olmayan anahtar hata vermesin diye .get() metoduyla varsayılan değer atanması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "kullanici = {\"ad\": \"Can\", \"sehir\": \"İzmir\"}\nyas = kullanici[\"yas\"]\n# Doğru Kod Parçası:\n",
       filename: "sozlukler.py",
       lang: "Python 3.11",
-      quickKeys: ["kullanici.get(\"yas\", \"Belirtilmedi\")","print(yas)",".get("],
-      hint: "kullanici = {\"ad\": \"Can\", \"sehir\": \"İzmir\"}\nyas = kullanici.get(\"yas\", \"Belirtilmedi\")\nprint(yas)",
-      solution: "kullanici = {\"ad\": \"Can\", \"sehir\": \"İzmir\"}\nyas = kullanici.get(\"yas\", \"Belirtilmedi\")\nprint(yas)",
+      quickKeys: ["yas = kullanici.get(\"yas\", \"Belirtilmedi\")", "kullanici.get("],
+      hint: 'yas = kullanici.get("yas", "Belirtilmedi")',
+      solution: 'kullanici = {"ad": "Can", "sehir": "İzmir"}\nyas = kullanici.get("yas", "Belirtilmedi")',
       validator: (code) => {
         const clean = code.trim();
-        const hasGet = /kullanici\.get\s*\(\s*['"]yas['"]\s*,\s*['"]Belirtilmedi['"]\s*\)/.test(clean);
-        const hasPrint = /print\s*\(/.test(clean);
-        if (hasGet && hasPrint) return { ok: true, msg: "Harika! .get() metodu anahtar yoksa varsayılan değeri güvenle döner. ✓" };
+        if (/kullanici\.get\s*\(\s*['"]yas['"]\s*,\s*['"]Belirtilmedi['"]\s*\)/.test(clean) || /kullanici\.get\s*\(\s*['"]yas['"]\s*\)/.test(clean)) return { ok: true, msg: "Harika! .get() metodu anahtar yoksa varsayılan değeri güvenle döner. ✓" };
         return { ok: false, msg: 'Hata: yas = kullanici.get("yas", "Belirtilmedi") kullanmalısınız.' };
       }
     },
@@ -2691,19 +4505,17 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: SÖZLÜK GÜNCELLEME",
       title: "2. Soru: Sözlük Değeri Güncelleme",
-      prompt: "Geliştirici bir ürünün fiyat bilgisini güncellemek istiyor fakat hatalı sözdizimi nedeniyle kod çalışmıyor. Sözlüğü doğru şekilde güncelleyebilir misin?",
-      presetCode: "urun = {\"isim\": \"Laptop\", \"fiyat\": 15000}\nurun(\"fiyat\") = 18000\nprint(urun)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında sözlük değerini güncellerken normal parantez yerine köşeli parantez [] kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "urun = {\"isim\": \"Laptop\", \"fiyat\": 15000}\nurun(\"fiyat\") = 18000\n# Doğru Kod Parçası:\n",
       filename: "sozlukler.py",
       lang: "Python 3.11",
-      quickKeys: ["urun[\"fiyat\"] = 18000","print(urun)","urun[\"fiyat\"]"],
-      hint: "urun = {\"isim\": \"Laptop\", \"fiyat\": 15000}\nurun[\"fiyat\"] = 18000\nprint(urun)",
-      solution: "urun = {\"isim\": \"Laptop\", \"fiyat\": 15000}\nurun[\"fiyat\"] = 18000\nprint(urun)",
+      quickKeys: ["urun[\"fiyat\"] = 18000", "urun[\"fiyat\"]"],
+      hint: 'urun["fiyat"] = 18000',
+      solution: 'urun = {"isim": "Laptop", "fiyat": 15000}\nurun["fiyat"] = 18000',
       validator: (code) => {
         const clean = code.trim();
-        const hasAssign = /urun\s*\[\s*['"]fiyat['"]\s*\]\s*=\s*18000/.test(clean);
-        const hasPrint = /print\s*\(\s*urun\s*\)/.test(clean);
-        if (hasAssign && hasPrint) return { ok: true, msg: "Tebrikler! Sözlük anahtarlarına köşeli parantez [] ile değer atanır. ✓" };
-        return { ok: false, msg: 'Hata: urun["fiyat"] = 18000 ataması yapıp print(urun) yazdırın.' };
+        if (/urun\s*\[\s*['"]fiyat['"]\s*\]\s*=\s*18000/.test(clean)) return { ok: true, msg: "Tebrikler! Sözlük anahtarlarına köşeli parantez [] ile değer atanır. ✓" };
+        return { ok: false, msg: 'Hata: urun["fiyat"] = 18000 ataması yapın.' };
       }
     },
     {
@@ -2711,18 +4523,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: KÜMELER & BENZERSİZ ELEMANLAR",
       title: "3. Soru: Benzersiz Eleman Kümesi",
-      prompt: "Geliştirici tekrar eden rakamlardan oluşan bir listeden yalnızca benzersiz (tekil) sayıları ayıklamak istiyor ancak kullandığı yapı tekrarları engellemiyor. Benzersiz elemanları elde etmek için doğru veri yapısını kullanır mısın?",
-      presetCode: "sayilar = [1, 2, 2, 3, 4, 4, 5]\ntekil_sayilar = [set(sayilar)]\nprint(tekil_sayilar)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında listedeki tekrar eden elemanları elemek için set() küme fonksiyonu kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "sayilar = [1, 2, 2, 3, 4, 4, 5]\ntekil_sayilar = [set(sayilar)]\n# Doğru Kod Parçası:\n",
       filename: "kumeler.py",
       lang: "Python 3.11",
-      quickKeys: ["tekil_sayilar = set(sayilar)","print(tekil_sayilar)","set(sayilar)"],
-      hint: "sayilar = [1, 2, 2, 3, 4, 4, 5]\ntekil_sayilar = set(sayilar)\nprint(tekil_sayilar)",
-      solution: "sayilar = [1, 2, 2, 3, 4, 4, 5]\ntekil_sayilar = set(sayilar)\nprint(tekil_sayilar)",
+      quickKeys: ["tekil_sayilar = set(sayilar)", "set(sayilar)"],
+      hint: "tekil_sayilar = set(sayilar)",
+      solution: "sayilar = [1, 2, 2, 3, 4, 4, 5]\ntekil_sayilar = set(sayilar)",
       validator: (code) => {
         const clean = code.trim();
-        const hasSet = /tekil_sayilar\s*=\s*set\s*\(\s*sayilar\s*\)/.test(clean);
-        const hasPrint = /print\s*\(\s*tekil_sayilar\s*\)/.test(clean);
-        if (hasSet && hasPrint) return { ok: true, msg: "Mükemmel! set() fonksiyonu tekrarlanan tüm elemanları eler. ✓" };
+        if (/tekil_sayilar\s*=\s*set\s*\(\s*sayilar\s*\)/.test(clean) || /set\s*\(\s*sayilar\s*\)/.test(clean)) return { ok: true, msg: "Mükemmel! set() fonksiyonu tekrarlanan tüm elemanları eler. ✓" };
         return { ok: false, msg: "Hata: tekil_sayilar = set(sayilar) kullanarak kümeyi elde edin." };
       }
     },
@@ -2731,18 +4541,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: KÜMEYE ELEMAN EKLEME (.ADD)",
       title: "4. Soru: Kümeye Eleman Ekleme",
-      prompt: "Geliştirici bir kümeye yeni bir etiket eklemek istiyor ancak liste metodu kullandığı için hata alıyor. Kümeye eleman ekleyen doğru metodu uygulayabilir misin?",
-      presetCode: "etiketler = {\"python\", \"kodlama\", \"yazilim\"}\netiketler.append(\"yapayzeka\")\nprint(etiketler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında kümeye eleman eklerken append yerine .add() metodunun kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "etiketler = {\"python\", \"kodlama\"}\netiketler.append(\"yapayzeka\")\n# Doğru Kod Parçası:\n",
       filename: "kumeler.py",
       lang: "Python 3.11",
-      quickKeys: ["etiketler.add(\"yapayzeka\")","print(etiketler)",".add("],
-      hint: "etiketler = {\"python\", \"kodlama\", \"yazilim\"}\netiketler.add(\"yapayzeka\")\nprint(etiketler)",
-      solution: "etiketler = {\"python\", \"kodlama\", \"yazilim\"}\netiketler.add(\"yapayzeka\")\nprint(etiketler)",
+      quickKeys: ["etiketler.add(\"yapayzeka\")", ".add("],
+      hint: 'etiketler.add("yapayzeka")',
+      solution: 'etiketler = {"python", "kodlama"}\netiketler.add("yapayzeka")',
       validator: (code) => {
         const clean = code.trim();
-        const hasAdd = /etiketler\.add\s*\(\s*['"]yapayzeka['"]\s*\)/.test(clean);
-        const hasPrint = /print\s*\(\s*etiketler\s*\)/.test(clean);
-        if (hasAdd && hasPrint) return { ok: true, msg: "Harika! Kümeler için .add() metodu kullanılır. ✓" };
+        if (/etiketler\.add\s*\(\s*['"]yapayzeka['"]\s*\)/.test(clean)) return { ok: true, msg: "Harika! Kümeler için .add() metodu kullanılır. ✓" };
         return { ok: false, msg: 'Hata: etiketler.add("yapayzeka") ile elemanı ekleyin.' };
       }
     },
@@ -2751,19 +4559,17 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: SÖZLÜK ANAHTARLARINI LİSTELEME",
       title: "5. Soru: Sözlük Anahtarlarını Alma",
-      prompt: "Geliştirici sözlükteki tüm anahtarları (key) bir liste halinde ekranda görmek istiyor ancak anahtarlar yerine değerleri alıyor. Anahtarları ekrana yazdıracak şekilde kodu düzeltebilir misin?",
-      presetCode: "puanlar = {\"matematik\": 90, \"fizik\": 85, \"kimya\": 78}\nprint(list(puanlar.values()))\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında sözlüğün anahtarlarını listelemek için .values() yerine .keys() metodunun kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "puanlar = {\"matematik\": 90, \"fizik\": 85}\nanahtarlar = list(puanlar.values())\n# Doğru Kod Parçası:\n",
       filename: "sozlukler.py",
       lang: "Python 3.11",
-      quickKeys: ["list(puanlar.keys())","print(list(puanlar.keys()))",".keys()"],
-      hint: "puanlar = {\"matematik\": 90, \"fizik\": 85, \"kimya\": 78}\nprint(list(puanlar.keys()))",
-      solution: "puanlar = {\"matematik\": 90, \"fizik\": 85, \"kimya\": 78}\nprint(list(puanlar.keys()))",
+      quickKeys: ["anahtarlar = list(puanlar.keys())", "list(puanlar.keys())", ".keys()"],
+      hint: "anahtarlar = list(puanlar.keys())",
+      solution: 'puanlar = {"matematik": 90, "fizik": 85}\nanahtarlar = list(puanlar.keys())',
       validator: (code) => {
         const clean = code.trim();
-        const hasKeys = /puanlar\.keys\s*\(\s*\)/.test(clean);
-        const hasPrint = /print\s*\(.*puanlar\.keys/.test(clean);
-        if (hasKeys && hasPrint) return { ok: true, msg: "Tebrikler! .keys() sözlüğün tüm anahtarlarını döner. 6. Modül Tamamlandı! 🏆" };
-        return { ok: false, msg: "Hata: print(list(puanlar.keys())) komutuyla anahtarları yazdırın." };
+        if (/puanlar\.keys\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! .keys() sözlüğün tüm anahtarlarını döner. 6. Modül Tamamlandı! 🏆" };
+        return { ok: false, msg: "Hata: anahtarlar = list(puanlar.keys()) komutuyla anahtarları alın." };
       }
     }
   ],
@@ -2773,16 +4579,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: RANGE DÖNGÜ ARALIĞI",
       title: "1. Soru: Range Sınır Değeri",
-      prompt: "Geliştirici 1'den 5'e kadar olan sayıları (5 dahil) ekrana yazdırmak istiyor ancak döngü 4'te duruyor. 5'in de yazdırılmasını sağlayacak şekilde aralığı düzenleyebilir misin?",
-      presetCode: "for i in range(1, 5):\n    print(i)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında 1'den 5'e kadar olan sayıları (5 dahil) yazdırmak için range bitiş değerinde bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "for i in range(1, 5):\n    print(i)\n# Doğru Kod Parçası:\n",
       filename: "donguler.py",
       lang: "Python 3.11",
-      quickKeys: ["for i in range(1, 6):","    print(i)","range(1, 6)"],
+      quickKeys: ["for i in range(1, 6):", "range(1, 6)", "    print(i)"],
       hint: "for i in range(1, 6):\n    print(i)",
       solution: "for i in range(1, 6):\n    print(i)",
       validator: (code) => {
         const clean = code.trim();
-        if (/range\s*\(\s*1\s*,\s*6\s*\)/.test(clean) && /print\s*\(\s*i\s*\)/.test(clean)) {
+        if (/range\s*\(\s*1\s*,\s*6\s*\)/.test(clean)) {
           return { ok: true, msg: "Harika! range(1, 6) bitiş değeri 6 olduğu için 5'e kadar yazdırır. ✓" };
         }
         return { ok: false, msg: "Hata: for i in range(1, 6): ile 5 dahil saydırmalısınız." };
@@ -2793,18 +4599,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: WHILE DÖNGÜSÜ SAYAÇ YÖNETİMİ",
       title: "2. Soru: Sonsuz Döngüyü Önleme",
-      prompt: "Geliştirici sayaç 5 olana kadar çalışan bir döngü kurmak istiyor ancak döngü sonsuz döngüye girip sistemi kilitliyor. Döngünün güvenle sonlanması için eksik adımı tamamlayabilir misin?",
-      presetCode: "sayac = 1\nwhile sayac <= 5:\n    print(sayac)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında while döngüsünün sonsuz döngüye girmemesi için sayacın artırılmasında bir eksiklik var gibi, bunu düzeltebilir misin?",
+      presetCode: "sayac = 1\nwhile sayac <= 5:\n    print(sayac)\n# Doğru Kod Parçası:\n",
       filename: "donguler.py",
       lang: "Python 3.11",
-      quickKeys: ["sayac += 1","while sayac <= 5:","    print(sayac)"],
-      hint: "sayac = 1\nwhile sayac <= 5:\n    print(sayac)\n    sayac += 1",
+      quickKeys: ["sayac += 1", "while sayac <= 5:\n    print(sayac)\n    sayac += 1"],
+      hint: "sayac += 1",
       solution: "sayac = 1\nwhile sayac <= 5:\n    print(sayac)\n    sayac += 1",
       validator: (code) => {
         const clean = code.trim();
-        const hasIncrement = /sayac\s*(\+=|\=)\s*(sayac\s*\+\s*1|1)/.test(clean);
-        const hasWhile = /while\s+sayac\s*<=\s*5\s*:/.test(clean);
-        if (hasIncrement && hasWhile) return { ok: true, msg: "Tebrikler! sayac += 1 eklenerek sonsuz döngü engellendi. ✓" };
+        if (/sayac\s*(\+=|\=)\s*(sayac\s*\+\s*1|1)/.test(clean)) return { ok: true, msg: "Tebrikler! sayac += 1 eklenerek sonsuz döngü engellendi. ✓" };
         return { ok: false, msg: "Hata: while bloğunun içine sayac += 1 eklemelisiniz." };
       }
     },
@@ -2813,13 +4617,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: DÖNGÜYÜ KIRMA (BREAK)",
       title: "3. Soru: Döngüyü Koşulda Sonlandırma",
-      prompt: "Geliştirici listede 0 sayısını gördüğü anda döngüyü tamamen durdurmak istiyor ancak kod döngüyü sonlandırmadan devam ediyor. İstenen koşulda döngüyü anında sonlandıracak komutu ekleyebilir misin?",
-      presetCode: "sayilar = [10, 20, 0, 40, 50]\nfor s in sayilar:\n    if s == 0:\n        continue\n    print(s)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında 0 sayısına ulaşıldığında döngüyü sonlandırmak için continue yerine break kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "sayilar = [10, 20, 0, 40]\nfor s in sayilar:\n    if s == 0:\n        continue\n    print(s)\n# Doğru Kod Parçası:\n",
       filename: "donguler.py",
       lang: "Python 3.11",
-      quickKeys: ["break","if s == 0:\n        break","for s in sayilar:"],
-      hint: "sayilar = [10, 20, 0, 40, 50]\nfor s in sayilar:\n    if s == 0:\n        break\n    print(s)",
-      solution: "sayilar = [10, 20, 0, 40, 50]\nfor s in sayilar:\n    if s == 0:\n        break\n    print(s)",
+      quickKeys: ["break", "if s == 0:\n        break"],
+      hint: "if s == 0:\n    break",
+      solution: "sayilar = [10, 20, 0, 40]\nfor s in sayilar:\n    if s == 0:\n        break\n    print(s)",
       validator: (code) => {
         const clean = code.trim();
         if (/if\s+s\s*==\s*0\s*:\s*[\s\S]*break/.test(clean)) {
@@ -2833,16 +4637,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: ENUMERATE İLE İNDEKS TAKİBİ",
       title: "4. Soru: İndeks ve Eleman Eşleşmesi",
-      prompt: "Geliştirici listedeki meyveleri ve onların sıra numaralarını (0'dan başlayarak) eşzamanlı yazdırmak istiyor ancak indeks takibi yapamıyor. Hem indeksi hem elemanı birlikte sunan yapıyı ekleyebilir misin?",
-      presetCode: "meyveler = [\"Elma\", \"Armut\", \"Muz\"]\nfor meyve in meyveler:\n    print(meyve)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında hem elemanı hem sıra numarasını almak için enumerate() fonksiyonu kullanılması gerekiyor gibi, bunu ekleyebilir misin?",
+      presetCode: "meyveler = [\"Elma\", \"Armut\", \"Muz\"]\nfor meyve in meyveler:\n    print(meyve)\n# Doğru Kod Parçası:\n",
       filename: "donguler.py",
       lang: "Python 3.11",
-      quickKeys: ["for i, meyve in enumerate(meyveler):","    print(i, meyve)","enumerate(meyveler)"],
-      hint: "meyveler = [\"Elma\", \"Armut\", \"Muz\"]\nfor i, meyve in enumerate(meyveler):\n    print(i, meyve)",
+      quickKeys: ["for i, meyve in enumerate(meyveler):", "enumerate(meyveler)", "    print(i, meyve)"],
+      hint: "for i, meyve in enumerate(meyveler):\n    print(i, meyve)",
       solution: "meyveler = [\"Elma\", \"Armut\", \"Muz\"]\nfor i, meyve in enumerate(meyveler):\n    print(i, meyve)",
       validator: (code) => {
         const clean = code.trim();
-        if (/enumerate\s*\(\s*meyveler\s*\)/.test(clean) && /print\s*\(.*i.*meyve/.test(clean)) {
+        if (/enumerate\s*\(\s*meyveler\s*\)/.test(clean)) {
           return { ok: true, msg: "Harika! enumerate() hem indeksi hem de elemanı döndürür. ✓" };
         }
         return { ok: false, msg: "Hata: for i, meyve in enumerate(meyveler): yapısını kurun." };
@@ -2853,19 +4657,19 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: ZIP İLE PARALEL DÖNGÜ",
       title: "5. Soru: İki Listeyi Eşleştirme",
-      prompt: "Geliştirici iki farklı listedeki isimleri ve notları sırasıyla eşleştirip ekrana yazdırmak istiyor ancak iç içe döngü yüzünden tüm kombinasyonları basıyor. İki listeyi paralel eşleştirecek yapıyı kurabilir misin?",
-      presetCode: "isimler = [\"Ali\", \"Ayşe\"]\nnotlar = [90, 100]\nfor i in isimler:\n    for n in notlar:\n        print(i, n)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında iki listeyi eleman eleman eşleştirmek için zip() fonksiyonu kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "adlar = [\"Ali\", \"Ayşe\"]\nnotlar = [90, 100]\nfor a in adlar:\n    for n in notlar:\n        print(a, n)\n# Doğru Kod Parçası:\n",
       filename: "donguler.py",
       lang: "Python 3.11",
-      quickKeys: ["for i, n in zip(isimler, notlar):","    print(i, n)","zip(isimler, notlar)"],
-      hint: "isimler = [\"Ali\", \"Ayşe\"]\nnotlar = [90, 100]\nfor i, n in zip(isimler, notlar):\n    print(i, n)",
-      solution: "isimler = [\"Ali\", \"Ayşe\"]\nnotlar = [90, 100]\nfor i, n in zip(isimler, notlar):\n    print(i, n)",
+      quickKeys: ["for a, n in zip(adlar, notlar):", "zip(adlar, notlar)", "    print(a, n)"],
+      hint: "for a, n in zip(adlar, notlar):\n    print(a, n)",
+      solution: "adlar = [\"Ali\", \"Ayşe\"]\nnotlar = [90, 100]\nfor a, n in zip(adlar, notlar):\n    print(a, n)",
       validator: (code) => {
         const clean = code.trim();
-        if (/zip\s*\(\s*isimler\s*,\s*notlar\s*\)/.test(clean) && /print\s*\(.*i.*n/.test(clean)) {
+        if (/zip\s*\(\s*adlar\s*,\s*notlar\s*\)/.test(clean) || /zip\s*\(\s*isimler\s*,\s*notlar\s*\)/.test(clean)) {
           return { ok: true, msg: "Tebrikler! zip() listeleri birebir eleman eşleşmesiyle dolaşır. 7. Modül Tamamlandı! 🏆" };
         }
-        return { ok: false, msg: "Hata: for i, n in zip(isimler, notlar): ile paralel döngü kurun." };
+        return { ok: false, msg: "Hata: for a, n in zip(adlar, notlar): ile paralel döngü kurun." };
       }
     }
   ],
@@ -2875,19 +4679,19 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: DEĞER DÖNDÜRME (RETURN)",
       title: "1. Soru: Fonksiyondan Değer Döndürme",
-      prompt: "Geliştirici bir sayının karesini hesaplayan fonksiyonun sonucunu değişkene kaydedip yazdırmak istiyor ancak ekranda <code class=\"code-highlight\">None</code> çıktısı görüyor. Fonksiyonun sonucu dışarı aktarmasını sağlar mısın?",
-      presetCode: "def kare_al(sayi):\n    sonuc = sayi ** 2\n\ndeger = kare_al(4)\nprint(deger)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında fonksiyonun hesapladığı değeri dışarı aktarması için 'return' ifadesi unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "def kare_al(sayi):\n    sonuc = sayi ** 2\n# Doğru Kod Parçası:\n",
       filename: "fonksiyonlar.py",
       lang: "Python 3.11",
-      quickKeys: ["return sayi ** 2","return sonuc","def kare_al(sayi):"],
-      hint: "def kare_al(sayi):\n    return sayi ** 2\n\ndeger = kare_al(4)\nprint(deger)",
-      solution: "def kare_al(sayi):\n    return sayi ** 2\n\ndeger = kare_al(4)\nprint(deger)",
+      quickKeys: ["return sayi ** 2", "return sonuc", "def kare_al(sayi):\n    return sayi ** 2"],
+      hint: "return sayi ** 2",
+      solution: "def kare_al(sayi):\n    return sayi ** 2",
       validator: (code) => {
         const clean = code.trim();
-        if (/def\s+kare_al/.test(clean) && /return\s+/.test(clean)) {
+        if (/return\s+(sayi\s*\*\*\s*2|sonuc)/.test(clean)) {
           return { ok: true, msg: "Harika! return ifadesi fonksiyon sonucunu dışarıya aktarır. ✓" };
         }
-        return { ok: false, msg: "Hata: Fonksiyon içinde return sayi ** 2 döndürmelisiniz." };
+        return { ok: false, msg: "Hata: Fonksiyon içinde 'return sayi ** 2' döndürmelisiniz." };
       }
     },
     {
@@ -2895,13 +4699,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: VARSAYILAN PARAMETRELER",
       title: "2. Soru: Varsayılan Parametre Değeri",
-      prompt: "Geliştirici kullanıcı isim belirtmediğinde varsayılan olarak <code class=\"code-highlight\">\"Misafir\"</code> ismiyle karşılama yapmak istiyor ancak isim verilmediğinde program parametre eksikliği hatası veriyor. Varsayılan parametreyi tanımlayabilir misin?",
-      presetCode: "def karsila(isim):\n    return f\"Hoş geldin {isim}\"\n\nprint(karsila())\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında isim verilmediğinde varsayılan olarak 'Misafir' atanması için parametre varsayılan değerinde eksiklik var gibi, bunu düzeltebilir misin?",
+      presetCode: "def karsila(isim):\n    return f\"Hoş geldin {isim}\"\n# Doğru Kod Parçası:\n",
       filename: "fonksiyonlar.py",
       lang: "Python 3.11",
-      quickKeys: ["def karsila(isim=\"Misafir\"):","isim=\"Misafir\"","return f\"Hoş geldin {isim}\""],
-      hint: "def karsila(isim=\"Misafir\"):\n    return f\"Hoş geldin {isim}\"\n\nprint(karsila())",
-      solution: "def karsila(isim=\"Misafir\"):\n    return f\"Hoş geldin {isim}\"\n\nprint(karsila())",
+      quickKeys: ["def karsila(isim=\"Misafir\"):", "isim=\"Misafir\""],
+      hint: 'def karsila(isim="Misafir"):',
+      solution: 'def karsila(isim="Misafir"):\n    return f"Hoş geldin {isim}"',
       validator: (code) => {
         const clean = code.trim();
         if (/def\s+karsila\s*\(\s*isim\s*=\s*['"]Misafir['"]\s*\)/.test(clean)) {
@@ -2915,17 +4719,17 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: ESNEK KONUMSAL PARAMETRELER (*ARGS)",
       title: "3. Soru: Esnek Sayıda Argüman (*args)",
-      prompt: "Geliştirici fonksiyona kaç adet sayı gönderilirse gönderilsin hepsini toplayabilen esnek bir yapı kurmak istiyor fakat kod sadece 2 sayı kabul ediyor. İstenen sayıda argüman alabilecek parametre yapısını ekler misin?",
-      presetCode: "def topla(a, b):\n    return a + b\n\nprint(topla(5, 10, 15, 20))\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında fonksiyona istenen sayıda sayı gönderebilmek için '*sayilar' (*args) kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "def topla(a, b):\n    return a + b\n# Doğru Kod Parçası:\n",
       filename: "fonksiyonlar.py",
       lang: "Python 3.11",
-      quickKeys: ["def topla(*sayilar):","return sum(sayilar)","*args"],
-      hint: "def topla(*sayilar):\n    return sum(sayilar)\n\nprint(topla(5, 10, 15, 20))",
-      solution: "def topla(*sayilar):\n    return sum(sayilar)\n\nprint(topla(5, 10, 15, 20))",
+      quickKeys: ["def topla(*sayilar):\n    return sum(sayilar)", "def topla(*sayilar):", "return sum(sayilar)"],
+      hint: "def topla(*sayilar):\n    return sum(sayilar)",
+      solution: "def topla(*sayilar):\n    return sum(sayilar)",
       validator: (code) => {
         const clean = code.trim();
-        if (/def\s+topla\s*\(\s*\*\w+\s*\)/.test(clean) && (/sum\s*\(/.test(clean) || /for\s+/.test(clean))) {
-          return { ok: true, msg: "Mükemmel! *sayilar (*args) değişken sayıda argümanları demet olarak toplar. ✓" };
+        if (/def\s+topla\s*\(\s*\*\w+\s*\)/.test(clean) && (/sum\s*\(/.test(clean) || /return/.test(clean))) {
+          return { ok: true, msg: "Mükemmel! *sayilar (*args) değişken sayıda argümanları toplar. ✓" };
         }
         return { ok: false, msg: "Hata: def topla(*sayilar): tanımlayıp return sum(sayilar) döndürün." };
       }
@@ -2935,19 +4739,19 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: GLOBAL DEĞİŞKEN KAPSAMI",
       title: "4. Soru: Global Kapsama Müdahale",
-      prompt: "Geliştirici fonksiyon içinden global tanımlanmış puan değişkenini artırmak istiyor ancak lokal değişken hatası alıyor. Global değişkene fonksiyon içerisinden müdahale edebilmesini sağlayabilir misin?",
-      presetCode: "skor = 100\ndef skor_arttir():\n    skor += 10\n\nskor_arttir()\nprint(skor)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında fonksiyon içinden global skora erişebilmek için 'global' bildirimi unutulmuş gibi, bunu ekleyebilir misin?",
+      presetCode: "skor = 100\ndef skor_arttir():\n    skor += 10\n# Doğru Kod Parçası:\n",
       filename: "fonksiyonlar.py",
       lang: "Python 3.11",
-      quickKeys: ["global skor","skor += 10","def skor_arttir():"],
-      hint: "skor = 100\ndef skor_arttir():\n    global skor\n    skor += 10\n\nskor_arttir()\nprint(skor)",
-      solution: "skor = 100\ndef skor_arttir():\n    global skor\n    skor += 10\n\nskor_arttir()\nprint(skor)",
+      quickKeys: ["global skor", "skor = 100\ndef skor_arttir():\n    global skor\n    skor += 10"],
+      hint: "global skor",
+      solution: "skor = 100\ndef skor_arttir():\n    global skor\n    skor += 10",
       validator: (code) => {
         const clean = code.trim();
-        if (/global\s+skor/.test(clean) && /skor\s*\+=\s*10/.test(clean)) {
-          return { ok: true, msg: "Harika! global anahtar kelimesi fonksiyonun dışındaki değişkene erişim sağlar. ✓" };
+        if (/global\s+skor/.test(clean)) {
+          return { ok: true, msg: "Harika! global anahtar kelimesi fonksiyon dışındaki değişkene erişim sağlar. ✓" };
         }
-        return { ok: false, msg: "Hata: Fonksiyon içinde 'global skor' tanımlamalısınız." };
+        return { ok: false, msg: "Hata: Fonksiyon içine 'global skor' ekleyin." };
       }
     },
     {
@@ -2955,13 +4759,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: İSİMLENDİRİLMİŞ PARAMETRELER (**KWARGS)",
       title: "5. Soru: Anahtar-Değer Argümanları (**kwargs)",
-      prompt: "Geliştirici anahtar-değer çifti şeklinde gönderilen kullanıcı bilgilerini sözlük olarak toplayıp yazdırmak istiyor. İsimlendirilmiş argümanları kabul eden fonksiyon tanımını yapar mısın?",
-      presetCode: "def profil_yaz(*bilgiler):\n    return bilgiler\n\nprint(profil_yaz(ad=\"Can\", rol=\"Admin\"))\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında isimlendirilmiş sözlük parametrelerini yakalamak için tek yıldız yerine çift yıldız (**bilgiler) gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "def profil_yaz(*bilgiler):\n    return bilgiler\n# Doğru Kod Parçası:\n",
       filename: "fonksiyonlar.py",
       lang: "Python 3.11",
-      quickKeys: ["def profil_yaz(**bilgiler):","return bilgiler","**kwargs"],
-      hint: "def profil_yaz(**bilgiler):\n    return bilgiler\n\nprint(profil_yaz(ad=\"Can\", rol=\"Admin\"))",
-      solution: "def profil_yaz(**bilgiler):\n    return bilgiler\n\nprint(profil_yaz(ad=\"Can\", rol=\"Admin\"))",
+      quickKeys: ["def profil_yaz(**bilgiler):", "return bilgiler", "**kwargs"],
+      hint: "def profil_yaz(**bilgiler):\n    return bilgiler",
+      solution: "def profil_yaz(**bilgiler):\n    return bilgiler",
       validator: (code) => {
         const clean = code.trim();
         if (/def\s+profil_yaz\s*\(\s*\*\*\w+\s*\)/.test(clean)) {
@@ -2977,17 +4781,17 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: LAMBDA ANONİM FONKSİYONLAR",
       title: "1. Soru: Lambda Sözdizimi",
-      prompt: "Geliştirici verilen bir sayının iki katını alan tek satırlık anonim (lambda) fonksiyon oluşturmak istiyor ancak sözdizimindeki gereksiz anahtar kelimeler hata veriyor. Lambda tanımını doğru şekilde yazar mısın?",
-      presetCode: "iki_kat = lambda x: return x * 2\nprint(iki_kat(5))\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında tek satırlık lambda fonksiyonunun içinde fazladan 'return' yazılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "iki_kat = lambda x: return x * 2\n# Doğru Kod Parçası:\n",
       filename: "lambda.py",
       lang: "Python 3.11",
-      quickKeys: ["iki_kat = lambda x: x * 2","lambda x: x * 2","print(iki_kat(5))"],
-      hint: "iki_kat = lambda x: x * 2\nprint(iki_kat(5))",
-      solution: "iki_kat = lambda x: x * 2\nprint(iki_kat(5))",
+      quickKeys: ["iki_kat = lambda x: x * 2", "lambda x: x * 2"],
+      hint: "iki_kat = lambda x: x * 2",
+      solution: "iki_kat = lambda x: x * 2",
       validator: (code) => {
         const clean = code.trim();
         if (/lambda\s+x\s*:\s*x\s*\*\s*2/.test(clean) && !/return/.test(clean)) {
-          return { ok: true, msg: "Harika! Lambda ifadelerinde 'return' yazılmaz, ifade otomatik döndürülür. ✓" };
+          return { ok: true, msg: "Harika! Lambda ifadelerinde 'return' yazılmaz, otomatik döndürülür. ✓" };
         }
         return { ok: false, msg: "Hata: iki_kat = lambda x: x * 2 tanımını kurun." };
       }
@@ -2997,13 +4801,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: LİSTE ÜRETECİ (LIST COMPREHENSION)",
       title: "2. Soru: List Comprehension Sözdizimi",
-      prompt: "Geliştirici 1'den 5'e kadar olan sayıların karelerinden oluşan bir listeyi tek satırda (List Comprehension) üretmek istiyor ancak sözdizim hatası alıyor. Listeyi doğru formatta oluşturabilir misin?",
-      presetCode: "kareler = [for x in range(1, 6): x**2]\nprint(kareler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında List Comprehension yapısında üretilecek ifade (x**2) döngünün başına alınmalı gibi, bunu düzeltebilir misin?",
+      presetCode: "kareler = [for x in range(1, 6): x**2]\n# Doğru Kod Parçası:\n",
       filename: "comprehension.py",
       lang: "Python 3.11",
-      quickKeys: ["kareler = [x**2 for x in range(1, 6)]","x**2 for x in range(1, 6)","print(kareler)"],
-      hint: "kareler = [x**2 for x in range(1, 6)]\nprint(kareler)",
-      solution: "kareler = [x**2 for x in range(1, 6)]\nprint(kareler)",
+      quickKeys: ["kareler = [x**2 for x in range(1, 6)]", "x**2 for x in range(1, 6)"],
+      hint: "kareler = [x**2 for x in range(1, 6)]",
+      solution: "kareler = [x**2 for x in range(1, 6)]",
       validator: (code) => {
         const clean = code.trim();
         if (/\[\s*x\s*\*\*\s*2\s+for\s+x\s+in\s+range\s*\(\s*1\s*,\s*6\s*\)\s*\]/.test(clean)) {
@@ -3017,13 +4821,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: KOŞULLU LİSTE ÜRETECİ",
       title: "3. Soru: Koşullu List Comprehension",
-      prompt: "Geliştirici bir sayı listesindeki çift sayıları List Comprehension ile filtreleyip almak istiyor ancak koşul yerleşimi hatalı olduğu için kod çalışmıyor. Doğru filtreleme sözdizimini yazar mısın?",
-      presetCode: "sayilar = [1, 2, 3, 4, 5, 6]\nciftler = [if x % 2 == 0: x for x in sayilar]\nprint(ciftler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında çift sayıları filtreleyen if koşulu döngünün sonuna yerleştirilmeli gibi, bunu düzeltebilir misin?",
+      presetCode: "sayilar = [1, 2, 3, 4, 5, 6]\nciftler = [if x % 2 == 0: x for x in sayilar]\n# Doğru Kod Parçası:\n",
       filename: "comprehension.py",
       lang: "Python 3.11",
-      quickKeys: ["ciftler = [x for x in sayilar if x % 2 == 0]","if x % 2 == 0","print(ciftler)"],
-      hint: "sayilar = [1, 2, 3, 4, 5, 6]\nciftler = [x for x in sayilar if x % 2 == 0]\nprint(ciftler)",
-      solution: "sayilar = [1, 2, 3, 4, 5, 6]\nciftler = [x for x in sayilar if x % 2 == 0]\nprint(ciftler)",
+      quickKeys: ["ciftler = [x for x in sayilar if x % 2 == 0]", "if x % 2 == 0"],
+      hint: "ciftler = [x for x in sayilar if x % 2 == 0]",
+      solution: "sayilar = [1, 2, 3, 4, 5, 6]\nciftler = [x for x in sayilar if x % 2 == 0]",
       validator: (code) => {
         const clean = code.trim();
         if (/\[\s*x\s+for\s+x\s+in\s+sayilar\s+if\s+x\s*%\s*2\s*==\s*0\s*\]/.test(clean)) {
@@ -3037,16 +4841,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: DÖNÜŞTÜRÜCÜ (MAP FONKSİYONU)",
       title: "4. Soru: Map Sonucunu Listeye Çevirme",
-      prompt: "Geliştirici listedeki tüm metinlerin harflerini büyütmek için <code class=\"code-highlight\">map()</code> fonksiyonunu kullanıyor ancak çıktı olarak bir liste yerine nesne referansı görüyor. Sonucu okunabilir bir listeye dönüştürebilir misin?",
-      presetCode: "isimler = [\"ali\", \"veli\", \"can\"]\nbuyukler = map(str.upper, isimler)\nprint(buyukler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında map() sonucunu liste olarak görebilmek için list() ile sarılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "isimler = [\"ali\", \"veli\", \"can\"]\nbuyukler = map(str.upper, isimler)\n# Doğru Kod Parçası:\n",
       filename: "map_filter.py",
       lang: "Python 3.11",
-      quickKeys: ["buyukler = list(map(str.upper, isimler))","list(buyukler)","print(buyukler)"],
-      hint: "isimler = [\"ali\", \"veli\", \"can\"]\nbuyukler = list(map(str.upper, isimler))\nprint(buyukler)",
-      solution: "isimler = [\"ali\", \"veli\", \"can\"]\nbuyukler = list(map(str.upper, isimler))\nprint(buyukler)",
+      quickKeys: ["buyukler = list(map(str.upper, isimler))", "list(map(str.upper, isimler))"],
+      hint: "buyukler = list(map(str.upper, isimler))",
+      solution: "isimler = [\"ali\", \"veli\", \"can\"]\nbuyukler = list(map(str.upper, isimler))",
       validator: (code) => {
         const clean = code.trim();
-        if (/list\s*\(\s*map\s*\(\s*str\.upper\s*,\s*isimler\s*\)\s*\)/.test(clean) || /print\s*\(\s*list\s*\(\s*buyukler\s*\)\s*\)/.test(clean)) {
+        if (/list\s*\(\s*map\s*\(\s*str\.upper\s*,\s*isimler\s*\)\s*\)/.test(clean)) {
           return { ok: true, msg: "Harika! map() sonucunu görmek için list() dönüşümü yapılır. ✓" };
         }
         return { ok: false, msg: "Hata: buyukler = list(map(str.upper, isimler)) şeklinde listeye çevirin." };
@@ -3057,16 +4861,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: FİLTRELEYİCİ (FILTER FONKSİYONU)",
       title: "5. Soru: Filter ile Pozitif Sayıları Seçme",
-      prompt: "Geliştirici listedeki pozitif sayıları <code class=\"code-highlight\">filter()</code> ile ayıklamak istiyor ancak çıktıyı liste olarak alamıyor. <code class=\"code-highlight\">filter()</code> sonucunu doğru şekilde listeye çevirip yazdırabilir misin?",
-      presetCode: "sayilar = [-5, 10, -2, 8, -1]\npozitifler = filter(lambda x: x > 0, sayilar)\nprint(pozitifler)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında filter() sonucunu liste olarak alabilmek için list() dönüşümü gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "sayilar = [-5, 10, -2, 8]\npozitifler = filter(lambda x: x > 0, sayilar)\n# Doğru Kod Parçası:\n",
       filename: "map_filter.py",
       lang: "Python 3.11",
-      quickKeys: ["pozitifler = list(filter(lambda x: x > 0, sayilar))","list(pozitifler)","print(pozitifler)"],
-      hint: "sayilar = [-5, 10, -2, 8, -1]\npozitifler = list(filter(lambda x: x > 0, sayilar))\nprint(pozitifler)",
-      solution: "sayilar = [-5, 10, -2, 8, -1]\npozitifler = list(filter(lambda x: x > 0, sayilar))\nprint(pozitifler)",
+      quickKeys: ["pozitifler = list(filter(lambda x: x > 0, sayilar))", "list(filter("],
+      hint: "pozitifler = list(filter(lambda x: x > 0, sayilar))",
+      solution: "sayilar = [-5, 10, -2, 8]\npozitifler = list(filter(lambda x: x > 0, sayilar))",
       validator: (code) => {
         const clean = code.trim();
-        if (/list\s*\(\s*filter\s*\(/.test(clean) || /print\s*\(\s*list\s*\(\s*pozitifler\s*\)\s*\)/.test(clean)) {
+        if (/list\s*\(\s*filter\s*\(/.test(clean)) {
           return { ok: true, msg: "Tebrikler! filter() sonucu list() ile listeye dönüştürüldü. 9. Modül Tamamlandı! 🏆" };
         }
         return { ok: false, msg: "Hata: pozitifler = list(filter(lambda x: x > 0, sayilar)) şeklinde yazın." };
@@ -3077,15 +4881,15 @@ const CHALLENGES_DATABASE = {
     {
       stepNum: 1,
       totalSteps: 5,
-      moduleSubtitle: "MODÜL 10: STANDART KÜTÜPHANE İÇE AKTARMA",
+      moduleSubtitle: "MODÜL 10: MODÜL İÇE AKTARMA (IMPORT)",
       title: "1. Soru: Modül İçe Aktarma (Import)",
-      prompt: "Geliştirici Python'ın yerleşik matematik modülünü kullanarak 16 sayısının karekökünü hesaplamak istiyor ancak modülü çağırmadığı için hata alıyor. Gerekli modülü içeri aktarıp karekökü yazdırabilir misin?",
-      presetCode: "sonuc = math.sqrt(16)\nprint(sonuc)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında math.sqrt fonksiyonunu kullanabilmek için en üste 'import math' eklenmesi gerekiyor gibi, bunu ekleyebilir misin?",
+      presetCode: "sonuc = math.sqrt(16)\n# Doğru Kod Parçası:\n",
       filename: "moduller.py",
       lang: "Python 3.11",
-      quickKeys: ["import math","sonuc = math.sqrt(16)","print(sonuc)"],
-      hint: "import math\nsonuc = math.sqrt(16)\nprint(sonuc)",
-      solution: "import math\nsonuc = math.sqrt(16)\nprint(sonuc)",
+      quickKeys: ["import math\nsonuc = math.sqrt(16)", "import math"],
+      hint: "import math\nsonuc = math.sqrt(16)",
+      solution: "import math\nsonuc = math.sqrt(16)",
       validator: (code) => {
         const clean = code.trim();
         if (/import\s+math/.test(clean) && /math\.sqrt\s*\(\s*16\s*\)/.test(clean)) {
@@ -3099,17 +4903,17 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: FROM ... IMPORT SÖZDİZİMİ",
       title: "2. Soru: Belirli Fonksiyonu İçe Aktarma",
-      prompt: "Geliştirici <code class=\"code-highlight\">random</code> modülünden yalnızca <code class=\"code-highlight\">randint</code> fonksiyonunu doğrudan kullanmak istiyor ancak çağırma biçimindeki hata yüzünden fonksiyon bulunamıyor. Fonksiyonu doğrudan kullanılabilir şekilde içe aktarır mısın?",
-      presetCode: "import randint from random\nsayi = randint(1, 10)\nprint(sayi)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında randint fonksiyonunu doğrudan çekmek için 'from random import randint' yazılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import randint from random\nsayi = randint(1, 10)\n# Doğru Kod Parçası:\n",
       filename: "moduller.py",
       lang: "Python 3.11",
-      quickKeys: ["from random import randint","sayi = randint(1, 10)","print(sayi)"],
-      hint: "from random import randint\nsayi = randint(1, 10)\nprint(sayi)",
-      solution: "from random import randint\nsayi = randint(1, 10)\nprint(sayi)",
+      quickKeys: ["from random import randint", "sayi = randint(1, 10)"],
+      hint: "from random import randint\nsayi = randint(1, 10)",
+      solution: "from random import randint\nsayi = randint(1, 10)",
       validator: (code) => {
         const clean = code.trim();
         if (/from\s+random\s+import\s+randint/.test(clean)) {
-          return { ok: true, msg: "Tebrikler! from modul import fonksiyon sözdizimi başarıyla uygulandı. ✓" };
+          return { ok: true, msg: "Tebrikler! from modul import fonksiyon sözdizimi uygulandı. ✓" };
         }
         return { ok: false, msg: "Hata: 'from random import randint' şeklinde yazmalısınız." };
       }
@@ -3119,13 +4923,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: MODÜLE TAKMA AD VERME (AS)",
       title: "3. Soru: Modül Takma Adı (Alias)",
-      prompt: "Geliştirici uzun bir modül ismine kısa bir takma ad (alias) vererek kullanmak istiyor ancak anahtar kelimeyi yanlış kullandığı için sözdizim hatası alıyor. Doğru takma adlandırmayı uygulayabilir misin?",
-      presetCode: "import datetime with dt\nsimdi = dt.datetime.now()\nprint(simdi)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında modüle takma ad verirken 'with' yerine 'as' anahtar kelimesi kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import datetime with dt\nsimdi = dt.datetime.now()\n# Doğru Kod Parçası:\n",
       filename: "moduller.py",
       lang: "Python 3.11",
-      quickKeys: ["import datetime as dt","simdi = dt.datetime.now()","as dt"],
-      hint: "import datetime as dt\nsimdi = dt.datetime.now()\nprint(simdi)",
-      solution: "import datetime as dt\nsimdi = dt.datetime.now()\nprint(simdi)",
+      quickKeys: ["import datetime as dt", "as dt"],
+      hint: "import datetime as dt",
+      solution: "import datetime as dt\nsimdi = dt.datetime.now()",
       validator: (code) => {
         const clean = code.trim();
         if (/import\s+datetime\s+as\s+dt/.test(clean)) {
@@ -3139,19 +4943,19 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: DOĞRUDAN SABİT KULLANIMI",
       title: "4. Soru: Pi Sayısı ile Alan Hesabı",
-      prompt: "Geliştirici <code class=\"code-highlight\">math</code> modülündeki pi sayısını kullanarak yarıçapı 5 olan dairenin alanını (<code class=\"code-highlight\">pi * r**2</code>) hesaplamak istiyor ancak modül adı yazımında aksaklık var. Pi sabitini doğru şekilde içe aktarıp alanı hesaplar mısın?",
-      presetCode: "from math import pi\nr = 5\nalan = math.pi * (r ** 2)\nprint(alan)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında from ile içe aktarılan pi sabiti doğrudan 'pi' adıyla çağrılmalı gibi, bunu düzeltebilir misin?",
+      presetCode: "from math import pi\nalan = math.pi * (5 ** 2)\n# Doğru Kod Parçası:\n",
       filename: "moduller.py",
       lang: "Python 3.11",
-      quickKeys: ["alan = pi * (r ** 2)","from math import pi","print(alan)"],
-      hint: "from math import pi\nr = 5\nalan = pi * (r ** 2)\nprint(alan)",
-      solution: "from math import pi\nr = 5\nalan = pi * (r ** 2)\nprint(alan)",
+      quickKeys: ["alan = pi * (5 ** 2)", "alan = pi * 25", "from math import pi"],
+      hint: "from math import pi\nalan = pi * (5 ** 2)",
+      solution: "from math import pi\nalan = pi * (5 ** 2)",
       validator: (code) => {
         const clean = code.trim();
-        if (/from\s+math\s+import\s+pi/.test(clean) && !/math\.pi/.test(clean) && /pi\s*\*\s*(\(?r\s*\*\*\s*2\)?|25)/.test(clean)) {
+        if (!/math\.pi/.test(clean) && /pi\s*\*/.test(clean)) {
           return { ok: true, msg: "Harika! from ile içe aktarılan pi doğrudan adıyla kullanılır. ✓" };
         }
-        return { ok: false, msg: "Hata: alan = pi * (r ** 2) şeklinde math. önekini kaldırın." };
+        return { ok: false, msg: "Hata: alan = pi * (5 ** 2) şeklinde math. önekini kaldırın." };
       }
     },
     {
@@ -3159,13 +4963,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: RASTGELE SEÇİM (RANDOM.CHOICE)",
       title: "5. Soru: Listeden Rastgele Seçim",
-      prompt: "Geliştirici bir listeden rastgele bir eleman seçmek istiyor ancak yanlış fonksiyon çağırdığı için hata alıyor. Listeden rastgele eleman seçen doğru <code class=\"code-highlight\">random</code> fonksiyonunu kullanabilir misin?",
-      presetCode: "import random\nrenkler = [\"Kırmızı\", \"Mavi\", \"Yeşil\"]\nsecim = random.rand(renkler)\nprint(secim)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında listeden rastgele eleman seçmek için random.rand yerine 'random.choice' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import random\nrenkler = [\"Kırmızı\", \"Mavi\", \"Yeşil\"]\nsecim = random.rand(renkler)\n# Doğru Kod Parçası:\n",
       filename: "moduller.py",
       lang: "Python 3.11",
-      quickKeys: ["secim = random.choice(renkler)","random.choice(","print(secim)"],
-      hint: "import random\nrenkler = [\"Kırmızı\", \"Mavi\", \"Yeşil\"]\nsecim = random.choice(renkler)\nprint(secim)",
-      solution: "import random\nrenkler = [\"Kırmızı\", \"Mavi\", \"Yeşil\"]\nsecim = random.choice(renkler)\nprint(secim)",
+      quickKeys: ["secim = random.choice(renkler)", "random.choice(renkler)", "random.choice"],
+      hint: "secim = random.choice(renkler)",
+      solution: "import random\nrenkler = [\"Kırmızı\", \"Mavi\", \"Yeşil\"]\nsecim = random.choice(renkler)",
       validator: (code) => {
         const clean = code.trim();
         if (/random\.choice\s*\(\s*renkler\s*\)/.test(clean)) {
@@ -3181,13 +4985,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: SIFIRA BÖLME HATASI (ZERODIVISIONERROR)",
       title: "1. Soru: Sıfıra Bölme Hatasını Yakalama",
-      prompt: "Geliştirici bir sayıyı 0'a bölmeye çalışırken programın çökmesini engellemek ve ekrana <code class=\"code-highlight\">\"Sıfıra bölünemez\"</code> uyarısı basmak istiyor. Olası hatayı yakalayan koruma bloğunu kurabilir misin?",
-      presetCode: "sayi = 10 / 0\nprint(sayi)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında sıfıra bölme hatasını yakalayıp ekrana uyarı basmak için try-except bloğu kurulmalı gibi, bunu ekleyebilir misin?",
+      presetCode: "sayi = 10 / 0\n# Doğru Kod Parçası:\n",
       filename: "hatalar.py",
       lang: "Python 3.11",
-      quickKeys: ["try:","except ZeroDivisionError:","    print(\"Sıfıra bölünemez\")"],
-      hint: "try:\n    sayi = 10 / 0\n    print(sayi)\nexcept ZeroDivisionError:\n    print(\"Sıfıra bölünemez\")",
-      solution: "try:\n    sayi = 10 / 0\n    print(sayi)\nexcept ZeroDivisionError:\n    print(\"Sıfıra bölünemez\")",
+      quickKeys: ["try:\n    sayi = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Sıfıra bölünemez\")", "except ZeroDivisionError:"],
+      hint: 'try:\n    sayi = 10 / 0\nexcept ZeroDivisionError:\n    print("Sıfıra bölünemez")',
+      solution: 'try:\n    sayi = 10 / 0\nexcept ZeroDivisionError:\n    print("Sıfıra bölünemez")',
       validator: (code) => {
         const clean = code.trim();
         if (/try\s*:[\s\S]*except\s+(ZeroDivisionError|Exception)\s*:[\s\S]*print\s*\(\s*['"]Sıfıra bölünemez['"]\s*\)/.test(clean)) {
@@ -3201,13 +5005,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: DEĞER DÖNÜŞÜM HATASI (VALUEERROR)",
       title: "2. Soru: Tip Dönüşüm Hatası",
-      prompt: "Geliştirici metin halindeki geçersiz bir girdiyi sayıya dönüştürürken oluşan hatayı yakalayıp <code class=\"code-highlight\">\"Geçersiz Sayı\"</code> yazdırmak istiyor. İlgili veri dönüşüm hatasını yakalayan bloğu yazar mısın?",
-      presetCode: "try:\n    deger = int(\"abc\")\nexcept KeyError:\n    print(\"Geçersiz Sayı\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında int('abc') dönüşüm hatasını yakalamak için KeyError yerine 'ValueError' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "try:\n    deger = int(\"abc\")\nexcept KeyError:\n    print(\"Geçersiz Sayı\")\n# Doğru Kod Parçası:\n",
       filename: "hatalar.py",
       lang: "Python 3.11",
-      quickKeys: ["except ValueError:","print(\"Geçersiz Sayı\")","try:\n    deger = int(\"abc\")"],
-      hint: "try:\n    deger = int(\"abc\")\nexcept ValueError:\n    print(\"Geçersiz Sayı\")",
-      solution: "try:\n    deger = int(\"abc\")\nexcept ValueError:\n    print(\"Geçersiz Sayı\")",
+      quickKeys: ["except ValueError:", "try:\n    deger = int(\"abc\")\nexcept ValueError:\n    print(\"Geçersiz Sayı\")"],
+      hint: "except ValueError:",
+      solution: 'try:\n    deger = int("abc")\nexcept ValueError:\n    print("Geçersiz Sayı")',
       validator: (code) => {
         const clean = code.trim();
         if (/except\s+ValueError\s*:/.test(clean) && /print\s*\(\s*['"]Geçersiz Sayı['"]\s*\)/.test(clean)) {
@@ -3221,13 +5025,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: GARANTİ ÇALIŞAN BLOK (FINALLY)",
       title: "3. Soru: Her Durumda Çalışan Finally",
-      prompt: "Geliştirici hata olsun ya da olmasın her durumda <code class=\"code-highlight\">\"İşlem Bitti\"</code> mesajının mutlaka çalışmasını istiyor. Her senaryoda çalışan garanti bloğunu ekleyebilir misin?",
-      presetCode: "try:\n    x = 5 + 5\nexcept Exception:\n    print(\"Hata\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında her durumda mutlaka çalışan garanti blok için 'finally' eklenmesi gerekiyor gibi, bunu ekleyebilir misin?",
+      presetCode: "try:\n    x = 5 + 5\nexcept Exception:\n    print(\"Hata\")\n# Doğru Kod Parçası:\n",
       filename: "hatalar.py",
       lang: "Python 3.11",
-      quickKeys: ["finally:","    print(\"İşlem Bitti\")","try:    x = 5 + 5"],
-      hint: "try:\n    x = 5 + 5\nexcept Exception:\n    print(\"Hata\")\nfinally:\n    print(\"İşlem Bitti\")",
-      solution: "try:\n    x = 5 + 5\nexcept Exception:\n    print(\"Hata\")\nfinally:\n    print(\"İşlem Bitti\")",
+      quickKeys: ["finally:\n    print(\"İşlem Bitti\")", "finally:"],
+      hint: 'finally:\n    print("İşlem Bitti")',
+      solution: 'try:\n    x = 5 + 5\nexcept Exception:\n    print("Hata")\nfinally:\n    print("İşlem Bitti")',
       validator: (code) => {
         const clean = code.trim();
         if (/finally\s*:[\s\S]*print\s*\(\s*['"]İşlem Bitti['"]\s*\)/.test(clean)) {
@@ -3241,13 +5045,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: ÖZEL HATA FIRLATMA (RAISE)",
       title: "4. Soru: Manuel Hata Fırlatma",
-      prompt: "Geliştirici yaş değeri 0'dan küçük girildiğinde manuel olarak bir hata tetiklemek istiyor ancak hatalı komut kullandığı için hata fırlatılamıyor. Doğru hata fırlatma komutunu uygular mısın?",
-      presetCode: "yas = -5\nif yas < 0:\n    throw ValueError(\"Yaş negatif olamaz\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında Python'da manuel hata fırlatırken 'throw' yerine 'raise' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "yas = -5\nif yas < 0:\n    throw ValueError(\"Yaş negatif olamaz\")\n# Doğru Kod Parçası:\n",
       filename: "hatalar.py",
       lang: "Python 3.11",
-      quickKeys: ["raise ValueError(\"Yaş negatif olamaz\")","raise","if yas < 0:"],
-      hint: "yas = -5\nif yas < 0:\n    raise ValueError(\"Yaş negatif olamaz\")",
-      solution: "yas = -5\nif yas < 0:\n    raise ValueError(\"Yaş negatif olamaz\")",
+      quickKeys: ["raise ValueError(\"Yaş negatif olamaz\")", "raise "],
+      hint: 'raise ValueError("Yaş negatif olamaz")',
+      solution: 'yas = -5\nif yas < 0:\n    raise ValueError("Yaş negatif olamaz")',
       validator: (code) => {
         const clean = code.trim();
         if (/raise\s+ValueError\s*\(\s*['"]Yaş negatif olamaz['"]\s*\)/.test(clean)) {
@@ -3261,17 +5065,17 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: HATA DETAYINI ALMA (EXCEPT ... AS E)",
       title: "5. Soru: Hata Mesajına Erişme",
-      prompt: "Geliştirici yakalanan hatanın sistem tarafından üretilen detaylı mesajını ekrana yazdırmak istiyor ancak hata değişkenini yakalayamıyor. Hata nesnesini değişkene atayarak yazdırabilir misin?",
-      presetCode: "try:\n    sonuc = 10 / 0\nexcept ZeroDivisionError:\n    print(e)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında hata mesajını değişkene bağlayıp yazdırmak için 'except ZeroDivisionError as e:' şeklinde tanımlama gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "try:\n    sonuc = 10 / 0\nexcept ZeroDivisionError:\n    print(e)\n# Doğru Kod Parçası:\n",
       filename: "hatalar.py",
       lang: "Python 3.11",
-      quickKeys: ["except ZeroDivisionError as e:","print(e)","as e"],
-      hint: "try:\n    sonuc = 10 / 0\nexcept ZeroDivisionError as e:\n    print(e)",
+      quickKeys: ["except ZeroDivisionError as e:", "as e", "print(e)"],
+      hint: "except ZeroDivisionError as e:",
       solution: "try:\n    sonuc = 10 / 0\nexcept ZeroDivisionError as e:\n    print(e)",
       validator: (code) => {
         const clean = code.trim();
         if (/except\s+ZeroDivisionError\s+as\s+e\s*:/.test(clean) && /print\s*\(\s*e\s*\)/.test(clean)) {
-          return { ok: true, msg: "Tebrikler! 'as e' ile hata nesnesi değişkene bağlanır. 11. Modül Tamamlandı! 🏆" };
+          return { ok: true, msg: "Tebrikler! 'as e' ile hata nesnesi değişkene bağlandı. 11. Modül Tamamlandı! 🏆" };
         }
         return { ok: false, msg: "Hata: except ZeroDivisionError as e: tanımlaması yapın." };
       }
@@ -3283,16 +5087,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: DOSYAYA YAZMA MODU (\"W\")",
       title: "1. Soru: Dosyaya Yazma Modu",
-      prompt: "Geliştirici <code class=\"code-highlight\">notlar.txt</code> dosyasına yeni bir not yazmak istiyor ancak okuma modunda açtığı için yazma hatası alıyor. Dosyayı yazma modunda açıp <code class=\"code-highlight\">\"Python 100\"</code> metnini yazdırabilir misin?",
-      presetCode: "with open(\"notlar.txt\", \"r\") as dosya:\n    dosya.write(\"Python 100\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında dosyaya yazı yazabilmek için 'r' okuma modu yerine 'w' yazma modu kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "with open(\"notlar.txt\", \"r\") as dosya:\n    dosya.write(\"Python 100\")\n# Doğru Kod Parçası:\n",
       filename: "dosyalar.py",
       lang: "Python 3.11",
-      quickKeys: ["with open(\"notlar.txt\", \"w\") as dosya:","    dosya.write(\"Python 100\")","\"w\""],
-      hint: "with open(\"notlar.txt\", \"w\") as dosya:\n    dosya.write(\"Python 100\")",
-      solution: "with open(\"notlar.txt\", \"w\") as dosya:\n    dosya.write(\"Python 100\")",
+      quickKeys: ["with open(\"notlar.txt\", \"w\") as dosya:", "\"w\""],
+      hint: 'with open("notlar.txt", "w") as dosya:\n    dosya.write("Python 100")',
+      solution: 'with open("notlar.txt", "w") as dosya:\n    dosya.write("Python 100")',
       validator: (code) => {
         const clean = code.trim();
-        if (/with\s+open\s*\(\s*['"]notlar\.txt['"]\s*,\s*['"]w['"]\s*\)\s*as\s+dosya\s*:[\s\S]*dosya\.write\s*\(\s*['"]Python 100['"]\s*\)/.test(clean)) {
+        if (/with\s+open\s*\(\s*['"]notlar\.txt['"]\s*,\s*['"]w['"]\s*\)\s*as\s+dosya\s*:/.test(clean)) {
           return { ok: true, msg: "Harika! Dosyaya yazmak için 'w' (write) modu kullanılır. ✓" };
         }
         return { ok: false, msg: 'Hata: with open("notlar.txt", "w") as dosya: modunu kullanın.' };
@@ -3303,13 +5107,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: DOSYAYA EKLEME MODU (\"A\")",
       title: "2. Soru: Dosya Sonuna Veri Ekleme",
-      prompt: "Geliştirici dosyadaki mevcut içeriği silmeden dosyanın sonuna yeni bir satır eklemek istiyor ancak \"w\" modu kullandığı için eski veriler kayboluyor. Dosyanın sonuna ekleme yapan doğru modu yazar mısın?",
-      presetCode: "with open(\"log.txt\", \"w\") as dosya:\n    dosya.write(\"Yeni Satır\\n\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında dosyadaki eski verileri silmeden sonuna ekleme yapmak için 'w' yerine 'a' modu gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "with open(\"log.txt\", \"w\") as dosya:\n    dosya.write(\"Yeni Satır\\n\")\n# Doğru Kod Parçası:\n",
       filename: "dosyalar.py",
       lang: "Python 3.11",
-      quickKeys: ["with open(\"log.txt\", \"a\") as dosya:","    dosya.write(\"Yeni Satır\\n\")","\"a\""],
-      hint: "with open(\"log.txt\", \"a\") as dosya:\n    dosya.write(\"Yeni Satır\\n\")",
-      solution: "with open(\"log.txt\", \"a\") as dosya:\n    dosya.write(\"Yeni Satır\\n\")",
+      quickKeys: ["with open(\"log.txt\", \"a\") as dosya:", "\"a\""],
+      hint: 'with open("log.txt", "a") as dosya:\n    dosya.write("Yeni Satır\\n")',
+      solution: 'with open("log.txt", "a") as dosya:\n    dosya.write("Yeni Satır\\n")',
       validator: (code) => {
         const clean = code.trim();
         if (/with\s+open\s*\(\s*['"]log\.txt['"]\s*,\s*['"]a['"]\s*\)\s*as\s+dosya\s*:/.test(clean)) {
@@ -3323,16 +5127,16 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: DOSYA METNİNİ OKUMA (.READ)",
       title: "3. Soru: Dosya İçeriğini Okuma",
-      prompt: "Geliştirici bir dosyadaki tüm metni okuyup ekrana basmak istiyor ancak dosya içeriğini okuma metodunu çağırmayı unutuyor. Dosya içeriğini okuyup ekrana yazdırabilir misin?",
-      presetCode: "with open(\"metin.txt\", \"r\") as dosya:\n    icerik = dosya\n    print(icerik)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında dosyanın tüm metnini okumak için dosya.read() fonksiyon çağrısı unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "with open(\"metin.txt\", \"r\") as dosya:\n    icerik = dosya\n# Doğru Kod Parçası:\n",
       filename: "dosyalar.py",
       lang: "Python 3.11",
-      quickKeys: ["icerik = dosya.read()","dosya.read()","print(icerik)"],
-      hint: "with open(\"metin.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
-      solution: "with open(\"metin.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
+      quickKeys: ["icerik = dosya.read()", "dosya.read()"],
+      hint: 'with open("metin.txt", "r") as dosya:\n    icerik = dosya.read()',
+      solution: 'with open("metin.txt", "r") as dosya:\n    icerik = dosya.read()',
       validator: (code) => {
         const clean = code.trim();
-        if (/dosya\.read\s*\(\s*\)/.test(clean) && /print\s*\(/.test(clean)) {
+        if (/dosya\.read\s*\(\s*\)/.test(clean)) {
           return { ok: true, msg: "Mükemmel! dosya.read() dosyanın tüm metnini string olarak çeker. ✓" };
         }
         return { ok: false, msg: "Hata: icerik = dosya.read() ile metni okumalısınız." };
@@ -3343,13 +5147,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: SATIRLARI LİSTE HALİNDE OKUMA",
       title: "4. Soru: Satırları Liste Olarak Alma",
-      prompt: "Geliştirici dosyadaki satırları tek tek bir liste halinde almak istiyor ancak tüm dosyayı tek bir metin olarak alıyor. Satırları liste olarak döndüren metodu kullanabilir misin?",
-      presetCode: "with open(\"liste.txt\", \"r\") as dosya:\n    satirlar = dosya.readline()\n    print(satirlar)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında tüm satırları liste olarak okumak için readline yerine 'readlines()' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "with open(\"liste.txt\", \"r\") as dosya:\n    satirlar = dosya.readline()\n# Doğru Kod Parçası:\n",
       filename: "dosyalar.py",
       lang: "Python 3.11",
-      quickKeys: ["satirlar = dosya.readlines()","dosya.readlines()","print(satirlar)"],
-      hint: "with open(\"liste.txt\", \"r\") as dosya:\n    satirlar = dosya.readlines()\n    print(satirlar)",
-      solution: "with open(\"liste.txt\", \"r\") as dosya:\n    satirlar = dosya.readlines()\n    print(satirlar)",
+      quickKeys: ["satirlar = dosya.readlines()", "dosya.readlines()"],
+      hint: "satirlar = dosya.readlines()",
+      solution: 'with open("liste.txt", "r") as dosya:\n    satirlar = dosya.readlines()',
       validator: (code) => {
         const clean = code.trim();
         if (/dosya\.readlines\s*\(\s*\)/.test(clean)) {
@@ -3363,13 +5167,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: WITH OPEN İLE GÜVENLİ YÖNETİM",
       title: "5. Soru: With Open Kalıbı",
-      prompt: "Geliştirici manuel açtığı dosyayı işlem bitince açık unutmamak için modern ve güvenli otomatik kapatma bloğunu kullanmak istiyor. <code class=\"code-highlight\">with open(...)</code> kalıbını kurabilir misin?",
-      presetCode: "dosya = open(\"veri.txt\", \"r\")\nicerik = dosya.read()\n# Kodunu aşağıya with open kullanarak doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında dosyanın otomatik güvenle kapanması için 'with open(...) as dosya:' kalıbı kurulmalı gibi, bunu düzeltebilir misin?",
+      presetCode: "dosya = open(\"veri.txt\", \"r\")\nicerik = dosya.read()\n# Doğru Kod Parçası:\n",
       filename: "dosyalar.py",
       lang: "Python 3.11",
-      quickKeys: ["with open(\"veri.txt\", \"r\") as dosya:","    icerik = dosya.read()","    print(icerik)"],
-      hint: "with open(\"veri.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
-      solution: "with open(\"veri.txt\", \"r\") as dosya:\n    icerik = dosya.read()\n    print(icerik)",
+      quickKeys: ["with open(\"veri.txt\", \"r\") as dosya:\n    icerik = dosya.read()", "with open("],
+      hint: 'with open("veri.txt", "r") as dosya:\n    icerik = dosya.read()',
+      solution: 'with open("veri.txt", "r") as dosya:\n    icerik = dosya.read()',
       validator: (code) => {
         const clean = code.trim();
         if (/with\s+open\s*\(\s*['"]veri\.txt['"]/.test(clean) && /as\s+dosya\s*:/.test(clean)) {
@@ -3385,13 +5189,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: KURUCU METOT (__INIT__)",
       title: "1. Soru: Yapıcı Metot Tanımlama",
-      prompt: "Geliştirici bir Araba sınıfı oluşturup nesne üretirken marka bilgisini başlatmak istiyor ancak kurucu metodun ismini hatalı tanımladığı için çalışmıyor. Doğru yapıcı (constructor) metodunu tanımlar mısın?",
-      presetCode: "class Araba:\n    def init(self, marka):\n        self.marka = marka\n\na1 = Araba(\"Toyota\")\nprint(a1.marka)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında yapıcı (constructor) metot adı 'init' yerine '__init__' olarak tanımlanmalı gibi, bunu düzeltebilir misin?",
+      presetCode: "class Araba:\n    def init(self, marka):\n        self.marka = marka\n# Doğru Kod Parçası:\n",
       filename: "oop.py",
       lang: "Python 3.11",
-      quickKeys: ["def __init__(self, marka):","__init__","self.marka = marka"],
-      hint: "class Araba:\n    def __init__(self, marka):\n        self.marka = marka\n\na1 = Araba(\"Toyota\")\nprint(a1.marka)",
-      solution: "class Araba:\n    def __init__(self, marka):\n        self.marka = marka\n\na1 = Araba(\"Toyota\")\nprint(a1.marka)",
+      quickKeys: ["def __init__(self, marka):", "__init__", "self.marka = marka"],
+      hint: "def __init__(self, marka):\n    self.marka = marka",
+      solution: "class Araba:\n    def __init__(self, marka):\n        self.marka = marka",
       validator: (code) => {
         const clean = code.trim();
         if (/def\s+__init__\s*\(\s*self\s*,\s*marka\s*\)/.test(clean)) {
@@ -3405,12 +5209,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: NESNE REFERANSI (SELF)",
       title: "2. Soru: Metotta Self Parametresi",
-      prompt: "Geliştirici sınıftaki bir metot içerisinde nesnenin kendi özelliğine (<code class=\"code-highlight\">self.ad</code>) erişmek istiyor ancak parametreye referansı eklemediği için hata alıyor. Nesne referansını metoda dahil edebilir misin?",
-      presetCode: "class Oyuncu:\n    def __init__(self, ad):\n        self.ad = ad\n    def selamla():\n        return f\"Merhaba {self.ad}\"\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında sınıf metodunun ilk parametresine nesne referansı olan 'self' eklenmeli gibi, bunu düzeltebilir misin?",
+      presetCode: "class Oyuncu:\n    def __init__(self, ad):\n        self.ad = ad\n    def selamla():\n        return f\"Merhaba {self.ad}\"\n# Doğru Kod Parçası:\n",
       filename: "oop.py",
       lang: "Python 3.11",
-      quickKeys: ["def selamla(self):","self.ad","return f\"Merhaba {self.ad}\""],
-      hint: "class Oyuncu:\n    def __init__(self, ad):\n        self.ad = ad\n    def selamla(self):\n        return f\"Merhaba {self.ad}\"",
+      quickKeys: ["def selamla(self):", "self", "return f\"Merhaba {self.ad}\""],
+      hint: "def selamla(self):",
       solution: "class Oyuncu:\n    def __init__(self, ad):\n        self.ad = ad\n    def selamla(self):\n        return f\"Merhaba {self.ad}\"",
       validator: (code) => {
         const clean = code.trim();
@@ -3425,13 +5229,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: KALITIM & MİRAS (INHERITANCE)",
       title: "3. Soru: Sınıf Kalıtımı",
-      prompt: "Geliştirici <code class=\"code-highlight\">Kopek</code> sınıfının <code class=\"code-highlight\">Hayvan</code> sınıfındaki özellikleri miras (inheritance) almasını istiyor ancak kalıtım parantezini unuttuğu için metotlara erişemiyor. Kalıtım bağlantısını kurabilir misin?",
-      presetCode: "class Hayvan:\n    def ses_cikar(self):\n        return \"Ses\"\n\nclass Kopek:\n    pass\n\nk = Kopek()\nprint(k.ses_cikar())\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında üst sınıftan miras (kalıtım) almak için sınıf adının yanına 'class Kopek(Hayvan):' parantezi eklenmeli gibi, bunu düzeltebilir misin?",
+      presetCode: "class Hayvan:\n    def ses_cikar(self):\n        return \"Ses\"\n\nclass Kopek:\n    pass\n# Doğru Kod Parçası:\n",
       filename: "oop.py",
       lang: "Python 3.11",
-      quickKeys: ["class Kopek(Hayvan):","class Kopek(Hayvan):\n    pass","k = Kopek()"],
-      hint: "class Hayvan:\n    def ses_cikar(self):\n        return \"Ses\"\n\nclass Kopek(Hayvan):\n    pass\n\nk = Kopek()\nprint(k.ses_cikar())",
-      solution: "class Hayvan:\n    def ses_cikar(self):\n        return \"Ses\"\n\nclass Kopek(Hayvan):\n    pass\n\nk = Kopek()\nprint(k.ses_cikar())",
+      quickKeys: ["class Kopek(Hayvan):", "class Kopek(Hayvan):\n    pass"],
+      hint: "class Kopek(Hayvan):",
+      solution: "class Hayvan:\n    def ses_cikar(self): return \"Ses\"\n\nclass Kopek(Hayvan):\n    pass",
       validator: (code) => {
         const clean = code.trim();
         if (/class\s+Kopek\s*\(\s*Hayvan\s*\)/.test(clean)) {
@@ -3445,12 +5249,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: ÜST SINIF METODU (SUPER())",
       title: "4. Soru: Super() ile Üst Sınıf Kurucusu",
-      prompt: "Geliştirici alt sınıfta üst sınıfın kurucu metodunu çalıştırmak istiyor ancak hatalı anahtar kelime kullandığı için özellikler aktarılmıyor. <code class=\"code-highlight\">super()</code> fonksiyonunu doğru uygulayabilir misin?",
-      presetCode: "class Calisan:\n    def __init__(self, isim):\n        self.isim = isim\n\nclass Mudur(Calisan):\n    def __init__(self, isim, departman):\n        parent.__init__(isim)\n        self.departman = departman\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında üst sınıfın kurucusunu çağırırken 'parent' yerine 'super().__init__(isim)' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "class Calisan:\n    def __init__(self, isim):\n        self.isim = isim\n\nclass Mudur(Calisan):\n    def __init__(self, isim, departman):\n        parent.__init__(isim)\n        self.departman = departman\n# Doğru Kod Parçası:\n",
       filename: "oop.py",
       lang: "Python 3.11",
-      quickKeys: ["super().__init__(isim)","super()","self.departman = departman"],
-      hint: "class Calisan:\n    def __init__(self, isim):\n        self.isim = isim\n\nclass Mudur(Calisan):\n    def __init__(self, isim, departman):\n        super().__init__(isim)\n        self.departman = departman",
+      quickKeys: ["super().__init__(isim)", "super()"],
+      hint: "super().__init__(isim)",
       solution: "class Calisan:\n    def __init__(self, isim):\n        self.isim = isim\n\nclass Mudur(Calisan):\n    def __init__(self, isim, departman):\n        super().__init__(isim)\n        self.departman = departman",
       validator: (code) => {
         const clean = code.trim();
@@ -3465,12 +5269,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: METİN TEMSİLİ (__STR__)",
       title: "5. Soru: Nesne Metin Temsili (__str__)",
-      prompt: "Geliştirici nesneyi doğrudan <code class=\"code-highlight\">print(kitap)</code> ile yazdırdığında anlaşılır bir metin görmek istiyor ancak ekranda karmaşık bellek adresi çıkıyor. Nesnenin metin temsilini belirleyen özel metodu ekler misin?",
-      presetCode: "class Kitap:\n    def __init__(self, baslik):\n        self.baslik = baslik\n    def to_string(self):\n        return self.baslik\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında nesne print edildiğinde anlaşılır metin dönmesi için to_string yerine '__str__' tanımlanmalı gibi, bunu düzeltebilir misin?",
+      presetCode: "class Kitap:\n    def __init__(self, baslik):\n        self.baslik = baslik\n    def to_string(self):\n        return self.baslik\n# Doğru Kod Parçası:\n",
       filename: "oop.py",
       lang: "Python 3.11",
-      quickKeys: ["def __str__(self):","__str__","return self.baslik"],
-      hint: "class Kitap:\n    def __init__(self, baslik):\n        self.baslik = baslik\n    def __str__(self):\n        return self.baslik",
+      quickKeys: ["def __str__(self):", "__str__", "return self.baslik"],
+      hint: "def __str__(self):\n    return self.baslik",
       solution: "class Kitap:\n    def __init__(self, baslik):\n        self.baslik = baslik\n    def __str__(self):\n        return self.baslik",
       validator: (code) => {
         const clean = code.trim();
@@ -3487,13 +5291,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: JSON METNİ OLUŞTURMA (DUMPS)",
       title: "1. Soru: Sözlüğü JSON Formatına Çevirme",
-      prompt: "Geliştirici bir Python sözlüğünü JSON metin formatına dönüştürmek istiyor ancak <code class=\"code-highlight\">json</code> modülünün metodunu yanlış çağırdığı için hata alıyor. Sözlüğü JSON stringine çeviren doğru metodu yazar mısın?",
-      presetCode: "import json\nveri = {\"proje\": \"Sehir\", \"seviye\": 14}\njson_metin = json.to_json(veri)\nprint(json_metin)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında sözlüğü JSON metnine çevirmek için json.to_json yerine 'json.dumps(veri)' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import json\nveri = {\"proje\": \"Sehir\", \"seviye\": 14}\njson_metin = json.to_json(veri)\n# Doğru Kod Parçası:\n",
       filename: "proje.py",
       lang: "Python 3.11",
-      quickKeys: ["json_metin = json.dumps(veri)","json.dumps(veri)","import json"],
-      hint: "import json\nveri = {\"proje\": \"Sehir\", \"seviye\": 14}\njson_metin = json.dumps(veri)\nprint(json_metin)",
-      solution: "import json\nveri = {\"proje\": \"Sehir\", \"seviye\": 14}\njson_metin = json.dumps(veri)\nprint(json_metin)",
+      quickKeys: ["json_metin = json.dumps(veri)", "json.dumps(veri)", "import json"],
+      hint: "json_metin = json.dumps(veri)",
+      solution: 'import json\nveri = {"proje": "Sehir", "seviye": 14}\njson_metin = json.dumps(veri)',
       validator: (code) => {
         const clean = code.trim();
         if (/json\.dumps\s*\(\s*veri\s*\)/.test(clean)) {
@@ -3507,13 +5311,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: JSON METNİNİ ÇÖZÜMLEME (LOADS)",
       title: "2. Soru: JSON Metnini Sözlüğe Çevirme",
-      prompt: "Geliştirici JSON formatındaki bir metni tekrar Python sözlüğüne çevirmek istiyor ancak dosya okuma metoduyla karıştırdığı için hata alıyor. Metinden JSON yükleyen doğru metodu kullanır mısın?",
-      presetCode: "import json\nmetin = '{\"durum\": \"aktif\", \"skor\": 100}'\nsozluk = json.load(metin)\nprint(sozluk[\"durum\"])\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında JSON metnini sözlüğe dönüştürmek için json.load yerine 'json.loads(metin)' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import json\nmetin = '{\"durum\": \"aktif\", \"skor\": 100}'\nsozluk = json.load(metin)\n# Doğru Kod Parçası:\n",
       filename: "proje.py",
       lang: "Python 3.11",
-      quickKeys: ["sozluk = json.loads(metin)","json.loads(metin)","print(sozluk[\"durum\"])"],
-      hint: "import json\nmetin = '{\"durum\": \"aktif\", \"skor\": 100}'\nsozluk = json.loads(metin)\nprint(sozluk[\"durum\"])",
-      solution: "import json\nmetin = '{\"durum\": \"aktif\", \"skor\": 100}'\nsozluk = json.loads(metin)\nprint(sozluk[\"durum\"])",
+      quickKeys: ["sozluk = json.loads(metin)", "json.loads(metin)"],
+      hint: "sozluk = json.loads(metin)",
+      solution: 'import json\nmetin = \'{"durum": "aktif", "skor": 100}\'\nsozluk = json.loads(metin)',
       validator: (code) => {
         const clean = code.trim();
         if (/json\.loads\s*\(\s*metin\s*\)/.test(clean)) {
@@ -3527,17 +5331,17 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: TKINTER PENCERE DÖNGÜSÜ",
       title: "3. Soru: GUI Ana Olay Döngüsü",
-      prompt: "Geliştirici Tkinter kütüphanesiyle temel bir grafik arayüz penceresi oluşturup ekranda açık tutmak istiyor ancak ana olay döngüsünü başlatmadığı için pencere anında kapanıyor. Döngüyü başlatan komutu ekleyebilir misin?",
-      presetCode: "import tkinter as tk\npencere = tk.Tk()\npencere.title(\"Kod Çiftliği\")\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında arayüz penceresinin açık kalması için 'pencere.mainloop()' döngü komutu eksik kalmış gibi, bunu ekleyebilir misin?",
+      presetCode: "import tkinter as tk\npencere = tk.Tk()\npencere.title(\"Kod Çiftliği\")\n# Doğru Kod Parçası:\n",
       filename: "arayuz.py",
       lang: "Python 3.11",
-      quickKeys: ["pencere.mainloop()","pencere.title(\"Kod Çiftliği\")","import tkinter as tk"],
-      hint: "import tkinter as tk\npencere = tk.Tk()\npencere.title(\"Kod Çiftliği\")\npencere.mainloop()",
+      quickKeys: ["pencere.mainloop()", "import tkinter as tk"],
+      hint: "pencere.mainloop()",
       solution: "import tkinter as tk\npencere = tk.Tk()\npencere.title(\"Kod Çiftliği\")\npencere.mainloop()",
       validator: (code) => {
         const clean = code.trim();
         if (/pencere\.mainloop\s*\(\s*\)/.test(clean)) {
-          return { ok: true, msg: "Mükemmel! pencere.mainloop() grafik arayüz penceresini açık ve etkileşimde tutar. ✓" };
+          return { ok: true, msg: "Mükemmel! pencere.mainloop() grafik arayüz penceresini açık tutar. ✓" };
         }
         return { ok: false, msg: "Hata: pencere.mainloop() komutunu çağırmalısınız." };
       }
@@ -3547,13 +5351,13 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: FONKSİYON DEKORATÖRLERİ (@)",
       title: "4. Soru: Dekoratör (@) Uygulama",
-      prompt: "Geliştirici bir fonksiyona ek özellik katan bir dekoratör (decorator) kullanmak istiyor ancak dekoratörün fonksiyon üzerindeki işaretleme sözdizimini yanlış yazıyor. Doğru dekoratör çağrısını ekler misin?",
-      presetCode: "def buyuk_harf_yap(fonk):\n    def sarmal():\n        return fonk().upper()\n    return sarmal\n\n# dekorator fonksiyonunu merhaba fonksiyonuna uygula:\ndef merhaba():\n    return \"gunaydin\"\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında dekoratörü fonksiyona bağlamak için fonksiyonun hemen üstüne '@buyuk_harf_yap' eklenmeli gibi, bunu düzeltebilir misin?",
+      presetCode: "def buyuk_harf_yap(fonk):\n    def sarmal():\n        return fonk().upper()\n    return sarmal\n\ndef merhaba():\n    return \"gunaydin\"\n# Doğru Kod Parçası:\n",
       filename: "dekorator.py",
       lang: "Python 3.11",
-      quickKeys: ["@buyuk_harf_yap\ndef merhaba():","@buyuk_harf_yap","print(merhaba())"],
-      hint: "def buyuk_harf_yap(fonk):\n    def sarmal():\n        return fonk().upper()\n    return sarmal\n\n@buyuk_harf_yap\ndef merhaba():\n    return \"gunaydin\"\n\nprint(merhaba())",
-      solution: "def buyuk_harf_yap(fonk):\n    def sarmal():\n        return fonk().upper()\n    return sarmal\n\n@buyuk_harf_yap\ndef merhaba():\n    return \"gunaydin\"\n\nprint(merhaba())",
+      quickKeys: ["@buyuk_harf_yap\ndef merhaba():", "@buyuk_harf_yap"],
+      hint: "@buyuk_harf_yap\ndef merhaba():",
+      solution: 'def buyuk_harf_yap(fonk):\n    def sarmal():\n        return fonk().upper()\n    return sarmal\n\n@buyuk_harf_yap\ndef merhaba():\n    return "gunaydin"',
       validator: (code) => {
         const clean = code.trim();
         if (/@buyuk_harf_yap\s+def\s+merhaba/.test(clean)) {
@@ -3567,33 +5371,34 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: ÜRETEÇLER (GENERATORS & YIELD)",
       title: "5. Soru: Üreteç Fonksiyonu (yield)",
-      prompt: "Geliştirici büyük bir veri kümesini belleği şişirmeden adım adım üreten bir üreteç (generator) fonksiyonu tasarlamak istiyor ancak <code class=\"code-highlight\">return</code> kullandığı için tek bir değer alıp sonlanıyor. Üreteç mekanizmasını devreye sokan anahtar kelimeyi yazar mısın?",
-      presetCode: "def sayac():\n    for i in range(1, 4):\n        return i\n\nfor sayi in sayac():\n    print(sayi)\n# Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında generator üreteç fonksiyonunda 'return' yerine 'yield i' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "def sayac():\n    for i in range(1, 4):\n        return i\n# Doğru Kod Parçası:\n",
       filename: "generator.py",
       lang: "Python 3.11",
-      quickKeys: ["yield i","def sayac():","for sayi in sayac():"],
-      hint: "def sayac():\n    for i in range(1, 4):\n        yield i\n\nfor sayi in sayac():\n    print(sayi)",
-      solution: "def sayac():\n    for i in range(1, 4):\n        yield i\n\nfor sayi in sayac():\n    print(sayi)",
+      quickKeys: ["yield i", "def sayac():\n    for i in range(1, 4):\n        yield i"],
+      hint: "yield i",
+      solution: "def sayac():\n    for i in range(1, 4):\n        yield i",
       validator: (code) => {
         const clean = code.trim();
-        if (/def\s+sayac\s*\(\s*\):[\s\S]*yield\s+i/.test(clean)) {
+        if (/yield\s+i/.test(clean)) {
           return { ok: true, msg: "Tebrikler! yield anahtar kelimesi ile generator başarıyla tamamlandı. Python Müfredatı Tamamlandı! 🚀🏆" };
         }
         return { ok: false, msg: "Hata: return yerine 'yield i' kullanmalısınız." };
       }
     }
-  ],
+  ]
+,
   java_1: [
     {
       stepNum: 1,
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: KONSOL ÇIKTISI (PRINTLN)",
       title: "1. Soru: Ekrana Çıktı Verme Sözdizimi",
-      prompt: "Geliştirici ekrana bir karşılama mesajı yazdırmak istiyor ancak konsol komutunu hatalı yazdığı için program derlenmiyor. Koddaki aksaklığı gidererek mesajın ekranda görünmesini sağlayabilir misin?",
-      presetCode: "Print(\"Merhaba Java\")\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında ekrana yazdırma komutunda (konsol çıktısı) bir hata var gibi, bu hatayı düzeltebilir misin?",
+      presetCode: "Print(\"Merhaba Java\");\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["System.out.println(\"Merhaba Java\");","System.out.println(","System.out.print("],
+      quickKeys: ["System.out.println(\"Merhaba Java\");", "System.out.println(", ";"],
       solution: "System.out.println(\"Merhaba Java\");",
       validator: (code) => {
         const clean = code.trim();
@@ -3606,15 +5411,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: TAMSAYI DEĞİŞKENİ (INT)",
       title: "2. Soru: Değişken Tipi Tanımlama",
-      prompt: "Geliştirici tam sayı tutan bir değişken oluşturmak istiyor fakat değişken tipini belirtmeyi unuttuğu için derleyici hata veriyor. Gerekli tür bildirimini ekleyebilir misin?",
-      presetCode: "puan = 100;\nSystem.out.println(puan);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında tam sayı değişkeninin tip tanımlamasında (int) bir eksiklik var gibi, bunu düzeltebilir misin?",
+      presetCode: "puan = 100;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["int puan = 100;","System.out.println(puan);","int "],
+      quickKeys: ["int puan = 100;", "int ", "puan = 100;"],
       solution: "int puan = 100;\nSystem.out.println(puan);",
       validator: (code) => {
         const clean = code.trim();
-        if (/int\s+puan\s*=\s*100\s*;/.test(clean) && /System\.out\.println\s*\(\s*puan\s*\)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! int türü tanımlandı. ✓" };
+        if (/int\s+puan\s*=\s*100\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! int türü tanımlandı. ✓" };
         return { ok: false, msg: "Hata: int puan = 100; şeklinde değişken türünü belirtin." };
       }
     },
@@ -3623,15 +5428,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: METİN DEĞİŞKENİ (STRING)",
       title: "3. Soru: Metin ve Tırnak Kuralı",
-      prompt: "Geliştirici bir şehir ismini değişkende saklamak istiyor ancak metin için yanlış tırnak işareti kullandığı için program derlenmiyor. Doğru tırnak formatını uygular mısın?",
-      presetCode: "String sehir = 'Ankara';\nSystem.out.println(sehir);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında metin (String) tanımlanırken tırnak işaretinde bir hata yapılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "String sehir = 'Ankara';\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["String sehir = \"Ankara\";","System.out.println(sehir);","\"Ankara\""],
-      solution: "String sehir = \"Ankara\";\nSystem.out.println(sehir);",
+      quickKeys: ["String sehir = \"Ankara\";", "\"Ankara\"", "String "],
+      solution: "String sehir = \"Ankara\";",
       validator: (code) => {
         const clean = code.trim();
-        if (/String\s+sehir\s*=\s*"Ankara"\s*;/.test(clean) && /System\.out\.println\s*\(\s*sehir\s*\)\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! String için çift tırnak kullanılır. ✓" };
+        if (/String\s+sehir\s*=\s*"Ankara"\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! String için çift tırnak kullanılır. ✓" };
         return { ok: false, msg: 'Hata: String sehir = "Ankara"; şeklinde çift tırnak kullanın.' };
       }
     },
@@ -3640,12 +5445,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: ONDALIKLI SAYILAR (DOUBLE)",
       title: "4. Soru: Ondalıklı Sayı Türü",
-      prompt: "Geliştirici küsurlu bir sıcaklık değerini değişkende tutmak istiyor ancak tam sayı tipi seçtiği için küsurat bilgisi kayboluyor. Ondalıklı sayıları saklayan doğru veri tipini seçebilir misin?",
-      presetCode: "int sicaklik = 36.6;\nSystem.out.println(sicaklik);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında ondalıklı bir sayı için yanlış veri tipi seçilmiş gibi, bunu düzeltebilir misin?",
+      presetCode: "int sicaklik = 36.6;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["double sicaklik = 36.6;","System.out.println(sicaklik);","double "],
-      solution: "double sicaklik = 36.6;\nSystem.out.println(sicaklik);",
+      quickKeys: ["double sicaklik = 36.6;", "double ", "sicaklik = 36.6;"],
+      solution: "double sicaklik = 36.6;",
       validator: (code) => {
         const clean = code.trim();
         if (/double\s+sicaklik\s*=\s*36\.6\s*;/.test(clean)) return { ok: true, msg: "Harika! double türü küsuratı başarıyla korur. ✓" };
@@ -3657,12 +5462,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: TÜR DÖNÜŞÜMÜ (CASTING)",
       title: "5. Soru: Tip Dönüşümü (Type Casting)",
-      prompt: "Geliştirici ondalıklı bir sayının tam sayı kısmını alıp bir tamsayı değişkenine aktarmak istiyor ancak doğrudan atama yapamadığı için hata alıyor. Açık tür dönüşümünü (explicit casting) uygular mısın?",
-      presetCode: "double oran = 9.85;\nint tamSayi = oran;\nSystem.out.println(tamSayi);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında ondalıklı sayıyı tam sayıya dönüştürürken (casting) bir hata var gibi, bu tür dönüşümünü düzeltebilir misin?",
+      presetCode: "double oran = 9.85;\nint tamSayi = oran;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["int tamSayi = (int) oran;","(int) oran","System.out.println(tamSayi);"],
-      solution: "double oran = 9.85;\nint tamSayi = (int) oran;\nSystem.out.println(tamSayi);",
+      quickKeys: ["int tamSayi = (int) oran;", "(int) oran", "int tamSayi"],
+      solution: "double oran = 9.85;\nint tamSayi = (int) oran;",
       validator: (code) => {
         const clean = code.trim();
         if (/int\s+tamSayi\s*=\s*\(\s*int\s*\)\s*oran\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! (int) cast işlemi başarıyla yapıldı. 1. Modül Tamamlandı! 🏆" };
@@ -3676,12 +5481,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: KALAN / MOD HESABI (%)",
       title: "1. Soru: Mod (Kalan) Alma",
-      prompt: "Geliştirici 29 sayısının 4 ile bölümünden kalanı bulmak istiyor ancak yanlış operatör kullandığı için bölümün sonucunu alıyor. Kalanı bulan operatörü yazar mısın?",
-      presetCode: "int kalan = 29 / 4;\nSystem.out.println(kalan);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında bölme işleminden kalanı (mod) bulurken yanlış operatör kullanılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "int kalan = 29 / 4;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["int kalan = 29 % 4;","29 % 4","System.out.println(kalan);"],
-      solution: "int kalan = 29 % 4;\nSystem.out.println(kalan);",
+      quickKeys: ["int kalan = 29 % 4;", "29 % 4", "int kalan = "],
+      solution: "int kalan = 29 % 4;",
       validator: (code) => {
         const clean = code.trim();
         if (/29\s*%\s*4\s*;/.test(clean)) return { ok: true, msg: "Harika! % operatörü kalanı bulur. ✓" };
@@ -3693,12 +5498,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: HASSAS ONDALIKLI BÖLME",
       title: "2. Soru: Hassas Ondalıklı Bölme",
-      prompt: "Geliştirici 7'yi 2'ye böldüğünde ekranda tam olarak 3.5 sonucunu görmek istiyor ancak tamsayı bölmesi yüzünden 3.0 alıyor. Bölme işlemini küsurat kaybetmeyecek şekilde düzeltir misin?",
-      presetCode: "double sonuc = 7 / 2;\nSystem.out.println(sonuc);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında bölme işleminin sonucunun küsuratlı (3.5) çıkması gerekirken bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "double sonuc = 7 / 2;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["double sonuc = 7.0 / 2;","7.0 / 2","7 / 2.0"],
-      solution: "double sonuc = 7.0 / 2;\nSystem.out.println(sonuc);",
+      quickKeys: ["double sonuc = 7.0 / 2;", "7.0 / 2", "7 / 2.0"],
+      solution: "double sonuc = 7.0 / 2;",
       validator: (code) => {
         const clean = code.trim();
         if (/double\s+sonuc\s*=\s*(7\.0\s*\/\s*2|7\s*\/\s*2\.0|\(double\)\s*7\s*\/\s*2)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! 3.5 küsuratı korundu. ✓" };
@@ -3710,12 +5515,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: MATH.MAX METODU",
       title: "3. Soru: Matematik Sınıfı ile En Büyük Sayıyı Bulma",
-      prompt: "Geliştirici iki sayı arasındaki en büyük olanı Math kütüphanesi ile bulmak istiyor ancak sınıf adını yanlış çağırdığı için hata alıyor. Doğru Math metodunu uygular mısın?",
-      presetCode: "int buyuk = max(45, 80);\nSystem.out.println(buyuk);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında en büyük sayıyı bulan Math sınıfı çağrısında bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "int buyuk = max(45, 80);\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["int buyuk = Math.max(45, 80);","Math.max(45, 80)","System.out.println(buyuk);"],
-      solution: "int buyuk = Math.max(45, 80);\nSystem.out.println(buyuk);",
+      quickKeys: ["int buyuk = Math.max(45, 80);", "Math.max(45, 80)", "Math.max"],
+      solution: "int buyuk = Math.max(45, 80);",
       validator: (code) => {
         const clean = code.trim();
         if (/Math\.max\s*\(\s*45\s*,\s*80\s*\)/.test(clean)) return { ok: true, msg: "Mükemmel! Math.max() başarıyla uygulandı. ✓" };
@@ -3727,12 +5532,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: KAREKÖK (MATH.SQRT)",
       title: "4. Soru: Karekök Hesabı",
-      prompt: "Geliştirici 81 sayısının karekökünü hesaplayıp yazdırmak istiyor ancak sözdizim hatası nedeniyle program çalışmıyor. Karekök fonksiyonunu doğru şekilde çağırabilir misin?",
-      presetCode: "double kok = Math.square(81);\nSystem.out.println(kok);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında karekök alma fonksiyonunun isminde bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "double kok = Math.square(81);\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["double kok = Math.sqrt(81);","Math.sqrt(81)","System.out.println(kok);"],
-      solution: "double kok = Math.sqrt(81);\nSystem.out.println(kok);",
+      quickKeys: ["double kok = Math.sqrt(81);", "Math.sqrt(81)", "Math.sqrt"],
+      solution: "double kok = Math.sqrt(81);",
       validator: (code) => {
         const clean = code.trim();
         if (/Math\.sqrt\s*\(\s*81\s*\)/.test(clean)) return { ok: true, msg: "Harika! Math.sqrt() karekök hesaplar. ✓" };
@@ -3744,12 +5549,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: ARTIRMA OPERATÖRÜ (++)",
       title: "5. Soru: Değeri 1 Artırma Operatörü",
-      prompt: "Geliştirici sayaç değişkenini kısa yoldan 1 artırmak istiyor ancak sözdizimindeki aksaklığı gidererek güncel sayacı yazdırabilir misin?",
-      presetCode: "int sayac = 10;\nsayac+;\nSystem.out.println(sayac);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında sayacı 1 artırma operatöründe (++) bir yazım hatası var gibi, bunu düzeltebilir misin?",
+      presetCode: "int sayac = 10;\nsayac+;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["sayac++;","int sayac = 10;\nsayac++;","System.out.println(sayac);"],
-      solution: "int sayac = 10;\nsayac++;\nSystem.out.println(sayac);",
+      quickKeys: ["sayac++;", "int sayac = 10;\nsayac++;", "sayac++"],
+      solution: "int sayac = 10;\nsayac++;",
       validator: (code) => {
         const clean = code.trim();
         if (/sayac\s*\+\+\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! sayac++ ile değer 11 yapıldı. 2. Modül Tamamlandı! 🏆" };
@@ -3763,12 +5568,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: METİN KARŞILAŞTIRMA (.EQUALS)",
       title: "1. Soru: String Eşitlik Kontrolü",
-      prompt: "Geliştirici kullanıcının girdiği şifrenin \"gizli\" olup olmadığını doğrulamak istiyor ancak yanlış karşılaştırma yöntemi kullandığı için beklenmedik sonuç alıyor. Metin içeriklerini güvenle karşılaştıran metodu yazar mısın?",
-      presetCode: "String parola = \"gizli\";\nboolean esitMi = (parola == \"gizli\");\nSystem.out.println(esitMi);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında iki metnin içeriğini karşılaştırırken yanlış operatör kullanılmış gibi, bunu .equals ile düzeltebilir misin?",
+      presetCode: "String parola = \"gizli\";\nboolean esitMi = (parola == \"gizli\");\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["boolean esitMi = parola.equals(\"gizli\");","parola.equals(\"gizli\")","System.out.println(esitMi);"],
-      solution: "String parola = \"gizli\";\nboolean esitMi = parola.equals(\"gizli\");\nSystem.out.println(esitMi);",
+      quickKeys: ["boolean esitMi = parola.equals(\"gizli\");", "parola.equals(\"gizli\")", ".equals("],
+      solution: "String parola = \"gizli\";\nboolean esitMi = parola.equals(\"gizli\");",
       validator: (code) => {
         const clean = code.trim();
         if (/parola\.equals\s*\(\s*"gizli"\s*\)/.test(clean)) return { ok: true, msg: "Harika! String karşılaştırması için .equals() kullanılır. ✓" };
@@ -3780,12 +5585,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: METİN UZUNLUĞU (.LENGTH())",
       title: "2. Soru: Metin Uzunluğunu Bulma",
-      prompt: "Geliştirici bir metnin karakter uzunluğunu bulup ekrana basmak istiyor ancak metodu özellik gibi çağırdığı için derleme hatası alıyor. Hatayı düzeltebilir misin?",
-      presetCode: "String mesaj = \"Kodlama\";\nint uzunluk = mesaj.length;\nSystem.out.println(uzunluk);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında metin uzunluğunu bulurken metot parantezinde bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "String mesaj = \"Kodlama\";\nint uzunluk = mesaj.length;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["int uzunluk = mesaj.length();","mesaj.length()","System.out.println(uzunluk);"],
-      solution: "String mesaj = \"Kodlama\";\nint uzunluk = mesaj.length();\nSystem.out.println(uzunluk);",
+      quickKeys: ["int uzunluk = mesaj.length();", "mesaj.length()", ".length()"],
+      solution: "String mesaj = \"Kodlama\";\nint uzunluk = mesaj.length();",
       validator: (code) => {
         const clean = code.trim();
         if (/mesaj\.length\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! String uzunluğu .length() metodudur. ✓" };
@@ -3797,12 +5602,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: KARAKTERE ERİŞİM (.CHARAT)",
       title: "3. Soru: Belirli İndeksteki Karakteri Alma",
-      prompt: "Geliştirici metnin ilk harfini almak istiyor ancak köşeli parantez kullandığı için derleyici hata veriyor. İndeksteki karakteri döndüren doğru String metodunu uygular mısın?",
-      presetCode: "String dil = \"Java\";\nchar ilk = dil[0];\nSystem.out.println(ilk);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında metnin ilk karakterine erişirken köşeli parantez hatası yapılmış gibi, bunu .charAt() ile düzeltebilir misin?",
+      presetCode: "String dil = \"Java\";\nchar ilk = dil[0];\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["char ilk = dil.charAt(0);","dil.charAt(0)","System.out.println(ilk);"],
-      solution: "String dil = \"Java\";\nchar ilk = dil.charAt(0);\nSystem.out.println(ilk);",
+      quickKeys: ["char ilk = dil.charAt(0);", "dil.charAt(0)", ".charAt(0)"],
+      solution: "String dil = \"Java\";\nchar ilk = dil.charAt(0);",
       validator: (code) => {
         const clean = code.trim();
         if (/dil\.charAt\s*\(\s*0\s*\)/.test(clean)) return { ok: true, msg: "Mükemmel! .charAt(0) ilk karakteri alır. ✓" };
@@ -3814,15 +5619,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: BÜYÜK HARFE ÇEVİRME (.TOUPPERCASE)",
       title: "4. Soru: Büyük Harfe Çevirme",
-      prompt: "Geliştirici metni büyük harflere dönüştürüp ekrana basmak istiyor ancak metodun sonucunu yakalamadığı için ekranda küçük harfli orijinal metin kalıyor. Doğru atamayı yapar mısın?",
-      presetCode: "String sehir = \"izmir\";\nsehir.toUpperCase();\nSystem.out.println(sehir);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında metni büyük harfe dönüştürdükten sonra değişkene atamada bir eksiklik var gibi, bunu düzeltebilir misin?",
+      presetCode: "String sehir = \"izmir\";\nsehir.toUpperCase();\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["sehir = sehir.toUpperCase();","System.out.println(sehir.toUpperCase());","sehir.toUpperCase()"],
-      solution: "String sehir = \"izmir\";\nsehir = sehir.toUpperCase();\nSystem.out.println(sehir);",
+      quickKeys: ["sehir = sehir.toUpperCase();", "sehir.toUpperCase()", "System.out.println(sehir.toUpperCase());"],
+      solution: "String sehir = \"izmir\";\nsehir = sehir.toUpperCase();",
       validator: (code) => {
         const clean = code.trim();
-        if (/sehir\s*=\s*sehir\.toUpperCase\s*\(\s*\)/.test(clean) || /System\.out\.println\s*\(\s*sehir\.toUpperCase\s*\(\s*\)\s*\)/.test(clean)) return { ok: true, msg: "Harika! String dönüşümü başarıyla atandı. ✓" };
+        if (/sehir\s*=\s*sehir\.toUpperCase\s*\(\s*\)/.test(clean) || /System\.out\.println\s*\(\s*sehir\.toUpperCase\s*\(\s*\)\s*\)/.test(clean) || /sehir\.toUpperCase\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Harika! String dönüşümü başarıyla yapıldı. ✓" };
         return { ok: false, msg: "Hata: sehir = sehir.toUpperCase(); şeklinde sonucu değişkene atayın." };
       }
     },
@@ -3831,15 +5636,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: METİN BİRLEŞTİRME (+)",
       title: "5. Soru: Metin Birleştirme",
-      prompt: "Geliştirici isim ve soyisim metinlerini aralarında bir boşluk bırakarak birleştirmek istiyor. Birleştirme işlemini doğru tamamlayabilir misin?",
-      presetCode: "String ad = \"Ali\", soyad = \"Yılmaz\";\nString tamAd = ad soyad;\nSystem.out.println(tamAd);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında iki metni araya boşluk koyarak birleştirirken (+) operatörü unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "String ad = \"Ali\", soyad = \"Yılmaz\";\nString tamAd = ad soyad;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["String tamAd = ad + \" \" + soyad;","ad + \" \" + soyad","System.out.println(tamAd);"],
-      solution: "String ad = \"Ali\", soyad = \"Yılmaz\";\nString tamAd = ad + \" \" + soyad;\nSystem.out.println(tamAd);",
+      quickKeys: ["String tamAd = ad + \" \" + soyad;", "ad + \" \" + soyad", "ad + soyad"],
+      solution: "String ad = \"Ali\", soyad = \"Yılmaz\";\nString tamAd = ad + \" \" + soyad;",
       validator: (code) => {
         const clean = code.trim();
-        if (/ad\s*\+\s*" "\s*\+\s*soyad/.test(clean)) return { ok: true, msg: "Tebrikler! Metinler başarıyla birleştirildi. 3. Modül Tamamlandı! 🏆" };
+        if (/ad\s*\+\s*" "\s*\+\s*soyad/.test(clean) || /ad\s*\+\s*soyad/.test(clean)) return { ok: true, msg: "Tebrikler! Metinler başarıyla birleştirildi. 3. Modül Tamamlandı! 🏆" };
         return { ok: false, msg: 'Hata: String tamAd = ad + " " + soyad; şeklinde araya boşluk koyarak bağlayın.' };
       }
     }
@@ -3850,11 +5655,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: IF KOŞULU",
       title: "1. Soru: If Koşul Parantezi",
-      prompt: "Geliştirici yaş kontrolü yapmak istiyor ancak sözdizim hatası yüzünden kod derlenmiyor. Koşul ifadesini Java standartlarına uygun yazabilir misin?",
-      presetCode: "int yas = 20;\nif yas >= 18 {\n    System.out.println(\"Reşit\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında if koşulunun parantezlerinde bir sözdizim hatası var gibi, bunu düzeltebilir misin?",
+      presetCode: "int yas = 20;\nif yas >= 18 {\n    System.out.println(\"Reşit\");\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["if (yas >= 18) {","System.out.println(\"Reşit\");","int yas = 20;"],
+      quickKeys: ["if (yas >= 18) {", "if (yas >= 18)", "System.out.println(\"Reşit\");"],
       solution: "int yas = 20;\nif (yas >= 18) {\n    System.out.println(\"Reşit\");\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -3867,15 +5672,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: IF-ELSE YAPISI",
       title: "2. Soru: If-Else Bloğu",
-      prompt: "Geliştirici sayının pozitif ya da negatif olduğunu belirlemek istiyor ancak hatalı anahtar kelime kullandığı için kod çalışmıyor. else bloğunu doğru tanımlar mısın?",
-      presetCode: "int sayi = -5;\nif (sayi >= 0) {\n    System.out.println(\"Pozitif\");\n} otherwise {\n    System.out.println(\"Negatif\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında koşulun değilse (else) bloğunda hatalı bir anahtar kelime kullanılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "int sayi = -5;\nif (sayi >= 0) {\n    System.out.println(\"Pozitif\");\n} otherwise {\n    System.out.println(\"Negatif\");\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["} else {","System.out.println(\"Negatif\");","if (sayi >= 0) {"],
+      quickKeys: ["} else {", "else {", "System.out.println(\"Negatif\");"],
       solution: "int sayi = -5;\nif (sayi >= 0) {\n    System.out.println(\"Pozitif\");\n} else {\n    System.out.println(\"Negatif\");\n}",
       validator: (code) => {
         const clean = code.trim();
-        if (/\}\s*else\s*\{[\s\S]*Negatif/.test(clean)) return { ok: true, msg: "Tebrikler! else bloğu doğru kuruldu. ✓" };
+        if (/\}\s*else\s*\{[\s\S]*Negatif/.test(clean) || /else\s*\{/.test(clean)) return { ok: true, msg: "Tebrikler! else bloğu doğru kuruldu. ✓" };
         return { ok: false, msg: "Hata: otherwise yerine else { ... } kullanın." };
       }
     },
@@ -3884,15 +5689,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: TERNARY OPERATÖRÜ",
       title: "3. Soru: Ternary (Tek Satır If-Else)",
-      prompt: "Geliştirici vize notuna göre tek satırda ternary operatörü ile durumu belirlemek istiyor ancak sözdizimdeki eksikliği tamamlayabilir misin?",
-      presetCode: "int puan = 65;\nString sonuc = (puan >= 50) : \"Geçti\" ? \"Kaldı\";\nSystem.out.println(sonuc);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında tek satırlık ternary koşul operatöründe (? :) bir sözdizim hatası var gibi, bunu düzeltebilir misin?",
+      presetCode: "int puan = 65;\nString sonuc = (puan >= 50) : \"Geçti\" ? \"Kaldı\";\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["String sonuc = (puan >= 50) ? \"Geçti\" : \"Kaldı\";","? \"Geçti\" : \"Kaldı\"","System.out.println(sonuc);"],
-      solution: "int puan = 65;\nString sonuc = (puan >= 50) ? \"Geçti\" : \"Kaldı\";\nSystem.out.println(sonuc);",
+      quickKeys: ["String sonuc = (puan >= 50) ? \"Geçti\" : \"Kaldı\";", "? \"Geçti\" : \"Kaldı\"", "? :"],
+      solution: "int puan = 65;\nString sonuc = (puan >= 50) ? \"Geçti\" : \"Kaldı\";",
       validator: (code) => {
         const clean = code.trim();
-        if (/\(\s*puan\s*>=\s*50\s*\)\s*\?\s*"Geçti"\s*:\s*"Kaldı"/.test(clean)) return { ok: true, msg: "Mükemmel! Ternary (? :) sözdizimi başarıyla uygulandı. ✓" };
+        if (/\(\s*puan\s*>=\s*50\s*\)\s*\?\s*"Geçti"\s*:\s*"Kaldı"/.test(clean) || /puan\s*>=\s*50\s*\?\s*"Geçti"\s*:\s*"Kaldı"/.test(clean)) return { ok: true, msg: "Mükemmel! Ternary (? :) sözdizimi başarıyla uygulandı. ✓" };
         return { ok: false, msg: 'Hata: String sonuc = (puan >= 50) ? "Geçti" : "Kaldı"; şeklinde yazın.' };
       }
     },
@@ -3901,11 +5706,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: SWITCH-CASE & BREAK",
       title: "4. Soru: Switch-Case Break Eksikliği",
-      prompt: "Geliştirici haftanın gününe göre sadece ilgili günü basmak istiyor ancak 1 girdiğinde sonraki günleri de peş peşe yazdırıyor. Durumu ilgili günde sonlandıran komutu ekler misin?",
-      presetCode: "int gun = 1;\nswitch (gun) {\n    case 1:\n        System.out.println(\"Pazartesi\");\n    case 2:\n        System.out.println(\"Salı\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında switch-case yapısında sonraki duruma geçişi engelleyen (break) komutu unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "int gun = 1;\nswitch (gun) {\n    case 1:\n        System.out.println(\"Pazartesi\");\n    case 2:\n        System.out.println(\"Salı\");\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["break;","case 1:\n        System.out.println(\"Pazartesi\");\n        break;","switch (gun) {"],
+      quickKeys: ["break;", "case 1:\n        System.out.println(\"Pazartesi\");\n        break;", "switch (gun) {"],
       solution: "int gun = 1;\nswitch (gun) {\n    case 1:\n        System.out.println(\"Pazartesi\");\n        break;\n    case 2:\n        System.out.println(\"Salı\");\n        break;\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -3918,11 +5723,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: MANTIKSAL VE (&&)",
       title: "5. Soru: Mantıksal VE (&&) Bağlacı",
-      prompt: "Geliştirici hem yaşın 18'den büyük hem de ehliyetin var olduğunu tek bir koşulda denetlemek istiyor. İki şartı birleştiren mantıksal operatörü yazar mısın?",
-      presetCode: "int yas = 22;\nboolean ehliyet = true;\nif (yas >= 18 and ehliyet == true) {\n    System.out.println(\"Araç Kullanabilir\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında iki koşulu birbirine bağlayan mantıksal VE (&&) operatöründe bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "int yas = 22;\nboolean ehliyet = true;\nif (yas >= 18 and ehliyet == true) {\n    System.out.println(\"Araç Kullanabilir\");\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["if (yas >= 18 && ehliyet) {","yas >= 18 && ehliyet","System.out.println(\"Araç Kullanabilir\");"],
+      quickKeys: ["if (yas >= 18 && ehliyet) {", "yas >= 18 && ehliyet", "&&"],
       solution: "int yas = 22;\nboolean ehliyet = true;\nif (yas >= 18 && ehliyet) {\n    System.out.println(\"Araç Kullanabilir\");\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -3937,11 +5742,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: FOR DÖNGÜSÜ",
       title: "1. Soru: Klasik For Döngüsü Sözdizimi",
-      prompt: "Geliştirici 1'den 3'e kadar sayıları yazdırmak istiyor ancak döngü başlığında virgül kullandığı için derleme hatası alıyor. Doğru for döngüsü formatını yazar mısın?",
-      presetCode: "for (int i = 1, i <= 3, i++) {\n    System.out.println(i);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında for döngüsünün parametrelerini ayırırken virgül kullanılmış gibi, bunu noktalı virgülle (;) düzeltebilir misin?",
+      presetCode: "for (int i = 1, i <= 3, i++) {\n    System.out.println(i);\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["for (int i = 1; i <= 3; i++) {","System.out.println(i);","i <= 3;"],
+      quickKeys: ["for (int i = 1; i <= 3; i++) {", "i <= 3;", "for (int i = 1;"],
       solution: "for (int i = 1; i <= 3; i++) {\n    System.out.println(i);\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -3954,11 +5759,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: WHILE SAYAÇ YÖNETİMİ",
       title: "2. Soru: Sonsuz While Döngüsünü Önleme",
-      prompt: "Geliştirici sayaç 3 olana kadar ekrana yazdırmak istiyor ancak döngü sonsuz döngüye giriyor. Döngünün güvenle bitmesini sağlayacak satırı ekler misin?",
-      presetCode: "int sayac = 1;\nwhile (sayac <= 3) {\n    System.out.println(sayac);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında while döngüsünün sonsuz döngüye girmemesi için sayacı artırmada bir eksiklik var gibi, bunu düzeltebilir misin?",
+      presetCode: "int sayac = 1;\nwhile (sayac <= 3) {\n    System.out.println(sayac);\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["sayac++;","while (sayac <= 3) {","System.out.println(sayac);"],
+      quickKeys: ["sayac++;", "while (sayac <= 3) {", "System.out.println(sayac);"],
       solution: "int sayac = 1;\nwhile (sayac <= 3) {\n    System.out.println(sayac);\n    sayac++;\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -3971,15 +5776,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: DÖNGÜYÜ KIRMA (BREAK)",
       title: "3. Soru: Döngüyü Erken Kırma (Break)",
-      prompt: "Geliştirici döngüde 3 sayısına ulaşıldığı anda döngüyü tamamen bitirmek istiyor. İstenen koşulda döngüyü sonlandıran komutu yazar mısın?",
-      presetCode: "for (int i = 1; i <= 5; i++) {\n    if (i == 3) {\n        stop;\n    }\n    System.out.println(i);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında döngüyü erken sonlandırmak için hatalı bir kelime kullanılmış gibi, bunu break ile düzeltebilir misin?",
+      presetCode: "for (int i = 1; i <= 5; i++) {\n    if (i == 3) {\n        stop;\n    }\n    System.out.println(i);\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["break;","if (i == 3) {\n        break;\n    }","for (int i = 1; i <= 5; i++) {"],
+      quickKeys: ["break;", "if (i == 3) {\n        break;\n    }", "for (int i = 1; i <= 5; i++) {"],
       solution: "for (int i = 1; i <= 5; i++) {\n    if (i == 3) {\n        break;\n    }\n    System.out.println(i);\n}",
       validator: (code) => {
         const clean = code.trim();
-        if (/if\s*\(\s*i\s*==\s*3\s*\)\s*\{[\s\S]*break\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! break komutu uygulandı. ✓" };
+        if (/if\s*\(\s*i\s*==s*3\s*\)\s*\{[\s\S]*break\s*;/.test(clean)) return { ok: true, msg: "Mükemmel! break komutu uygulandı. ✓" };
         return { ok: false, msg: "Hata: if (i == 3) durumunda break; komutunu kullanın." };
       }
     },
@@ -3988,11 +5793,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: TURU ATLAMA (CONTINUE)",
       title: "4. Soru: Belirli Adımı Atlama (Continue)",
-      prompt: "Geliştirici 2 sayısını ekrana basmadan atlayıp sonraki sayılara devam etmek istiyor. O anki turu atlayan anahtar kelimeyi yazar mısın?",
-      presetCode: "for (int i = 1; i <= 3; i++) {\n    if (i == 2) {\n        pass;\n    }\n    System.out.println(i);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında o anki adımı atlayıp döngüye devam etmek için hatalı kelime yazılmış gibi, bunu continue ile düzeltebilir misin?",
+      presetCode: "for (int i = 1; i <= 3; i++) {\n    if (i == 2) {\n        pass;\n    }\n    System.out.println(i);\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["continue;","if (i == 2) {\n        continue;\n    }","for (int i = 1; i <= 3; i++) {"],
+      quickKeys: ["continue;", "if (i == 2) {\n        continue;\n    }", "for (int i = 1; i <= 3; i++) {"],
       solution: "for (int i = 1; i <= 3; i++) {\n    if (i == 2) {\n        continue;\n    }\n    System.out.println(i);\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4005,11 +5810,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: DO-WHILE DÖNGÜSÜ",
       title: "5. Soru: Do-While Döngüsü Sözdizimi",
-      prompt: "Geliştirici en az bir kez çalışan do-while döngüsü kurmak istiyor ancak sözdizimdeki eksikliği tamamlayabilir misin?",
-      presetCode: "int x = 5;\ndo {\n    System.out.println(x);\n} while (x < 3)\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında do-while döngüsünün en sonundaki noktalı virgülde (;) bir eksiklik var gibi, bunu düzeltebilir misin?",
+      presetCode: "int x = 5;\ndo {\n    System.out.println(x);\n} while (x < 3)\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["} while (x < 3);","do {","int x = 5;"],
+      quickKeys: ["} while (x < 3);", "do {", "int x = 5;"],
       solution: "int x = 5;\ndo {\n    System.out.println(x);\n} while (x < 3);",
       validator: (code) => {
         const clean = code.trim();
@@ -4024,11 +5829,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: DİZİ TANIMLAMA",
       title: "1. Soru: Dizi Tanımlama",
-      prompt: "Geliştirici 3 elemanlı bir tamsayı dizisi oluşturmak istiyor ancak dizi tanımlama sözdiziminde hata yaptığı için derlenmiyor. Dizi tanımlamasını doğru şekilde yazar mısın?",
-      presetCode: "int sayilar = [10, 20, 30];\nSystem.out.println(sayilar[0]);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında dizi tanımlama ve süslü parantez {...} kullanımında bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "int sayilar = [10, 20, 30];\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["int[] sayilar = {10, 20, 30};","System.out.println(sayilar[0]);","int[] "],
+      quickKeys: ["int[] sayilar = {10, 20, 30};", "System.out.println(sayilar[0]);", "int[] "],
       solution: "int[] sayilar = {10, 20, 30};\nSystem.out.println(sayilar[0]);",
       validator: (code) => {
         const clean = code.trim();
@@ -4041,12 +5846,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: DİZİ UZUNLUĞU (.LENGTH)",
       title: "2. Soru: Dizi Eleman Sayısını Alma",
-      prompt: "Geliştirici dizide kaç eleman olduğunu öğrenmek istiyor ancak String metoduyla karıştırdığı için derleme hatası alıyor. Dizi uzunluk özelliğini doğru çağırır mısın?",
-      presetCode: "String[] arabalar = {\"Volvo\", \"BMW\", \"Ford\"};\nint adet = arabalar.length();\nSystem.out.println(adet);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında dizinin eleman sayısını alırken parantez kullanılmış gibi, .length özelliğini düzeltebilir misin?",
+      presetCode: "String[] arabalar = {\"Volvo\", \"BMW\", \"Ford\"};\nint adet = arabalar.length();\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["int adet = arabalar.length;","arabalar.length","System.out.println(adet);"],
-      solution: "String[] arabalar = {\"Volvo\", \"BMW\", \"Ford\"};\nint adet = arabalar.length;\nSystem.out.println(adet);",
+      quickKeys: ["int adet = arabalar.length;", "arabalar.length", "System.out.println(adet);"],
+      solution: "String[] arabalar = {\"Volvo\", \"BMW\", \"Ford\"};\nint adet = arabalar.length;",
       validator: (code) => {
         const clean = code.trim();
         if (/arabalar\.length\s*;/.test(clean) && !/arabalar\.length\s*\(\s*\)/.test(clean)) return { ok: true, msg: "Tebrikler! Dizilerde .length parantezsizdir. ✓" };
@@ -4058,11 +5863,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: FOR-EACH DÖNGÜSÜ",
       title: "3. Soru: For-Each Döngüsü",
-      prompt: "Geliştirici dizideki tüm elemanları For-Each döngüsüyle yazdırmak istiyor ancak döngü sözdizimini yanlış yazdığı için kod çalışmıyor. Doğru For-Each yapısını kurabilir misin?",
-      presetCode: "int[] numaralar = {1, 2, 3};\nfor (int n in numaralar) {\n    System.out.println(n);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında For-Each döngüsünde 'in' yerine iki nokta (:) kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "int[] numaralar = {1, 2, 3};\nfor (int n in numaralar) {\n    System.out.println(n);\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["for (int n : numaralar) {","System.out.println(n);","int[] numaralar = {1, 2, 3};"],
+      quickKeys: ["for (int n : numaralar) {", "System.out.println(n);", "int[] numaralar = {1, 2, 3};"],
       solution: "int[] numaralar = {1, 2, 3};\nfor (int n : numaralar) {\n    System.out.println(n);\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4075,12 +5880,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: DİZİ ELEMANI GÜNCELLEME",
       title: "4. Soru: Dizi Elemanını Güncelleme",
-      prompt: "Geliştirici dizinin ilk elemanını \"Elma\" olarak güncellemek istiyor ancak hatalı metot çağırdığı için hata alıyor. İndeks atamasıyla güncellemeyi yapar mısın?",
-      presetCode: "String[] meyveler = {\"Muz\", \"Çilek\"};\nmeyveler.set(0, \"Elma\");\nSystem.out.println(meyveler[0]);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında dizinin ilk elemanını güncellerken metot yerine indeks ataması yapılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "String[] meyveler = {\"Muz\", \"Çilek\"};\nmeyveler.set(0, \"Elma\");\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["meyveler[0] = \"Elma\";","meyveler[0]","System.out.println(meyveler[0]);"],
-      solution: "String[] meyveler = {\"Muz\", \"Çilek\"};\nmeyveler[0] = \"Elma\";\nSystem.out.println(meyveler[0]);",
+      quickKeys: ["meyveler[0] = \"Elma\";", "meyveler[0]", "System.out.println(meyveler[0]);"],
+      solution: "String[] meyveler = {\"Muz\", \"Çilek\"};\nmeyveler[0] = \"Elma\";",
       validator: (code) => {
         const clean = code.trim();
         if (/meyveler\s*\[\s*0\s*\]\s*=\s*"Elma"\s*;/.test(clean)) return { ok: true, msg: "Harika! meyveler[0] = 'Elma' ataması tamamlandı. ✓" };
@@ -4092,12 +5897,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: ÇOK BOYUTLU DİZİLER",
       title: "5. Soru: Çok Boyutlu Dizi Erişimi",
-      prompt: "Geliştirici 2 boyutlu bir matrisin 0. satır 1. sütunundaki elemanı almak istiyor. Çok boyutlu dizi indeksleme sözdizimini düzeltebilir misin?",
-      presetCode: "int[][] matris = {{1, 2}, {3, 4}};\nint deger = matris[0, 1];\nSystem.out.println(deger);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında 2 boyutlu matristen eleman çekerken indeks parantezlerinde bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "int[][] matris = {{1, 2}, {3, 4}};\nint deger = matris[0, 1];\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["int deger = matris[0][1];","matris[0][1]","System.out.println(deger);"],
-      solution: "int[][] matris = {{1, 2}, {3, 4}};\nint deger = matris[0][1];\nSystem.out.println(deger);",
+      quickKeys: ["int deger = matris[0][1];", "matris[0][1]", "System.out.println(deger);"],
+      solution: "int[][] matris = {{1, 2}, {3, 4}};\nint deger = matris[0][1];",
       validator: (code) => {
         const clean = code.trim();
         if (/matris\s*\[\s*0\s*\]\s*\[\s*1\s*\]/.test(clean)) return { ok: true, msg: "Tebrikler! matris[0][1] erişimi sağlandı. 6. Modül Tamamlandı! 🏆" };
@@ -4111,11 +5916,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: RETURN İFADESİ",
       title: "1. Soru: Değer Döndüren Metot (Return)",
-      prompt: "Geliştirici iki sayıyı toplayıp sonucunu dönen bir metot yazmak istiyor ancak dönüş değerini dışarı aktarmayı unuttuğu için hata alıyor. Eksik return ifadesini ekler misin?",
-      presetCode: "public static int topla(int a, int b) {\n    int sonuc = a + b;\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında tam sayı döndüren metodun içinde 'return' ifadesi unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "public static int topla(int a, int b) {\n    int sonuc = a + b;\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["return sonuc;","return a + b;","public static int topla(int a, int b) {"],
+      quickKeys: ["return sonuc;", "return a + b;", "public static int topla(int a, int b) {"],
       solution: "public static int topla(int a, int b) {\n    int sonuc = a + b;\n    return sonuc;\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4128,11 +5933,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: VOID METOTLAR",
       title: "2. Soru: Void Dönüş Tipi",
-      prompt: "Geliştirici sadece ekrana mesaj yazdıran ve geriye bir değer üretmeyen bir metot tasarlamak istiyor. Değer döndürmeyen doğru anahtar kelimeyi yazar mısın?",
-      presetCode: "public static empty yazdir(String mesaj) {\n    System.out.println(mesaj);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında değer döndürmeyen metot için 'void' yerine yanlış bir anahtar kelime yazılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "public static empty yazdir(String mesaj) {\n    System.out.println(mesaj);\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public static void yazdir(String mesaj) {","System.out.println(mesaj);","void "],
+      quickKeys: ["public static void yazdir(String mesaj) {", "System.out.println(mesaj);", "void "],
       solution: "public static void yazdir(String mesaj) {\n    System.out.println(mesaj);\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4145,11 +5950,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: METOT PARAMETRELERİ",
       title: "3. Soru: Parametre Tanımlama",
-      prompt: "Geliştirici kullanıcı ismini alıp selamlayan bir metot yazmak istiyor ancak parametre tipini belirtmediği için derleme hatası alıyor. Parametreyi doğru tanımlayabilir misin?",
-      presetCode: "public static void selamla(isim) {\n    System.out.println(\"Merhaba \" + isim);\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında metodun parametresine veri tipi (String) yazılması unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "public static void selamla(isim) {\n    System.out.println(\"Merhaba \" + isim);\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public static void selamla(String isim) {","String isim","System.out.println(\"Merhaba \" + isim);"],
+      quickKeys: ["public static void selamla(String isim) {", "String isim", "System.out.println(\"Merhaba \" + isim);"],
       solution: "public static void selamla(String isim) {\n    System.out.println(\"Merhaba \" + isim);\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4162,11 +5967,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: METOT AŞIRI YÜKLEME (OVERLOADING)",
       title: "4. Soru: Metot Aşırı Yükleme (Method Overloading)",
-      prompt: "Geliştirici hem int hem double toplayabilen iki farklı sürüm oluşturmak istiyor ancak ikinci metodun dönüş tipini ve parametresini uyumlu hale getirebilir misin?",
-      presetCode: "public static int topla(int a, int b) { return a + b; }\npublic static int topla(double a, double b) { return a + b; }\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında metot aşırı yüklemede double parametre alan metodun dönüş tipinde bir uyumsuzluk var gibi, bunu düzeltebilir misin?",
+      presetCode: "public static int topla(int a, int b) { return a + b; }\npublic static int topla(double a, double b) { return a + b; }\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public static double topla(double a, double b) { return a + b; }","double topla","return a + b;"],
+      quickKeys: ["public static double topla(double a, double b) { return a + b; }", "double topla", "return a + b;"],
       solution: "public static int topla(int a, int b) { return a + b; }\npublic static double topla(double a, double b) { return a + b; }",
       validator: (code) => {
         const clean = code.trim();
@@ -4179,11 +5984,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: STATIC METOTLAR",
       title: "5. Soru: Statik Metot Çağrısı",
-      prompt: "Geliştirici main içerisinden nesne üretmeden bir hesaplama metodunu doğrudan çağırmak istiyor. Metodu nesnesiz çağrılabilir kılan anahtar kelimeyi ekler misin?",
-      presetCode: "public int kupAl(int x) {\n    return x * x * x;\n}\n// Kodunu main içinden doğrudan çağrılabilir şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında metodun nesne üretmeden doğrudan çağrılabilmesi için 'static' belirteci eksik gibi, bunu düzeltebilir misin?",
+      presetCode: "public int kupAl(int x) {\n    return x * x * x;\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public static int kupAl(int x) {","static ","return x * x * x;"],
+      quickKeys: ["public static int kupAl(int x) {", "static ", "return x * x * x;"],
       solution: "public static int kupAl(int x) {\n    return x * x * x;\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4198,12 +6003,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: NESNE OLUŞTURMA (NEW)",
       title: "1. Soru: Nesne Örneği Oluşturma (new)",
-      prompt: "Geliştirici Ogrenci sınıfından yeni bir nesne üretmek istiyor ancak nesne oluşturma anahtar kelimesini unuttuğu için kod derlenmiyor. Doğru nesne başlatma kodunu yazar mısın?",
-      presetCode: "class Ogrenci { String ad; }\nOgrenci ogr = Ogrenci();\nogr.ad = \"Ali\";\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında yeni bir nesne örneği türetilirken 'new' anahtar kelimesi unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "class Ogrenci { String ad; }\nOgrenci ogr = Ogrenci();\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["Ogrenci ogr = new Ogrenci();","new Ogrenci()","ogr.ad = \"Ali\";"],
-      solution: "class Ogrenci { String ad; }\nOgrenci ogr = new Ogrenci();\nogr.ad = \"Ali\";",
+      quickKeys: ["Ogrenci ogr = new Ogrenci();", "new Ogrenci()", "ogr.ad = \"Ali\";"],
+      solution: "class Ogrenci { String ad; }\nOgrenci ogr = new Ogrenci();",
       validator: (code) => {
         const clean = code.trim();
         if (/Ogrenci\s+ogr\s*=\s*new\s+Ogrenci\s*\(\s*\)\s*;/.test(clean)) return { ok: true, msg: "Harika! new anahtar kelimesi ile nesne üretildi. ✓" };
@@ -4215,11 +6020,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: ALAN ERİŞİMİ (.)",
       title: "2. Soru: Sınıf Alanına (Field) Değer Atama",
-      prompt: "Geliştirici oluşturduğu araba nesnesinin model yılına değer atamak istiyor ancak hatalı sözdizimini düzelterek değeri 2024 yapabilir misin?",
-      presetCode: "class Araba { int yil; }\nAraba a = new Araba();\na->yil = 2024;\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında nesne alanına erişirken ok (->) yerine nokta (.) kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "class Araba { int yil; }\nAraba a = new Araba();\na->yil = 2024;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["a.yil = 2024;","a.yil","Araba a = new Araba();"],
+      quickKeys: ["a.yil = 2024;", "a.yil", "Araba a = new Araba();"],
       solution: "class Araba { int yil; }\nAraba a = new Araba();\na.yil = 2024;",
       validator: (code) => {
         const clean = code.trim();
@@ -4232,11 +6037,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: NESNE METOTLARI",
       title: "3. Soru: Nesne Metodu Çağırma",
-      prompt: "Geliştirici Kopek nesnesinin havla metodunu çalıştırmak istiyor. Nesne üzerinden metot çağırma satırını doğru şekilde tamamlar mısın?",
-      presetCode: "class Kopek {\n    void havla() { System.out.println(\"Hav!\"); }\n}\nKopek k = new Kopek();\nhavla(k);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında nesnenin metodunu çağırırken nesne üzerinden (k.havla()) çağrı yapılmamış gibi, bunu düzeltebilir misin?",
+      presetCode: "class Kopek {\n    void havla() { System.out.println(\"Hav!\"); }\n}\nKopek k = new Kopek();\nhavla(k);\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["k.havla();","Kopek k = new Kopek();","k.havla()"],
+      quickKeys: ["k.havla();", "Kopek k = new Kopek();", "k.havla()"],
       solution: "class Kopek {\n    void havla() { System.out.println(\"Hav!\"); }\n}\nKopek k = new Kopek();\nk.havla();",
       validator: (code) => {
         const clean = code.trim();
@@ -4249,11 +6054,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: THIS ANAHTAR KELİMESİ",
       title: "4. Soru: This Anahtar Kelimesi",
-      prompt: "Geliştirici metot parametresi ile sınıf alanının ismi aynı olduğunda sınıf alanına atama yapmak istiyor. Nesnenin kendi alanını işaret eden anahtar kelimeyi ekler misin?",
-      presetCode: "class Urun {\n    int fiyat;\n    void setFiyat(int fiyat) {\n        fiyat = fiyat;\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında parametre ile sınıf alanını ayırt etmek için 'this' anahtar kelimesi unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "class Urun {\n    int fiyat;\n    void setFiyat(int fiyat) {\n        fiyat = fiyat;\n    }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["this.fiyat = fiyat;","this.fiyat","void setFiyat(int fiyat) {"],
+      quickKeys: ["this.fiyat = fiyat;", "this.fiyat", "void setFiyat(int fiyat) {"],
       solution: "class Urun {\n    int fiyat;\n    void setFiyat(int fiyat) {\n        this.fiyat = fiyat;\n    }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4266,12 +6071,12 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: ÇOKLU NESNE YÖNETİMİ",
       title: "5. Soru: Çoklu Nesne Üretimi",
-      prompt: "Geliştirici aynı sınıftan iki bağımsız nesne oluşturup isimlerini atamak istiyor. İkinci nesneyi doğru şekilde oluşturup adını \"Ayşe\" yapar mısın?",
-      presetCode: "class Calisan { String isim; }\nCalisan c1 = new Calisan();\nc1.isim = \"Ahmet\";\nCalisan c2 = c1;\nc2.isim = \"Ayşe\";\n// c2'yi bağımsız yeni bir nesne olarak oluştur:\n",
+      prompt: "Yandaki kod parçasında c2'nin c1'den bağımsız yeni bir nesne olması için new ile türetilmesi gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "class Calisan { String isim; }\nCalisan c1 = new Calisan();\nCalisan c2 = c1;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["Calisan c2 = new Calisan();","c2.isim = \"Ayşe\";","new Calisan()"],
-      solution: "class Calisan { String isim; }\nCalisan c1 = new Calisan();\nc1.isim = \"Ahmet\";\nCalisan c2 = new Calisan();\nc2.isim = \"Ayşe\";",
+      quickKeys: ["Calisan c2 = new Calisan();", "c2.isim = \"Ayşe\";", "new Calisan()"],
+      solution: "class Calisan { String isim; }\nCalisan c1 = new Calisan();\nCalisan c2 = new Calisan();",
       validator: (code) => {
         const clean = code.trim();
         if (/Calisan\s+c2\s*=\s*new\s+Calisan\s*\(\s*\)\s*;/.test(clean)) return { ok: true, msg: "Tebrikler! Bağımsız c2 nesnesi üretildi. 8. Modül Tamamlandı! 🏆" };
@@ -4285,15 +6090,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: KURUCU METOTLAR",
       title: "1. Soru: Kurucu Metot Tanımlama",
-      prompt: "Geliştirici Kitap sınıfına kurucu metot yazmak istiyor ancak dönüş tipi eklediği için kurucu çalışmıyor. Doğru kurucu tanımını yapar mısın?",
-      presetCode: "class Kitap {\n    String baslik;\n    public void Kitap(String b) {\n        this.baslik = b;\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında kurucu (constructor) metoda fazladan 'void' yazılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "class Kitap {\n    String baslik;\n    public void Kitap(String b) {\n        this.baslik = b;\n    }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public Kitap(String b) {","this.baslik = b;","class Kitap {"],
+      quickKeys: ["public Kitap(String b) {", "this.baslik = b;", "class Kitap {"],
       solution: "class Kitap {\n    String baslik;\n    public Kitap(String b) {\n        this.baslik = b;\n    }\n}",
       validator: (code) => {
         const clean = code.trim();
-        if (/public\s+Kitap\s*\(\s*String\s+b\s*\)/.test(clean) && !/void/.test(clean)) return { ok: true, msg: "Harika! Kurucu metottan void kaldırıldı. ✓" };
+        if (/public\s+Kitap\s*\(\s*String\s+b\s*\)/.test(clean) && !/public\s+void\s+Kitap/.test(clean)) return { ok: true, msg: "Harika! Kurucu metottan void kaldırıldı. ✓" };
         return { ok: false, msg: "Hata: public Kitap(String b) şeklinde void olmadan tanımlayın." };
       }
     },
@@ -4302,11 +6107,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: KURUCU İSİMLENDİRME",
       title: "2. Soru: Kurucu İsim Kuralı",
-      prompt: "Geliştirici yapıcı metot tanımlamak istiyor ancak metot adını sınıf adıyla aynı yapmadığı için derleyici hata veriyor. Kurucu ismini sınıf ismiyle eşleştirir misin?",
-      presetCode: "class Banka {\n    int bakiye;\n    public init(int b) {\n        this.bakiye = b;\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında kurucu metodun adı sınıf adıyla (Banka) aynı yazılmamış gibi, bunu düzeltebilir misin?",
+      presetCode: "class Banka {\n    int bakiye;\n    public init(int b) {\n        this.bakiye = b;\n    }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public Banka(int b) {","this.bakiye = b;","class Banka {"],
+      quickKeys: ["public Banka(int b) {", "this.bakiye = b;", "class Banka {"],
       solution: "class Banka {\n    int bakiye;\n    public Banka(int b) {\n        this.bakiye = b;\n    }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4319,11 +6124,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: PRIVATE BELİRTECİ",
       title: "3. Soru: Private Erişimi Kısıtlama",
-      prompt: "Geliştirici sifre değişkeninin sınıf dışından doğrudan değiştirilmesini engellemek istiyor. En kısıtlayıcı erişim belirtecini ekler misin?",
-      presetCode: "class Hesap {\n    public String sifre;\n}\n// sifre alanını sadece bu sınıfa özel (gizli) yap:\n",
+      prompt: "Yandaki kod parçasında sifre değişkenini sınıf dışına tamamen gizlemek için 'private' belirteci gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "class Hesap {\n    public String sifre;\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["private String sifre;","private ","class Hesap {"],
+      quickKeys: ["private String sifre;", "private ", "class Hesap {"],
       solution: "class Hesap {\n    private String sifre;\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4336,11 +6141,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: STATIC ALANLAR",
       title: "4. Soru: Static Değişken Paylaşımı",
-      prompt: "Geliştirici üretilen tüm nesneler tarafından ortak paylaşılan tek bir sayaç değişkeni tanımlamak istiyor. Sınıfa ait ortak değişken anahtar kelimesini ekler misin?",
-      presetCode: "class Oyuncu {\n    public int toplamOyuncu = 0;\n}\n// toplamOyuncu değişkenini tüm nesneler için tek ve ortak (sınıfa ait) yap:\n",
+      prompt: "Yandaki kod parçasında sayacın tüm nesneler için tek ve ortak olması adına 'static' tanımlanması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "class Oyuncu {\n    public int toplamOyuncu = 0;\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public static int toplamOyuncu = 0;","static ","public static int "],
+      quickKeys: ["public static int toplamOyuncu = 0;", "static ", "public static int "],
       solution: "class Oyuncu {\n    public static int toplamOyuncu = 0;\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4353,11 +6158,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: ÇOKLU KURUCU (OVERLOADING)",
       title: "5. Soru: Çoklu Kurucu (Constructor Overloading)",
-      prompt: "Geliştirici hem boş hem de isim alan iki kurucu tanımlamak istiyor. Parametresiz kurucuyu doğru şekilde ekler misin?",
-      presetCode: "class Kisi {\n    String isim;\n    public Kisi(String isim) { this.isim = isim; }\n}\n// Parametresiz varsayılan kurucuyu da ekle:\n",
+      prompt: "Yandaki kod parçasında parametresiz varsayılan bir kurucu (public Kisi()) eksik kalmış gibi, bunu ekleyebilir misin?",
+      presetCode: "class Kisi {\n    String isim;\n    public Kisi(String isim) { this.isim = isim; }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public Kisi() { this.isim = \"Bilinmiyor\"; }","public Kisi() {}","class Kisi {"],
+      quickKeys: ["public Kisi() { this.isim = \"Bilinmiyor\"; }", "public Kisi() {}", "class Kisi {"],
       solution: "class Kisi {\n    String isim;\n    public Kisi() { this.isim = \"Bilinmiyor\"; }\n    public Kisi(String isim) { this.isim = isim; }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4372,11 +6177,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: GETTER METOTLARI",
       title: "1. Soru: Getter Metodu Yazma",
-      prompt: "Geliştirici private olarak saklanan isim bilgisini dışarıya okutmak istiyor. Standart Getter metodunu tamamlayabilir misin?",
-      presetCode: "class Kullanici {\n    private String isim = \"Can\";\n    public void getIsim() {\n        return isim;\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında isim döndüren getIsim metodunun dönüş tipinde (String) bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "class Kullanici {\n    private String isim = \"Can\";\n    public void getIsim() {\n        return isim;\n    }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public String getIsim() {\n        return isim;\n    }","public String getIsim()","return isim;"],
+      quickKeys: ["public String getIsim() {\n        return isim;\n    }", "public String getIsim()", "return isim;"],
       solution: "class Kullanici {\n    private String isim = \"Can\";\n    public String getIsim() {\n        return isim;\n    }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4389,11 +6194,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: SETTER METOTLARI",
       title: "2. Soru: Setter ile Değer Doğrulama",
-      prompt: "Geliştirici yaş bilgisini güncellerken negatif değer girilmesini engellemek istiyor. Setter metodunu kurallı şekilde yazar mısın?",
-      presetCode: "class Uye {\n    private int yas;\n    public void setYas(int y) {\n        this.yas = y;\n    }\n}\n// y > 0 ise atama yapacak şekilde düzenle:\n",
+      prompt: "Yandaki kod parçasında yaşın sadece pozitif değerlerde atanması için if kontrolü eksik gibi, bunu düzeltebilir misin?",
+      presetCode: "class Uye {\n    private int yas;\n    public void setYas(int y) {\n        this.yas = y;\n    }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["if (y > 0) { this.yas = y; }","public void setYas(int y) {","this.yas = y;"],
+      quickKeys: ["if (y > 0) { this.yas = y; }", "public void setYas(int y) {", "this.yas = y;"],
       solution: "class Uye {\n    private int yas;\n    public void setYas(int y) {\n        if (y > 0) {\n            this.yas = y;\n        }\n    }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4406,11 +6211,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: PAKET İÇE AKTARMA (IMPORT)",
       title: "3. Soru: Paket İçe Aktarma (Import)",
-      prompt: "Geliştirici kullanıcıdan girdi almak için Scanner sınıfını kullanmak istiyor ancak paketi dahil etmediği için sınıf bulunamıyor. Gerekli import ifadesini ekler misin?",
-      presetCode: "// Scanner paketini içe aktar:\npublic class AnaProgram {\n    Scanner input = new Scanner(System.in);\n}\n",
+      prompt: "Yandaki kod parçasında Scanner sınıfını kullanabilmek için en üste 'import' bildirimi eklenmesi gerekiyor gibi, bunu ekleyebilir misin?",
+      presetCode: "public class AnaProgram {\n    Scanner input = new Scanner(System.in);\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["import java.util.Scanner;","Scanner input","public class AnaProgram {"],
+      quickKeys: ["import java.util.Scanner;", "Scanner input", "public class AnaProgram {"],
       solution: "import java.util.Scanner;\n\npublic class AnaProgram {\n    Scanner input = new Scanner(System.in);\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4423,11 +6228,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: KAPSÜLLENMİŞ VERİ OKUMA",
       title: "4. Soru: Kapsüllenmiş Alana Erişim",
-      prompt: "Geliştirici private hiz alanına dışarıdan erişmek istiyor ancak doğrudan alan adını yazdığı için hata alıyor. Doğru Getter metodunu çağırır mısın?",
-      presetCode: "class Motor {\n    private int hiz = 80;\n    public int getHiz() { return hiz; }\n}\nMotor m = new Motor();\nSystem.out.println(m.hiz);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında gizli (private) hiz alanına getHiz() metoduyla erişilmesi gerekirken doğrudan alan yazılmış gibi, bunu düzeltebilir misin?",
+      presetCode: "class Motor {\n    private int hiz = 80;\n    public int getHiz() { return hiz; }\n}\nMotor m = new Motor();\nSystem.out.println(m.hiz);\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["System.out.println(m.getHiz());","m.getHiz()","Motor m = new Motor();"],
+      quickKeys: ["System.out.println(m.getHiz());", "m.getHiz()", "Motor m = new Motor();"],
       solution: "class Motor {\n    private int hiz = 80;\n    public int getHiz() { return hiz; }\n}\nMotor m = new Motor();\nSystem.out.println(m.getHiz());",
       validator: (code) => {
         const clean = code.trim();
@@ -4440,11 +6245,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: BOOLEAN GETTER (IS)",
       title: "5. Soru: Boolean Getter İsimlendirme Standardı",
-      prompt: "Geliştirici boolean türündeki aktif alanı için Java standartlarına uygun Getter metodu tanımlamak istiyor. Boolean getter kuralını uygular mısın?",
-      presetCode: "class Hesap {\n    private boolean aktif = true;\n    public boolean getAktif() { return aktif; }\n}\n// Java standardı olan 'is' önekini kullan:\n",
+      prompt: "Yandaki kod parçasında boolean değişkenler için Java standardı olan 'is' öneki (isAktif()) unutulmuş gibi, bunu düzeltebilir misin?",
+      presetCode: "class Hesap {\n    private boolean aktif = true;\n    public boolean getAktif() { return aktif; }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public boolean isAktif() { return aktif; }","isAktif()","private boolean aktif = true;"],
+      quickKeys: ["public boolean isAktif() { return aktif; }", "isAktif()", "private boolean aktif = true;"],
       solution: "class Hesap {\n    private boolean aktif = true;\n    public boolean isAktif() { return aktif; }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4459,11 +6264,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: MİRAS ALMA (EXTENDS)",
       title: "1. Soru: Miras Alma Sözdizimi (Extends)",
-      prompt: "Geliştirici Kamyon sınıfının Arac sınıfından miras almasını istiyor ancak hatalı anahtar kelime kullandığı için derlenmiyor. Doğru kalıtım anahtar kelimesini yazar mısın?",
-      presetCode: "class Arac { int tekerlek = 4; }\nclass Kamyon inherits Arac { }\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında sınıftan miras alırken inherits yerine 'extends' anahtar kelimesi kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "class Arac { int tekerlek = 4; }\nclass Kamyon inherits Arac { }\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["class Kamyon extends Arac { }","extends Arac","class Arac { int tekerlek = 4; }"],
+      quickKeys: ["class Kamyon extends Arac { }", "extends Arac", "class Arac { int tekerlek = 4; }"],
       solution: "class Arac { int tekerlek = 4; }\nclass Kamyon extends Arac { }",
       validator: (code) => {
         const clean = code.trim();
@@ -4476,11 +6281,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: ÜST SINIF KURUCUSU (SUPER)",
       title: "2. Soru: Üst Sınıf Kurucusunu Çağırma (Super)",
-      prompt: "Geliştirici alt sınıfta üst sınıfın kurucusunu çalıştırmak istiyor ancak hatalı kelime kullandığı için hata alıyor. Üst sınıf kurucu çağrısını düzeltir misin?",
-      presetCode: "class Kisi {\n    Kisi(String ad) { System.out.println(ad); }\n}\nclass Ogrenci extends Kisi {\n    Ogrenci(String ad) {\n        parent(ad);\n    }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında üst sınıfın kurucusunu çağırırken parent yerine 'super()' yazılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "class Kisi {\n    Kisi(String ad) { System.out.println(ad); }\n}\nclass Ogrenci extends Kisi {\n    Ogrenci(String ad) {\n        parent(ad);\n    }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["super(ad);","Ogrenci(String ad) {","class Ogrenci extends Kisi {"],
+      quickKeys: ["super(ad);", "Ogrenci(String ad) {", "class Ogrenci extends Kisi {"],
       solution: "class Kisi {\n    Kisi(String ad) { System.out.println(ad); }\n}\nclass Ogrenci extends Kisi {\n    Ogrenci(String ad) {\n        super(ad);\n    }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4493,11 +6298,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: METOT EZME (@OVERRIDE)",
       title: "3. Soru: Metot Ezme (@Override)",
-      prompt: "Geliştirici üst sınıftan gelen sesCikar metodunu alt sınıfta özelleştirmek istiyor. Standart metot ezme anotasyonunu ekler misin?",
-      presetCode: "class Kus {\n    void sesCikar() { System.out.println(\"Cik\"); }\n}\nclass Karga extends Kus {\n    void sesCikar() { System.out.println(\"Gak\"); }\n}\n// @Override anotasyonunu ekle:\n",
+      prompt: "Yandaki kod parçasında üst sınıftan gelen metodun ezildiğini belirten @Override anotasyonu unutulmuş gibi, bunu ekleyebilir misin?",
+      presetCode: "class Kus {\n    void sesCikar() { System.out.println(\"Cik\"); }\n}\nclass Karga extends Kus {\n    void sesCikar() { System.out.println(\"Gak\"); }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["@Override\n    void sesCikar() {","@Override","void sesCikar() {"],
+      quickKeys: ["@Override\n    void sesCikar() {", "@Override", "void sesCikar() {"],
       solution: "class Kus {\n    void sesCikar() { System.out.println(\"Cik\"); }\n}\nclass Karga extends Kus {\n    @Override\n    void sesCikar() { System.out.println(\"Gak\"); }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4510,11 +6315,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: ÇOK BİÇİMLİLİK (POLYMORPHISM)",
       title: "4. Soru: Çok Biçimlilik (Polymorphism) Referansı",
-      prompt: "Geliştirici üst sınıf türünde bir referansla alt sınıf nesnesini tutmak istiyor. Polimorfik nesne tanımlamasını yapar mısın?",
-      presetCode: "class Sekil { }\nclass Daire extends Sekil { }\nDaire d = new Sekil();\n// Üst sınıf referansıyla alt sınıf nesnesi oluştur:\n",
+      prompt: "Yandaki kod parçasında üst sınıf referansıyla (Sekil s) alt sınıf nesnesi türetmede bir hata var gibi, bunu düzeltebilir misin?",
+      presetCode: "class Sekil { }\nclass Daire extends Sekil { }\nDaire d = new Sekil();\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["Sekil s = new Daire();","new Daire()","class Daire extends Sekil { }"],
+      quickKeys: ["Sekil s = new Daire();", "new Daire()", "class Daire extends Sekil { }"],
       solution: "class Sekil { }\nclass Daire extends Sekil { }\nSekil s = new Daire();",
       validator: (code) => {
         const clean = code.trim();
@@ -4527,11 +6332,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: FINAL METOTLAR",
       title: "5. Soru: Final Metot Kuralı",
-      prompt: "Geliştirici bir metodun alt sınıflar tarafından ezilmesini (override) kesin olarak yasaklamak istiyor. Metodu kitleyen anahtar kelimeyi ekler misin?",
-      presetCode: "class Guvenlik {\n    public void sifrele() { System.out.println(\"AES\"); }\n}\n// sifrele metodunun ezilmesini engelle:\n",
+      prompt: "Yandaki kod parçasında metodun alt sınıflarca ezilmesini engellemek için 'final' anahtar kelimesi gerekiyor gibi, bunu ekleyebilir misin?",
+      presetCode: "class Guvenlik {\n    public void sifrele() { System.out.println(\"AES\"); }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public final void sifrele() {","final ","public final void "],
+      quickKeys: ["public final void sifrele() {", "final ", "public final void "],
       solution: "class Guvenlik {\n    public final void sifrele() { System.out.println(\"AES\"); }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4546,11 +6351,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: SOYUT SINIFLAR (ABSTRACT)",
       title: "1. Soru: Soyut Sınıf Tanımlama",
-      prompt: "Geliştirici gövdesiz bir metot barındıran soyut bir sınıf oluşturmak istiyor ancak sınıf bildirimindeki eksikliği tamamlayabilir misin?",
-      presetCode: "class Hayvan {\n    abstract void sesCikar();\n}\n// Sınıfı soyut (abstract) yap:\n",
+      prompt: "Yandaki kod parçasında gövdesiz metot içeren sınıfın başına 'abstract' anahtar kelimesi yazılması gerekiyor gibi, bunu ekleyebilir misin?",
+      presetCode: "class Hayvan {\n    abstract void sesCikar();\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["abstract class Hayvan {","abstract void sesCikar();","abstract class "],
+      quickKeys: ["abstract class Hayvan {", "abstract void sesCikar();", "abstract class "],
       solution: "abstract class Hayvan {\n    abstract void sesCikar();\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4563,11 +6368,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: ARAYÜZLER (IMPLEMENTS)",
       title: "2. Soru: Arayüz Uygulama (Implements)",
-      prompt: "Geliştirici Ucak sınıfının Ucabilir arayüzünü uygulamasını istiyor ancak yanlış anahtar kelime kullandığı için kod derlenmiyor. Doğru sözdizimini yazar mısın?",
-      presetCode: "interface Ucabilir { void uc(); }\nclass Ucak extends Ucabilir {\n    public void uc() { System.out.println(\"Uçuyor\"); }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında arayüzü (interface) sınıfa uygularken extends yerine 'implements' yazılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "interface Ucabilir { void uc(); }\nclass Ucak extends Ucabilir {\n    public void uc() { System.out.println(\"Uçuyor\"); }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["class Ucak implements Ucabilir {","implements Ucabilir","interface Ucabilir { void uc(); }"],
+      quickKeys: ["class Ucak implements Ucabilir {", "implements Ucabilir", "interface Ucabilir { void uc(); }"],
       solution: "interface Ucabilir { void uc(); }\nclass Ucak implements Ucabilir {\n    public void uc() { System.out.println(\"Uçuyor\"); }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4580,11 +6385,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: ARAYÜZ METOT ERİŞİMİ",
       title: "3. Soru: Arayüz Metodu Erişim Seviyesi",
-      prompt: "Geliştirici arayüzden gelen metodu sınıfta doldururken erişim belirtecini unuttuğu için derleme hatası alıyor. Arayüz metotlarının varsayılan erişim belirtecini ekler misin?",
-      presetCode: "interface Cizilebilir { void ciz(); }\nclass Kare implements Cizilebilir {\n    void ciz() { System.out.println(\"Kare\"); }\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında arayüzden gelen metodun sınıfta doldurulurken başına 'public' yazılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "interface Cizilebilir { void ciz(); }\nclass Kare implements Cizilebilir {\n    void ciz() { System.out.println(\"Kare\"); }\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["public void ciz() { System.out.println(\"Kare\"); }","public void ciz()","public "],
+      quickKeys: ["public void ciz() { System.out.println(\"Kare\"); }", "public void ciz()", "public "],
       solution: "interface Cizilebilir { void ciz(); }\nclass Kare implements Cizilebilir {\n    public void ciz() { System.out.println(\"Kare\"); }\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4597,11 +6402,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: ÇOKLU ARAYÜZ (INTERFACE)",
       title: "4. Soru: Çoklu Arayüz Uygulama",
-      prompt: "Geliştirici bir sınıfın hem Yazici hem de Tarayici arayüzlerini uygulamasını istiyor. Çoklu interface uygulama sözdizimini yazar mısın?",
-      presetCode: "interface Yazici { void yaz(); }\ninterface Tarayici { void tara(); }\nclass CokFonksiyonlu implements Yazici and Tarayici { }\n// İki arayüzü virgülle bağla:\n",
+      prompt: "Yandaki kod parçasında birden fazla arayüz uygulanırken 'and' yerine virgül (,) kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "interface Yazici { void yaz(); }\ninterface Tarayici { void tara(); }\nclass CokFonksiyonlu implements Yazici and Tarayici { }\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["class CokFonksiyonlu implements Yazici, Tarayici {","implements Yazici, Tarayici","public void yaz() {}"],
+      quickKeys: ["class CokFonksiyonlu implements Yazici, Tarayici {", "implements Yazici, Tarayici", "public void yaz() {}"],
       solution: "interface Yazici { void yaz(); }\ninterface Tarayici { void tara(); }\nclass CokFonksiyonlu implements Yazici, Tarayici {\n    public void yaz() {}\n    public void tara() {}\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4614,11 +6419,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: ENUMLAR",
       title: "5. Soru: Sabitler Kümesi (Enum)",
-      prompt: "Geliştirici sipariş durumlarını temsil eden bir Enum oluşturmak istiyor. Doğru enum tanımını yapar mısın?",
-      presetCode: "enum class Durum {\n    BEKLEMEDE, ONAYLANDI, IPTAL\n}\n// Doğru enum sözdizimini yaz:\n",
+      prompt: "Yandaki kod parçasında enum tanımlanırken 'class' kelimesinin kaldırılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "enum class Durum {\n    BEKLEMEDE, ONAYLANDI, IPTAL\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["enum Durum {","BEKLEMEDE, ONAYLANDI, IPTAL","enum Durum {\n    BEKLEMEDE, ONAYLANDI, IPTAL\n}"],
+      quickKeys: ["enum Durum {", "BEKLEMEDE, ONAYLANDI, IPTAL", "enum Durum {\n    BEKLEMEDE, ONAYLANDI, IPTAL\n}"],
       solution: "enum Durum {\n    BEKLEMEDE, ONAYLANDI, IPTAL\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4633,11 +6438,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: ARRAYLIST & WRAPPER",
       title: "1. Soru: ArrayList Tanımlama & Wrapper Sınıfı",
-      prompt: "Geliştirici tamsayılardan oluşan dinamik bir liste kurmak istiyor ancak ilkel tip yazdığı için derleme hatası alıyor. Doğru Wrapper sınıfını yazar mısın?",
-      presetCode: "import java.util.ArrayList;\nArrayList<int> sayilar = new ArrayList<>();\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında ArrayList içinde ilkel tip 'int' yerine Wrapper sınıfı 'Integer' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import java.util.ArrayList;\nArrayList<int> sayilar = new ArrayList<>();\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["ArrayList<Integer> sayilar = new ArrayList<>();","ArrayList<Integer>","new ArrayList<>()"],
+      quickKeys: ["ArrayList<Integer> sayilar = new ArrayList<>();", "ArrayList<Integer>", "new ArrayList<>()"],
       solution: "import java.util.ArrayList;\nArrayList<Integer> sayilar = new ArrayList<>();",
       validator: (code) => {
         const clean = code.trim();
@@ -4650,11 +6455,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: LİSTEDEN OKUMA (.GET)",
       title: "2. Soru: Listeden Eleman Okuma",
-      prompt: "Geliştirici listenin ilk elemanını ekrana basmak istiyor ancak dizi köşeli parantezi kullandığı için hata alıyor. Liste okuma metodunu uygular mısın?",
-      presetCode: "import java.util.ArrayList;\nArrayList<String> isimler = new ArrayList<>();\nisimler.add(\"Bengi\");\nSystem.out.println(isimler[0]);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında listeden eleman okurken köşeli parantez yerine .get(0) metodunun çağrılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import java.util.ArrayList;\nArrayList<String> isimler = new ArrayList<>();\nisimler.add(\"Bengi\");\nSystem.out.println(isimler[0]);\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["System.out.println(isimler.get(0));","isimler.get(0)","isimler.add(\"Bengi\");"],
+      quickKeys: ["System.out.println(isimler.get(0));", "isimler.get(0)", "isimler.add(\"Bengi\");"],
       solution: "import java.util.ArrayList;\nArrayList<String> isimler = new ArrayList<>();\nisimler.add(\"Bengi\");\nSystem.out.println(isimler.get(0));",
       validator: (code) => {
         const clean = code.trim();
@@ -4667,11 +6472,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: HASHMAP DEĞER EKLEME (.PUT)",
       title: "3. Soru: HashMap Değer Ekleme (Put)",
-      prompt: "Geliştirici öğrenci notunu haritaya kaydetmek istiyor ancak liste metoduyla karıştırdığı için hata alıyor. HashMap veri ekleme metodunu yazar mısın?",
-      presetCode: "import java.util.HashMap;\nHashMap<String, Integer> notlar = new HashMap<>();\nnotlar.add(\"Matematik\", 95);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında HashMap'e veri eklerken 'add' yerine .put() metodunun kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import java.util.HashMap;\nHashMap<String, Integer> notlar = new HashMap<>();\nnotlar.add(\"Matematik\", 95);\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["notlar.put(\"Matematik\", 95);","notlar.put(","new HashMap<>()"],
+      quickKeys: ["notlar.put(\"Matematik\", 95);", "notlar.put(", "new HashMap<>()"],
       solution: "import java.util.HashMap;\nHashMap<String, Integer> notlar = new HashMap<>();\nnotlar.put(\"Matematik\", 95);",
       validator: (code) => {
         const clean = code.trim();
@@ -4684,11 +6489,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: LİSTEDEN SİLME (.REMOVE)",
       title: "4. Soru: Listeden Eleman Silme",
-      prompt: "Geliştirici listenin 0. indeksindeki elemanı listeden kaldırmak istiyor. Doğru silme metodunu çağırır mısın?",
-      presetCode: "import java.util.ArrayList;\nArrayList<String> diller = new ArrayList<>();\ndiller.add(\"Java\");\ndiller.delete(0);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında listeden eleman silerken 'delete' yerine .remove(0) kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import java.util.ArrayList;\nArrayList<String> diller = new ArrayList<>();\ndiller.add(\"Java\");\ndiller.delete(0);\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["diller.remove(0);","diller.remove","diller.add(\"Java\");"],
+      quickKeys: ["diller.remove(0);", "diller.remove", "diller.add(\"Java\");"],
       solution: "import java.util.ArrayList;\nArrayList<String> diller = new ArrayList<>();\ndiller.add(\"Java\");\ndiller.remove(0);",
       validator: (code) => {
         const clean = code.trim();
@@ -4701,11 +6506,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: TEKİL KÜMELER (HASHSET)",
       title: "5. Soru: Benzersiz Eleman Kümesi (HashSet)",
-      prompt: "Geliştirici tekrar eden sayıları otomatik eleyen bir küme oluşturmak istiyor. Benzersiz küme koleksiyonuna eleman ekleme metodunu yazar mısın?",
-      presetCode: "import java.util.HashSet;\nHashSet<Integer> tekiller = new HashSet<>();\ntekiller.put(5);\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında HashSet kümesine eleman eklerken 'put' yerine .add() metodunun kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "import java.util.HashSet;\nHashSet<Integer> tekiller = new HashSet<>();\ntekiller.put(5);\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["tekiller.add(5);","tekiller.add","HashSet<Integer>"],
+      quickKeys: ["tekiller.add(5);", "tekiller.add", "HashSet<Integer>"],
       solution: "import java.util.HashSet;\nHashSet<Integer> tekiller = new HashSet<>();\ntekiller.add(5);",
       validator: (code) => {
         const clean = code.trim();
@@ -4720,15 +6525,15 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: TRY-CATCH BLOKLARI",
       title: "1. Soru: Sıfıra Bölme Hatasını Yakalama",
-      prompt: "Geliştirici sıfıra bölme işleminde programın çökmesini önleyip ekrana \"Hata Oluştu\" yazdırmak istiyor. try-catch bloğunu tamamlayabilir misin?",
-      presetCode: "int a = 10, b = 0;\nint bolum = a / b;\nSystem.out.println(bolum);\n// try-catch ile sarmala:\n",
+      prompt: "Yandaki kod parçasında sıfıra bölme işleminin programı çökertmemesi için try-catch bloğuna alınması gerekiyor gibi, bunu ekleyebilir misin?",
+      presetCode: "int a = 10, b = 0;\nint bolum = a / b;\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["try {","} catch (ArithmeticException e) {","System.out.println(\"Hata Oluştu\");"],
+      quickKeys: ["try {", "} catch (ArithmeticException e) {", "System.out.println(\"Hata Oluştu\");"],
       solution: "try {\n    int a = 10, b = 0;\n    int bolum = a / b;\n    System.out.println(bolum);\n} catch (ArithmeticException e) {\n    System.out.println(\"Hata Oluştu\");\n}",
       validator: (code) => {
         const clean = code.trim();
-        if (/try\s*\{[\s\S]*\}\s*catch\s*\(\s*(ArithmeticException|Exception)\s+\w+\s*\)\s*\{[\s\S]*Hata Oluştu/.test(clean)) return { ok: true, msg: "Harika! try-catch ile ArithmeticException yakalandı. ✓" };
+        if (/try\s*\{[\s\S]*\}\s*catch\s*\(\s*(ArithmeticException|Exception)\s+\w+\s*\)/.test(clean)) return { ok: true, msg: "Harika! try-catch ile ArithmeticException yakalandı. ✓" };
         return { ok: false, msg: 'Hata: try { ... } catch (ArithmeticException e) { System.out.println("Hata Oluştu"); } kurun.' };
       }
     },
@@ -4737,11 +6542,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: NUMBERFORMATEXCEPTION",
       title: "2. Soru: Sayı Dönüşüm Hatası (NumberFormatException)",
-      prompt: "Geliştirici metin halindeki geçersiz bir girdiyi tamsayıya çevirirken oluşan hatayı yakalamak istiyor. İlgili hata türünü catch parametresine yazar mısın?",
-      presetCode: "try {\n    int sayi = Integer.parseInt(\"abc\");\n} catch (NullPointerException e) {\n    System.out.println(\"Geçersiz Sayı\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında metni sayıya çevirme hatasını yakalamak için catch bloğuna 'NumberFormatException' yazılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "try {\n    int sayi = Integer.parseInt(\"abc\");\n} catch (NullPointerException e) {\n    System.out.println(\"Geçersiz Sayı\");\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["catch (NumberFormatException e) {","System.out.println(\"Geçersiz Sayı\");","Integer.parseInt(\"abc\")"],
+      quickKeys: ["catch (NumberFormatException e) {", "System.out.println(\"Geçersiz Sayı\");", "Integer.parseInt(\"abc\")"],
       solution: "try {\n    int sayi = Integer.parseInt(\"abc\");\n} catch (NumberFormatException e) {\n    System.out.println(\"Geçersiz Sayı\");\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4754,11 +6559,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: FINALLY BLOĞU",
       title: "3. Soru: Garanti Çalışan Blok (Finally)",
-      prompt: "Geliştirici hata olsun ya da olmasın her durumda bağlantının kapandığını ekrana basmak istiyor. Her senaryoda çalışan garanti bloğunu ekler misin?",
-      presetCode: "try {\n    int x = 5;\n} catch (Exception e) {\n    System.out.println(\"Hata\");\n}\nlast {\n    System.out.println(\"Tamamlandı\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında her durumda çalışan garanti blok için 'last' yerine 'finally' yazılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "try {\n    int x = 5;\n} catch (Exception e) {\n    System.out.println(\"Hata\");\n}\nlast {\n    System.out.println(\"Tamamlandı\");\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["finally {\n    System.out.println(\"Tamamlandı\");\n}","finally {","System.out.println(\"Tamamlandı\");"],
+      quickKeys: ["finally {\n    System.out.println(\"Tamamlandı\");\n}", "finally {", "System.out.println(\"Tamamlandı\");"],
       solution: "try {\n    int x = 5;\n} catch (Exception e) {\n    System.out.println(\"Hata\");\n} finally {\n    System.out.println(\"Tamamlandı\");\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4771,11 +6576,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: MANUEL HATA FIRLATMA (THROW)",
       title: "4. Soru: Manuel Hata Fırlatma (Throw)",
-      prompt: "Geliştirici yaş değeri 0'dan küçük girildiğinde manuel olarak IllegalArgumentException fırlatmak istiyor. Hata fırlatma anahtar kelimesini ekler misin?",
-      presetCode: "int yas = -1;\nif (yas < 0) {\n    raise new IllegalArgumentException(\"Yaş negatif olamaz\");\n}\n// Kodunu aşağıya doğru şekilde yaz:\n",
+      prompt: "Yandaki kod parçasında Java'da manuel hata fırlatırken 'raise' yerine 'throw new' kullanılması gerekiyor gibi, bunu düzeltebilir misin?",
+      presetCode: "int yas = -1;\nif (yas < 0) {\n    raise new IllegalArgumentException(\"Yaş negatif olamaz\");\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["throw new IllegalArgumentException(\"Yaş negatif olamaz\");","throw new ","if (yas < 0) {"],
+      quickKeys: ["throw new IllegalArgumentException(\"Yaş negatif olamaz\");", "throw new ", "if (yas < 0) {"],
       solution: "int yas = -1;\nif (yas < 0) {\n    throw new IllegalArgumentException(\"Yaş negatif olamaz\");\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4788,11 +6593,11 @@ const CHALLENGES_DATABASE = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: DOSYA YAZMA & KAPATMA (FILEWRITER)",
       title: "5. Soru: Dosyaya Yazma ve Kapatma (FileWriter)",
-      prompt: "Geliştirici dosyaya \"Java 100\" yazıp dosyayı güvenle kapatmak istiyor ancak yazma işlemini kapatmayı unuttuğu için veriler diske kaydedilmiyor. Dosyayı kapatma komutunu ekler misin?",
-      presetCode: "import java.io.FileWriter;\nimport java.io.IOException;\n\ntry {\n    FileWriter yazar = new FileWriter(\"not.txt\");\n    yazar.write(\"Java 100\");\n} catch (IOException e) {\n    System.out.println(\"Dosya Hatası\");\n}\n// yazar.close() çağrısını ekle:\n",
+      prompt: "Yandaki kod parçasında dosya yazma işlemi bittikten sonra verilerin diske kaydedilmesi için yazar.close() çağrısı eksik kalmış gibi, bunu ekleyebilir misin?",
+      presetCode: "import java.io.FileWriter;\nimport java.io.IOException;\n\ntry {\n    FileWriter yazar = new FileWriter(\"not.txt\");\n    yazar.write(\"Java 100\");\n} catch (IOException e) {\n    System.out.println(\"Dosya Hatası\");\n}\n// Doğru Kod Parçası:\n",
       filename: "Main.java",
       lang: "Java 21",
-      quickKeys: ["yazar.close();","yazar.write(\"Java 100\");\n    yazar.close();","FileWriter yazar = new FileWriter(\"not.txt\");"],
+      quickKeys: ["yazar.close();", "yazar.write(\"Java 100\");\n    yazar.close();", "FileWriter yazar = new FileWriter(\"not.txt\");"],
       solution: "import java.io.FileWriter;\nimport java.io.IOException;\n\ntry {\n    FileWriter yazar = new FileWriter(\"not.txt\");\n    yazar.write(\"Java 100\");\n    yazar.close();\n} catch (IOException e) {\n    System.out.println(\"Dosya Hatası\");\n}",
       validator: (code) => {
         const clean = code.trim();
@@ -4944,13 +6749,40 @@ function updateLineNumbers() {
   lineNumEl.innerHTML = Array.from({ length: count }, (_, i) => i + 1).join('<br>');
 }
 
+
+// Editördeki yorum satırından sonra kullanıcının yazdığı gerçek çözümü ayıklayan yardımcı fonksiyon
+function extractUserSolution(rawCode) {
+  if (!rawCode) return '';
+  const markerRegex = /(?:\/\/|#)\s*(?:Doğru\s*kod\s*parçası|Kodunu\s*aşağıya\s*doğru\s*şekilde\s*yaz|Doğru\s*kod|Çözüm)\s*:?/i;
+  const match = rawCode.search(markerRegex);
+  if (match !== -1) {
+    const afterMarker = rawCode.substring(match);
+    const newlineIndex = afterMarker.indexOf('\n');
+    if (newlineIndex !== -1) {
+      const actualCode = afterMarker.substring(newlineIndex + 1).trim();
+      if (actualCode.length > 0) {
+        return actualCode;
+      }
+    }
+  }
+  return rawCode.trim();
+}
+
 function runCurrentCode() {
   const challenge = currentChallengesList[currentChallengeIndex] || currentChallengesList[0];
   const userCode = dom.codeInput.value;
+  const userSolution = extractUserSolution(userCode);
 
   logToTerminal(`⚡ <strong>Testler Çalıştırılıyor (${challenge.filename})...</strong>`, 'info');
 
-  const result = challenge.validator(userCode);
+  // Öncelikli olarak sadece kullanıcının yazdığı çözüm parçasını doğrula
+  let result = challenge.validator(userSolution);
+  if (!result || !result.ok) {
+    const fallbackResult = challenge.validator(userCode);
+    if (fallbackResult && fallbackResult.ok) {
+      result = fallbackResult;
+    }
+  }
 
   if (result.ok) {
     sfx.playSuccess();
@@ -5465,9 +7297,57 @@ dom.codeInput.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 3. Tab Tuşu (4 Boşluk Girinti)
+  // 3. Tab Tuşu (Snippet Genişletme & 4 Boşluk Girinti)
   if (e.key === 'Tab') {
     e.preventDefault();
+    const textBefore = val.substring(0, start);
+
+    // Java 'sout' veya 'sysout' Snippet'i -> System.out.println();
+    const soutMatch = textBefore.match(/(?:sysout|sout)$/i);
+    if (soutMatch) {
+      const wordLen = soutMatch[0].length;
+      const replaceStart = start - wordLen;
+      const snippet = 'System.out.println();';
+      input.value = val.substring(0, replaceStart) + snippet + val.substring(end);
+      // İmleci parantezin içine konumlandır: System.out.println(|);
+      const cursorPosition = replaceStart + snippet.length - 2;
+      input.selectionStart = input.selectionEnd = cursorPosition;
+      updateLineNumbers();
+      sfx.playPop();
+      return;
+    }
+
+    // Java 'psvm' Snippet'i -> public static void main(String[] args) { ... }
+    const psvmMatch = textBefore.match(/psvm$/i);
+    if (psvmMatch) {
+      const wordLen = psvmMatch[0].length;
+      const replaceStart = start - wordLen;
+      const snippet = 'public static void main(String[] args) {\n    \n}';
+      input.value = val.substring(0, replaceStart) + snippet + val.substring(end);
+      const cursorPosition = replaceStart + 'public static void main(String[] args) {\n    '.length;
+      input.selectionStart = input.selectionEnd = cursorPosition;
+      updateLineNumbers();
+      sfx.playPop();
+      return;
+    }
+
+    // Python 'pr' Snippet'i -> print()
+    if (state.selectedLangId === 'python') {
+      const prMatch = textBefore.match(/(?:pr)$/i);
+      if (prMatch) {
+        const wordLen = prMatch[0].length;
+        const replaceStart = start - wordLen;
+        const snippet = 'print()';
+        input.value = val.substring(0, replaceStart) + snippet + val.substring(end);
+        const cursorPosition = replaceStart + snippet.length - 1;
+        input.selectionStart = input.selectionEnd = cursorPosition;
+        updateLineNumbers();
+        sfx.playPop();
+        return;
+      }
+    }
+
+    // Normal Tab Girintisi (4 Boşluk)
     const tabSpaces = '    ';
     input.value = val.substring(0, start) + tabSpaces + val.substring(end);
     input.selectionStart = input.selectionEnd = start + tabSpaces.length;

@@ -645,6 +645,7 @@ body {
 }
 
 .badge-python { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
+.badge-html { background: #ffedd5; color: #ea580c; border: 1px solid #fdba74; }
 .badge-java { background: #ffe4e6; color: #e11d48; border: 1px solid #fecdd3; }
 .badge-flutter { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
 .badge-react { background: #cffafe; color: #0891b2; border: 1px solid #a5f3fc; }
