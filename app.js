@@ -1415,6 +1415,83 @@ function renderSkillTree() {
   });
 }
 
+function openTopicReviewModal(topic) {
+  const modal = document.getElementById('topic-review-modal');
+  if (!modal) {
+    state.selectedNodeId = topic.id;
+    switchView('game');
+    return;
+  }
+
+  const data = TOPIC_REVIEWS_DB[topic.id] || {
+    title: topic.title,
+    readTime: "2 dk okuma",
+    rewardText: topic.reward,
+    logic: topic.desc,
+    syntaxRules: ["Temel sözdizim kurallarını dikkatlice inceleyin."],
+    pitfalls: ["Hatalı değişken ve fonksiyon isimlerine dikkat edin."],
+    exampleCode: "// Kodlama arenasında çözüme başlayın."
+  };
+
+  const titleEl = document.getElementById('review-topic-title');
+  const readTimeEl = document.getElementById('review-read-time');
+  const rewardEl = document.getElementById('review-reward-text');
+  const goalEl = document.getElementById('review-goal-text');
+  const syntaxListEl = document.getElementById('review-syntax-list');
+  const trapsListEl = document.getElementById('review-traps-list');
+  const codeEl = document.getElementById('review-code-snippet');
+  const btnStart = document.getElementById('btn-start-practice');
+  const lockedNotice = document.getElementById('review-locked-notice');
+
+  if (titleEl) titleEl.textContent = data.title;
+  if (readTimeEl) readTimeEl.textContent = data.readTime || '2 dk okuma';
+  if (rewardEl) rewardEl.textContent = data.rewardText || topic.reward;
+  if (goalEl) goalEl.textContent = data.logic;
+
+  if (syntaxListEl) {
+    syntaxListEl.innerHTML = '';
+    (data.syntaxRules || []).forEach(r => {
+      const li = document.createElement('li');
+      li.innerHTML = r;
+      syntaxListEl.appendChild(li);
+    });
+  }
+
+  if (trapsListEl) {
+    trapsListEl.innerHTML = '';
+    (data.pitfalls || []).forEach(p => {
+      const li = document.createElement('li');
+      li.innerHTML = p;
+      trapsListEl.appendChild(li);
+    });
+  }
+
+  if (codeEl) codeEl.textContent = data.exampleCode || '';
+
+  const isLocked = topic.status === 'locked';
+  if (btnStart) {
+    btnStart.style.display = isLocked ? 'none' : 'flex';
+    btnStart.onclick = () => {
+      closeTopicReviewModal();
+      state.selectedNodeId = topic.id;
+      switchView('game');
+    };
+  }
+  if (lockedNotice) {
+    lockedNotice.style.display = isLocked ? 'block' : 'none';
+  }
+
+  modal.classList.add('open');
+  document.body.classList.add('modal-open');
+  sfx.playPop();
+}
+
+function closeTopicReviewModal() {
+  const modal = document.getElementById('topic-review-modal');
+  if (modal) modal.classList.remove('open');
+  document.body.classList.remove('modal-open');
+}
+
 // --- 7.1 KONU HIZLI ÖZET MODAL MOTORU (Topic Quick Review Modal Engine) ---
 
 const TOPIC_REVIEWS_DB = {
@@ -5277,20 +5354,6 @@ function skipEntireModule() {
 const btnSkipModule = document.getElementById('btn-skip-module') || document.getElementById('btn-skip-step');
 if (btnSkipModule) {
   btnSkipModule.addEventListener('click', skipEntireModule);
-}
-
-const btnUnlockAll = document.getElementById('btn-unlock-all');
-let allUnlocked = false;
-if (btnUnlockAll) {
-  btnUnlockAll.addEventListener('click', () => {
-    const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
-    allUnlocked = !allUnlocked;
-    topics.forEach((t, i) => {
-      t.status = allUnlocked ? 'active' : (i === 0 ? 'active' : 'locked');
-    });
-    sfx.playSuccess();
-    renderSkillTree();
-  });
 }
 
 const AUTO_PAIRS = {
