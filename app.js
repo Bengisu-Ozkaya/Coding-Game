@@ -4825,46 +4825,81 @@ function loadNodeFarmGame() {
 
 function renderCurrentChallenge() {
   const challenge = currentChallengesList[currentChallengeIndex] || currentChallengesList[0];
+  const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
+  const topicId = state.selectedNodeId || `${curLang.id}_1` || 'python_1';
 
-  const titleEl = document.getElementById('coding-topic-title');
-  const subEl = document.getElementById('coding-module-subtitle');
-  const stepPill = document.getElementById('step-pill');
-  const progBar = document.getElementById('coding-step-progress');
-  const promptEl = document.getElementById('challenge-prompt');
-  const presetEl = document.getElementById('ide-code-preset');
-  const filenameEl = document.getElementById('ide-filename');
-  const keysBar = document.getElementById('quick-keys-bar');
+  // 1. Üst Navigasyon & Ekmek Kırıntısı
+  const breadcrumbEl = document.getElementById('game-breadcrumb');
+  if (breadcrumbEl) {
+    breadcrumbEl.textContent = `${curLang.name} / ${challenge.moduleSubtitle || challenge.title}`;
+  }
 
+  // 2. Sol Panel: Görev Bilgileri
+  const badgeEl = document.getElementById('task-badge');
+  const diffEl = document.getElementById('task-difficulty');
+  const titleEl = document.getElementById('task-title') || document.getElementById('coding-topic-title');
+  const descEl = document.getElementById('task-desc') || document.getElementById('challenge-prompt');
+
+  if (badgeEl) badgeEl.textContent = `Görev #${challenge.stepNum} (${challenge.stepNum}/${challenge.totalSteps})`;
+  if (diffEl) {
+    diffEl.textContent = challenge.stepNum <= 2 ? 'Başlangıç' : (challenge.stepNum <= 4 ? 'Orta Düzey' : 'İleri Seviye');
+  }
   if (titleEl) titleEl.textContent = challenge.title;
-  if (subEl) subEl.textContent = challenge.moduleSubtitle;
-  if (stepPill) stepPill.textContent = `${challenge.stepNum}/${challenge.totalSteps}`;
-  if (progBar) progBar.style.width = `${(challenge.stepNum / challenge.totalSteps) * 100}%`;
-  if (promptEl) promptEl.innerHTML = challenge.prompt;
-  if (presetEl) presetEl.innerHTML = challenge.presetCode;
-  if (filenameEl) filenameEl.textContent = challenge.filename;
+  if (descEl) descEl.innerHTML = challenge.prompt;
 
-  // İpucu Paneli ve Kod Parçacıklarını Güncelle
-  const hintPanel = document.getElementById('hint-panel');
-  if (hintPanel) hintPanel.style.display = 'none'; // Yeni soruya geçildiğinde kapalı başlasın
-
-  if (keysBar) {
-    keysBar.innerHTML = '';
-    challenge.quickKeys.forEach(k => {
+  // 3. Sol Panel: Snippet Hapları (Tıkla ve Editöre Ekle)
+  const snippetsContainer = document.getElementById('quick-snippets-container') || document.getElementById('quick-keys-bar');
+  if (snippetsContainer) {
+    snippetsContainer.innerHTML = '';
+    const keys = challenge.quickKeys || [];
+    keys.forEach(k => {
       const btn = document.createElement('button');
-      btn.className = 'key-btn';
+      btn.className = 'snippet-chip';
+      btn.type = 'button';
       btn.textContent = k.trim() || 'Tab';
       btn.addEventListener('click', () => {
         insertTextAtCursor(dom.codeInput, k);
       });
-      keysBar.appendChild(btn);
+      snippetsContainer.appendChild(btn);
     });
   }
 
-  dom.codeInput.value = '';
+  // 4. Sol Panel: Dinamik Dil / Konu Teorisi & Kuralları
+  const theoryListEl = document.getElementById('theory-list');
+  if (theoryListEl) {
+    theoryListEl.innerHTML = '';
+    const reviewData = TOPIC_REVIEWS_DB[topicId] || TOPIC_REVIEWS_DB.python_1;
+    const rules = (reviewData && reviewData.syntaxRules && reviewData.syntaxRules.length > 0)
+      ? reviewData.syntaxRules
+      : [
+          `${curLang.name} sözdizim kurallarına uygun temiz kod yazın.`,
+          `Hatalı yazımları düzelterek 'Kodu Çalıştır' butonuna basın.`
+        ];
+
+    rules.slice(0, 3).forEach(r => {
+      const li = document.createElement('li');
+      li.innerHTML = r;
+      theoryListEl.appendChild(li);
+    });
+  }
+
+  // 5. Sağ Panel: Editör Dosya Başlığı & Dil Rozeti
+  const filenameEl = document.getElementById('editor-filename') || document.getElementById('ide-filename');
+  const langTagEl = document.getElementById('editor-lang-tag');
+  if (filenameEl) filenameEl.textContent = challenge.filename || (curLang.id === 'java' ? 'Main.java' : 'main.py');
+  if (langTagEl) langTagEl.textContent = challenge.lang || curLang.name;
+
+  // 6. Sağ Panel: Başlangıç Kodunu Editöre Yükle (Varsayılan olarak dolu gelsin)
+  if (dom.codeInput) {
+    dom.codeInput.value = challenge.presetCode || '';
+  }
+
+  // 7. Satır Numaralarını Güncelle
   updateLineNumbers();
 }
 
 function insertTextAtCursor(input, text) {
+  if (!input) return;
   const start = input.selectionStart;
   const end = input.selectionEnd;
   const val = input.value;
@@ -4876,13 +4911,11 @@ function insertTextAtCursor(input, text) {
 }
 
 function updateLineNumbers() {
-  const presetLines = 4; // preset code satırları
-  const userLines = dom.codeInput.value ? dom.codeInput.value.split('\n').length : 1;
-  const total = presetLines + Math.max(userLines, 3);
-  const lineNumEl = document.getElementById('ide-line-numbers');
-  if (lineNumEl) {
-    lineNumEl.innerHTML = Array.from({ length: total }, (_, i) => i + 1).join('<br>');
-  }
+  const lineNumEl = document.getElementById('line-numbers') || document.getElementById('ide-line-numbers');
+  if (!lineNumEl || !dom.codeInput) return;
+  const lines = dom.codeInput.value ? dom.codeInput.value.split('\n').length : 1;
+  const count = Math.max(lines, 4);
+  lineNumEl.innerHTML = Array.from({ length: count }, (_, i) => i + 1).join('<br>');
 }
 
 function runCurrentCode() {
@@ -5270,6 +5303,18 @@ dom.btnHint.addEventListener('click', () => {
   logToTerminal('💡 <strong>İpucu:</strong> Kod parçacıkları paneli açıldı. İhtiyacın olan parçaları tıklayarak editöre ekleyebilirsin.', 'hint');
   sfx.playPop();
 });
+
+if (dom.btnSolution) {
+  dom.btnSolution.addEventListener('click', () => {
+    const challenge = currentChallengesList[currentChallengeIndex] || currentChallengesList[0];
+    if (challenge && challenge.solution) {
+      dom.codeInput.value = challenge.solution;
+      updateLineNumbers();
+      logToTerminal(`🔍 <strong>Çözüm Yüklendi:</strong> Editöre doğru çözüm aktarıldı. Şimdi 'Kodu Çalıştır' butonuna basabilirsiniz.`, 'hint');
+      sfx.playPop();
+    }
+  });
+}
 
 if (btnCloseHint) {
   btnCloseHint.addEventListener('click', () => {
