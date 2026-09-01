@@ -999,10 +999,10 @@ function completeCurrentTopic(langId, topicId) {
 // Şehir Görselini Çizen Fonksiyon (Tamamlanan Konu Sayısına Göre Şehir Gelişir)
 // 3D İzometrik Şehir Çizim Motoru (Isometric 3D City Engine)
 function renderCityVisual(completedCount) {
-  const svg = document.getElementById('city-dynamic-svg');
+  const svg = document.getElementById('city-svg') || document.getElementById('city-dynamic-svg');
   if (!svg) return;
 
-  const statusText = document.getElementById('city-status-text');
+  const statusText = document.getElementById('city-stage-badge') || document.getElementById('city-status-text');
   const countText = document.getElementById('city-building-count');
   const levelPercent = Math.min(100, Math.round((completedCount / 14) * 100));
 
@@ -1011,15 +1011,15 @@ function renderCityVisual(completedCount) {
   }
 
   if (statusText) {
-    let phaseName = 'Issız Harabe Toprak';
-    if (completedCount >= 14) phaseName = 'Mega Siber Metropol & Teknokent';
-    else if (completedCount >= 12) phaseName = 'Uluslararası Liman & Metropol';
-    else if (completedCount >= 9) phaseName = 'Modern Ticaret ve Sanayi Şehri';
-    else if (completedCount >= 6) phaseName = 'Eğlence ve Kültür Merkezi';
-    else if (completedCount >= 3) phaseName = 'Gelişen Kasaba & Altyapı';
-    else if (completedCount >= 1) phaseName = 'İlk Yerleşim & Çiftlik';
+    let phaseName = '1. Seviye: Başlangıç Köyü';
+    if (completedCount >= 14) phaseName = '7. Seviye: Mega Siber Metropol';
+    else if (completedCount >= 12) phaseName = '6. Seviye: Uluslararası Liman & Metropol';
+    else if (completedCount >= 9) phaseName = '5. Seviye: Ticaret & Sanayi Şehri';
+    else if (completedCount >= 6) phaseName = '4. Seviye: Kültür & Teknoloji Şehri';
+    else if (completedCount >= 3) phaseName = '3. Seviye: Gelişen Kasaba';
+    else if (completedCount >= 1) phaseName = '2. Seviye: İlk Yerleşim';
 
-    statusText.textContent = `Şehirleşme: %${levelPercent} • ${phaseName}`;
+    statusText.textContent = phaseName;
   }
 
   // 3D Isometric Building Helper
@@ -1334,29 +1334,30 @@ function renderSkillTree() {
   const topics = getLanguageTopics(curLang.id);
 
   // Kurs Başlık ve İlerleme Güncellemesi
-  const courseLangBadge = document.getElementById('course-lang-badge');
-  const courseLangIcon = document.getElementById('course-lang-icon');
-  const courseLangTitle = document.getElementById('course-lang-title');
-  const courseProgressFill = document.getElementById('course-progress-fill');
-  const courseProgressText = document.getElementById('course-progress-text');
+  const treeLangIcon = document.getElementById('tree-lang-icon') || document.getElementById('course-lang-icon');
+  const treeLangTitle = document.getElementById('tree-lang-title') || document.getElementById('course-lang-title');
+  const treeLangDesc = document.getElementById('tree-lang-desc');
+  const treeProgressFill = document.getElementById('tree-progress-bar-fill') || document.getElementById('course-progress-fill');
+  const treeProgressText = document.getElementById('tree-progress-text') || document.getElementById('course-progress-text');
   const roadmapXpCount = document.getElementById('roadmap-xp-count');
 
-  if (courseLangIcon) courseLangIcon.textContent = curLang.icon;
-  if (courseLangTitle) courseLangTitle.textContent = `${curLang.name} Temelleri`;
+  if (treeLangIcon) treeLangIcon.textContent = curLang.icon || '💻';
+  if (treeLangTitle) treeLangTitle.textContent = `${curLang.name}`;
+  if (treeLangDesc) treeLangDesc.textContent = `Gelişen Şehir & Konu Haritası (${topics.length} Konu)`;
   if (roadmapXpCount) roadmapXpCount.textContent = `${state.xp || 0} XP`;
 
   // Tamamlanan ve Aktif konu hesaplama
   const doneCount = topics.filter(t => t.status === 'done').length;
   const progressPercent = Math.round((doneCount / topics.length) * 100);
 
-  if (courseProgressFill) courseProgressFill.style.width = `${progressPercent}%`;
-  if (courseProgressText) courseProgressText.textContent = `${progressPercent}% Tamamlandı`;
+  if (treeProgressFill) treeProgressFill.style.width = `${progressPercent}%`;
+  if (treeProgressText) treeProgressText.textContent = `${doneCount} / ${topics.length} Konu Tamamlandı (%${progressPercent})`;
 
   // Şehir Görselini Çiz
   renderCityVisual(doneCount);
 
   // Dikey Konu Yol Haritasını Oluştur
-  const container = document.getElementById('roadmap-timeline-list');
+  const container = document.getElementById('topics-list-container') || document.getElementById('roadmap-timeline-list');
   if (!container) return;
   container.innerHTML = '';
 
