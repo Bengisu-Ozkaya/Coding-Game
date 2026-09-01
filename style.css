@@ -32,11 +32,18 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--bg-canvas);
   color: var(--text-primary);
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
@@ -257,7 +264,9 @@ body {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  width: 310px;
+  width: min(310px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
@@ -269,6 +278,7 @@ body {
 @media (max-width: 640px) {
   .app-container {
     padding: 0.6rem 0.6rem 2rem 0.6rem;
+    overflow-x: hidden;
   }
   .app-header {
     padding: 0.55rem 0.8rem;
@@ -312,13 +322,15 @@ body {
     font-size: 0.58rem;
   }
   .user-profile-dropdown {
-    position: fixed;
-    top: 75px;
-    left: 14px;
-    right: 14px;
-    width: auto;
-    max-width: calc(100vw - 28px);
-    z-index: 99999;
+    position: fixed !important;
+    top: 75px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: calc(100vw - 24px) !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    z-index: 99999 !important;
   }
 }
 
