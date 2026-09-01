@@ -848,9 +848,6 @@ body {
     order: -1; /* Mobilde şehir üstte görünür */
   }
 }
-  box-shadow: 0 0 0 1.5px #6366f1, 0 8px 22px rgba(99, 102, 241, 0.09);
-  background: #faf5ff;
-}
 
 .timeline-card.card-locked {
   cursor: not-allowed;
