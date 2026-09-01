@@ -648,11 +648,14 @@ const dom = {
   btnModalRoadmap: document.getElementById('btn-modal-roadmap')
 };
 
+let authTrigger = 'navbar'; // 'navbar' | 'card' | 'switch'
+
 // --- 5. EKRAN GEÇİŞLERİ ---
 function switchView(viewName) {
   // Kullanıcı Girişi Kontrolü (Roadmap ve Game ekranları oturum gerektirir)
   if ((viewName === 'roadmap' || viewName === 'game') && typeof authManager !== 'undefined' && !authManager.isLoggedIn()) {
     const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
+    authTrigger = 'switch';
     openAuthModal('login');
     showAuthAlert(`🔒 ${curLang.name} konu haritasına ve alıştırmalara erişmek için lütfen giriş yapın veya ücretsiz hesap oluşturun.`, 'info');
     viewName = 'languages';
@@ -732,6 +735,7 @@ function renderLanguages() {
     card.addEventListener('click', () => {
       state.selectedLangId = lang.id;
       if (typeof authManager !== 'undefined' && !authManager.isLoggedIn()) {
+        authTrigger = 'card';
         openAuthModal('login');
         showAuthAlert(`🔒 ${lang.name} konu haritasına erişmek için lütfen giriş yapın veya hesap oluşturun.`, 'info');
         return;
@@ -5568,7 +5572,10 @@ function clearAuthAlert() {
 
 const btnOpenAuth = document.getElementById('btn-open-auth');
 if (btnOpenAuth) {
-  btnOpenAuth.addEventListener('click', () => openAuthModal('login'));
+  btnOpenAuth.addEventListener('click', () => {
+    authTrigger = 'navbar';
+    openAuthModal('login');
+  });
 }
 
 const btnCloseAuth = document.getElementById('btn-close-auth-modal');
@@ -5634,11 +5641,8 @@ if (btnDropdownSync) {
     await authManager.syncCurrentLocalProgress();
     setTimeout(() => {
       btnDropdownSync.disabled = false;
-      btnDropdownSync.innerHTML = '<span>✓ Bulut Güncellendi!</span>';
-      setTimeout(() => {
-        btnDropdownSync.innerHTML = '<span>🔄 Buluta Senkronize Et</span>';
-      }, 2000);
-    }, 600);
+      btnDropdownSync.innerHTML = '<span>🔄 Bulut İlerlemeyi Eşitle</span>';
+    }, 1500);
   });
 }
 
@@ -5683,7 +5687,12 @@ if (authForm) {
       sfx.playSuccess();
       setTimeout(() => {
         closeAuthModal();
-        switchView('roadmap');
+        if (authTrigger === 'card' || authTrigger === 'switch') {
+          switchView('roadmap');
+        } else {
+          // Navbardan giriş yapıldığında ana sayfada (languages) kalmaya devam et
+          switchView('languages');
+        }
         if (typeof logToTerminal === 'function') {
           logToTerminal(`🌟 <strong>Hoş geldin ${result.user.username}!</strong> İlerlemelerin MongoDB bulutuna kaydediliyor.`, 'success');
         }
