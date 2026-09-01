@@ -677,19 +677,28 @@ function switchView(viewName) {
   if (viewName === 'languages') {
     dom.viewLanguages.classList.add('active');
     if (dom.navBtnHome) dom.navBtnHome.classList.add('active');
-    if (dom.headerLangBadge) dom.headerLangBadge.textContent = 'Dilleri Keşfet';
+    if (dom.headerLangBadge) {
+      dom.headerLangBadge.style.display = 'none';
+      dom.headerLangBadge.textContent = '';
+    }
     if (dom.headerSubtitle) dom.headerSubtitle.textContent = 'İnteraktif kodlama macerana başlamak için bir yol seç.';
     renderLanguages();
   } else if (viewName === 'roadmap') {
     dom.viewRoadmap.classList.add('active');
     if (dom.navBtnRoadmap) dom.navBtnRoadmap.classList.add('active');
-    if (dom.headerLangBadge) dom.headerLangBadge.textContent = curLang.name;
+    if (dom.headerLangBadge) {
+      dom.headerLangBadge.style.display = 'inline-block';
+      dom.headerLangBadge.textContent = curLang.name;
+    }
     if (dom.headerSubtitle) dom.headerSubtitle.textContent = `${curLang.name} Konu Haritası & Gelişen Şehir`;
     renderSkillTree();
   } else if (viewName === 'game') {
     dom.viewGame.classList.add('active');
     if (dom.navBtnGame) dom.navBtnGame.classList.add('active');
-    if (dom.headerLangBadge) dom.headerLangBadge.textContent = `${curLang.name}`;
+    if (dom.headerLangBadge) {
+      dom.headerLangBadge.style.display = 'inline-block';
+      dom.headerLangBadge.textContent = curLang.name;
+    }
     if (dom.headerSubtitle) dom.headerSubtitle.textContent = 'Kodunu yaz, testleri çalıştır ve çözümü onayla!';
     loadNodeFarmGame();
   }
