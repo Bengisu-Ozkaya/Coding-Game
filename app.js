@@ -5687,12 +5687,7 @@ if (authForm) {
       sfx.playSuccess();
       setTimeout(() => {
         closeAuthModal();
-        if (authTrigger === 'card' || authTrigger === 'switch') {
-          switchView('roadmap');
-        } else {
-          // Navbardan giriş yapıldığında ana sayfada (languages) kalmaya devam et
-          switchView('languages');
-        }
+        switchView('languages');
         if (typeof logToTerminal === 'function') {
           logToTerminal(`🌟 <strong>Hoş geldin ${result.user.username}!</strong> İlerlemelerin MongoDB bulutuna kaydediliyor.`, 'success');
         }
