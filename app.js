@@ -1018,6 +1018,11 @@ function renderCityVisual(completedCount) {
     else if (completedCount >= 1) phaseName = '2. Seviye: İlk Yerleşim';
 
     statusText.textContent = phaseName;
+  }
+
+  // 3D İzometrik Kutu (Bina / Yapı Bloğu) Yardımcısı
+  const isoBox = (x, y, w, d, h, topCol, leftCol, rightCol, stroke = 'rgba(15,23,42,0.15)') => {
+    const pTop = `${x},${y - h} ${x + w},${y - h + d} ${x},${y - h + 2*d} ${x - w},${y - h + d}`;
     const pLeft = `${x - w},${y - h + d} ${x},${y - h + 2*d} ${x},${y + 2*d} ${x - w},${y + d}`;
     const pRight = `${x},${y - h + 2*d} ${x + w},${y - h + d} ${x + w},${y + d} ${x},${y + 2*d}`;
     return `
@@ -5181,6 +5186,10 @@ const authManager = {
       const res = await fetch(`${API_BASE_URL}/auth/me`, {
         headers: { 'Authorization': `Bearer ${this.token}` }
       });
+      if (res.status === 401) {
+        this.logout();
+        return;
+      }
       const data = await res.json();
       if (data.ok && data.user) {
         this.user = data.user;
@@ -5231,6 +5240,10 @@ const authManager = {
       const res = await fetch(`${API_BASE_URL}/progress`, {
         headers: { 'Authorization': `Bearer ${this.token}` }
       });
+      if (res.status === 401) {
+        this.logout();
+        return;
+      }
       const data = await res.json();
       if (data.ok && data.languages) {
         let totalCloudXp = 0;
