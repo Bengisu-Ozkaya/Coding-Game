@@ -650,6 +650,14 @@ const dom = {
 
 // --- 5. EKRAN GEÇİŞLERİ ---
 function switchView(viewName) {
+  // Kullanıcı Girişi Kontrolü (Roadmap ve Game ekranları oturum gerektirir)
+  if ((viewName === 'roadmap' || viewName === 'game') && typeof authManager !== 'undefined' && !authManager.isLoggedIn()) {
+    const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
+    openAuthModal('login');
+    showAuthAlert(`🔒 ${curLang.name} konu haritasına ve alıştırmalara erişmek için lütfen giriş yapın veya ücretsiz hesap oluşturun.`, 'info');
+    viewName = 'languages';
+  }
+
   state.currentView = viewName;
   sfx.playPop();
 
@@ -723,6 +731,11 @@ function renderLanguages() {
 
     card.addEventListener('click', () => {
       state.selectedLangId = lang.id;
+      if (typeof authManager !== 'undefined' && !authManager.isLoggedIn()) {
+        openAuthModal('login');
+        showAuthAlert(`🔒 ${lang.name} konu haritasına erişmek için lütfen giriş yapın veya hesap oluşturun.`, 'info');
+        return;
+      }
       switchView('roadmap');
     });
 
@@ -5143,6 +5156,9 @@ const authManager = {
       localStorage.removeItem('codegame_user');
     } catch (e) {}
     this.updateHeaderUI();
+    if (typeof switchView === 'function') {
+      switchView('languages');
+    }
     if (typeof logToTerminal === 'function') {
       logToTerminal('🚪 Oturum kapatıldı. Misafir moduna geçildi.', 'info');
     }
@@ -5667,10 +5683,11 @@ if (authForm) {
       sfx.playSuccess();
       setTimeout(() => {
         closeAuthModal();
+        switchView('roadmap');
         if (typeof logToTerminal === 'function') {
           logToTerminal(`🌟 <strong>Hoş geldin ${result.user.username}!</strong> İlerlemelerin MongoDB bulutuna kaydediliyor.`, 'success');
         }
-      }, 1000);
+      }, 700);
     } else {
       showAuthAlert(result.msg || 'Bir hata oluştu.', 'error');
     }

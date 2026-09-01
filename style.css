@@ -2361,6 +2361,12 @@ body.modal-open {
   color: #15803d;
 }
 
+.auth-alert-box.info {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+}
+
 /* Form Elemanları */
 .auth-form {
   display: flex;
