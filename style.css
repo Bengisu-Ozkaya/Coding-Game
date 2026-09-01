@@ -342,12 +342,70 @@ body {
   font-weight: 500;
 }
 
-/* 4 Sütunlu Kart Izgarası (Tüm Genişliği Kaplar) */
+/* Responsive Dil Kartları Izgarası */
 .explore-languages-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
   width: 100%;
+}
+
+/* 1100px altı: 3 Kolon */
+@media (max-width: 1100px) {
+  .explore-languages-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+/* 768px altı (Tablet & Telefon): 2 Kolon */
+@media (max-width: 768px) {
+  .explore-languages-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .explore-card {
+    padding: 1.1rem 1rem;
+    border-radius: 16px;
+  }
+  .explore-title {
+    font-size: 1.75rem;
+  }
+  .explore-subtitle {
+    font-size: 0.9rem;
+  }
+  .search-input {
+    height: 46px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 420px altı (Küçük Telefonlar): 2 Kolon Kompakt Düzen */
+@media (max-width: 420px) {
+  .explore-languages-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .explore-card {
+    padding: 0.9rem 0.8rem;
+    border-radius: 14px;
+  }
+  .explore-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    margin-bottom: 10px;
+  }
+  .explore-icon-svg {
+    width: 20px;
+    height: 20px;
+  }
+  .explore-name {
+    font-size: 0.95rem;
+  }
+  .explore-lessons {
+    font-size: 0.74rem;
+  }
 }
 
 .explore-card {
