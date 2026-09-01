@@ -5036,9 +5036,7 @@ function showVictoryModal() {
 // 🔐 MONGODB BULUT KİMLİK DOĞRULAMA & SENKRONİZASYON MOTORU (Cloud Auth & Sync)
 // =========================================================================
 
-const API_BASE_URL = (typeof window !== 'undefined' && window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
-  ? 'http://localhost:3000/api'
-  : 'https://coding-game-backend-ux08.onrender.com/api';
+const API_BASE_URL = 'https://coding-game-backend-ux08.onrender.com/api';
 
 const authManager = {
   token: null,
@@ -5137,7 +5135,7 @@ const authManager = {
 
       return {
         ok: false,
-        msg: 'Sunucuya bağlanılamadı. Lokalde `node server.js` komutunu çalıştırdığınızdan emin olun.'
+        msg: 'Sunucuya bağlanılamadı. Render sunucusu ilk açılışta uyanıyor olabilir (20-30 sn), lütfen birkaç saniye sonra tekrar deneyin.'
       };
     }
   },
