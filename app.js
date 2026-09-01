@@ -5053,7 +5053,7 @@ function showVictoryModal() {
 
 const API_BASE_URL = (typeof window !== 'undefined' && window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:3000/api'
-  : 'https://coding-game-backend.onrender.com/api'; // Vercel/Render veya sunucu URL'si
+  : 'https://coding-game-backend-ux08.onrender.com/api';
 
 const authManager = {
   token: null,
