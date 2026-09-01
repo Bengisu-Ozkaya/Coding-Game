@@ -268,6 +268,11 @@ app.post('/api/progress/sync', authMiddleware, async (req, res) => {
   }
 });
 
+// Healthcheck & Warmup Endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ ok: true, status: 'healthy', time: Date.now() });
+});
+
 // --- SUNUCU BAŞLATMA & MONGODB BAĞLANTISI ---
 mongoose.connect(MONGODB_URI)
   .then(() => {

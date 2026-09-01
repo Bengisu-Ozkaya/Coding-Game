@@ -5074,13 +5074,16 @@ const authManager = {
       await this.syncCurrentLocalProgress();
       return { ok: true, msg: data.msg, user: data.user, isCloud: true };
     } catch (err) {
-      console.warn('Backend API erişilemedi, yerel hesap açılıyor:', err.message);
-      // Yerel Güvenli Fallback Hesabı
+      console.warn('Backend API isteği:', err.message);
       if (!username || !email || !password) {
         return { ok: false, msg: 'Tüm alanları doldurunuz.' };
       }
       if (password.length < 6) {
         return { ok: false, msg: 'Şifre en az 6 karakter olmalıdır.' };
+      }
+
+      if (err.message && err.message !== 'Failed to fetch' && !err.message.includes('fetch')) {
+        return { ok: false, msg: err.message };
       }
 
       const localUser = {
@@ -5092,7 +5095,6 @@ const authManager = {
       };
       const localToken = 'local_jwt_' + btoa(email);
       
-      // Yerel hesap listesine kaydet
       const localAccounts = JSON.parse(localStorage.getItem('codegame_local_users') || '{}');
       localAccounts[email.toLowerCase()] = { ...localUser, password };
       localStorage.setItem('codegame_local_users', JSON.stringify(localAccounts));
@@ -5100,7 +5102,7 @@ const authManager = {
       this.setSession(localToken, localUser);
       return {
         ok: true,
-        msg: 'Hesap oluşturuldu! (Lokalde node server.js çalıştırdığında MongoDB\'ye otomatik aktarılacak)',
+        msg: 'Hesap oluşturuldu! Hoş geldin ' + localUser.username + ' 🎉',
         user: localUser,
         isCloud: false
       };
@@ -5121,8 +5123,12 @@ const authManager = {
       await this.loadCloudProgress();
       return { ok: true, msg: data.msg, user: data.user, isCloud: true };
     } catch (err) {
-      console.warn('Backend API erişilemedi, yerel giriş deneniyor:', err.message);
-      // Yerel Hesap Kontrolü
+      console.warn('Backend API isteği:', err.message);
+      
+      if (err.message && err.message !== 'Failed to fetch' && !err.message.includes('fetch')) {
+        return { ok: false, msg: err.message };
+      }
+
       const localAccounts = JSON.parse(localStorage.getItem('codegame_local_users') || '{}');
       const cleanEmail = (email || '').trim().toLowerCase();
       const existing = localAccounts[cleanEmail];
@@ -5130,7 +5136,7 @@ const authManager = {
       if (existing && existing.password === password) {
         const localToken = 'local_jwt_' + btoa(cleanEmail);
         this.setSession(localToken, existing);
-        return { ok: true, msg: `Giriş başarılı! Hoş geldin, ${existing.username} (Yerel Mod)`, user: existing, isCloud: false };
+        return { ok: true, msg: `Giriş başarılı! Hoş geldin, ${existing.username} 🚀`, user: existing, isCloud: false };
       }
 
       return {
@@ -5703,6 +5709,11 @@ function initApp() {
   }
   renderLanguages();
   updateGlobalStats();
+
+  // Render Backend'i arka planda sessizce uyandır (Cold start azaltıcı)
+  try {
+    fetch(`${API_BASE_URL}/health`).catch(() => {});
+  } catch (e) {}
 }
 
 if (typeof document !== 'undefined') {
