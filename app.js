@@ -1339,10 +1339,18 @@ function renderSkillTree() {
   // Tamamlanan ve Aktif konu hesaplama
   const doneCount = topics.filter(t => t.status === 'done').length;
   const progressPercent = Math.round((doneCount / topics.length) * 100);
+
+  if (treeProgressFill) treeProgressFill.style.width = `${progressPercent}%`;
+  if (treeProgressText) treeProgressText.textContent = `${doneCount} / ${topics.length} Konu Tamamlandı (%${progressPercent})`;
+
+  // Şehir Görselini Çiz
   renderCityVisual(doneCount);
 
   // Dikey Konu Yol Haritasını Oluştur
   const container = document.getElementById('topics-list-container') || document.getElementById('roadmap-timeline-list');
+  if (!container) return;
+  container.innerHTML = '';
+
   topics.forEach((topic, idx) => {
     const isDone = topic.status === 'done';
     const isActive = topic.status === 'active';
@@ -1351,12 +1359,15 @@ function renderSkillTree() {
     const row = document.createElement('div');
     row.className = 'timeline-row';
 
+    // Düğüm İkonu
+    let nodeIcon = '🔒';
     let nodeClass = 'node-locked';
     if (isDone) {
       nodeIcon = '✓';
       nodeClass = 'node-done';
     } else if (isActive) {
       nodeIcon = '▶';
+      nodeClass = 'node-active';
     }
 
     // Çizgi
@@ -1392,11 +1403,13 @@ function renderSkillTree() {
 
     // Tıklama ile Hızlı Özet Modalını Açma (Kilitli olsa bile okunabilir)
     const cardEl = row.querySelector('.timeline-card');
-    cardEl.addEventListener('click', () => {
-      state.selectedNodeId = topic.id;
-      sfx.playPop();
-      openTopicReviewModal(topic);
-    });
+    if (cardEl) {
+      cardEl.addEventListener('click', () => {
+        state.selectedNodeId = topic.id;
+        sfx.playPop();
+        openTopicReviewModal(topic);
+      });
+    }
 
     container.appendChild(row);
   });
