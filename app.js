@@ -1421,7 +1421,7 @@ function renderSkillTree() {
 }
 
 function openTopicReviewModal(topic) {
-  const modal = document.getElementById('topic-review-modal');
+  const modal = document.getElementById('review-modal') || document.getElementById('topic-review-modal');
   if (!modal) {
     state.selectedNodeId = topic.id;
     switchView('game');
@@ -1438,9 +1438,10 @@ function openTopicReviewModal(topic) {
     exampleCode: "// Kodlama arenasında çözüme başlayın."
   };
 
-  const titleEl = document.getElementById('review-topic-title');
-  const readTimeEl = document.getElementById('review-read-time');
-  const rewardEl = document.getElementById('review-reward-text');
+  const badgeEl = document.getElementById('review-topic-badge');
+  const rewardBadgeEl = document.getElementById('review-reward-badge') || document.getElementById('review-reward-text');
+  const titleEl = document.getElementById('review-title') || document.getElementById('review-topic-title');
+  const descEl = document.getElementById('review-desc');
   const goalEl = document.getElementById('review-goal-text');
   const syntaxListEl = document.getElementById('review-syntax-list');
   const trapsListEl = document.getElementById('review-traps-list');
@@ -1448,9 +1449,10 @@ function openTopicReviewModal(topic) {
   const btnStart = document.getElementById('btn-start-practice');
   const lockedNotice = document.getElementById('review-locked-notice');
 
+  if (badgeEl) badgeEl.textContent = `${topic.title.split('.')[0]}. Konu Özeti`;
+  if (rewardBadgeEl) rewardBadgeEl.textContent = data.rewardText || topic.reward;
   if (titleEl) titleEl.textContent = data.title;
-  if (readTimeEl) readTimeEl.textContent = data.readTime || '2 dk okuma';
-  if (rewardEl) rewardEl.textContent = data.rewardText || topic.reward;
+  if (descEl) descEl.textContent = topic.desc;
   if (goalEl) goalEl.textContent = data.logic;
 
   if (syntaxListEl) {
@@ -1492,7 +1494,7 @@ function openTopicReviewModal(topic) {
 }
 
 function closeTopicReviewModal() {
-  const modal = document.getElementById('topic-review-modal');
+  const modal = document.getElementById('review-modal') || document.getElementById('topic-review-modal');
   if (modal) modal.classList.remove('open');
   document.body.classList.remove('modal-open');
 }
@@ -5472,6 +5474,14 @@ if (btnStartPractice) {
   });
 }
 
+const btnCloseReview = document.getElementById('btn-close-review-modal');
+if (btnCloseReview) {
+  btnCloseReview.addEventListener('click', () => {
+    closeTopicReviewModal();
+    sfx.playPop();
+  });
+}
+
 const btnDismissReview = document.getElementById('btn-dismiss-review');
 if (btnDismissReview) {
   btnDismissReview.addEventListener('click', () => {
@@ -5480,7 +5490,7 @@ if (btnDismissReview) {
   });
 }
 
-const topicReviewModal = document.getElementById('topic-review-modal');
+const topicReviewModal = document.getElementById('review-modal') || document.getElementById('topic-review-modal');
 if (topicReviewModal) {
   topicReviewModal.addEventListener('click', (e) => {
     if (e.target === topicReviewModal) {
