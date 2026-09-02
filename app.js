@@ -799,7 +799,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_1",
       title: "1. HTML Temelleri & Sayfa İskeleti",
-      desc: "<!DOCTYPE html>, <html>, <head>, <body> ve <title> ile standart web sayfası iskeleti oluşturma.",
+      desc: "DOCTYPE, html, head, body ve title etiketleriyle standart web sayfası iskeleti oluşturma.",
       reward: "🏡 Giriş Çiftliği & Su Kuyusu",
       status: "active",
       xp: 120
@@ -815,7 +815,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_3",
       title: "3. Bağlantılar & Köprüler (Links)",
-      desc: "<a> etiketi, href ile harici sayfalara geçiş, target='_blank' ve sayfa içi çapa (#id) linkleri.",
+      desc: "a etiketi, href ile harici sayfalara geçiş, target='_blank' ve sayfa içi çapa (#id) linkleri.",
       reward: "🚰 Su Arıtma & Çeşmeler",
       status: "locked",
       xp: 160
@@ -823,7 +823,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_4",
       title: "4. Görseller & Medya (Images)",
-      desc: "<img> etiketi, src kaynak yolu, alt açıklama metni, width/height boyutları ve figure/figcaption.",
+      desc: "img etiketi, src kaynak yolu, alt açıklama metni, width/height boyutları ve figure/figcaption.",
       reward: "🌳 Şehir Parkı & Botanik Bahçe",
       status: "locked",
       xp: 180
@@ -831,7 +831,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_5",
       title: "5. Listeler (Sıralı, Sırasız & Tanım)",
-      desc: "<ul> sırasız, <ol> sıralı listeler, <li> elemanları, <dl>/<dt>/<dd> tanım listeleri ve iç içe listeler.",
+      desc: "ul sırasız ve ol sıralı listeler, li elemanları, dl/dt/dd tanım listeleri ve iç içe listeler.",
       reward: "🏢 Modern Rezidanslar & İş Kuleleri",
       status: "locked",
       xp: 200
@@ -839,7 +839,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_6",
       title: "6. Tablo Temelleri (Tables)",
-      desc: "<table>, <tr> satırları, <th> başlık hücreleri, <td> veri hücreleri ve <caption> tablo başlığı.",
+      desc: "table, tr satırları, th başlık hücreleri, td veri hücreleri ve caption tablo başlığı.",
       reward: "🎬 Sinema & Kültür Merkezi",
       status: "locked",
       xp: 220
@@ -847,7 +847,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_7",
       title: "7. İleri Tablolar (Colspan & Rowspan)",
-      desc: "<thead>, <tbody>, <tfoot> bölümleri, colspan (sütun birleştirme) ve rowspan (satır birleştirme).",
+      desc: "thead, tbody, tfoot bölümleri, colspan (sütun birleştirme) ve rowspan (satır birleştirme).",
       reward: "🎡 Lunapark & Dönme Dolap",
       status: "locked",
       xp: 250
@@ -855,7 +855,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_8",
       title: "8. Blok & Satır İçi, Div & Span",
-      desc: "Block vs Inline eleman ayrımı, <div> ve <span> kapsayıcıları, id ve class öznitelikleri.",
+      desc: "Block vs Inline eleman ayrımı, div ve span kapsayıcıları, id ve class öznitelikleri.",
       reward: "🏛️ Yönetim Sarayı & Belediye",
       status: "locked",
       xp: 280
@@ -863,7 +863,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_9",
       title: "9. Temel Form Elemanları (Form & Input)",
-      desc: "<form action method>, text, password, email, number, checkbox, radio inputları ve <label for>.",
+      desc: "form kapsayıcısı, text, password, email, number, checkbox, radio inputları ve label etiketleri.",
       reward: "🏥 Şehir Hastanesi & Acil Servis",
       status: "locked",
       xp: 300
@@ -871,7 +871,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_10",
       title: "10. Gelişmiş Form Kontrolleri & Doğrulama",
-      desc: "<textarea>, <select>, <option>, <datalist>, <fieldset>, required, placeholder ve regex pattern.",
+      desc: "textarea, select, option, datalist, fieldset, required, placeholder ve regex pattern doğrulaması.",
       reward: "🛍️ Alışveriş & Ticaret Merkezi",
       status: "locked",
       xp: 320
@@ -879,7 +879,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_11",
       title: "11. Semantik HTML5 Mimarisi",
-      desc: "<header>, <nav>, <main>, <section>, <article>, <aside>, <footer> ve <details>/<summary>.",
+      desc: "header, nav, main, section, article, aside, footer ve details/summary semantik etiketleri.",
       reward: "🚄 Hızlı Tren Garı & Raylar",
       status: "locked",
       xp: 350
@@ -887,7 +887,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_12",
       title: "12. Multimedya & Gömülü İçerikler",
-      desc: "<audio>, <video controls>, <source> formatları ve YouTube için <iframe> gömme.",
+      desc: "audio, video kontrolleri, source formatları ve YouTube için iframe gömme mimarisi.",
       reward: "📡 5G Telekom & Uydu Kulesi",
       status: "locked",
       xp: 380
@@ -895,7 +895,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_13",
       title: "13. Head, Meta Etiketleri & Varlıklar",
-      desc: "meta charset, viewport, SEO description, favicon ve HTML Entities (&nbsp;, &lt;, &gt;, &copy;).",
+      desc: "meta charset, viewport, SEO description, favicon ve HTML varlıkları (&nbsp;, &lt;, &gt;, &copy;).",
       reward: "🚢 Uluslararası Liman & Konteynerler",
       status: "locked",
       xp: 420
@@ -1908,15 +1908,18 @@ function renderSkillTree() {
       badgeClass = 'badge-active';
     }
 
+    const safeTitle = (topic.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const safeDesc = (topic.desc || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
     row.innerHTML = `
       ${lineHTML}
       <div class="timeline-node ${nodeClass}">${nodeIcon}</div>
       <div class="timeline-card ${isActive ? 'card-active' : ''} ${isLocked ? 'card-locked' : ''}">
         <div class="timeline-card-header">
-          <h3 class="timeline-topic-title">${topic.title}</h3>
+          <h3 class="timeline-topic-title">${safeTitle}</h3>
           <span class="timeline-status-badge ${badgeClass}">${badgeText}</span>
         </div>
-        <p class="timeline-topic-desc">${topic.desc}</p>
+        <p class="timeline-topic-desc">${safeDesc}</p>
         <div class="timeline-reward-tag">
           <span>🎁 Ödül:</span>
           <strong>${topic.reward}</strong>
