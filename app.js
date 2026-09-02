@@ -433,6 +433,30 @@ const SKILL_TREE_JAVA_NODES = [
 // Diller Veritabanı (Screenshot ile birebir eşleşen dil listesi ve ders sayıları)
 const LANGUAGES_DB = [
   {
+    id: 'html',
+    name: 'HTML',
+    lessonsText: '70 Alıştırma • 14 Modül',
+    badgeClass: 'badge-html',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 3 1.5 15L12 21l6.5-3 1.5-15H4z"></path><path d="M16 8.5H8.5l.3 3.5h7.2l-.5 4.5-3.5 1-3.5-1-.2-2.5"></path></svg>`,
+    icon: '🌐',
+    category: 'frontend',
+    fileExt: 'index.html',
+    langTag: 'HTML5',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
+    id: 'css',
+    name: 'CSS',
+    lessonsText: '80 Alıştırma • 16 Modül',
+    badgeClass: 'badge-css',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-2 15-6 3-6-3L4 3z"></path><path d="M7.5 7.5h9l-.5 4h-8l.5 4 4.5 1.5 4.5-1.5.2-2"></path></svg>`,
+    icon: '🎨',
+    category: 'frontend',
+    fileExt: 'style.css',
+    langTag: 'CSS3',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
     id: 'python',
     name: 'Python',
     lessonsText: '70 Alıştırma • 14 Modül',
@@ -507,13 +531,13 @@ const LANGUAGES_DB = [
   {
     id: 'javascript',
     name: 'JavaScript',
-    lessonsText: '54 Ders',
+    lessonsText: '70 Alıştırma • 14 Modül',
     badgeClass: 'badge-javascript',
-    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
-    icon: '🟨',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-2 15-6 3-6-3L4 3z"></path><path d="M9 8v6a2 2 0 0 1-2 2H6"></path><path d="M14 9.5c.6-.4 1.3-.5 2-.5 1.5 0 2.5 1 2.5 2.5s-1 2.5-2.5 2.5c-.8 0-1.5-.3-2-.8"></path></svg>`,
+    icon: '⚡',
     category: 'frontend',
-    fileExt: 'index.js',
-    langTag: 'ES2023',
+    fileExt: 'app.js',
+    langTag: 'JavaScript (ES6+)',
     skillTreeNodes: SKILL_TREE_JAVA_NODES
   },
   {
@@ -560,6 +584,7 @@ const state = {
   selectedLangId: 'java',
   selectedNodeId: 's0', // 0 Noktası (Başlangıç Düğümü)
   completedNodes: new Set(),
+  completedTasks: new Set(), // Tekrarlanan XP kazanımını önlemek için çözülen adımları tutar
   activeNodeId: 's0',
   currentPlotIndex: 0,
   xp: 0,
@@ -759,6 +784,120 @@ function renderLanguages() {
 // --- 7. GELİŞEN ŞEHİR & DİKEY KONU YOL HARİTASI (Evolving City & Roadmap Engine) ---
 
 const COURSE_TOPICS_DB = {
+  html: [
+    {
+      id: "html_1",
+      title: "1. HTML Temelleri & Sayfa İskeleti",
+      desc: "<!DOCTYPE html>, <html>, <head>, <body> ve <title> ile standart web sayfası iskeleti oluşturma.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "html_2",
+      title: "2. Başlıklar & Metin Biçimlendirme",
+      desc: "Başlık hiyerarşisi (h1-h6), paragraflar (p), satır sonu (br), tematik çizgi (hr) ve vurgulama (strong, em, mark).",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "html_3",
+      title: "3. Bağlantılar & Köprüler (Links)",
+      desc: "<a> etiketi, href ile harici sayfalara geçiş, target='_blank' ve sayfa içi çapa (#id) linkleri.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "html_4",
+      title: "4. Görseller & Medya (Images)",
+      desc: "<img> etiketi, src kaynak yolu, alt açıklama metni, width/height boyutları ve figure/figcaption.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "html_5",
+      title: "5. Listeler (Sıralı, Sırasız & Tanım)",
+      desc: "<ul> sırasız, <ol> sıralı listeler, <li> elemanları, <dl>/<dt>/<dd> tanım listeleri ve iç içe listeler.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "html_6",
+      title: "6. Tablo Temelleri (Tables)",
+      desc: "<table>, <tr> satırları, <th> başlık hücreleri, <td> veri hücreleri ve <caption> tablo başlığı.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "html_7",
+      title: "7. İleri Tablolar (Colspan & Rowspan)",
+      desc: "<thead>, <tbody>, <tfoot> bölümleri, colspan (sütun birleştirme) ve rowspan (satır birleştirme).",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "html_8",
+      title: "8. Blok & Satır İçi, Div & Span",
+      desc: "Block vs Inline eleman ayrımı, <div> ve <span> kapsayıcıları, id ve class öznitelikleri.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "html_9",
+      title: "9. Temel Form Elemanları (Form & Input)",
+      desc: "<form action method>, text, password, email, number, checkbox, radio inputları ve <label for>.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "html_10",
+      title: "10. Gelişmiş Form Kontrolleri & Doğrulama",
+      desc: "<textarea>, <select>, <option>, <datalist>, <fieldset>, required, placeholder ve regex pattern.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "html_11",
+      title: "11. Semantik HTML5 Mimarisi",
+      desc: "<header>, <nav>, <main>, <section>, <article>, <aside>, <footer> ve <details>/<summary>.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "html_12",
+      title: "12. Multimedya & Gömülü İçerikler",
+      desc: "<audio>, <video controls>, <source> formatları ve YouTube için <iframe> gömme.",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "html_13",
+      title: "13. Head, Meta Etiketleri & Varlıklar",
+      desc: "meta charset, viewport, SEO description, favicon ve HTML Entities (&nbsp;, &lt;, &gt;, &copy;).",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "html_14",
+      title: "14. Kapsamlı Web Sayfası İskelet Projesi",
+      desc: "Tüm HTML5 standartlarını, formları, tabloları ve semantik düzeni birleştiren ana web sayfası projesi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
   java: [
     {
         "id": "java_1",
@@ -873,6 +1012,250 @@ const COURSE_TOPICS_DB = {
         "xp": 450
     }
 ],
+  css: [
+    {
+      id: "css_1",
+      title: "1. CSS'e Giriş & Ekleme Yöntemleri",
+      desc: "CSS sözdizimi, Satır içi (Inline), Dahili (<style>) ve Harici (<link rel='stylesheet'>) CSS mimarisi.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "css_2",
+      title: "2. CSS Seçicileri & Öncelik Sırası",
+      desc: "Etiket, sınıf (.), ID (#), evrensel (*), grup (,) ve torun seçiciler ile !important öncelik yönetimi.",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "css_3",
+      title: "3. Renkler & Arka Planlar (Colors & BG)",
+      desc: "HEX, RGB, RGBA, background-color, background-image, background-size: cover ve repeat kontrolleri.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "css_4",
+      title: "4. Tipografi & Metin Biçimlendirme",
+      desc: "font-family, font-size, font-weight, text-align, text-decoration, line-height ve Google Fonts.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "css_5",
+      title: "5. Kutu Modeli (Box Model Mimarisi)",
+      desc: "Content, padding, border, margin hiyerarşisi ve modern kutu standardı box-sizing: border-box.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "css_6",
+      title: "6. Kenarlıklar, Köşeler & Gölgeler",
+      desc: "border-style/width/color, border-radius ile yuvarlatma, box-shadow kutu gölgesi ve text-shadow.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "css_7",
+      title: "7. Görüntüleme & Boyutlandırma",
+      desc: "display: block, inline, inline-block, none vs visibility: hidden, max-width ve overflow yönetimi.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 240
+    },
+    {
+      id: "css_8",
+      title: "8. Konumlandırma & Katmanlar (Position)",
+      desc: "position: relative, absolute, fixed, sticky, yön değerleri (top/left) ve z-index katman hiyerarşisi.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 260
+    },
+    {
+      id: "css_9",
+      title: "9. Sahte Sınıflar & Sahte Elemanlar",
+      desc: ":hover, :focus, :active, :nth-child(n), ::before, ::after ve content özniteliği ile dekoratif içerikler.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "css_10",
+      title: "10. Gradyanlar & Görsel Efektler",
+      desc: "linear-gradient(), radial-gradient(), opacity şeffaflığı ve modern filter (blur, brightness) efektleri.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "css_11",
+      title: "11. 2D Dönüşümler & Geçişler (Transitions)",
+      desc: "transform: translate(), rotate(), scale() ve transition: all 0.3s ease ile mikro etkileşimler.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "css_12",
+      title: "12. CSS Animasyonları & @keyframes",
+      desc: "@keyframes kuralı, animation-name, duration, iteration-count: infinite ve zamanlama fonksiyonları.",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "css_13",
+      title: "13. Flexbox ile Esnek Tek Boyutlu Düzen",
+      desc: "display: flex, justify-content, align-items, flex-direction, flex-wrap ve gap boşluk yönetimi.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "css_14",
+      title: "14. CSS Grid ile İki Boyutlu Izgara",
+      desc: "display: grid, grid-template-columns, fr kesirli birimi, repeat(), gap ve grid-column alan yerleşimi.",
+      reward: "🏦 Merkez Bankası & Finans Merkezi",
+      status: "locked",
+      xp: 400
+    },
+    {
+      id: "css_15",
+      title: "15. Responsive Tasarım & Medya Sorguları",
+      desc: "@media (max-width: 768px), Mobil Öncelikli (Mobile First) yaklaşım ve esnek arayüz uyarlamaları.",
+      reward: "🏛️ Hükümet Sarayı & Kongre Merkezi",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "css_16",
+      title: "16. CSS Değişkenleri & Kapsamlı Proje",
+      desc: ":root CSS Custom Properties (--ana-renk), var(), calc() ve modern kart bileşeni mimarisi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
+  javascript: [
+    {
+      id: "js_1",
+      title: "1. JS'e Giriş, Çıktı & Değişkenler",
+      desc: "console.log(), alert(), let, const, var, Global ve Block Scope ({}) yönetimi.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "js_2",
+      title: "2. Veri Tipleri & Operatörler",
+      desc: "typeof, Number, String, Boolean, type casting (Number(), String()), aritmetik, katı eşitlik (===) ve mantık (&&, ||).",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "js_3",
+      title: "3. Karar Yapıları (If, Switch & Ternary)",
+      desc: "if, else if, else blokları, switch-case-default yapısı ve tek satırlık Ternary (koşul ? a : b) kontrolü.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "js_4",
+      title: "4. Döngüler (For & While)",
+      desc: "for döngüsü, while, sayaç artırma, break ile erken çıkış ve continue ile adımı atlama.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "js_5",
+      title: "5. Fonksiyonlar & Arrow Functions",
+      desc: "function tanımlama, parametreler, return değeri ve modern ES6 Arrow Function (() => {}) mimarisi.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "js_6",
+      title: "6. Diziler (Arrays) & Temel Metotlar",
+      desc: "Dizi tanımlama ([]), push, pop, shift, unshift, indexOf, includes ve .length özelliği.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "js_7",
+      title: "7. İleri Dizi Metotları (ES6+ Iterators)",
+      desc: "forEach, map ile dönüştürme, filter ile filtreleme, find ve reduce ile veri toplama.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "js_8",
+      title: "8. Nesneler (Objects) & Destructuring",
+      desc: "Key-value obje yapısı ({}), this anahtarı, Object.keys(), Object.values() ve Obje Parçalama (Destructuring).",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "js_9",
+      title: "9. String, Math & Template Literals",
+      desc: "trim(), toUpperCase(), split(), replace(), Backtick Template Literals (${ad}) ve Math.floor()/random().",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "js_10",
+      title: "10. DOM Seçicileri & İçerik Yönetimi",
+      desc: "getElementById, querySelector, querySelectorAll, textContent, innerHTML ve input.value okuma/yazma.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "js_11",
+      title: "11. DOM Stil & CSS Sınıfı (classList)",
+      desc: "element.style.color, classList.add(), remove(), toggle() ve contains() ile dinamik stil kontrolü.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "js_12",
+      title: "12. DOM Olayları (Event Listeners)",
+      desc: "addEventListener('click', 'input', 'submit'), event nesnesi, e.target ve e.preventDefault().",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "js_13",
+      title: "13. Dinamik DOM Eleman Yönetimi",
+      desc: "document.createElement(), appendChild(), prepend(), remove() ve parentElement ile dinamik UI üretimi.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "js_14",
+      title: "14. Web Storage & Kapsamlı Proje",
+      desc: "localStorage.setItem, getItem, removeItem, JSON.stringify, JSON.parse ve Todo/Sepet Projesi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
   python: [
     {
       id: 'python_1',
@@ -1024,24 +1407,30 @@ function completeCurrentTopic(langId, topicId) {
 
 // Şehir Görselini Çizen Fonksiyon (Tamamlanan Konu Sayısına Göre Şehir Gelişir)
 // 3D İzometrik Şehir Çizim Motoru (Isometric 3D City Engine)
-function renderCityVisual(completedCount) {
+function renderCityVisual(completedCount, totalCount = 14) {
   const svg = document.getElementById('city-svg') || document.getElementById('city-dynamic-svg');
+  if (!svg) return;
+
+  const total = Math.max(1, totalCount || 14);
+  const ratio = Math.min(1, Math.max(0, completedCount / total));
+  // 14 aşamalı görselleştirme motoruna oranla (10 veya 20 konulu kurslarda orantılı büyüme)
+  const visualStage = completedCount === 0 ? 0 : Math.max(1, Math.min(14, Math.round(ratio * 14)));
 
   const statusText = document.getElementById('city-stage-badge') || document.getElementById('city-status-text');
   const countText = document.getElementById('city-building-count');
 
   if (countText) {
-    countText.textContent = `${completedCount} / 14 Bina`;
+    countText.textContent = `${completedCount} / ${total} Yapı`;
   }
 
   if (statusText) {
     let phaseName = '1. Seviye: Başlangıç Köyü';
-    if (completedCount >= 14) phaseName = '7. Seviye: Mega Siber Metropol';
-    else if (completedCount >= 12) phaseName = '6. Seviye: Uluslararası Liman & Metropol';
-    else if (completedCount >= 9) phaseName = '5. Seviye: Ticaret & Sanayi Şehri';
-    else if (completedCount >= 6) phaseName = '4. Seviye: Kültür & Teknoloji Şehri';
-    else if (completedCount >= 3) phaseName = '3. Seviye: Gelişen Kasaba';
-    else if (completedCount >= 1) phaseName = '2. Seviye: İlk Yerleşim';
+    if (ratio >= 1.0) phaseName = '7. Seviye: Mega Siber Metropol';
+    else if (ratio >= 0.85) phaseName = '6. Seviye: Uluslararası Liman & Metropol';
+    else if (ratio >= 0.64) phaseName = '5. Seviye: Ticaret & Sanayi Şehri';
+    else if (ratio >= 0.42) phaseName = '4. Seviye: Kültür & Teknoloji Şehri';
+    else if (ratio >= 0.21) phaseName = '3. Seviye: Gelişen Kasaba';
+    else if (ratio > 0) phaseName = '2. Seviye: İlk Yerleşim';
 
     statusText.textContent = phaseName;
   }
@@ -1122,7 +1511,7 @@ function renderCityVisual(completedCount) {
   `;
 
   // Seviye 0: Issız ve Harabe Ada İskeleti
-  if (completedCount === 0) {
+  if (visualStage === 0) {
     svgHTML += `
       <!-- Issız Harabe Taşlar ve Kuru Çatlaklar -->
       ${isoBox(200, 160, 22, 12, 16, '#94a3b8', '#64748b', '#475569')}
@@ -1135,7 +1524,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 1+: 3D Çiftlik Evi, Çitler ve Giriş Yolu (🏡)
-  if (completedCount >= 1) {
+  if (visualStage >= 1) {
     svgHTML += `
       <!-- Ana İzometrik Asfalt Cadde -->
       <polygon points="120,205 160,230 420,80 380,55" fill="#334155" stroke="#475569" stroke-width="1" />
@@ -1154,7 +1543,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 2+: Elektrik Şebekesi & 3D Sokak Lambaları (💡)
-  if (completedCount >= 2) {
+  if (visualStage >= 2) {
     svgHTML += `
       <!-- Trafo İstasyonu -->
       ${isoBox(165, 185, 16, 10, 18, '#fbbf24', '#d97706', '#92400e')}
@@ -1174,7 +1563,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 3+: Su Arıtma & 3D Su Kulesi (🚰)
-  if (completedCount >= 3) {
+  if (visualStage >= 3) {
     svgHTML += `
       <!-- 3D Mavi Su Kulesi -->
       ${isoBox(215, 105, 16, 10, 36, '#38bdf8', '#0284c7', '#0369a1')}
@@ -1184,7 +1573,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 4+: Şehir Parkı, Fıskiye ve Ağaçlık (🌳)
-  if (completedCount >= 4) {
+  if (visualStage >= 4) {
     svgHTML += `
       <!-- 3D Park Alanı Tabanı -->
       <polygon points="270,170 330,205 270,240 210,205" fill="#4ade80" stroke="#16a34a" stroke-width="1.5" />
@@ -1200,7 +1589,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 5+: 3D Modern İş Kuleleri & Rezidanslar (🏢)
-  if (completedCount >= 5) {
+  if (visualStage >= 5) {
     svgHTML += `
       <!-- Gökdelen 1 (Cam Kule) -->
       ${isoBox(335, 130, 28, 16, 85, '#60a5fa', '#2563eb', '#1d4ed8')}
@@ -1214,7 +1603,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 6+: 3D Sinema & Gösteri Merkezi (🎬)
-  if (completedCount >= 6) {
+  if (visualStage >= 6) {
     svgHTML += `
       <!-- Sinema Binası -->
       ${isoBox(215, 235, 26, 14, 30, '#f43f5e', '#be123c', '#881337')}
@@ -1225,7 +1614,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 7+: 3D Lunapark & Dönme Dolap (🎡)
-  if (completedCount >= 7) {
+  if (visualStage >= 7) {
     svgHTML += `
       <!-- 3D Dönme Dolap Grubu -->
       <g transform="translate(435, 110)">
@@ -1246,7 +1635,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 8+: 3D Şehir Hastanesi & Ambulans (🏥)
-  if (completedCount >= 8) {
+  if (visualStage >= 8) {
     svgHTML += `
       <!-- Şehir Hastanesi -->
       ${isoBox(160, 120, 30, 16, 42, '#ffffff', '#e2e8f0', '#cbd5e1')}
@@ -1260,7 +1649,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 9+: 3D Alışveriş & Ticaret Merkezi (🛍️)
-  if (completedCount >= 9) {
+  if (visualStage >= 9) {
     svgHTML += `
       <!-- AVM Blokları -->
       ${isoBox(345, 205, 32, 18, 28, '#c084fc', '#9333ea', '#6b21a8')}
@@ -1271,7 +1660,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 10+: 3D Hızlı Tren Garı & Raylar (🚄)
-  if (completedCount >= 10) {
+  if (visualStage >= 10) {
     svgHTML += `
       <!-- Tren Rayları -->
       <polygon points="410,240 445,260 500,225 465,205" fill="#64748b" />
@@ -1285,7 +1674,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 11+: 3D Uydu & Telekom Kulesi (📡)
-  if (completedCount >= 11) {
+  if (visualStage >= 11) {
     svgHTML += `
       <!-- Telekom Çelik Kulesi -->
       <g transform="translate(100, 75)">
@@ -1300,7 +1689,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 12+: 3D Uluslararası Liman & Konteyner Terminali (🚢)
-  if (completedCount >= 12) {
+  if (visualStage >= 12) {
     svgHTML += `
       <!-- Liman İskelesi & Su -->
       <polygon points="50,170 10,195 70,230 110,205" fill="#0284c7" opacity="0.9" />
@@ -1317,7 +1706,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 13+: 3D Yönetim Sarayı / Hükümet Konağı (🏛️)
-  if (completedCount >= 13) {
+  if (visualStage >= 13) {
     svgHTML += `
       <!-- Görkemli Saray -->
       ${isoBox(270, 75, 36, 18, 45, '#fef08a', '#eab308', '#ca8a04')}
@@ -1328,7 +1717,7 @@ function renderCityVisual(completedCount) {
   }
 
   // Seviye 14: 3D Teknoloji Vadisi & Roket Fırlatma Rampası (🚀)
-  if (completedCount >= 14) {
+  if (visualStage >= 14) {
     svgHTML += `
       <!-- Roket Platformu -->
       ${isoBox(450, 60, 22, 12, 16, '#0f172a', '#1e293b', '#334155')}
@@ -1374,8 +1763,8 @@ function renderSkillTree() {
   if (treeProgressFill) treeProgressFill.style.width = `${progressPercent}%`;
   if (treeProgressText) treeProgressText.textContent = `${doneCount} / ${topics.length} Konu Tamamlandı (%${progressPercent})`;
 
-  // Şehir Görselini Çiz
-  renderCityVisual(doneCount);
+  // Şehir Görselini Çiz (Dinamik Konu Sayısı Orantılı)
+  renderCityVisual(doneCount, topics.length);
 
   // Dikey Konu Yol Haritasını Oluştur
   const container = document.getElementById('topics-list-container') || document.getElementById('roadmap-timeline-list');
@@ -1416,15 +1805,25 @@ function renderSkillTree() {
       badgeClass = 'badge-active';
     }
 
+    // HTML karakterlerini kaçış dizisine dönüştür (DOM bozulmalarını önlemek için)
+    const safeDesc = (topic.desc || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    const safeTitle = (topic.title || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
     row.innerHTML = `
       ${lineHTML}
       <div class="timeline-node ${nodeClass}">${nodeIcon}</div>
       <div class="timeline-card ${isActive ? 'card-active' : ''} ${isLocked ? 'card-locked' : ''}">
         <div class="timeline-card-header">
-          <h3 class="timeline-topic-title">${topic.title}</h3>
+          <h3 class="timeline-topic-title">${safeTitle}</h3>
           <span class="timeline-status-badge ${badgeClass}">${badgeText}</span>
         </div>
-        <p class="timeline-topic-desc">${topic.desc}</p>
+        <p class="timeline-topic-desc">${safeDesc}</p>
         <div class="timeline-reward-tag">
           <span>🎁 Ödül:</span>
           <strong>${topic.reward}</strong>
@@ -4854,10 +5253,18 @@ function renderCurrentChallenge() {
   const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
   const topicId = state.selectedNodeId || `${curLang.id}_1` || 'python_1';
 
+  // Soruya geçildiğinde İpucu panelini otomatik olarak kapat
+  const hintPanel = document.getElementById('hint-panel');
+  if (hintPanel) {
+    hintPanel.style.display = 'none';
+  }
+
+  const cleanTitle = (challenge.title || '').replace(/^\d+\.\s*(?:Soru|Adım|Görev)?\s*:\s*/i, '');
+
   // 1. Üst Navigasyon & Ekmek Kırıntısı
   const breadcrumbEl = document.getElementById('game-breadcrumb');
   if (breadcrumbEl) {
-    breadcrumbEl.textContent = `${curLang.name} / ${challenge.moduleSubtitle || challenge.title}`;
+    breadcrumbEl.textContent = `${curLang.name} / ${challenge.moduleSubtitle || cleanTitle}`;
   }
 
   // 2. Sol Panel: Görev Bilgileri
@@ -4866,14 +5273,14 @@ function renderCurrentChallenge() {
   const titleEl = document.getElementById('task-title') || document.getElementById('coding-topic-title');
   const descEl = document.getElementById('task-desc') || document.getElementById('challenge-prompt');
 
-  if (badgeEl) badgeEl.textContent = `Görev #${challenge.stepNum} (${challenge.stepNum}/${challenge.totalSteps})`;
+  if (badgeEl) badgeEl.textContent = `Görev #${challenge.stepNum}`;
   if (diffEl) {
     diffEl.textContent = challenge.stepNum <= 2 ? 'Başlangıç' : (challenge.stepNum <= 4 ? 'Orta Düzey' : 'İleri Seviye');
   }
-  if (titleEl) titleEl.textContent = challenge.title;
+  if (titleEl) titleEl.textContent = cleanTitle;
   if (descEl) descEl.innerHTML = challenge.prompt;
 
-  // 3. Sol Panel: Snippet Hapları (Tıkla ve Editöre Ekle)
+  // 3. Sol Panel: İpucu / Snippet Hapları (Tıkla ve Editöre Ekle)
   const snippetsContainer = document.getElementById('quick-snippets-container') || document.getElementById('quick-keys-bar');
   if (snippetsContainer) {
     snippetsContainer.innerHTML = '';
@@ -4890,9 +5297,16 @@ function renderCurrentChallenge() {
     });
   }
 
-  // 4. Sol Panel: Dinamik Dil / Konu Teorisi & Kuralları
+  // 4. Sol Panel: Dinamik Dil / Konu Teorisi & Kuralları (HTML ve CSS için gizlenir)
+  const theoryBoxEl = document.querySelector('.theory-box');
   const theoryListEl = document.getElementById('theory-list');
-  if (theoryListEl) {
+  const isHtmlOrCss = curLang.id === 'html' || curLang.id === 'css';
+
+  if (theoryBoxEl) {
+    theoryBoxEl.style.display = isHtmlOrCss ? 'none' : 'block';
+  }
+
+  if (theoryListEl && !isHtmlOrCss) {
     theoryListEl.innerHTML = '';
     const reviewData = TOPIC_REVIEWS_DB[topicId] || TOPIC_REVIEWS_DB.python_1;
     const rules = (reviewData && reviewData.syntaxRules && reviewData.syntaxRules.length > 0)
@@ -4955,10 +5369,26 @@ function runCurrentCode() {
   if (result.ok) {
     sfx.playSuccess();
     logToTerminal(`✅ ${result.msg}`, 'success');
-    
-    state.xp += challenge.stepNum * 40;
-    state.harvestCount += 1;
-    updateGlobalStats();
+
+    const topicId = state.selectedNodeId || `${state.selectedLangId}_1`;
+    const curTopics = getLanguageTopics(state.selectedLangId);
+    const currentTopicObj = curTopics.find(t => t.id === topicId);
+    const isTopicAlreadyDone = (currentTopicObj && currentTopicObj.status === 'done') || state.completedNodes.has(topicId);
+
+    // Görev/soru daha önce çözülmüş mü?
+    const taskKey = `${topicId}_step_${challenge.stepNum}`;
+    const isTaskAlreadyDone = state.completedTasks.has(taskKey) || isTopicAlreadyDone;
+
+    if (!isTaskAlreadyDone) {
+      state.completedTasks.add(taskKey);
+      const earnedXp = challenge.stepNum * 40;
+      state.xp += earnedXp;
+      state.harvestCount += 1;
+      updateGlobalStats();
+      logToTerminal(`⭐ <strong>+${earnedXp} XP Kazandın!</strong>`, 'info');
+    } else {
+      logToTerminal(`ℹ️ <em>Bu soru daha önce tamamlandığı için tekrar XP verilmedi.</em>`, 'info');
+    }
 
     if (currentChallengeIndex + 1 < currentChallengesList.length) {
       currentChallengeIndex += 1;
@@ -4968,10 +5398,10 @@ function runCurrentCode() {
       }, 600);
     } else {
       // Modül bitti, konuyu tamamla ve sıradaki konuyu aç
-      state.completedNodes.add(state.selectedNodeId);
-      completeCurrentTopic(state.selectedLangId, state.selectedNodeId);
+      state.completedNodes.add(topicId);
+      completeCurrentTopic(state.selectedLangId, topicId);
       setTimeout(() => {
-        showVictoryModal();
+        showVictoryModal(isTopicAlreadyDone);
       }, 700);
     }
   } else {
@@ -5027,15 +5457,17 @@ function updateGlobalStats() {
   }
 }
 
-function showVictoryModal() {
+function showVictoryModal(isAlreadyDone = false) {
   const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
   sfx.playVictory();
 
-  dom.victoryTitle.textContent = `Tebrikler! Modül Tamamlandı`;
-  dom.victorySubtitle.textContent = `Bu konudaki tüm adımları başarıyla tamamladın ve Şehre yeni bir yapı kazandırdın!`;
+  dom.victoryTitle.textContent = isAlreadyDone ? `Modül Tekrar Tamamlandı` : `Tebrikler! Modül Tamamlandı`;
+  dom.victorySubtitle.textContent = isAlreadyDone
+    ? `Bu modülü başarıyla tekrar ettin ve bilgini pekiştirdin!`
+    : `Bu konudaki tüm adımları başarıyla tamamladın ve Şehre yeni bir yapı kazandırdın!`;
   dom.victoryBadgeText.textContent = `${curLang.name} Modülü Onaylandı`;
 
-  dom.finalXp.textContent = `+150 XP`;
+  dom.finalXp.textContent = isAlreadyDone ? `+0 XP (Daha önce kazanıldı)` : `+150 XP`;
   dom.finalCrops.textContent = `5 Adım`;
   dom.victoryModal.classList.add('open');
 }
@@ -5387,10 +5819,9 @@ dom.btnHint.addEventListener('click', () => {
     hintPanel.style.display = isHidden ? 'block' : 'none';
     if (isHidden) {
       hintPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      logToTerminal('💡 <strong>İpucu:</strong> İpucu paneli açıldı. İhtiyacın olan kod parçacıklarını tıklayarak editöre ekleyebilirsin.', 'hint');
     }
   }
-
-  logToTerminal('💡 <strong>İpucu:</strong> Kod parçacıkları paneli açıldı. İhtiyacın olan parçaları tıklayarak editöre ekleyebilirsin.', 'hint');
   sfx.playPop();
 });
 
@@ -5420,14 +5851,23 @@ dom.btnClearConsole.addEventListener('click', () => {
 
 // Hızlı Modül Atlama Fonksiyonu (Alıştırmayı Tamamla ve Sonraki Konuya Geç)
 function skipEntireModule() {
-  state.completedNodes.add(state.selectedNodeId);
-  completeCurrentTopic(state.selectedLangId, state.selectedNodeId);
-  state.xp += 150;
-  state.harvestCount += 5;
-  updateGlobalStats();
+  const topicId = state.selectedNodeId || `${state.selectedLangId}_1`;
+  const curTopics = getLanguageTopics(state.selectedLangId);
+  const currentTopicObj = curTopics.find(t => t.id === topicId);
+  const isTopicAlreadyDone = (currentTopicObj && currentTopicObj.status === 'done') || state.completedNodes.has(topicId);
+
+  state.completedNodes.add(topicId);
+  completeCurrentTopic(state.selectedLangId, topicId);
+
+  if (!isTopicAlreadyDone) {
+    state.xp += 150;
+    state.harvestCount += 5;
+    updateGlobalStats();
+  }
+
   sfx.playVictory();
-  logToTerminal('⚡ <strong>Alıştırma Atlandı & Modül Başarıyla Tamamlandı!</strong>', 'success');
-  showVictoryModal();
+  logToTerminal('⚡ <strong>Alıştırma Atlandı & Modül Tamamlandı!</strong>', 'success');
+  showVictoryModal(isTopicAlreadyDone);
 }
 
 const btnSkipModule = document.getElementById('btn-skip-module') || document.getElementById('btn-skip-step');
@@ -5444,6 +5884,12 @@ const AUTO_PAIRS = {
 };
 
 const CLOSING_CHARS = new Set([')', ']', '}', '"', "'"]);
+
+// HTML Void / Self-Closing Etiketleri (Kapanış etiketi gerektirmeyenler)
+const HTML_VOID_TAGS = new Set([
+  'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+  'link', 'meta', 'param', 'source', 'track', 'wbr', '!doctype'
+]);
 
 dom.codeInput.addEventListener('keydown', (e) => {
   const input = dom.codeInput;
@@ -5465,7 +5911,58 @@ dom.codeInput.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 3. Tab Tuşu (4 Boşluk Girinti)
+  // 3. Akıllı Enter: <tag>|</tag> veya {|} arasında girintili yeni satır açma
+  if (e.key === 'Enter') {
+    const textBefore = val.substring(0, start);
+    const textAfter = val.substring(end);
+
+    const htmlTagBetween = textBefore.match(/<([a-zA-Z0-9\-]+)[^>]*>$/) && textAfter.match(/^<\/([a-zA-Z0-9\-]+)>/);
+    const braceBetween = (textBefore.endsWith('{') && textAfter.startsWith('}')) ||
+                         (textBefore.endsWith('(') && textAfter.startsWith(')')) ||
+                         (textBefore.endsWith('[') && textAfter.startsWith(']'));
+
+    if (htmlTagBetween || braceBetween) {
+      e.preventDefault();
+      const lastLine = textBefore.split('\n').pop() || '';
+      const indentMatch = lastLine.match(/^(\s*)/);
+      const baseIndent = indentMatch ? indentMatch[1] : '';
+      const tabSpaces = '    ';
+
+      const insert = '\n' + baseIndent + tabSpaces + '\n' + baseIndent;
+      input.value = textBefore + insert + textAfter;
+      input.selectionStart = input.selectionEnd = start + 1 + baseIndent.length + tabSpaces.length;
+      updateLineNumbers();
+      return;
+    }
+  }
+
+  // 4. HTML Otomatik Kapanış Etiketi (Auto Close Tag: <tag -> <tag></tag>)
+  if (e.key === '>') {
+    const textBefore = val.substring(0, start);
+    // Cursor'dan önceki en yakın açılış etiketini tespit et (Örn: <div class="kart" veya <h1 veya <p)
+    const tagMatch = textBefore.match(/<([a-zA-Z][a-zA-Z0-9\-]*)(?:\s+[^<>]*)?$/);
+
+    if (tagMatch) {
+      const rawTag = tagMatch[1];
+      const lowerTag = rawTag.toLowerCase();
+      const isClosingOrComment = textBefore.endsWith('/') || textBefore.endsWith('!') || textBefore.endsWith('?');
+      const isVoidTag = HTML_VOID_TAGS.has(lowerTag);
+      const textAfter = val.substring(end);
+      const alreadyClosed = textAfter.startsWith(`</${rawTag}>`) || textAfter.startsWith(`</${lowerTag}>`);
+
+      if (!isClosingOrComment && !isVoidTag && !alreadyClosed) {
+        e.preventDefault();
+        const insert = `></${rawTag}>`;
+        input.value = val.substring(0, start) + insert + val.substring(end);
+        // İmleci > sonrasına, yani <tag>|</tag> ortasına yerleştir
+        input.selectionStart = input.selectionEnd = start + 1;
+        updateLineNumbers();
+        return;
+      }
+    }
+  }
+
+  // 5. Tab Tuşu (4 Boşluk Girinti)
   if (e.key === 'Tab') {
     e.preventDefault();
     const tabSpaces = '    ';
@@ -5475,14 +5972,14 @@ dom.codeInput.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 4. Kapanış Karakterinin Üzerinden Atlama (Skip Over Closing Character)
+  // 6. Kapanış Karakterinin Üzerinden Atlama (Skip Over Closing Character)
   if (CLOSING_CHARS.has(e.key) && start === end && val[start] === e.key) {
     e.preventDefault();
     input.selectionStart = input.selectionEnd = start + 1;
     return;
   }
 
-  // 5. Otomatik Çift Kapatma (Auto-Closing: (, [, {, ", ')
+  // 7. Otomatik Çift Kapatma (Auto-Closing: (, [, {, ", ')
   if (AUTO_PAIRS[e.key]) {
     e.preventDefault();
     const openChar = e.key;
@@ -5497,7 +5994,7 @@ dom.codeInput.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 6. Akıllı Silme (Backspace ile boş çifti silme: () -> silince ikisi de gitsin)
+  // 8. Akıllı Silme (Backspace ile boş çifti silme)
   if (e.key === 'Backspace' && start === end && start > 0) {
     const prevChar = val[start - 1];
     const nextChar = val[start];
@@ -5770,6 +6267,23 @@ if (authForm) {
 
 // Başlangıçta Auth Durumunu Başlat ve Dilleri Render Et
 function initApp() {
+  // CSS & JS Müfredat Verilerini Ana Veritabanına Entegre Et
+  if (typeof CSS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, CSS_TOPIC_REVIEWS);
+  }
+  if (typeof CSS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, CSS_CHALLENGES);
+  }
+  if (typeof JS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, JS_TOPIC_REVIEWS);
+  }
+  if (typeof JS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, JS_CHALLENGES);
+  }
+  if (typeof COURSE_TOPICS_DB !== 'undefined' && COURSE_TOPICS_DB.javascript) {
+    COURSE_TOPICS_DB.js = COURSE_TOPICS_DB.javascript;
+  }
+
   if (typeof authManager !== 'undefined') {
     authManager.init();
   }
