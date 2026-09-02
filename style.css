@@ -644,6 +644,9 @@ body {
   height: 24px;
 }
 
+.badge-html { background: #ffedd5; color: #ea580c; border: 1px solid #fdba74; }
+.badge-css { background: #eff6ff; color: #2563eb; border: 1px solid #93c5fd; }
+.badge-bootstrap { background: #f3e8ff; color: #7952b3; border: 1px solid #d8b4fe; }
 .badge-python { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
 .badge-java { background: #ffe4e6; color: #e11d48; border: 1px solid #fecdd3; }
 .badge-flutter { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }

@@ -433,6 +433,54 @@ const SKILL_TREE_JAVA_NODES = [
 // Diller Veritabanı (Screenshot ile birebir eşleşen dil listesi ve ders sayıları)
 const LANGUAGES_DB = [
   {
+    id: 'html',
+    name: 'HTML',
+    lessonsText: '70 Alıştırma • 14 Modül',
+    badgeClass: 'badge-html',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 3 1.5 15L12 21l6.5-3 1.5-15H4z"></path><path d="M16 8.5H8.5l.3 3.5h7.2l-.5 4.5-3.5 1-3.5-1-.2-2.5"></path></svg>`,
+    icon: '🌐',
+    category: 'frontend',
+    fileExt: 'index.html',
+    langTag: 'HTML5',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
+    id: 'css',
+    name: 'CSS',
+    lessonsText: '80 Alıştırma • 16 Modül',
+    badgeClass: 'badge-css',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-2 15-6 3-6-3L4 3z"></path><path d="M7.5 7.5h9l-.5 4h-8l.5 4 4.5 1.5 4.5-1.5.2-2"></path></svg>`,
+    icon: '🎨',
+    category: 'frontend',
+    fileExt: 'style.css',
+    langTag: 'CSS3',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
+    id: 'bootstrap',
+    name: 'Bootstrap',
+    lessonsText: '60 Alıştırma • 12 Modül',
+    badgeClass: 'badge-bootstrap',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><path d="M8.5 7.5h4c1.1 0 2 .9 2 2s-.9 2-2 2h-4v-4z"></path><path d="M8.5 11.5h4.5c1.1 0 2 .9 2 2s-.9 2-2 2h-4.5v-4z"></path></svg>`,
+    icon: '🅱️',
+    category: 'frontend',
+    fileExt: 'index.html',
+    langTag: 'Bootstrap 5',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
+    id: 'javascript',
+    name: 'JavaScript',
+    lessonsText: '70 Alıştırma • 14 Modül',
+    badgeClass: 'badge-javascript',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-2 15-6 3-6-3L4 3z"></path><path d="M9 8v6a2 2 0 0 1-2 2H6"></path><path d="M14 9.5c.6-.4 1.3-.5 2-.5 1.5 0 2.5 1 2.5 2.5s-1 2.5-2.5 2.5c-.8 0-1.5-.3-2-.8"></path></svg>`,
+    icon: '⚡',
+    category: 'frontend',
+    fileExt: 'app.js',
+    langTag: 'JavaScript (ES6+)',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
     id: 'python',
     name: 'Python',
     lessonsText: '70 Alıştırma • 14 Modül',
@@ -502,18 +550,6 @@ const LANGUAGES_DB = [
     category: 'mobile',
     fileExt: 'Main.kt',
     langTag: 'Kotlin 1.9',
-    skillTreeNodes: SKILL_TREE_JAVA_NODES
-  },
-  {
-    id: 'javascript',
-    name: 'JavaScript',
-    lessonsText: '54 Ders',
-    badgeClass: 'badge-javascript',
-    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
-    icon: '🟨',
-    category: 'frontend',
-    fileExt: 'index.js',
-    langTag: 'ES2023',
     skillTreeNodes: SKILL_TREE_JAVA_NODES
   },
   {
@@ -759,6 +795,462 @@ function renderLanguages() {
 // --- 7. GELİŞEN ŞEHİR & DİKEY KONU YOL HARİTASI (Evolving City & Roadmap Engine) ---
 
 const COURSE_TOPICS_DB = {
+  html: [
+    {
+      id: "html_1",
+      title: "1. HTML'e Giriş & Sayfa İskeleti",
+      desc: "<!DOCTYPE html>, <html>, <head>, <body> temel iskelet mimarisi ve meta etiketleri.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "html_2",
+      title: "2. Başlıklar & Paragraflar (h1-h6 & p)",
+      desc: "Semantik h1-h6 başlık hiyerarşisi, paragraf <p> yapısı ve metin düzenleme kuralları.",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "html_3",
+      title: "3. Metin Biçimlendirme & Tipografi",
+      desc: "<strong>, <em>, <mark>, <small>, <del>, <ins>, <sub>, <sup> ile zengin metin tasarımı.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "html_4",
+      title: "4. Bağlantılar & Köprüler (Links & Anchor)",
+      desc: "<a href> bağlantıları, target='_blank' güvenliği, sayfa içi çapa (#id) ve e-posta linkleri.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "html_5",
+      title: "5. Görseller & Medya (Images & Responsive)",
+      desc: "<img src alt>, width, height, responsive görseller ve <figure>/<figcaption> semantiği.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "html_6",
+      title: "6. Sıralı & Sırasız Listeler (Lists)",
+      desc: "<ul> sırasız, <ol> sıralı, <li> maddeleri ve <dl>/<dt>/<dd> açıklama listeleri.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "html_7",
+      title: "7. Tablolar & Veri Düzenleme (Tables)",
+      desc: "<table>, <tr>, <th>, <td>, <thead>, <tbody>, <tfoot> ve colspan/rowspan hücre birleştirme.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "html_8",
+      title: "8. Blok & Satır İçi Elemanlar (div & span)",
+      desc: "<div> blok kapsayıcı, <span> satır içi hedefleme ve modern sayfa bölümlendirme.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "html_9",
+      title: "9. Semantik HTML5 Etiketleri",
+      desc: "<header>, <nav>, <main>, <section>, <article>, <aside> ve <footer> ile SEO uyumu.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "html_10",
+      title: "10. Form Temelleri & Input Tipleri",
+      desc: "<form>, <label for>, <input type='text|email|password|number'> ve submit butonları.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "html_11",
+      title: "11. Gelişmiş Form Kontrolleri",
+      desc: "<textarea>, <select>/<option>, <input type='checkbox|radio'> ve <fieldset>/<legend>.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "html_12",
+      title: "12. Form Doğrulama & Nitelikler",
+      desc: "required, pattern, min/max, maxlength, placeholder, disabled ve readonly doğrulamaları.",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "html_13",
+      title: "13. Çoklu Ortam (Audio, Video & iFrame)",
+      desc: "<audio controls>, <video controls width poster>, <source> ve <iframe> gömülü içerikler.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "html_14",
+      title: "14. Kapsamlı Web Sayfası İskelet Projesi",
+      desc: "Tüm HTML5 standartlarını, formları, tabloları ve semantik düzeni birleştiren ana web sayfası projesi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
+  css: [
+    {
+      id: "css_1",
+      title: "1. CSS'e Giriş & Ekleme Yöntemleri",
+      desc: "CSS sözdizimi, Satır içi (Inline), Dahili (<style>) ve Harici (<link rel='stylesheet'>) CSS mimarisi.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "css_2",
+      title: "2. CSS Seçicileri & Öncelik Sırası",
+      desc: "Etiket, sınıf (.), ID (#), evrensel (*), grup (,) ve torun seçiciler ile !important öncelik yönetimi.",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "css_3",
+      title: "3. Renkler & Arka Planlar (Colors & BG)",
+      desc: "HEX, RGB, RGBA, background-color, background-image, background-size: cover ve repeat kontrolleri.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "css_4",
+      title: "4. Metin & Tipografi Stilleri",
+      desc: "font-family, font-size, font-weight, text-align, text-decoration, line-height ve letter-spacing.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "css_5",
+      title: "5. Kutu Modeli (Box Model Mimarisi)",
+      desc: "Content, padding (iç boşluk), border (kenarlık), margin (dış boşluk) ve box-sizing: border-box.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "css_6",
+      title: "6. Kenarlıklar, Köşeler & Gölgeler",
+      desc: "border-radius, box-shadow, text-shadow ve modern kart/kartvizit gölgelendirmeleri.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "css_7",
+      title: "7. Görüntüleme & Görünürlük (Display)",
+      desc: "display: block, inline, inline-block, none ve visibility: hidden farkları.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "css_8",
+      title: "8. Konumlandırma (CSS Positioning)",
+      desc: "position: static, relative, absolute, fixed, sticky ve z-index katman derinliği.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "css_9",
+      title: "9. Taşma & Boyutlandırma (Overflow)",
+      desc: "width, height, max-width, min-height, overflow: hidden, scroll, auto ve text-overflow: ellipsis.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "css_10",
+      title: "10. Sözde Sınıflar & Öğeler (Pseudo)",
+      desc: ":hover, :focus, :active, :nth-child(n), ::before ve ::after ile dinamik stil katmanları.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "css_11",
+      title: "11. Geçişler & Dönüşümler (Transitions)",
+      desc: "transition (all 0.3s ease), transform (scale, rotate, translate) ve akıcı hover animasyonları.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "css_12",
+      title: "12. CSS Animasyonları (@keyframes)",
+      desc: "@keyframes, animation-name, duration, iteration-count: infinite ve timing-function döngüleri.",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "css_13",
+      title: "13. Flexbox ile Tek Boyutlu Yerleşim",
+      desc: "display: flex, flex-direction, justify-content, align-items, gap ve flex-wrap hizalamaları.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 400
+    },
+    {
+      id: "css_14",
+      title: "14. CSS Grid ile İki Boyutlu Izgara",
+      desc: "display: grid, grid-template-columns, fr kesirli birimi, repeat(), gap ve grid-column alan yerleşimi.",
+      reward: "🏦 Merkez Bankası & Finans Merkezi",
+      status: "locked",
+      xp: 400
+    },
+    {
+      id: "css_15",
+      title: "15. Responsive Tasarım & Medya Sorguları",
+      desc: "@media (max-width: 768px), Mobil Öncelikli (Mobile First) yaklaşım ve esnek arayüz uyarlamaları.",
+      reward: "🏛️ Hükümet Sarayı & Kongre Merkezi",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "css_16",
+      title: "16. CSS Değişkenleri & Kapsamlı Proje",
+      desc: ":root CSS Custom Properties (--ana-renk), var(), calc() ve modern kart bileşeni mimarisi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
+  bootstrap: [
+    {
+      id: "bs_1",
+      title: "1. Bootstrap 5'e Giriş & CDN Kurulumu",
+      desc: "CDN CSS ve JS bundle bağlama, .container ve .container-fluid ile sayfa genişlik düzeni.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "bs_2",
+      title: "2. Grid Sistemi & Responsive Izgara",
+      desc: ".row, .col, breakpoint sütunları (.col-12, .col-md-6, .col-lg-4) ve esnek yerleşim.",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "bs_3",
+      title: "3. Tipografi, Renkler & Arka Planlar",
+      desc: ".display-1..6, .lead, .text-primary/success/danger, .bg-dark/light ve .text-center hizalama.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "bs_4",
+      title: "4. Boşluklar (Spacing), Kenarlıklar & Gölgeler",
+      desc: ".m-3, .p-4, .mx-auto, .border, .rounded-pill, .rounded-circle ve .shadow gölge efektleri.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "bs_5",
+      title: "5. Butonlar, Buton Grupları & Rozetler",
+      desc: ".btn .btn-primary, .btn-outline-*, .btn-lg/.btn-sm, .btn-group ve .badge rozetleri.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "bs_6",
+      title: "6. Uyarılar (Alerts), İlerleme & Spinnerlar",
+      desc: ".alert .alert-success, .alert-dismissible, .progress, .progress-bar ve .spinner-border.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "bs_7",
+      title: "7. Tablolar & Liste Grupları",
+      desc: ".table, .table-striped, .table-hover, .table-bordered, .table-responsive ve .list-group.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "bs_8",
+      title: "8. Kart Bileşeni Mimarisi (Cards)",
+      desc: ".card, .card-header, .card-body, .card-title, .card-text, .card-img-top ve .card-footer.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "bs_9",
+      title: "9. Form Kontrolleri & Girdiler (Forms)",
+      desc: ".form-control, .form-label, .form-select, .form-check, .form-check-input ve .input-group.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "bs_10",
+      title: "10. Navigasyon & Menü Çubuğu (Navbar)",
+      desc: ".navbar, .navbar-expand-lg, .navbar-dark .bg-dark, .navbar-brand, .navbar-nav ve .nav-link.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 340
+    },
+    {
+      id: "bs_11",
+      title: "11. Açılır Pencereler & Etkileşim (Modal)",
+      desc: ".modal, .modal-dialog, .modal-content, data-bs-toggle='modal', data-bs-target ve .collapse.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "bs_12",
+      title: "12. Kapsamlı Landing Page Projesi",
+      desc: "Navbar, Hero Section, 3'lü kart ızgarası, form ve footer birleştiren modern Bootstrap projesi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
+  javascript: [
+    {
+      id: "js_1",
+      title: "1. JS'e Giriş, Çıktı & Değişkenler",
+      desc: "console.log(), alert(), let, const, var, Global ve Block Scope ({}) yönetimi.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "js_2",
+      title: "2. Veri Tipleri & Operatörler",
+      desc: "typeof, Number, String, Boolean, type casting (Number(), String()), aritmetik, katı eşitlik (===) ve mantık (&&, ||).",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "js_3",
+      title: "3. Karar Yapıları (If, Switch & Ternary)",
+      desc: "if, else if, else blokları, switch-case-default yapısı ve tek satırlık Ternary (koşul ? a : b) kontrolü.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "js_4",
+      title: "4. Döngüler (For & While)",
+      desc: "for döngüsü, while, sayaç artırma, break ile erken çıkış ve continue ile adımı atlama.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "js_5",
+      title: "5. Fonksiyonlar & Arrow Functions",
+      desc: "function tanımlama, parametreler, return değeri ve modern ES6 Arrow Function (() => {}) mimarisi.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "js_6",
+      title: "6. Diziler (Arrays) & Temel Metotlar",
+      desc: "Dizi tanımlama ([]), push, pop, shift, unshift, indexOf, includes ve .length özelliği.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "js_7",
+      title: "7. İleri Dizi Metotları (ES6+ Iterators)",
+      desc: "forEach, map ile dönüştürme, filter ile filtreleme, find ve reduce ile veri toplama.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "js_8",
+      title: "8. Nesneler (Objects) & Destructuring",
+      desc: "Key-value obje yapısı ({}), this anahtarı, Object.keys(), Object.values() ve Obje Parçalama (Destructuring).",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "js_9",
+      title: "9. String, Math & Template Literals",
+      desc: "trim(), toUpperCase(), split(), replace(), Backtick Template Literals (${ad}) ve Math.floor()/random().",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "js_10",
+      title: "10. DOM Seçicileri & İçerik Yönetimi",
+      desc: "getElementById, querySelector, querySelectorAll, textContent, innerHTML ve input.value okuma/yazma.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "js_11",
+      title: "11. DOM Stil & CSS Sınıfı (classList)",
+      desc: "element.style.color, classList.add(), remove(), toggle() ve contains() ile dinamik stil kontrolü.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "js_12",
+      title: "12. DOM Olayları (Event Listeners)",
+      desc: "addEventListener('click', 'input', 'submit'), event nesnesi, e.target ve e.preventDefault().",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "js_13",
+      title: "13. Dinamik DOM Eleman Yönetimi",
+      desc: "document.createElement(), appendChild(), prepend(), remove() ve parentElement ile dinamik UI üretimi.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "js_14",
+      title: "14. Web Storage & Kapsamlı Proje",
+      desc: "localStorage.setItem, getItem, removeItem, JSON.stringify, JSON.parse ve Todo/Sepet Projesi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
   java: [
     {
         "id": "java_1",
@@ -4866,12 +5358,18 @@ function renderCurrentChallenge() {
   const titleEl = document.getElementById('task-title') || document.getElementById('coding-topic-title');
   const descEl = document.getElementById('task-desc') || document.getElementById('challenge-prompt');
 
-  if (badgeEl) badgeEl.textContent = `Görev #${challenge.stepNum} (${challenge.stepNum}/${challenge.totalSteps})`;
+  if (badgeEl) badgeEl.textContent = `Görev #${challenge.stepNum}`;
   if (diffEl) {
     diffEl.textContent = challenge.stepNum <= 2 ? 'Başlangıç' : (challenge.stepNum <= 4 ? 'Orta Düzey' : 'İleri Seviye');
   }
-  if (titleEl) titleEl.textContent = challenge.title;
+  if (titleEl) titleEl.textContent = challenge.title ? challenge.title.replace(/^[0-9]+\.\s*Soru:\s*/i, '') : '';
   if (descEl) descEl.innerHTML = challenge.prompt;
+
+  // Snippet Accordion'ı yeni adıma geçildiğinde kapat
+  const snippetDetails = document.querySelector('.snippets-accordion');
+  if (snippetDetails) {
+    snippetDetails.removeAttribute('open');
+  }
 
   // 3. Sol Panel: Snippet Hapları (Tıkla ve Editöre Ekle)
   const snippetsContainer = document.getElementById('quick-snippets-container') || document.getElementById('quick-keys-bar');
@@ -4890,9 +5388,15 @@ function renderCurrentChallenge() {
     });
   }
 
-  // 4. Sol Panel: Dinamik Dil / Konu Teorisi & Kuralları
+  // 4. Sol Panel: Dinamik Dil / Konu Teorisi & Kuralları (HTML, CSS ve Bootstrap için gizlenir)
+  const theoryBoxEl = document.querySelector('.theory-box');
+  const isWebFrontend = curLang.id === 'html' || curLang.id === 'css' || curLang.id === 'bootstrap';
+  if (theoryBoxEl) {
+    theoryBoxEl.style.display = isWebFrontend ? 'none' : 'block';
+  }
+
   const theoryListEl = document.getElementById('theory-list');
-  if (theoryListEl) {
+  if (theoryListEl && !isWebFrontend) {
     theoryListEl.innerHTML = '';
     const reviewData = TOPIC_REVIEWS_DB[topicId] || TOPIC_REVIEWS_DB.python_1;
     const rules = (reviewData && reviewData.syntaxRules && reviewData.syntaxRules.length > 0)
@@ -5770,6 +6274,30 @@ if (authForm) {
 
 // Başlangıçta Auth Durumunu Başlat ve Dilleri Render Et
 function initApp() {
+  // CSS, JS ve Bootstrap Müfredat Verilerini Ana Veritabanına Entegre Et
+  if (typeof CSS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, CSS_TOPIC_REVIEWS);
+  }
+  if (typeof CSS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, CSS_CHALLENGES);
+  }
+  if (typeof JS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, JS_TOPIC_REVIEWS);
+  }
+  if (typeof JS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, JS_CHALLENGES);
+  }
+  if (typeof BS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, BS_TOPIC_REVIEWS);
+  }
+  if (typeof BS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, BS_CHALLENGES);
+  }
+  if (typeof COURSE_TOPICS_DB !== 'undefined') {
+    if (COURSE_TOPICS_DB.javascript) COURSE_TOPICS_DB.js = COURSE_TOPICS_DB.javascript;
+    if (COURSE_TOPICS_DB.bootstrap) COURSE_TOPICS_DB.bs = COURSE_TOPICS_DB.bootstrap;
+  }
+
   if (typeof authManager !== 'undefined') {
     authManager.init();
   }
