@@ -567,13 +567,13 @@ const LANGUAGES_DB = [
   {
     id: 'sql',
     name: 'SQL',
-    lessonsText: '35 Ders',
+    lessonsText: '70 Alıştırma • 14 Modül',
     badgeClass: 'badge-sql',
     iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
     icon: '🗄️',
     category: 'database',
     fileExt: 'sorgu.sql',
-    langTag: 'PostgreSQL',
+    langTag: 'SQL / PostgreSQL',
     skillTreeNodes: SKILL_TREE_JAVA_NODES
   },
   {
@@ -1479,6 +1479,120 @@ const COURSE_TOPICS_DB = {
       xp: 450
     }
   ],
+  sql: [
+    {
+      id: "sql_1",
+      title: "1. SQL'e Giriş, SELECT & FROM Sorguları",
+      desc: "İlişkisel veritabanı temelleri, SELECT *, belirli sütunları seçme ve SELECT DISTINCT ile tekilleştirme.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "sql_2",
+      title: "2. WHERE ile Veri Filtreleme & Karşılaştırma",
+      desc: "WHERE koşul cümlesi, sayısal ve metin karşılaştırmaları (=, >, <, >=, <=, !=, <>).",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "sql_3",
+      title: "3. Mantıksal Operatörler (AND, OR, NOT)",
+      desc: "Çoklu filtre koşulları, AND ile zorunlu şartlar, OR ile alternatifler, NOT ile tersleme ve parantez önceliği.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "sql_4",
+      title: "4. Sıralama (ORDER BY) & Sınırlandırma (LIMIT)",
+      desc: "ORDER BY ASC (artan) ve DESC (azalan) sıralama, çoklu sütuna göre sıralama ve LIMIT ile ilk N kaydı çekme.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "sql_5",
+      title: "5. Metin Arama & Jokerler (LIKE & Wildcards)",
+      desc: "Metin içinde desen arama, LIKE operatörü, % (sıfır veya çok karakter) ve _ (tek karakter) jokerleri.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "sql_6",
+      title: "6. Küme ve Aralık Operatörleri (IN & BETWEEN)",
+      desc: "IN ile liste içi eleman kontrolü, BETWEEN ile sayı/tarih aralıkları ve NOT IN / NOT BETWEEN kullanımı.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "sql_7",
+      title: "7. Boş Değerler (NULL, IS NULL & COALESCE)",
+      desc: "NULL kavramı, IS NULL ile boşluk denetimi, IS NOT NULL ve COALESCE ile varsayılan değer atama.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "sql_8",
+      title: "8. Toplama & İstatistik Fonksiyonları (Aggregate)",
+      desc: "COUNT(*) satır sayma, SUM() toplam alma, AVG() ortalama hesaplama, MIN()/MAX() ve AS takma adları.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "sql_9",
+      title: "9. Gruplama (GROUP BY) & Grup Filtresi (HAVING)",
+      desc: "GROUP BY ile kategori bazlı özetler çıkarma ve HAVING ile gruplanmış sonuçları filtreleme farkı.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "sql_10",
+      title: "10. Yeni Kayıt Ekleme (INSERT INTO & VALUES)",
+      desc: "Tabloya tek satır veri ekleme, belirli sütunları doldurma ve çoklu satır (batch) INSERT işlemleri.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "sql_11",
+      title: "11. Veri Güncelleme & Silme (UPDATE, DELETE & TRUNCATE)",
+      desc: "UPDATE SET ile güvenli veri güncelleme, DELETE FROM ile satır silme ve TRUNCATE TABLE ile tablo sıfırlama.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "sql_12",
+      title: "12. İlişkisel Tabloları Birleştirme (INNER JOIN)",
+      desc: "Primary Key & Foreign Key ilişkileri, INNER JOIN ON sözdizimi, tablo takma adları (Alias) ve 3'lü tablo birleştirme.",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "sql_13",
+      title: "13. Gelişmiş Birleştirmeler (LEFT, RIGHT & FULL JOIN)",
+      desc: "LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN ve ilişkisiz kayıtları bulma (LEFT JOIN + IS NULL) mimarisi.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "sql_14",
+      title: "14. Tablo Yönetimi & Kısıtlamalar (DDL & Constraints)",
+      desc: "CREATE TABLE, PRIMARY KEY, FOREIGN KEY, NOT NULL, UNIQUE, ALTER TABLE ve DROP TABLE yönetimi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ]
 };
 
 // Dil bazlı konu durumlarını saklayan nesne
@@ -8049,6 +8163,12 @@ function initApp() {
   }
   if (typeof BS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
     Object.assign(CHALLENGES_DATABASE, BS_CHALLENGES);
+  }
+  if (typeof SQL_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, SQL_TOPIC_REVIEWS);
+  }
+  if (typeof SQL_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, SQL_CHALLENGES);
   }
   if (typeof COURSE_TOPICS_DB !== 'undefined') {
     if (COURSE_TOPICS_DB.javascript) COURSE_TOPICS_DB.js = COURSE_TOPICS_DB.javascript;
