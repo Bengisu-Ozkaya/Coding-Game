@@ -519,12 +519,12 @@ const LANGUAGES_DB = [
   {
     id: 'react',
     name: 'React',
-    lessonsText: '50 Ders',
+    lessonsText: '70 Alıştırma • 14 Modül',
     badgeClass: 'badge-react',
-    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"></circle><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(0 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"></ellipse></svg>`,
     icon: '⚛️',
     category: 'frontend',
-    fileExt: 'FarmDashboard.jsx',
+    fileExt: 'App.jsx',
     langTag: 'React 18 / JSX',
     skillTreeNodes: SKILL_TREE_JAVA_NODES
   },
@@ -1479,6 +1479,120 @@ const COURSE_TOPICS_DB = {
       xp: 450
     }
   ],
+  react: [
+    {
+      id: "react_1",
+      title: "1. React'a Giriş, JSX & Vite Mimarisi",
+      desc: "Vite ile proje yapısı, JSX sözdizimi kuralları, Fragments (<>), className ve inline stiller.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "react_2",
+      title: "2. Component (Bileşen) Mimarisi",
+      desc: "Fonksiyonel bileşenler, Arrow functions, export default, named exports ve component nesting.",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "react_3",
+      title: "3. Props (Özellikler) & Destructuring",
+      desc: "Üstten alta tek yönlü veri aktarımı, destructuring, default props ve children prop kapsayıcılığı.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "react_4",
+      title: "4. State Yönetimi & useState Hook'u",
+      desc: "useState hook'u, dinamik sayaç, metin ve boolean state yönetimi, re-render tetikleyicisi.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "react_5",
+      title: "5. Yaşam Döngüsü & useEffect Hook'u",
+      desc: "Mounting, dependency array ([]) kuralları, cleanup temizlik fonksiyonu ve veri yükleme.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "react_6",
+      title: "6. Olay Yönetimi (Event Handling)",
+      desc: "onClick, onChange, onSubmit form olayları, parametre aktarma ve e.preventDefault().",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "react_7",
+      title: "7. Koşullu Render Etme (Conditionals)",
+      desc: "Mantıksal VE (&&), Ternary (? :), erken return ve dinamik sınıf atamaları.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "react_8",
+      title: "8. Listeler, Döngüler & Key Mantığı",
+      desc: "Array.map() ile JSX listeleri, benzersiz key kuralı, filter + map zincirleri.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "react_9",
+      title: "9. Formlar & Kontrollü Bileşenler",
+      desc: "Kontrollü input, checkbox, select/option ve dinamik tek state ile çoklu input yönetimi.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "react_10",
+      title: "10. useRef Hook'u & DOM Erişimi",
+      desc: "useRef tanımlama, doğrudan DOM'a odaklanma (focus), re-render tetiklemeyen mutable ref.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "react_11",
+      title: "11. Context API ile Global State",
+      desc: "createContext, Provider ile veri dağıtımı, useContext ile tüketme ve dinamik tema/auth.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "react_12",
+      title: "12. React Router DOM ile Yönlendirme",
+      desc: "Routes, Route, Link, useParams ile dinamik URL (:id) ve useNavigate programatik geçiş.",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "react_13",
+      title: "13. Redux Toolkit ile İleri Global State",
+      desc: "createSlice, configureStore, useSelector ile state okuma ve useDispatch ile action tetikleme.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "react_14",
+      title: "14. Custom Hooks, Axios & Kapsamlı Proje",
+      desc: "Özel hook'lar (useCustom), Axios ile API istekleri, loading/error yönetimi ve Master proje.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ]
 };
 
 // Dil bazlı konu durumlarını saklayan nesne
@@ -8050,9 +8164,16 @@ function initApp() {
   if (typeof BS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
     Object.assign(CHALLENGES_DATABASE, BS_CHALLENGES);
   }
+  if (typeof REACT_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, REACT_TOPIC_REVIEWS);
+  }
+  if (typeof REACT_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, REACT_CHALLENGES);
+  }
   if (typeof COURSE_TOPICS_DB !== 'undefined') {
     if (COURSE_TOPICS_DB.javascript) COURSE_TOPICS_DB.js = COURSE_TOPICS_DB.javascript;
     if (COURSE_TOPICS_DB.bootstrap) COURSE_TOPICS_DB.bs = COURSE_TOPICS_DB.bootstrap;
+    if (COURSE_TOPICS_DB.react) COURSE_TOPICS_DB.rc = COURSE_TOPICS_DB.react;
   }
 
   if (typeof authManager !== 'undefined') {
