@@ -1529,9 +1529,9 @@ function completeCurrentTopic(langId, topicId) {
 function getDefaultUserProjects() {
   return {
     html: {
-      title: 'Piksel Arcade Dünyam',
+      title: 'TechNova Web Studio',
       actor: '🌐',
-      buttonText: 'Maceraya Başla',
+      buttonText: 'Projeleri Keşfet',
       score: 1250,
       powerLevel: 1,
       hasHeader: false,
@@ -1803,6 +1803,35 @@ function renderTerminalLivePreview(langId) {
   const proj = userProjects[langId] || { title: 'Özel Proje', actor: curLang.icon, buttonText: 'Çalıştır' };
   const topics = getLanguageTopics(langId);
   const doneCount = topics.filter(t => t.status === 'done').length;
+
+  if (langId === 'html') {
+    const rawCode = dom.codeInput ? dom.codeInput.value : '';
+    let previewHtml = rawCode.trim();
+
+    // Doctype veya HTML etiketlerini ayıkla veya olduğu gibi render et
+    if (previewHtml.includes('<body')) {
+      const bodyMatch = previewHtml.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      if (bodyMatch && bodyMatch[1]) {
+        previewHtml = bodyMatch[1];
+      }
+    }
+
+    previewEl.innerHTML = `
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 6px;">
+          <span style="font-weight: 800; color: #38bdf8; font-size: 0.8rem;">
+            🌐 TechNova Web Vitrini • Canlı HTML Render (${doneCount}/${topics.length} Bileşen)
+          </span>
+          <span style="font-size: 0.7rem; color: #10b981; font-weight: 800;">● ANINDA CANLI ÖNİZLEME</span>
+        </div>
+        
+        <div class="live-html-viewport-box" style="background: #ffffff; color: #0f172a; border-radius: 8px; padding: 14px; min-height: 220px; max-height: 380px; overflow-y: auto; border: 1px solid #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
+          ${previewHtml ? previewHtml : '<div style="color: #94a3b8; font-size: 0.85rem; text-align: center; padding: 40px 10px;">Editörde yazdığınız HTML etiketleri burada anında görselleşir...</div>'}
+        </div>
+      </div>
+    `;
+    return;
+  }
 
   previewEl.innerHTML = `
     <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -8348,7 +8377,13 @@ dom.codeInput.addEventListener('keydown', (e) => {
   }
 });
 
-dom.codeInput.addEventListener('input', updateLineNumbers);
+dom.codeInput.addEventListener('input', () => {
+  updateLineNumbers();
+  const termPreview = document.getElementById('terminal-live-preview');
+  if (termPreview && termPreview.style.display !== 'none') {
+    renderTerminalLivePreview(state.selectedLangId);
+  }
+});
 
 if (dom.btnSoundToggle) {
   dom.btnSoundToggle.addEventListener('click', () => {
@@ -8607,7 +8642,16 @@ if (authForm) {
 
 // Başlangıçta Auth Durumunu Başlat ve Dilleri Render Et
 function initApp() {
-  // CSS, JS ve Bootstrap Müfredat Verilerini Ana Veritabanına Entegre Et
+  // HTML, CSS, JS ve Bootstrap Müfredat Verilerini Ana Veritabanına Entegre Et
+  if (typeof HTML_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, HTML_TOPIC_REVIEWS);
+  }
+  if (typeof HTML_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, HTML_CHALLENGES);
+  }
+  if (typeof HTML_COURSE_TOPICS !== 'undefined' && typeof COURSE_TOPICS_DB !== 'undefined') {
+    COURSE_TOPICS_DB.html = HTML_COURSE_TOPICS;
+  }
   if (typeof CSS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
     Object.assign(TOPIC_REVIEWS_DB, CSS_TOPIC_REVIEWS);
   }
