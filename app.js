@@ -8641,11 +8641,10 @@ const AUTO_PAIRS = {
   '[': ']',
   '{': '}',
   '"': '"',
-  "'": "'",
-  '<': '>'
+  "'": "'"
 };
 
-const CLOSING_CHARS = new Set([')', ']', '}', '"', "'", '>']);
+const CLOSING_CHARS = new Set([')', ']', '}', '"', "'"]);
 
 // HTML5 Void (kendiliğinden kapanan) etiketler (kapanış etiketi gerektirmez)
 const VOID_HTML_TAGS = new Set([
@@ -8658,20 +8657,6 @@ dom.codeInput.addEventListener('keydown', (e) => {
   const start = input.selectionStart;
   const end = input.selectionEnd;
   const val = input.value;
-
-  // HTML AUTO TAG: '<' Tuşuna Basıldığında Otomatik '<>' Çiftini Oluştur (< -> <|>)
-  if (e.key === '<' && !e.ctrlKey && !e.metaKey) {
-    e.preventDefault();
-    const selectedText = val.substring(start, end);
-    input.value = val.substring(0, start) + '<' + selectedText + '>' + val.substring(end);
-    input.selectionStart = start + 1;
-    input.selectionEnd = end + 1;
-    updateLineNumbers();
-    state.liveFeedback = { type: 'typing', text: '✏️ Kodunuz canlı olarak render ediliyor...' };
-    renderTerminalLivePreview(state.selectedLangId);
-    if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
-    return;
-  }
 
   // HTML AUTO TAG: İki Etiket Arasında Enter'a Basıldığında Akıllı Girinti (<tag>|</tag> -> Enter)
   if (e.key === 'Enter' && !e.ctrlKey && !e.metaKey && start === end && start > 0 && start < val.length) {
@@ -8703,19 +8688,12 @@ dom.codeInput.addEventListener('keydown', (e) => {
       if (!VOID_HTML_TAGS.has(tagName.toLowerCase())) {
         e.preventDefault();
         const closingTag = `</${tagName}>`;
-        // Eğer önünde zaten '>' varsa onu tüket (consume)
-        const endOffset = val[start] === '>' ? end + 1 : end;
-        input.value = val.substring(0, start) + '>' + closingTag + val.substring(endOffset);
+        input.value = val.substring(0, start) + '>' + closingTag + val.substring(end);
         input.selectionStart = input.selectionEnd = start + 1;
         updateLineNumbers();
         state.liveFeedback = { type: 'typing', text: '✏️ Kodunuz canlı olarak render ediliyor...' };
         renderTerminalLivePreview(state.selectedLangId);
         if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
-        return;
-      } else if (val[start] === '>') {
-        // Void etiket ve önünde '>' varsa üstünden atla
-        e.preventDefault();
-        input.selectionStart = input.selectionEnd = start + 1;
         return;
       }
     }
@@ -8743,8 +8721,7 @@ dom.codeInput.addEventListener('keydown', (e) => {
       e.preventDefault();
       const lastUnclosed = stack[stack.length - 1];
       const autoCloseSnippet = `/${lastUnclosed}>`;
-      const endOffset = val[start] === '>' ? end + 1 : end;
-      input.value = val.substring(0, start) + autoCloseSnippet + val.substring(endOffset);
+      input.value = val.substring(0, start) + autoCloseSnippet + val.substring(end);
       input.selectionStart = input.selectionEnd = start + autoCloseSnippet.length;
       updateLineNumbers();
       state.liveFeedback = { type: 'typing', text: '✏️ Kodunuz canlı olarak render ediliyor...' };
