@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8.5">
+  <link rel="stylesheet" href="style.css?v=8.6">
 </head>
 <body>
   <!-- Minimalist Arka Plan Işık Efektleri -->
@@ -92,9 +92,9 @@
                 <div class="dropdown-stat-lbl">Çözülen Alıştırma</div>
               </div>
               <div class="dropdown-stat-card">
-                <span class="dropdown-stat-icon">🏙️</span>
-                <div class="dropdown-stat-val" id="dropdown-stat-city">1. Seviye</div>
-                <div class="dropdown-stat-lbl">Gelişen Şehir</div>
+                <span class="dropdown-stat-icon">�</span>
+                <div class="dropdown-stat-val" id="dropdown-stat-city">0 / 14 Parça</div>
+                <div class="dropdown-stat-lbl">Canlı Proje</div>
               </div>
             </div>
 
@@ -188,46 +188,87 @@
           </div>
         </div>
 
-        <!-- SAĞ SÜTUN: 3D İzometrik Şehir Görseli (Masaüstünde Sağda, Mobilde Üstte) -->
+        <!-- SAĞ SÜTUN: Canlı Proje Vitrini & DevDeck Kart Alanı -->
         <div class="roadmap-right-column">
-          <div class="city-visual-card">
-            <div class="city-card-header">
-              <div class="city-header-title">
-                <span class="city-header-icon">🏙️</span>
-                <span>Gelişen 3D Şehrin</span>
+          <div class="project-showcase-card">
+            <!-- Üst Bar: Sekmeler ve Durum Rozeti -->
+            <div class="project-card-header">
+              <div class="showcase-tabs-nav">
+                <button id="btn-tab-project" class="showcase-tab-btn active" type="button">
+                  <span class="tab-icon">🎮</span>
+                  <span>Canlı Proje</span>
+                </button>
+                <button id="btn-tab-devdeck" class="showcase-tab-btn" type="button">
+                  <span class="tab-icon">🎴</span>
+                  <span>DevDeck Kartı</span>
+                  <span class="tab-pill-badge" id="devdeck-pill-badge">Hediye</span>
+                </button>
               </div>
-              <div class="city-stage-badge" id="city-stage-badge">1. Seviye: Başlangıç Köyü</div>
+              <div class="project-stage-badge" id="project-stage-badge">0 / 14 Bileşen Canlandı</div>
             </div>
 
-            <!-- 3D İzometrik Şehir SVG Görsel Sahnesi -->
-            <div class="city-canvas-wrapper" id="city-canvas-wrapper">
-              <svg id="city-svg" viewBox="0 0 600 450" class="city-isometric-svg" xmlns="http://www.w3.org/2000/svg">
-                <!-- Arka Plan Zemin & Grid -->
-                <defs>
-                  <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#f0fdf4" />
-                    <stop offset="100%" stop-color="#e0f2fe" />
-                  </linearGradient>
-                  <linearGradient id="grassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#86efac" />
-                    <stop offset="100%" stop-color="#4ade80" />
-                  </linearGradient>
-                </defs>
-                <rect width="600" height="450" fill="url(#skyGrad)" rx="16" />
-                
-                <!-- İzometrik Çiftlik & Şehir Tabanı -->
-                <polygon points="300,70 540,200 300,330 60,200" fill="url(#grassGrad)" stroke="#22c55e" stroke-width="2" />
-                <polygon points="60,200 300,330 300,370 60,240" fill="#15803d" />
-                <polygon points="540,200 300,330 300,370 540,240" fill="#166534" />
+            <!-- GÖRÜNÜM 1: CANLI PROJE ÖNİZLEMESİ -->
+            <div id="tab-project-view" class="showcase-view-panel active">
+              <!-- Tarayıcı / Cihaz Çerçevesi -->
+              <div class="mock-browser-frame">
+                <div class="browser-topbar">
+                  <div class="browser-traffic-lights">
+                    <span class="dot dot-close"></span>
+                    <span class="dot dot-minimize"></span>
+                    <span class="dot dot-expand"></span>
+                  </div>
+                  <div class="browser-url-pill">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span id="browser-url-text">https://dev-arcade.local/app</span>
+                  </div>
+                  <div class="browser-live-indicator">
+                    <span class="pulse-ring"></span>
+                    <span class="pulse-core"></span>
+                    <span class="live-label">CANLI</span>
+                  </div>
+                </div>
 
-                <!-- Dinamik Eklenen 3D Binalar (JS ile çizilir) -->
-                <g id="city-dynamic-layers"></g>
-              </svg>
+                <!-- Canlı Proje Sahnesi (Dinamik JS ile Bileşenler Çizilir) -->
+                <div class="project-viewport-canvas" id="project-live-viewport">
+                  <!-- JS dinamik içerik buraya gelir -->
+                </div>
+              </div>
+
+              <!-- Alt Açıklama ve İlerleme İpucu -->
+              <div class="project-card-footer">
+                <div class="footer-step-info">
+                  <span class="step-icon">🎯</span>
+                  <span id="project-growth-hint">Konuları tamamladıkça projene yeni canlı bileşenler ve etkileşimler eklenecek!</span>
+                </div>
+              </div>
             </div>
 
-            <div class="city-card-footer">
-              <p id="city-growth-hint">Her konu tamamladığında şehrine yeni ve modern bir 3D yapı inşa edilir!</p>
+            <!-- GÖRÜNÜM 2: DEVDECK 3D GELİŞTİRİCİ KARTI -->
+            <div id="tab-devdeck-view" class="showcase-view-panel" style="display: none;">
+              <div class="devdeck-card-wrapper" id="devdeck-card-wrapper" role="button" tabindex="0" title="Kartı çevirmek için tıkla!">
+                <div class="devdeck-flip-card" id="devdeck-flip-card">
+                  <!-- KART ÖN YÜZÜ -->
+                  <div class="card-face card-face-front" id="devdeck-card-front">
+                    <!-- JS ile dinamik çizilecek -->
+                  </div>
+
+                  <!-- KART ARKA YÜZÜ (CHEAT-SHEET) -->
+                  <div class="card-face card-face-back" id="devdeck-card-back">
+                    <!-- JS ile dinamik çizilecek -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="devdeck-footer-action">
+                <button id="btn-flip-card-manual" class="btn-devdeck-flip" type="button">
+                  <span>🔄 Kartı Çevir & Hızlı Kodları Gör</span>
+                </button>
+              </div>
             </div>
+
           </div>
         </div>
 
@@ -252,9 +293,9 @@
         </button>
       </div>
 
-      <!-- 2 Sütunlu Oyun Alanı: Sol Teori & Görev, Sağ Kod Editörü & Konsol -->
-      <div class="game-arena-grid">
-        <!-- SOL PANEL: Görev Yönergesi & Teori -->
+      <!-- Kodlama Arenası Düzeni: Üstte Dikdörtgen Görev Kartı, Altta Yan Yana Editör ve Terminal -->
+      <div class="game-arena-layout">
+        <!-- ÜST DİKDÖRTGEN PANEL: Görev Yönergesi Kartı -->
         <div class="task-panel card-modern">
           <div class="task-header-row">
             <span class="badge-tech" id="task-badge">Görev #1</span>
@@ -277,52 +318,68 @@
               <!-- JS ile doldurulacak hızlı butonlar -->
             </div>
           </div>
-
-
         </div>
 
-        <!-- SAĞ PANEL: Kod Editörü & Canlı Konsol -->
-        <div class="editor-panel card-modern">
-          <div class="editor-top-bar">
-            <div class="file-tab">
-              <span class="file-icon">📄</span>
-              <span id="editor-filename">main.py</span>
+        <!-- ALT ÇALIŞMA ALANI: Sol Kod Editörü, Sağ Terminal & Projemin Canlı Hali -->
+        <div class="game-workspace-grid">
+          <!-- SOL PANEL: Kod Editörü -->
+          <div class="editor-panel card-modern">
+            <div class="editor-top-bar">
+              <div class="file-tab">
+                <span class="file-icon">📄</span>
+                <span id="editor-filename">main.py</span>
+              </div>
+              <span class="editor-lang-tag" id="editor-lang-tag">Python 3.12</span>
             </div>
-            <span class="editor-lang-tag" id="editor-lang-tag">Python 3.12</span>
-          </div>
 
-          <!-- Kod Editörü Alanı -->
-          <div class="code-editor-wrapper">
-            <div class="line-numbers" id="line-numbers">1</div>
-            <textarea id="code-input" class="code-textarea" spellcheck="false" placeholder="// Kodunu buraya yaz..."></textarea>
-          </div>
+            <!-- Kod Editörü Alanı -->
+            <div class="code-editor-wrapper">
+              <div class="line-numbers" id="line-numbers">1</div>
+              <textarea id="code-input" class="code-textarea" spellcheck="false" placeholder="// Kodunu buraya yaz..."></textarea>
+            </div>
 
-          <!-- Butonlar & Aksiyonlar -->
-          <div class="editor-actions-row">
-            <div class="editor-left-actions">
-              <button id="btn-hint" class="btn btn-action-tool" title="İpucu Al">
-                <span>💡 Snippetler</span>
+            <!-- Butonlar & Aksiyonlar -->
+            <div class="editor-actions-row">
+              <div class="editor-left-actions">
+                <button id="btn-hint" class="btn btn-action-tool" title="İpucu Al">
+                  <span>💡 Snippetler</span>
+                </button>
+                <button id="btn-solution" class="btn btn-action-tool" title="Çözümü Gör">
+                  <span>🔍 Çözüm</span>
+                </button>
+              </div>
+              <button id="btn-run" class="btn btn-run-code">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span>Kodu Çalıştır</span>
               </button>
-              <button id="btn-solution" class="btn btn-action-tool" title="Çözümü Gör">
-                <span>🔍 Çözüm</span>
-              </button>
             </div>
-            <button id="btn-run" class="btn btn-run-code">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Kodu Çalıştır</span>
-            </button>
           </div>
 
-          <!-- Konsol / Terminal Çıktısı -->
-          <div class="terminal-container">
-            <div class="terminal-header">
-              <span>Terminal / Çıktı</span>
-              <button id="btn-clear-console" class="btn-clear-term" title="Temizle">Temizle</button>
-            </div>
-            <div id="terminal-output" class="terminal-body">
-              <div class="terminal-line text-muted">Program çıktısı burada görünecektir...</div>
+          <!-- SAĞ PANEL: Terminal & Canlı Proje Önizleme -->
+          <div class="terminal-panel card-modern">
+            <div class="terminal-container">
+              <div class="terminal-header">
+                <div class="terminal-tabs-nav">
+                  <button id="btn-term-tab-console" class="terminal-tab-btn active" type="button">
+                    <span>💻 Terminal</span>
+                  </button>
+                  <button id="btn-term-tab-preview" class="terminal-tab-btn" type="button">
+                    <span>🌐 Projemin Canlı Hali</span>
+                    <span class="tab-preview-dot"></span>
+                  </button>
+                </div>
+                <button id="btn-clear-console" class="btn-clear-term" title="Temizle">Temizle</button>
+              </div>
+              <!-- Konsol Metin Gövdesi -->
+              <div id="terminal-output" class="terminal-body">
+                <div class="terminal-line text-muted">Program çıktısı burada görünecektir...</div>
+              </div>
+              <!-- Canlı Proje Önizleme Gövdesi (Editör İçi Mini Sandbox) -->
+              <div id="terminal-live-preview" class="terminal-preview-body" style="display: none;">
+                <!-- JS dinamik render edecek -->
+              </div>
             </div>
           </div>
         </div>
