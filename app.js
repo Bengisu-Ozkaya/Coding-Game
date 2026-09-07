@@ -1905,6 +1905,267 @@ function renderProjectShowcase(langId, completedCount, totalCount = 14) {
 
   if (!viewportEl) return;
 
+  // =========================================================================
+  // 🌐 HTML ÖZEL CANLI PROJE VİTRİNİ (TechNova Web Studio)
+  // Kullanıcının tamamladığı 1-14 modüle göre doğrudan güncellenen canlı web sitesi
+  // =========================================================================
+  if (langId === 'html') {
+    if (urlEl) {
+      urlEl.textContent = 'https://technova.dev/index.html';
+    }
+
+    // HTML için özel dinamik yönlendirme ipuçları
+    if (hintEl) {
+      const htmlHints = [
+        'Aşağıdaki 1. inşa yuvasına tıkla ve TechNova projesine ilk sayfa iskeletini kendin kodla!',
+        'İskelet hazır! Sırada 2. Modüle geçip ana başlığını (<h1>) ve tanıtım metnini eklemek var.',
+        'Harika! Sırada 3. Modüle geçip projen için tıklanabilir butonlar ve linkler kodlamak var.',
+        'Sırada 4. Modüle geçip vitrin banner görselini (<img>) yerleştirmek var.',
+        'Sırada 5. Modüle geçip yetenek ve navigasyon listelerini (<ul>, <li>) inşa etmek var.',
+        'Sırada 6. Modüle geçip hizmet ve paket fiyat tablosunu (<table>) kodlamak var.',
+        'Sırada 7. Modüle geçip tabloya colspan ve thead/tbody ekleyerek profesyonelleştirmek var.',
+        'Sırada 8. Modüle geçip içerikleri modern div kartları ve rozetlerle gruplamak var.',
+        'Sırada 9. Modüle geçip ziyaretçilerden mesaj alacak iletişim formunu (<form>) kurmak var.',
+        'Sırada 10. Modüle geçip formuna textarea, select ve Gönder butonunu eklemek var.',
+        'Sırada 11. Modüle geçip projeyi semantik HTML5 (header, main, footer) mimarisine taşımak var.',
+        'Sırada 12. Modüle geçip tanıtım videosu ve interaktif S.S.S akordiyonu eklemek var.',
+        'Sırada 13. Modüle geçip SEO meta etiketlerini, favicon ve stil dosyasını bağlamak var.',
+        'Son 1 adım kaldı! 14. Modülde tüm parçaları birleştirip projeyi canlı yayına al!',
+        '🏆 Tebrikler! TechNova Web Vitrini projesini baştan sona bizzat kendin kodlayarak canlıya aldın!'
+      ];
+      hintEl.textContent = htmlHints[Math.min(completedCount, 14)];
+    }
+
+    if (completedCount === 0) {
+      viewportEl.innerHTML = `
+        <div class="live-proj-empty">
+          <div class="live-proj-empty-icon">🌐</div>
+          <div class="live-proj-empty-title">TechNova Web Projesi Başlatılmadı</div>
+          <div class="live-proj-empty-desc">
+            Bu vitrindeki web sitesini sen inşa edeceksin! İlk konudaki görevleri çözerek sayfa iskeletini buraya kur.
+          </div>
+          <button class="live-action-btn" style="margin-top: 14px;" type="button" onclick="const topics = getLanguageTopics('html'); if(topics.length){ state.selectedNodeId = topics[0].id; switchView('game'); }">
+            <span>🛠️ 1. Modüle Başla (Sayfa İskeleti)</span>
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    // Kullanıcının tamamladığı modüllere göre adım adım büyüyen gerçek web projesi
+    let innerHTML = `<div class="live-html-showcase-wrapper" style="display: flex; flex-direction: column; gap: 12px; background: #ffffff; color: #0f172a; border-radius: 12px; padding: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: system-ui, -apple-system, sans-serif;">`;
+
+    // 1. Modül (Sayfa İskeleti & Sekme Başlığı)
+    innerHTML += `
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.3rem;">🌐</span>
+          <strong style="font-size: 1.05rem; color: #0f172a;">TechNova Studio</strong>
+        </div>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <span style="background: #e0f2fe; color: #0284c7; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">HTML5 Dokümanı</span>
+          <span style="background: #dcfce7; color: #16a34a; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">v1.${completedCount} CANLI</span>
+        </div>
+      </div>
+    `;
+
+    // 2. Modül (Başlıklar & Karşılama Metinleri)
+    if (completedCount >= 2) {
+      innerHTML += `
+        <div style="padding: 6px 0; border-bottom: 1px solid #f1f5f9;">
+          <h1 style="font-size: 1.35rem; font-weight: 900; color: #1e293b; margin: 0 0 4px 0; line-height: 1.2;">TechNova Web Studio</h1>
+          <h2 style="font-size: 0.92rem; font-weight: 600; color: #64748b; margin: 0 0 6px 0;">Geleceğin Dijital Deneyimleri</h2>
+          <p style="font-size: 0.82rem; color: #334155; margin: 0; line-height: 1.5;">
+            <strong>Modern</strong> web teknolojileri ile kullanıcı dostu <em>arayüzler</em> tasarlıyor ve kodluyoruz.
+          </p>
+        </div>
+      `;
+    }
+
+    // 3. Modül (Aksiyon Butonları & Linkler)
+    if (completedCount >= 3) {
+      innerHTML += `
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 4px 0;">
+          <button type="button" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 0.78rem; cursor: pointer; box-shadow: 0 2px 4px rgba(37,99,235,0.2);">
+            Hemen Başla 🚀
+          </button>
+          <a href="#projeler" style="color: #2563eb; text-decoration: none; font-size: 0.78rem; font-weight: 700; padding: 6px 10px; background: #eff6ff; border-radius: 6px;">
+            Projeleri Keşfet ↗
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener" style="color: #475569; text-decoration: none; font-size: 0.78rem; font-weight: 600; padding: 6px 10px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+            GitHub Profilim
+          </a>
+        </div>
+      `;
+    }
+
+    // 4. Modül (Görseller & Medya Vitrini)
+    if (completedCount >= 4) {
+      innerHTML += `
+        <div style="margin: 4px 0;">
+          <div style="background: linear-gradient(135deg, #3b82f6, #06b6d4); border-radius: 8px; height: 110px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; position: relative; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.15);">
+            <span style="font-size: 2rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">💻✨</span>
+            <strong style="font-size: 0.95rem; margin-top: 4px; letter-spacing: 0.5px;">TechNova Proje Vitrini</strong>
+            <span style="font-size: 0.68rem; opacity: 0.9;">width="640" • height="360" • Responsive Banner</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #64748b; font-style: italic; margin-top: 4px; text-align: center;">
+            &lt;figcaption&gt;2026 Yılın En İyi Web Tasarımı&lt;/figcaption&gt;
+          </div>
+        </div>
+      `;
+    }
+
+    // 5. Modül (Yetenek & Menü Listeleri)
+    if (completedCount >= 5) {
+      innerHTML += `
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+          <div style="font-size: 0.75rem; font-weight: 800; color: #334155; margin-bottom: 4px;">⚡ Yetenekler & Özellikler (ul / li)</div>
+          <ul style="margin: 0; padding-left: 18px; font-size: 0.78rem; color: #475569; line-height: 1.5;">
+            <li>HTML5 & Semantik Mimari</li>
+            <li>Modern Responsive Tasarım</li>
+            <li>Yüksek Performans & SEO Desteği</li>
+          </ul>
+        </div>
+      `;
+    }
+
+    // 6 & 7. Modül (Hizmet & Fiyat Tablosu)
+    if (completedCount >= 6) {
+      innerHTML += `
+        <div style="overflow-x: auto; margin: 4px 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.76rem; text-align: left;">
+            <caption style="font-size: 0.74rem; font-weight: 700; color: #64748b; margin-bottom: 4px; text-align: left;">Hizmet Paketleri (table)</caption>
+            <thead>
+              <tr style="background: #f1f5f9; color: #1e293b;">
+                <th style="padding: 5px 8px; border: 1px solid #e2e8f0;">Paket</th>
+                <th style="padding: 5px 8px; border: 1px solid #e2e8f0;">Süre</th>
+                <th style="padding: 5px 8px; border: 1px solid #e2e8f0;">Fiyat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Başlangıç</td>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">3 Gün</td>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-weight: 700; color: #16a34a;">₺1.500</td>
+              </tr>
+              <tr>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Pro Portfolyo</td>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">7 Gün</td>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-weight: 700; color: #16a34a;">₺3.500</td>
+              </tr>
+            </tbody>
+            ${completedCount >= 7 ? `
+              <tfoot>
+                <tr style="background: #faf5ff;">
+                  <td colspan="3" style="padding: 5px 8px; border: 1px solid #e2e8f0; color: #7e22ce; font-size: 0.7rem; font-weight: 600;">
+                    ✓ Tüm paketlerde 1 yıl ücretsiz teknik destek dahildir (colspan="3")
+                  </td>
+                </tr>
+              </tfoot>
+            ` : ''}
+          </table>
+        </div>
+      `;
+    }
+
+    // 8. Modül (Div Kapsayıcı Kartı & Span Rozet)
+    if (completedCount >= 8) {
+      innerHTML += `
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px; position: relative;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <strong style="font-size: 0.82rem; color: #166534;">Öne Çıkan Proje Kartı (&lt;div class="card"&gt;)</strong>
+            <span style="background: #22c55e; color: white; font-size: 0.65rem; font-weight: 900; padding: 2px 6px; border-radius: 4px;">YENİ</span>
+          </div>
+          <p style="font-size: 0.74rem; color: #15803d; margin: 0;">Bulut Depolama Platformu • Modern arayüz bloklama örneği</p>
+        </div>
+      `;
+    }
+
+    // 9 & 10. Modül (İletişim Formu)
+    if (completedCount >= 9) {
+      innerHTML += `
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px;">
+          <div style="font-size: 0.76rem; font-weight: 800; color: #1e293b; margin-bottom: 6px;">✉️ İletişim Formu (&lt;form action="/iletisim"&gt;)</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px;">
+            <input type="text" placeholder="Adınız Soyadınız" disabled style="padding: 4px 6px; font-size: 0.72rem; border: 1px solid #cbd5e1; border-radius: 4px; background: white;" value="Ahmet Yılmaz">
+            <input type="email" placeholder="E-Posta" disabled style="padding: 4px 6px; font-size: 0.72rem; border: 1px solid #cbd5e1; border-radius: 4px; background: white;" value="ahmet@mail.com">
+          </div>
+          ${completedCount >= 10 ? `
+            <textarea placeholder="Mesajınız..." disabled style="width: 100%; box-sizing: border-box; padding: 4px 6px; font-size: 0.72rem; border: 1px solid #cbd5e1; border-radius: 4px; background: white; margin-bottom: 6px; height: 34px; resize: none;">Harika bir portfolyo, birlikte çalışmak isterim!</textarea>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.68rem; color: #10b981; font-weight: 700;">✓ Form Gönderime Hazır</span>
+              <button type="button" style="background: #2563eb; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; cursor: pointer;">Mesajı Gönder 🚀</button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // 11. Modül (Semantik Mimari & Footer)
+    if (completedCount >= 11) {
+      innerHTML += `
+        <div style="border-top: 1px solid #e2e8f0; padding-top: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #64748b;">
+          <span>&copy; 2026 TechNova Studio • Semantik HTML5</span>
+          <span style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-weight: 700;">&lt;footer&gt;</span>
+        </div>
+      `;
+    }
+
+    // 12. Modül (Multimedya & Video Alanı)
+    if (completedCount >= 12) {
+      innerHTML += `
+        <div style="background: #0f172a; color: white; border-radius: 6px; padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span>🎬</span>
+            <span>Tanıtım Videosu & Medya Bloğu Aktif</span>
+          </div>
+          <span style="color: #38bdf8; font-family: monospace; font-size: 0.68rem;">&lt;video controls&gt;</span>
+        </div>
+      `;
+    }
+
+    // 13. Modül (Meta Etiketleri & SEO Kalkanı)
+    if (completedCount >= 13) {
+      innerHTML += `
+        <div style="display: flex; flex-wrap: wrap; gap: 4px; font-size: 0.65rem;">
+          <span style="background: #e2e8f0; color: #334155; padding: 2px 5px; border-radius: 4px;">charset="UTF-8"</span>
+          <span style="background: #e2e8f0; color: #334155; padding: 2px 5px; border-radius: 4px;">viewport (Mobil)</span>
+          <span style="background: #e2e8f0; color: #334155; padding: 2px 5px; border-radius: 4px;">SEO Description</span>
+          <span style="background: #e2e8f0; color: #334155; padding: 2px 5px; border-radius: 4px;">favicon.png</span>
+        </div>
+      `;
+    }
+
+    // 14. Modül (Büyük Final Lansmanı)
+    if (completedCount >= 14) {
+      innerHTML += `
+        <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 8px; padding: 10px; text-align: center; font-weight: 800; font-size: 0.85rem; box-shadow: 0 4px 10px rgba(16,185,129,0.25);">
+          🏆 TEBRİKLER! TÜM SAYFAYI BİZZAT KENDİN KODLADIN VE CANLIYA ALDIN! 🚀
+        </div>
+      `;
+    }
+
+    // Sıradaki İnşa Yuvası (Slot)
+    if (completedCount < 14) {
+      const nextTopicIdx = completedCount;
+      const htmlTopics = getLanguageTopics('html');
+      const nextTopic = htmlTopics[nextTopicIdx] || { title: `${nextTopicIdx + 1}. Modül` };
+      innerHTML += `
+        <div class="live-proj-slot slot-active" onclick="const topics = getLanguageTopics('html'); if(topics.length > ${nextTopicIdx}){ state.selectedNodeId = topics[${nextTopicIdx}].id; switchView('game'); }" title="Tıkla ve sıradaki bileşeni kodla!" style="margin-top: 6px;">
+          <div class="slot-plus-icon">+</div>
+          <div class="slot-meta">
+            <div class="slot-title">Sıradaki İnşa Yuvası: ${nextTopic.title}</div>
+            <div class="slot-hint">Bu parçayı projene monte etmek için tıkla ve alıştırmayı çöz</div>
+          </div>
+        </div>
+      `;
+    }
+
+    innerHTML += `</div>`;
+    viewportEl.innerHTML = innerHTML;
+    return;
+  }
+
   // Aşama 0: Henüz hiçbir konu bitmediğinde
   if (completedCount === 0) {
     viewportEl.innerHTML = `
