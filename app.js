@@ -1806,27 +1806,125 @@ function renderTerminalLivePreview(langId) {
 
   if (langId === 'html') {
     const rawCode = dom.codeInput ? dom.codeInput.value : '';
-    let previewHtml = rawCode.trim();
 
-    // Doctype veya HTML etiketlerini ayıkla veya olduğu gibi render et
-    if (previewHtml.includes('<body')) {
-      const bodyMatch = previewHtml.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-      if (bodyMatch && bodyMatch[1]) {
-        previewHtml = bodyMatch[1];
+    // 1. Head / Meta Bilgilerini Yakala
+    const hasDoctype = /<!DOCTYPE\s+html>/i.test(rawCode);
+    const langMatch = rawCode.match(/<html[^>]*lang=["']([^"']+)["']/i);
+    const detectedLang = langMatch ? langMatch[1] : null;
+    const titleMatch = rawCode.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+    const detectedTitle = titleMatch ? titleMatch[1].trim() : null;
+    const hasBodyTag = /<body[^>]*>/i.test(rawCode);
+
+    // 2. Body İçeriğini veya Doğrudan Yazılan HTML Etiketlerini Ayıkla
+    let bodyContent = '';
+    if (hasBodyTag) {
+      const bodyClosedMatch = rawCode.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      if (bodyClosedMatch) {
+        bodyContent = bodyClosedMatch[1];
+      } else {
+        const bodyOpenMatch = rawCode.match(/<body[^>]*>([\s\S]*)$/i);
+        if (bodyOpenMatch) {
+          bodyContent = bodyOpenMatch[1];
+        }
       }
+    } else {
+      // Body etiketi yoksa: doctype, html, head bloklarını filtrele, geriye kalan etiketleri al
+      bodyContent = rawCode
+        .replace(/<!DOCTYPE\s+html>/gi, '')
+        .replace(/<html[^>]*>/gi, '')
+        .replace(/<\/html>/gi, '')
+        .replace(/<head[\s\S]*?<\/head>/gi, '')
+        .replace(/<head[\s\S]*$/gi, '')
+        .trim();
     }
+
+    // Yorum satırlarını temizlemeden önce sadece görünür etiket olup olmadığını kontrol edelim
+    const contentWithoutComments = bodyContent.replace(/<!--[\s\S]*?-->/g, '').trim();
+    const hasVisibleMarkup = contentWithoutComments.length > 0 && /<[a-z][\s\S]*>/i.test(contentWithoutComments);
+
+    // Durum / Doğrulama Bildirimi
+    const feedback = state.liveFeedback || { type: 'typing', text: '● ANINDA CANLI ÖNİZLEME: Sen yazdıkça burada render edilir.' };
+    const fbBg = feedback.type === 'success' ? '#ecfdf5' : (feedback.type === 'error' ? '#fef2f2' : '#f0f9ff');
+    const fbBorder = feedback.type === 'success' ? '#6ee7b7' : (feedback.type === 'error' ? '#fca5a5' : '#bae6fd');
+    const fbColor = feedback.type === 'success' ? '#065f46' : (feedback.type === 'error' ? '#991b1b' : '#0369a1');
+    const fbIcon = feedback.type === 'success' ? '✅' : (feedback.type === 'error' ? '⚠️' : '⚡');
+
+    // DOM Röntgeni / İskelet Algılama Kartı (Özellikle Modül 1 ve Head adımları için)
+    const renderDomInspector = () => {
+      return `
+        <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 10px;">
+          <div style="font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+            <span>🔬</span> <span>HTML5 İskelet Röntgeni (Canlı Algılandı):</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; ${hasDoctype ? 'background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0;' : 'background: #f1f5f9; color: #94a3b8; border: 1px solid #e2e8f0;'}">
+              ${hasDoctype ? '✓' : '○'} &lt;!DOCTYPE html&gt;
+            </span>
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; ${detectedLang ? 'background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe;' : 'background: #f1f5f9; color: #94a3b8; border: 1px solid #e2e8f0;'}">
+              ${detectedLang ? `✓ &lt;html lang="${escapeCardHtml(detectedLang)}"&gt;` : '○ &lt;html&gt;'}
+            </span>
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; ${detectedTitle ? 'background: #ede9fe; color: #6d28d9; border: 1px solid #ddd6fe;' : 'background: #f1f5f9; color: #94a3b8; border: 1px solid #e2e8f0;'}">
+              ${detectedTitle ? `✓ &lt;title&gt; "${escapeCardHtml(detectedTitle)}"&lt;/title&gt;` : '○ &lt;title&gt;'}
+            </span>
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; ${hasBodyTag ? 'background: #fef3c7; color: #b45309; border: 1px solid #fde68a;' : 'background: #f1f5f9; color: #94a3b8; border: 1px solid #e2e8f0;'}">
+              ${hasBodyTag ? '✓ &lt;body&gt; Gövde Aktif' : '○ &lt;body&gt;'}
+            </span>
+          </div>
+        </div>
+      `;
+    };
 
     previewEl.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 8px;">
+        <!-- Üst Bar: Başlık & Canlı Durum -->
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 6px;">
-          <span style="font-weight: 800; color: #38bdf8; font-size: 0.8rem;">
-            🌐 TechNova Web Vitrini • Canlı HTML Render (${doneCount}/${topics.length} Bileşen)
+          <span style="font-weight: 800; color: #38bdf8; font-size: 0.8rem; display: flex; align-items: center; gap: 6px;">
+            <span>🌐</span> <span>TechNova Web Vitrini • Canlı HTML Render (${doneCount}/${topics.length} Modül)</span>
           </span>
-          <span style="font-size: 0.7rem; color: #10b981; font-weight: 800;">● ANINDA CANLI ÖNİZLEME</span>
+          <span style="font-size: 0.7rem; color: #10b981; font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: #10b981; box-shadow: 0 0 6px #10b981;"></span>
+            <span>CANLI ÇALIŞIYOR</span>
+          </span>
         </div>
-        
-        <div class="live-html-viewport-box" style="background: #ffffff; color: #0f172a; border-radius: 8px; padding: 14px; min-height: 220px; max-height: 380px; overflow-y: auto; border: 1px solid #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
-          ${previewHtml ? previewHtml : '<div style="color: #94a3b8; font-size: 0.85rem; text-align: center; padding: 40px 10px;">Editörde yazdığınız HTML etiketleri burada anında görselleşir...</div>'}
+
+        <!-- Anlık Bildirim / İpucu Şeridi -->
+        <div style="background: ${fbBg}; border: 1px solid ${fbBorder}; color: ${fbColor}; padding: 6px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 700; display: flex; align-items: center; gap: 6px; transition: all 0.2s;">
+          <span>${fbIcon}</span>
+          <span style="flex: 1;">${escapeCardHtml(feedback.text)}</span>
+        </div>
+
+        <!-- Sanal Tarayıcı Penceresi & Render Kutusu -->
+        <div style="background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+          <!-- Tarayıcı Sekme Çubuğu -->
+          <div style="background: #f1f5f9; border-bottom: 1px solid #e2e8f0; padding: 6px 10px; display: flex; align-items: center; gap: 8px;">
+            <div style="display: flex; gap: 4px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px; padding: 2px 10px; font-size: 0.72rem; font-weight: 700; color: #334155; display: inline-flex; align-items: center; gap: 6px; max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <span>🌐</span>
+              <span>${escapeCardHtml(detectedTitle || 'TechNova Web Studio')}</span>
+            </div>
+            ${hasDoctype ? '<span style="background: #ecfdf5; color: #059669; font-size: 0.65rem; font-weight: 800; padding: 1px 6px; border-radius: 4px; border: 1px solid #a7f3d0;">HTML5</span>' : ''}
+            ${detectedLang ? `<span style="background: #e0e7ff; color: #4338ca; font-size: 0.65rem; font-weight: 800; padding: 1px 6px; border-radius: 4px; border: 1px solid #c7d2fe;">${escapeCardHtml(detectedLang)}</span>` : ''}
+          </div>
+
+          <!-- Canlı Görsel Canvas -->
+          <div class="live-html-viewport-box" style="padding: 14px; min-height: 220px; max-height: 380px; overflow-y: auto; color: #0f172a; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 0.88rem; line-height: 1.6;">
+            ${(hasDoctype || detectedLang || detectedTitle || hasBodyTag) ? renderDomInspector() : ''}
+            
+            ${hasVisibleMarkup 
+              ? `<div class="live-rendered-markup">${bodyContent}</div>` 
+              : `
+                <div style="color: #64748b; font-size: 0.82rem; text-align: center; padding: 24px 10px; background: #fafafa; border-radius: 8px; border: 1px dashed #e2e8f0;">
+                  <div style="font-size: 1.5rem; margin-bottom: 6px;">✍️</div>
+                  <strong style="color: #334155; display: block; margin-bottom: 4px;">Kodu Yazmaya Başlayın</strong>
+                  <span>Editörde yazdığınız HTML etiketleri hiçbir butona basmanıza gerek kalmadan burada anında canlı render edilir.</span>
+                </div>
+              `
+            }
+          </div>
         </div>
       </div>
     `;
@@ -7798,7 +7896,10 @@ function renderCurrentChallenge() {
   // 7. Satır Numaralarını Güncelle
   updateLineNumbers();
 
-  // 8. Terminal Canlı Önizlemesini Hazırla
+  // 8. Terminal Canlı Önizlemesini Hazırla & Web Dillerinde Önizlemeyi Varsayılan Yap
+  if (isWebFrontend && typeof setTerminalActiveTab === 'function') {
+    setTerminalActiveTab('preview');
+  }
   renderTerminalLivePreview(curLang.id);
 }
 
@@ -7811,6 +7912,8 @@ function insertTextAtCursor(input, text) {
   input.selectionStart = input.selectionEnd = start + text.length;
   input.focus();
   updateLineNumbers();
+  state.liveFeedback = { type: 'typing', text: '✏️ Kodunuz anlık olarak render ediliyor...' };
+  renderTerminalLivePreview(state.selectedLangId);
   sfx.playPop();
 }
 
@@ -7860,6 +7963,8 @@ function runCurrentCode() {
   if (result.ok) {
     sfx.playSuccess();
     logToTerminal(`✅ ${result.msg}`, 'success');
+    state.liveFeedback = { type: 'success', text: result.msg };
+    renderTerminalLivePreview(state.selectedLangId);
     
     // Kullanıcının çözümünden canlı projeye bileşen monte et
     const updated = extractUserComponent(state.selectedLangId, userCode, challenge);
@@ -7897,6 +8002,8 @@ function runCurrentCode() {
   } else {
     sfx.playError();
     logToTerminal(`❌ ${result.msg}`, 'error');
+    state.liveFeedback = { type: 'error', text: result.msg };
+    renderTerminalLivePreview(state.selectedLangId);
   }
 }
 
@@ -8410,23 +8517,36 @@ const btnTermTabPreview = document.getElementById('btn-term-tab-preview');
 const termOutput = document.getElementById('terminal-output');
 const termPreview = document.getElementById('terminal-live-preview');
 
+function setTerminalActiveTab(tabName) {
+  const btnConsole = document.getElementById('btn-term-tab-console');
+  const btnPreview = document.getElementById('btn-term-tab-preview');
+  const output = document.getElementById('terminal-output');
+  const preview = document.getElementById('terminal-live-preview');
+
+  if (tabName === 'preview') {
+    if (btnPreview) btnPreview.classList.add('active');
+    if (btnConsole) btnConsole.classList.remove('active');
+    if (output) output.style.display = 'none';
+    if (preview) {
+      preview.style.display = 'block';
+      renderTerminalLivePreview(state.selectedLangId);
+    }
+  } else {
+    if (btnConsole) btnConsole.classList.add('active');
+    if (btnPreview) btnPreview.classList.remove('active');
+    if (output) output.style.display = 'block';
+    if (preview) preview.style.display = 'none';
+  }
+}
+
 if (btnTermTabConsole && btnTermTabPreview) {
   btnTermTabConsole.addEventListener('click', () => {
-    btnTermTabConsole.classList.add('active');
-    btnTermTabPreview.classList.remove('active');
-    if (termOutput) termOutput.style.display = 'block';
-    if (termPreview) termPreview.style.display = 'none';
+    setTerminalActiveTab('console');
     if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
   });
 
   btnTermTabPreview.addEventListener('click', () => {
-    btnTermTabPreview.classList.add('active');
-    btnTermTabConsole.classList.remove('active');
-    if (termOutput) termOutput.style.display = 'none';
-    if (termPreview) {
-      termPreview.style.display = 'block';
-      renderTerminalLivePreview(state.selectedLangId);
-    }
+    setTerminalActiveTab('preview');
     if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
   });
 }
@@ -8464,6 +8584,8 @@ if (dom.btnSolution) {
     if (challenge && challenge.solution) {
       dom.codeInput.value = challenge.solution;
       updateLineNumbers();
+      state.liveFeedback = { type: 'info', text: '🔍 Çözüm yüklendi ve canlı önizlendi.' };
+      renderTerminalLivePreview(state.selectedLangId);
       logToTerminal(`🔍 <strong>Çözüm Yüklendi:</strong> Editöre doğru çözüm aktarıldı. Şimdi 'Kodu Çalıştır' butonuna basabilirsiniz.`, 'hint');
       sfx.playPop();
     }
@@ -8640,10 +8762,8 @@ dom.codeInput.addEventListener('keydown', (e) => {
 
 dom.codeInput.addEventListener('input', () => {
   updateLineNumbers();
-  const termPreview = document.getElementById('terminal-live-preview');
-  if (termPreview && termPreview.style.display !== 'none') {
-    renderTerminalLivePreview(state.selectedLangId);
-  }
+  state.liveFeedback = { type: 'typing', text: '✏️ Kodunuz canlı olarak render ediliyor...' };
+  renderTerminalLivePreview(state.selectedLangId);
 });
 
 if (dom.btnSoundToggle) {
