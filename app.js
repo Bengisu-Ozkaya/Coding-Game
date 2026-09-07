@@ -445,6 +445,42 @@ const LANGUAGES_DB = [
     skillTreeNodes: SKILL_TREE_JAVA_NODES
   },
   {
+    id: 'css',
+    name: 'CSS',
+    lessonsText: '80 Alıştırma • 16 Modül',
+    badgeClass: 'badge-css',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-2 15-6 3-6-3L4 3z"></path><path d="M7.5 7.5h9l-.5 4h-8l.5 4 4.5 1.5 4.5-1.5.2-2"></path></svg>`,
+    icon: '🎨',
+    category: 'frontend',
+    fileExt: 'style.css',
+    langTag: 'CSS3',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
+    id: 'bootstrap',
+    name: 'Bootstrap',
+    lessonsText: '60 Alıştırma • 12 Modül',
+    badgeClass: 'badge-bootstrap',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><path d="M8.5 7.5h4c1.1 0 2 .9 2 2s-.9 2-2 2h-4v-4z"></path><path d="M8.5 11.5h4.5c1.1 0 2 .9 2 2s-.9 2-2 2h-4.5v-4z"></path></svg>`,
+    icon: '🅱️',
+    category: 'frontend',
+    fileExt: 'index.html',
+    langTag: 'Bootstrap 5',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
+    id: 'javascript',
+    name: 'JavaScript',
+    lessonsText: '70 Alıştırma • 14 Modül',
+    badgeClass: 'badge-javascript',
+    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-2 15-6 3-6-3L4 3z"></path><path d="M9 8v6a2 2 0 0 1-2 2H6"></path><path d="M14 9.5c.6-.4 1.3-.5 2-.5 1.5 0 2.5 1 2.5 2.5s-1 2.5-2.5 2.5c-.8 0-1.5-.3-2-.8"></path></svg>`,
+    icon: '⚡',
+    category: 'frontend',
+    fileExt: 'app.js',
+    langTag: 'JavaScript (ES6+)',
+    skillTreeNodes: SKILL_TREE_JAVA_NODES
+  },
+  {
     id: 'python',
     name: 'Python',
     lessonsText: '70 Alıştırma • 14 Modül',
@@ -517,18 +553,6 @@ const LANGUAGES_DB = [
     skillTreeNodes: SKILL_TREE_JAVA_NODES
   },
   {
-    id: 'javascript',
-    name: 'JavaScript',
-    lessonsText: '54 Ders',
-    badgeClass: 'badge-javascript',
-    iconSvg: `<svg class="explore-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
-    icon: '🟨',
-    category: 'frontend',
-    fileExt: 'index.js',
-    langTag: 'ES2023',
-    skillTreeNodes: SKILL_TREE_JAVA_NODES
-  },
-  {
     id: 'cpp',
     name: 'C++',
     lessonsText: '40 Ders',
@@ -577,6 +601,7 @@ const state = {
   xp: 0,
   harvestCount: 0,
   completedPlots: new Set(),
+  completedChallenges: new Set(),
   searchQuery: ''
 };
 
@@ -775,7 +800,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_1",
       title: "1. HTML Temelleri & Sayfa İskeleti",
-      desc: "<!DOCTYPE html>, <html>, <head>, <body> ve <title> ile standart web sayfası iskeleti oluşturma.",
+      desc: "DOCTYPE, html, head, body ve title etiketleriyle standart web sayfası iskeleti oluşturma.",
       reward: "🏡 Giriş Çiftliği & Su Kuyusu",
       status: "active",
       xp: 120
@@ -791,7 +816,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_3",
       title: "3. Bağlantılar & Köprüler (Links)",
-      desc: "<a> etiketi, href ile harici sayfalara geçiş, target='_blank' ve sayfa içi çapa (#id) linkleri.",
+      desc: "a etiketi, href ile harici sayfalara geçiş, target='_blank' ve sayfa içi çapa (#id) linkleri.",
       reward: "🚰 Su Arıtma & Çeşmeler",
       status: "locked",
       xp: 160
@@ -799,7 +824,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_4",
       title: "4. Görseller & Medya (Images)",
-      desc: "<img> etiketi, src kaynak yolu, alt açıklama metni, width/height boyutları ve figure/figcaption.",
+      desc: "img etiketi, src kaynak yolu, alt açıklama metni, width/height boyutları ve figure/figcaption.",
       reward: "🌳 Şehir Parkı & Botanik Bahçe",
       status: "locked",
       xp: 180
@@ -807,7 +832,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_5",
       title: "5. Listeler (Sıralı, Sırasız & Tanım)",
-      desc: "<ul> sırasız, <ol> sıralı listeler, <li> elemanları, <dl>/<dt>/<dd> tanım listeleri ve iç içe listeler.",
+      desc: "ul sırasız ve ol sıralı listeler, li elemanları, dl/dt/dd tanım listeleri ve iç içe listeler.",
       reward: "🏢 Modern Rezidanslar & İş Kuleleri",
       status: "locked",
       xp: 200
@@ -815,7 +840,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_6",
       title: "6. Tablo Temelleri (Tables)",
-      desc: "<table>, <tr> satırları, <th> başlık hücreleri, <td> veri hücreleri ve <caption> tablo başlığı.",
+      desc: "table, tr satırları, th başlık hücreleri, td veri hücreleri ve caption tablo başlığı.",
       reward: "🎬 Sinema & Kültür Merkezi",
       status: "locked",
       xp: 220
@@ -823,7 +848,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_7",
       title: "7. İleri Tablolar (Colspan & Rowspan)",
-      desc: "<thead>, <tbody>, <tfoot> bölümleri, colspan (sütun birleştirme) ve rowspan (satır birleştirme).",
+      desc: "thead, tbody, tfoot bölümleri, colspan (sütun birleştirme) ve rowspan (satır birleştirme).",
       reward: "🎡 Lunapark & Dönme Dolap",
       status: "locked",
       xp: 250
@@ -831,7 +856,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_8",
       title: "8. Blok & Satır İçi, Div & Span",
-      desc: "Block vs Inline eleman ayrımı, <div> ve <span> kapsayıcıları, id ve class öznitelikleri.",
+      desc: "Block vs Inline eleman ayrımı, div ve span kapsayıcıları, id ve class öznitelikleri.",
       reward: "🏛️ Yönetim Sarayı & Belediye",
       status: "locked",
       xp: 280
@@ -839,7 +864,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_9",
       title: "9. Temel Form Elemanları (Form & Input)",
-      desc: "<form action method>, text, password, email, number, checkbox, radio inputları ve <label for>.",
+      desc: "form kapsayıcısı, text, password, email, number, checkbox, radio inputları ve label etiketleri.",
       reward: "🏥 Şehir Hastanesi & Acil Servis",
       status: "locked",
       xp: 300
@@ -847,7 +872,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_10",
       title: "10. Gelişmiş Form Kontrolleri & Doğrulama",
-      desc: "<textarea>, <select>, <option>, <datalist>, <fieldset>, required, placeholder ve regex pattern.",
+      desc: "textarea, select, option, datalist, fieldset, required, placeholder ve regex pattern doğrulaması.",
       reward: "🛍️ Alışveriş & Ticaret Merkezi",
       status: "locked",
       xp: 320
@@ -855,7 +880,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_11",
       title: "11. Semantik HTML5 Mimarisi",
-      desc: "<header>, <nav>, <main>, <section>, <article>, <aside>, <footer> ve <details>/<summary>.",
+      desc: "header, nav, main, section, article, aside, footer ve details/summary semantik etiketleri.",
       reward: "🚄 Hızlı Tren Garı & Raylar",
       status: "locked",
       xp: 350
@@ -863,7 +888,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_12",
       title: "12. Multimedya & Gömülü İçerikler",
-      desc: "<audio>, <video controls>, <source> formatları ve YouTube için <iframe> gömme.",
+      desc: "audio, video kontrolleri, source formatları ve YouTube için iframe gömme mimarisi.",
       reward: "📡 5G Telekom & Uydu Kulesi",
       status: "locked",
       xp: 380
@@ -871,7 +896,7 @@ const COURSE_TOPICS_DB = {
     {
       id: "html_13",
       title: "13. Head, Meta Etiketleri & Varlıklar",
-      desc: "meta charset, viewport, SEO description, favicon ve HTML Entities (&nbsp;, &lt;, &gt;, &copy;).",
+      desc: "meta charset, viewport, SEO description, favicon ve HTML varlıkları (&nbsp;, &lt;, &gt;, &copy;).",
       reward: "🚢 Uluslararası Liman & Konteynerler",
       status: "locked",
       xp: 420
@@ -880,6 +905,348 @@ const COURSE_TOPICS_DB = {
       id: "html_14",
       title: "14. Kapsamlı Web Sayfası İskelet Projesi",
       desc: "Tüm HTML5 standartlarını, formları, tabloları ve semantik düzeni birleştiren ana web sayfası projesi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
+  css: [
+    {
+      id: "css_1",
+      title: "1. CSS'e Giriş & Ekleme Yöntemleri",
+      desc: "CSS sözdizimi, Satır içi (Inline), Dahili (<style>) ve Harici (<link rel='stylesheet'>) CSS mimarisi.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "css_2",
+      title: "2. CSS Seçicileri & Öncelik Sırası",
+      desc: "Etiket, sınıf (.), ID (#), evrensel (*), grup (,) ve torun seçiciler ile !important öncelik yönetimi.",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "css_3",
+      title: "3. Renkler & Arka Planlar (Colors & BG)",
+      desc: "HEX, RGB, RGBA, background-color, background-image, background-size: cover ve repeat kontrolleri.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "css_4",
+      title: "4. Metin & Tipografi Stilleri",
+      desc: "font-family, font-size, font-weight, text-align, text-decoration, line-height ve letter-spacing.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "css_5",
+      title: "5. Kutu Modeli (Box Model Mimarisi)",
+      desc: "Content, padding (iç boşluk), border (kenarlık), margin (dış boşluk) ve box-sizing: border-box.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "css_6",
+      title: "6. Kenarlıklar, Köşeler & Gölgeler",
+      desc: "border-radius, box-shadow, text-shadow ve modern kart/kartvizit gölgelendirmeleri.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "css_7",
+      title: "7. Görüntüleme & Görünürlük (Display)",
+      desc: "display: block, inline, inline-block, none ve visibility: hidden farkları.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "css_8",
+      title: "8. Konumlandırma (CSS Positioning)",
+      desc: "position: static, relative, absolute, fixed, sticky ve z-index katman derinliği.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "css_9",
+      title: "9. Taşma & Boyutlandırma (Overflow)",
+      desc: "width, height, max-width, min-height, overflow: hidden, scroll, auto ve text-overflow: ellipsis.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "css_10",
+      title: "10. Sözde Sınıflar & Öğeler (Pseudo)",
+      desc: ":hover, :focus, :active, :nth-child(n), ::before ve ::after ile dinamik stil katmanları.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "css_11",
+      title: "11. Geçişler & Dönüşümler (Transitions)",
+      desc: "transition (all 0.3s ease), transform (scale, rotate, translate) ve akıcı hover animasyonları.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "css_12",
+      title: "12. CSS Animasyonları (@keyframes)",
+      desc: "@keyframes, animation-name, duration, iteration-count: infinite ve timing-function döngüleri.",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "css_13",
+      title: "13. Flexbox ile Tek Boyutlu Yerleşim",
+      desc: "display: flex, flex-direction, justify-content, align-items, gap ve flex-wrap hizalamaları.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 400
+    },
+    {
+      id: "css_14",
+      title: "14. CSS Grid ile İki Boyutlu Izgara",
+      desc: "display: grid, grid-template-columns, fr kesirli birimi, repeat(), gap ve grid-column alan yerleşimi.",
+      reward: "🏦 Merkez Bankası & Finans Merkezi",
+      status: "locked",
+      xp: 400
+    },
+    {
+      id: "css_15",
+      title: "15. Responsive Tasarım & Medya Sorguları",
+      desc: "@media (max-width: 768px), Mobil Öncelikli (Mobile First) yaklaşım ve esnek arayüz uyarlamaları.",
+      reward: "🏛️ Hükümet Sarayı & Kongre Merkezi",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "css_16",
+      title: "16. CSS Değişkenleri & Kapsamlı Proje",
+      desc: ":root CSS Custom Properties (--ana-renk), var(), calc() ve modern kart bileşeni mimarisi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
+  bootstrap: [
+    {
+      id: "bs_1",
+      title: "1. Bootstrap 5'e Giriş & CDN Kurulumu",
+      desc: "CDN CSS ve JS bundle bağlama, .container ve .container-fluid ile sayfa genişlik düzeni.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "bs_2",
+      title: "2. Grid Sistemi & Responsive Izgara",
+      desc: ".row, .col, breakpoint sütunları (.col-12, .col-md-6, .col-lg-4) ve esnek yerleşim.",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "bs_3",
+      title: "3. Tipografi, Renkler & Arka Planlar",
+      desc: ".display-1..6, .lead, .text-primary/success/danger, .bg-dark/light ve .text-center hizalama.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "bs_4",
+      title: "4. Boşluklar (Spacing), Kenarlıklar & Gölgeler",
+      desc: ".m-3, .p-4, .mx-auto, .border, .rounded-pill, .rounded-circle ve .shadow gölge efektleri.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "bs_5",
+      title: "5. Butonlar, Buton Grupları & Rozetler",
+      desc: ".btn .btn-primary, .btn-outline-*, .btn-lg/.btn-sm, .btn-group ve .badge rozetleri.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "bs_6",
+      title: "6. Uyarılar (Alerts), İlerleme & Spinnerlar",
+      desc: ".alert .alert-success, .alert-dismissible, .progress, .progress-bar ve .spinner-border.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "bs_7",
+      title: "7. Tablolar & Liste Grupları",
+      desc: ".table, .table-striped, .table-hover, .table-bordered, .table-responsive ve .list-group.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "bs_8",
+      title: "8. Kart Bileşeni Mimarisi (Cards)",
+      desc: ".card, .card-header, .card-body, .card-title, .card-text, .card-img-top ve .card-footer.",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "bs_9",
+      title: "9. Form Kontrolleri & Girdiler (Forms)",
+      desc: ".form-control, .form-label, .form-select, .form-check, .form-check-input ve .input-group.",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "bs_10",
+      title: "10. Navigasyon & Menü Çubuğu (Navbar)",
+      desc: ".navbar, .navbar-expand-lg, .navbar-dark .bg-dark, .navbar-brand, .navbar-nav ve .nav-link.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 340
+    },
+    {
+      id: "bs_11",
+      title: "11. Açılır Pencereler & Etkileşim (Modal)",
+      desc: ".modal, .modal-dialog, .modal-content, data-bs-toggle='modal', data-bs-target ve .collapse.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "bs_12",
+      title: "12. Kapsamlı Landing Page Projesi",
+      desc: "Navbar, Hero Section, 3'lü kart ızgarası, form ve footer birleştiren modern Bootstrap projesi.",
+      reward: "🚀 Teknoloji Vadisi & Roket Üssü",
+      status: "locked",
+      xp: 450
+    }
+  ],
+  javascript: [
+    {
+      id: "js_1",
+      title: "1. JS'e Giriş, Çıktı & Değişkenler",
+      desc: "console.log(), alert(), let, const, var, Global ve Block Scope ({}) yönetimi.",
+      reward: "🏡 Giriş Çiftliği & Su Kuyusu",
+      status: "active",
+      xp: 120
+    },
+    {
+      id: "js_2",
+      title: "2. Veri Tipleri & Operatörler",
+      desc: "typeof, Number, String, Boolean, type casting (Number(), String()), aritmetik, katı eşitlik (===) ve mantık (&&, ||).",
+      reward: "💡 Şehir Elektrik Şebekesi",
+      status: "locked",
+      xp: 140
+    },
+    {
+      id: "js_3",
+      title: "3. Karar Yapıları (If, Switch & Ternary)",
+      desc: "if, else if, else blokları, switch-case-default yapısı ve tek satırlık Ternary (koşul ? a : b) kontrolü.",
+      reward: "🚰 Su Arıtma & Çeşmeler",
+      status: "locked",
+      xp: 160
+    },
+    {
+      id: "js_4",
+      title: "4. Döngüler (For & While)",
+      desc: "for döngüsü, while, sayaç artırma, break ile erken çıkış ve continue ile adımı atlama.",
+      reward: "🌳 Şehir Parkı & Botanik Bahçe",
+      status: "locked",
+      xp: 180
+    },
+    {
+      id: "js_5",
+      title: "5. Fonksiyonlar & Arrow Functions",
+      desc: "function tanımlama, parametreler, return değeri ve modern ES6 Arrow Function (() => {}) mimarisi.",
+      reward: "🏢 Modern Rezidanslar & İş Kuleleri",
+      status: "locked",
+      xp: 200
+    },
+    {
+      id: "js_6",
+      title: "6. Diziler (Arrays) & Temel Metotlar",
+      desc: "Dizi tanımlama ([]), push, pop, shift, unshift, indexOf, includes ve .length özelliği.",
+      reward: "🎬 Sinema & Kültür Merkezi",
+      status: "locked",
+      xp: 220
+    },
+    {
+      id: "js_7",
+      title: "7. İleri Dizi Metotları (ES6+ Iterators)",
+      desc: "forEach, map ile dönüştürme, filter ile filtreleme, find ve reduce ile veri toplama.",
+      reward: "🎡 Lunapark & Dönme Dolap",
+      status: "locked",
+      xp: 250
+    },
+    {
+      id: "js_8",
+      title: "8. Nesneler (Objects) & Destructuring",
+      desc: "Key-value obje yapısı ({}), this anahtarı, Object.keys(), Object.values() ve Obje Parçalama (Destructuring).",
+      reward: "🏛️ Yönetim Sarayı & Belediye",
+      status: "locked",
+      xp: 280
+    },
+    {
+      id: "js_9",
+      title: "9. String, Math & Template Literals",
+      desc: "trim(), toUpperCase(), split(), replace(), Backtick Template Literals (${ad}) ve Math.floor()/random().",
+      reward: "🏥 Şehir Hastanesi & Acil Servis",
+      status: "locked",
+      xp: 300
+    },
+    {
+      id: "js_10",
+      title: "10. DOM Seçicileri & İçerik Yönetimi",
+      desc: "getElementById, querySelector, querySelectorAll, textContent, innerHTML ve input.value okuma/yazma.",
+      reward: "🛍️ Alışveriş & Ticaret Merkezi",
+      status: "locked",
+      xp: 320
+    },
+    {
+      id: "js_11",
+      title: "11. DOM Stil & CSS Sınıfı (classList)",
+      desc: "element.style.color, classList.add(), remove(), toggle() ve contains() ile dinamik stil kontrolü.",
+      reward: "🚄 Hızlı Tren Garı & Raylar",
+      status: "locked",
+      xp: 350
+    },
+    {
+      id: "js_12",
+      title: "12. DOM Olayları (Event Listeners)",
+      desc: "addEventListener('click', 'input', 'submit'), event nesnesi, e.target ve e.preventDefault().",
+      reward: "📡 5G Telekom & Uydu Kulesi",
+      status: "locked",
+      xp: 380
+    },
+    {
+      id: "js_13",
+      title: "13. Dinamik DOM Eleman Yönetimi",
+      desc: "document.createElement(), appendChild(), prepend(), remove() ve parentElement ile dinamik UI üretimi.",
+      reward: "🚢 Uluslararası Liman & Konteynerler",
+      status: "locked",
+      xp: 420
+    },
+    {
+      id: "js_14",
+      title: "14. Web Storage & Kapsamlı Proje",
+      desc: "localStorage.setItem, getItem, removeItem, JSON.stringify, JSON.parse ve Todo/Sepet Projesi.",
       reward: "🚀 Teknoloji Vadisi & Roket Üssü",
       status: "locked",
       xp: 450
@@ -1135,7 +1502,11 @@ function getLanguageTopics(langId) {
 }
 
 function completeCurrentTopic(langId, topicId) {
-  setTimeout(() => { if (typeof authManager !== 'undefined') authManager.syncCurrentLocalProgress(langId); }, 200);
+  setTimeout(() => {
+    if (typeof authManager !== 'undefined') {
+      authManager.syncCurrentLocalProgress(langId);
+    }
+  }, 200);
   const topics = getLanguageTopics(langId);
   const currentIdx = topics.findIndex(t => t.id === topicId);
   if (currentIdx !== -1) {
@@ -1146,333 +1517,1004 @@ function completeCurrentTopic(langId, topicId) {
       }
     }
   }
+  if (typeof authManager !== 'undefined' && authManager.user?.email) {
+    saveLocalUserProgress(authManager.user.email);
+  }
 }
 
-// Şehir Görselini Çizen Fonksiyon (Tamamlanan Konu Sayısına Göre Şehir Gelişir)
-// 3D İzometrik Şehir Çizim Motoru (Isometric 3D City Engine)
-function renderCityVisual(completedCount) {
-  const svg = document.getElementById('city-svg') || document.getElementById('city-dynamic-svg');
+// =========================================================================
+// 1. CANLI PROJE VİTRİNİ MOTORU & KULLANICI BAZLI DURUM YÖNETİMİ
+// =========================================================================
 
-  const statusText = document.getElementById('city-stage-badge') || document.getElementById('city-status-text');
-  const countText = document.getElementById('city-building-count');
+function getDefaultUserProjects() {
+  return {
+    html: {
+      title: 'TechNova Web Studio',
+      actor: '🌐',
+      buttonText: 'Projeleri Keşfet',
+      score: 1250,
+      powerLevel: 1,
+      hasHeader: false,
+      hasHero: false,
+      hasButton: false,
+      hasStats: false
+    },
+    css: {
+      title: 'Neon Stil Portalı',
+      actor: '🎨',
+      buttonText: 'Stili Uygula',
+      score: 1250,
+      powerLevel: 1,
+      hasHeader: false,
+      hasHero: false,
+      hasButton: false,
+      hasStats: false
+    },
+    javascript: {
+      title: 'Dinamik Oyun Konsolu',
+      actor: '⚡',
+      buttonText: 'Oyunu Başlat',
+      score: 1250,
+      powerLevel: 1,
+      hasHeader: false,
+      hasHero: false,
+      hasButton: false,
+      hasStats: false
+    },
+    python: {
+      title: 'Siber AI Asistanı',
+      actor: '🐍',
+      buttonText: 'Algoritmayı Çalıştır',
+      score: 1250,
+      powerLevel: 1,
+      hasHeader: false,
+      hasHero: false,
+      hasButton: false,
+      hasStats: false
+    },
+    sql: {
+      title: 'Merkezi Veri Bankası',
+      actor: '💾',
+      buttonText: 'Sorguyu İşle',
+      score: 1250,
+      powerLevel: 1,
+      hasHeader: false,
+      hasHero: false,
+      hasButton: false,
+      hasStats: false
+    },
+    react: {
+      title: 'Reaktif Komponent Lab',
+      actor: '⚛️',
+      buttonText: 'State Güncelle',
+      score: 1250,
+      powerLevel: 1,
+      hasHeader: false,
+      hasHero: false,
+      hasButton: false,
+      hasStats: false
+    }
+  };
+}
 
-  if (countText) {
-    countText.textContent = `${completedCount} / 14 Bina`;
+// Kullanıcının İnşa Ettiği Proje Durumu (Kullanıcı Bazlı Kalıcı ve Dinamik)
+let userProjects = getDefaultUserProjects();
+
+function getUserProjectStorageKey() {
+  try {
+    if (typeof authManager !== 'undefined' && authManager && authManager.user && (authManager.user.email || authManager.user.id)) {
+      const uid = (authManager.user.email || authManager.user.id).replace(/[^a-zA-Z0-9_-]/g, '_');
+      return `codegame_user_projects_${uid}`;
+    }
+  } catch (e) {}
+  return 'codegame_user_projects_guest';
+}
+
+function loadUserProjects() {
+  userProjects = getDefaultUserProjects();
+  try {
+    const key = getUserProjectStorageKey();
+    const saved = localStorage.getItem(key);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      userProjects = { ...userProjects, ...parsed };
+    }
+  } catch (e) {}
+}
+
+function saveUserProjects() {
+  try {
+    const key = getUserProjectStorageKey();
+    localStorage.setItem(key, JSON.stringify(userProjects));
+  } catch (e) {}
+}
+
+// Kullanıcı Başına Yerel / Çevrimdışı İlerleme Kayıt Sistemi
+function saveLocalUserProgress(email) {
+  if (!email) return;
+  try {
+    const cleanEmail = email.trim().toLowerCase();
+    const progressData = {
+      xp: state.xp || 0,
+      harvestCount: state.harvestCount || 0,
+      completedNodes: Array.from(state.completedNodes || []),
+      topics: {}
+    };
+    for (const [langId, topics] of Object.entries(userTopicsState)) {
+      progressData.topics[langId] = topics.filter(t => t.status === 'done').map(t => t.id);
+    }
+    localStorage.setItem(`codegame_local_progress_${cleanEmail}`, JSON.stringify(progressData));
+  } catch (e) {}
+}
+
+function loadLocalUserProgress(email) {
+  if (!email) return false;
+  try {
+    const cleanEmail = email.trim().toLowerCase();
+    const raw = localStorage.getItem(`codegame_local_progress_${cleanEmail}`);
+    if (!raw) return false;
+    const progressData = JSON.parse(raw);
+    state.xp = progressData.xp || 0;
+    state.harvestCount = progressData.harvestCount || 0;
+    state.completedNodes = new Set(progressData.completedNodes || []);
+
+    if (progressData.topics) {
+      for (const [langId, doneIds] of Object.entries(progressData.topics)) {
+        getLanguageTopics(langId);
+        const topics = userTopicsState[langId];
+        if (topics && Array.isArray(doneIds)) {
+          topics.forEach((t) => {
+            if (doneIds.includes(t.id)) {
+              t.status = 'done';
+            } else {
+              t.status = 'locked';
+            }
+          });
+          const nextLockedIdx = topics.findIndex(t => t.status === 'locked');
+          if (nextLockedIdx !== -1) {
+            topics[nextLockedIdx].status = 'active';
+          }
+        }
+      }
+    }
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+// Tüm İlerlemeyi ve Bellek Durumunu Temizleyen Fonksiyon (Hesap Değişimi veya Çıkış)
+function resetApplicationProgress() {
+  // 1. In-memory tüm konu durumlarını sıfırla
+  for (const k of Object.keys(userTopicsState)) {
+    delete userTopicsState[k];
   }
 
-  if (statusText) {
-    let phaseName = '1. Seviye: Başlangıç Köyü';
-    if (completedCount >= 14) phaseName = '7. Seviye: Mega Siber Metropol';
-    else if (completedCount >= 12) phaseName = '6. Seviye: Uluslararası Liman & Metropol';
-    else if (completedCount >= 9) phaseName = '5. Seviye: Ticaret & Sanayi Şehri';
-    else if (completedCount >= 6) phaseName = '4. Seviye: Kültür & Teknoloji Şehri';
-    else if (completedCount >= 3) phaseName = '3. Seviye: Gelişen Kasaba';
-    else if (completedCount >= 1) phaseName = '2. Seviye: İlk Yerleşim';
+  // 2. Global oyun istatistiklerini ve tamamlanan düğümleri sıfırla
+  state.xp = 0;
+  state.harvestCount = 0;
+  state.completedNodes = new Set();
+  state.completedPlots = new Set();
+  state.completedChallenges = new Set();
 
-    statusText.textContent = phaseName;
+  // 3. Proje durumunu aktif kullanıcıya (veya misafire) göre yükle
+  loadUserProjects();
+
+  // 4. İstatistik göstergelerini güncelle
+  if (typeof updateGlobalStats === 'function') {
+    updateGlobalStats();
   }
 
-  // 3D İzometrik Kutu (Bina / Yapı Bloğu) Yardımcısı
-  const isoBox = (x, y, w, d, h, topCol, leftCol, rightCol, stroke = 'rgba(15,23,42,0.15)') => {
-    const pTop = `${x},${y - h} ${x + w},${y - h + d} ${x},${y - h + 2*d} ${x - w},${y - h + d}`;
-    const pLeft = `${x - w},${y - h + d} ${x},${y - h + 2*d} ${x},${y + 2*d} ${x - w},${y + d}`;
-    const pRight = `${x},${y - h + 2*d} ${x + w},${y - h + d} ${x + w},${y + d} ${x},${y + 2*d}`;
-    return `
-      <polygon points="${pLeft}" fill="${leftCol}" stroke="${stroke}" stroke-width="0.75" />
-      <polygon points="${pRight}" fill="${rightCol}" stroke="${stroke}" stroke-width="0.75" />
-      <polygon points="${pTop}" fill="${topCol}" stroke="${stroke}" stroke-width="0.75" />
-    `;
-  };
+  // 5. Görsel arayüzleri ve vitrini güncelle
+  const curLangId = state.selectedLangId || 'html';
+  const curTopics = getLanguageTopics(curLangId);
+  const doneCount = curTopics.filter(t => t.status === 'done').length;
+  if (typeof renderProjectShowcase === 'function') {
+    renderProjectShowcase(curLangId, doneCount, curTopics.length);
+  }
+  if (typeof renderDevDeckCard === 'function') {
+    renderDevDeckCard(curLangId, doneCount, curTopics.length);
+  }
+  if (typeof renderSkillTree === 'function') {
+    renderSkillTree();
+  }
+}
 
-  // 3D Tree Helper
-  const isoTree = (x, y, scale = 1) => {
-    return `
-      <g transform="translate(${x}, ${y}) scale(${scale})">
-        <!-- Gövde -->
-        ${isoBox(0, 0, 3, 2, 8, '#78350f', '#451a03', '#92400e')}
-        <!-- Yapraklar -->
-        ${isoBox(0, -6, 12, 7, 10, '#22c55e', '#15803d', '#16a34a')}
-        ${isoBox(0, -14, 8, 5, 8, '#4ade80', '#16a34a', '#22c55e')}
-      </g>
-    `;
-  };
+loadUserProjects();
 
-  let svgHTML = `
-    <defs>
-      <!-- Gökyüzü ve Ortam Gradyanları -->
-      <linearGradient id="isoSky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="${completedCount >= 4 ? '#bae6fd' : '#cbd5e1'}" />
-        <stop offset="100%" stop-color="${completedCount >= 4 ? '#f0f9ff' : '#94a3b8'}" />
-      </linearGradient>
+const escapeCardHtml = (str) => String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// Kullanıcının Çözdüğü Koddan Projeye Bileşen Çıkaran Akıllı Fonksiyon
+function extractUserComponent(langId, userCode, challenge) {
+  if (!userProjects[langId]) {
+    userProjects[langId] = {
+      title: 'Özel Kod Projem',
+      actor: '🚀',
+      buttonText: 'Başlat',
+      score: 1250,
+      powerLevel: 1,
+      hasHeader: false,
+      hasHero: false,
+      hasButton: false,
+      hasStats: false
+    };
+  }
+
+  const proj = userProjects[langId];
+  let updatedSomething = false;
+
+  // 1. Başlık Yakalama (<h1>, <h2> veya <title>)
+  const h1Match = userCode.match(/<h1[^>]*>(.*?)<\/h1>/i);
+  if (h1Match && h1Match[1].trim()) {
+    proj.title = h1Match[1].trim();
+    proj.hasHero = true;
+    updatedSomething = true;
+  }
+
+  const titleTagMatch = userCode.match(/<title[^>]*>(.*?)<\/title>/i);
+  if (titleTagMatch && titleTagMatch[1].trim()) {
+    proj.title = titleTagMatch[1].trim();
+    proj.hasHeader = true;
+    updatedSomething = true;
+  }
+
+  // 2. Buton Yakalama (<button>)
+  const btnMatch = userCode.match(/<button[^>]*>(.*?)<\/button>/i);
+  if (btnMatch && btnMatch[1].trim()) {
+    proj.buttonText = btnMatch[1].trim();
+    proj.hasButton = true;
+    updatedSomething = true;
+  }
+
+  // 3. Doctype / HTML / Body İskeleti
+  if (/<(body|html|head)[^>]*>/i.test(userCode) || /<!DOCTYPE/i.test(userCode)) {
+    proj.hasHeader = true;
+    updatedSomething = true;
+  }
+
+  // 4. Sayaç / Puan Değişkeni
+  const scoreMatch = userCode.match(/(?:puan|score|skor|count)\s*=\s*(\d+)/i);
+  if (scoreMatch) {
+    proj.score = parseInt(scoreMatch[1], 10);
+    proj.hasStats = true;
+    updatedSomething = true;
+  }
+
+  // 5. Karakter / Emoji
+  const emojiMatch = userCode.match(/([\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}])/u);
+  if (emojiMatch) {
+    proj.actor = emojiMatch[0];
+    proj.hasHero = true;
+    updatedSomething = true;
+  }
+
+  if (updatedSomething) {
+    saveUserProjects();
+  }
+  return updatedSomething;
+}
+
+// Editör İçi Mini Canlı Önizlemeyi Render Eden Fonksiyon
+function renderTerminalLivePreview(langId) {
+  const previewEl = document.getElementById('terminal-live-preview');
+  if (!previewEl) return;
+
+  const curLang = LANGUAGES_DB.find(l => l.id === langId) || { name: 'Yazılım', icon: '💻' };
+  const proj = userProjects[langId] || { title: 'Özel Proje', actor: curLang.icon, buttonText: 'Çalıştır' };
+  const topics = getLanguageTopics(langId);
+  const doneCount = topics.filter(t => t.status === 'done').length;
+
+  if (langId === 'html') {
+    const rawCode = dom.codeInput ? dom.codeInput.value : '';
+    let previewHtml = rawCode.trim();
+
+    // Doctype veya HTML etiketlerini ayıkla veya olduğu gibi render et
+    if (previewHtml.includes('<body')) {
+      const bodyMatch = previewHtml.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      if (bodyMatch && bodyMatch[1]) {
+        previewHtml = bodyMatch[1];
+      }
+    }
+
+    previewEl.innerHTML = `
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 6px;">
+          <span style="font-weight: 800; color: #38bdf8; font-size: 0.8rem;">
+            🌐 TechNova Web Vitrini • Canlı HTML Render (${doneCount}/${topics.length} Bileşen)
+          </span>
+          <span style="font-size: 0.7rem; color: #10b981; font-weight: 800;">● ANINDA CANLI ÖNİZLEME</span>
+        </div>
+        
+        <div class="live-html-viewport-box" style="background: #ffffff; color: #0f172a; border-radius: 8px; padding: 14px; min-height: 220px; max-height: 380px; overflow-y: auto; border: 1px solid #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
+          ${previewHtml ? previewHtml : '<div style="color: #94a3b8; font-size: 0.85rem; text-align: center; padding: 40px 10px;">Editörde yazdığınız HTML etiketleri burada anında görselleşir...</div>'}
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  previewEl.innerHTML = `
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 6px;">
+        <span style="font-weight: 800; color: #38bdf8; font-size: 0.8rem;">
+          🌐 ${curLang.name} Canlı Proje Durumu (${doneCount}/${topics.length} Bileşen Monte Edildi)
+        </span>
+        <span style="font-size: 0.7rem; color: #10b981; font-weight: 800;">● SENİN KODLARINLA ÇALIŞIYOR</span>
+      </div>
       
-      <!-- 3D Güneş & Glow -->
-      <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#fef08a" stop-opacity="1" />
-        <stop offset="100%" stop-color="#fef08a" stop-opacity="0" />
-      </radialGradient>
-
-      <!-- Cam Yansıma Gradyanı -->
-      <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#38bdf8" />
-        <stop offset="100%" stop-color="#0284c7" />
-      </linearGradient>
-    </defs>
-
-    <!-- 1. Arka Plan Gökyüzü & Güneş -->
-    <rect width="540" height="320" fill="url(#isoSky)" />
-    <circle cx="460" cy="50" r="45" fill="url(#sunGlow)" />
-    <circle cx="460" cy="50" r="18" fill="#fde047" />
-
-    <!-- Yüzen Bulutlar -->
-    <g opacity="0.85">
-      <ellipse cx="90" cy="45" rx="28" ry="12" fill="#ffffff" />
-      <ellipse cx="110" cy="40" rx="20" ry="14" fill="#ffffff" />
-      <ellipse cx="370" cy="65" rx="35" ry="14" fill="#ffffff" />
-      <ellipse cx="395" cy="60" rx="24" ry="16" fill="#ffffff" />
-    </g>
-
-    <!-- 2. ANA 3D İZOMETRİK TABAN ADASI (Floating 3D Island Base) -->
-    <!-- Alt Toprak Katmanı (Left Side & Right Side Shadows) -->
-    <polygon points="40,160 270,290 270,312 40,182" fill="#475569" stroke="#334155" stroke-width="1" />
-    <polygon points="270,290 500,160 500,182 270,312" fill="#334155" stroke="#1e293b" stroke-width="1" />
-    
-    <!-- Üst Çimen Yüzeyi -->
-    <polygon points="270,30 500,160 270,290 40,160" fill="${completedCount >= 3 ? '#86efac' : '#94a3b8'}" stroke="${completedCount >= 3 ? '#4ade80' : '#64748b'}" stroke-width="2" />
-
-    <!-- 3D Izgara ve Çim Çizgileri -->
-    <g opacity="0.25" stroke="#ffffff" stroke-width="1">
-      <line x1="155" y1="95" x2="385" y2="225" />
-      <line x1="270" y1="30" x2="270" y2="290" />
-      <line x1="385" y1="95" x2="155" y2="225" />
-    </g>
+      <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.6rem;">${proj.actor || curLang.icon || '🚀'}</span>
+          <div>
+            <div style="font-weight: 800; font-size: 0.95rem; color: #f8fafc;">${escapeCardHtml(proj.title || 'Proje Başlığı')}</div>
+            <div style="font-size: 0.74rem; color: #94a3b8;">${curLang.name} kodların bu projeyi canlı olarak oluşturuyor.</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px;">
+          <button class="live-action-btn" type="button" style="padding: 5px 14px; font-size: 0.78rem;">
+            <span>▶</span> <span>${escapeCardHtml(proj.buttonText || 'Çalıştır')}</span>
+          </button>
+          <span style="font-size: 0.72rem; color: #38bdf8; font-family: monospace;">Skor: ${proj.score || 1250}</span>
+        </div>
+      </div>
+    </div>
   `;
+}
 
-  // Seviye 0: Issız ve Harabe Ada İskeleti
+// Canlı Proje Vitrinini (Sağ Panel) Kullanıcının Kendi Kodlarıyla Render Eden Fonksiyon
+function renderProjectShowcase(langId, completedCount, totalCount = 14) {
+  const badgeEl = document.getElementById('project-stage-badge');
+  const urlEl = document.getElementById('browser-url-text');
+  const viewportEl = document.getElementById('project-live-viewport');
+  const hintEl = document.getElementById('project-growth-hint');
+
+  const curLang = LANGUAGES_DB.find(l => l.id === langId) || { name: 'Yazılım', icon: '💻' };
+  const safeTotal = totalCount || 14;
+  const proj = userProjects[langId] || {
+    title: `${curLang.name} Projem`,
+    actor: curLang.icon || '👾',
+    buttonText: 'Oyunu Başlat',
+    score: 1250,
+    powerLevel: 1
+  };
+
+  if (badgeEl) {
+    badgeEl.textContent = `${completedCount} / ${safeTotal} Bileşen Canlandı`;
+  }
+
+  if (urlEl) {
+    urlEl.textContent = `https://${langId || 'dev'}-arcade.local/app`;
+  }
+
+  // İlerleme Tavsiyesi / İpucu Metni
+  if (hintEl) {
+    if (completedCount === 0) {
+      hintEl.textContent = 'Aşağıdaki 1. inşa yuvasına tıkla ve projene ilk iskeleti kendin kodla!';
+    } else if (completedCount < 2) {
+      hintEl.textContent = 'Harika başlangıç! Sırada ana başlığını (<h1>) kodlayıp sahneye yerleştirmek var.';
+    } else if (completedCount < 4) {
+      hintEl.textContent = 'Sıradaki yuvada kendi aksiyon butonunu (<button>) kodlayarak etkileşim kazandır!';
+    } else if (completedCount < 7) {
+      hintEl.textContent = 'Canlı skor ve sayaç yuvasını kodlayarak projeni dinamik hale getir!';
+    } else if (completedCount < safeTotal) {
+      hintEl.textContent = 'Neredeyse tamamladın! Kalan parçaları da kodlayıp DevDeck Altın Kartını kazan!';
+    } else {
+      hintEl.textContent = '🏆 Tebrikler! Tüm projeyi baştan sona bizzat kendin kodladın ve yayına aldın!';
+    }
+  }
+
+  if (!viewportEl) return;
+
+  // =========================================================================
+  // 🌐 HTML ÖZEL CANLI PROJE VİTRİNİ (TechNova Web Studio)
+  // Kullanıcının tamamladığı 1-14 modüle göre doğrudan güncellenen canlı web sitesi
+  // =========================================================================
+  if (langId === 'html') {
+    if (urlEl) {
+      urlEl.textContent = 'https://technova.dev/index.html';
+    }
+
+    // HTML için özel dinamik yönlendirme ipuçları
+    if (hintEl) {
+      const htmlHints = [
+        'Aşağıdaki 1. inşa yuvasına tıkla ve TechNova projesine ilk sayfa iskeletini kendin kodla!',
+        'İskelet hazır! Sırada 2. Modüle geçip ana başlığını (<h1>) ve tanıtım metnini eklemek var.',
+        'Harika! Sırada 3. Modüle geçip projen için tıklanabilir butonlar ve linkler kodlamak var.',
+        'Sırada 4. Modüle geçip vitrin banner görselini (<img>) yerleştirmek var.',
+        'Sırada 5. Modüle geçip yetenek ve navigasyon listelerini (<ul>, <li>) inşa etmek var.',
+        'Sırada 6. Modüle geçip hizmet ve paket fiyat tablosunu (<table>) kodlamak var.',
+        'Sırada 7. Modüle geçip tabloya colspan ve thead/tbody ekleyerek profesyonelleştirmek var.',
+        'Sırada 8. Modüle geçip içerikleri modern div kartları ve rozetlerle gruplamak var.',
+        'Sırada 9. Modüle geçip ziyaretçilerden mesaj alacak iletişim formunu (<form>) kurmak var.',
+        'Sırada 10. Modüle geçip formuna textarea, select ve Gönder butonunu eklemek var.',
+        'Sırada 11. Modüle geçip projeyi semantik HTML5 (header, main, footer) mimarisine taşımak var.',
+        'Sırada 12. Modüle geçip tanıtım videosu ve interaktif S.S.S akordiyonu eklemek var.',
+        'Sırada 13. Modüle geçip SEO meta etiketlerini, favicon ve stil dosyasını bağlamak var.',
+        'Son 1 adım kaldı! 14. Modülde tüm parçaları birleştirip projeyi canlı yayına al!',
+        '🏆 Tebrikler! TechNova Web Vitrini projesini baştan sona bizzat kendin kodlayarak canlıya aldın!'
+      ];
+      hintEl.textContent = htmlHints[Math.min(completedCount, 14)];
+    }
+
+    if (completedCount === 0) {
+      viewportEl.innerHTML = `
+        <div class="live-proj-empty">
+          <div class="live-proj-empty-icon">🌐</div>
+          <div class="live-proj-empty-title">TechNova Web Projesi Başlatılmadı</div>
+          <div class="live-proj-empty-desc">
+            Bu vitrindeki web sitesini sen inşa edeceksin! İlk konudaki görevleri çözerek sayfa iskeletini buraya kur.
+          </div>
+          <button class="live-action-btn" style="margin-top: 14px;" type="button" onclick="const topics = getLanguageTopics('html'); if(topics.length){ state.selectedNodeId = topics[0].id; switchView('game'); }">
+            <span>🛠️ 1. Modüle Başla (Sayfa İskeleti)</span>
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    // Kullanıcının tamamladığı modüllere göre adım adım büyüyen gerçek web projesi
+    let innerHTML = `<div class="live-html-showcase-wrapper" style="display: flex; flex-direction: column; gap: 12px; background: #ffffff; color: #0f172a; border-radius: 12px; padding: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: system-ui, -apple-system, sans-serif;">`;
+
+    // 1. Modül (Sayfa İskeleti & Sekme Başlığı)
+    innerHTML += `
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.3rem;">🌐</span>
+          <strong style="font-size: 1.05rem; color: #0f172a;">TechNova Studio</strong>
+        </div>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <span style="background: #e0f2fe; color: #0284c7; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">HTML5 Dokümanı</span>
+          <span style="background: #dcfce7; color: #16a34a; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 6px;">v1.${completedCount} CANLI</span>
+        </div>
+      </div>
+    `;
+
+    // 2. Modül (Başlıklar & Karşılama Metinleri)
+    if (completedCount >= 2) {
+      innerHTML += `
+        <div style="padding: 6px 0; border-bottom: 1px solid #f1f5f9;">
+          <h1 style="font-size: 1.35rem; font-weight: 900; color: #1e293b; margin: 0 0 4px 0; line-height: 1.2;">TechNova Web Studio</h1>
+          <h2 style="font-size: 0.92rem; font-weight: 600; color: #64748b; margin: 0 0 6px 0;">Geleceğin Dijital Deneyimleri</h2>
+          <p style="font-size: 0.82rem; color: #334155; margin: 0; line-height: 1.5;">
+            <strong>Modern</strong> web teknolojileri ile kullanıcı dostu <em>arayüzler</em> tasarlıyor ve kodluyoruz.
+          </p>
+        </div>
+      `;
+    }
+
+    // 3. Modül (Aksiyon Butonları & Linkler)
+    if (completedCount >= 3) {
+      innerHTML += `
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 4px 0;">
+          <button type="button" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 0.78rem; cursor: pointer; box-shadow: 0 2px 4px rgba(37,99,235,0.2);">
+            Hemen Başla 🚀
+          </button>
+          <a href="#projeler" style="color: #2563eb; text-decoration: none; font-size: 0.78rem; font-weight: 700; padding: 6px 10px; background: #eff6ff; border-radius: 6px;">
+            Projeleri Keşfet ↗
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener" style="color: #475569; text-decoration: none; font-size: 0.78rem; font-weight: 600; padding: 6px 10px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+            GitHub Profilim
+          </a>
+        </div>
+      `;
+    }
+
+    // 4. Modül (Görseller & Medya Vitrini)
+    if (completedCount >= 4) {
+      innerHTML += `
+        <div style="margin: 4px 0;">
+          <div style="background: linear-gradient(135deg, #3b82f6, #06b6d4); border-radius: 8px; height: 110px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; position: relative; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.15);">
+            <span style="font-size: 2rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">💻✨</span>
+            <strong style="font-size: 0.95rem; margin-top: 4px; letter-spacing: 0.5px;">TechNova Proje Vitrini</strong>
+            <span style="font-size: 0.68rem; opacity: 0.9;">width="640" • height="360" • Responsive Banner</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #64748b; font-style: italic; margin-top: 4px; text-align: center;">
+            &lt;figcaption&gt;2026 Yılın En İyi Web Tasarımı&lt;/figcaption&gt;
+          </div>
+        </div>
+      `;
+    }
+
+    // 5. Modül (Yetenek & Menü Listeleri)
+    if (completedCount >= 5) {
+      innerHTML += `
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+          <div style="font-size: 0.75rem; font-weight: 800; color: #334155; margin-bottom: 4px;">⚡ Yetenekler & Özellikler (ul / li)</div>
+          <ul style="margin: 0; padding-left: 18px; font-size: 0.78rem; color: #475569; line-height: 1.5;">
+            <li>HTML5 & Semantik Mimari</li>
+            <li>Modern Responsive Tasarım</li>
+            <li>Yüksek Performans & SEO Desteği</li>
+          </ul>
+        </div>
+      `;
+    }
+
+    // 6 & 7. Modül (Hizmet & Fiyat Tablosu)
+    if (completedCount >= 6) {
+      innerHTML += `
+        <div style="overflow-x: auto; margin: 4px 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.76rem; text-align: left;">
+            <caption style="font-size: 0.74rem; font-weight: 700; color: #64748b; margin-bottom: 4px; text-align: left;">Hizmet Paketleri (table)</caption>
+            <thead>
+              <tr style="background: #f1f5f9; color: #1e293b;">
+                <th style="padding: 5px 8px; border: 1px solid #e2e8f0;">Paket</th>
+                <th style="padding: 5px 8px; border: 1px solid #e2e8f0;">Süre</th>
+                <th style="padding: 5px 8px; border: 1px solid #e2e8f0;">Fiyat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Başlangıç</td>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">3 Gün</td>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-weight: 700; color: #16a34a;">₺1.500</td>
+              </tr>
+              <tr>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">Pro Portfolyo</td>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0;">7 Gün</td>
+                <td style="padding: 5px 8px; border: 1px solid #e2e8f0; font-weight: 700; color: #16a34a;">₺3.500</td>
+              </tr>
+            </tbody>
+            ${completedCount >= 7 ? `
+              <tfoot>
+                <tr style="background: #faf5ff;">
+                  <td colspan="3" style="padding: 5px 8px; border: 1px solid #e2e8f0; color: #7e22ce; font-size: 0.7rem; font-weight: 600;">
+                    ✓ Tüm paketlerde 1 yıl ücretsiz teknik destek dahildir (colspan="3")
+                  </td>
+                </tr>
+              </tfoot>
+            ` : ''}
+          </table>
+        </div>
+      `;
+    }
+
+    // 8. Modül (Div Kapsayıcı Kartı & Span Rozet)
+    if (completedCount >= 8) {
+      innerHTML += `
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px; position: relative;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <strong style="font-size: 0.82rem; color: #166534;">Öne Çıkan Proje Kartı (&lt;div class="card"&gt;)</strong>
+            <span style="background: #22c55e; color: white; font-size: 0.65rem; font-weight: 900; padding: 2px 6px; border-radius: 4px;">YENİ</span>
+          </div>
+          <p style="font-size: 0.74rem; color: #15803d; margin: 0;">Bulut Depolama Platformu • Modern arayüz bloklama örneği</p>
+        </div>
+      `;
+    }
+
+    // 9 & 10. Modül (İletişim Formu)
+    if (completedCount >= 9) {
+      innerHTML += `
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px;">
+          <div style="font-size: 0.76rem; font-weight: 800; color: #1e293b; margin-bottom: 6px;">✉️ İletişim Formu (&lt;form action="/iletisim"&gt;)</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px;">
+            <input type="text" placeholder="Adınız Soyadınız" disabled style="padding: 4px 6px; font-size: 0.72rem; border: 1px solid #cbd5e1; border-radius: 4px; background: white;" value="Ahmet Yılmaz">
+            <input type="email" placeholder="E-Posta" disabled style="padding: 4px 6px; font-size: 0.72rem; border: 1px solid #cbd5e1; border-radius: 4px; background: white;" value="ahmet@mail.com">
+          </div>
+          ${completedCount >= 10 ? `
+            <textarea placeholder="Mesajınız..." disabled style="width: 100%; box-sizing: border-box; padding: 4px 6px; font-size: 0.72rem; border: 1px solid #cbd5e1; border-radius: 4px; background: white; margin-bottom: 6px; height: 34px; resize: none;">Harika bir portfolyo, birlikte çalışmak isterim!</textarea>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.68rem; color: #10b981; font-weight: 700;">✓ Form Gönderime Hazır</span>
+              <button type="button" style="background: #2563eb; color: white; border: none; padding: 4px 10px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; cursor: pointer;">Mesajı Gönder 🚀</button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // 11. Modül (Semantik Mimari & Footer)
+    if (completedCount >= 11) {
+      innerHTML += `
+        <div style="border-top: 1px solid #e2e8f0; padding-top: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #64748b;">
+          <span>&copy; 2026 TechNova Studio • Semantik HTML5</span>
+          <span style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-weight: 700;">&lt;footer&gt;</span>
+        </div>
+      `;
+    }
+
+    // 12. Modül (Multimedya & Video Alanı)
+    if (completedCount >= 12) {
+      innerHTML += `
+        <div style="background: #0f172a; color: white; border-radius: 6px; padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span>🎬</span>
+            <span>Tanıtım Videosu & Medya Bloğu Aktif</span>
+          </div>
+          <span style="color: #38bdf8; font-family: monospace; font-size: 0.68rem;">&lt;video controls&gt;</span>
+        </div>
+      `;
+    }
+
+    // 13. Modül (Meta Etiketleri & SEO Kalkanı)
+    if (completedCount >= 13) {
+      innerHTML += `
+        <div style="display: flex; flex-wrap: wrap; gap: 4px; font-size: 0.65rem;">
+          <span style="background: #e2e8f0; color: #334155; padding: 2px 5px; border-radius: 4px;">charset="UTF-8"</span>
+          <span style="background: #e2e8f0; color: #334155; padding: 2px 5px; border-radius: 4px;">viewport (Mobil)</span>
+          <span style="background: #e2e8f0; color: #334155; padding: 2px 5px; border-radius: 4px;">SEO Description</span>
+          <span style="background: #e2e8f0; color: #334155; padding: 2px 5px; border-radius: 4px;">favicon.png</span>
+        </div>
+      `;
+    }
+
+    // 14. Modül (Büyük Final Lansmanı)
+    if (completedCount >= 14) {
+      innerHTML += `
+        <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 8px; padding: 10px; text-align: center; font-weight: 800; font-size: 0.85rem; box-shadow: 0 4px 10px rgba(16,185,129,0.25);">
+          🏆 TEBRİKLER! TÜM SAYFAYI BİZZAT KENDİN KODLADIN VE CANLIYA ALDIN! 🚀
+        </div>
+      `;
+    }
+
+    // Sıradaki İnşa Yuvası (Slot)
+    if (completedCount < 14) {
+      const nextTopicIdx = completedCount;
+      const htmlTopics = getLanguageTopics('html');
+      const nextTopic = htmlTopics[nextTopicIdx] || { title: `${nextTopicIdx + 1}. Modül` };
+      innerHTML += `
+        <div class="live-proj-slot slot-active" onclick="const topics = getLanguageTopics('html'); if(topics.length > ${nextTopicIdx}){ state.selectedNodeId = topics[${nextTopicIdx}].id; switchView('game'); }" title="Tıkla ve sıradaki bileşeni kodla!" style="margin-top: 6px;">
+          <div class="slot-plus-icon">+</div>
+          <div class="slot-meta">
+            <div class="slot-title">Sıradaki İnşa Yuvası: ${nextTopic.title}</div>
+            <div class="slot-hint">Bu parçayı projene monte etmek için tıkla ve alıştırmayı çöz</div>
+          </div>
+        </div>
+      `;
+    }
+
+    innerHTML += `</div>`;
+    viewportEl.innerHTML = innerHTML;
+    return;
+  }
+
+  // Aşama 0: Henüz hiçbir konu bitmediğinde
   if (completedCount === 0) {
-    svgHTML += `
-      <!-- Issız Harabe Taşlar ve Kuru Çatlaklar -->
-      ${isoBox(200, 160, 22, 12, 16, '#94a3b8', '#64748b', '#475569')}
-      ${isoBox(330, 150, 26, 14, 12, '#94a3b8', '#64748b', '#475569')}
-      ${isoBox(270, 190, 18, 10, 10, '#64748b', '#475569', '#334155')}
-      
-      <path d="M 230 180 L 250 195 L 290 185 M 310 140 L 340 155" stroke="#475569" stroke-width="2" stroke-dasharray="3,3" />
-      <text x="270" y="245" font-size="12" font-weight="900" fill="#334155" text-anchor="middle" letter-spacing="1">ISSIZ HARABE ADASI</text>
+    viewportEl.innerHTML = `
+      <div class="live-proj-empty">
+        <div class="live-proj-empty-icon">${curLang.icon || '🚀'}</div>
+        <div class="live-proj-empty-title">Proje Henüz Başlatılmadı</div>
+        <div class="live-proj-empty-desc">
+          Sağdaki projeyi sen inşa edeceksin! İlk konudaki görevi çözerek sayfa iskeletini buraya kur.
+        </div>
+        <button class="live-action-btn" style="margin-top: 14px;" type="button" onclick="const topics = getLanguageTopics('${langId}'); if(topics.length){ state.selectedNodeId = topics[0].id; switchView('game'); }">
+          <span>🛠️ 1. Bileşeni Kodlamaya Başla</span>
+        </button>
+      </div>
+    `;
+    return;
+  }
+
+  // Aşama 1+: Kullanıcının bizzat inşa ettiği parçalar ve inşa bekleyen yuvalar (Slots)
+  let innerHTML = `<div class="live-proj-container">`;
+
+  // 1. Header Bileşeni (completedCount >= 1 ise kullanıcının ürettiği header, değilse slot)
+  if (completedCount >= 1 || proj.hasHeader) {
+    innerHTML += `
+      <div class="live-proj-header user-built-highlight">
+        <div class="live-proj-brand">
+          <span>${proj.actor || curLang.icon || '⚡'}</span>
+          <span>${escapeCardHtml(proj.title || `${curLang.name} Arcade Hub`)}</span>
+        </div>
+        <div class="live-proj-badge">v1.${completedCount} • CANLI</div>
+      </div>
+    `;
+  } else {
+    innerHTML += `
+      <div class="live-proj-slot slot-active" onclick="const topics = getLanguageTopics('${langId}'); if(topics.length){ state.selectedNodeId = topics[0].id; switchView('game'); }" title="1. Konuyu çöz ve başlığını ekle">
+        <div class="slot-plus-icon">+</div>
+        <div class="slot-meta">
+          <div class="slot-title">1. Adım: Web İskeleti & Başlık Yuvası</div>
+          <div class="slot-hint">Sayfa temelini kodlayarak projeni başlat</div>
+        </div>
+      </div>
     `;
   }
 
-  // Seviye 1+: 3D Çiftlik Evi, Çitler ve Giriş Yolu (🏡)
-  if (completedCount >= 1) {
-    svgHTML += `
-      <!-- Ana İzometrik Asfalt Cadde -->
-      <polygon points="120,205 160,230 420,80 380,55" fill="#334155" stroke="#475569" stroke-width="1" />
-      <line x1="140" y1="218" x2="400" y2="68" stroke="#f8fafc" stroke-width="2" stroke-dasharray="8,8" />
+  // 2. Stage / Karakter Arena (completedCount >= 2 ise sahne, değilse slot)
+  if (completedCount >= 2 || proj.hasHero) {
+    let actorChar = proj.actor || '👾';
+    if (!proj.actor) {
+      if (langId === 'python') actorChar = '🐍';
+      else if (langId === 'javascript' || langId === 'react') actorChar = '⚡';
+      else if (langId === 'sql') actorChar = '💾';
+      else if (langId === 'css' || langId === 'bootstrap') actorChar = '🎨';
+      else if (langId === 'html') actorChar = '🌐';
+    }
 
-      <!-- Çiftlik Evi (3D Ahşap Villa) -->
-      ${isoBox(110, 150, 24, 14, 28, '#fef08a', '#d97706', '#b45309')}
-      <!-- Çatı -->
-      <polygon points="110,105 138,122 110,138 82,122" fill="#ef4444" stroke="#b91c1c" stroke-width="1" />
-      
-      <!-- Su Kuyusu & Çitler -->
-      ${isoBox(75, 170, 8, 5, 8, '#cbd5e1', '#64748b', '#475569')}
-      ${isoTree(60, 145, 0.9)}
-      ${isoTree(145, 125, 0.8)}
+    innerHTML += `
+      <div class="live-proj-stage user-built-highlight">
+        <div class="live-proj-stage-inner">
+          <div class="live-proj-actor" id="live-proj-actor" role="button" title="Zıplatmak için tıkla!">${actorChar}</div>
+          <div class="live-proj-title">${escapeCardHtml(proj.title || `${curLang.name} İnteraktif Oyun Sahnesi`)}</div>
+          <div class="live-proj-desc">Yazdığın kodlarla derlenen canlı nesne sahnesi.</div>
+        </div>
+      </div>
+    `;
+  } else {
+    innerHTML += `
+      <div class="live-proj-slot slot-active" onclick="const topics = getLanguageTopics('${langId}'); if(topics.length > 1){ state.selectedNodeId = topics[1].id; switchView('game'); }" title="2. Konuyu çöz ve ana başlığı yerleştir">
+        <div class="slot-plus-icon">+</div>
+        <div class="slot-meta">
+          <div class="slot-title">2. Adım: Ana Başlık & Sahne Yuvası</div>
+          <div class="slot-hint">&lt;h1&gt; ve tanıtım metnini kodlayarak sahneyi kur</div>
+        </div>
+      </div>
     `;
   }
 
-  // Seviye 2+: Elektrik Şebekesi & 3D Sokak Lambaları (💡)
-  if (completedCount >= 2) {
-    svgHTML += `
-      <!-- Trafo İstasyonu -->
-      ${isoBox(165, 185, 16, 10, 18, '#fbbf24', '#d97706', '#92400e')}
-      
-      <!-- 3D Işık Saçan Sokak Lambaları -->
-      <g>
-        <line x1="160" y1="205" x2="160" y2="185" stroke="#1e293b" stroke-width="2.5" />
-        <circle cx="160" cy="185" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
-        
-        <line x1="280" y1="135" x2="280" y2="115" stroke="#1e293b" stroke-width="2.5" />
-        <circle cx="280" cy="115" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
-        
-        <line x1="370" y1="85" x2="370" y2="65" stroke="#1e293b" stroke-width="2.5" />
-        <circle cx="370" cy="65" r="4.5" fill="#fef08a" filter="drop-shadow(0 0 4px #fef08a)" />
-      </g>
+  // 3. Aksiyon Butonları (completedCount >= 4 ise butonlar, değilse slot)
+  if (completedCount >= 4 || proj.hasButton) {
+    innerHTML += `
+      <div class="live-proj-controls user-built-highlight">
+        <button class="live-action-btn" id="btn-live-play" type="button">
+          <span>▶</span>
+          <span>${escapeCardHtml(proj.buttonText || 'Karakteri Zıplat')}</span>
+        </button>
+        <button class="live-action-btn" id="btn-live-boost" type="button" style="background: linear-gradient(135deg, #10b981, #059669);">
+          <span>⚡</span>
+          <span>Güç Artır</span>
+        </button>
+      </div>
+    `;
+  } else {
+    innerHTML += `
+      <div class="live-proj-slot" onclick="const topics = getLanguageTopics('${langId}'); if(topics.length > 3){ state.selectedNodeId = topics[3].id; switchView('game'); }" title="4. Konuyu çöz ve butonunu projeye ekle">
+        <div class="slot-plus-icon">+</div>
+        <div class="slot-meta">
+          <div class="slot-title">4. Adım: İnteraktif Aksiyon Butonu</div>
+          <div class="slot-hint">&lt;button&gt; etiketini kodlayarak kullanıcı etkileşimi sağla</div>
+        </div>
+      </div>
     `;
   }
 
-  // Seviye 3+: Su Arıtma & 3D Su Kulesi (🚰)
-  if (completedCount >= 3) {
-    svgHTML += `
-      <!-- 3D Mavi Su Kulesi -->
-      ${isoBox(215, 105, 16, 10, 36, '#38bdf8', '#0284c7', '#0369a1')}
-      <ellipse cx="215" cy="65" rx="14" ry="7" fill="#0284c7" />
-      ${isoTree(190, 85, 0.9)}
+  // 4. Skor & İstatistik Şeridi (completedCount >= 7 ise sayaçlar, değilse slot)
+  if (completedCount >= 7 || proj.hasStats) {
+    innerHTML += `
+      <div class="live-proj-stats-row user-built-highlight">
+        <div class="live-stat-box">
+          <div class="live-stat-val" id="live-stat-score">${proj.score || 1250}</div>
+          <div class="live-stat-lbl">Canlı Skor</div>
+        </div>
+        <div class="live-stat-box">
+          <div class="live-stat-val">60 FPS</div>
+          <div class="live-stat-lbl">Render Hızı</div>
+        </div>
+        <div class="live-stat-box">
+          <div class="live-stat-val" id="live-stat-level">Lv. ${proj.powerLevel || 1}</div>
+          <div class="live-stat-lbl">Sistem Gücü</div>
+        </div>
+      </div>
+    `;
+  } else {
+    innerHTML += `
+      <div class="live-proj-slot" onclick="const topics = getLanguageTopics('${langId}'); if(topics.length > 6){ state.selectedNodeId = topics[6].id; switchView('game'); }" title="7. Konuyu çöz ve sayaçları bağla">
+        <div class="slot-plus-icon">+</div>
+        <div class="slot-meta">
+          <div class="slot-title">7. Adım: Canlı Skor & Metrik Tablosu</div>
+          <div class="slot-hint">Veri alanlarını ve puan tablosunu projeye bağla</div>
+        </div>
+      </div>
     `;
   }
 
-  // Seviye 4+: Şehir Parkı, Fıskiye ve Ağaçlık (🌳)
-  if (completedCount >= 4) {
-    svgHTML += `
-      <!-- 3D Park Alanı Tabanı -->
-      <polygon points="270,170 330,205 270,240 210,205" fill="#4ade80" stroke="#16a34a" stroke-width="1.5" />
-      
-      <!-- Fıskiye Havuzu -->
-      <ellipse cx="270" cy="205" rx="18" ry="9" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
-      <circle cx="270" cy="203" r="4" fill="#ffffff" />
-      
-      ${isoTree(230, 195, 1)}
-      ${isoTree(310, 195, 1)}
-      ${isoTree(270, 230, 0.85)}
+  // 5. Tamamlanma Başarısı (completedCount >= safeTotal)
+  if (completedCount >= safeTotal) {
+    innerHTML += `
+      <div class="live-proj-completed-banner">
+        <span>🎉 <strong>Tebrikler!</strong> Tüm bileşenler senin kodlarınla derlendi ve canlı yayında!</span>
+      </div>
     `;
   }
 
-  // Seviye 5+: 3D Modern İş Kuleleri & Rezidanslar (🏢)
-  if (completedCount >= 5) {
-    svgHTML += `
-      <!-- Gökdelen 1 (Cam Kule) -->
-      ${isoBox(335, 130, 28, 16, 85, '#60a5fa', '#2563eb', '#1d4ed8')}
-      <!-- Çatı Helikopter Pisti -->
-      <polygon points="335,40 355,51 335,62 315,51" fill="#f8fafc" stroke="#dc2626" stroke-width="2" />
-      <text x="335" y="55" font-size="10" font-weight="900" fill="#dc2626" text-anchor="middle">H</text>
-      
-      <!-- Gökdelen 2 (Yan Blok) -->
-      ${isoBox(385, 155, 22, 12, 55, '#93c5fd', '#3b82f6', '#1d4ed8')}
+  innerHTML += `</div>`;
+  viewportEl.innerHTML = innerHTML;
+
+  // Etkileşim dinleyicileri (Butonlara tıklayınca canlı tepki)
+  const actor = document.getElementById('live-proj-actor');
+  const btnPlay = document.getElementById('btn-live-play');
+  const btnBoost = document.getElementById('btn-live-boost');
+  const scoreVal = document.getElementById('live-stat-score');
+  const levelVal = document.getElementById('live-stat-level');
+
+  const triggerJump = () => {
+    if (actor) {
+      actor.classList.remove('jump-anim');
+      void actor.offsetWidth; // reflow
+      actor.classList.add('jump-anim');
+    }
+    proj.score = (proj.score || 1250) + 50;
+    saveUserProjects();
+    if (scoreVal) scoreVal.textContent = proj.score;
+    if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+  };
+
+  if (actor) actor.addEventListener('click', triggerJump);
+  if (btnPlay) btnPlay.addEventListener('click', triggerJump);
+
+  if (btnBoost) {
+    btnBoost.addEventListener('click', () => {
+      proj.powerLevel = (proj.powerLevel || 1) + 1;
+      proj.score = (proj.score || 1250) + 100;
+      saveUserProjects();
+      if (levelVal) levelVal.textContent = `Lv. ${proj.powerLevel}`;
+      if (scoreVal) scoreVal.textContent = proj.score;
+      triggerJump();
+    });
+  }
+}
+
+// =========================================================================
+// 2. DEVDECK 3D GELİŞTİRİCİ KARTI MOTORU (DevDeck Card Engine)
+// =========================================================================
+const DEVDECK_DATABASE = {
+  html: {
+    title: 'HTML5 DOM Mimarı',
+    role: 'Web Yapı & Semantik Ustası',
+    icon: '🌐',
+    color: '#e34f26',
+    cheats: [
+      { label: 'Temel HTML5 İskeleti', code: '<!DOCTYPE html>\n<html lang="tr">\n<head><title>App</title></head>\n<body>\n  <h1>Merhaba Dünya</h1>\n</body>\n</html>' },
+      { label: 'Semantik Bölümler', code: '<header>...</header>\n<nav><a href="#">Link</a></nav>\n<main><article>...</article></main>\n<footer>...</footer>' },
+      { label: 'Form & Buton Örneği', code: '<form action="/submit" method="POST">\n  <input type="text" placeholder="Adınız" required />\n  <button type="submit">Gönder</button>\n</form>' }
+    ]
+  },
+  css: {
+    title: 'CSS3 Stil Büyücüsü',
+    role: 'Arayüz Tasarımı & Animasyon Gurusu',
+    icon: '🎨',
+    color: '#264de4',
+    cheats: [
+      { label: 'Flexbox Merkezleme', code: '.ortala {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}' },
+      { label: 'Responsive Grid', code: '.grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));\n  gap: 16px;\n}' },
+      { label: 'Modern Cam Efekti (Glassmorphism)', code: '.glass {\n  background: rgba(255,255,255,0.1);\n  backdrop-filter: blur(12px);\n  border: 1px solid rgba(255,255,255,0.2);\n}' }
+    ]
+  },
+  javascript: {
+    title: 'JS Fonksiyon Sihirbazı',
+    role: 'Modern ES6+ & Async/Await Lideri',
+    icon: '⚡',
+    color: '#f7df1e',
+    cheats: [
+      { label: 'Async API İsteği', code: 'async function veriCek() {\n  const res = await fetch("/api/data");\n  const data = await res.json();\n  return data;\n}' },
+      { label: 'Dizi Metodları', code: 'const ciftler = [1, 2, 3, 4]\n  .filter(n => n % 2 === 0)\n  .map(n => n * 10);' },
+      { label: 'Event Dinleyici', code: 'document.querySelector("#btn")\n  .addEventListener("click", (e) => {\n    console.log("Tıklandı!", e.target);\n  });' }
+    ]
+  },
+  python: {
+    title: 'Python Veri Simyacısı',
+    role: 'Algoritma, Otomasyon & Veri Ustası',
+    icon: '🐍',
+    color: '#3776ab',
+    cheats: [
+      { label: 'List Comprehension', code: 'sayilar = [x**2 for x in range(10) if x % 2 == 0]' },
+      { label: 'Güvenli Dosya Okuma', code: 'with open("dosya.txt", "r", encoding="utf-8") as f:\n    icerik = f.read()' },
+      { label: 'Sözlük (Dictionary) Metodları', code: 'user = {"ad": "Ali", "puan": 95}\nfor key, val in user.items():\n    print(f"{key}: {val}")' }
+    ]
+  },
+  sql: {
+    title: 'SQL Veri Kaptanı',
+    role: 'İlişkisel Veritabanı & Sorgu Mimarı',
+    icon: '💾',
+    color: '#00758f',
+    cheats: [
+      { label: 'Filtreleme & Sıralama', code: 'SELECT id, ad, puan\nFROM ogrenciler\nWHERE puan >= 70\nORDER BY puan DESC\nLIMIT 10;' },
+      { label: 'Tablo Birleştirme (JOIN)', code: 'SELECT u.ad, COUNT(s.id) AS siparis_sayisi\nFROM users u\nLEFT JOIN siparisler s ON u.id = s.user_id\nGROUP BY u.ad;' },
+      { label: 'Veri Ekleme / Güncelleme', code: 'UPDATE users SET bakiye = bakiye + 100 WHERE id = 1;\nINSERT INTO logs (action) VALUES ("Giriş Yapıldı");' }
+    ]
+  },
+  react: {
+    title: 'React Bileşen Mimarı',
+    role: 'Modern UI & Custom Hooks Uzmanı',
+    icon: '⚛️',
+    color: '#61dafb',
+    cheats: [
+      { label: 'useState Hook', code: 'const [count, setCount] = useState(0);\n<button onClick={() => setCount(c => c + 1)}>Sayaç: {count}</button>' },
+      { label: 'useEffect Hook', code: 'useEffect(() => {\n  console.log("Sayfa yüklendi");\n  return () => console.log("Temizlendi");\n}, []);' }
+    ]
+  }
+};
+
+function renderDevDeckCard(langId, completedCount, totalCount = 14) {
+  const frontEl = document.getElementById('devdeck-card-front');
+  const backEl = document.getElementById('devdeck-card-back');
+  const pillBadge = document.getElementById('devdeck-pill-badge');
+  const curLang = LANGUAGES_DB.find(l => l.id === langId) || { name: 'Yazılım', icon: '💻' };
+  const deckInfo = DEVDECK_DATABASE[langId] || {
+    title: `${curLang.name} Geliştirici Kartı`,
+    role: 'Kodlama Yetkinlik Belgesi',
+    icon: curLang.icon || '💻',
+    color: '#38bdf8',
+    cheats: [
+      { label: 'Temel Kodlama Sözdizimi', code: `// ${curLang.name} Çözüm Şablonu\nfunction start() {\n  return "Başarılı!";\n}` }
+    ]
+  };
+
+  const safeTotal = totalCount || 14;
+  const isMaster = completedCount >= safeTotal;
+  const percent = Math.min(100, Math.round((completedCount / safeTotal) * 100));
+
+  if (pillBadge) {
+    pillBadge.textContent = isMaster ? '🏆 USTA' : `%${percent}`;
+  }
+
+  // ÖN YÜZ
+  if (frontEl) {
+    frontEl.innerHTML = `
+      <div class="card-front-top">
+        <span class="card-edition-badge">DEVDECK • SEZON 1</span>
+        <span class="card-status-pill ${isMaster ? 'unlocked' : 'locked'}">
+          ${isMaster ? '🏆 USTALIK AÇILDI' : `🔒 %${percent} TAMAMLANDI`}
+        </span>
+      </div>
+
+      <div class="card-front-center">
+        <div class="card-hero-icon">${deckInfo.icon}</div>
+        <div class="card-hero-title">${deckInfo.title}</div>
+        <div class="card-hero-role">${deckInfo.role}</div>
+      </div>
+
+      <div class="card-front-bottom">
+        <div class="card-progress-labels">
+          <span>Yolculuk İlerlemesi</span>
+          <span>${completedCount} / ${safeTotal} Konu</span>
+        </div>
+        <div class="card-progress-bar-bg">
+          <div class="card-progress-bar-fill" style="width: ${percent}%;"></div>
+        </div>
+        <div class="card-flip-prompt">
+          <span>🔄 Kartı Çevir & Kod Rehberini Gör</span>
+        </div>
+      </div>
     `;
   }
 
-  // Seviye 6+: 3D Sinema & Gösteri Merkezi (🎬)
-  if (completedCount >= 6) {
-    svgHTML += `
-      <!-- Sinema Binası -->
-      ${isoBox(215, 235, 26, 14, 30, '#f43f5e', '#be123c', '#881337')}
-      <!-- Tabela -->
-      <polygon points="215,198 238,210 215,222 192,210" fill="#fde047" />
-      <text x="215" y="213" font-size="7" font-weight="900" fill="#881337" text-anchor="middle">🎬 SİNEMA</text>
-    `;
-  }
+  // ARKA YÜZ (HIZLI KOD REHBERİ)
+  if (backEl) {
+    let cheatsHTML = deckInfo.cheats.map(c => `
+      <div class="cheat-code-block">
+        <div class="cheat-code-label">⚡ ${c.label}</div>
+        <div class="cheat-code-text">${escapeCardHtml(c.code)}</div>
+      </div>
+    `).join('');
 
-  // Seviye 7+: 3D Lunapark & Dönme Dolap (🎡)
-  if (completedCount >= 7) {
-    svgHTML += `
-      <!-- 3D Dönme Dolap Grubu -->
-      <g transform="translate(435, 110)">
-        <circle cx="0" cy="-35" r="28" stroke="#e11d48" stroke-width="2.5" fill="none" stroke-dasharray="6,4" />
-        <line x1="0" y1="-63" x2="0" y2="-7" stroke="#fbbf24" stroke-width="1.5" />
-        <line x1="-28" y1="-35" x2="28" y2="-35" stroke="#fbbf24" stroke-width="1.5" />
-        <line x1="0" y1="-35" x2="-14" y2="10" stroke="#475569" stroke-width="3" />
-        <line x1="0" y1="-35" x2="14" y2="10" stroke="#475569" stroke-width="3" />
-        
-        <!-- Kabinler -->
-        <circle cx="0" cy="-63" r="4" fill="#38bdf8" />
-        <circle cx="0" cy="-7" r="4" fill="#38bdf8" />
-        <circle cx="-28" cy="-35" r="4" fill="#38bdf8" />
-        <circle cx="28" cy="-35" r="4" fill="#38bdf8" />
-        <text x="0" y="20" font-size="7.5" font-weight="900" fill="#e11d48" text-anchor="middle">🎡 LUNAPARK</text>
-      </g>
+    backEl.innerHTML = `
+      <div class="card-back-header">
+        <div class="card-back-title">
+          <span>${deckInfo.icon}</span>
+          <span>${curLang.name} Hızlı Kod Rehberi</span>
+        </div>
+        <button class="btn-copy-sheet" id="btn-copy-devdeck-sheet" type="button" title="Panoya Kopyala">
+          📋 Kopyala
+        </button>
+      </div>
+      <div class="card-cheat-body">
+        ${cheatsHTML}
+      </div>
     `;
-  }
 
-  // Seviye 8+: 3D Şehir Hastanesi & Ambulans (🏥)
-  if (completedCount >= 8) {
-    svgHTML += `
-      <!-- Şehir Hastanesi -->
-      ${isoBox(160, 120, 30, 16, 42, '#ffffff', '#e2e8f0', '#cbd5e1')}
-      <!-- Kırmızı Çapraz (+) -->
-      <polygon points="160,70 178,80 160,90 142,80" fill="#ef4444" />
-      <text x="160" y="83" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">+</text>
-      
-      <!-- Mini Ambulans -->
-      ${isoBox(190, 150, 9, 5, 6, '#ffffff', '#ef4444', '#dc2626')}
-    `;
+    const btnCopy = document.getElementById('btn-copy-devdeck-sheet');
+    if (btnCopy) {
+      btnCopy.addEventListener('click', (e) => {
+        e.stopPropagation(); // kartın tekrar dönmesini engeller
+        const textToCopy = deckInfo.cheats.map(c => `// ${c.label}\n${c.code}`).join('\n\n');
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          btnCopy.textContent = '✓ Kopyalandı!';
+          setTimeout(() => { btnCopy.textContent = '📋 Kopyala'; }, 2000);
+          if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+        }).catch(() => {
+          btnCopy.textContent = '✓ Seçildi!';
+        });
+      });
+    }
   }
+}
 
-  // Seviye 9+: 3D Alışveriş & Ticaret Merkezi (🛍️)
-  if (completedCount >= 9) {
-    svgHTML += `
-      <!-- AVM Blokları -->
-      ${isoBox(345, 205, 32, 18, 28, '#c084fc', '#9333ea', '#6b21a8')}
-      <!-- Cam Kubbe -->
-      <ellipse cx="345" cy="172" rx="14" ry="7" fill="#38bdf8" opacity="0.85" />
-      <text x="345" y="195" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">🛍️ AVM</text>
-    `;
-  }
-
-  // Seviye 10+: 3D Hızlı Tren Garı & Raylar (🚄)
-  if (completedCount >= 10) {
-    svgHTML += `
-      <!-- Tren Rayları -->
-      <polygon points="410,240 445,260 500,225 465,205" fill="#64748b" />
-      <line x1="420" y1="248" x2="480" y2="213" stroke="#f8fafc" stroke-width="2" stroke-dasharray="4,4" />
-      
-      <!-- Tren Garı -->
-      ${isoBox(460, 200, 24, 14, 22, '#38bdf8', '#0284c7', '#0369a1')}
-      <!-- Hızlı Tren Vagonu -->
-      ${isoBox(445, 235, 18, 7, 9, '#ffffff', '#0284c7', '#0369a1')}
-    `;
-  }
-
-  // Seviye 11+: 3D Uydu & Telekom Kulesi (📡)
-  if (completedCount >= 11) {
-    svgHTML += `
-      <!-- Telekom Çelik Kulesi -->
-      <g transform="translate(100, 75)">
-        <line x1="0" y1="25" x2="0" y2="-45" stroke="#e11d48" stroke-width="3" />
-        <line x1="-12" y1="25" x2="0" y2="-45" stroke="#cbd5e1" stroke-width="1.5" />
-        <line x1="12" y1="25" x2="0" y2="-45" stroke="#cbd5e1" stroke-width="1.5" />
-        <ellipse cx="0" cy="-20" rx="10" ry="5" fill="#f8fafc" stroke="#94a3b8" />
-        <circle cx="0" cy="-45" r="4.5" fill="#ef4444" filter="drop-shadow(0 0 6px #ef4444)" />
-        <text x="0" y="38" font-size="7" font-weight="900" fill="#e11d48" text-anchor="middle">📡 5G</text>
-      </g>
-    `;
-  }
-
-  // Seviye 12+: 3D Uluslararası Liman & Konteyner Terminali (🚢)
-  if (completedCount >= 12) {
-    svgHTML += `
-      <!-- Liman İskelesi & Su -->
-      <polygon points="50,170 10,195 70,230 110,205" fill="#0284c7" opacity="0.9" />
-      
-      <!-- Konteyner Blokları -->
-      ${isoBox(75, 200, 10, 5, 8, '#f97316', '#c2410c', '#9a3412')}
-      ${isoBox(90, 210, 10, 5, 8, '#22c55e', '#15803d', '#166534')}
-      ${isoBox(75, 192, 10, 5, 8, '#3b82f6', '#1d4ed8', '#1e40af')}
-      
-      <!-- 3D Vinç -->
-      <line x1="50" y1="185" x2="50" y2="155" stroke="#eab308" stroke-width="3" />
-      <line x1="40" y1="155" x2="70" y2="155" stroke="#eab308" stroke-width="2.5" />
-    `;
-  }
-
-  // Seviye 13+: 3D Yönetim Sarayı / Hükümet Konağı (🏛️)
-  if (completedCount >= 13) {
-    svgHTML += `
-      <!-- Görkemli Saray -->
-      ${isoBox(270, 75, 36, 18, 45, '#fef08a', '#eab308', '#ca8a04')}
-      <!-- Kubbe -->
-      <ellipse cx="270" cy="25" rx="16" ry="9" fill="#fde047" stroke="#b45309" stroke-width="1.5" />
-      <text x="270" y="52" font-size="8" font-weight="900" fill="#78350f" text-anchor="middle">🏛️ SARAY</text>
-    `;
-  }
-
-  // Seviye 14: 3D Teknoloji Vadisi & Roket Fırlatma Rampası (🚀)
-  if (completedCount >= 14) {
-    svgHTML += `
-      <!-- Roket Platformu -->
-      ${isoBox(450, 60, 22, 12, 16, '#0f172a', '#1e293b', '#334155')}
-      
-      <!-- 3D Uzay Roketi -->
-      <g transform="translate(450, 45)">
-        <polygon points="0,-42 7,-15 -7,-15" fill="#f8fafc" stroke="#dc2626" stroke-width="1" />
-        <rect x="-6" y="-15" width="12" height="26" fill="#f8fafc" stroke="#475569" />
-        <polygon points="-6,11 -12,20 -6,18" fill="#ef4444" />
-        <polygon points="6,11 12,20 6,18" fill="#ef4444" />
-        <!-- Alev Efekti -->
-        <polygon points="-4,18 0,30 4,18" fill="#f97316" filter="drop-shadow(0 0 6px #f97316)" />
-        <text x="0" y="-48" font-size="8.5" font-weight="900" fill="#dc2626" text-anchor="middle">🚀 HAZIR</text>
-      </g>
-    `;
-  }
-
-  svg.innerHTML = svgHTML;
+// Geriye dönük uyumluluk köprüsü
+function renderCityVisual(completedCount) {
+  const curLangId = state.selectedLangId || 'html';
+  const topics = getLanguageTopics(curLangId);
+  renderProjectShowcase(curLangId, completedCount, topics.length);
+  renderDevDeckCard(curLangId, completedCount, topics.length);
 }
 
 // Konu Yol Haritasını (Timeline) Ekrana Basan Fonksiyon
@@ -1490,7 +2532,7 @@ function renderSkillTree() {
 
   if (treeLangIcon) treeLangIcon.textContent = curLang.icon || '💻';
   if (treeLangTitle) treeLangTitle.textContent = `${curLang.name}`;
-  if (treeLangDesc) treeLangDesc.textContent = `Gelişen Şehir & Konu Haritası (${topics.length} Konu)`;
+  if (treeLangDesc) treeLangDesc.textContent = `Canlı Proje & Konu Haritası (${topics.length} Konu)`;
   if (roadmapXpCount) roadmapXpCount.textContent = `${state.xp || 0} XP`;
 
   // Tamamlanan ve Aktif konu hesaplama
@@ -1500,8 +2542,9 @@ function renderSkillTree() {
   if (treeProgressFill) treeProgressFill.style.width = `${progressPercent}%`;
   if (treeProgressText) treeProgressText.textContent = `${doneCount} / ${topics.length} Konu Tamamlandı (%${progressPercent})`;
 
-  // Şehir Görselini Çiz
-  renderCityVisual(doneCount);
+  // Canlı Proje & DevDeck Kartını Çiz
+  renderProjectShowcase(curLang.id, doneCount, topics.length);
+  renderDevDeckCard(curLang.id, doneCount, topics.length);
 
   // Dikey Konu Yol Haritasını Oluştur
   const container = document.getElementById('topics-list-container') || document.getElementById('roadmap-timeline-list');
@@ -1542,15 +2585,18 @@ function renderSkillTree() {
       badgeClass = 'badge-active';
     }
 
+    const safeTitle = (topic.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const safeDesc = (topic.desc || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
     row.innerHTML = `
       ${lineHTML}
       <div class="timeline-node ${nodeClass}">${nodeIcon}</div>
       <div class="timeline-card ${isActive ? 'card-active' : ''} ${isLocked ? 'card-locked' : ''}">
         <div class="timeline-card-header">
-          <h3 class="timeline-topic-title">${topic.title}</h3>
+          <h3 class="timeline-topic-title">${safeTitle}</h3>
           <span class="timeline-status-badge ${badgeClass}">${badgeText}</span>
         </div>
-        <p class="timeline-topic-desc">${topic.desc}</p>
+        <p class="timeline-topic-desc">${safeDesc}</p>
         <div class="timeline-reward-tag">
           <span>🎁 Ödül:</span>
           <strong>${topic.reward}</strong>
@@ -6643,15 +7689,27 @@ CHALLENGES_DATABASE.j14 = CHALLENGES_DATABASE.java_14;
 
 let currentChallengeIndex = 0;
 let currentChallengesList = [];
+let isCurrentSessionReplay = false;
 
 function loadNodeFarmGame() {
   const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
   const topicId = state.selectedNodeId || `${curLang.id}_1` || 'python_1';
 
+  // Bu modülün daha önce tamamlanıp tamamlanmadığını tespit et (Tekrar modu kontrolü)
+  const topics = getLanguageTopics(curLang.id);
+  const curTopic = topics.find(t => t.id === topicId);
+  isCurrentSessionReplay = !!((curTopic && curTopic.status === 'done') || (state.completedNodes && state.completedNodes.has(topicId)));
+
   currentChallengesList = CHALLENGES_DATABASE[topicId] || CHALLENGES_DATABASE.python_1;
   currentChallengeIndex = 0;
 
   renderCurrentChallenge();
+
+  if (isCurrentSessionReplay) {
+    setTimeout(() => {
+      logToTerminal(`🔁 <strong>Tekrar Modu:</strong> Bu modülü daha önce tamamladın. Tekrar çözerek pratik yapabilirsin, ancak XP yalnızca bir kez kazanılır.`, 'info');
+    }, 150);
+  }
 }
 
 function renderCurrentChallenge() {
@@ -6671,12 +7729,18 @@ function renderCurrentChallenge() {
   const titleEl = document.getElementById('task-title') || document.getElementById('coding-topic-title');
   const descEl = document.getElementById('task-desc') || document.getElementById('challenge-prompt');
 
-  if (badgeEl) badgeEl.textContent = `Görev #${challenge.stepNum} (${challenge.stepNum}/${challenge.totalSteps})`;
+  if (badgeEl) badgeEl.textContent = `Görev #${challenge.stepNum}`;
   if (diffEl) {
     diffEl.textContent = challenge.stepNum <= 2 ? 'Başlangıç' : (challenge.stepNum <= 4 ? 'Orta Düzey' : 'İleri Seviye');
   }
-  if (titleEl) titleEl.textContent = challenge.title;
+  if (titleEl) titleEl.textContent = challenge.title ? challenge.title.replace(/^[0-9]+\.\s*Soru:\s*/i, '') : '';
   if (descEl) descEl.innerHTML = challenge.prompt;
+
+  // Snippet Accordion'ı yeni adıma geçildiğinde kapat
+  const snippetDetails = document.querySelector('.snippets-accordion');
+  if (snippetDetails) {
+    snippetDetails.removeAttribute('open');
+  }
 
   // 3. Sol Panel: Snippet Hapları (Tıkla ve Editöre Ekle)
   const snippetsContainer = document.getElementById('quick-snippets-container') || document.getElementById('quick-keys-bar');
@@ -6695,9 +7759,15 @@ function renderCurrentChallenge() {
     });
   }
 
-  // 4. Sol Panel: Dinamik Dil / Konu Teorisi & Kuralları
+  // 4. Sol Panel: Dinamik Dil / Konu Teorisi & Kuralları (HTML, CSS ve Bootstrap için gizlenir)
+  const theoryBoxEl = document.querySelector('.theory-box');
+  const isWebFrontend = curLang.id === 'html' || curLang.id === 'css' || curLang.id === 'bootstrap';
+  if (theoryBoxEl) {
+    theoryBoxEl.style.display = isWebFrontend ? 'none' : 'block';
+  }
+
   const theoryListEl = document.getElementById('theory-list');
-  if (theoryListEl) {
+  if (theoryListEl && !isWebFrontend) {
     theoryListEl.innerHTML = '';
     const reviewData = TOPIC_REVIEWS_DB[topicId] || TOPIC_REVIEWS_DB.python_1;
     const rules = (reviewData && reviewData.syntaxRules && reviewData.syntaxRules.length > 0)
@@ -6727,6 +7797,9 @@ function renderCurrentChallenge() {
 
   // 7. Satır Numaralarını Güncelle
   updateLineNumbers();
+
+  // 8. Terminal Canlı Önizlemesini Hazırla
+  renderTerminalLivePreview(curLang.id);
 }
 
 function insertTextAtCursor(input, text) {
@@ -6788,9 +7861,24 @@ function runCurrentCode() {
     sfx.playSuccess();
     logToTerminal(`✅ ${result.msg}`, 'success');
     
-    state.xp += challenge.stepNum * 40;
-    state.harvestCount += 1;
-    updateGlobalStats();
+    // Kullanıcının çözümünden canlı projeye bileşen monte et
+    const updated = extractUserComponent(state.selectedLangId, userCode, challenge);
+    if (updated) {
+      logToTerminal(`✨ <strong>Canlı Proje Güncellendi:</strong> Yazdığın bileşen projene başarıyla monte edildi!`, 'success');
+      renderTerminalLivePreview(state.selectedLangId);
+    }
+
+    const stepKey = `${state.selectedNodeId}_step_${challenge.stepNum}`;
+    const alreadyDoneStep = state.completedChallenges && state.completedChallenges.has(stepKey);
+
+    if (!isCurrentSessionReplay && !alreadyDoneStep) {
+      if (state.completedChallenges) state.completedChallenges.add(stepKey);
+      state.xp += challenge.stepNum * 40;
+      state.harvestCount += 1;
+      updateGlobalStats();
+    } else {
+      logToTerminal(`ℹ️ <strong>Tekrar Çözümü:</strong> Bu adım daha önce tamamlandığı için tekrar XP eklenmedi.`, 'info');
+    }
 
     if (currentChallengeIndex + 1 < currentChallengesList.length) {
       currentChallengeIndex += 1;
@@ -6851,11 +7939,7 @@ function updateGlobalStats() {
     let phaseName = '1. Seviye';
     if (doneCount >= 14) phaseName = '7. Seviye (Mega)';
     else if (doneCount >= 12) phaseName = '6. Seviye (Liman)';
-    else if (doneCount >= 9) phaseName = '5. Seviye (Ticaret)';
-    else if (doneCount >= 6) phaseName = '4. Seviye (Kültür)';
-    else if (doneCount >= 3) phaseName = '3. Seviye (Kasaba)';
-    else if (doneCount >= 1) phaseName = '2. Seviye (Yerleşim)';
-    dropCity.textContent = phaseName;
+    dropCity.textContent = `${doneCount} / ${curTopics.length} Parça`;
   }
 }
 
@@ -6864,10 +7948,14 @@ function showVictoryModal() {
   sfx.playVictory();
 
   dom.victoryTitle.textContent = `Tebrikler! Modül Tamamlandı`;
-  dom.victorySubtitle.textContent = `Bu konudaki tüm adımları başarıyla tamamladın ve Şehre yeni bir yapı kazandırdın!`;
+  if (isCurrentSessionReplay) {
+    dom.victorySubtitle.textContent = `Bu modülü tekrar başarıyla tamamladın ve pratik yaptın!`;
+    dom.finalXp.textContent = `+0 XP (Tekrar)`;
+  } else {
+    dom.victorySubtitle.textContent = `Bu konudaki tüm adımları başarıyla tamamladın ve projene yeni bir canlı bileşen kazandırdın!`;
+    dom.finalXp.textContent = `+150 XP`;
+  }
   dom.victoryBadgeText.textContent = `${curLang.name} Modülü Onaylandı`;
-
-  dom.finalXp.textContent = `+150 XP`;
   dom.finalCrops.textContent = `5 Adım`;
   dom.victoryModal.classList.add('open');
 }
@@ -6890,10 +7978,13 @@ const authManager = {
       if (savedUser) this.user = JSON.parse(savedUser);
     } catch (e) {}
 
+    loadUserProjects();
     this.updateHeaderUI();
     if (this.token) {
       this.verifyAndFetchProfile();
       this.loadCloudProgress();
+    } else {
+      resetApplicationProgress();
     }
   },
 
@@ -6911,6 +8002,9 @@ const authManager = {
 
     const cleanEmail = email.trim().toLowerCase();
     const cleanUsername = username.trim();
+
+    // Önceki kullanıcının veya misafir oturumunun verilerini temizle
+    resetApplicationProgress();
 
     try {
       const controller = new AbortController();
@@ -6930,7 +8024,9 @@ const authManager = {
       }
 
       this.setSession(data.token, data.user);
-      this.syncCurrentLocalProgress();
+      loadUserProjects();
+      saveLocalUserProgress(cleanEmail);
+      // DİKKAT: syncCurrentLocalProgress çağrılmıyor! Yeni kullanıcı temiz 0 XP ile başlar.
       return { ok: true, msg: 'Kayıt başarılı! Hoş geldin ' + cleanUsername + ' 🎉', user: data.user, isCloud: true };
     } catch (err) {
       console.warn('Bulut API gecikmeli, yerel modda başlatılıyor:', err.message);
@@ -6940,15 +8036,17 @@ const authManager = {
         username: cleanUsername,
         email: cleanEmail,
         avatar: '🧑‍🌾',
-        totalXp: state.xp || 0
+        totalXp: 0
       };
-      const localToken = 'jwt_' + btoa(cleanEmail) + '_' + Date.now();
+      const localToken = 'local_jwt_' + btoa(cleanEmail) + '_' + Date.now();
 
       const localAccounts = JSON.parse(localStorage.getItem('codegame_local_users') || '{}');
       localAccounts[cleanEmail] = { ...localUser, password };
       localStorage.setItem('codegame_local_users', JSON.stringify(localAccounts));
 
       this.setSession(localToken, localUser);
+      loadUserProjects();
+      saveLocalUserProgress(cleanEmail);
 
       // Arka planda sunucu uyandığında senkronize et
       setTimeout(() => {
@@ -6977,6 +8075,9 @@ const authManager = {
 
     const cleanEmail = email.trim().toLowerCase();
 
+    // Önceki kullanıcının veya misafir oturumunun verilerini temizle
+    resetApplicationProgress();
+
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 6000);
@@ -6995,7 +8096,8 @@ const authManager = {
       }
 
       this.setSession(data.token, data.user);
-      this.loadCloudProgress();
+      loadUserProjects();
+      await this.loadCloudProgress();
       return { ok: true, msg: `Giriş başarılı! Hoş geldin, ${data.user.username} 🚀`, user: data.user, isCloud: true };
     } catch (err) {
       console.warn('Bulut API gecikmeli, yerel hesap kontrol ediliyor:', err.message);
@@ -7004,8 +8106,12 @@ const authManager = {
       const existing = localAccounts[cleanEmail];
 
       if (existing && existing.password === password) {
-        const localToken = 'jwt_' + btoa(cleanEmail) + '_' + Date.now();
+        const localToken = 'local_jwt_' + btoa(cleanEmail) + '_' + Date.now();
         this.setSession(localToken, existing);
+        loadUserProjects();
+        loadLocalUserProgress(cleanEmail);
+        updateGlobalStats();
+        if (typeof renderSkillTree === 'function') renderSkillTree();
         return { ok: true, msg: `Giriş başarılı! Hoş geldin, ${existing.username} 🚀`, user: existing, isCloud: false };
       }
 
@@ -7015,14 +8121,18 @@ const authManager = {
         username: generatedUsername,
         email: cleanEmail,
         avatar: '🧑‍🌾',
-        totalXp: state.xp || 0
+        totalXp: 0
       };
-      const fallbackToken = 'jwt_' + btoa(cleanEmail) + '_' + Date.now();
+      const fallbackToken = 'local_jwt_' + btoa(cleanEmail) + '_' + Date.now();
 
       localAccounts[cleanEmail] = { ...fallbackUser, password };
       localStorage.setItem('codegame_local_users', JSON.stringify(localAccounts));
 
       this.setSession(fallbackToken, fallbackUser);
+      loadUserProjects();
+      saveLocalUserProgress(cleanEmail);
+      updateGlobalStats();
+      if (typeof renderSkillTree === 'function') renderSkillTree();
 
       // Arka planda sunucuya kaydetmeyi dene
       setTimeout(() => {
@@ -7055,18 +8165,25 @@ const authManager = {
   },
 
   logout() {
+    const oldEmail = this.user?.email;
+    if (oldEmail) {
+      saveLocalUserProgress(oldEmail);
+    }
     this.token = null;
     this.user = null;
     try {
       localStorage.removeItem('codegame_token');
       localStorage.removeItem('codegame_user');
     } catch (e) {}
+
+    // İlerlemeyi sıfırla ve misafir moduna geç
+    resetApplicationProgress();
     this.updateHeaderUI();
     if (typeof switchView === 'function') {
       switchView('languages');
     }
     if (typeof logToTerminal === 'function') {
-      logToTerminal('🚪 Oturum kapatıldı. Misafir moduna geçildi.', 'info');
+      logToTerminal('🚪 Oturum kapatıldı. İlerleme temizlendi ve misafir moduna geçildi.', 'info');
     }
   },
 
@@ -7091,6 +8208,9 @@ const authManager = {
   },
 
   async syncCurrentLocalProgress(langId = state.selectedLangId) {
+    if (this.user && this.user.email) {
+      saveLocalUserProgress(this.user.email);
+    }
     if (!this.token || this.token.startsWith('local_jwt_')) return;
     const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
     const topics = getLanguageTopics(curLang.id);
@@ -7124,46 +8244,78 @@ const authManager = {
   },
 
   async loadCloudProgress() {
-    if (!this.token || this.token.startsWith('local_jwt_')) return;
-    try {
-      const res = await fetch(`${API_BASE_URL}/progress`, {
-        headers: { 'Authorization': `Bearer ${this.token}` }
-      });
-      if (!res.ok) return;
-      const data = await res.json();
-      if (data.ok && data.languages) {
-        let totalCloudXp = 0;
+    if (!this.user) return;
 
-        for (const [langKey, langProgress] of Object.entries(data.languages)) {
-          totalCloudXp += (langProgress.xp || 0);
-          if (!userTopicsState[langKey]) {
-            getLanguageTopics(langKey);
-          }
-          const topics = userTopicsState[langKey];
-          if (topics && Array.isArray(langProgress.completedTopics)) {
-            langProgress.completedTopics.forEach(doneId => {
-              const t = topics.find(item => item.id === doneId);
-              if (t) t.status = 'done';
-            });
-            // Tamamlananlardan sonraki ilk kilitli olanı aktif yap
-            const nextLockedIdx = topics.findIndex(t => t.status === 'locked');
-            if (nextLockedIdx !== -1) {
-              topics[nextLockedIdx].status = 'active';
+    // Önce in-memory durumları temizle
+    for (const k of Object.keys(userTopicsState)) delete userTopicsState[k];
+    state.xp = 0;
+    state.harvestCount = 0;
+    state.completedNodes = new Set();
+    state.completedPlots = new Set();
+
+    if (this.token && !this.token.startsWith('local_jwt_')) {
+      try {
+        const res = await fetch(`${API_BASE_URL}/progress`, {
+          headers: { 'Authorization': `Bearer ${this.token}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.ok && data.languages) {
+            let totalCloudXp = 0;
+
+            for (const [langKey, langProgress] of Object.entries(data.languages)) {
+              totalCloudXp += (langProgress.xp || 0);
+              getLanguageTopics(langKey);
+              const topics = userTopicsState[langKey];
+              if (topics) {
+                topics.forEach((t, i) => {
+                  t.status = i === 0 ? 'active' : 'locked';
+                });
+                if (Array.isArray(langProgress.completedTopics) && langProgress.completedTopics.length > 0) {
+                  langProgress.completedTopics.forEach(doneId => {
+                    const t = topics.find(item => item.id === doneId);
+                    if (t) {
+                      t.status = 'done';
+                      state.completedNodes.add(t.id);
+                    }
+                  });
+                  const nextLockedIdx = topics.findIndex(t => t.status === 'locked');
+                  if (nextLockedIdx !== -1) {
+                    topics[nextLockedIdx].status = 'active';
+                  }
+                }
+              }
             }
+
+            state.xp = totalCloudXp;
+            updateGlobalStats();
+
+            const curLang = state.selectedLangId || 'html';
+            const curTopics = getLanguageTopics(curLang);
+            const completedCount = curTopics.filter(t => t.status === 'done').length;
+            renderCityVisual(completedCount);
+            if (typeof renderSkillTree === 'function') renderSkillTree();
+            return;
           }
         }
-
-        if (totalCloudXp > 0) {
-          state.xp = Math.max(state.xp, totalCloudXp);
-          updateGlobalStats();
-        }
-
-        const completedCount = getLanguageTopics(state.selectedLangId).filter(t => t.status === 'done').length;
-        renderCityVisual(completedCount);
-        renderSkillTree();
+      } catch (e) {
+        console.warn('Bulut ilerlemesi çekilemedi, yerel veri deneniyor:', e);
       }
-    } catch (e) {
-      console.warn('Bulut ilerlemesi çekilemedi:', e);
+    }
+
+    // Yerel / Offline ilerlemeyi yüklemeyi dene
+    if (this.user && this.user.email) {
+      const loaded = loadLocalUserProgress(this.user.email);
+      if (!loaded) {
+        state.xp = 0;
+        state.harvestCount = 0;
+      }
+      updateGlobalStats();
+      const curLang = state.selectedLangId || 'html';
+      const curTopics = getLanguageTopics(curLang);
+      const completedCount = curTopics.filter(t => t.status === 'done').length;
+      renderCityVisual(completedCount);
+      if (typeof renderSkillTree === 'function') renderSkillTree();
     }
   },
 
@@ -7178,17 +8330,17 @@ const authManager = {
     const profileDropdown = document.getElementById('user-profile-dropdown');
 
     if (this.isLoggedIn()) {
-      if (btnOpenAuth) btnOpenAuth.style.display = 'none';
-      if (userProfileCard) userProfileCard.style.display = 'flex';
+      if (btnOpenAuth) btnOpenAuth.style.setProperty('display', 'none', 'important');
+      if (userProfileCard) userProfileCard.style.setProperty('display', 'flex', 'important');
       if (headerUsername) headerUsername.textContent = this.user.username || 'Kullanıcı';
       if (headerAvatar) headerAvatar.textContent = this.user.avatar || '🧑‍🌾';
       if (dropdownUsername) dropdownUsername.textContent = this.user.username || 'Kullanıcı';
       if (dropdownEmail) dropdownEmail.textContent = this.user.email || 'kullanici@codefarm.com';
       if (dropdownAvatar) dropdownAvatar.textContent = this.user.avatar || '🧑‍🌾';
     } else {
-      if (btnOpenAuth) btnOpenAuth.style.display = 'flex';
-      if (userProfileCard) userProfileCard.style.display = 'none';
-      if (profileDropdown) profileDropdown.style.display = 'none';
+      if (btnOpenAuth) btnOpenAuth.style.setProperty('display', 'inline-flex', 'important');
+      if (userProfileCard) userProfileCard.style.setProperty('display', 'none', 'important');
+      if (profileDropdown) profileDropdown.style.setProperty('display', 'none', 'important');
     }
   }
 };
@@ -7198,6 +8350,86 @@ if (dom.navBtnHome) dom.navBtnHome.addEventListener('click', () => switchView('l
 if (dom.navBtnRoadmap) dom.navBtnRoadmap.addEventListener('click', () => switchView('roadmap'));
 dom.btnBackToLanguages.addEventListener('click', () => switchView('languages'));
 dom.btnBackToRoadmap.addEventListener('click', () => switchView('roadmap'));
+
+// --- CANLI PROJE & DEVDECK SEKME VE KART ETKİLEŞİMLERİ ---
+const btnTabProject = document.getElementById('btn-tab-project');
+const btnTabDevDeck = document.getElementById('btn-tab-devdeck');
+const tabProjectView = document.getElementById('tab-project-view');
+const tabDevDeckView = document.getElementById('tab-devdeck-view');
+const devdeckCardWrapper = document.getElementById('devdeck-card-wrapper');
+const btnFlipCardManual = document.getElementById('btn-flip-card-manual');
+
+if (btnTabProject && btnTabDevDeck) {
+  btnTabProject.addEventListener('click', () => {
+    btnTabProject.classList.add('active');
+    btnTabDevDeck.classList.remove('active');
+    if (tabProjectView) tabProjectView.style.display = 'block';
+    if (tabDevDeckView) tabDevDeckView.style.display = 'none';
+    if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+  });
+
+  btnTabDevDeck.addEventListener('click', () => {
+    btnTabDevDeck.classList.add('active');
+    btnTabProject.classList.remove('active');
+    if (tabProjectView) tabProjectView.style.display = 'none';
+    if (tabDevDeckView) tabDevDeckView.style.display = 'block';
+    if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+  });
+}
+
+const toggleDevDeckFlip = (e) => {
+  if (e && e.target && (e.target.closest('#btn-copy-devdeck-sheet') || e.target.id === 'btn-copy-devdeck-sheet')) {
+    return; // Kopyalama butonuna basıldığında kart dönmesin
+  }
+  if (devdeckCardWrapper) {
+    devdeckCardWrapper.classList.toggle('is-flipped');
+    if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+  }
+};
+
+if (devdeckCardWrapper) {
+  devdeckCardWrapper.addEventListener('click', toggleDevDeckFlip);
+  devdeckCardWrapper.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleDevDeckFlip();
+    }
+  });
+}
+
+if (btnFlipCardManual) {
+  btnFlipCardManual.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDevDeckFlip();
+  });
+}
+
+// --- TERMİNAL İÇİ KONSOL & CANLI PROJE ÖNİZLEME SEKME ETKİLEŞİMİ ---
+const btnTermTabConsole = document.getElementById('btn-term-tab-console');
+const btnTermTabPreview = document.getElementById('btn-term-tab-preview');
+const termOutput = document.getElementById('terminal-output');
+const termPreview = document.getElementById('terminal-live-preview');
+
+if (btnTermTabConsole && btnTermTabPreview) {
+  btnTermTabConsole.addEventListener('click', () => {
+    btnTermTabConsole.classList.add('active');
+    btnTermTabPreview.classList.remove('active');
+    if (termOutput) termOutput.style.display = 'block';
+    if (termPreview) termPreview.style.display = 'none';
+    if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+  });
+
+  btnTermTabPreview.addEventListener('click', () => {
+    btnTermTabPreview.classList.add('active');
+    btnTermTabConsole.classList.remove('active');
+    if (termOutput) termOutput.style.display = 'none';
+    if (termPreview) {
+      termPreview.style.display = 'block';
+      renderTerminalLivePreview(state.selectedLangId);
+    }
+    if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+  });
+}
 
 if (dom.languageSearchInput) {
   dom.languageSearchInput.addEventListener('input', (e) => {
@@ -7252,13 +8484,28 @@ dom.btnClearConsole.addEventListener('click', () => {
 
 // Hızlı Modül Atlama Fonksiyonu (Alıştırmayı Tamamla ve Sonraki Konuya Geç)
 function skipEntireModule() {
+  const curLang = LANGUAGES_DB.find(l => l.id === state.selectedLangId) || LANGUAGES_DB[0];
+  const topicId = state.selectedNodeId || `${curLang.id}_1`;
+  const topics = getLanguageTopics(curLang.id);
+  const curTopic = topics.find(t => t.id === topicId);
+  const alreadyDone = !!((curTopic && curTopic.status === 'done') || (state.completedNodes && state.completedNodes.has(topicId)));
+
   state.completedNodes.add(state.selectedNodeId);
   completeCurrentTopic(state.selectedLangId, state.selectedNodeId);
-  state.xp += 150;
-  state.harvestCount += 5;
-  updateGlobalStats();
-  sfx.playVictory();
-  logToTerminal('⚡ <strong>Alıştırma Atlandı & Modül Başarıyla Tamamlandı!</strong>', 'success');
+
+  if (!alreadyDone) {
+    state.xp += 150;
+    state.harvestCount += 5;
+    updateGlobalStats();
+    if (typeof authManager !== 'undefined' && authManager.user?.email) {
+      saveLocalUserProgress(authManager.user.email);
+    }
+    sfx.playVictory();
+    logToTerminal('⚡ <strong>Alıştırma Atlandı & Modül Başarıyla Tamamlandı!</strong>', 'success');
+  } else {
+    sfx.playVictory();
+    logToTerminal('⚡ <strong>Alıştırma Atlandı!</strong> (Bu modülü daha önce tamamladığın için tekrar XP verilmedi)', 'info');
+  }
   showVictoryModal();
 }
 
@@ -7391,7 +8638,13 @@ dom.codeInput.addEventListener('keydown', (e) => {
   }
 });
 
-dom.codeInput.addEventListener('input', updateLineNumbers);
+dom.codeInput.addEventListener('input', () => {
+  updateLineNumbers();
+  const termPreview = document.getElementById('terminal-live-preview');
+  if (termPreview && termPreview.style.display !== 'none') {
+    renderTerminalLivePreview(state.selectedLangId);
+  }
+});
 
 if (dom.btnSoundToggle) {
   dom.btnSoundToggle.addEventListener('click', () => {
@@ -7650,6 +8903,39 @@ if (authForm) {
 
 // Başlangıçta Auth Durumunu Başlat ve Dilleri Render Et
 function initApp() {
+  // HTML, CSS, JS ve Bootstrap Müfredat Verilerini Ana Veritabanına Entegre Et
+  if (typeof HTML_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, HTML_TOPIC_REVIEWS);
+  }
+  if (typeof HTML_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, HTML_CHALLENGES);
+  }
+  if (typeof HTML_COURSE_TOPICS !== 'undefined' && typeof COURSE_TOPICS_DB !== 'undefined') {
+    COURSE_TOPICS_DB.html = HTML_COURSE_TOPICS;
+  }
+  if (typeof CSS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, CSS_TOPIC_REVIEWS);
+  }
+  if (typeof CSS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, CSS_CHALLENGES);
+  }
+  if (typeof JS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, JS_TOPIC_REVIEWS);
+  }
+  if (typeof JS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, JS_CHALLENGES);
+  }
+  if (typeof BS_TOPIC_REVIEWS !== 'undefined' && typeof TOPIC_REVIEWS_DB !== 'undefined') {
+    Object.assign(TOPIC_REVIEWS_DB, BS_TOPIC_REVIEWS);
+  }
+  if (typeof BS_CHALLENGES !== 'undefined' && typeof CHALLENGES_DATABASE !== 'undefined') {
+    Object.assign(CHALLENGES_DATABASE, BS_CHALLENGES);
+  }
+  if (typeof COURSE_TOPICS_DB !== 'undefined') {
+    if (COURSE_TOPICS_DB.javascript) COURSE_TOPICS_DB.js = COURSE_TOPICS_DB.javascript;
+    if (COURSE_TOPICS_DB.bootstrap) COURSE_TOPICS_DB.bs = COURSE_TOPICS_DB.bootstrap;
+  }
+
   if (typeof authManager !== 'undefined') {
     authManager.init();
   }

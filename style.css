@@ -32,11 +32,18 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--bg-canvas);
   color: var(--text-primary);
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
@@ -186,9 +193,9 @@ body {
 }
 
 .user-profile-card {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 8px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -257,7 +264,9 @@ body {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  width: 310px;
+  width: min(310px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
@@ -269,6 +278,7 @@ body {
 @media (max-width: 640px) {
   .app-container {
     padding: 0.6rem 0.6rem 2rem 0.6rem;
+    overflow-x: hidden;
   }
   .app-header {
     padding: 0.55rem 0.8rem;
@@ -312,13 +322,15 @@ body {
     font-size: 0.58rem;
   }
   .user-profile-dropdown {
-    position: fixed;
-    top: 75px;
-    left: 14px;
-    right: 14px;
-    width: auto;
-    max-width: calc(100vw - 28px);
-    z-index: 99999;
+    position: fixed !important;
+    top: 75px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: calc(100vw - 24px) !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    z-index: 99999 !important;
   }
 }
 
@@ -634,6 +646,8 @@ body {
 
 .badge-python { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
 .badge-html { background: #ffedd5; color: #ea580c; border: 1px solid #fdba74; }
+.badge-css { background: #eff6ff; color: #2563eb; border: 1px solid #93c5fd; }
+.badge-bootstrap { background: #f3e8ff; color: #7952b3; border: 1px solid #d8b4fe; }
 .badge-java { background: #ffe4e6; color: #e11d48; border: 1px solid #fecdd3; }
 .badge-flutter { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
 .badge-react { background: #cffafe; color: #0891b2; border: 1px solid #a5f3fc; }
@@ -968,62 +982,815 @@ body {
   z-index: 10;
 }
 
-.city-visual-card {
+/* ========================================================================= */
+/* EKRAN 2: CANLI PROJE VİTRİNİ & DEVDECK 3D GELİŞTİRİCİ KARTI                */
+/* ========================================================================= */
+
+.project-showcase-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 24px;
   padding: 20px;
-  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  position: relative;
+  overflow: hidden;
 }
 
-.city-card-header {
+/* Üst Bar: Sekmeler & Durum */
+.project-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.city-header-title {
-  display: flex;
+.showcase-tabs-nav {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 1.05rem;
-  font-weight: 800;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 14px;
+  gap: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.showcase-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.showcase-tab-btn:hover {
   color: #0f172a;
 }
 
-.city-stage-badge {
-  background: #eff6ff;
-  color: #2563eb;
-  font-size: 0.76rem;
-  font-weight: 800;
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 1px solid #bfdbfe;
+.showcase-tab-btn.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.city-canvas-wrapper {
+.tab-pill-badge {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.project-stage-badge {
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ========================================================================= */
+/* GÖRÜNÜM 1: MOCK BROWSER & CANLI PROJE SAHNESİ                             */
+/* ========================================================================= */
+
+.mock-browser-frame {
   width: 100%;
   border-radius: 18px;
   overflow: hidden;
+  background: #0f172a;
+  border: 1px solid #334155;
+  box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tarayıcı Üst Barı */
+.browser-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+  gap: 12px;
+}
+
+.browser-traffic-lights {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.browser-traffic-lights .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.browser-traffic-lights .dot-close { background: #ef4444; }
+.browser-traffic-lights .dot-minimize { background: #f59e0b; }
+.browser-traffic-lights .dot-expand { background: #10b981; }
+
+.browser-url-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  padding: 4px 14px;
+  color: #94a3b8;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.74rem;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browser-live-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.browser-live-indicator .pulse-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.browser-live-indicator .pulse-ring {
+  position: absolute;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: livePulseAnim 1.8s infinite ease-out;
+}
+
+@keyframes livePulseAnim {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+.live-label {
+  color: #10b981;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Canlı Proje Viewport Konteyneri */
+.project-viewport-canvas {
+  min-height: 380px;
+  background: radial-gradient(circle at 50% 10%, #1e1b4b 0%, #090d16 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Canlı Proje Alt Açıklama */
+.project-card-footer {
+  margin-top: 14px;
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.02);
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 10px 14px;
 }
 
-.city-isometric-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.city-card-footer {
-  margin-top: 12px;
-  text-align: center;
+.footer-step-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 0.82rem;
-  color: #64748b;
+  color: #475569;
   font-weight: 600;
   line-height: 1.4;
+}
+
+.step-icon {
+  font-size: 1.1rem;
+}
+
+/* ========================================================================= */
+/* DİNAMİK PROJE BİLEŞENLERİ (Viewport İçi Arayüz Öğeleri)                    */
+/* ========================================================================= */
+
+.live-proj-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  height: 100%;
+}
+
+.live-proj-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 340px;
+  text-align: center;
+  color: #64748b;
+  border: 2px dashed #334155;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.live-proj-empty-icon {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  opacity: 0.6;
+  animation: floatEmptyIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatEmptyIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.live-proj-empty-title {
+  color: #e2e8f0;
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.live-proj-empty-desc {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  max-width: 260px;
+}
+
+/* Canlı Proje Header Parçası */
+.live-proj-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px 14px;
+  animation: fadeInStep 0.4s ease-out;
+}
+
+.live-proj-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #f8fafc;
+}
+
+.live-proj-badge {
+  background: #3b82f6;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Canlı Proje Oyun / Hero Sahnesi */
+.live-proj-stage {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 14px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 30px rgba(99, 102, 241, 0.15);
+  animation: fadeInStep 0.4s ease-out;
+}
+
+.live-proj-stage-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.live-proj-actor {
+  font-size: 3rem;
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.5));
+}
+
+.live-proj-actor.jump-anim {
+  animation: actorJump 0.4s ease-out;
+}
+
+@keyframes actorJump {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-22px) scale(1.15); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.live-proj-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.live-proj-desc {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  max-width: 280px;
+}
+
+/* Buton ve Aksiyon Alanı */
+.live-proj-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInStep 0.4s ease-out;
+}
+
+.live-action-btn {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #ffffff;
+  border: none;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+}
+
+.live-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.5);
+}
+
+.live-action-btn:active {
+  transform: scale(0.96);
+}
+
+/* Skor & İstatistik Şeridi */
+.live-proj-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  animation: fadeInStep 0.4s ease-out;
+}
+
+.live-stat-box {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+}
+
+.live-stat-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #38bdf8;
+  font-family: 'Fira Code', monospace;
+}
+
+.live-stat-lbl {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Tamamlandı Mührü */
+.live-proj-completed-banner {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #34d399;
+  font-weight: 800;
+  font-size: 0.82rem;
+  animation: fadeInStep 0.5s ease-out;
+}
+
+@keyframes fadeInStep {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================================================= */
+/* İNŞA YUVALARI (SLOTS - KULLANICI KENDİ PROJESİNİ KODLARKEN)                */
+/* ========================================================================= */
+
+.live-proj-slot {
+  background: rgba(30, 41, 59, 0.35);
+  border: 2px dashed rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.live-proj-slot:hover {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.live-proj-slot.slot-active {
+  border-color: rgba(56, 189, 248, 0.45);
+  background: rgba(56, 189, 248, 0.05);
+  animation: slotPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes slotPulse {
+  0%, 100% { border-color: rgba(56, 189, 248, 0.3); }
+  50% { border-color: rgba(56, 189, 248, 0.7); box-shadow: 0 0 15px rgba(56, 189, 248, 0.15); }
+}
+
+.slot-plus-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #38bdf8;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.slot-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.slot-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+.slot-hint {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+/* Kullanıcının İnşa Ettiği Bileşenin Parlaması */
+.user-built-highlight {
+  animation: userBuiltGlow 1.2s ease-out;
+}
+
+@keyframes userBuiltGlow {
+  0% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.8); border-color: #38bdf8; }
+  100% { box-shadow: none; }
+}
+
+/* ========================================================================= */
+/* GÖRÜNÜM 2: DEVDECK 3D GELİŞTİRİCİ KARTI                                    */
+/* ========================================================================= */
+
+.devdeck-card-wrapper {
+  perspective: 1200px;
+  width: 100%;
+  min-height: 420px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+}
+
+.devdeck-flip-card {
+  width: 100%;
+  height: 420px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.devdeck-card-wrapper.is-flipped .devdeck-flip-card {
+  transform: rotateY(180deg);
+}
+
+/* Kartın Ön ve Arka Yüzleri */
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.15);
+}
+
+/* ÖN YÜZ: Holografik Geliştirici Kartı */
+.card-face-front {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1e293b 100%);
+  border: 2px solid #38bdf8;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Holografik Parlama */
+.card-face-front::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(56, 189, 248, 0.25) 50%,
+    rgba(236, 72, 153, 0.2) 55%,
+    transparent 65%
+  );
+  transform: rotate(-25deg);
+  pointer-events: none;
+  animation: holoSheen 6s infinite linear;
+}
+
+@keyframes holoSheen {
+  0% { transform: translateY(-30%) rotate(-25deg); }
+  50% { transform: translateY(30%) rotate(-25deg); }
+  100% { transform: translateY(-30%) rotate(-25deg); }
+}
+
+.card-front-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.card-edition-badge {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+.card-status-pill {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.card-status-pill.locked {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.card-status-pill.unlocked {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.card-front-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  gap: 8px;
+}
+
+.card-hero-icon {
+  font-size: 3.6rem;
+  filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.4));
+  animation: pulseCardIcon 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseCardIcon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+.card-hero-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ffffff, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-hero-role {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.card-front-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.card-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.card-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.card-flip-prompt {
+  text-align: center;
+  font-size: 0.76rem;
+  color: #38bdf8;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+/* ARKA YÜZ: Kod Rehberi (Cheat-Sheet) */
+.card-face-back {
+  background: #090d16;
+  border: 2px solid #818cf8;
+  color: #ffffff;
+  transform: rotateY(180deg);
+  overflow-y: auto;
+}
+
+.card-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.card-back-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #818cf8;
+}
+
+.btn-copy-sheet {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-copy-sheet:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+.card-cheat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.76rem;
+  overflow-y: auto;
+  max-height: 290px;
+  padding-right: 4px;
+}
+
+.cheat-code-block {
+  background: #131b2e;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.cheat-code-label {
+  color: #38bdf8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cheat-code-text {
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  line-height: 1.4;
+  font-size: 0.72rem;
+}
+
+.devdeck-footer-action {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-devdeck-flip {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 8px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-devdeck-flip:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: translateY(-1px);
 }
 
 /* Responsive Düzen: Tablet ve Mobil */
@@ -1035,7 +1802,7 @@ body {
 
   .roadmap-right-column {
     position: static;
-    order: -1; /* Mobilde şehir üstte görünür */
+    order: -1; /* Mobilde proje vitrini üstte görünür */
   }
 }
 
@@ -2825,32 +3592,34 @@ body.modal-open {
   transform: translateY(-1px);
 }
 
-/* 2 Sütunlu Oyun Arenası Izgarası */
-.game-arena-grid {
-  display: grid;
-  grid-template-columns: 420px 1fr;
+/* Kodlama Arenası Kapsayıcı Düzeni */
+.game-arena-layout {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  align-items: start;
+  width: 100%;
 }
 
-@media (max-width: 1024px) {
-  .game-arena-grid {
-    grid-template-columns: 1fr;
-  }
+/* Geriye dönük uyumluluk */
+.game-arena-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
-/* SOL PANEL: Teori & Görev Paneli */
+/* ÜST PANEL: Dikdörtgen Görev & Teori Kartı */
 .task-panel {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 20px;
-  padding: 22px 20px;
+  border-radius: 18px;
+  padding: 22px 28px;
   box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06);
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  position: sticky;
-  top: 85px;
+  gap: 12px;
+  width: 100%;
+  position: static;
 }
 
 .task-header-row {
@@ -2865,8 +3634,9 @@ body.modal-open {
   border: 1px solid #c7d2fe;
   font-weight: 800;
   font-size: 0.74rem;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 999px;
+  letter-spacing: 0.02em;
 }
 
 .difficulty-tag {
@@ -2875,12 +3645,12 @@ body.modal-open {
   border: 1px solid #a7f3d0;
   font-weight: 700;
   font-size: 0.74rem;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 999px;
 }
 
 .task-main-title {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 900;
   color: #0f172a;
   margin: 0;
@@ -2888,7 +3658,7 @@ body.modal-open {
 }
 
 .task-description-text {
-  font-size: 0.94rem;
+  font-size: 0.98rem;
   color: #334155;
   line-height: 1.6;
   margin: 0;
@@ -2989,20 +3759,37 @@ body.modal-open {
   color: #0f172a;
 }
 
-/* SAĞ PANEL: Kod Editörü & Terminal */
+/* ALT ÇALIŞMA ALANI IZGARASI: Sol Editör, Sağ Terminal */
+.game-workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .game-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SOL PANEL: Kod Editörü */
 .editor-panel {
   background: #0f172a;
   border: 1px solid #1e293b;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.25);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-height: 480px;
 }
 
 .editor-top-bar {
   background: #1e293b;
-  padding: 10px 16px;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3037,7 +3824,8 @@ body.modal-open {
 .code-editor-wrapper {
   display: flex;
   background: #0f172a;
-  min-height: 220px;
+  min-height: 320px;
+  flex: 1;
   position: relative;
 }
 
@@ -3066,7 +3854,8 @@ body.modal-open {
   line-height: 1.6;
   color: #38bdf8;
   caret-color: #38bdf8;
-  min-height: 220px;
+  min-height: 320px;
+  height: 100%;
   tab-size: 4;
 }
 
@@ -3077,12 +3866,11 @@ body.modal-open {
 /* Editör Aksiyonları */
 .editor-actions-row {
   background: #1e293b;
-  padding: 10px 16px;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid #334155;
-  border-bottom: 1px solid #1e293b;
 }
 
 .editor-left-actions {
@@ -3095,9 +3883,9 @@ body.modal-open {
   color: #e2e8f0;
   border: 1px solid #475569;
   border-radius: 8px;
-  padding: 7px 12px;
+  padding: 7px 14px;
   font-family: var(--font-main);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -3113,9 +3901,9 @@ body.modal-open {
   color: #ffffff;
   border: none;
   border-radius: 10px;
-  padding: 8px 18px;
+  padding: 8px 20px;
   font-family: var(--font-main);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 800;
   cursor: pointer;
   display: flex;
@@ -3135,17 +3923,30 @@ body.modal-open {
   transform: translateY(1px);
 }
 
-/* Terminal / Konsol Çıktı Alanı */
-.terminal-container {
-  background: #090d16;
-  border-top: 1px solid #1e293b;
+/* SAĞ PANEL: Terminal & Canlı Proje */
+.terminal-panel {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.25);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-height: 480px;
+}
+
+.terminal-container {
+  background: #090d16;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
 }
 
 .terminal-header {
-  background: #0f172a;
-  padding: 8px 16px;
+  background: #1e293b;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3153,16 +3954,65 @@ body.modal-open {
   font-size: 0.76rem;
   font-weight: 700;
   color: #94a3b8;
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+.terminal-tabs-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64748b;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.terminal-tab-btn:hover {
+  color: #cbd5e1;
+}
+
+.terminal-tab-btn.active {
+  background: #0f172a;
+  color: #38bdf8;
+  border-color: #334155;
+}
+
+.tab-preview-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.terminal-preview-body {
+  padding: 18px;
+  flex: 1;
+  min-height: 320px;
+  max-height: 520px;
+  overflow-y: auto;
+  background: radial-gradient(circle at 50% 10%, #1e1b4b 0%, #090d16 100%);
+  color: #ffffff;
 }
 
 .btn-clear-term {
   background: transparent;
   border: 1px solid #334155;
   color: #64748b;
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 0.72rem;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.74rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -3173,9 +4023,10 @@ body.modal-open {
 }
 
 .terminal-body {
-  padding: 14px 16px;
-  min-height: 120px;
-  max-height: 220px;
+  padding: 16px 18px;
+  flex: 1;
+  min-height: 320px;
+  max-height: 520px;
   overflow-y: auto;
   font-family: var(--font-code);
   font-size: 0.88rem;
