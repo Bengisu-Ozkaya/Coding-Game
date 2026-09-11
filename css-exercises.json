@@ -1,0 +1,902 @@
+{
+  "technology": "CSS",
+  "total_modules": 16,
+  "modules": [
+    {
+      "module_id": 1,
+      "module_title": "CSS'e Giriş & Ekleme Yöntemleri",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "h1 başlığının yazı rengini mavi (blue) yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "h1 { color: blue; }",
+          "hint": "h1 { color: blue; } kuralını yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "CSS'te sayfa arka plan rengini belirlemek için hangi özellik kullanılır?",
+          "options": [
+            "<link rel=\"stylesheet\" href=\"style.css\">",
+            "<style src=\"style.css\">",
+            "<css link=\"style.css\">",
+            "<script href=\"style.css\">"
+          ],
+          "correct_option_index": 0,
+          "hint": "<link rel=\"stylesheet\" href=\"...\"> standardını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "p paragraflarının metin hizalamasını ortaya (center) alan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "p { text-align: center; }",
+          "hint": "p { text-align: center; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "HTML dokümanına harici bir stil dosyasını bağlamak için head içine hangi etiket yazılır?",
+          "options": [
+            "Harici CSS (External)",
+            "Dahili CSS (Internal)",
+            "Satır İçi CSS (Inline)",
+            "Gömülü CSS (Embedded)"
+          ],
+          "correct_option_index": 2,
+          "hint": "Etiket içine doğrudan yazılan satır içi (inline) yöntemdir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "body etiketinin arka plan rengini '#f8fafc' yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "body { background-color: #f8fafc; }",
+          "hint": "body { background-color: #f8fafc; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 2,
+      "module_title": "CSS Seçicileri & Öncelik Sırası",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'card' sınıfına sahip elemanların genişliğini 300 piksel yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { width: 300px; }",
+          "hint": ".card { width: 300px; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir HTML sayfasında benzersiz bir ID seçicisini hedeflemek için CSS'te hangi ön ek simgesi kullanılır?",
+          "options": [
+            "Etiket Seçici (p)",
+            "Sınıf Seçici (.menu)",
+            "ID Seçici (#header)",
+            "Evrensel Seçici (*)"
+          ],
+          "correct_option_index": 2,
+          "hint": "ID (#) seçicisi sınıflardan ve etiketlerden daha baskındır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'main-title' id'sine sahip elemanın yazı boyutunu 24 piksel yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "#main-title { font-size: 24px; }",
+          "hint": "#main-title { font-size: 24px; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Sayfadaki tüm elemanları istisnasız hedefleyen evrensel seçici hangisidir?",
+          "options": [
+            "div p",
+            "div > p",
+            "div + p",
+            "div ~ p"
+          ],
+          "correct_option_index": 1,
+          "hint": "Doğrudan çocuk seçici için '>' sembolü kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Sayfadaki tüm elemanları hedefleyen evrensel seçici ile kutu modelini 'border-box' yapan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": "* { box-sizing: border-box; }",
+          "hint": "* { box-sizing: border-box; } kuralını tanımlayın."
+        }
+      ]
+    },
+    {
+      "module_id": 3,
+      "module_title": "Renkler & Arka Planlar (Colors & BG)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".hero sınıfına arka plan görseli olarak 'banner.jpg' dosyasını atayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".hero { background-image: url('banner.jpg'); }",
+          "hint": ".hero { background-image: url('banner.jpg'); } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir arka plan görselinin kendini yatayda ve dikeyde tekrar etmesini engellemek için hangi değer kullanılır?",
+          "options": [
+            "Kırmızı renk tonunu",
+            "Görsel parlaklık seviyesini",
+            "Opaklık / Şeffaflık (Alpha) oranını",
+            "Gölge yayılma açısını"
+          ],
+          "correct_option_index": 2,
+          "hint": "Alpha kanalı şeffaflık derecesini belirler."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".banner sınıfının arka plan görselini alanı tamamen kaplayacak (cover) şekilde ölçekleyen CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".banner { background-size: cover; }",
+          "hint": ".banner { background-size: cover; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "CSS'te şeffaflık (alpha kanalı) destekleyen renk tanımlama modeli hangisidir?",
+          "options": [
+            "background-repeat: no-repeat;",
+            "background-attachment: fixed;",
+            "background-position: center;",
+            "background-clip: padding-box;"
+          ],
+          "correct_option_index": 0,
+          "hint": "no-repeat değerini seçin."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".box sınıfına %50 şeffaflıkta siyah renkli rgba arka plan rengi (0, 0, 0, 0.5) atayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".box { background-color: rgba(0, 0, 0, 0.5); }",
+          "hint": ".box { background-color: rgba(0, 0, 0, 0.5); } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 4,
+      "module_title": "Tipografi & Metin Biçimlendirme",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "p etiketinin yazı tipi ailesini 'sans-serif' yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "p { font-family: sans-serif; }",
+          "hint": "p { font-family: sans-serif; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Metin kalınlığını en kalın seviyeye (örneğin 700 / bold) ayarlamak için hangi CSS özelliği kullanılır?",
+          "options": [
+            "font-style: normal;",
+            "text-decoration: none;",
+            "text-transform: none;",
+            "letter-spacing: normal;"
+          ],
+          "correct_option_index": 1,
+          "hint": "text-decoration özelliğine 'none' değeri verilir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "h1 başlığının yazı kalınlığını 700 (kalın) yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "h1 { font-weight: 700; }",
+          "hint": "h1 { font-weight: 700; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Linklerin (a etiketi) altındaki varsayılan alt çizgiyi kaldırmak için hangi CSS kuralı yazılır?",
+          "options": [
+            "18px",
+            "24px",
+            "32px",
+            "20px"
+          ],
+          "correct_option_index": 1,
+          "hint": "16 * 1.5 = 24px."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "p etiketinin satır yüksekliğini 1.6 olarak ayarlayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "p { line-height: 1.6; }",
+          "hint": "p { line-height: 1.6; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 5,
+      "module_title": "Kutu Modeli (Box Model Mimarisi)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".card sınıfına dört bir yandan 16 piksel iç boşluk tanımlayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { padding: 16px; }",
+          "hint": ".card { padding: 16px; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir elemanın sınırları (border) ile diğer elemanlar arasındaki dış mesafeyi belirleyen özellik hangisidir?",
+          "options": [
+            "margin: auto 0;",
+            "margin: 0 auto;",
+            "margin: center;",
+            "margin: 50%;"
+          ],
+          "correct_option_index": 1,
+          "hint": "margin: 0 auto; kuralı yatayda otomatik ortalama yapar."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".container sınıfına üstten-alttan 20px, sağdan-soldan otomatik (auto) dış boşluk tanımlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".container { margin: 20px auto; }",
+          "hint": ".container { margin: 20px auto; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Padding ve border değerlerinin elemanın toplam genişliğine dahil edilmesini sağlayan modern kutu modeli değeri hangisidir?",
+          "options": [
+            "Elemana eklenen padding ve border değerlerini toplam genişlik (width) içine dahil eder.",
+            "Elemanın tüm köşelerini otomatik yuvarlatır.",
+            "Elemanı sayfada dikeyde ortalar.",
+            "Elemana otomatik kutu gölgesi ekler."
+          ],
+          "correct_option_index": 0,
+          "hint": "İç boşluk ve kenarlıklar genişliği dışa doğru büyütmez."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".btn sınıfına 1 piksel düz gri (#cbd5e1) kenarlık tanımlayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".btn { border: 1px solid #cbd5e1; }",
+          "hint": ".btn { border: 1px solid #cbd5e1; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 6,
+      "module_title": "Kenarlıklar, Köşeler & Gölgeler",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".card sınıfının köşelerini 8 piksel yuvarlatan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { border-radius: 8px; }",
+          "hint": ".card { border-radius: 8px; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Kare şeklindeki bir avatar görselini kusursuz bir tam daireye dönüştürmek için border-radius değeri ne olmalıdır?",
+          "options": [
+            "10px",
+            "25%",
+            "50%",
+            "100px solid"
+          ],
+          "correct_option_index": 2,
+          "hint": "%50 (50%) değeri tam yuvarlak daire oluşturur."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".avatar sınıfını kusursuz bir tam daireye dönüştüren köşe yuvarlaklığı kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".avatar { border-radius: 50%; }",
+          "hint": ".avatar { border-radius: 50%; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir kutuya derinlik ve gölge efekti kazandırmak için hangi CSS özelliği kullanılır?",
+          "options": [
+            "Yatay gölge ofseti (X ekseni)",
+            "Dikey gölge ofseti (Y ekseni)",
+            "Bulanıklık yarıçapı (Blur)",
+            "Gölge yayılma yarıçapı (Spread)"
+          ],
+          "correct_option_index": 1,
+          "hint": "İkinci parametre dikey (Y) eksenindeki kaydırmadır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".btn sınıfının varsayılan kenarlığını kaldıran CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".btn { border: none; }",
+          "hint": ".btn { border: none; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 7,
+      "module_title": "Görüntüleme & Boyutlandırma",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".hidden sınıfına sahip elemanı sayfada yer kaplamayacak şekilde tamamen gizleyen CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".hidden { display: none; }",
+          "hint": ".hidden { display: none; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Normalde satır içi olan (inline) bir etikete hem genişlik/yükseklik verebilmek hem de yan yana dizilmesini sağlamak için hangi display değeri atanır?",
+          "options": [
+            "display: none elemanı sayfada yer kaplamayacak şekilde kaldırır; visibility: hidden ise görünmez yapar ancak kapladığı alanı korur.",
+            "display: none sadece metinleri, visibility: hidden ise görselleri gizler.",
+            "İkisi arasında hiçbir fark yoktur.",
+            "visibility: hidden elemanı sayfanın en altına taşır."
+          ],
+          "correct_option_index": 0,
+          "hint": "Alan koruma ve DOM yerleşimi farkını düşünün."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".tag sınıfına satır içi blok (inline-block) yerleşim özelliğini kazandıran CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".tag { display: inline-block; }",
+          "hint": ".tag { display: inline-block; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir kutunun sınırlarını aşan taşmış içerikleri kırparak gizlemek için overflow özelliğine hangi değer verilir?",
+          "options": [
+            "overflow: visible;",
+            "overflow: hidden;",
+            "overflow: auto;",
+            "overflow: none;"
+          ],
+          "correct_option_index": 2,
+          "hint": "Gerektiğinde kaydırma çubuğu ekleyen 'auto' değeridir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".box sınıfının sınırlarını aşan taşmış içerikleri kırparak gizleyen CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".box { overflow: hidden; }",
+          "hint": ".box { overflow: hidden; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 8,
+      "module_title": "Konumlandırma & Katmanlar (Position)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".parent sınıfını içindeki mutlak elemanlara referans olacak göreceli konumlandırma (relative) moduna alan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".parent { position: relative; }",
+          "hint": ".parent { position: relative; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Sayfa aşağı kaydırılsa bile ekranda hep aynı yerde sabit kalan konumlandırma türü hangisidir?",
+          "options": [
+            "position: absolute;",
+            "position: fixed;",
+            "position: relative;",
+            "position: static;"
+          ],
+          "correct_option_index": 1,
+          "hint": "Pencereye sabitlemek için 'fixed' kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".badge sınıfını en yakın konumlandırılmış atasına göre mutlak (absolute) hizalamaya alan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".badge { position: absolute; }",
+          "hint": ".badge { position: absolute; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Üst üste binen konumlandırılmış elemanların katman sıralamasını (önde/arkada olma durumunu) belirleyen özellik hangisidir?",
+          "options": [
+            "Yalnızca position değeri (relative, absolute, fixed veya sticky) tanımlanmış elemanlarda.",
+            "Tüm HTML elemanlarında varsayılan olarak.",
+            "Sadece display: inline olan elemanlarda.",
+            "Yalnızca görsellerde."
+          ],
+          "correct_option_index": 0,
+          "hint": "Konumlandırılmış (positioned) elemanlarda çalışır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".modal sınıfının katman önceliğini (z-index) 100 olarak ayarlayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".modal { z-index: 100; }",
+          "hint": ".modal { z-index: 100; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 9,
+      "module_title": "Sahte Sınıflar & Sahte Elemanlar",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".btn sınıfına fareyle üzerine gelindiğinde (hover) arka plan rengini '#1d4ed8' yapan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".btn:hover { background-color: #1d4ed8; }",
+          "hint": ".btn:hover { background-color: #1d4ed8; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir giriş kutusuna (input) tıklandığında ve içine yazma moduna geçildiğinde hangi sahte sınıf (pseudo-class) tetiklenir?",
+          "options": [
+            "display",
+            "content",
+            "position",
+            "visibility"
+          ],
+          "correct_option_index": 1,
+          "hint": "content: \"\"; tanımı zorunludur."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "input etiketine odaklanıldığında (focus) varsayılan dış çerçeve çizgisini (outline) kaldıran kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": "input:focus { outline: none; }",
+          "hint": "input:focus { outline: none; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir elemanın hemen öncesine CSS ile içerik veya dekoratif ikon eklemek için hangi sahte eleman (pseudo-element) kullanılır?",
+          "options": [
+            "li:first-child",
+            "li:nth-child(even)",
+            "li:nth-child(odd)",
+            "li:last-child"
+          ],
+          "correct_option_index": 1,
+          "hint": "Çift elemanlar için 'even' seçicisi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".badge::before sahte elemanına boş metin içeriği tanımlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".badge::before { content: \"\"; }",
+          "hint": ".badge::before { content: \"\"; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 10,
+      "module_title": "Gradyanlar & Görsel Efektler",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".card sınıfına sağa doğru maviden (#2563eb) mora (#9333ea) doğrusal renk geçişi (linear-gradient) uygulayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { background: linear-gradient(to right, #2563eb, #9333ea); }",
+          "hint": ".card { background: linear-gradient(to right, #2563eb, #9333ea); } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir elemanın şeffaflık/görünürlük derecesini 0 ile 1 arasında belirleyen CSS özelliği hangisidir?",
+          "options": [
+            "filter: blur(10px);",
+            "filter: grayscale(100%);",
+            "filter: brightness(0%);",
+            "filter: invert(100%);"
+          ],
+          "correct_option_index": 1,
+          "hint": "grayscale(100%) filtresini seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".img-dim sınıfının görünürlük opaklığını 0.8 (%80) yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".img-dim { opacity: 0.8; }",
+          "hint": ".img-dim { opacity: 0.8; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Kullanıcı fareyle bir elemanın üzerine geldiğinde el işareti (tıklanabilir imleç) göstermek için cursor özelliğine ne atanır?",
+          "options": [
+            "opacity kutunun içindeki tüm çocuk elemanları ve metinleri de şeffaflaştırırken, rgba() yalnızca arka plan rengini şeffaflaştırır.",
+            "opacity sadece arka planı şeffaflaştırır.",
+            "İkisi de tamamen aynı işi yapar.",
+            "rgba() mobil cihazlarda çalışmaz."
+          ],
+          "correct_option_index": 0,
+          "hint": "opacity içerideki yazıları da şeffaf yapar."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".blur-effect sınıfına 4 piksel bulanıklık (blur) filtresi uygulayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".blur-effect { filter: blur(4px); }",
+          "hint": ".blur-effect { filter: blur(4px); } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 11,
+      "module_title": "2D Dönüşümler & Geçişler (Transitions)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".card sınıfındaki tüm stil değişimlerini 0.3 saniyede yumuşatan geçiş (transition) kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { transition: all 0.3s ease; }",
+          "hint": ".card { transition: all 0.3s ease; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir elemanı 2 boyutlu uzayda döndürmek, büyütmek veya ötelemek için hangi CSS özelliği kullanılır?",
+          "options": [
+            "transform: rotate(1.2deg);",
+            "transform: scale(1.2);",
+            "transform: translate(1.2);",
+            "transform: skew(1.2);"
+          ],
+          "correct_option_index": 1,
+          "hint": "Boyutlandırma için 'scale' kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".box sınıfını dikeyde 5 piksel yukarı kaydıran dönüştürme (transform) kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".box { transform: translateY(-5px); }",
+          "hint": ".box { transform: translateY(-5px); } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir butonun üzerine gelindiğinde boyutunu %10 büyütmek için transform özelliğine hangi fonksiyon verilir?",
+          "options": [
+            "Fare elemanın üzerinden çekildiğinde de animasyonun yumuşak bir şekilde geri dönmesi için.",
+            "Hover içinde transition desteklenmediği için.",
+            "Tarayıcı önbelleğini sıfırlamak için.",
+            "Sadece renk geçişlerini çalıştırmak için."
+          ],
+          "correct_option_index": 0,
+          "hint": "Gidiş ve dönüşte çift yönlü yumuşaklık sağlar."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".icon sınıfını saat yönünde 45 derece döndüren dönüştürme (transform) kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".icon { transform: rotate(45deg); }",
+          "hint": ".icon { transform: rotate(45deg); } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 12,
+      "module_title": "CSS Animasyonları & @keyframes",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".spinner sınıfına 'spin' animasyonunu 1 saniyede, doğrusal (linear) ve sonsuz (infinite) dönecek şekilde bağlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".spinner { animation: spin 1s linear infinite; }",
+          "hint": ".spinner { animation: spin 1s linear infinite; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "CSS'te özel adım adım animasyon kareleri tanımlamak için hangi kural bildirim bloğu kullanılır?",
+          "options": [
+            "animation-iteration-count: loop;",
+            "animation-iteration-count: infinite;",
+            "animation-repeat: always;",
+            "animation-play-state: running;"
+          ],
+          "correct_option_index": 1,
+          "hint": "Sonsuz döngü için 'infinite' kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".fade-in sınıfının animasyon süresini 2 saniye yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".fade-in { animation-duration: 2s; }",
+          "hint": ".fade-in { animation-duration: 2s; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir animasyonun hiç durmadan sürekli dönmesini/oynamasını sağlamak için animation-iteration-count değerine ne yazılır?",
+          "options": [
+            "@animation",
+            "@keyframes",
+            "@transitions",
+            "@frames"
+          ],
+          "correct_option_index": 1,
+          "hint": "@keyframes kuralını seçin."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".card sınıfına 'fadeIn' animasyonunu bağlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { animation-name: fadeIn; }",
+          "hint": ".card { animation-name: fadeIn; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 13,
+      "module_title": "Flexbox ile Esnek Tek Boyutlu Düzen",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".nav-container sınıfını esnek tek boyutlu yerleşim düzenine (Flexbox) geçiren kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".nav-container { display: flex; }",
+          "hint": ".nav-container { display: flex; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Flexbox'ta ana eksen boyunca elemanları iki uca eşit dağıtıp aralarını açmak için hangi justify-content değeri kullanılır?",
+          "options": [
+            "justify-content: space-between;",
+            "align-items: space-between;",
+            "justify-content: center;",
+            "flex-direction: space-between;"
+          ],
+          "correct_option_index": 0,
+          "hint": "justify-content: space-between; kuralını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".flex-box sınıfındaki elemanları dikey eksende kusursuz ortalayan Flexbox kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".flex-box { align-items: center; }",
+          "hint": ".flex-box { align-items: center; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Flexbox veya Grid elemanlarının birbirleri arasındaki boşluğu belirleyen en pratik modern özellik hangisidir?",
+          "options": [
+            "flex-wrap: wrap;",
+            "flex-flow: row;",
+            "flex-direction: column;",
+            "overflow: wrap;"
+          ],
+          "correct_option_index": 0,
+          "hint": "flex-wrap: wrap; kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".flex-row sınıfındaki esnek elemanların arasına 16 piksel boşluk (gap) bırakan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".flex-row { gap: 16px; }",
+          "hint": ".flex-row { gap: 16px; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 14,
+      "module_title": "CSS Grid ile İki Boyutlu Izgara",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".grid-container sınıfını iki boyutlu ızgara düzenine (CSS Grid) geçiren kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".grid-container { display: grid; }",
+          "hint": ".grid-container { display: grid; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "CSS Grid'de sütun genişliklerini kalan boş alana göre esnek paylaştıran birim hangisidir?",
+          "options": [
+            "grid-template-columns: repeat(3, 1fr);",
+            "grid-template-columns: repeat(1fr, 3);",
+            "grid-template-columns: 3fr repeat;",
+            "grid-template-columns: auto-fit(3);"
+          ],
+          "correct_option_index": 0,
+          "hint": "repeat(3, 1fr) standardını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".gallery sınıfına 3 eşit genişlikte (1fr) sütun ızgarası tanımlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".gallery { grid-template-columns: repeat(3, 1fr); }",
+          "hint": ".gallery { grid-template-columns: repeat(3, 1fr); } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir ızgara elemanının yatayda 2 sütun boyunca yer kaplamasını sağlamak için hangi kural kullanılır?",
+          "options": [
+            "grid-column: span 2;",
+            "grid-row: span 2;",
+            "colspan: 2;",
+            "grid-span: 2;"
+          ],
+          "correct_option_index": 0,
+          "hint": "grid-column: span 2; kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".featured sınıfındaki ızgara elemanının yatayda 2 sütun genişliğinde yer kaplamasını sağlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".featured { grid-column: span 2; }",
+          "hint": ".featured { grid-column: span 2; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 15,
+      "module_title": "Responsive Tasarım & Medya Sorguları",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Maksimum 768 piksel genişliğindeki mobil/tablet ekranlar için geçerli boş bir medya sorgusu (@media) bloğu açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "@media (max-width: 768px) {}",
+          "hint": "@media (max-width: 768px) {} yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Duyarlı (responsive) web tasarımında ekran boyutuna göre stil kuralları uygulamak için hangi CSS at-kuralı kullanılır?",
+          "options": [
+            "max-width: 100%; height: auto;",
+            "width: 100vw; height: 100vh;",
+            "min-width: 100%;",
+            "object-fit: cover;"
+          ],
+          "correct_option_index": 0,
+          "hint": "max-width: 100%; height: auto; kuralını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".img-responsive sınıfındaki görsellerin kapsayıcı dışına taşmasını engelleyen maksimum genişlik kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".img-responsive { max-width: 100%; }",
+          "hint": ".img-responsive { max-width: 100%; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Küçük ekranlarda flex elemanlarının yan yana yerine alt alta sıralanmasını sağlamak için flex-direction değeri ne olmalıdır?",
+          "options": [
+            "@media (min-width: ...)",
+            "@media (max-width: ...)",
+            "@media (orientation: portrait)",
+            "@media (screen-only)"
+          ],
+          "correct_option_index": 0,
+          "hint": "Mobile-First mantığında min-width kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".menu sınıfındaki esnek elemanları dikey sütun (column) halinde alt alta dizen kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".menu { flex-direction: column; }",
+          "hint": ".menu { flex-direction: column; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 16,
+      "module_title": "CSS Değişkenleri & Kapsamlı Proje",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ":root sahte sınıfı içinde '--primary-color' adında ve '#2563eb' değerinde global bir CSS değişkeni tanımlayın.",
+          "starter_code": "",
+          "expected_answer": ":root { --primary-color: #2563eb; }",
+          "hint": ":root { --primary-color: #2563eb; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "CSS değişkenlerinin değerini stil kuralları içinde okumak için hangi fonksiyon kullanılır?",
+          "options": [
+            "var(--degisken)",
+            "calc(--degisken)",
+            "get(--degisken)",
+            "env(--degisken)"
+          ],
+          "correct_option_index": 0,
+          "hint": "var(--degisken) fonksiyonu kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".btn sınıfının arka plan rengine tanımlı '--primary-color' değişkenini atayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".btn { background-color: var(--primary-color); }",
+          "hint": ".btn { background-color: var(--primary-color); } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Farklı birimleri (örneğin %100 ve 40px) birbiriyle matematiksel olarak işleme sokup boyut hesaplayan CSS fonksiyonu hangisidir?",
+          "options": [
+            "Toplama (+) ve çıkarma (-) operatörlerinin sağında ve solunda mutlaka birer boşluk bırakılmalıdır.",
+            "Yalnızca piksel birimi kullanılabilir, yüzde kullanılamaz.",
+            "calc fonksiyonu sadece yükseklik için geçerlidir.",
+            "Değişkenler calc içinde kullanılamaz."
+          ],
+          "correct_option_index": 0,
+          "hint": "Operatörlerin iki yanında boşluk bırakılması zorunludur."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".card sınıfına toplam genişlikten 32px çıkaran dinamik hesaplama (calc) ile genişlik veren kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { width: calc(100% - 32px); }",
+          "hint": ".card { width: calc(100% - 32px); } yazın."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,790 @@
+{
+  "technology": "HTML",
+  "total_modules": 14,
+  "modules": [
+    {
+      "module_id": 1,
+      "module_title": "HTML5 Temelleri & Sayfa İskeleti",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Modern bir web sayfası için HTML5 doküman tipi (DOCTYPE) bildirimini yazın.",
+          "starter_code": "",
+          "expected_answer": "<!DOCTYPE html>",
+          "hint": "<!DOCTYPE html> bildirimini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir HTML dokümanında teknik meta veriler, sayfa başlığı ve harici kaynak bağlantıları hangi semantik etiket içerisine yazılır?",
+          "options": [
+            "<meta>",
+            "<title>",
+            "<header>",
+            "<head>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Bu etiket <head> içinde yer alır ve sekme metnini tanımlar."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Sayfa dilini Türkçe ('tr') olarak tanımlayan açılış html etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<html lang=\"tr\">",
+          "hint": "lang=\"tr\" özniteliğini ekleyin."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Aşağıdakilerden hangisi HTML5 standartlarına göre teknik olarak tekil (self-closing / boş) bir etikettir?",
+          "options": [
+            "<head>",
+            "<body>",
+            "<main>",
+            "<html>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Sayfanın gövdesini temsil eden etiketi seçin."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Tarayıcı sekmesinde görünen sayfa başlığını tanımlayan title etiketini açıp kapatarak 'TechNova' yazın.",
+          "starter_code": "",
+          "expected_answer": "<head></head>",
+          "hint": "<head> ve </head> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 2,
+      "module_title": "Başlıklar & Karşılama Metinleri",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'TechNova Studio' metnini içeren ana başlık (birinci seviye) etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<h1>TechNova Studio</h1>",
+          "hint": "<h1> ve </h1> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "HTML başlık hiyerarşisinde en büyük ve en önemli ana başlık seviyesi hangisidir?",
+          "options": [
+            "1",
+            "3",
+            "Sınırsız",
+            "Her paragraf için bir tane"
+          ],
+          "correct_option_index": 0,
+          "hint": "Sayfa başına bir ana başlık önerilir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'Yaratıcı Web Deneyimleri' metnini içeren alt başlık (ikinci seviye) etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<h2>Yaratıcı Web Deneyimleri</h2>",
+          "hint": "<h2> etiketini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir metin parçasını anlamsal olarak güçlü bir şekilde vurgulamak ve varsayılan olarak kalın göstermek için hangi etiket tercih edilir?",
+          "options": [
+            "<i>",
+            "<b>",
+            "<strong>",
+            "<u>"
+          ],
+          "correct_option_index": 2,
+          "hint": "Strong etiketi anlamsal önem vurgusu katar."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "'Modern web projeleri geliştiriyoruz.' metnini içeren bir paragraf etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<p>Modern web projeleri geliştiriyoruz.</p>",
+          "hint": "<p> ve </p> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 3,
+      "module_title": "Bağlantılar & Aksiyon Butonları (Links & Buttons)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'https://github.com' adresine yönlendiren ve üzerinde 'GitHub' yazan bir bağlantı etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<a href=\"https://github.com\">GitHub</a>",
+          "hint": "href özniteliğine URL adresini verin."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir bağlantının tıklandığında mevcut sayfa yerine tamamen yeni bir tarayıcı sekmesinde açılmasını sağlayan hedef özniteliği hangisidir?",
+          "options": [
+            "target=\"_blank\"",
+            "target=\"_self\"",
+            "rel=\"newtab\"",
+            "window=\"_blank\""
+          ],
+          "correct_option_index": 0,
+          "hint": "target=\"_blank\" kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Tıklandığında sayfa içindeki 'projeler' id'li bölüme kaydıran ve üzerinde 'Projeler' yazan bağlantı etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<a href=\"#projeler\">Projeler</a>",
+          "hint": "ID referansı için başına # koyun."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Kullanıcının e-posta istemcisini doğrudan belirtilen adrese yeni ileti penceresiyle açmak için href özniteliğinde hangi protokol öneki kullanılır?",
+          "options": [
+            "href=\"mail:info@test.com\"",
+            "href=\"mailto:info@test.com\"",
+            "href=\"email:info@test.com\"",
+            "href=\"send:info@test.com\""
+          ],
+          "correct_option_index": 1,
+          "hint": "mailto: protokolünü seçin."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Üzerinde 'Hemen Başla' yazan standart bir buton etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<button type=\"button\">Hemen Başla</button>",
+          "hint": "type=\"button\" özniteliğini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 4,
+      "module_title": "Görseller & Medya Vitrini (Images)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Kaynak dosyası 'banner.jpg' ve alternatif açıklaması 'Proje Vitrini' olan bir görsel etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<img src=\"banner.jpg\" alt=\"Proje Vitrini\">",
+          "hint": "src ve alt özniteliklerini tanımlayın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Görselin yüklenememesi durumunda veya ekran okuyucular için açıklayıcı metin sağlamada hangi öznitelik zorunlu bir web standardıdır?",
+          "options": [
+            "Görsel boyutunu sıkıştırmak için",
+            "Görsel yüklenemediğinde veya ekran okuyucularda alternatif metin sağlamak için",
+            "Görsele animasyon eklemek için",
+            "Görseli sağa yaslamak için"
+          ],
+          "correct_option_index": 1,
+          "hint": "Erişilebilirlik ve SEO için alternatif metin sağlar."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Görsel kapsayıcısı içinde görsel alt yazısı olarak 'Modern Arayüz Tasarımı' metnini içeren başlık etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<figcaption>Modern Arayüz Tasarımı</figcaption>",
+          "hint": "<figcaption> ve </figcaption> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Görsel, grafik veya kod parçacıklarını anlamsal bir başlık ve açıklama ile birlikte sarmalayan semantik HTML5 etiketi hangisidir?",
+          "options": [
+            "<picture>",
+            "<figure>",
+            "<image>",
+            "<section>"
+          ],
+          "correct_option_index": 1,
+          "hint": "<figure> etiketi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Genişliği 600, yüksekliği 350 piksel olarak boyutlandırılmış 'vitrin.jpg' görsel etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<img src=\"vitrin.jpg\" width=\"600\" height=\"350\">",
+          "hint": "width=\"600\" ve height=\"350\" özniteliklerini ekleyin."
+        }
+      ]
+    },
+    {
+      "module_id": 5,
+      "module_title": "Yetenek & Teknoloji Listeleri (Lists)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'HTML5' maddesini içeren tek bir liste elemanı etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<li>HTML5</li>",
+          "hint": "<li> ve </li> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Maddeleri numaralı (1, 2, 3...) hiyerarşik bir sırada listelemek için hangi kapsayıcı etiket kullanılır?",
+          "options": [
+            "<ol>",
+            "<ul>",
+            "<dl>",
+            "<list>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Unordered List (ul) etiketidir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "İçerisinde tek bir 'Tasarım' maddesi bulunan sıralı bir liste oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<ol><li>Tasarım</li></ol>",
+          "hint": "<ol> içine <li> yerleştirin."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir sözlük veya terim-açıklama ikilisi tanımlamak için hangi HTML etiketi çifti kullanılır?",
+          "options": [
+            "<dt>",
+            "<dd>",
+            "<dfn>",
+            "<li>"
+          ],
+          "correct_option_index": 0,
+          "hint": "Definition Term (dt) etiketidir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Tanım listesi içinde 'Stil Şablonu' açıklamasını barındıran tanım verisi etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<dd>Stil Şablonu</dd>",
+          "hint": "<dd> ve </dd> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 6,
+      "module_title": "Hizmet & Paket Tablosu (Tables)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "İçerisinde 'Hizmet' yazan bir tablo başlık hücresi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<th>Hizmet</th>",
+          "hint": "<th> ve </th> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir HTML tablosunda yeni bir yatay satır başlatmak için hangi etiket kullanılır?",
+          "options": [
+            "<td>",
+            "<th>",
+            "<tr>",
+            "<row>"
+          ],
+          "correct_option_index": 2,
+          "hint": "Table Row (tr) etiketidir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "İçerisinde '₺2.500' yazan standart bir tablo veri hücresi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<td>₺2.500</td>",
+          "hint": "<td> ve </td> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Tablonun ne hakkında olduğunu açıklayan ve tablonun en üstünde başlık olarak duran etiket hangisidir?",
+          "options": [
+            "<caption>",
+            "<title>",
+            "<summary>",
+            "<thead>"
+          ],
+          "correct_option_index": 0,
+          "hint": "<caption> etiketidir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Tablo başlığı olarak 'Fiyatlandırma Tablosu' metnini içeren tablo başlığı etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<caption>Fiyatlandırma Tablosu</caption>",
+          "hint": "<caption> etiketini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 7,
+      "module_title": "İleri Tablolar (Colspan, Rowspan, Thead & Tbody)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Yatayda 3 sütun genişliğinde yer kaplayan ve içeriğinde 'Toplam' yazan bir tablo veri hücresi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<td colspan=\"3\">Toplam</td>",
+          "hint": "colspan=\"3\" özniteliğini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir tablo hücresinin dikey eksende birden fazla satırı kaplamasını sağlayan öznitelik hangisidir?",
+          "options": [
+            "rowspan",
+            "colspan",
+            "rowmerge",
+            "span"
+          ],
+          "correct_option_index": 0,
+          "hint": "Satır birleştirme için 'rowspan' kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Dikeyde 2 satır boyunca uzanan ve içeriğinde 'Full Paket' yazan bir tablo veri hücresi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<td rowspan=\"2\">Full Paket</td>",
+          "hint": "rowspan=\"2\" özniteliğini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "HTML tablolarında sütun başlıklarını barındıran satırları semantik olarak gruplayan etiket hangisidir?",
+          "options": [
+            "<thead>",
+            "<tbody>",
+            "<tfoot>",
+            "<tr>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Table Body (tbody) etiketidir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Tablonun dipnot ve özet satırlarını toplayan altbilgi etiketini açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<tfoot></tfoot>",
+          "hint": "<tfoot> ve </tfoot> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 8,
+      "module_title": "Konteyner Düzeni & Kart Mimarisi (Div & Span)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'card' sınıfına sahip boş bir div konteyneri oluşturup kapatın.",
+          "starter_code": "",
+          "expected_answer": "<div class=\"card\"></div>",
+          "hint": "<div class=\"card\"></div> yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "HTML'de sayfa düzeninde yeni bir satır başlatmadan metin akışı içinde kalan satır içi (inline) genel kapsayıcı etiket hangisidir?",
+          "options": [
+            "<div>",
+            "<span>",
+            "<section>",
+            "<p>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Satır içi kutu için <span> kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'badge' sınıfına sahip ve içeriğinde 'Yeni' yazan bir satır içi (span) etiketi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<span class=\"badge\">Yeni</span>",
+          "hint": "<span class=\"badge\">Yeni</span> yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir HTML belgesinde aynı id ve class kullanımı hakkında hangisi doğrudur?",
+          "options": [
+            "<div> blok seviyeli (block-level), <span> ise satır içi (inline) bir elemandır.",
+            "<div> sadece formlarda, <span> tablolarda kullanılır.",
+            "<div> içine metin yazılamaz, <span> içine yazılabilir.",
+            "Hiçbir fark yoktur, tamamen aynıdır."
+          ],
+          "correct_option_index": 0,
+          "hint": "Blok ve satır içi eleman ayrımını düşünün."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "'hero' id'sine sahip boş bir div konteyneri oluşturup kapatın.",
+          "starter_code": "",
+          "expected_answer": "<div id=\"hero\"></div>",
+          "hint": "id=\"hero\" özniteliğini verin."
+        }
+      ]
+    },
+    {
+      "module_id": 9,
+      "module_title": "Temel İletişim Formu (Form & Inputs)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Kullanıcıdan metin almak için zorunlu kılınmış bir giriş kutusu (input) yazın.",
+          "starter_code": "",
+          "expected_answer": "<input type=\"text\" required>",
+          "hint": "type=\"text\" ve required özniteliklerini ekleyin."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Form alanında kullanıcıya ne girmesi gerektiğini silik bir ipucu olarak kutunun içinde gösteren öznitelik hangisidir?",
+          "options": [
+            "method",
+            "action",
+            "target",
+            "src"
+          ],
+          "correct_option_index": 1,
+          "hint": "Form yönlendirme adresi 'action' özniteliğidir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'email' id'li giriş alanına bağlanan ve üzerinde 'E-Posta:' yazan bir etiket (label) yazın.",
+          "starter_code": "",
+          "expected_answer": "<label for=\"email\">E-Posta:</label>",
+          "hint": "for=\"email\" özniteliğini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Kullanıcının birden çok seçeneği bağımsız olarak işaretleyebilmesini sağlayan giriş türü hangisidir?",
+          "options": [
+            "type=\"secret\"",
+            "type=\"password\"",
+            "type=\"hidden\"",
+            "type=\"mask\""
+          ],
+          "correct_option_index": 1,
+          "hint": "Parola alanı için 'password' tipi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Varsayılan olarak işaretlenmiş (seçili) bir onay kutusu (checkbox) giriş etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<input type=\"checkbox\" checked>",
+          "hint": "type=\"checkbox\" ve checked özniteliklerini ekleyin."
+        }
+      ]
+    },
+    {
+      "module_id": 10,
+      "module_title": "Gelişmiş Form Kontrolleri & Gönder Butonu",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "4 satır yüksekliğine sahip çok satırlı metin alanı (textarea) oluşturup kapatın.",
+          "starter_code": "",
+          "expected_answer": "<textarea rows=\"4\"></textarea>",
+          "hint": "rows=\"4\" özniteliğini ekleyin."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Kullanıcıya açılır bir menüden tek bir seçenek seçtirmek için hangi form etiketi kullanılır?",
+          "options": [
+            "<input type=\"list\">",
+            "<select>",
+            "<datalist>",
+            "<optionbox>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Açılır liste için <select> kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Açılır liste için değeri 'pro' ve metni 'Pro Paket' olan bir seçenek etiketi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<option value=\"pro\">Pro Paket</option>",
+          "hint": "value=\"pro\" özniteliğini verin."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Form elemanlarını mantıksal bir çerçeve içine alıp çerçeveye başlık kazandıran etiket çifti hangisidir?",
+          "options": [
+            "<fieldset>",
+            "<group>",
+            "<box>",
+            "<section>"
+          ],
+          "correct_option_index": 0,
+          "hint": "<fieldset> etiketi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Formu sunucuya gönderme işlevine sahip ve üzerinde 'Teklif Al' yazan bir buton etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<button type=\"submit\">Teklif Al</button>",
+          "hint": "type=\"submit\" özniteliğini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 11,
+      "module_title": "Semantik HTML5 Mimarisi (Semantic Layout)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Sayfanın ana gezinti ve menü bağlantılarını barındıran semantik navigasyon etiketini açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<header></header>",
+          "hint": "<header> ve </header> etiketlerini yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir web sayfasında sadece bir kez kullanılan ve sayfanın en temel, benzersiz içeriğini barındıran semantik etiket hangisidir?",
+          "options": [
+            "<aside>",
+            "<section>",
+            "<article>",
+            "<footer>"
+          ],
+          "correct_option_index": 0,
+          "hint": "Yan içerik için <aside> kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Sayfadan bağımsız olarak tek başına paylaşılabilir bir blog yazısını veya haber içeriğini temsil eden makale etiketini açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<main></main>",
+          "hint": "<main> ve </main> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Sayfanın ana konusuyla dolaylı yoldan ilişkili olan kenar çubuğu (sidebar), reklam veya ek bağlantıları barındıran etiket hangisidir?",
+          "options": [
+            "<section>",
+            "<div>",
+            "<article>",
+            "<main>"
+          ],
+          "correct_option_index": 2,
+          "hint": "Bağımsız içerikler için <article> kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Sayfanın en altındaki telif hakları ve yasal bilgileri barındıran altbilgi etiketini açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<footer>© 2026 TechNova</footer>",
+          "hint": "<footer> ve </footer> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 12,
+      "module_title": "Multimedya & Gömülü İçerikler (Video, Audio & Iframe)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Kaynak dosyası 'video.mp4' olan ve kullanıcı kontrollerine sahip bir video etiketi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<video src=\"video.mp4\" controls></video>",
+          "hint": "src=\"video.mp4\" ve controls özniteliklerini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Video ve ses etiketlerinde farklı tarayıcı uyumlulukları için alternatif dosya formatları sunan alt etiket hangisidir?",
+          "options": [
+            "<embed-page>",
+            "<frame>",
+            "<iframe>",
+            "<webview>"
+          ],
+          "correct_option_index": 2,
+          "hint": "Gömülü çerçeve için <iframe> kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'https://www.youtube.com/embed/demo' adresindeki videoyu sayfaya gömen çerçeve (iframe) etiketini oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<iframe src=\"https://www.youtube.com/embed/demo\"></iframe>",
+          "hint": "src özniteliğine URL verin."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Tıklandığında açılıp kapanabilen akordiyon veya detay kutusu oluşturmak için summary etiketi ile birlikte hangi etiket kullanılır?",
+          "options": [
+            "<collapse> ve <summary>",
+            "<details> ve <summary>",
+            "<accordion> ve <item>",
+            "<toggle> ve <content>"
+          ],
+          "correct_option_index": 1,
+          "hint": "<details> ve <summary> kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Açılır detay kutusu içinde başlık olarak görünen ve metni 'Sıkça Sorulan Sorular' olan özet başlık etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<summary>Sıkça Sorulan Sorular</summary>",
+          "hint": "<summary> ve </summary> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 13,
+      "module_title": "Head, Meta Etiketleri & SEO Mimarisi",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Karakter kodlamasını UTF-8 olarak tanımlayan meta etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<meta charset=\"UTF-8\">",
+          "hint": "charset=\"UTF-8\" özniteliğini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Web sayfasının mobil cihazlarda ekran genişliğine tam oturmasını ve ölçeklenmesini sağlayan kritik meta etiketi hangisidir?",
+          "options": [
+            "viewport",
+            "responsive",
+            "mobile",
+            "device-width"
+          ],
+          "correct_option_index": 0,
+          "hint": "Görünüm alanı anlamına gelen 'viewport' seçilmelidir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Sayfa açıklamasını 'TechNova Web Portfolyosu' olarak belirten meta etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<meta name=\"description\" content=\"TechNova Web Portfolyosu\">",
+          "hint": "name=\"description\" ve content=\"...\" özniteliklerini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Arama motorlarının sayfayı dizine eklemesini ve bağlantıları takip etmesini sağlayan meta robots içeriği hangisidir?",
+          "options": [
+            "<style src=\"style.css\">",
+            "<link rel=\"stylesheet\" href=\"style.css\">",
+            "<script href=\"style.css\">",
+            "<css path=\"style.css\">"
+          ],
+          "correct_option_index": 1,
+          "hint": "<link rel=\"stylesheet\" href=\"...\"> etiketi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "'style.css' harici stil şablonunu sayfaya bağlayan link etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<link rel=\"stylesheet\" href=\"style.css\">",
+          "hint": "rel=\"stylesheet\" ve href=\"style.css\" özniteliklerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 14,
+      "module_title": "Büyük Canlı Proje Lansmanı & Yayın",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "HTML5 doküman bildirimi ile Türkçe dil tanımlı html açılış etiketini yan yana yazın.",
+          "starter_code": "",
+          "expected_answer": "<!DOCTYPE html><html lang=\"tr\">",
+          "hint": "<!DOCTYPE html><html lang=\"tr\"> yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "İyi tasarlanmış bir HTML5 sayfasında üst bilgi, ana içerik ve alt bilgi hiyerarşisi hangi sırayla dizilmelidir?",
+          "options": [
+            "<header>, <main>, <footer>",
+            "<footer>, <header>, <main>",
+            "<aside>, <footer>, <header>",
+            "<main>, <header>, <nav>"
+          ],
+          "correct_option_index": 0,
+          "hint": "Üst başlık, ana gövde ve altbilgi sırasını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'vitrin' id'li bir bölüm (section) etiketi açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<section id=\"vitrin\"></section>",
+          "hint": "<section id=\"vitrin\"></section> yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Web erişilebilirliği (a11y) standartlarına göre görme engelli ekran okuyucuları için görsellerde hangi öznitelik mutlaka bulunmalıdır?",
+          "options": [
+            "W3C",
+            "ECMA",
+            "MDN",
+            "ISO"
+          ],
+          "correct_option_index": 0,
+          "hint": "World Wide Web Consortium (W3C) validator kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "'iletisim' id'sine sahip ve POST yöntemiyle veri gönderen bir form etiketi açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<form id=\"iletisim\" method=\"POST\"></form>",
+          "hint": "id=\"iletisim\" ve method=\"POST\" özniteliklerini kullanın."
+        }
+      ]
+    }
+  ]
+}

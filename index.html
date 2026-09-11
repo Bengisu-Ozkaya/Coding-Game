@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9.1">
+  <link rel="stylesheet" href="style.css?v=9.2">
 </head>
 <body>
   <!-- Minimalist Arka Plan Işık Efektleri -->
@@ -34,8 +34,14 @@
         </div>
       </div>
 
-      <!-- Sağ: İstatistikler, Ses & Kullanıcı Profili -->
+      <!-- Sağ: Tema Değiştirici & Kullanıcı Profili -->
       <div class="header-right-group">
+        <!-- Tema Değiştirici (Dark / Light Mode) -->
+        <button id="btn-theme-toggle" class="btn-theme-toggle" type="button" aria-label="Temayı Değiştir" title="Koyu / Açık Tema Değiştir">
+          <span class="theme-icon theme-icon-sun" id="theme-icon-sun">☀️</span>
+          <span class="theme-icon theme-icon-moon" id="theme-icon-moon" style="display: none;">🌙</span>
+        </button>
+
         <!-- Kullanıcı Giriş & Profil Widget'ı -->
         <div class="auth-widget-wrapper" style="position: relative;">
           <button id="btn-open-auth" class="btn-auth-pill" title="Hesabına Giriş Yap veya Kayıt Ol">
@@ -92,9 +98,22 @@
                 <div class="dropdown-stat-lbl">Çözülen Alıştırma</div>
               </div>
               <div class="dropdown-stat-card">
-                <span class="dropdown-stat-icon">�</span>
-                <div class="dropdown-stat-val" id="dropdown-stat-city">0 / 14 Parça</div>
-                <div class="dropdown-stat-lbl">Canlı Proje</div>
+                <span class="dropdown-stat-icon">🃏</span>
+                <div class="dropdown-stat-val" id="dropdown-stat-cards">0 / 4 Kart</div>
+                <div class="dropdown-stat-lbl">Kazanılan Kart</div>
+              </div>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <!-- Kazanılan DevDeck Kartları Bölümü -->
+            <div class="dropdown-cards-section">
+              <div class="dropdown-section-header">
+                <div class="dropdown-section-title">🃏 KAZANILAN DEVDECK KARTLARI</div>
+                <span class="earned-cards-counter" id="dropdown-earned-cards-count">0 / 4 Açıldı</span>
+              </div>
+              <div class="dropdown-earned-cards-grid" id="dropdown-earned-cards-grid">
+                <!-- JS ile dinamik render edilecek -->
               </div>
             </div>
 
@@ -194,26 +213,19 @@
           </div>
         </div>
 
-        <!-- SAĞ SÜTUN: Canlı Proje Vitrini & DevDeck Kart Alanı -->
+        <!-- SAĞ SÜTUN: Canlı Proje Vitrini -->
         <div class="roadmap-right-column">
           <div class="project-showcase-card">
-            <!-- Üst Bar: Sekmeler ve Durum Rozeti -->
+            <!-- Üst Bar: Başlık ve Durum Rozeti -->
             <div class="project-card-header">
-              <div class="showcase-tabs-nav">
-                <button id="btn-tab-project" class="showcase-tab-btn active" type="button">
-                  <span class="tab-icon">🎮</span>
-                  <span>Canlı Proje</span>
-                </button>
-                <button id="btn-tab-devdeck" class="showcase-tab-btn" type="button">
-                  <span class="tab-icon">🎴</span>
-                  <span>DevDeck Kartı</span>
-                  <span class="tab-pill-badge" id="devdeck-pill-badge">Hediye</span>
-                </button>
+              <div class="project-header-title-group">
+                <span class="project-header-icon">🎮</span>
+                <span class="project-header-title">Canlı Proje Vitrini</span>
               </div>
               <div class="project-stage-badge" id="project-stage-badge">0 / 14 Bileşen Canlandı</div>
             </div>
 
-            <!-- GÖRÜNÜM 1: CANLI PROJE ÖNİZLEMESİ -->
+            <!-- CANLI PROJE ÖNİZLEMESİ -->
             <div id="tab-project-view" class="showcase-view-panel active">
               <!-- Tarayıcı / Cihaz Çerçevesi -->
               <div class="mock-browser-frame">
@@ -249,29 +261,6 @@
                   <span class="step-icon">🎯</span>
                   <span id="project-growth-hint">Konuları tamamladıkça projene yeni canlı bileşenler ve etkileşimler eklenecek!</span>
                 </div>
-              </div>
-            </div>
-
-            <!-- GÖRÜNÜM 2: DEVDECK 3D GELİŞTİRİCİ KARTI -->
-            <div id="tab-devdeck-view" class="showcase-view-panel" style="display: none;">
-              <div class="devdeck-card-wrapper" id="devdeck-card-wrapper" role="button" tabindex="0" title="Kartı çevirmek için tıkla!">
-                <div class="devdeck-flip-card" id="devdeck-flip-card">
-                  <!-- KART ÖN YÜZÜ -->
-                  <div class="card-face card-face-front" id="devdeck-card-front">
-                    <!-- JS ile dinamik çizilecek -->
-                  </div>
-
-                  <!-- KART ARKA YÜZÜ (CHEAT-SHEET) -->
-                  <div class="card-face card-face-back" id="devdeck-card-back">
-                    <!-- JS ile dinamik çizilecek -->
-                  </div>
-                </div>
-              </div>
-
-              <div class="devdeck-footer-action">
-                <button id="btn-flip-card-manual" class="btn-devdeck-flip" type="button">
-                  <span>🔄 Kartı Çevir & Hızlı Kodları Gör</span>
-                </button>
               </div>
             </div>
 
@@ -567,10 +556,22 @@
     </div>
   </div>
 
-  <script src="html-data.js?v=9.1"></script>
-  <script src="css-data.js?v=9.1"></script>
-  <script src="js-data.js?v=9.1"></script>
-  <script src="bootstrap-data.js?v=9.1"></script>
-  <script src="app.js?v=9.1"></script>
+  <!-- ========================================================================= -->
+  <!-- 🃏 KAZANILAN DEVDECK KARTI 3D GÖRÜNTÜLEME MODALI                          -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="earned-card-modal" style="display: none;">
+    <div class="earned-card-modal-dialog">
+      <button class="btn-close-earned-modal" id="btn-close-earned-modal" type="button" aria-label="Kapat" title="Kapat">✕</button>
+      <div id="earned-modal-content">
+        <!-- JS ile dinamik doldurulur -->
+      </div>
+    </div>
+  </div>
+
+  <script src="html-data.js?v=9.2"></script>
+  <script src="css-data.js?v=9.2"></script>
+  <script src="js-data.js?v=9.2"></script>
+  <script src="bootstrap-data.js?v=9.2"></script>
+  <script src="app.js?v=9.2"></script>
 </body>
 </html>

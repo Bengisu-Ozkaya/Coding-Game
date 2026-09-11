@@ -406,7 +406,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1 • ADIM 1/5: DOKÜMAN TÜRÜ",
       title: "1. Görev: HTML5 Doctype Bildirimi",
-      prompt: "TechNova web sitemizi kurmaya başlıyoruz! Tarayıcıya bu belgenin modern bir HTML5 dokümanı olduğunu bildiren <code>&lt;!DOCTYPE html&gt;</code> etiketini yazabilir misin?",
+      prompt: "TechNova web sitemizi kurmaya başlıyoruz! Tarayıcıya bu belgenin modern bir HTML5 dokümanı olduğunu bildiren doküman türü (DOCTYPE) bildirimini yazabilir misin?",
       presetCode: "<!-- 1. Adım: HTML5 Doküman Türü Bildirimini Yazın -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -426,7 +426,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1 • ADIM 2/5: KÖK ELEMAN",
       title: "2. Görev: Türkçe Kök Eleman (HTML)",
-      prompt: "Tüm web projemizi sarmalayacak olan ve sayfa dilini Türkçe olarak belirten <code>&lt;html lang=\"tr\"&gt;...&lt;/html&gt;</code> kök etiketini açıp kapatabilir misin?",
+      prompt: "Tüm web projemizi sarmalayacak olan ve sayfa dilini Türkçe ('tr') olarak belirten kök html etiketini açıp kapatabilir misin?",
       presetCode: "<!DOCTYPE html>\n<!-- lang='tr' özniteliğine sahip html etiketini açın ve kapatın -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -446,7 +446,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1 • ADIM 3/5: TEKNİK BÖLÜM (HEAD)",
       title: "3. Görev: Head Bölümünü Tanımla",
-      prompt: "Sayfamızın teknik başlık ve ayarlarını tutacak olan <code>&lt;head&gt;...&lt;/head&gt;</code> etiketini <code>html</code> etiketinin içine yerleştirebilir misin?",
+      prompt: "Sayfamızın teknik başlık ve ayarlarını tutacak olan head etiketini html etiketinin içine yerleştirebilir misin?",
       presetCode: "<!DOCTYPE html>\n<html lang=\"tr\">\n  <!-- head etiketini buraya ekleyin -->\n</html>",
       filename: "index.html",
       lang: "HTML5",
@@ -466,7 +466,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1 • ADIM 4/5: SEKME BAŞLIĞI (TITLE)",
       title: "4. Görev: Tarayıcı Sekme Başlığı",
-      prompt: "Ziyaretçilerin tarayıcı sekmesinde <code>TechNova Studio</code> görmesi için <code>&lt;head&gt;</code> içine <code>&lt;title&gt;TechNova Studio&lt;/title&gt;</code> etiketini ekleyebilir misin?",
+      prompt: "Ziyaretçilerin tarayıcı sekmesinde 'TechNova Studio' görmesi için head içine sayfa başlığı etiketini ekleyebilir misin?",
       presetCode: "<!DOCTYPE html>\n<html lang=\"tr\">\n  <head>\n    <!-- title etiketini buraya ekleyin -->\n  </head>\n</html>",
       filename: "index.html",
       lang: "HTML5",
@@ -486,7 +486,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1 • ADIM 5/5: GÖVDE (BODY) & TAM İSKELET",
       title: "5. Görev: Görsel Gövdeyi Aç ve İskeleti Tamamla",
-      prompt: "Tebrikler! Şimdi projemizin kullanıcıya görünecek tüm içeriğini tutacak olan <code>&lt;body&gt;...&lt;/body&gt;</code> etiketini <code>&lt;/head&gt;</code>'den hemen sonra ekleyerek ilk temel iskeleti tamamla!",
+      prompt: "Tebrikler! Şimdi projemizin kullanıcıya görünecek tüm içeriğini tutacak olan body gövde etiketini head etiketinden hemen sonra ekleyerek ilk temel iskeleti tamamla!",
       presetCode: "<!DOCTYPE html>\n<html lang=\"tr\">\n  <head>\n    <title>TechNova Studio</title>\n  </head>\n  <!-- body etiketini açıp kapatın -->\n</html>",
       filename: "index.html",
       lang: "HTML5",
@@ -513,7 +513,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2 • ADIM 1/5: ANA BAŞLIK (H1)",
       title: "1. Görev: Projenin Görkemli Ana Başlığı",
-      prompt: "Projemizin en tepesinde parlayacak ana başlığı oluşturalım! <code>&lt;body&gt;</code> içine <code>&lt;h1&gt;TechNova Web Studio&lt;/h1&gt;</code> başlığını ekleyebilir misin?",
+      prompt: "Projemizin en tepesinde yer alacak ana başlığı 'TechNova Web Studio' metniyle body içine ekleyebilir misin?",
       presetCode: "<body>\n  <!-- h1 başlığını buraya ekleyin -->\n</body>",
       filename: "index.html",
       lang: "HTML5",
@@ -533,7 +533,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2 • ADIM 2/5: ALT BAŞLIK (H2)",
       title: "2. Görev: Alt Başlık ile Vizyonunu Belirt",
-      prompt: "Ana başlığın hemen altına projenin vizyonunu anlatan <code>&lt;h2&gt;Geleceğin Dijital Deneyimleri&lt;/h2&gt;</code> alt başlığını ekleyebilir misin?",
+      prompt: "Ana başlığın hemen altına 'Geleceğin Dijital Deneyimleri' metnini içeren alt başlığı ekleyebilir misin?",
       presetCode: "<body>\n  <h1>TechNova Web Studio</h1>\n  <!-- h2 alt başlığını ekleyin -->\n</body>",
       filename: "index.html",
       lang: "HTML5",
@@ -553,7 +553,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2 • ADIM 3/5: TANITIM PARAGRAFI",
       title: "3. Görev: Kendini ve Projeni Tanıtan Paragraf",
-      prompt: "Şimdi ziyaretçilere ne sunduğumuzu anlatalım. Alt başlığın altına <code>&lt;p&gt;Modern web teknolojileri ile kullanıcı dostu arayüzler tasarlıyor ve kodluyoruz.&lt;/p&gt;</code> paragrafını ekle.",
+      prompt: "Alt başlığın altına 'Modern web teknolojileri ile kullanıcı dostu arayüzler tasarlıyor ve kodluyoruz.' tanıtım paragrafını ekle.",
       presetCode: "<body>\n  <h1>TechNova Web Studio</h1>\n  <h2>Geleceğin Dijital Deneyimleri</h2>\n  <!-- Tanıtım paragrafını buraya ekleyin -->\n</body>",
       filename: "index.html",
       lang: "HTML5",
@@ -573,7 +573,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2 • ADIM 4/5: GÜÇLÜ VURGU (STRONG & EM)",
       title: "4. Görev: Önemli Kelimeleri Vurgula",
-      prompt: "Paragraf içinde geçen 'Modern' kelimesini <code>&lt;strong&gt;Modern&lt;/strong&gt;</code> ile kalın, 'arayüzler' kelimesini <code>&lt;em&gt;arayüzler&lt;/em&gt;</code> ile vurgulayabilir misin?",
+      prompt: "Paragraf içindeki 'Modern' kelimesini güçlü kalın vurguyla (strong), 'arayüzler' kelimesini ise eğik vurguyla (em) çevreleyebilir misin?",
       presetCode: "<p>Modern web teknolojileri ile kullanıcı dostu arayüzler tasarlıyor ve kodluyoruz.</p>",
       filename: "index.html",
       lang: "HTML5",
@@ -595,7 +595,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2 • ADIM 5/5: TEMATİK AYIRICI (HR)",
       title: "5. Görev: Bölüm Sonuna Ayırıcı Çizgi Çek",
-      prompt: "Karşılama bölümümüzü bir sonraki aksiyon bölümünden şık bir şekilde ayırmak için paragrafın hemen sonuna tekil <code>&lt;hr&gt;</code> çizgisini ekle!",
+      prompt: "Karşılama bölümünün hemen sonuna tematik yatay ayırıcı çizgi (hr) ekle!",
       presetCode: "<body>\n  <h1>TechNova Web Studio</h1>\n  <h2>Geleceğin Dijital Deneyimleri</h2>\n  <p><strong>Modern</strong> web teknolojileri ile kullanıcı dostu <em>arayüzler</em> tasarlıyor ve kodluyoruz.</p>\n  <!-- hr çizgisini ekleyin -->\n</body>",
       filename: "index.html",
       lang: "HTML5",
@@ -618,7 +618,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3 • ADIM 1/5: SAYFA İÇİ KÖPRÜ (LINK)",
       title: "1. Görev: Projeleri Keşfet Çapa Linki",
-      prompt: "Ziyaretçinin tıkladığında sayfanın projeler kısmına kayması için <code>href=\"#projeler\"</code> özniteliğine sahip <code>&lt;a href=\"#projeler\"&gt;Projelerimi Keşfet&lt;/a&gt;</code> linkini ekleyebilir misin?",
+      prompt: "Ziyaretçinin tıkladığında sayfanın projeler kısmına kayması için üzerinde 'Projelerimi Keşfet' yazan çapa bağlantısını ('#projeler') ekleyebilir misin?",
       presetCode: "<!-- Projeler köprü bağlantısını ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -638,7 +638,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3 • ADIM 2/5: DIŞ GÜVENLİ BAĞLANTI (GITHUB)",
       title: "2. Görev: Yeni Sekmede Açılan GitHub Linki",
-      prompt: "Portfolyomuza GitHub profilimizi bağlayalım! Yeni sekmede açılan ve güvenli <code>target=\"_blank\" rel=\"noopener\"</code> özniteliklerine sahip <code>&lt;a href=\"https://github.com\" target=\"_blank\" rel=\"noopener\"&gt;GitHub Profilim&lt;/a&gt;</code> bağlantısını ekle.",
+      prompt: "Portfolyomuza 'https://github.com' adresine yönlendiren, yeni sekmede güvenle açılan (target='_blank' ve rel='noopener') ve üzerinde 'GitHub Profilim' yazan dış bağlantıyı ekle.",
       presetCode: "<!-- GitHub dış bağlantısını ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -661,7 +661,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3 • ADIM 3/5: E-POSTA BAĞLANTISI (MAILTO)",
       title: "3. Görev: Tek Tıkla E-Posta Gönderme Linki",
-      prompt: "Müşterilerin doğrudan e-posta istemcilerini tetiklemek için <code>href=\"mailto:iletisim@technova.com\"</code> öznitelikli <code>&lt;a href=\"mailto:iletisim@technova.com\"&gt;Bize Ulaşın&lt;/a&gt;</code> linkini ekle.",
+      prompt: "'iletisim@technova.com' adresine doğrudan e-posta göndermek üzere ayarlanmış ve metni 'Bize Ulaşın' olan bağlantıyı ekle.",
       presetCode: "<!-- Mailto bağlantısını ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -681,7 +681,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3 • ADIM 4/5: İNDİRME LİNKİ (DOWNLOAD)",
       title: "4. Görev: Özgeçmiş / CV İndirme Bağlantısı",
-      prompt: "Ziyaretçilerin tek tıkla CV dosyasını indirebilmesi için <code>download</code> özniteliğine sahip <code>&lt;a href=\"cv.pdf\" download&gt;CV İndir (PDF)&lt;/a&gt;</code> linkini oluşturabilir misin?",
+      prompt: "'cv.pdf' dosyasını tek tıkla indirmeyi sağlayan ve metni 'CV İndir (PDF)' olan indirme bağlantısını oluşturabilir misin?",
       presetCode: "<!-- download öznitelikli linki ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -702,7 +702,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3 • ADIM 5/5: AKSİYON BUTONU (BUTTON)",
       title: "5. Görev: İnteraktif 'Hemen Başla' Aksiyon Butonu",
-      prompt: "Sayfamıza gerçek bir etkileşim butonu kazandıralım! <code>type=\"button\"</code> ve <code>class=\"btn-primary\"</code> özniteliklerine sahip <code>&lt;button type=\"button\" class=\"btn-primary\"&gt;Hemen Başla 🚀&lt;/button&gt;</code> butonunu ekle!",
+      prompt: "Sayfamıza 'btn-primary' sınıfına sahip, üzerinde 'Hemen Başla 🚀' yazan bir aksiyon butonu ekle!",
       presetCode: "<!-- Aksiyon butonunu buraya ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -726,7 +726,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4 • ADIM 1/5: VİTRİN GÖRSELİ (IMG)",
       title: "1. Görev: Projenin Ana Vitrin Görseli",
-      prompt: "Projemizi görsel olarak canlandıralım! <code>src=\"vitrin.jpg\"</code> kaynağına ve açıklayıcı <code>alt=\"TechNova Proje Vitrini\"</code> özniteliğine sahip <code>&lt;img src=\"vitrin.jpg\" alt=\"TechNova Proje Vitrini\"&gt;</code> etiketini yazabilir misin?",
+      prompt: "Projemizi görsel olarak canlandıralım! Kaynak yolu 'vitrin.jpg' ve açıklayıcı alternatif metni 'TechNova Proje Vitrini' olan görsel etiketini yazabilir misin?",
       presetCode: "<!-- Vitrin görselini buraya ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -748,7 +748,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4 • ADIM 2/5: BOYUTLANDIRMA (WIDTH & HEIGHT)",
       title: "2. Görev: Görsel Genişlik ve Yükseklik Ayarı",
-      prompt: "Tarayıcının sayfa düzenini sıçratmadan render edebilmesi için görsele <code>width=\"640\"</code> ve <code>height=\"360\"</code> boyutlarını ata.",
+      prompt: "Tarayıcının sayfa düzenini sıçratmadan render edebilmesi için görsele 640 piksel genişlik ve 360 piksel yükseklik boyutlarını ata.",
       presetCode: "<img src=\"vitrin.jpg\" alt=\"TechNova Proje Vitrini\">",
       filename: "index.html",
       lang: "HTML5",
@@ -770,7 +770,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4 • ADIM 3/5: LOGO İKONU",
       title: "3. Görev: Şirket Logo İkonunu Yerleştir",
-      prompt: "Header kısmında kullanılmak üzere <code>src=\"logo.png\"</code>, <code>alt=\"TechNova Logo\"</code>, <code>width=\"64\"</code> ve <code>height=\"64\"</code> olan kare logo görselini ekle.",
+      prompt: "Header kısmında kullanılmak üzere kaynak dosyası 'logo.png', açıklama metni 'TechNova Logo' olan 64x64 boyutlarında kare logo görselini ekle.",
       presetCode: "<!-- Logo görselini ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -792,7 +792,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4 • ADIM 4/5: SEMANTİK ŞEKİL (FIGURE & FIGCAPTION)",
       title: "4. Görev: Görsel ve Açıklama Bloğu",
-      prompt: "Vitrin görselimizi semantik olarak bir figür bloğuna alalım! <code>&lt;figure&gt;</code> içine görseli ve altına <code>&lt;figcaption&gt;2026 Yılın En İyi Web Tasarımı&lt;/figcaption&gt;</code> ekleyebilir misin?",
+      prompt: "Vitrin görselimizi semantik olarak bir figür (figure) bloğuna alıp altına '2026 Yılın En İyi Web Tasarımı' açıklama yazısını (figcaption) ekleyebilir misin?",
       presetCode: "<figure>\n  <img src=\"vitrin.jpg\" alt=\"TechNova Proje Vitrini\" width=\"640\" height=\"360\">\n  <!-- figcaption etiketini ekleyin -->\n</figure>",
       filename: "index.html",
       lang: "HTML5",
@@ -814,7 +814,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4 • ADIM 5/5: TIKLANABİLİR GÖRSEL (IMAGE LINK)",
       title: "5. Görev: Tıklanabilir Galeri Görseli",
-      prompt: "Ziyaretçi görsele tıkladığında büyük galeriyi açması için <code>&lt;img ...&gt;</code> etiketini <code>&lt;a href=\"galeri.html\"&gt;...&lt;/a&gt;</code> linki ile sarmala!",
+      prompt: "Ziyaretçi görsele tıkladığında büyük galeriyi açması için görseli 'galeri.html' sayfasına yönlendiren bir bağlantı ile sarmala!",
       presetCode: "<img src=\"vitrin.jpg\" alt=\"TechNova Proje Vitrini\">\n<!-- Bu görseli <a href=\"galeri.html\"> içine sarın -->",
       filename: "index.html",
       lang: "HTML5",
@@ -837,7 +837,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5 • ADIM 1/5: SIRASIZ LİSTE (UL & LI)",
       title: "1. Görev: Yetenek ve Teknoloji Maddeleri",
-      prompt: "Projemizin güçlü yanlarını listelemek için sırasız <code>&lt;ul&gt;</code> aç ve içine <code>&lt;li&gt;HTML5 & Semantik Mimari&lt;/li&gt;</code> ile <code>&lt;li&gt;Yüksek Performans&lt;/li&gt;</code> maddelerini ekle.",
+      prompt: "Projemizin güçlü yanlarını listelemek için sırasız bir liste (ul) aç ve içine 'HTML5 & Semantik Mimari' ile 'Yüksek Performans' maddelerini ekle.",
       presetCode: "<!-- Sırasız yetenek listesini oluşturun -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -860,7 +860,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5 • ADIM 2/5: SIRALI LİSTE (OL & LI)",
       title: "2. Görev: Geliştirme Süreci Adımları",
-      prompt: "Proje geliştirme aşamalarımızı numaralı olarak listelemek için <code>&lt;ol&gt;</code> içinde <code>&lt;li&gt;1. Planlama & Tasarım&lt;/li&gt;</code> ve <code>&lt;li&gt;2. Kodlama & Yayın&lt;/li&gt;</code> adımlarını yaz.",
+      prompt: "Proje geliştirme aşamalarımızı numaralı olarak listelemek için sıralı bir liste (ol) içinde '1. Planlama & Tasarım' ve '2. Kodlama & Yayın' adımlarını yaz.",
       presetCode: "<!-- Sıralı adımlar listesini oluşturun -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -883,7 +883,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5 • ADIM 3/5: NAVİGASYON MENÜSÜ",
       title: "3. Görev: Listeden Web Menüsü Üret",
-      prompt: "Menü çubuğumuz için <code>&lt;ul&gt;</code> içinde bağlantı içeren iki menü elemanı oluştur: <code>&lt;li&gt;&lt;a href=\"#anasayfa\"&gt;Anasayfa&lt;/a&gt;&lt;/li&gt;</code> ve <code>&lt;li&gt;&lt;a href=\"#iletisim\"&gt;İletişim&lt;/a&gt;&lt;/li&gt;</code>.",
+      prompt: "Menü çubuğumuz için 'nav-menu' sınıfına sahip sırasız liste içinde '#anasayfa' ve '#iletisim' bağlantılarını içeren iki menü elemanı oluştur.",
       presetCode: "<ul class=\"nav-menu\">\n  <!-- Menü linklerini ekleyin -->\n</ul>",
       filename: "index.html",
       lang: "HTML5",
@@ -905,7 +905,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5 • ADIM 4/5: TANIM LİSTESİ (DL, DT, DD)",
       title: "4. Görev: Terim ve Tanım Sözlüğü",
-      prompt: "Müşterilere terimleri açıklamak için tanım listesi ekleyelim: <code>&lt;dl&gt;</code> içinde <code>&lt;dt&gt;Frontend&lt;/dt&gt;</code> ve <code>&lt;dd&gt;Kullanıcı arayüzü ve görsel deneyim kodlama.&lt;/dd&gt;</code> yaz.",
+      prompt: "Müşterilere terimleri açıklamak için bir tanım listesi (dl) açıp içine 'Frontend' terimini ve 'Kullanıcı arayüzü ve görsel deneyim kodlama.' açıklamasını yaz.",
       presetCode: "<!-- Tanım listesini ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -928,7 +928,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5 • ADIM 5/5: İÇ İÇE LİSTE (NESTED LIST)",
       title: "5. Görev: Alt Hizmetleri Barındıran İç İçe Liste",
-      prompt: "Web Geliştirme başlığının altına alt maddeler ekleyelim! <code>&lt;li&gt;Web Çözümleri&lt;ul&gt;&lt;li&gt;React Uygulamaları&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;</code> yapısını oluştur.",
+      prompt: "Sırasız liste içindeki 'Web Çözümleri' maddesinin altına iç içe yeni bir liste açarak 'React Uygulamaları' alt maddesini ekle.",
       presetCode: "<ul>\n  <!-- İç içe listeyi buraya ekleyin -->\n</ul>",
       filename: "index.html",
       lang: "HTML5",
@@ -953,7 +953,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6 • ADIM 1/5: TABLO ÇATISI & BAŞLIK (CAPTION)",
       title: "1. Görev: Fiyat Tablosu Kapsayıcısı",
-      prompt: "Hizmet paketlerimizi sunmak için bir tablo açalım! <code>&lt;table&gt;</code> etiketi aç ve hemen içine <code>&lt;caption&gt;Hizmet Paketleri ve Fiyatlandırma&lt;/caption&gt;</code> tablonun ana başlığını ekle.",
+      prompt: "Hizmet paketlerimizi sunmak için bir tablo aç ve hemen içine 'Hizmet Paketleri ve Fiyatlandırma' metnini içeren tablo başlığı (caption) ekle.",
       presetCode: "<!-- Table ve caption etiketlerini yazın -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -975,7 +975,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6 • ADIM 2/5: BAŞLIK SATIRI (TR & TH)",
       title: "2. Görev: Tablo Sütun Başlıkları",
-      prompt: "Tablomuzun sütun başlıklarını oluşturalım! <code>&lt;tr&gt;</code> satırı aç ve içine üç adet başlık hücresi ekle: <code>&lt;th&gt;Paket&lt;/th&gt;</code>, <code>&lt;th&gt;Süre&lt;/th&gt;</code> ve <code>&lt;th&gt;Ücret&lt;/th&gt;</code>.",
+      prompt: "Tablomuzun sütun başlıklarını oluşturalım! Bir satır (tr) aç ve içine 'Paket', 'Süre' ve 'Ücret' başlık hücrelerini (th) ekle.",
       presetCode: "<table>\n  <caption>Hizmet Paketleri ve Fiyatlandırma</caption>\n  <!-- tr ve th başlık satırını ekleyin -->\n</table>",
       filename: "index.html",
       lang: "HTML5",
@@ -999,7 +999,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6 • ADIM 3/5: BİRİNCİ VERİ SATIRI (TD)",
       title: "3. Görev: Başlangıç Paketi Satırı",
-      prompt: "İlk hizmet paketini tabloya ekleyelim! Yeni bir <code>&lt;tr&gt;</code> satırı aç ve içine sırasıyla <code>&lt;td&gt;Başlangıç&lt;/td&gt;</code>, <code>&lt;td&gt;3 Gün&lt;/td&gt;</code> ve <code>&lt;td&gt;₺1.500&lt;/td&gt;</code> veri hücrelerini yerleştir.",
+      prompt: "İlk hizmet paketini tabloya ekleyelim! Yeni bir satır aç ve içine sırasıyla 'Başlangıç', '3 Gün' ve '₺1.500' veri hücrelerini (td) yerleştir.",
       presetCode: "<!-- Başlangıç paketi veri satırını ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1022,7 +1022,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6 • ADIM 4/5: İKİNCİ VERİ SATIRI",
       title: "4. Görev: Profesyonel Paket Satırı",
-      prompt: "İkinci hizmet paketini ekleyelim! Yeni bir <code>&lt;tr&gt;</code> satırı içinde <code>&lt;td&gt;Pro Portfolyo&lt;/td&gt;</code>, <code>&lt;td&gt;7 Gün&lt;/td&gt;</code> ve <code>&lt;td&gt;₺3.500&lt;/td&gt;</code> hücrelerini oluştur.",
+      prompt: "İkinci hizmet paketini ekleyelim! Yeni bir satır içinde sırasıyla 'Pro Portfolyo', '7 Gün' ve '₺3.500' veri hücrelerini oluştur.",
       presetCode: "<!-- Pro paketi veri satırını ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1045,7 +1045,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6 • ADIM 5/5: EKSİKSİZ TABLO YAPISI",
       title: "5. Görev: Fiyat Tablosunu Kapat ve Tamamla",
-      prompt: "Şimdi tüm bu yapıyı bir araya getirerek <code>&lt;table&gt;</code> kapanış etiketini kontrol et ve tablonu tamamla!",
+      prompt: "Şimdi tüm bu yapıyı bir araya getirerek tablo kapanışını kontrol et ve hizmet tablonu tamamla!",
       presetCode: "<table>\n  <caption>Hizmet Paketleri ve Fiyatlandırma</caption>\n  <tr><th>Paket</th><th>Süre</th><th>Ücret</th></tr>\n  <tr><td>Başlangıç</td><td>3 Gün</td><td>₺1.500</td></tr>\n  <tr><td>Pro Portfolyo</td><td>7 Gün</td><td>₺3.500</td></tr>\n<!-- Tablo kapanışını sağlayın -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1068,7 +1068,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7 • ADIM 1/5: SEMANTİK THEAD",
       title: "1. Görev: Tablo Başlık Bloğu (Thead)",
-      prompt: "Fiyat tablomuzu kurumsal semantik standarda taşıyalım! Başlık satırını <code>&lt;thead&gt; &lt;tr&gt;...&lt;/tr&gt; &lt;/thead&gt;</code> etiketleri arasına alabilir misin?",
+      prompt: "Fiyat tablomuzu kurumsal semantik standarda taşıyalım! Başlık satırını tablonun thead bloğu içine alabilir misin?",
       presetCode: "<table>\n  <!-- thead bloğunu buraya ekleyin -->\n  <tr><th>Hizmet</th><th>Özellik</th><th>Fiyat</th></tr>\n</table>",
       filename: "index.html",
       lang: "HTML5",
@@ -1088,7 +1088,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7 • ADIM 2/5: SEMANTİK TBODY",
       title: "2. Görev: Tablo Veri Gövdesi (Tbody)",
-      prompt: "Şimdi veri satırlarını <code>&lt;tbody&gt;...&lt;/tbody&gt;</code> bloğu ile sarmalayarak tablonun gövdesini oluştur.",
+      prompt: "Şimdi veri satırlarını tablonun gövde bloğu (tbody) ile sarmalayarak tablo yapısını oluştur.",
       presetCode: "<!-- tbody etiketlerini veri satırının etrafına ekleyin -->\n<tr><td>E-Ticaret Sitesi</td><td>Full Responsive</td><td>₺4.500</td></tr>",
       filename: "index.html",
       lang: "HTML5",
@@ -1108,7 +1108,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7 • ADIM 3/5: SÜTUN BİRLEŞTİRME (COLSPAN)",
       title: "3. Görev: Bilgi Notu İçin 3 Sütunu Birleştir",
-      prompt: "Tablonun tüm genişliğini kaplayan bir duyuru satırı ekleyelim! 3 sütunu tek bir hücrede birleştirmek için <code>&lt;td colspan=\"3\"&gt;Tüm paketlerimizde 1 yıl ücretsiz teknik destek dahildir.&lt;/td&gt;</code> satırını yaz.",
+      prompt: "Tablonun tüm genişliğini kaplayan bir duyuru satırı ekleyelim! 3 sütunu tek bir hücrede birleştiren (colspan='3') ve 'Tüm paketlerimizde 1 yıl ücretsiz teknik destek dahildir.' yazan hücreyi oluştur.",
       presetCode: "<tr>\n  <!-- colspan='3' hücresini ekleyin -->\n</tr>",
       filename: "index.html",
       lang: "HTML5",
@@ -1128,7 +1128,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7 • ADIM 4/5: SATIR BİRLEŞTİRME (ROWSPAN)",
       title: "4. Görev: İki Satırı Kapsayan Hizmet Alanı",
-      prompt: "Aynı hizmet kategorisini alt alta iki satır boyunca birleştirmek için <code>&lt;td rowspan=\"2\"&gt;Web Geliştirme&lt;/td&gt;</code> hücresini oluşturabilir misin?",
+      prompt: "Aynı hizmet kategorisini alt alta iki satır boyunca birleştirmek için 2 satırı kaplayan (rowspan='2') 'Web Geliştirme' hücresini oluşturabilir misin?",
       presetCode: "<tr>\n  <!-- rowspan='2' hücresini ekleyin -->\n  <td>React Arayüz</td>\n  <td>₺3.000</td>\n</tr>",
       filename: "index.html",
       lang: "HTML5",
@@ -1148,7 +1148,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7 • ADIM 5/5: SEMANTİK DİPNOT (TFOOT)",
       title: "5. Görev: Tablo Alt Bilgi Bloğu (Tfoot)",
-      prompt: "Tablonun en altına son güncelleme tarihini ekleyelim! <code>&lt;tfoot&gt; &lt;tr&gt; &lt;td colspan=\"3\"&gt;Fiyatlar 2026 yılı için geçerlidir.&lt;/td&gt; &lt;/tr&gt; &lt;/tfoot&gt;</code> yapısını kur.",
+      prompt: "Tablonun en altına 3 sütun genişliğinde 'Fiyatlar 2026 yılı için geçerlidir.' bilgisini içeren bir altbilgi (tfoot) satırı kur.",
       presetCode: "<!-- tfoot bloğunu ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1173,7 +1173,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8 • ADIM 1/5: ANA PROJE KAPSAYICISI (CONTAINER)",
       title: "1. Görev: Sayfa Geneli Kapsayıcı Div",
-      prompt: "Tüm web bileşenlerimizi derli toplu tutacak ana taşıyıcıyı oluşturalım! <code>class=\"container\"</code> olan bir <code>&lt;div class=\"container\"&gt;...&lt;/div&gt;</code> bloğu aç ve kapat.",
+      prompt: "Tüm web bileşenlerimizi derli toplu tutacak ana taşıyıcıyı oluşturalım! 'container' sınıfına sahip bir div bloğu aç ve kapat.",
       presetCode: "<!-- container div'ini açıp kapatın -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1193,7 +1193,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8 • ADIM 2/5: PROJE KARTI (CARD)",
       title: "2. Görev: Öne Çıkan Proje Kartı",
-      prompt: "Container içine şık bir proje kartı yerleştirelim! Hem <code>class=\"project-card\"</code> sınıfına hem de <code>id=\"one-cikan\"</code> tekil kimliğine sahip bir <code>&lt;div class=\"project-card\" id=\"one-cikan\"&gt;...&lt;/div&gt;</code> oluştur.",
+      prompt: "Kapsayıcı içine hem 'project-card' sınıfına hem de 'one-cikan' tekil kimliğine (id) sahip bir div kartı yerleştir.",
       presetCode: "<div class=\"container\">\n  <!-- Proje kartı div'ini ekleyin -->\n</div>",
       filename: "index.html",
       lang: "HTML5",
@@ -1215,7 +1215,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8 • ADIM 3/5: SATIR İÇİ ROZET (SPAN)",
       title: "3. Görev: Parlayan 'YENİ' Durum Rozeti",
-      prompt: "Proje kartının başlığı yanına satır içi bir rozet iliştirelim! Kartın içine <code>&lt;span class=\"badge-new\"&gt;YENİ&lt;/span&gt;</code> rozetini ekle.",
+      prompt: "Proje kartının içine 'badge-new' sınıfına sahip ve metni 'YENİ' olan bir satır içi rozet (span) iliştir.",
       presetCode: "<div class=\"project-card\">\n  <!-- span rozetini ekleyin -->\n  <h3>Bulut Depolama Platformu</h3>\n</div>",
       filename: "index.html",
       lang: "HTML5",
@@ -1235,7 +1235,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8 • ADIM 4/5: IZGARA SATIRI VE SÜTUNLAR",
       title: "4. Görev: Yan Yana İki Sütunlu Kart Alanı",
-      prompt: "İki kartı yan yana yerleştirmek için <code>&lt;div class=\"row\"&gt;</code> içine iki adet <code>&lt;div class=\"col\"&gt;Kart&lt;/div&gt;</code> sütun div'i açabilir misin?",
+      prompt: "İki kartı yan yana yerleştirmek için 'row' sınıfına sahip bir div içine iki adet 'col' sınıflı sütun div'i yerleştirebilir misin?",
       presetCode: "<!-- row ve col divlerini ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1257,7 +1257,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8 • ADIM 5/5: KART AKSİYON ALANI (CARD FOOTER)",
       title: "5. Görev: Kart Alt Çubuğu ve İncele Butonu",
-      prompt: "Proje kartımızın alt kısmına buton barındıran <code>&lt;div class=\"card-footer\"&gt; &lt;button type=\"button\" class=\"btn-detay\"&gt;Projeyi İncele&lt;/button&gt; &lt;/div&gt;</code> alanını ekle!",
+      prompt: "Proje kartımızın alt kısmına 'card-footer' sınıfına sahip bir div açıp içine 'Projeyi İncele' butonunu ekle!",
       presetCode: "<div class=\"project-card\">\n  <h3>Bulut Depolama Platformu</h3>\n  <!-- card-footer ve butonu buraya ekleyin -->\n</div>",
       filename: "index.html",
       lang: "HTML5",
@@ -1282,7 +1282,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9 • ADIM 1/5: İLETİŞİM FORMU KAPSAYICISI",
       title: "1. Görev: Form Etiketi ve Gönderim Metodu",
-      prompt: "Web sitemize gelen ziyaretçilerin bize mesaj gönderebilmesi için <code>action=\"/iletisim\"</code> ve <code>method=\"POST\"</code> özniteliklerine sahip <code>&lt;form action=\"/iletisim\" method=\"POST\"&gt;...&lt;/form&gt;</code> kapsayıcısını aç.",
+      prompt: "Ziyaretçilerin bize mesaj gönderebilmesi için '/iletisim' adresine POST yöntemiyle veri gönderen bir form kapsayıcısı aç.",
       presetCode: "<!-- Form etiketini açıp kapatın -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1304,7 +1304,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9 • ADIM 2/5: AD SOYAD ALANI (LABEL & INPUT)",
       title: "2. Görev: İsim Giriş Kutusu",
-      prompt: "Formun içine ziyaretçinin adını almak için <code>&lt;label for=\"ad\"&gt;Adınız Soyadınız:&lt;/label&gt;</code> ve zorunlu <code>&lt;input type=\"text\" id=\"ad\" name=\"ad\" required placeholder=\"Adınızı girin\"&gt;</code> alanlarını ekle.",
+      prompt: "Formun içine ziyaretçinin adını almak için 'ad' id'sine bağlı etiket (label) ve doldurulması zorunlu metin giriş kutusu (input) ekle.",
       presetCode: "<form action=\"/iletisim\" method=\"POST\">\n  <!-- Ad Soyad label ve inputunu ekleyin -->\n</form>",
       filename: "index.html",
       lang: "HTML5",
@@ -1328,7 +1328,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9 • ADIM 3/5: E-POSTA ALANI (TYPE EMAIL)",
       title: "3. Görev: E-Posta Giriş Kutusu",
-      prompt: "Ziyaretçiye geri dönüş yapabilmek için <code>type=\"email\"</code> olan <code>&lt;label for=\"email\"&gt;E-Posta Adresiniz:&lt;/label&gt;</code> ve <code>&lt;input type=\"email\" id=\"email\" name=\"email\" required&gt;</code> ekle.",
+      prompt: "Ziyaretçiye geri dönüş yapabilmek için 'email' id'sine bağlı etiket ve zorunlu bir e-posta giriş kutusu ekle.",
       presetCode: "<!-- E-posta label ve inputunu ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1351,7 +1351,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9 • ADIM 4/5: TELEFON NUMARASI ALANI (TYPE TEL)",
       title: "4. Görev: Telefon Numarası Girişi",
-      prompt: "Hızlı iletişim için <code>&lt;label for=\"telefon\"&gt;Telefon:&lt;/label&gt;</code> ve <code>&lt;input type=\"tel\" id=\"telefon\" name=\"telefon\" placeholder=\"0555-555-5555\"&gt;</code> alanını ekle.",
+      prompt: "Hızlı iletişim için 'telefon' id'sine bağlı etiket ve '0555-555-5555' ipucuna (placeholder) sahip telefon giriş alanı ekle.",
       presetCode: "<!-- Telefon label ve inputunu ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1373,7 +1373,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9 • ADIM 5/5: ONAY KUTUSU (CHECKBOX)",
       title: "5. Görev: Aydınlatma Metni Onay Kutusu",
-      prompt: "KVKK ve aydınlatma metnini onaylatmak için <code>&lt;label&gt;&lt;input type=\"checkbox\" name=\"onay\" required&gt; Şartları okudum ve kabul ediyorum&lt;/label&gt;</code> onay kutusunu ekle!",
+      prompt: "Kullanım şartlarını onaylatmak için zorunlu kılınmış bir onay kutusu (checkbox) ve 'Şartları okudum ve kabul ediyorum' etiketini ekle!",
       presetCode: "<!-- Onay kutusu checkbox'ı ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1398,7 +1398,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10 • ADIM 1/5: ÇOK SATIRLI MESAJ KUTUSU (TEXTAREA)",
       title: "1. Görev: Mesaj Alanı (Textarea)",
-      prompt: "Ziyaretçilerin projelerini detaylıca anlatabilmeleri için <code>&lt;label for=\"mesaj\"&gt;Mesajınız:&lt;/label&gt;</code> ve <code>&lt;textarea id=\"mesaj\" name=\"mesaj\" rows=\"4\" placeholder=\"Proje detaylarını yazın...\"&gt;&lt;/textarea&gt;</code> alanını ekle.",
+      prompt: "Ziyaretçilerin projelerini detaylıca anlatabilmeleri için 'mesaj' id'sine bağlı etiket ve 4 satır yüksekliğinde çok satırlı metin alanı (textarea) ekle.",
       presetCode: "<!-- Textarea mesaj alanını ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1419,7 +1419,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10 • ADIM 2/5: AÇILIR LİSTE (SELECT & OPTION)",
       title: "2. Görev: Hizmet Seçim Açılır Menüsü",
-      prompt: "Müşterinin hangi hizmeti istediğini seçmesi için <code>&lt;select name=\"hizmet\"&gt;</code> aç ve içine <code>&lt;option value=\"web\"&gt;Web Geliştirme&lt;/option&gt;</code> ile <code>&lt;option value=\"tasarim\"&gt;UI/UX Tasarım&lt;/option&gt;</code> seçeneklerini ekle.",
+      prompt: "Müşterinin hizmet türünü seçmesi için 'hizmet' isimli açılır liste (select) açıp içine 'web' ve 'tasarim' değerlerine sahip seçenekleri (option) ekle.",
       presetCode: "<!-- Select ve option elemanlarını ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1442,7 +1442,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10 • ADIM 3/5: FORM GRUPLAMA (FIELDSET & LEGEND)",
       title: "3. Görev: Formu Mantıksal Bölüme Çerçevele",
-      prompt: "İletişim alanlarını şık bir çerçeveye almak için formun etrafına <code>&lt;fieldset&gt;</code> ve hemen ilk satırına <code>&lt;legend&gt;Bize Ulaşın&lt;/legend&gt;</code> başlığını ekle.",
+      prompt: "İletişim alanlarını şık bir çerçeveye almak için form etrafına fieldset ve hemen ilk satırına 'Bize Ulaşın' başlığını (legend) ekle.",
       presetCode: "<!-- fieldset ve legend etiketlerini uygulayın -->\n<form>\n</form>",
       filename: "index.html",
       lang: "HTML5",
@@ -1464,7 +1464,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10 • ADIM 4/5: GİZLİ GÜVENLİK ALANI (INPUT HIDDEN)",
       title: "4. Görev: Arka Plan Proje Form ID'si",
-      prompt: "Sunucunun bu formun portfolyo formundan geldiğini anlaması için gizli input ekleyelim: <code>&lt;input type=\"hidden\" name=\"form_turu\" value=\"portfolyo_v1\"&gt;</code>.",
+      prompt: "Sunucunun form türünü tanıması için 'form_turu' isimli ve 'portfolyo_v1' değerli gizli bir giriş alanı (hidden input) ekle.",
       presetCode: "<!-- Hidden inputunu ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1486,7 +1486,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10 • ADIM 5/5: FORMU GÖNDER BUTONU (SUBMIT BUTTON)",
       title: "5. Görev: Formu Gönder Butonu",
-      prompt: "Formun kalbi! Ziyaretçinin yazdığı tüm bu bilgileri sunucuya postalayan <code>&lt;button type=\"submit\" class=\"btn-submit\"&gt;Mesajı Gönder 🚀&lt;/button&gt;</code> butonunu ekle!",
+      prompt: "Formun kalbi! Ziyaretçinin yazdığı tüm bilgileri sunucuya postalayan ve üzerinde 'Mesajı Gönder 🚀' yazan gönderme butonunu (submit) ekle!",
       presetCode: "<!-- type='submit' olan Gönder butonunu ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1511,7 +1511,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11 • ADIM 1/5: SEMANTİK HEADER VE NAV",
       title: "1. Görev: Semantik Başlık ve Menü Çubuğu",
-      prompt: "Projemizi kurumsal HTML5 mimarisine dönüştürüyoruz! Sayfanın tepesine <code>&lt;header&gt; &lt;nav&gt; &lt;h1&gt;TechNova&lt;/h1&gt; &lt;/nav&gt; &lt;/header&gt;</code> semantik bloğunu ekleyebilir misin?",
+      prompt: "Projemizi kurumsal HTML5 mimarisine dönüştürüyoruz! Sayfanın tepesine içinde navigasyon ve TechNova başlığı barındıran semantik header bloğunu ekleyebilir misin?",
       presetCode: "<!-- header ve nav etiketlerini oluşturun -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1533,7 +1533,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11 • ADIM 2/5: ANA GÖVDE (MAIN)",
       title: "2. Görev: Sayfanın Omurgası (Main)",
-      prompt: "Sayfanın birincil ve benzersiz içeriklerini toplayan <code>&lt;main&gt;...&lt;/main&gt;</code> etiketini <code>&lt;/header&gt;</code>'den hemen sonra açıp kapat.",
+      prompt: "Sayfanın birincil ve benzersiz ana içeriklerini toplayan main etiketini header bloğundan hemen sonra açıp kapat.",
       presetCode: "<header>\n  <nav><h1>TechNova</h1></nav>\n</header>\n<!-- main etiketini buraya ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1553,7 +1553,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11 • ADIM 3/5: İÇERİK BÖLÜMLERİ (SECTION)",
       title: "3. Görev: Hizmetler Bölümü (Section)",
-      prompt: "Main içine bağımsız hizmetler alanını oluşturmak için <code>&lt;section id=\"hizmetler\"&gt; &lt;h2&gt;Neler Yapıyoruz?&lt;/h2&gt; &lt;/section&gt;</code> etiketini ekle.",
+      prompt: "Main içine 'hizmetler' id'sine ve 'Neler Yapıyoruz?' başlığına sahip bağımsız bir bölüm (section) ekle.",
       presetCode: "<main>\n  <!-- section etiketini buraya ekleyin -->\n</main>",
       filename: "index.html",
       lang: "HTML5",
@@ -1575,7 +1575,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11 • ADIM 4/5: BAĞIMSIZ PROJE KARTI (ARTICLE)",
       title: "4. Görev: Kendi Başına Anlamlı Makale (Article)",
-      prompt: "Bölüm içine kendi başına taşınabilir bir proje bloğu yerleştirmek için <code>&lt;article class=\"proje-kutu\"&gt; &lt;h3&gt;Oyun Portalı&lt;/h3&gt; &lt;p&gt;HTML5 tabanlı interaktif oyun platformu.&lt;/p&gt; &lt;/article&gt;</code> ekle.",
+      prompt: "Bölüm içine kendi başına taşınabilir, başlık ve paragraf içeren 'proje-kutu' sınıfına sahip bir makale (article) bloğu yerleştir.",
       presetCode: "<!-- article etiketini buraya ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1596,7 +1596,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11 • ADIM 5/5: ALT BİLGİ ALANI (FOOTER)",
       title: "5. Görev: Semantik Footer ile Sayfayı Mühürle",
-      prompt: "Main kapandıktan hemen sonra sayfa sonuna telif haklarını belirten <code>&lt;footer&gt; &lt;p&gt;&copy; 2026 TechNova Studio. Tüm Hakları Saklıdır.&lt;/p&gt; &lt;/footer&gt;</code> alanını ekle!",
+      prompt: "Main kapandıktan hemen sonra sayfa sonuna telif haklarını belirten semantik footer alanını ekle!",
       presetCode: "</main>\n<!-- footer etiketini ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1621,7 +1621,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12 • ADIM 1/5: TANITIM VİDEOSU (VIDEO CONTROLS)",
       title: "1. Görev: Yerel Tanıtım Videosu Oynatıcısı",
-      prompt: "Ziyaretçilere web projemizin demosunu göstermek için <code>controls</code> ve <code>width=\"640\"</code> olan <code>&lt;video src=\"demo.mp4\" controls width=\"640\"&gt;Tarayıcınız video oynatmayı desteklemiyor.&lt;/video&gt;</code> video alanını ekle.",
+      prompt: "Ziyaretçilere web projemizin demosunu göstermek için 'demo.mp4' dosyasını oynatan ve kullanıcı kontrollerine sahip video alanını ekle.",
       presetCode: "<!-- video etiketini ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1643,7 +1643,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12 • ADIM 2/5: ÇOKLU VİDEO KAYNAĞI (SOURCE)",
       title: "2. Görev: Alternatif Video Formatları",
-      prompt: "Farklı tarayıcılar için alternatif format sunmak üzere <code>&lt;video controls&gt; &lt;source src=\"demo.mp4\" type=\"video/mp4\"&gt; &lt;source src=\"demo.webm\" type=\"video/webm\"&gt; &lt;/video&gt;</code> yapısını oluştur.",
+      prompt: "Farklı tarayıcılar için alternatif mp4 ve webm formatları sunan kaynak etiketli (source) video yapısını oluştur.",
       presetCode: "<video controls>\n  <!-- source etiketlerini ekleyin -->\n</video>",
       filename: "index.html",
       lang: "HTML5",
@@ -1665,7 +1665,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12 • ADIM 3/5: ARKA PLAN SESİ / PODCAST (AUDIO)",
       title: "3. Görev: Ses Oynatıcı (Audio Controls)",
-      prompt: "Ziyaretçilere hoş bir ses kaydı veya podcast dinletmek için <code>&lt;audio src=\"tanitim.mp3\" controls&gt;&lt;/audio&gt;</code> ses oynatıcı bileşenini ekle.",
+      prompt: "Ziyaretçilere ses kaydı veya podcast dinletmek için 'tanitim.mp3' dosyasını kontrollerle oynatan ses (audio) bileşenini ekle.",
       presetCode: "<!-- audio etiketini ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1686,7 +1686,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12 • ADIM 4/5: GÖMÜLÜ YOUTUBE VİDEOSU (IFRAME)",
       title: "4. Görev: YouTube Tanıtım Videosu Gömme",
-      prompt: "Sayfamıza harici YouTube demomuzu gömmek için <code>&lt;iframe src=\"https://www.youtube.com/embed/demo\" title=\"TechNova Demosu\" width=\"560\" height=\"315\" allowfullscreen&gt;&lt;/iframe&gt;</code> ekle.",
+      prompt: "Sayfamıza harici video demomuzu gömmek için belirtilen YouTube adresini yükleyen bir çerçeve (iframe) ekle.",
       presetCode: "<!-- iframe etiketini buraya ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1708,7 +1708,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12 • ADIM 5/5: ETKİLEŞİMLİ AÇILIR KUTU (DETAILS & SUMMARY)",
       title: "5. Görev: Sıkça Sorulan Sorular Akordiyonu",
-      prompt: "Tıklanınca açılan modern bir S.S.S kutusu yapalım! <code>&lt;details&gt; &lt;summary&gt;Nasıl sipariş verebilirim?&lt;/summary&gt; &lt;p&gt;İletişim formunu doldurarak anında teklif alabilirsiniz.&lt;/p&gt; &lt;/details&gt;</code> ekle!",
+      prompt: "Tıklanınca açılan modern bir S.S.S kutusu oluşturmak için özet başlığı (summary) ve detay metni içeren açılır detay (details) bloğu ekle!",
       presetCode: "<!-- details ve summary etiketini ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1733,7 +1733,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13 • ADIM 1/5: KARAKTER KODLAMASI (CHARSET)",
       title: "1. Görev: Türkçe Karakter Desteği",
-      prompt: "Web sitemizde 'ğ, ü, ş, ı, ö, ç' harflerinin kusursuz görünmesi için <code>&lt;head&gt;</code> içine <code>&lt;meta charset=\"UTF-8\"&gt;</code> etiketini ekle.",
+      prompt: "Web sitemizde Türkçe karakterlerin kusursuz görünmesi için head içine UTF-8 karakter kodlaması meta etiketini ekle.",
       presetCode: "<head>\n  <!-- charset meta etiketini ekleyin -->\n  <title>TechNova Studio</title>\n</head>",
       filename: "index.html",
       lang: "HTML5",
@@ -1753,7 +1753,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13 • ADIM 2/5: MOBİL UYUMLULUK (VIEWPORT)",
       title: "2. Görev: Responsive Mobil Uyumluluk Kalkanı",
-      prompt: "Web sayfamızın telefon ve tabletlerde bozulmadan tam ekran oturması için <code>&lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</code> etiketini head içine yaz.",
+      prompt: "Web sayfamızın telefon ve tabletlerde bozulmadan tam ekrana uyum sağlaması için viewport meta etiketini head içine yaz.",
       presetCode: "<head>\n  <meta charset=\"UTF-8\">\n  <!-- viewport etiketini ekleyin -->\n  <title>TechNova Studio</title>\n</head>",
       filename: "index.html",
       lang: "HTML5",
@@ -1775,7 +1775,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13 • ADIM 3/5: GOOGLE ARAMA AÇIKLAMASI (META DESCRIPTION)",
       title: "3. Görev: Arama Motoru SEO Açıklaması",
-      prompt: "Google aramalarında projemizin altında çıkacak açıklama metnini belirleyelim: <code>&lt;meta name=\"description\" content=\"TechNova yenilikçi dijital web portfolyosu ve modern arayüzler platformu.\"&gt;</code> etiketini ekle.",
+      prompt: "Google aramalarında projemizin altında çıkacak açıklama metnini (description) belirten meta etiketini ekle.",
       presetCode: "<head>\n  <!-- meta description etiketini ekleyin -->\n</head>",
       filename: "index.html",
       lang: "HTML5",
@@ -1797,7 +1797,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13 • ADIM 4/5: TARAYICI SEKME İKONU (FAVICON)",
       title: "4. Görev: Sekme Favicon İkonu Bağlantısı",
-      prompt: "Tarayıcı sekmesinde şirket ikonumuzun parlaması için <code>&lt;link rel=\"icon\" type=\"image/png\" href=\"favicon.png\"&gt;</code> link etiketini ekle.",
+      prompt: "Tarayıcı sekmesinde şirket ikonumuzun parlaması için 'favicon.png' görselini bağlayan ikon link etiketini ekle.",
       presetCode: "<head>\n  <!-- favicon linkini ekleyin -->\n</head>",
       filename: "index.html",
       lang: "HTML5",
@@ -1819,7 +1819,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13 • ADIM 5/5: HARİCİ STİL BAĞLANTISI (STYLESHEET)",
       title: "5. Görev: CSS Stil Dosyasını Bağla",
-      prompt: "Projemizi gelecekte renklendirecek olan <code>style.css</code> dosyasını bağlamak için <code>&lt;link rel=\"stylesheet\" href=\"style.css\"&gt;</code> etiketini head içine yerleştir!",
+      prompt: "Projemizi stillendirecek olan 'style.css' dosyasını sayfaya bağlayan link etiketini head içine yerleştir!",
       presetCode: "<head>\n  <meta charset=\"UTF-8\">\n  <title>TechNova Studio</title>\n  <!-- stylesheet linkini ekleyin -->\n</head>",
       filename: "index.html",
       lang: "HTML5",
@@ -1844,7 +1844,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14 • FİNAL 1/5: EKSİKSİZ HEAD MİMARİSİ",
       title: "1. Görev: Final Proje Head Bölümü",
-      prompt: "Büyük Final Lansmanı Başlıyor! TechNova projesinin profesyonel <code>&lt;head&gt;</code> alanını kur: İçinde <code>&lt;meta charset=\"UTF-8\"&gt;</code>, <code>&lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</code> ve <code>&lt;title&gt;TechNova | Canlı Web Vitrini&lt;/title&gt;</code> yer alsın.",
+      prompt: "Büyük Final Lansmanı Başlıyor! Projenin profesyonel head alanını kur: İçinde UTF-8 karakter seti, responsive viewport ve 'TechNova | Canlı Web Vitrini' başlığı yer alsın.",
       presetCode: "<!DOCTYPE html>\n<html lang=\"tr\">\n<head>\n  <!-- 3 kritik meta ve title etiketini buraya yerleştirin -->\n</head>\n<body>\n</body>\n</html>",
       filename: "index.html",
       lang: "HTML5",
@@ -1867,7 +1867,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14 • FİNAL 2/5: SEMANTİK HEADER VE MENÜ",
       title: "2. Görev: Canlı Header ve Gezinti Menüsü",
-      prompt: "Body içine projenin semantik başlık alanını inşa et: <code>&lt;header&gt; &lt;nav&gt; &lt;h1&gt;TechNova Studio&lt;/h1&gt; &lt;a href=\"#projeler\"&gt;Projeler&lt;/a&gt; &lt;a href=\"#iletisim\"&gt;İletişim&lt;/a&gt; &lt;/nav&gt; &lt;/header&gt;</code>.",
+      prompt: "Body içine projenin semantik header alanını inşa et: İçinde navigasyon menüsü, site başlığı ile sayfa içi 'Projeler' ve 'İletişim' bağlantıları yer alsın.",
       presetCode: "<body>\n  <!-- header ve nav bloğunu ekleyin -->\n</body>",
       filename: "index.html",
       lang: "HTML5",
@@ -1890,7 +1890,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14 • FİNAL 3/5: VİTRİN GÖRSELİ VE AKSİYON BUTONU",
       title: "3. Görev: Kahraman Bölümü & Aksiyon Butonu",
-      prompt: "Main içine kahraman bölümünü yerleştir: <code>&lt;section id=\"vitrin\"&gt; &lt;img src=\"vitrin.jpg\" alt=\"TechNova Projeler\" width=\"600\"&gt; &lt;p&gt;Modern web çözümleri ve yaratıcı arayüzler.&lt;/p&gt; &lt;button type=\"button\" class=\"btn-cta\"&gt;Hemen Başla&lt;/button&gt; &lt;/section&gt;</code>.",
+      prompt: "Main içine 'vitrin' id'li bölümü yerleştir: İçinde vitrin görseli, tanıtım paragrafı ve 'Hemen Başla' aksiyon butonu bulunsun.",
       presetCode: "<main>\n  <!-- vitrin section'ını buraya ekleyin -->\n</main>",
       filename: "index.html",
       lang: "HTML5",
@@ -1913,7 +1913,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14 • FİNAL 4/5: İLETİŞİM VE TEKLİF FORMU",
       title: "4. Görev: Canlı İletişim Bölümü",
-      prompt: "Projemizin sipariş ve mesaj alma alanını oluştur: <code>&lt;section id=\"iletisim\"&gt; &lt;h2&gt;Bize Yazın&lt;/h2&gt; &lt;form action=\"/gonder\" method=\"POST\"&gt; &lt;input type=\"text\" name=\"ad\" required placeholder=\"Adınız\"&gt; &lt;input type=\"email\" name=\"email\" required placeholder=\"E-Postanız\"&gt; &lt;button type=\"submit\"&gt;Gönder&lt;/button&gt; &lt;/form&gt; &lt;/section&gt;</code>.",
+      prompt: "Projemizin mesaj alma alanını oluştur: 'iletisim' id'li bölüm içine isim, e-posta alanları ve gönderme butonu içeren bir iletişim formu ekle.",
       presetCode: "<!-- İletişim section ve formunu ekleyin -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1936,7 +1936,7 @@ const HTML_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14 • FİNAL 5/5: BÜYÜK CANLI YAYIN VE MÜHÜR",
       title: "5. Görev: Projeyi Footer ile Mühürle ve Canlıya Al!",
-      prompt: "Ve Büyük Final! Sayfanın sonuna <code>&lt;footer&gt; &lt;p&gt;&copy; 2026 TechNova Studio - Tüm Hakları Saklıdır.&lt;/p&gt; &lt;/footer&gt;</code> ekle ve ardından <code>&lt;/body&gt;</code> ile <code>&lt;/html&gt;</code> etiketlerini kapatarak projeni dünyaya canlı olarak yayınla!",
+      prompt: "Ve Büyük Final! Sayfanın sonuna telif haklarını içeren footer alanını ekle ve ardından body ile html etiketlerini kapatıp projeni canlıya al!",
       presetCode: "</main>\n<!-- footer ekleyin ve body, html kapatın -->\n",
       filename: "index.html",
       lang: "HTML5",
@@ -1970,3 +1970,802 @@ for (let i = 1; i <= 14; i++) {
   }
 }
 
+
+
+
+
+// 📌 JSON Şemasına Uygun 14 Modüllü Standart HTML Soru & Alıştırma Veri Seti
+const HTML_EXERCISES_DATA = {
+  "technology": "HTML",
+  "total_modules": 14,
+  "modules": [
+    {
+      "module_id": 1,
+      "module_title": "HTML5 Temelleri & Sayfa İskeleti",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Modern bir web sayfası için HTML5 doküman tipi (DOCTYPE) bildirimini yazın.",
+          "starter_code": "",
+          "expected_answer": "<!DOCTYPE html>",
+          "hint": "<!DOCTYPE html> bildirimini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir HTML dokümanında teknik meta veriler, sayfa başlığı ve harici kaynak bağlantıları hangi semantik etiket içerisine yazılır?",
+          "options": [
+            "<meta>",
+            "<title>",
+            "<header>",
+            "<head>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Bu etiket <head> içinde yer alır ve sekme metnini tanımlar."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Sayfa dilini Türkçe ('tr') olarak tanımlayan açılış html etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<html lang=\"tr\">",
+          "hint": "lang=\"tr\" özniteliğini ekleyin."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Aşağıdakilerden hangisi HTML5 standartlarına göre teknik olarak tekil (self-closing / boş) bir etikettir?",
+          "options": [
+            "<head>",
+            "<body>",
+            "<main>",
+            "<html>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Sayfanın gövdesini temsil eden etiketi seçin."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Tarayıcı sekmesinde görünen sayfa başlığını tanımlayan title etiketini açıp kapatarak 'TechNova' yazın.",
+          "starter_code": "",
+          "expected_answer": "<head></head>",
+          "hint": "<head> ve </head> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 2,
+      "module_title": "Başlıklar & Karşılama Metinleri",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'TechNova Studio' metnini içeren ana başlık (birinci seviye) etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<h1>TechNova Studio</h1>",
+          "hint": "<h1> ve </h1> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "HTML başlık hiyerarşisinde en büyük ve en önemli ana başlık seviyesi hangisidir?",
+          "options": [
+            "1",
+            "3",
+            "Sınırsız",
+            "Her paragraf için bir tane"
+          ],
+          "correct_option_index": 0,
+          "hint": "Sayfa başına bir ana başlık önerilir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'Yaratıcı Web Deneyimleri' metnini içeren alt başlık (ikinci seviye) etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<h2>Yaratıcı Web Deneyimleri</h2>",
+          "hint": "<h2> etiketini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir metin parçasını anlamsal olarak güçlü bir şekilde vurgulamak ve varsayılan olarak kalın göstermek için hangi etiket tercih edilir?",
+          "options": [
+            "<i>",
+            "<b>",
+            "<strong>",
+            "<u>"
+          ],
+          "correct_option_index": 2,
+          "hint": "Strong etiketi anlamsal önem vurgusu katar."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "'Modern web projeleri geliştiriyoruz.' metnini içeren bir paragraf etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<p>Modern web projeleri geliştiriyoruz.</p>",
+          "hint": "<p> ve </p> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 3,
+      "module_title": "Bağlantılar & Aksiyon Butonları (Links & Buttons)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'https://github.com' adresine yönlendiren ve üzerinde 'GitHub' yazan bir bağlantı etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<a href=\"https://github.com\">GitHub</a>",
+          "hint": "href özniteliğine URL adresini verin."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir bağlantının tıklandığında mevcut sayfa yerine tamamen yeni bir tarayıcı sekmesinde açılmasını sağlayan hedef özniteliği hangisidir?",
+          "options": [
+            "target=\"_blank\"",
+            "target=\"_self\"",
+            "rel=\"newtab\"",
+            "window=\"_blank\""
+          ],
+          "correct_option_index": 0,
+          "hint": "target=\"_blank\" kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Tıklandığında sayfa içindeki 'projeler' id'li bölüme kaydıran ve üzerinde 'Projeler' yazan bağlantı etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<a href=\"#projeler\">Projeler</a>",
+          "hint": "ID referansı için başına # koyun."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Kullanıcının e-posta istemcisini doğrudan belirtilen adrese yeni ileti penceresiyle açmak için href özniteliğinde hangi protokol öneki kullanılır?",
+          "options": [
+            "href=\"mail:info@test.com\"",
+            "href=\"mailto:info@test.com\"",
+            "href=\"email:info@test.com\"",
+            "href=\"send:info@test.com\""
+          ],
+          "correct_option_index": 1,
+          "hint": "mailto: protokolünü seçin."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Üzerinde 'Hemen Başla' yazan standart bir buton etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<button type=\"button\">Hemen Başla</button>",
+          "hint": "type=\"button\" özniteliğini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 4,
+      "module_title": "Görseller & Medya Vitrini (Images)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Kaynak dosyası 'banner.jpg' ve alternatif açıklaması 'Proje Vitrini' olan bir görsel etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<img src=\"banner.jpg\" alt=\"Proje Vitrini\">",
+          "hint": "src ve alt özniteliklerini tanımlayın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Görselin yüklenememesi durumunda veya ekran okuyucular için açıklayıcı metin sağlamada hangi öznitelik zorunlu bir web standardıdır?",
+          "options": [
+            "Görsel boyutunu sıkıştırmak için",
+            "Görsel yüklenemediğinde veya ekran okuyucularda alternatif metin sağlamak için",
+            "Görsele animasyon eklemek için",
+            "Görseli sağa yaslamak için"
+          ],
+          "correct_option_index": 1,
+          "hint": "Erişilebilirlik ve SEO için alternatif metin sağlar."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Görsel kapsayıcısı içinde görsel alt yazısı olarak 'Modern Arayüz Tasarımı' metnini içeren başlık etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<figcaption>Modern Arayüz Tasarımı</figcaption>",
+          "hint": "<figcaption> ve </figcaption> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Görsel, grafik veya kod parçacıklarını anlamsal bir başlık ve açıklama ile birlikte sarmalayan semantik HTML5 etiketi hangisidir?",
+          "options": [
+            "<picture>",
+            "<figure>",
+            "<image>",
+            "<section>"
+          ],
+          "correct_option_index": 1,
+          "hint": "<figure> etiketi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Genişliği 600, yüksekliği 350 piksel olarak boyutlandırılmış 'vitrin.jpg' görsel etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<img src=\"vitrin.jpg\" width=\"600\" height=\"350\">",
+          "hint": "width=\"600\" ve height=\"350\" özniteliklerini ekleyin."
+        }
+      ]
+    },
+    {
+      "module_id": 5,
+      "module_title": "Yetenek & Teknoloji Listeleri (Lists)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'HTML5' maddesini içeren tek bir liste elemanı etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<li>HTML5</li>",
+          "hint": "<li> ve </li> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Maddeleri numaralı (1, 2, 3...) hiyerarşik bir sırada listelemek için hangi kapsayıcı etiket kullanılır?",
+          "options": [
+            "<ol>",
+            "<ul>",
+            "<dl>",
+            "<list>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Unordered List (ul) etiketidir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "İçerisinde tek bir 'Tasarım' maddesi bulunan sıralı bir liste oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<ol><li>Tasarım</li></ol>",
+          "hint": "<ol> içine <li> yerleştirin."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir sözlük veya terim-açıklama ikilisi tanımlamak için hangi HTML etiketi çifti kullanılır?",
+          "options": [
+            "<dt>",
+            "<dd>",
+            "<dfn>",
+            "<li>"
+          ],
+          "correct_option_index": 0,
+          "hint": "Definition Term (dt) etiketidir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Tanım listesi içinde 'Stil Şablonu' açıklamasını barındıran tanım verisi etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<dd>Stil Şablonu</dd>",
+          "hint": "<dd> ve </dd> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 6,
+      "module_title": "Hizmet & Paket Tablosu (Tables)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "İçerisinde 'Hizmet' yazan bir tablo başlık hücresi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<th>Hizmet</th>",
+          "hint": "<th> ve </th> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir HTML tablosunda yeni bir yatay satır başlatmak için hangi etiket kullanılır?",
+          "options": [
+            "<td>",
+            "<th>",
+            "<tr>",
+            "<row>"
+          ],
+          "correct_option_index": 2,
+          "hint": "Table Row (tr) etiketidir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "İçerisinde '₺2.500' yazan standart bir tablo veri hücresi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<td>₺2.500</td>",
+          "hint": "<td> ve </td> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Tablonun ne hakkında olduğunu açıklayan ve tablonun en üstünde başlık olarak duran etiket hangisidir?",
+          "options": [
+            "<caption>",
+            "<title>",
+            "<summary>",
+            "<thead>"
+          ],
+          "correct_option_index": 0,
+          "hint": "<caption> etiketidir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Tablo başlığı olarak 'Fiyatlandırma Tablosu' metnini içeren tablo başlığı etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<caption>Fiyatlandırma Tablosu</caption>",
+          "hint": "<caption> etiketini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 7,
+      "module_title": "İleri Tablolar (Colspan, Rowspan, Thead & Tbody)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Yatayda 3 sütun genişliğinde yer kaplayan ve içeriğinde 'Toplam' yazan bir tablo veri hücresi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<td colspan=\"3\">Toplam</td>",
+          "hint": "colspan=\"3\" özniteliğini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir tablo hücresinin dikey eksende birden fazla satırı kaplamasını sağlayan öznitelik hangisidir?",
+          "options": [
+            "rowspan",
+            "colspan",
+            "rowmerge",
+            "span"
+          ],
+          "correct_option_index": 0,
+          "hint": "Satır birleştirme için 'rowspan' kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Dikeyde 2 satır boyunca uzanan ve içeriğinde 'Full Paket' yazan bir tablo veri hücresi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<td rowspan=\"2\">Full Paket</td>",
+          "hint": "rowspan=\"2\" özniteliğini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "HTML tablolarında sütun başlıklarını barındıran satırları semantik olarak gruplayan etiket hangisidir?",
+          "options": [
+            "<thead>",
+            "<tbody>",
+            "<tfoot>",
+            "<tr>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Table Body (tbody) etiketidir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Tablonun dipnot ve özet satırlarını toplayan altbilgi etiketini açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<tfoot></tfoot>",
+          "hint": "<tfoot> ve </tfoot> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 8,
+      "module_title": "Konteyner Düzeni & Kart Mimarisi (Div & Span)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'card' sınıfına sahip boş bir div konteyneri oluşturup kapatın.",
+          "starter_code": "",
+          "expected_answer": "<div class=\"card\"></div>",
+          "hint": "<div class=\"card\"></div> yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "HTML'de sayfa düzeninde yeni bir satır başlatmadan metin akışı içinde kalan satır içi (inline) genel kapsayıcı etiket hangisidir?",
+          "options": [
+            "<div>",
+            "<span>",
+            "<section>",
+            "<p>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Satır içi kutu için <span> kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'badge' sınıfına sahip ve içeriğinde 'Yeni' yazan bir satır içi (span) etiketi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<span class=\"badge\">Yeni</span>",
+          "hint": "<span class=\"badge\">Yeni</span> yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir HTML belgesinde aynı id ve class kullanımı hakkında hangisi doğrudur?",
+          "options": [
+            "<div> blok seviyeli (block-level), <span> ise satır içi (inline) bir elemandır.",
+            "<div> sadece formlarda, <span> tablolarda kullanılır.",
+            "<div> içine metin yazılamaz, <span> içine yazılabilir.",
+            "Hiçbir fark yoktur, tamamen aynıdır."
+          ],
+          "correct_option_index": 0,
+          "hint": "Blok ve satır içi eleman ayrımını düşünün."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "'hero' id'sine sahip boş bir div konteyneri oluşturup kapatın.",
+          "starter_code": "",
+          "expected_answer": "<div id=\"hero\"></div>",
+          "hint": "id=\"hero\" özniteliğini verin."
+        }
+      ]
+    },
+    {
+      "module_id": 9,
+      "module_title": "Temel İletişim Formu (Form & Inputs)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Kullanıcıdan metin almak için zorunlu kılınmış bir giriş kutusu (input) yazın.",
+          "starter_code": "",
+          "expected_answer": "<input type=\"text\" required>",
+          "hint": "type=\"text\" ve required özniteliklerini ekleyin."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Form alanında kullanıcıya ne girmesi gerektiğini silik bir ipucu olarak kutunun içinde gösteren öznitelik hangisidir?",
+          "options": [
+            "method",
+            "action",
+            "target",
+            "src"
+          ],
+          "correct_option_index": 1,
+          "hint": "Form yönlendirme adresi 'action' özniteliğidir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'email' id'li giriş alanına bağlanan ve üzerinde 'E-Posta:' yazan bir etiket (label) yazın.",
+          "starter_code": "",
+          "expected_answer": "<label for=\"email\">E-Posta:</label>",
+          "hint": "for=\"email\" özniteliğini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Kullanıcının birden çok seçeneği bağımsız olarak işaretleyebilmesini sağlayan giriş türü hangisidir?",
+          "options": [
+            "type=\"secret\"",
+            "type=\"password\"",
+            "type=\"hidden\"",
+            "type=\"mask\""
+          ],
+          "correct_option_index": 1,
+          "hint": "Parola alanı için 'password' tipi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Varsayılan olarak işaretlenmiş (seçili) bir onay kutusu (checkbox) giriş etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<input type=\"checkbox\" checked>",
+          "hint": "type=\"checkbox\" ve checked özniteliklerini ekleyin."
+        }
+      ]
+    },
+    {
+      "module_id": 10,
+      "module_title": "Gelişmiş Form Kontrolleri & Gönder Butonu",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "4 satır yüksekliğine sahip çok satırlı metin alanı (textarea) oluşturup kapatın.",
+          "starter_code": "",
+          "expected_answer": "<textarea rows=\"4\"></textarea>",
+          "hint": "rows=\"4\" özniteliğini ekleyin."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Kullanıcıya açılır bir menüden tek bir seçenek seçtirmek için hangi form etiketi kullanılır?",
+          "options": [
+            "<input type=\"list\">",
+            "<select>",
+            "<datalist>",
+            "<optionbox>"
+          ],
+          "correct_option_index": 1,
+          "hint": "Açılır liste için <select> kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Açılır liste için değeri 'pro' ve metni 'Pro Paket' olan bir seçenek etiketi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<option value=\"pro\">Pro Paket</option>",
+          "hint": "value=\"pro\" özniteliğini verin."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Form elemanlarını mantıksal bir çerçeve içine alıp çerçeveye başlık kazandıran etiket çifti hangisidir?",
+          "options": [
+            "<fieldset>",
+            "<group>",
+            "<box>",
+            "<section>"
+          ],
+          "correct_option_index": 0,
+          "hint": "<fieldset> etiketi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Formu sunucuya gönderme işlevine sahip ve üzerinde 'Teklif Al' yazan bir buton etiketi yazın.",
+          "starter_code": "",
+          "expected_answer": "<button type=\"submit\">Teklif Al</button>",
+          "hint": "type=\"submit\" özniteliğini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 11,
+      "module_title": "Semantik HTML5 Mimarisi (Semantic Layout)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Sayfanın ana gezinti ve menü bağlantılarını barındıran semantik navigasyon etiketini açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<header></header>",
+          "hint": "<header> ve </header> etiketlerini yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir web sayfasında sadece bir kez kullanılan ve sayfanın en temel, benzersiz içeriğini barındıran semantik etiket hangisidir?",
+          "options": [
+            "<aside>",
+            "<section>",
+            "<article>",
+            "<footer>"
+          ],
+          "correct_option_index": 0,
+          "hint": "Yan içerik için <aside> kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Sayfadan bağımsız olarak tek başına paylaşılabilir bir blog yazısını veya haber içeriğini temsil eden makale etiketini açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<main></main>",
+          "hint": "<main> ve </main> etiketlerini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Sayfanın ana konusuyla dolaylı yoldan ilişkili olan kenar çubuğu (sidebar), reklam veya ek bağlantıları barındıran etiket hangisidir?",
+          "options": [
+            "<section>",
+            "<div>",
+            "<article>",
+            "<main>"
+          ],
+          "correct_option_index": 2,
+          "hint": "Bağımsız içerikler için <article> kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Sayfanın en altındaki telif hakları ve yasal bilgileri barındıran altbilgi etiketini açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<footer>© 2026 TechNova</footer>",
+          "hint": "<footer> ve </footer> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 12,
+      "module_title": "Multimedya & Gömülü İçerikler (Video, Audio & Iframe)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Kaynak dosyası 'video.mp4' olan ve kullanıcı kontrollerine sahip bir video etiketi oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<video src=\"video.mp4\" controls></video>",
+          "hint": "src=\"video.mp4\" ve controls özniteliklerini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Video ve ses etiketlerinde farklı tarayıcı uyumlulukları için alternatif dosya formatları sunan alt etiket hangisidir?",
+          "options": [
+            "<embed-page>",
+            "<frame>",
+            "<iframe>",
+            "<webview>"
+          ],
+          "correct_option_index": 2,
+          "hint": "Gömülü çerçeve için <iframe> kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'https://www.youtube.com/embed/demo' adresindeki videoyu sayfaya gömen çerçeve (iframe) etiketini oluşturun.",
+          "starter_code": "",
+          "expected_answer": "<iframe src=\"https://www.youtube.com/embed/demo\"></iframe>",
+          "hint": "src özniteliğine URL verin."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Tıklandığında açılıp kapanabilen akordiyon veya detay kutusu oluşturmak için summary etiketi ile birlikte hangi etiket kullanılır?",
+          "options": [
+            "<collapse> ve <summary>",
+            "<details> ve <summary>",
+            "<accordion> ve <item>",
+            "<toggle> ve <content>"
+          ],
+          "correct_option_index": 1,
+          "hint": "<details> ve <summary> kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Açılır detay kutusu içinde başlık olarak görünen ve metni 'Sıkça Sorulan Sorular' olan özet başlık etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<summary>Sıkça Sorulan Sorular</summary>",
+          "hint": "<summary> ve </summary> etiketlerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 13,
+      "module_title": "Head, Meta Etiketleri & SEO Mimarisi",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Karakter kodlamasını UTF-8 olarak tanımlayan meta etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<meta charset=\"UTF-8\">",
+          "hint": "charset=\"UTF-8\" özniteliğini kullanın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Web sayfasının mobil cihazlarda ekran genişliğine tam oturmasını ve ölçeklenmesini sağlayan kritik meta etiketi hangisidir?",
+          "options": [
+            "viewport",
+            "responsive",
+            "mobile",
+            "device-width"
+          ],
+          "correct_option_index": 0,
+          "hint": "Görünüm alanı anlamına gelen 'viewport' seçilmelidir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "Sayfa açıklamasını 'TechNova Web Portfolyosu' olarak belirten meta etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<meta name=\"description\" content=\"TechNova Web Portfolyosu\">",
+          "hint": "name=\"description\" ve content=\"...\" özniteliklerini kullanın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Arama motorlarının sayfayı dizine eklemesini ve bağlantıları takip etmesini sağlayan meta robots içeriği hangisidir?",
+          "options": [
+            "<style src=\"style.css\">",
+            "<link rel=\"stylesheet\" href=\"style.css\">",
+            "<script href=\"style.css\">",
+            "<css path=\"style.css\">"
+          ],
+          "correct_option_index": 1,
+          "hint": "<link rel=\"stylesheet\" href=\"...\"> etiketi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "'style.css' harici stil şablonunu sayfaya bağlayan link etiketini yazın.",
+          "starter_code": "",
+          "expected_answer": "<link rel=\"stylesheet\" href=\"style.css\">",
+          "hint": "rel=\"stylesheet\" ve href=\"style.css\" özniteliklerini kullanın."
+        }
+      ]
+    },
+    {
+      "module_id": 14,
+      "module_title": "Büyük Canlı Proje Lansmanı & Yayın",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "HTML5 doküman bildirimi ile Türkçe dil tanımlı html açılış etiketini yan yana yazın.",
+          "starter_code": "",
+          "expected_answer": "<!DOCTYPE html><html lang=\"tr\">",
+          "hint": "<!DOCTYPE html><html lang=\"tr\"> yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "İyi tasarlanmış bir HTML5 sayfasında üst bilgi, ana içerik ve alt bilgi hiyerarşisi hangi sırayla dizilmelidir?",
+          "options": [
+            "<header>, <main>, <footer>",
+            "<footer>, <header>, <main>",
+            "<aside>, <footer>, <header>",
+            "<main>, <header>, <nav>"
+          ],
+          "correct_option_index": 0,
+          "hint": "Üst başlık, ana gövde ve altbilgi sırasını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'vitrin' id'li bir bölüm (section) etiketi açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<section id=\"vitrin\"></section>",
+          "hint": "<section id=\"vitrin\"></section> yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Web erişilebilirliği (a11y) standartlarına göre görme engelli ekran okuyucuları için görsellerde hangi öznitelik mutlaka bulunmalıdır?",
+          "options": [
+            "W3C",
+            "ECMA",
+            "MDN",
+            "ISO"
+          ],
+          "correct_option_index": 0,
+          "hint": "World Wide Web Consortium (W3C) validator kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "'iletisim' id'sine sahip ve POST yöntemiyle veri gönderen bir form etiketi açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "<form id=\"iletisim\" method=\"POST\"></form>",
+          "hint": "id=\"iletisim\" ve method=\"POST\" özniteliklerini kullanın."
+        }
+      ]
+    }
+  ]
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { HTML_COURSE_TOPICS, HTML_TOPIC_REVIEWS, HTML_CHALLENGES, HTML_EXERCISES_DATA };
+}

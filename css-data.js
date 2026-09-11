@@ -314,7 +314,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: CSS SÖZDİZİMİ",
       title: "1. Soru: Başlık Rengini Mavi Yapma",
-      prompt: "<code>h1</code> başlığının yazı rengini (<code>color</code>) mavi (<code>blue</code>) yapacak CSS kuralını yazabilir misin?",
+      prompt: "h1 başlığının yazı rengini mavi (blue) yapacak CSS kuralını yazabilir misin?",
       presetCode: "/* h1 rengini blue yap: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -332,7 +332,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: PARAGRAF HİZALAMA",
       title: "2. Soru: Paragrafları Ortala",
-      prompt: "<code>p</code> etiketlerinin metin hizalamasını (<code>text-align</code>) ortaya (<code>center</code>) alabilir misin?",
+      prompt: "p etiketlerinin metin hizalamasını ortaya (center) alan CSS kuralını yazabilir misin?",
       presetCode: "/* p metinlerini ortaya hizala: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -350,7 +350,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: HARİCİ CSS BAĞLANTISI",
       title: "3. Soru: Harici CSS Dosyasını Bağlama",
-      prompt: "HTML sayfasının <code>&lt;head&gt;</code> bölümüne <code>style.css</code> dosyasını bağlayan <code>&lt;link&gt;</code> etiketini ekleyebilir misin?",
+      prompt: "Sayfaya 'style.css' harici stil dosyasını bağlayan link etiketini head içine yazabilir misin?",
       presetCode: "<head>\n  <title>Sayfam</title>\n  <!-- CSS dosyasını bağla: -->\n</head>",
       filename: "index.html",
       lang: "HTML/CSS",
@@ -371,7 +371,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: DAHİLİ (INTERNAL) CSS",
       title: "4. Soru: Dahili Style Etiketi",
-      prompt: "Aşağıdaki HTML head bloğuna <code>&lt;style&gt;</code> etiketi açıp içinde <code>body { background-color: yellow; }</code> kuralını tanımlayabilir misin?",
+      prompt: "head içine style etiketi açıp body arka plan rengini sarı (yellow) yapan dahili CSS kuralını ekleyebilir misin?",
       presetCode: "<head>\n  <!-- Dahili CSS stil bloğunu ekle: -->\n</head>",
       filename: "index.html",
       lang: "HTML/CSS",
@@ -391,7 +391,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 1: SATIR İÇİ (INLINE) CSS",
       title: "5. Soru: Inline Style Özelliği",
-      prompt: "Aşağıdaki <code>&lt;h2&gt;</code> etiketine <code>style=\"color: red;\"</code> satır içi stilini ekleyebilir misin?",
+      prompt: "h2 başlık etiketine satır içi (inline) style özniteliği ile kırmızı yazı rengi verip 'Önemli Duyuru' başlığını yazabilir misin?",
       presetCode: "<!-- h2 etiketine style ekle: -->\n<h2>Önemli Duyuru</h2>",
       filename: "index.html",
       lang: "HTML/CSS",
@@ -414,7 +414,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: SINIF (CLASS) SEÇİCİ",
       title: "1. Soru: Sınıf Seçicisi Tanımlama",
-      prompt: "<code>.kart</code> sınıfına sahip elemanların arka plan rengini <code>background-color: white;</code> yapabilir misin?",
+      prompt: "'.kart' sınıfına sahip elemanların arka plan rengini beyaz (white) yapan CSS kuralını yazabilir misin?",
       presetCode: "/* .kart sınıfını stillendir: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -432,7 +432,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: ID SEÇİCİ (#)",
       title: "2. Soru: ID Seçicisi ile Özel Stil",
-      prompt: "<code>#baslik</code> ID'sine sahip elemanın yazı rengini <code>color: darkblue;</code> yapabilir misin?",
+      prompt: "'#baslik' id'sine sahip elemanın yazı rengini 'darkblue' yapan CSS kuralını yazabilir misin?",
       presetCode: "/* #baslik ID seçicisini yaz: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -450,7 +450,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: EVRENSEL SEÇİCİ (*)",
       title: "3. Soru: Evrensel Seçici (*)",
-      prompt: "Tüm sayfadaki elemanları sıfırlamak için evrensel seçici <code>*</code> ile <code>margin: 0;</code> kuralını tanımlayabilir misin?",
+      prompt: "Evrensel seçici (*) ile dış boşluğu 0 ve kutu modelini 'border-box' yapan CSS kuralını yazabilir misin?",
       presetCode: "/* Evrensel seçici ile margin sıfırla: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -468,7 +468,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: GRUP SEÇİCİ (,)",
       title: "4. Soru: Grup Seçicisi ile Ortak Stil",
-      prompt: "<code>h1</code>, <code>h2</code> ve <code>h3</code> başlıklarına virgülle gruplayarak <code>color: navy;</code> stilini verebilir misin?",
+      prompt: "h1, h2 ve p etiketlerinin yazı tipi ailesini 'sans-serif' yapan grup seçici kuralını yazabilir misin?",
       presetCode: "/* h1, h2, h3 başlıklarını grupla: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -486,7 +486,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 2: TORUN (DESCENDANT) SEÇİCİ",
       title: "5. Soru: Torun Seçicisi (div p)",
-      prompt: "Sadece <code>.kutu</code> sınıfının içindeki <code>p</code> paragraflarına <code>color: gray;</code> stilini uygulayabilir misin?",
+      prompt: "div elemanlarının doğrudan çocuğu olan p paragraflarının rengini 'gray' yapan çocuk seçici kuralını yazabilir misin?",
       presetCode: "/* .kutu içindeki p etiketlerini seç: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -507,7 +507,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: HEX VE RGB RENKLER",
       title: "1. Soru: HEX Kodu ile Renk Verme",
-      prompt: "<code>h1</code> başlığına HEX koduyla <code>color: #2563eb;</code> stilini atayabilir misin?",
+      prompt: "h1 başlığının metin rengini '#2563eb' HEX kodu ile ayarlayan CSS kuralını yazabilir misin?",
       presetCode: "h1 {\n  /* HEX renk kodunu ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -525,7 +525,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: ARKA PLAN RENGİ",
       title: "2. Soru: Arka Plan Rengi (background-color)",
-      prompt: "<code>body</code> etiketine <code>background-color: #f8fafc;</code> arka plan rengini verebilir misin?",
+      prompt: "body etiketinin arka plan rengini '#f8fafc' yapan CSS kuralını yazabilir misin?",
       presetCode: "body {\n  /* Arka plan rengini belirle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -543,7 +543,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: RGBA ŞEFFAFLIK",
       title: "3. Soru: RGBA ile Yarı Saydam Renk",
-      prompt: "<code>.overlay</code> sınıfına %50 şeffaf siyah arka plan için <code>background-color: rgba(0, 0, 0, 0.5);</code> atayabilir misin?",
+      prompt: "'.overlay' sınıfına %50 şeffaflıkta siyah renkli rgba arka plan rengi (0, 0, 0, 0.5) atayan CSS kuralını yazabilir misin?",
       presetCode: ".overlay {\n  /* RGBA arka planı ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -563,7 +563,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: ARKA PLAN GÖRSELİ",
       title: "4. Soru: Arka Plana Resim Ekleme",
-      prompt: "<code>.hero</code> bölümüne <code>background-image: url('arkaplan.jpg');</code> görselini ekleyebilir misin?",
+      prompt: "'.hero' sınıfına arka plan görseli olarak 'arkaplan.jpg' dosyasını atayan CSS kuralını yazabilir misin?",
       presetCode: ".hero {\n  /* Arka plan görseli ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -583,7 +583,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 3: BACKGROUND SIZE & REPEAT",
       title: "5. Soru: Görseli Kaplama & Tekrarı Önleme",
-      prompt: "<code>.banner</code> sınıfına <code>background-size: cover;</code> ve <code>background-repeat: no-repeat;</code> özelliklerini ekleyebilir misin?",
+      prompt: "'.banner' sınıfına arka plan görseli olarak 'manzara.jpg' dosyasını bağlayıp, alanı tam kaplayacak (cover) ve tekrar etmeyecek şekilde ölçekleyebilir misin?",
       presetCode: ".banner {\n  background-image: url('manzara.jpg');\n  /* cover ve no-repeat ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -606,7 +606,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: YAZI TİPİ AİLESİ (FONT-FAMILY)",
       title: "1. Soru: Font Ailesi Belirleme",
-      prompt: "<code>body</code> fontunu <code>font-family: Arial, sans-serif;</code> olarak ayarlayabilir misin?",
+      prompt: "body etiketinin yazı tipi ailesini 'Arial, sans-serif' yapan CSS kuralını yazabilir misin?",
       presetCode: "body {\n  /* Arial fontunu tanımla: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -624,7 +624,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: YAZI BOYUTU (FONT-SIZE)",
       title: "2. Soru: Başlık Boyutu Ayarlama",
-      prompt: "<code>.buyuk-baslik</code> sınıfına <code>font-size: 2rem;</code> yazı boyutu atayabilir misin?",
+      prompt: "'.buyuk-baslik' sınıfının yazı boyutunu 2rem yapan CSS kuralını yazabilir misin?",
       presetCode: ".buyuk-baslik {\n  /* 2rem font boyutu ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -642,7 +642,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: YAZI KALINLIĞI (FONT-WEIGHT)",
       title: "3. Soru: Kalın Yazı (Bold)",
-      prompt: "<code>.vurgulu</code> sınıfının yazı kalınlığını <code>font-weight: bold;</code> (veya <code>700</code>) yapabilir misin?",
+      prompt: "'.vurgulu' sınıfının yazı kalınlığını kalın (bold) yapan kuralı yazabilir misin?",
       presetCode: ".vurgulu {\n  /* Kalın yazı tipini ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -660,7 +660,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: SATIR YÜKSEKLİĞİ (LINE-HEIGHT)",
       title: "4. Soru: Satır Arası Boşluk",
-      prompt: "<code>p</code> paragraflarına rahat okunabilirlik için <code>line-height: 1.6;</code> ekleyebilir misin?",
+      prompt: "p paragraflarına rahat okunabilirlik için 1.6 satır yüksekliği (line-height) ekleyebilir misin?",
       presetCode: "p {\n  /* Satır yüksekliği ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -678,7 +678,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 4: LİNK ÇİZGİSİNİ KALDIRMA",
       title: "5. Soru: text-decoration ile Alt Çizgiyi Kaldırma",
-      prompt: "<code>a</code> bağlantı etiketlerinin altındaki varsayılan çizgiyi kaldırmak için <code>text-decoration: none;</code> atayabilir misin?",
+      prompt: "a bağlantı etiketlerinin altındaki varsayılan çizgiyi kaldıran CSS kuralını yazabilir misin?",
       presetCode: "a {\n  /* Alt çizgiyi kaldır: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -699,7 +699,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: İÇ BOŞLUK (PADDING)",
       title: "1. Soru: Kutuya İç Boşluk Ekleme",
-      prompt: "<code>.kart</code> sınıfına her yönden <code>padding: 20px;</code> iç boşluk ekleyebilir misin?",
+      prompt: "'.kart' sınıfına her yönden 20 piksel iç boşluk (padding) ekleyebilir misin?",
       presetCode: ".kart {\n  /* İç boşluğu ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -717,7 +717,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: DIŞ BOŞLUK (MARGIN)",
       title: "2. Soru: Dış Boşluk ile Ayırma",
-      prompt: "<code>.bolum</code> sınıfına alt kısımdan <code>margin-bottom: 30px;</code> dış boşluğu atayabilir misin?",
+      prompt: "'.bolum' sınıfına alt kısımdan 30 piksel dış boşluk (margin-bottom) atayabilir misin?",
       presetCode: ".bolum {\n  /* Alt dış boşluğu ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -735,7 +735,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: MARGIN AUTO İLE ORTALAMA",
       title: "3. Soru: Blok Elemanı Ortala",
-      prompt: "300px genişliğindeki <code>.kutu</code> elemanını yatayda ortalamak için <code>margin: 0 auto;</code> yazabilir misin?",
+      prompt: "300 piksel genişliğindeki '.kutu' elemanını yatayda ortalamak için üstten-alttan 0, sağdan-soldan otomatik dış boşluk tanımlayabilir misin?",
       presetCode: ".kutu {\n  width: 300px;\n  /* margin ile yatayda ortala: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -753,7 +753,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: KENARLIK (BORDER)",
       title: "4. Soru: Kenarlık Tanımlama",
-      prompt: "<code>.cerceve</code> sınıfına <code>border: 2px solid #94a3b8;</code> kenarlığı atayabilir misin?",
+      prompt: "'.cerceve' sınıfına 2 piksel düz gri ('#94a3b8') kenarlık atayabilir misin?",
       presetCode: ".cerceve {\n  /* 2px gri düz kenarlık ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -771,7 +771,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 5: BOX-SIZING ALTIN KURALI",
       title: "5. Soru: box-sizing: border-box",
-      prompt: "Evrensel seçici <code>*</code> içine <code>box-sizing: border-box;</code> kuralını ekleyebilir misin?",
+      prompt: "Evrensel seçici içine elemanların kutu modelini 'border-box' yapan kuralı ekleyebilir misin?",
       presetCode: "* {\n  /* Kutu modelini border-box yap: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -792,7 +792,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: KÖŞELERİ YUVARLATMA",
       title: "1. Soru: border-radius ile Yuvarlatma",
-      prompt: "<code>.buton</code> sınıfına <code>border-radius: 8px;</code> köşe yuvarlaklığı atayabilir misin?",
+      prompt: "'.buton' sınıfına 8 piksel köşe yuvarlaklığı (border-radius) atayabilir misin?",
       presetCode: ".buton {\n  /* 8px köşe yuvarlaklığı ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -810,7 +810,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: TAM DAİRE YAPMA",
       title: "2. Soru: Daire Avatar (%50 Radius)",
-      prompt: "<code>.avatar</code> sınıfına tam daire olması için <code>border-radius: 50%;</code> atayabilir misin?",
+      prompt: "100x100 boyutlarındaki '.avatar' görselini kusursuz bir tam daireye dönüştüren köşe yuvarlaklığı kuralını yazabilir misin?",
       presetCode: ".avatar {\n  width: 100px;\n  height: 100px;\n  /* Tam daire yap: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -828,7 +828,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: KUTU GÖLGESİ (BOX-SHADOW)",
       title: "3. Soru: Kart Gölgesi Ekleme",
-      prompt: "<code>.kart</code> sınıfına <code>box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);</code> gölgesini atayabilir misin?",
+      prompt: "'.kart' sınıfına hafif derinlik kazandıran kutu gölgesi (box-shadow) kuralını yazabilir misin?",
       presetCode: ".kart {\n  /* box-shadow gölgesi ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -848,7 +848,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: METİN GÖLGESİ (TEXT-SHADOW)",
       title: "4. Soru: Başlığa Metin Gölgesi",
-      prompt: "<code>.parlak-baslik</code> sınıfına <code>text-shadow: 2px 2px 4px #000000;</code> gölgesini verebilir misin?",
+      prompt: "'.parlak-baslik' sınıfına 2px yatay, 2px dikey ve 4px bulanıklıkta siyah metin gölgesi atayabilir misin?",
       presetCode: ".parlak-baslik {\n  /* text-shadow uygula: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -866,7 +866,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 6: OUTLINE (DIŞ ÇİZGİ)",
       title: "5. Soru: Outline ile Dış Hat",
-      prompt: "<code>button:focus</code> durumuna <code>outline: 2px solid blue;</code> ekleyebilir misin?",
+      prompt: "Butona odaklanıldığında (focus) etrafında 2 piksel düz mavi dış çerçeve (outline) gösteren kuralı yazabilir misin?",
       presetCode: "button:focus {\n  /* 2px mavi outline ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -887,7 +887,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: DISPLAY BLOCK",
       title: "1. Soru: Inline Elemanı Block Yapma",
-      prompt: "Normalde inline olan <code>a</code> linklerini tam satır kaplaması için <code>display: block;</code> yapabilir misin?",
+      prompt: "Normalde satır içi olan '.menu-link' elemanlarının tam satır kaplamasını sağlayan blok yerleşim kuralını yazabilir misin?",
       presetCode: ".menu-link {\n  /* display: block ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -905,7 +905,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: DISPLAY INLINE-BLOCK",
       title: "2. Soru: Yan Yana ve Boyutlandırılabilir",
-      prompt: "<code>.etiket</code> sınıfına hem yan yana durması hem de width/height alabilmesi için <code>display: inline-block;</code> verebilir misin?",
+      prompt: "'.etiket' sınıfına hem yan yana durup hem de genişlik/yükseklik alabilmesini sağlayan 'inline-block' yerleşim özelliğini atayabilir misin?",
       presetCode: ".etiket {\n  /* inline-block yap: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -923,7 +923,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: ELEMAN GİZLEME (DISPLAY NONE)",
       title: "3. Soru: Elemanı Gizleme",
-      prompt: "<code>.gizli</code> sınıfına sahip elemanları tamamen gizlemek için <code>display: none;</code> atayabilir misin?",
+      prompt: "'.gizli' sınıfına sahip elemanları sayfada yer kaplamayacak şekilde tamamen gizleyen kuralı yazabilir misin?",
       presetCode: ".gizli {\n  /* Elemanı gizle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -941,7 +941,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: MAKSİMUM GENİŞLİK (MAX-WIDTH)",
       title: "4. Soru: Responsive Konteyner",
-      prompt: "<code>.kapsayici</code> sınıfına maksimum 1200px genişlik için <code>max-width: 1200px;</code> verebilir misin?",
+      prompt: "'.kapsayici' sınıfına %100 genişlik ve maksimum 1200 piksel sınır veren responsive kuralı yazabilir misin?",
       presetCode: ".kapsayici {\n  width: 100%;\n  /* max-width sınırını koy: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -959,7 +959,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 7: TAŞMA YÖNETİMİ (OVERFLOW)",
       title: "5. Soru: overflow: hidden ile Taşmayı Kesme",
-      prompt: "<code>.kart</code> sınıfına dışarı taşan elemanları kesmek için <code>overflow: hidden;</code> ekleyebilir misin?",
+      prompt: "'.kart' sınıfının sınırlarından dışarı taşan içerikleri kırparak gizleyen (overflow: hidden) kuralı yazabilir misin?",
       presetCode: ".kart {\n  border-radius: 16px;\n  /* Taşmayı engelle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -980,7 +980,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: POSITION RELATIVE",
       title: "1. Soru: Göreceli Konumlandırma",
-      prompt: "<code>.ana-kutu</code> sınıfına <code>position: relative;</code> atayabilir misin?",
+      prompt: "'.ana-kutu' sınıfını içindeki mutlak elemanlara referans olacak göreceli konumlandırma (relative) moduna alabilir misin?",
       presetCode: ".ana-kutu {\n  /* position: relative yap: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -998,7 +998,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: POSITION ABSOLUTE",
       title: "2. Soru: Mutlak Konumlandırma",
-      prompt: "<code>.kapat-butonu</code> sınıfına <code>position: absolute;</code> ve <code>top: 10px; right: 10px;</code> koordinatlarını atayabilir misin?",
+      prompt: "'.kapat-butonu' sınıfını üstten 10px ve sağdan 10px mesafede mutlak (absolute) olarak konumlandırabilir misin?",
       presetCode: ".kapat-butonu {\n  /* absolute yap ve sağ üste sabitle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1019,7 +1019,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: POSITION FIXED (SABİT NAVBAR)",
       title: "3. Soru: Sabit Üst Menü (Fixed Navbar)",
-      prompt: "<code>.navbar</code> sınıfını ekranın en üstüne sabitlemek için <code>position: fixed; top: 0; left: 0;</code> yapabilir misin?",
+      prompt: "'.navbar' sınıfını ekranın en üstüne sabitleyen sabit konumlandırma (fixed, top: 0, left: 0) kuralını yazabilir misin?",
       presetCode: ".navbar {\n  width: 100%;\n  /* En üste sabitle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1039,7 +1039,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: POSITION STICKY",
       title: "4. Soru: Yapışkan Eleman (Sticky)",
-      prompt: "<code>.yan-menu</code> sınıfına <code>position: sticky; top: 20px;</code> yapışkan stilini ekleyebilir misin?",
+      prompt: "'.yan-menu' sınıfına sayfada kaydırılırken üstten 20px mesafede yapışkan kalmasını sağlayan 'sticky' kuralını ekleyebilir misin?",
       presetCode: ".yan-menu {\n  /* sticky yap ve top: 20px ver: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1057,7 +1057,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 8: KATMAN YÖNETİMİ (Z-INDEX)",
       title: "5. Soru: z-index ile Katman Önceliği",
-      prompt: "<code>.modal</code> sınıfının en önde görünmesi için <code>z-index: 100;</code> atayabilir misin?",
+      prompt: "'.modal' sınıfının diğer katmanların en önünde görünmesi için katman önceliğini (z-index) 100 olarak ayarlayabilir misin?",
       presetCode: ".modal {\n  position: fixed;\n  /* z-index: 100 ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1078,7 +1078,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: HOVER DURUMU",
       title: "1. Soru: Buton Üzerine Gelindiğinde (Hover)",
-      prompt: "<code>button:hover</code> durumunda arka plan rengini <code>background-color: darkblue;</code> yapabilir misin?",
+      prompt: "Butonun üzerine fareyle gelindiğinde (hover) arka plan rengini 'darkblue' yapan kuralı yazabilir misin?",
       presetCode: "/* button hover kuralını yaz: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -1096,7 +1096,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: FOCUS DURUMU",
       title: "2. Soru: Input Odaklanma (Focus)",
-      prompt: "<code>input:focus</code> durumunda kenarlık rengini <code>border-color: blue;</code> yapabilir misin?",
+      prompt: "Metin kutusuna odaklanıldığında (focus) kenarlık rengini mavi yapan kuralı yazabilir misin?",
       presetCode: "/* input focus kuralını yaz: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -1114,7 +1114,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: FIRST-CHILD VE LAST-CHILD",
       title: "3. Soru: İlk Liste Elemanını Seçme",
-      prompt: "<code>li:first-child</code> seçicisine <code>font-weight: bold;</code> atayabilir misin?",
+      prompt: "Bir listenin yalnızca ilk elemanını (first-child) kalın yazı tipine dönüştüren kuralı yazabilir misin?",
       presetCode: "/* İlk liste elemanını kalın yap: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -1132,7 +1132,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: NTH-CHILD ILE ZEBRA DESENİ",
       title: "4. Soru: Çift Numaralı Satırlar (nth-child)",
-      prompt: "Tablonun çift satırları için <code>tr:nth-child(even)</code> kuralına <code>background-color: #f1f5f9;</code> atayabilir misin?",
+      prompt: "Tablonun çift numaralı satırlarına (nth-child(even)) açık gri ('#f1f5f9') arka plan rengi veren kuralı yazabilir misin?",
       presetCode: "/* Çift satırlara arka plan ata: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -1150,7 +1150,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 9: SAHTE ELEMAN (::BEFORE)",
       title: "5. Soru: ::before ile İkon Ekleme",
-      prompt: "<code>.uyari::before</code> sahte elemanına <code>content: '⚠️ ';</code> atayabilir misin?",
+      prompt: "'.uyari' sınıfının başına sahte eleman (::before) ile uyarı emojisi ('⚠️ ') içeriği ekleyen kuralı yazabilir misin?",
       presetCode: ".uyari::before {\n  /* content özelliğini ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1171,7 +1171,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: LINEAR GRADIENT",
       title: "1. Soru: Doğrusal Renk Geçişi",
-      prompt: "<code>.gradyan-kutu</code> sınıfına <code>background: linear-gradient(to right, red, yellow);</code> geçişini atayabilir misin?",
+      prompt: "'.gradyan-kutu' sınıfına soldan sağa doğru kırmızıdan sarıya doğrusal renk geçişi (linear-gradient) atayabilir misin?",
       presetCode: ".gradyan-kutu {\n  /* linear-gradient uygula: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1191,7 +1191,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: RADIAL GRADIENT",
       title: "2. Soru: Dairesel Renk Geçişi",
-      prompt: "<code>.daire-gradyan</code> sınıfına <code>background: radial-gradient(circle, blue, black);</code> atayabilir misin?",
+      prompt: "'.daire-gradyan' sınıfına merkezden dışa doğru maviden siyaha dairesel renk geçişi (radial-gradient) atayabilir misin?",
       presetCode: ".daire-gradyan {\n  /* radial-gradient uygula: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1211,7 +1211,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: OPACITY ŞEFFAFLIK",
       title: "3. Soru: Eleman Şeffaflığı",
-      prompt: "<code>.soluk-kart</code> sınıfına %70 görünürlük için <code>opacity: 0.7;</code> atayabilir misin?",
+      prompt: "'.soluk-kart' sınıfının görünürlük opaklığını 0.7 (%70) yapan CSS kuralını yazabilir misin?",
       presetCode: ".soluk-kart {\n  /* opacity: 0.7 ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1229,7 +1229,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: CURSOR POINTER",
       title: "4. Soru: Tıklanabilir İmleç",
-      prompt: "<code>.tiklanabilir</code> sınıfına üzerine gelindiğinde el işareti çıkması için <code>cursor: pointer;</code> atayabilir misin?",
+      prompt: "'.tiklanabilir' sınıfının üzerine fareyle gelindiğinde imlecin el işaretine (pointer) dönüşmesini sağlayabilir misin?",
       presetCode: ".tiklanabilir {\n  /* cursor: pointer yap: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1247,7 +1247,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 10: FILTER BLUR",
       title: "5. Soru: Bulanıklık Filtresi",
-      prompt: "<code>.arka-plan</code> sınıfına <code>filter: blur(5px);</code> filtresini ekleyebilir misin?",
+      prompt: "'.arka-plan' sınıfına 5 piksel bulanıklık (blur) efekti veren filtre kuralını ekleyebilir misin?",
       presetCode: ".arka-plan {\n  /* blur filtresi uygula: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1268,7 +1268,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: TRANSFORM TRANSLATE",
       title: "1. Soru: Elemanı Kaydırma (Translate)",
-      prompt: "<code>.kayan-kutu</code> sınıfına x ekseninde 50px öteleme için <code>transform: translateX(50px);</code> atayabilir misin?",
+      prompt: "'.kayan-kutu' sınıfını yatay eksende (X) 50 piksel sağa öteleyen dönüştürme (transform) kuralını yazabilir misin?",
       presetCode: ".kayan-kutu {\n  /* translateX uygula: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1286,7 +1286,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: TRANSFORM SCALE (ÖLÇEKLENDİRME)",
       title: "2. Soru: Elemanı Büyütme (Scale)",
-      prompt: "<code>.kart:hover</code> durumuna %10 büyüme için <code>transform: scale(1.1);</code> atayabilir misin?",
+      prompt: "Kartın üzerine fareyle gelindiğinde (hover) kartı %10 oranında büyüten (scale) dönüştürme kuralını yazabilir misin?",
       presetCode: ".kart:hover {\n  /* scale(1.1) uygula: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1304,7 +1304,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: TRANSFORM ROTATE (DÖNDÜRME)",
       title: "3. Soru: Elemanı Döndürme (Rotate)",
-      prompt: "<code>.ikon</code> sınıfına 45 derece dönmesi için <code>transform: rotate(45deg);</code> verebilir misin?",
+      prompt: "'.ikon' sınıfını saat yönünde 45 derece döndüren dönüştürme kuralını yazabilir misin?",
       presetCode: ".ikon {\n  /* 45 derece döndür: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1322,7 +1322,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: TRANSITION GEÇİŞ SÜRESİ",
       title: "4. Soru: Yumuşak Geçiş (Transition)",
-      prompt: "<code>.buton</code> sınıfına tüm değişimlerin 0.3 saniyede yumuşak olması için <code>transition: all 0.3s ease;</code> atayabilir misin?",
+      prompt: "'.buton' sınıfındaki tüm stil değişimlerinin 0.3 saniyede yumuşakça gerçekleşmesini sağlayan geçiş (transition) kuralını yazabilir misin?",
       presetCode: ".buton {\n  /* transition özelliğini ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1340,7 +1340,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 11: MİKRO ETKİLEŞİM",
       title: "5. Soru: Hover Buton Animasyonu",
-      prompt: "Aşağıdaki buton hover olduğunda yukarı 3px kayması için <code>transform: translateY(-3px);</code> ekleyebilir misin?",
+      prompt: "Aşağıdaki butonun üzerine gelindiğinde dikeyde 3 piksel yukarı kaymasını sağlayan hover ve transform kuralını ekleyebilir misin?",
       presetCode: ".btn-kart:hover {\n  /* Yukarı 3px kaydır: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1361,7 +1361,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: KEYFRAMES TANIMI",
       title: "1. Soru: @keyframes Bloğu Oluşturma",
-      prompt: "<code>@keyframes belirme { from { opacity: 0; } to { opacity: 1; } }</code> animasyon kuralını tanımlayabilir misin?",
+      prompt: "Opaklığı 0'dan 1'e artıran 'belirme' isimli anahtar kare (@keyframes) animasyon kuralını tanımlayabilir misin?",
       presetCode: "/* @keyframes belirme kuralını yaz: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -1381,7 +1381,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: ANIMASYON ADI & SÜRESİ",
       title: "2. Soru: Animasyonu Elemana Bağlama",
-      prompt: "<code>.kutu</code> sınıfına <code>animation-name: belirme;</code> ve <code>animation-duration: 2s;</code> özelliklerini ekleyebilir misin?",
+      prompt: "'.kutu' sınıfına 'belirme' animasyonunu 2 saniye süreyle çalıştıracak animasyon kurallarını bağlayabilir misin?",
       presetCode: ".kutu {\n  /* animasyon adı ve süresini ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1401,7 +1401,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: SONSUZ DÖNGÜ (INFINITE)",
       title: "3. Soru: Sonsuz Animasyon",
-      prompt: "<code>.yukleyici</code> sınıfına <code>animation-iteration-count: infinite;</code> atayabilir misin?",
+      prompt: "'.yukleyici' sınıfındaki animasyonun durmaksızın sonsuz (infinite) tekrar etmesini sağlayan kuralı yazabilir misin?",
       presetCode: ".yukleyici {\n  animation-name: donme;\n  animation-duration: 1s;\n  /* Sonsuz tekrar ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1419,7 +1419,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: YÜZDELİ KEYFRAMES ADIMLARI",
       title: "4. Soru: 0%, 50%, 100% Adımları",
-      prompt: "<code>@keyframes yanıp-sonme { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }</code> kuralını yazabilir misin?",
+      prompt: "Opaklığı %0, %50 ve %100 adımlarında değiştiren 'yanıp-sonme' animasyon kuralını tanımlayabilir misin?",
       presetCode: "/* @keyframes yanıp-sonme kuralını yaz: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -1439,7 +1439,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 12: ANIMATION KISAYOLU",
       title: "5. Soru: animation Shorthand",
-      prompt: "<code>.donen-ikon</code> sınıfına kısayol ile <code>animation: donme 2s linear infinite;</code> atayabilir misin?",
+      prompt: "'.donen-ikon' sınıfına 'donme' animasyonunu 2 saniyede, doğrusal ve sonsuz dönecek şekilde kısayol (animation) ile atayabilir misin?",
       presetCode: ".donen-ikon {\n  /* Tek satırda animation kısayolu ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1460,7 +1460,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: DISPLAY FLEX",
       title: "1. Soru: Flex Container Başlatma",
-      prompt: "<code>.kapsayici</code> sınıfına elemanları esnek düzenlemek için <code>display: flex;</code> atayabilir misin?",
+      prompt: "'.kapsayici' sınıfına elemanları esnek tek boyutlu yerleşim düzenine geçiren Flexbox kuralını atayabilir misin?",
       presetCode: ".kapsayici {\n  /* display: flex yap: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1478,7 +1478,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: JUSTIFY-CONTENT",
       title: "2. Soru: Yatayda İki Uca Yayma (Space-Between)",
-      prompt: "<code>.navbar</code> sınıfında logo ve menüyü iki zıt köşeye ayırmak için <code>justify-content: space-between;</code> atayabilir misin?",
+      prompt: "'.navbar' sınıfında logo ve menüyü iki zıt uca yaslayacak esnek hizalama kuralını (justify-content) atayabilir misin?",
       presetCode: ".navbar {\n  display: flex;\n  /* İki uca yay: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1496,7 +1496,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: ALIGN-ITEMS İLE DİKEY ORTALAMA",
       title: "3. Soru: Dikeyde Kusursuz Ortalama",
-      prompt: "<code>.kart-iceriği</code> sınıfına dikeyde ortalamak için <code>align-items: center;</code> ekleyebilir misin?",
+      prompt: "'.kart-iceriği' sınıfındaki esnek elemanları dikey eksende tam ortalayacak (align-items) kuralı ekleyebilir misin?",
       presetCode: ".kart-iceriği {\n  display: flex;\n  /* Dikeyde ortala: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1514,7 +1514,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: GAP İLE ELEMAN ARASI BOŞLUK",
       title: "4. Soru: Flex Elemanları Arası Boşluk",
-      prompt: "<code>.buton-grubu</code> sınıfına elemanlar arasına 16px boşluk vermek için <code>gap: 16px;</code> atayabilir misin?",
+      prompt: "'.buton-grubu' sınıfındaki esnek elemanların arasına 16 piksel boşluk (gap) bırakan kuralı atayabilir misin?",
       presetCode: ".buton-grubu {\n  display: flex;\n  /* gap: 16px ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1532,7 +1532,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 13: FLEX-DIRECTION VE WRAP",
       title: "5. Soru: Dikey Sütun Sıralaması (column)",
-      prompt: "<code>.sidebar</code> sınıfındaki flex elemanlarını alt alta dizmek için <code>flex-direction: column;</code> atayabilir misin?",
+      prompt: "'.sidebar' sınıfındaki esnek elemanları dikey bir sütun halinde alt alta dizen kuralı (flex-direction) atayabilir misin?",
       presetCode: ".sidebar {\n  display: flex;\n  /* flex-direction column yap: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1553,7 +1553,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: DISPLAY GRID",
       title: "1. Soru: Grid Container Başlatma",
-      prompt: "<code>.izgara</code> sınıfına <code>display: grid;</code> atayabilir misin?",
+      prompt: "'.izgara' sınıfını iki boyutlu ızgara düzenine (CSS Grid) geçiren kuralı atayabilir misin?",
       presetCode: ".izgara {\n  /* display: grid yap: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1571,7 +1571,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: GRID-TEMPLATE-COLUMNS",
       title: "2. Soru: 3 Eşit Sütunlu Izgara (1fr)",
-      prompt: "<code>.kart-izgara</code> sınıfına 3 eşit sütun oluşturmak için <code>grid-template-columns: 1fr 1fr 1fr;</code> (veya <code>repeat(3, 1fr)</code>) atayabilir misin?",
+      prompt: "'.kart-izgara' sınıfına 3 eşit genişlikte sütun oluşturan ızgara şablonu kuralını atayabilir misin?",
       presetCode: ".kart-izgara {\n  display: grid;\n  /* 3 eşit sütun tanımla: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1591,7 +1591,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: GRID GAP",
       title: "3. Soru: Grid Boşluğu (Gap)",
-      prompt: "<code>.galeri</code> sınıfına satır ve sütunlar arasında 20px boşluk için <code>gap: 20px;</code> atayabilir misin?",
+      prompt: "'.galeri' sınıfına satır ve sütunlar arasında 20 piksel boşluk (gap) bırakan kuralı atayabilir misin?",
       presetCode: ".galeri {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  /* gap: 20px ekle: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1609,7 +1609,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: GRID-COLUMN SPAN",
       title: "4. Soru: İki Sütun Kaplama (Span 2)",
-      prompt: "<code>.one-cikan-kart</code> elemanının 2 sütun genişliğinde yer kaplaması için <code>grid-column: span 2;</code> atayabilir misin?",
+      prompt: "'.one-cikan-kart' elemanının yatayda 2 sütun genişliğinde yer kaplamasını (span 2) sağlayan ızgara kuralını atayabilir misin?",
       presetCode: ".one-cikan-kart {\n  /* 2 sütun kapla: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1627,7 +1627,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 14: OTOMATİK RESPONSIVE GRID",
       title: "5. Soru: repeat(auto-fit, minmax(...))",
-      prompt: "<code>.otomatik-izgara</code> sınıfına <code>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</code> kuralını ekleyebilir misin?",
+      prompt: "'.otomatik-izgara' sınıfına en az 200px genişlikte otomatik sığan responsive sütun ızgarası kuralını ekleyebilir misin?",
       presetCode: ".otomatik-izgara {\n  display: grid;\n  /* auto-fit minmax kuralını yaz: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1650,7 +1650,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 15: MEDYA SORGUSU (@MEDIA)",
       title: "1. Soru: 768px Mobil Medya Sorgusu",
-      prompt: "Ekran genişliği 768px ve altı olduğunda <code>body { background-color: lightgray; }</code> yapacak medya sorgusunu yazabilir misin?",
+      prompt: "Ekran genişliği 768 piksel ve altı olduğunda gövde arka plan rengini açık gri yapan medya sorgusunu (@media) yazabilir misin?",
       presetCode: "/* @media (max-width: 768px) sorgusunu yaz: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -1670,7 +1670,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 15: MOBİLDE FLEX SÜTUNA ÇEVİRME",
       title: "2. Soru: Mobilde Kartları Alt Alta Dizme",
-      prompt: "Medya sorgusu içinde <code>.kart-kapsayici</code> sınıfının <code>flex-direction: column;</code> olmasını sağlayabilir misin?",
+      prompt: "Medya sorgusu içinde '.kart-kapsayici' sınıfındaki esnek elemanların alt alta sütun olarak dizilmesini sağlayabilir misin?",
       presetCode: "@media (max-width: 768px) {\n  .kart-kapsayici {\n    /* flex-direction column yap: */\n  }\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1690,7 +1690,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 15: MOBİLDE ELEMAN GİZLEME",
       title: "3. Soru: Mobilde Yan Menüyü Gizle",
-      prompt: "768px altında <code>.sidebar</code> sınıfını gizlemek için <code>display: none;</code> atayabilir misin?",
+      prompt: "768 piksel altındaki mobil ekranlarda '.sidebar' sınıfını tamamen gizleyen kuralı atayabilir misin?",
       presetCode: "@media (max-width: 768px) {\n  .sidebar {\n    /* Mobilde gizle: */\n  }\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1710,7 +1710,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 15: RESPONSIVE GÖRSELLER",
       title: "4. Soru: max-width: 100% Görsel Kuralı",
-      prompt: "Tüm <code>img</code> etiketlerinin kapsayıcı dışına taşmaması için <code>max-width: 100%; height: auto;</code> kuralını ekleyebilir misin?",
+      prompt: "Görsellerin kapsayıcı dışına taşmasını engelleyen ve orantılı kalmasını sağlayan responsive görsel kuralını ekleyebilir misin?",
       presetCode: "img {\n  /* Responsive resim kuralı: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1730,7 +1730,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 15: MASAÜSTÜ MEDYA SORGUSU (MIN-WIDTH)",
       title: "5. Soru: 1024px Masaüstü Sorgusu (min-width)",
-      prompt: "Genişliği 1024px ve üzeri olan ekranlar için <code>@media (min-width: 1024px) { .izgara { grid-template-columns: repeat(4, 1fr); } }</code> kuralını yazabilir misin?",
+      prompt: "Genişliği 1024 piksel ve üzeri olan büyük ekranlar için ızgarayı 4 eşit sütuna çıkaran medya sorgusunu yazabilir misin?",
       presetCode: "/* min-width 1024px sorgusunu yaz: */\n",
       filename: "style.css",
       lang: "CSS3",
@@ -1753,7 +1753,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 16: CSS DEĞİŞKENİ TANIMLAMA (:ROOT)",
       title: "1. Soru: :root içinde Değişken Tanımlama",
-      prompt: "<code>:root</code> sahte sınıfı içinde <code>--ana-renk: #6366f1;</code> değişkenini tanımlayabilir misin?",
+      prompt: ":root sahte sınıfı içinde '#6366f1' değerinde '--ana-renk' adında global bir CSS değişkeni tanımlayın.",
       presetCode: ":root {\n  /* --ana-renk değişkenini tanımla: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1771,7 +1771,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 16: VAR() İLE DEĞİŞKENİ KULLANMA",
       title: "2. Soru: var(--ana-renk) Kullanımı",
-      prompt: "<code>.buton</code> sınıfının arka plan rengine <code>background-color: var(--ana-renk);</code> atayabilir misin?",
+      prompt: "'.buton' sınıfının arka plan rengine tanımlı '--ana-renk' değişkenini (var) atayabilir misin?",
       presetCode: ".buton {\n  /* var() ile değişkeni kullan: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1789,7 +1789,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 16: CALC() İLE DİNAMİK HESAPLAMA",
       title: "3. Soru: calc(100% - 40px)",
-      prompt: "<code>.kutu</code> genişliğini tam ekrandan 40px çıkaracak şekilde <code>width: calc(100% - 40px);</code> yapabilir misin?",
+      prompt: "'.kutu' genişliğini toplam genişlikten 40 piksel çıkaran dinamik hesaplama (calc) kuralı ile belirleyebilir misin?",
       presetCode: ".kutu {\n  /* calc() ile genişlik hesapla: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1807,7 +1807,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 16: KAPSAMLI KART BİLEŞENİ",
       title: "4. Soru: Modern UI Kart Tasarımı",
-      prompt: "<code>.proje-karti</code> sınıfına <code>background: white; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);</code> özelliklerini ekleyebilir misin?",
+      prompt: "'.proje-karti' sınıfına beyaz zemin, 12px köşe yuvarlaklığı, 24px iç boşluk ve hafif gölge özelliklerini ekleyebilir misin?",
       presetCode: ".proje-karti {\n  /* Modern kart stillerini ata: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1828,7 +1828,7 @@ const CSS_CHALLENGES = {
       totalSteps: 5,
       moduleSubtitle: "MODÜL 16: CSS FİNAL PROJESİ",
       title: "5. Soru: Eksiksiz Responsive Buton Tasarımı",
-      prompt: "<code>.btn-proje</code> sınıfına <code>display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; transition: all 0.2s ease; cursor: pointer;</code> ekleyebilir misin?",
+      prompt: "'.btn-proje' sınıfına satır içi esnek yerleşim, ortalama, 8px aralık, 8px yuvarlaklık, yumuşak geçiş ve tıklanabilir imleç stillerini ekleyebilir misin?",
       presetCode: ".btn-proje {\n  /* Profesyonel buton kuralını tamamla: */\n}",
       filename: "style.css",
       lang: "CSS3",
@@ -1860,4 +1860,915 @@ for (let i = 1; i <= 16; i++) {
     CSS_CHALLENGES[`c${i}`] = CSS_CHALLENGES[`css_${i}`];
     CSS_CHALLENGES[`css${i}`] = CSS_CHALLENGES[`css_${i}`];
   }
+}
+
+
+
+
+// 📌 JSON Şemasına Uygun 16 Modüllü Standart CSS Soru & Alıştırma Veri Seti
+const CSS_EXERCISES_DATA = {
+  "technology": "CSS",
+  "total_modules": 16,
+  "modules": [
+    {
+      "module_id": 1,
+      "module_title": "CSS'e Giriş & Ekleme Yöntemleri",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "h1 başlığının yazı rengini mavi (blue) yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "h1 { color: blue; }",
+          "hint": "h1 { color: blue; } kuralını yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "CSS'te sayfa arka plan rengini belirlemek için hangi özellik kullanılır?",
+          "options": [
+            "<link rel=\"stylesheet\" href=\"style.css\">",
+            "<style src=\"style.css\">",
+            "<css link=\"style.css\">",
+            "<script href=\"style.css\">"
+          ],
+          "correct_option_index": 0,
+          "hint": "<link rel=\"stylesheet\" href=\"...\"> standardını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "p paragraflarının metin hizalamasını ortaya (center) alan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "p { text-align: center; }",
+          "hint": "p { text-align: center; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "HTML dokümanına harici bir stil dosyasını bağlamak için head içine hangi etiket yazılır?",
+          "options": [
+            "Harici CSS (External)",
+            "Dahili CSS (Internal)",
+            "Satır İçi CSS (Inline)",
+            "Gömülü CSS (Embedded)"
+          ],
+          "correct_option_index": 2,
+          "hint": "Etiket içine doğrudan yazılan satır içi (inline) yöntemdir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "body etiketinin arka plan rengini '#f8fafc' yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "body { background-color: #f8fafc; }",
+          "hint": "body { background-color: #f8fafc; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 2,
+      "module_title": "CSS Seçicileri & Öncelik Sırası",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "'card' sınıfına sahip elemanların genişliğini 300 piksel yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { width: 300px; }",
+          "hint": ".card { width: 300px; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir HTML sayfasında benzersiz bir ID seçicisini hedeflemek için CSS'te hangi ön ek simgesi kullanılır?",
+          "options": [
+            "Etiket Seçici (p)",
+            "Sınıf Seçici (.menu)",
+            "ID Seçici (#header)",
+            "Evrensel Seçici (*)"
+          ],
+          "correct_option_index": 2,
+          "hint": "ID (#) seçicisi sınıflardan ve etiketlerden daha baskındır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "'main-title' id'sine sahip elemanın yazı boyutunu 24 piksel yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "#main-title { font-size: 24px; }",
+          "hint": "#main-title { font-size: 24px; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Sayfadaki tüm elemanları istisnasız hedefleyen evrensel seçici hangisidir?",
+          "options": [
+            "div p",
+            "div > p",
+            "div + p",
+            "div ~ p"
+          ],
+          "correct_option_index": 1,
+          "hint": "Doğrudan çocuk seçici için '>' sembolü kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "Sayfadaki tüm elemanları hedefleyen evrensel seçici ile kutu modelini 'border-box' yapan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": "* { box-sizing: border-box; }",
+          "hint": "* { box-sizing: border-box; } kuralını tanımlayın."
+        }
+      ]
+    },
+    {
+      "module_id": 3,
+      "module_title": "Renkler & Arka Planlar (Colors & BG)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".hero sınıfına arka plan görseli olarak 'banner.jpg' dosyasını atayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".hero { background-image: url('banner.jpg'); }",
+          "hint": ".hero { background-image: url('banner.jpg'); } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir arka plan görselinin kendini yatayda ve dikeyde tekrar etmesini engellemek için hangi değer kullanılır?",
+          "options": [
+            "Kırmızı renk tonunu",
+            "Görsel parlaklık seviyesini",
+            "Opaklık / Şeffaflık (Alpha) oranını",
+            "Gölge yayılma açısını"
+          ],
+          "correct_option_index": 2,
+          "hint": "Alpha kanalı şeffaflık derecesini belirler."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".banner sınıfının arka plan görselini alanı tamamen kaplayacak (cover) şekilde ölçekleyen CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".banner { background-size: cover; }",
+          "hint": ".banner { background-size: cover; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "CSS'te şeffaflık (alpha kanalı) destekleyen renk tanımlama modeli hangisidir?",
+          "options": [
+            "background-repeat: no-repeat;",
+            "background-attachment: fixed;",
+            "background-position: center;",
+            "background-clip: padding-box;"
+          ],
+          "correct_option_index": 0,
+          "hint": "no-repeat değerini seçin."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".box sınıfına %50 şeffaflıkta siyah renkli rgba arka plan rengi (0, 0, 0, 0.5) atayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".box { background-color: rgba(0, 0, 0, 0.5); }",
+          "hint": ".box { background-color: rgba(0, 0, 0, 0.5); } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 4,
+      "module_title": "Tipografi & Metin Biçimlendirme",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "p etiketinin yazı tipi ailesini 'sans-serif' yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "p { font-family: sans-serif; }",
+          "hint": "p { font-family: sans-serif; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Metin kalınlığını en kalın seviyeye (örneğin 700 / bold) ayarlamak için hangi CSS özelliği kullanılır?",
+          "options": [
+            "font-style: normal;",
+            "text-decoration: none;",
+            "text-transform: none;",
+            "letter-spacing: normal;"
+          ],
+          "correct_option_index": 1,
+          "hint": "text-decoration özelliğine 'none' değeri verilir."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "h1 başlığının yazı kalınlığını 700 (kalın) yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "h1 { font-weight: 700; }",
+          "hint": "h1 { font-weight: 700; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Linklerin (a etiketi) altındaki varsayılan alt çizgiyi kaldırmak için hangi CSS kuralı yazılır?",
+          "options": [
+            "18px",
+            "24px",
+            "32px",
+            "20px"
+          ],
+          "correct_option_index": 1,
+          "hint": "16 * 1.5 = 24px."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": "p etiketinin satır yüksekliğini 1.6 olarak ayarlayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": "p { line-height: 1.6; }",
+          "hint": "p { line-height: 1.6; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 5,
+      "module_title": "Kutu Modeli (Box Model Mimarisi)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".card sınıfına dört bir yandan 16 piksel iç boşluk tanımlayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { padding: 16px; }",
+          "hint": ".card { padding: 16px; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir elemanın sınırları (border) ile diğer elemanlar arasındaki dış mesafeyi belirleyen özellik hangisidir?",
+          "options": [
+            "margin: auto 0;",
+            "margin: 0 auto;",
+            "margin: center;",
+            "margin: 50%;"
+          ],
+          "correct_option_index": 1,
+          "hint": "margin: 0 auto; kuralı yatayda otomatik ortalama yapar."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".container sınıfına üstten-alttan 20px, sağdan-soldan otomatik (auto) dış boşluk tanımlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".container { margin: 20px auto; }",
+          "hint": ".container { margin: 20px auto; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Padding ve border değerlerinin elemanın toplam genişliğine dahil edilmesini sağlayan modern kutu modeli değeri hangisidir?",
+          "options": [
+            "Elemana eklenen padding ve border değerlerini toplam genişlik (width) içine dahil eder.",
+            "Elemanın tüm köşelerini otomatik yuvarlatır.",
+            "Elemanı sayfada dikeyde ortalar.",
+            "Elemana otomatik kutu gölgesi ekler."
+          ],
+          "correct_option_index": 0,
+          "hint": "İç boşluk ve kenarlıklar genişliği dışa doğru büyütmez."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".btn sınıfına 1 piksel düz gri (#cbd5e1) kenarlık tanımlayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".btn { border: 1px solid #cbd5e1; }",
+          "hint": ".btn { border: 1px solid #cbd5e1; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 6,
+      "module_title": "Kenarlıklar, Köşeler & Gölgeler",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".card sınıfının köşelerini 8 piksel yuvarlatan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { border-radius: 8px; }",
+          "hint": ".card { border-radius: 8px; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Kare şeklindeki bir avatar görselini kusursuz bir tam daireye dönüştürmek için border-radius değeri ne olmalıdır?",
+          "options": [
+            "10px",
+            "25%",
+            "50%",
+            "100px solid"
+          ],
+          "correct_option_index": 2,
+          "hint": "%50 (50%) değeri tam yuvarlak daire oluşturur."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".avatar sınıfını kusursuz bir tam daireye dönüştüren köşe yuvarlaklığı kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".avatar { border-radius: 50%; }",
+          "hint": ".avatar { border-radius: 50%; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir kutuya derinlik ve gölge efekti kazandırmak için hangi CSS özelliği kullanılır?",
+          "options": [
+            "Yatay gölge ofseti (X ekseni)",
+            "Dikey gölge ofseti (Y ekseni)",
+            "Bulanıklık yarıçapı (Blur)",
+            "Gölge yayılma yarıçapı (Spread)"
+          ],
+          "correct_option_index": 1,
+          "hint": "İkinci parametre dikey (Y) eksenindeki kaydırmadır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".btn sınıfının varsayılan kenarlığını kaldıran CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".btn { border: none; }",
+          "hint": ".btn { border: none; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 7,
+      "module_title": "Görüntüleme & Boyutlandırma",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".hidden sınıfına sahip elemanı sayfada yer kaplamayacak şekilde tamamen gizleyen CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".hidden { display: none; }",
+          "hint": ".hidden { display: none; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Normalde satır içi olan (inline) bir etikete hem genişlik/yükseklik verebilmek hem de yan yana dizilmesini sağlamak için hangi display değeri atanır?",
+          "options": [
+            "display: none elemanı sayfada yer kaplamayacak şekilde kaldırır; visibility: hidden ise görünmez yapar ancak kapladığı alanı korur.",
+            "display: none sadece metinleri, visibility: hidden ise görselleri gizler.",
+            "İkisi arasında hiçbir fark yoktur.",
+            "visibility: hidden elemanı sayfanın en altına taşır."
+          ],
+          "correct_option_index": 0,
+          "hint": "Alan koruma ve DOM yerleşimi farkını düşünün."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".tag sınıfına satır içi blok (inline-block) yerleşim özelliğini kazandıran CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".tag { display: inline-block; }",
+          "hint": ".tag { display: inline-block; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir kutunun sınırlarını aşan taşmış içerikleri kırparak gizlemek için overflow özelliğine hangi değer verilir?",
+          "options": [
+            "overflow: visible;",
+            "overflow: hidden;",
+            "overflow: auto;",
+            "overflow: none;"
+          ],
+          "correct_option_index": 2,
+          "hint": "Gerektiğinde kaydırma çubuğu ekleyen 'auto' değeridir."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".box sınıfının sınırlarını aşan taşmış içerikleri kırparak gizleyen CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".box { overflow: hidden; }",
+          "hint": ".box { overflow: hidden; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 8,
+      "module_title": "Konumlandırma & Katmanlar (Position)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".parent sınıfını içindeki mutlak elemanlara referans olacak göreceli konumlandırma (relative) moduna alan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".parent { position: relative; }",
+          "hint": ".parent { position: relative; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Sayfa aşağı kaydırılsa bile ekranda hep aynı yerde sabit kalan konumlandırma türü hangisidir?",
+          "options": [
+            "position: absolute;",
+            "position: fixed;",
+            "position: relative;",
+            "position: static;"
+          ],
+          "correct_option_index": 1,
+          "hint": "Pencereye sabitlemek için 'fixed' kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".badge sınıfını en yakın konumlandırılmış atasına göre mutlak (absolute) hizalamaya alan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".badge { position: absolute; }",
+          "hint": ".badge { position: absolute; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Üst üste binen konumlandırılmış elemanların katman sıralamasını (önde/arkada olma durumunu) belirleyen özellik hangisidir?",
+          "options": [
+            "Yalnızca position değeri (relative, absolute, fixed veya sticky) tanımlanmış elemanlarda.",
+            "Tüm HTML elemanlarında varsayılan olarak.",
+            "Sadece display: inline olan elemanlarda.",
+            "Yalnızca görsellerde."
+          ],
+          "correct_option_index": 0,
+          "hint": "Konumlandırılmış (positioned) elemanlarda çalışır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".modal sınıfının katman önceliğini (z-index) 100 olarak ayarlayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".modal { z-index: 100; }",
+          "hint": ".modal { z-index: 100; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 9,
+      "module_title": "Sahte Sınıflar & Sahte Elemanlar",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".btn sınıfına fareyle üzerine gelindiğinde (hover) arka plan rengini '#1d4ed8' yapan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".btn:hover { background-color: #1d4ed8; }",
+          "hint": ".btn:hover { background-color: #1d4ed8; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir giriş kutusuna (input) tıklandığında ve içine yazma moduna geçildiğinde hangi sahte sınıf (pseudo-class) tetiklenir?",
+          "options": [
+            "display",
+            "content",
+            "position",
+            "visibility"
+          ],
+          "correct_option_index": 1,
+          "hint": "content: \"\"; tanımı zorunludur."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": "input etiketine odaklanıldığında (focus) varsayılan dış çerçeve çizgisini (outline) kaldıran kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": "input:focus { outline: none; }",
+          "hint": "input:focus { outline: none; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir elemanın hemen öncesine CSS ile içerik veya dekoratif ikon eklemek için hangi sahte eleman (pseudo-element) kullanılır?",
+          "options": [
+            "li:first-child",
+            "li:nth-child(even)",
+            "li:nth-child(odd)",
+            "li:last-child"
+          ],
+          "correct_option_index": 1,
+          "hint": "Çift elemanlar için 'even' seçicisi kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".badge::before sahte elemanına boş metin içeriği tanımlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".badge::before { content: \"\"; }",
+          "hint": ".badge::before { content: \"\"; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 10,
+      "module_title": "Gradyanlar & Görsel Efektler",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".card sınıfına sağa doğru maviden (#2563eb) mora (#9333ea) doğrusal renk geçişi (linear-gradient) uygulayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { background: linear-gradient(to right, #2563eb, #9333ea); }",
+          "hint": ".card { background: linear-gradient(to right, #2563eb, #9333ea); } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir elemanın şeffaflık/görünürlük derecesini 0 ile 1 arasında belirleyen CSS özelliği hangisidir?",
+          "options": [
+            "filter: blur(10px);",
+            "filter: grayscale(100%);",
+            "filter: brightness(0%);",
+            "filter: invert(100%);"
+          ],
+          "correct_option_index": 1,
+          "hint": "grayscale(100%) filtresini seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".img-dim sınıfının görünürlük opaklığını 0.8 (%80) yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".img-dim { opacity: 0.8; }",
+          "hint": ".img-dim { opacity: 0.8; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Kullanıcı fareyle bir elemanın üzerine geldiğinde el işareti (tıklanabilir imleç) göstermek için cursor özelliğine ne atanır?",
+          "options": [
+            "opacity kutunun içindeki tüm çocuk elemanları ve metinleri de şeffaflaştırırken, rgba() yalnızca arka plan rengini şeffaflaştırır.",
+            "opacity sadece arka planı şeffaflaştırır.",
+            "İkisi de tamamen aynı işi yapar.",
+            "rgba() mobil cihazlarda çalışmaz."
+          ],
+          "correct_option_index": 0,
+          "hint": "opacity içerideki yazıları da şeffaf yapar."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".blur-effect sınıfına 4 piksel bulanıklık (blur) filtresi uygulayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".blur-effect { filter: blur(4px); }",
+          "hint": ".blur-effect { filter: blur(4px); } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 11,
+      "module_title": "2D Dönüşümler & Geçişler (Transitions)",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".card sınıfındaki tüm stil değişimlerini 0.3 saniyede yumuşatan geçiş (transition) kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { transition: all 0.3s ease; }",
+          "hint": ".card { transition: all 0.3s ease; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Bir elemanı 2 boyutlu uzayda döndürmek, büyütmek veya ötelemek için hangi CSS özelliği kullanılır?",
+          "options": [
+            "transform: rotate(1.2deg);",
+            "transform: scale(1.2);",
+            "transform: translate(1.2);",
+            "transform: skew(1.2);"
+          ],
+          "correct_option_index": 1,
+          "hint": "Boyutlandırma için 'scale' kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".box sınıfını dikeyde 5 piksel yukarı kaydıran dönüştürme (transform) kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".box { transform: translateY(-5px); }",
+          "hint": ".box { transform: translateY(-5px); } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir butonun üzerine gelindiğinde boyutunu %10 büyütmek için transform özelliğine hangi fonksiyon verilir?",
+          "options": [
+            "Fare elemanın üzerinden çekildiğinde de animasyonun yumuşak bir şekilde geri dönmesi için.",
+            "Hover içinde transition desteklenmediği için.",
+            "Tarayıcı önbelleğini sıfırlamak için.",
+            "Sadece renk geçişlerini çalıştırmak için."
+          ],
+          "correct_option_index": 0,
+          "hint": "Gidiş ve dönüşte çift yönlü yumuşaklık sağlar."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".icon sınıfını saat yönünde 45 derece döndüren dönüştürme (transform) kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".icon { transform: rotate(45deg); }",
+          "hint": ".icon { transform: rotate(45deg); } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 12,
+      "module_title": "CSS Animasyonları & @keyframes",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".spinner sınıfına 'spin' animasyonunu 1 saniyede, doğrusal (linear) ve sonsuz (infinite) dönecek şekilde bağlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".spinner { animation: spin 1s linear infinite; }",
+          "hint": ".spinner { animation: spin 1s linear infinite; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "CSS'te özel adım adım animasyon kareleri tanımlamak için hangi kural bildirim bloğu kullanılır?",
+          "options": [
+            "animation-iteration-count: loop;",
+            "animation-iteration-count: infinite;",
+            "animation-repeat: always;",
+            "animation-play-state: running;"
+          ],
+          "correct_option_index": 1,
+          "hint": "Sonsuz döngü için 'infinite' kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".fade-in sınıfının animasyon süresini 2 saniye yapan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".fade-in { animation-duration: 2s; }",
+          "hint": ".fade-in { animation-duration: 2s; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir animasyonun hiç durmadan sürekli dönmesini/oynamasını sağlamak için animation-iteration-count değerine ne yazılır?",
+          "options": [
+            "@animation",
+            "@keyframes",
+            "@transitions",
+            "@frames"
+          ],
+          "correct_option_index": 1,
+          "hint": "@keyframes kuralını seçin."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".card sınıfına 'fadeIn' animasyonunu bağlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { animation-name: fadeIn; }",
+          "hint": ".card { animation-name: fadeIn; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 13,
+      "module_title": "Flexbox ile Esnek Tek Boyutlu Düzen",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".nav-container sınıfını esnek tek boyutlu yerleşim düzenine (Flexbox) geçiren kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".nav-container { display: flex; }",
+          "hint": ".nav-container { display: flex; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Flexbox'ta ana eksen boyunca elemanları iki uca eşit dağıtıp aralarını açmak için hangi justify-content değeri kullanılır?",
+          "options": [
+            "justify-content: space-between;",
+            "align-items: space-between;",
+            "justify-content: center;",
+            "flex-direction: space-between;"
+          ],
+          "correct_option_index": 0,
+          "hint": "justify-content: space-between; kuralını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".flex-box sınıfındaki elemanları dikey eksende kusursuz ortalayan Flexbox kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".flex-box { align-items: center; }",
+          "hint": ".flex-box { align-items: center; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Flexbox veya Grid elemanlarının birbirleri arasındaki boşluğu belirleyen en pratik modern özellik hangisidir?",
+          "options": [
+            "flex-wrap: wrap;",
+            "flex-flow: row;",
+            "flex-direction: column;",
+            "overflow: wrap;"
+          ],
+          "correct_option_index": 0,
+          "hint": "flex-wrap: wrap; kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".flex-row sınıfındaki esnek elemanların arasına 16 piksel boşluk (gap) bırakan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".flex-row { gap: 16px; }",
+          "hint": ".flex-row { gap: 16px; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 14,
+      "module_title": "CSS Grid ile İki Boyutlu Izgara",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ".grid-container sınıfını iki boyutlu ızgara düzenine (CSS Grid) geçiren kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".grid-container { display: grid; }",
+          "hint": ".grid-container { display: grid; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "CSS Grid'de sütun genişliklerini kalan boş alana göre esnek paylaştıran birim hangisidir?",
+          "options": [
+            "grid-template-columns: repeat(3, 1fr);",
+            "grid-template-columns: repeat(1fr, 3);",
+            "grid-template-columns: 3fr repeat;",
+            "grid-template-columns: auto-fit(3);"
+          ],
+          "correct_option_index": 0,
+          "hint": "repeat(3, 1fr) standardını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".gallery sınıfına 3 eşit genişlikte (1fr) sütun ızgarası tanımlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".gallery { grid-template-columns: repeat(3, 1fr); }",
+          "hint": ".gallery { grid-template-columns: repeat(3, 1fr); } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Bir ızgara elemanının yatayda 2 sütun boyunca yer kaplamasını sağlamak için hangi kural kullanılır?",
+          "options": [
+            "grid-column: span 2;",
+            "grid-row: span 2;",
+            "colspan: 2;",
+            "grid-span: 2;"
+          ],
+          "correct_option_index": 0,
+          "hint": "grid-column: span 2; kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".featured sınıfındaki ızgara elemanının yatayda 2 sütun genişliğinde yer kaplamasını sağlayan kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".featured { grid-column: span 2; }",
+          "hint": ".featured { grid-column: span 2; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 15,
+      "module_title": "Responsive Tasarım & Medya Sorguları",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": "Maksimum 768 piksel genişliğindeki mobil/tablet ekranlar için geçerli boş bir medya sorgusu (@media) bloğu açıp kapatın.",
+          "starter_code": "",
+          "expected_answer": "@media (max-width: 768px) {}",
+          "hint": "@media (max-width: 768px) {} yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "Duyarlı (responsive) web tasarımında ekran boyutuna göre stil kuralları uygulamak için hangi CSS at-kuralı kullanılır?",
+          "options": [
+            "max-width: 100%; height: auto;",
+            "width: 100vw; height: 100vh;",
+            "min-width: 100%;",
+            "object-fit: cover;"
+          ],
+          "correct_option_index": 0,
+          "hint": "max-width: 100%; height: auto; kuralını seçin."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".img-responsive sınıfındaki görsellerin kapsayıcı dışına taşmasını engelleyen maksimum genişlik kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".img-responsive { max-width: 100%; }",
+          "hint": ".img-responsive { max-width: 100%; } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Küçük ekranlarda flex elemanlarının yan yana yerine alt alta sıralanmasını sağlamak için flex-direction değeri ne olmalıdır?",
+          "options": [
+            "@media (min-width: ...)",
+            "@media (max-width: ...)",
+            "@media (orientation: portrait)",
+            "@media (screen-only)"
+          ],
+          "correct_option_index": 0,
+          "hint": "Mobile-First mantığında min-width kullanılır."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".menu sınıfındaki esnek elemanları dikey sütun (column) halinde alt alta dizen kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".menu { flex-direction: column; }",
+          "hint": ".menu { flex-direction: column; } yazın."
+        }
+      ]
+    },
+    {
+      "module_id": 16,
+      "module_title": "CSS Değişkenleri & Kapsamlı Proje",
+      "exercises": [
+        {
+          "exercise_id": 1,
+          "type": "code_input",
+          "question": ":root sahte sınıfı içinde '--primary-color' adında ve '#2563eb' değerinde global bir CSS değişkeni tanımlayın.",
+          "starter_code": "",
+          "expected_answer": ":root { --primary-color: #2563eb; }",
+          "hint": ":root { --primary-color: #2563eb; } yazın."
+        },
+        {
+          "exercise_id": 2,
+          "type": "multiple_choice",
+          "question": "CSS değişkenlerinin değerini stil kuralları içinde okumak için hangi fonksiyon kullanılır?",
+          "options": [
+            "var(--degisken)",
+            "calc(--degisken)",
+            "get(--degisken)",
+            "env(--degisken)"
+          ],
+          "correct_option_index": 0,
+          "hint": "var(--degisken) fonksiyonu kullanılır."
+        },
+        {
+          "exercise_id": 3,
+          "type": "code_input",
+          "question": ".btn sınıfının arka plan rengine tanımlı '--primary-color' değişkenini atayan CSS kuralını yazın.",
+          "starter_code": "",
+          "expected_answer": ".btn { background-color: var(--primary-color); }",
+          "hint": ".btn { background-color: var(--primary-color); } yazın."
+        },
+        {
+          "exercise_id": 4,
+          "type": "multiple_choice",
+          "question": "Farklı birimleri (örneğin %100 ve 40px) birbiriyle matematiksel olarak işleme sokup boyut hesaplayan CSS fonksiyonu hangisidir?",
+          "options": [
+            "Toplama (+) ve çıkarma (-) operatörlerinin sağında ve solunda mutlaka birer boşluk bırakılmalıdır.",
+            "Yalnızca piksel birimi kullanılabilir, yüzde kullanılamaz.",
+            "calc fonksiyonu sadece yükseklik için geçerlidir.",
+            "Değişkenler calc içinde kullanılamaz."
+          ],
+          "correct_option_index": 0,
+          "hint": "Operatörlerin iki yanında boşluk bırakılması zorunludur."
+        },
+        {
+          "exercise_id": 5,
+          "type": "code_input",
+          "question": ".card sınıfına toplam genişlikten 32px çıkaran dinamik hesaplama (calc) ile genişlik veren kuralı yazın.",
+          "starter_code": "",
+          "expected_answer": ".card { width: calc(100% - 32px); }",
+          "hint": ".card { width: calc(100% - 32px); } yazın."
+        }
+      ]
+    }
+  ]
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { CSS_TOPIC_REVIEWS, CSS_CHALLENGES, CSS_EXERCISES_DATA };
 }

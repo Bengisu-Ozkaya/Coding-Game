@@ -273,6 +273,30 @@ app.get('/api/health', (req, res) => {
   res.json({ ok: true, status: 'healthy', time: Date.now() });
 });
 
+// HTML Egzersiz & Modül Verilerini Sunan Endpoint
+app.get('/api/exercises/html', (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'html-exercises.json'), 'utf8'));
+    res.json({ ok: true, ...data });
+  } catch (err) {
+    res.status(500).json({ ok: false, msg: 'HTML egzersiz verileri okunamadı.', error: err.message });
+  }
+});
+
+// CSS Egzersiz & Modül Verilerini Sunan Endpoint
+app.get('/api/exercises/css', (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'css-exercises.json'), 'utf8'));
+    res.json({ ok: true, ...data });
+  } catch (err) {
+    res.status(500).json({ ok: false, msg: 'CSS egzersiz verileri okunamadı.', error: err.message });
+  }
+});
+
 // --- SUNUCU BAŞLATMA & MONGODB BAĞLANTISI ---
 mongoose.connect(MONGODB_URI)
   .then(() => {
