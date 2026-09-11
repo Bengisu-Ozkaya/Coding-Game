@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9.0">
+  <link rel="stylesheet" href="style.css?v=9.1">
 </head>
 <body>
   <!-- Minimalist Arka Plan Işık Efektleri -->
@@ -159,8 +159,14 @@
               <span>Diller Menüsü</span>
             </button>
             <div class="roadmap-topbar-actions">
+              <button id="btn-complete-all-modules" class="btn-dev-shortcut btn-dev-complete" title="Seçili dilin tüm modüllerini tamamla ve projeyi %100 yap">
+                <span>✨ Tümünü Tamamla</span>
+              </button>
+              <button id="btn-reset-all-modules" class="btn-dev-shortcut btn-dev-reset" title="Seçili dilin tüm ilerlemesini ve projesini sıfırla">
+                <span>🔄 Tümünü Sıfırla</span>
+              </button>
               <button id="btn-unlock-all" class="btn-dev-shortcut" title="Tüm kilitleri açarak serbestçe gez">
-                <span>🔓 Tüm Kilitleri Aç</span>
+                <span>🔓 Kilitleri Aç</span>
               </button>
             </div>
           </div>
@@ -288,9 +294,17 @@
           <span>Konu Haritasına Dön</span>
         </button>
         <div class="game-breadcrumb" id="game-breadcrumb">Python / 1. Konu</div>
-        <button id="btn-skip-module" class="btn btn-skip-module" title="Alıştırmayı doğrudan bitir ve sonraki konuya geç">
-          <span>⚡ Modülü Bitir (+150 XP)</span>
-        </button>
+        <div class="game-top-actions">
+          <button id="btn-arena-complete-all" class="btn-dev-shortcut btn-dev-complete" title="Seçili dilin tüm modüllerini tamamla">
+            <span>✨ Tümünü Tamamla</span>
+          </button>
+          <button id="btn-arena-reset-all" class="btn-dev-shortcut btn-dev-reset" title="Seçili dilin modüllerini sıfırla">
+            <span>🔄 Sıfırla</span>
+          </button>
+          <button id="btn-skip-module" class="btn btn-skip-module" title="Alıştırmayı doğrudan bitir ve sonraki konuya geç">
+            <span>⚡ Modülü Bitir (+150 XP)</span>
+          </button>
+        </div>
       </div>
 
       <!-- Kodlama Arenası Düzeni: Üstte Dikdörtgen Görev Kartı, Altta Yan Yana Editör ve Terminal -->
@@ -553,10 +567,10 @@
     </div>
   </div>
 
-  <script src="html-data.js?v=9.0"></script>
-  <script src="css-data.js?v=9.0"></script>
-  <script src="js-data.js?v=9.0"></script>
-  <script src="bootstrap-data.js?v=9.0"></script>
-  <script src="app.js?v=9.0"></script>
+  <script src="html-data.js?v=9.1"></script>
+  <script src="css-data.js?v=9.1"></script>
+  <script src="js-data.js?v=9.1"></script>
+  <script src="bootstrap-data.js?v=9.1"></script>
+  <script src="app.js?v=9.1"></script>
 </body>
 </html>
