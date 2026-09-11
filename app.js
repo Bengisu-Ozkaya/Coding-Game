@@ -1720,6 +1720,223 @@ function resetApplicationProgress() {
   }
 }
 
+// =========================================================================
+// TEST & GELİŞTİRİCİ KISAYOLLARI: TÜM MODÜLLERİ TAMAMLA & SIFIRLA & KİLİTLERİ AÇ
+// =========================================================================
+
+let toastNotificationTimer = null;
+function showToastNotification(message, type = 'info', duration = 3000) {
+  let toastEl = document.getElementById('global-toast-notification');
+  if (!toastEl) {
+    toastEl = document.createElement('div');
+    toastEl.id = 'global-toast-notification';
+    toastEl.className = 'global-toast-notification';
+    document.body.appendChild(toastEl);
+  }
+
+  toastEl.className = `global-toast-notification toast-${type}`;
+  let icon = 'ℹ️';
+  if (type === 'success') icon = '✨';
+  if (type === 'error') icon = '⚠️';
+
+  toastEl.innerHTML = `<span class="toast-icon">${icon}</span><span class="toast-text">${message}</span>`;
+
+  // Reflow
+  void toastEl.offsetWidth;
+  toastEl.classList.add('show');
+
+  if (toastNotificationTimer) {
+    clearTimeout(toastNotificationTimer);
+  }
+  toastNotificationTimer = setTimeout(() => {
+    toastEl.classList.remove('show');
+  }, duration);
+}
+
+// Seçili Dilin Bütün Modüllerini Tek Tıkla Tamamlama Fonksiyonu
+function completeAllModules(targetLangId) {
+  const langId = targetLangId || state.selectedLangId || 'html';
+  const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
+  const topics = getLanguageTopics(langId);
+
+  let newlyDoneCount = 0;
+  topics.forEach((topic) => {
+    const wasDone = topic.status === 'done' || (state.completedNodes && state.completedNodes.has(topic.id));
+    topic.status = 'done';
+    if (!wasDone) {
+      if (state.completedNodes) state.completedNodes.add(topic.id);
+      state.xp = (state.xp || 0) + (topic.xp || 150);
+      state.harvestCount = (state.harvestCount || 0) + 5;
+      newlyDoneCount++;
+    }
+  });
+
+  // Projeyi %100 canlı ve tam vitrine al
+  if (langId === 'html') {
+    userProjects.html = {
+      title: 'TechNova Web Studio',
+      actor: '🌐',
+      buttonText: 'Projeleri Keşfet',
+      score: 2500,
+      powerLevel: 14,
+      hasHeader: true,
+      hasHero: true,
+      hasButton: true,
+      hasStats: true
+    };
+  } else {
+    if (!userProjects[langId]) {
+      const defProj = getDefaultUserProjects()[langId] || {};
+      userProjects[langId] = { ...defProj };
+    }
+    userProjects[langId].title = `${curLang.name} Canlı Projesi`;
+    userProjects[langId].hasHeader = true;
+    userProjects[langId].hasHero = true;
+    userProjects[langId].hasButton = true;
+    userProjects[langId].hasStats = true;
+    userProjects[langId].score = 2500;
+    userProjects[langId].powerLevel = topics.length;
+  }
+
+  saveUserProjects();
+  if (typeof updateGlobalStats === 'function') {
+    updateGlobalStats();
+  }
+
+  if (typeof authManager !== 'undefined' && authManager.user?.email) {
+    saveLocalUserProgress(authManager.user.email);
+    authManager.syncCurrentLocalProgress(langId);
+  }
+
+  if (typeof sfx !== 'undefined' && sfx.playVictory) {
+    sfx.playVictory();
+  }
+
+  if (state.currentView === 'roadmap') {
+    renderSkillTree();
+  } else if (state.currentView === 'game') {
+    renderTerminalLivePreview(langId);
+    if (typeof renderCurrentChallenge === 'function') {
+      renderCurrentChallenge();
+    }
+    if (typeof logToTerminal === 'function') {
+      logToTerminal(`✨ <strong>${curLang.name}: Bütün ${topics.length} modül tamamlandı!</strong> Canlı vitrin %100 aktif edildi.`, 'success');
+    }
+  }
+
+  showToastNotification(`✨ ${curLang.name}: Tüm ${topics.length} modül tamamlandı! Canlı proje %100 vitrine alındı.`, 'success', 3500);
+}
+
+// Seçili Dilin Tüm Modüllerini Sıfırlama Fonksiyonu
+function resetAllModules(targetLangId) {
+  const langId = targetLangId || state.selectedLangId || 'html';
+  const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
+  const topics = getLanguageTopics(langId);
+
+  topics.forEach((topic, idx) => {
+    topic.status = idx === 0 ? 'active' : 'locked';
+    if (state.completedNodes) {
+      state.completedNodes.delete(topic.id);
+    }
+  });
+
+  const defaults = getDefaultUserProjects();
+  if (defaults[langId]) {
+    userProjects[langId] = { ...defaults[langId] };
+  } else {
+    userProjects[langId] = {
+      title: `${curLang.name} Projem`,
+      actor: curLang.icon || '👾',
+      buttonText: 'Oyunu Başlat',
+      score: 1250,
+      powerLevel: 1,
+      hasHeader: false,
+      hasHero: false,
+      hasButton: false,
+      hasStats: false
+    };
+  }
+
+  saveUserProjects();
+  if (typeof updateGlobalStats === 'function') {
+    updateGlobalStats();
+  }
+
+  if (typeof authManager !== 'undefined' && authManager.user?.email) {
+    saveLocalUserProgress(authManager.user.email);
+    authManager.syncCurrentLocalProgress(langId);
+  }
+
+  if (typeof sfx !== 'undefined' && sfx.playPop) {
+    sfx.playPop();
+  }
+
+  if (state.currentView === 'roadmap') {
+    renderSkillTree();
+  } else if (state.currentView === 'game') {
+    state.selectedNodeId = topics[0].id;
+    if (typeof loadNodeFarmGame === 'function') {
+      loadNodeFarmGame();
+    }
+    renderTerminalLivePreview(langId);
+    if (typeof logToTerminal === 'function') {
+      logToTerminal(`🔄 <strong>${curLang.name}: İlerleme sıfırlandı.</strong> 1. modülden başlayabilirsiniz.`, 'info');
+    }
+  }
+
+  showToastNotification(`🔄 ${curLang.name}: Tüm modüller sıfırlandı. 1. modülden başlayabilirsiniz.`, 'info', 3500);
+}
+
+// Seçili Dilin Kilitli Modüllerini Açma Fonksiyonu
+function unlockAllModules(targetLangId) {
+  const langId = targetLangId || state.selectedLangId || 'html';
+  const curLang = LANGUAGES_DB.find(l => l.id === langId) || LANGUAGES_DB[0];
+  const topics = getLanguageTopics(langId);
+
+  topics.forEach((topic) => {
+    if (topic.status === 'locked') {
+      topic.status = 'active';
+    }
+  });
+
+  if (typeof sfx !== 'undefined' && sfx.playPop) {
+    sfx.playPop();
+  }
+
+  if (state.currentView === 'roadmap') {
+    renderSkillTree();
+  }
+
+  showToastNotification(`🔓 ${curLang.name}: Tüm kilitler açıldı! İstediğiniz konudan serbestçe başlayabilirsiniz.`, 'info', 3500);
+}
+
+// Buton Etkinlik Dinleyicilerini Bağlama
+function setupDevModuleActions() {
+  const btnRoadmapComplete = document.getElementById('btn-complete-all-modules');
+  const btnRoadmapReset = document.getElementById('btn-reset-all-modules');
+  const btnRoadmapUnlock = document.getElementById('btn-unlock-all');
+
+  const btnArenaComplete = document.getElementById('btn-arena-complete-all');
+  const btnArenaReset = document.getElementById('btn-arena-reset-all');
+
+  if (btnRoadmapComplete) {
+    btnRoadmapComplete.onclick = () => completeAllModules(state.selectedLangId);
+  }
+  if (btnRoadmapReset) {
+    btnRoadmapReset.onclick = () => resetAllModules(state.selectedLangId);
+  }
+  if (btnRoadmapUnlock) {
+    btnRoadmapUnlock.onclick = () => unlockAllModules(state.selectedLangId);
+  }
+
+  if (btnArenaComplete) {
+    btnArenaComplete.onclick = () => completeAllModules(state.selectedLangId);
+  }
+  if (btnArenaReset) {
+    btnArenaReset.onclick = () => resetAllModules(state.selectedLangId);
+  }
+}
+
 loadUserProjects();
 
 const escapeCardHtml = (str) => String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -9158,6 +9375,9 @@ function initApp() {
   }
   renderLanguages();
   updateGlobalStats();
+  if (typeof setupDevModuleActions === 'function') {
+    setupDevModuleActions();
+  }
 
   // Render Backend'i arka planda sessizce uyandır (Cold start azaltıcı)
   try {
