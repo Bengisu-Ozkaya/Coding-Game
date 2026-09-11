@@ -6261,42 +6261,105 @@ body.modal-open {
   color: #94a3b8;
 }
 
+/* 7. Giriş ve Kayıt Modalı (Auth Modal - Dark Theme) */
 [data-theme="dark"] .auth-modal-card {
   background: #0f172a;
   border: 1px solid #1e293b;
   color: #f8fafc;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
 }
 
-[data-theme="dark"] .auth-title {
-  color: #f8fafc;
-}
-
-[data-theme="dark"] .auth-subtitle {
+[data-theme="dark"] .auth-close-btn {
+  background: #1e293b;
   color: #94a3b8;
 }
 
-[data-theme="dark"] .auth-text-input {
-  background: #131c31;
-  border-color: #243048;
+[data-theme="dark"] .auth-close-btn:hover {
+  background: #334155;
   color: #f8fafc;
 }
 
-[data-theme="dark"] .auth-text-input:focus {
-  border-color: #10b981;
+[data-theme="dark"] .auth-brand-badge {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
 }
 
-[data-theme="dark"] .auth-tabs {
-  background: #131c31;
-  border-color: #1e293b;
+[data-theme="dark"] .auth-main-title {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .auth-desc-text {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .auth-tabs-row {
+  background: #090d16;
+  border: 1px solid #1e293b;
 }
 
 [data-theme="dark"] .auth-tab-btn {
   color: #94a3b8;
 }
 
+[data-theme="dark"] .auth-tab-btn:hover {
+  color: #f8fafc;
+}
+
 [data-theme="dark"] .auth-tab-btn.active {
   background: #1e293b;
   color: #f8fafc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .auth-field-label {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .auth-input-wrapper {
+  background: #090d16;
+  border-color: #243048;
+}
+
+[data-theme="dark"] .auth-input-wrapper:focus-within {
+  background: #0d1527;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3.5px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme="dark"] .auth-input-icon {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .auth-text-input {
+  background: transparent;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .auth-text-input::placeholder {
+  color: #64748b;
+}
+
+[data-theme="dark"] .btn-auth-submit {
+  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  box-shadow: 0 4px 18px rgba(79, 70, 229, 0.45);
+}
+
+[data-theme="dark"] .btn-auth-submit:hover {
+  background: linear-gradient(135deg, #4338ca 0%, #2563eb 100%);
+  box-shadow: 0 6px 24px rgba(79, 70, 229, 0.6);
+}
+
+[data-theme="dark"] .auth-footer-note {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .auth-footer-switch-btn {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .auth-footer-switch-btn:hover {
+  color: #93c5fd;
 }
 
 /* 8. Genel Butonlar ve Navigasyon Barı (Dark Theme) */
